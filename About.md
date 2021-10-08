@@ -5,9 +5,9 @@
   - [Integration by Configuration](#integration-by-configuration)
   - [Robustness](#robustness)
   - [A tool or a platform](#a-tool-or-a-platform)
-- [Why use ConnXio](#why-use-connxio)
-  - [Cost Saving With ConnXio](#cost-saving-with-connxio)
-  - [Lock-In in ConnXio](#lock-in-in-connxio)
+- [Why use ConnXio?](#why-use-connxio)
+  - [Cost Saving](#cost-saving)
+  - [Soft Lock-In](#soft-lock-in)
 
 When we made our resolution to create an *integration by configuration* solution we used all our many years of experience and insight into the integration challenges of our customers, our employees and business at large to imagine a tool that could help everyone develop more robust integration-solutions faster, smarter and cheaper.  With the advent of ConnXio we've reached that goal, and we are proud to announce our solution to the world.
 
@@ -27,11 +27,11 @@ ConnXio can be used both as a tool and a platform. **When used as a tool** it in
 
 **When used as a platform** ConnXio acts as a complete integration solution that handles all aspects of integration from fetching of messages to mapping, transformations, enrichment, splitting and eventually sending to external or internal systems. There are usually no proxy's used either from the internal systems or to the external systems. This mode is usually used by smaller integration departments or by businesses who want pure integration as a service.
 
-Even though ConnXio works both as a tool and a platform neither of the modes a mutually exclusive and both modes really just require a shift in perception and a detailed here mostly to illuminate the potential of ConnXio.
+Even though ConnXio works both as a tool and a platform neither of the modes are mutually exclusive and both modes really just require a shift in perception and a detailed here mostly to illuminate the potential of ConnXio.
 
-# Why use ConnXio
+# Why use ConnXio?
 
-## Cost Saving With ConnXio
+## Cost Saving
 
 ConnXio (CX) is built to decrease costs on boilerplate and semi advanced integration. With a library of adapters and an interchangeable transformation system, its main concern is to help our customers on their way to create faster, more dynamic, stable and secure integrations.
 
@@ -43,7 +43,7 @@ Let us take a look at the different parts and concepts that together create the 
 
 **Traceability** and fault handling is built into CX and is always modified and upgraded to suit our customers need. Because CX’s integration transfer is standardized the days of choosing which integration flows you want to be able to trace is over. All flows configured in CX receive the same fault handling and traceability as the most complex and tweaked solutions. This saves costs by elevating all integration flows to a premium traceability and fault handling level and saves the customer the development cost of doing this for their own flows again and again, possibly with varying results.
 
-## Lock-In in ConnXio
+## Soft Lock-In
 
 First of all, let’s look at the practical definition of the “Vendor lock-in” from Wikipedia:
 > “In economics, vendor lock-in, also known as proprietary lock-in or customer lock-in, makes a customer dependent on a vendor for products and services, unable to use another vendor without substantial switching costs. Lock-in costs that create barriers to market entry may result in antitrust action against a monopoly. “

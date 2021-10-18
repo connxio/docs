@@ -1,10 +1,18 @@
 # Core Concepts
 
+- [Core Concepts](#core-concepts)
+  - [InterchangeId](#interchangeid)
+    - [Changing or multiplying IDs](#changing-or-multiplying-ids)
+  - [A stateless service](#a-stateless-service)
+  - [Parallel processing](#parallel-processing)
+  - [Robust message transfer and retention](#robust-message-transfer-and-retention)
+  - [Orchestration](#orchestration)
+
 This page explores the core concepts that make up the building blocks of the ConnXio (CX) service. Understanding these concepts are essential to being successfully withing the ConnXio eco-system and we would strongly recommend reading the points below carefully.
 
 ## InterchangeId
 
-The *InterchangeId* is a simple but powerful part of the CX eco-system. In its most basic form it's nothing more than an ID that follows a message through the entire CX pipeline. The InterchangeId can be supplied by the customer in most cases (some protocols make this difficult, but it's implemented wherever possible), this enables the customer to track the message through CX with [logging](/Logging.md) events, and also use the ID itself for other purposes like naming files or editing the message itself.\
+The *InterchangeId* is a simple but powerful part of the CX eco-system. In its most basic form it's nothing more than an ID that follows a message through the entire CX pipeline. The InterchangeId can be supplied by the customer in most cases (some protocols make this difficult, but it's implemented wherever possible), this enables the customer to track the message through CX with [logging](/Logging.md) events, and use the ID itself for other purposes like naming files or editing the message itself.\
 If the InterchangeId is not supplied by the customer it's generated in the form of a [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier), this makes the ID unique for this exact message and is used to identify it through the internal pipeline as well as for other storage and transformation purposes.
 
 >Since it's used for complex internal processing an InterchangeID **must** be unique. Using a non unique ID *voids* *all* guarantees concerning message transfer inside CX.

@@ -53,7 +53,7 @@ The *Verbose* level logs every conceivable event of interest thorough CX. It cou
 
 All logging providers are treated equally in relation to CX, and we do have a goal of adding provider specific convenience configuration for the largest providers in the future, currently however we only have a convenience configuration section for Archeo, but you can configure both Archeo and all other REST based providers by selecting the Webhook configuration option.
 
-All logging options require a [Security Configuration](/Security%20Configurations.md). Set this up by following the steps described on the Security Configuration page and select the definition as described below.
+All logging options require a [Security Configuration](/Security/Security%20Configurations.md). Set this up by following the steps described on the Security Configuration page and select the definition as described below.
 
 ### Archeo (Needs work)
 

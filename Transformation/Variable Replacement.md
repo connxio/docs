@@ -12,7 +12,7 @@ Variable replacement uses a simple query language to function. The following tab
 { 
     "node1": 
     { 
-        array: 
+        "array": 
         [ 
             {"element1": "Value1"},
             {"element2": "Value2"}

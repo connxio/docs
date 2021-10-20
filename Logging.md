@@ -39,7 +39,7 @@ The *None* log-level does not send any logs to the logging provider with a notab
 
 #### Minimum
 
-The *Minimum* log-level logs when the message is first seen by CX, this could be when the message is received by the API or picked from the chosen protocol like SFTP or Azure Storage. It also enables logs for the last time CX sees the message, this could be when the message is safely delivered to an SFTP folder or Service Bus topic. If you use the [Acknowledgement functionality](Adapters/Outbound/Acknowledgment.md), the acknowledgement message is also logged on this level.
+The *Minimum* log-level logs when the message is first seen by CX, this could be when the message is received by the API or picked from the chosen protocol like SFTP or Azure Storage. It also enables logs for the last time CX sees the message, this could be when the message is safely delivered to an SFTP folder or Service Bus topic. If you use the [Acknowledgement functionality](/Adapters/Outbound/Acknowledgment.md), the acknowledgement message is also logged on this level.
 
 #### Standard
 

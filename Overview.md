@@ -17,17 +17,17 @@ Some of you may have heard of iPAAS (integration platform as a service) solution
 
 ## Robustness
 
-By using a PAAS solution to perform integration and file transfer, the source systems can outsource not only the actual work but also the demands of logging, resending, stability and performance. By using ConnXio you force your solutions into a pattern which gives your internal systems something to keep up with as well as a standard for which to build you own integrations upon when necessary.
+By using a PAAS solution to perform integration and file transfer, the source systems can outsource not only the actual work but also the demands of logging, resending, stability and performance. By using ConnXio you force your solutions into a pattern which gives your internal systems something to compete with in terms of quality as well as a standard for which to build you own integrations when necessary.
 
-By leveraging distributed cloud and computing principles we made ConnXio faster and more scalable than normal in-house platforms and solutions have the ability to be. We scale our internal systems on demand and always try to have plenty in the tank.
+By leveraging distributed cloud and computing principles we made ConnXio faster and more scalable than normal in-house platforms and solutions have the ability to be. We scale our internal systems on demand and always try to have plenty of power left in the tank.
 
 ## A tool or a platform
 
-ConnXio can be used both as a tool and a platform. **When used as a tool** it integrates seamlessly into an already established or in progress integration platform as a purveyor of easy to use integration on the fly. In this mode you usually leverage ConnXio where you need to do cookie-cutter integration that is time consuming and often times boring for programmers to deal with. Your core integration flows and large scale advanced transfer needs can also leverage ConnXio as part of the solution or as a last point proxy, but you use the ConnXio tool where appropriate and custom code where not. When used as a tool proxy services between ConnXio and external systems are when necessary or wanted. This mode is mostly used by large integration departments and big business customers.
+ConnXio can be used both as a tool and a platform. **When used as a tool** it integrates seamlessly into an already established or in progress integration platform as a purveyor of easy to use integration on the fly. In this mode you usually leverage ConnXio where you need to do cookie-cutter integration that is time consuming and often times boring for programmers to deal with. Your core integration flows and large scale advanced transfer needs can also leverage ConnXio as part of the solution or as a last point proxy, but you use the ConnXio tool where appropriate and custom code where not. When used as a tool proxy services between ConnXio and external systems are created when necessary or more efficient for the process at hand. This mode is mostly used by large integration departments and big business customers.
 
 **When used as a platform** ConnXio acts as a complete integration solution that handles all aspects of integration from fetching of messages to mapping, transformations, enrichment, splitting and eventually sending to external or internal systems. There are usually no proxy's used either from the internal systems or to the external systems. This mode is usually used by smaller integration departments or by businesses who want pure integration as a service.
 
-Even though ConnXio works both as a tool and a platform neither of the modes are mutually exclusive and both modes really just require a shift in perception and a detailed here mostly to illuminate the potential of ConnXio.
+Even though ConnXio works both as a tool and a platform neither of the modes are mutually exclusive and both modes really just require a shift in perception and are detailed here mostly to illuminate the potential of ConnXio.
 
 # Why use ConnXio?
 

@@ -9,7 +9,7 @@
   - [Cost Saving](#cost-saving)
   - [Soft Lock-In](#soft-lock-in)
 
-When we made our resolution to create an *integration by configuration* solution we used all our many years of experience and insight into the integration challenges of our customers, our employees and business at large to imagine a tool that could help everyone develop more robust integration-solutions faster, smarter and cheaper.  With the advent of ConnXio we've reached that goal, and we are proud to announce our solution to the world.
+When we decided to explore the concept of an *integration by configuration* solution we used every ounce of our experience and insight into the integration challenges of our customers, our employees and the business at large to imagine a tool that could help everyone develop more robust integration-solutions faster, smarter and cheaper.  With the advent of ConnXio we've reached that goal, and we are proud to announce our solution to the world.
 
 ## Integration by Configuration
 

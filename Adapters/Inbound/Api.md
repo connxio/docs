@@ -41,7 +41,7 @@ To get access to the CX Api you need to contact us through your contact point an
 When you have these 5 keys you send a request like described in the curl code below:
 
 ```curl
-curl --location --request POST 'https://cuppliedbycommunicate.com/oauth2/token' \
+curl --location --request POST 'https://suppliedbycommunicate.com/oauth2/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'client_id={client_id}' \
 --data-urlencode 'client_secret={client_secret}' \

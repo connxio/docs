@@ -1,4 +1,4 @@
-# code component
+# Code components
 
 ConnXio (CX) uses C# code to transform data at multiple points through the CX pipeline. This page describes how to create a *code component* for transformation, where you can use it and what possibilities open up to you by using it. See [splitting](/Transformation/Splitting.md) and [batching](/Transformation/Batching.md) for information on code components within those processes.
 
@@ -82,11 +82,11 @@ After writing and testing your component you need to create the dll file itself.
 
 CX supports both internal and external component upload locations. If you want to use external upload management the only real requirement is that the raw component dll is available on a REST GET request at the endpoint you specify in your integration configuration like shown below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Code%20component%20Self%20hosted.PNG?sv=2020-04-08&st=2021-10-20T11%3A20%3A16Z&se=2040-10-21T11%3A20%3A00Z&sr=b&sp=r&sig=iwI0j%2Fyh8iCN48%2BrktJaxgGrqXqA9DmOl5sT2HHCyMU%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Code%20Mapping%20Self%20hosted.PNG?sv=2020-04-08&st=2021-10-20T11%3A20%3A16Z&se=2040-10-21T11%3A20%3A00Z&sr=b&sp=r&sig=iwI0j%2Fyh8iCN48%2BrktJaxgGrqXqA9DmOl5sT2HHCyMU%3D)
 
 Internal upload management can be done in the *Code Components* view inside the ConnXio Portal. Choose *Upload new component* and fill in the necessary fields like so:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Internal%20code%20component.PNG?sv=2020-04-08&st=2021-10-20T11%3A25%3A22Z&se=2040-10-21T11%3A25%3A00Z&sr=b&sp=r&sig=xPBSb9XGhTGJvEuCQBVEttFnvsXigrtdyKzwmbgFWzk%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Internal%20code%20mapping.PNG?sv=2020-04-08&st=2021-10-20T11%3A25%3A22Z&se=2040-10-21T11%3A25%3A00Z&sr=b&sp=r&sig=xPBSb9XGhTGJvEuCQBVEttFnvsXigrtdyKzwmbgFWzk%3D)
 
 **Name:** The name of the map that you can reference in the component list.\
 **Type:** The type of map. Read more about types [here].\
@@ -97,11 +97,11 @@ Internal upload management can be done in the *Code Components* view inside the 
 
 To use the component you have created you enter the [Integrations](/Integrations/Creating%20integrations.md) menu and either select or create your integration. Use the [transformation](/Transformation/Overview.md) menu to add a code component shape as seen below.
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Code%20component%20add%20tranformation.png?sv=2020-04-08&st=2021-10-21T11%3A01%3A19Z&se=2040-10-22T11%3A01%3A00Z&sr=b&sp=r&sig=7sKZFsU0p1B4EJDZowq6aAL8GDtkm2tkpbw94JjzTlo%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Code%20mapping%20add%20tranformation.png?sv=2020-04-08&st=2021-10-21T11%3A01%3A19Z&se=2040-10-22T11%3A01%3A00Z&sr=b&sp=r&sig=7sKZFsU0p1B4EJDZowq6aAL8GDtkm2tkpbw94JjzTlo%3D)
 
 After you add the shape you need to select your component in the code component window. If you use internal upload the input will look something like shown below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Code%20component%20select%20component.PNG?sv=2020-04-08&st=2021-10-21T11%3A05%3A02Z&se=2040-10-22T11%3A05%3A00Z&sr=b&sp=r&sig=8ViYt9AB%2B5blz8GJvbT4rsuHNXfZsWN%2Fj8IxhjdEteM%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Code%20Mapping%20select%20mapping.PNG?sv=2020-04-08&st=2021-10-21T11%3A05%3A02Z&se=2040-10-22T11%3A05%3A00Z&sr=b&sp=r&sig=8ViYt9AB%2B5blz8GJvbT4rsuHNXfZsWN%2Fj8IxhjdEteM%3D)
 
 If you use external upload you select the SasUsi option and paste your URI in the input field there.
 

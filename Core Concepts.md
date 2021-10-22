@@ -1,8 +1,9 @@
-# Core Concepts
+# Core Concepts `[needs work]`
 
-- [Core Concepts](#core-concepts)
+- [Core Concepts `[needs work]`](#core-concepts-needs-work)
   - [InterchangeId](#interchangeid)
     - [Changing or multiplying IDs](#changing-or-multiplying-ids)
+  - [What is an integration?](#what-is-an-integration)
   - [A stateless service](#a-stateless-service)
   - [Parallel processing](#parallel-processing)
   - [Robust message transfer and retention](#robust-message-transfer-and-retention)
@@ -19,17 +20,23 @@ If the InterchangeId is not supplied by the customer it's generated in the form 
 
 This means that if you can't guarantee an unique ID you should not supply your own InterchangeID but let CX generate it for you instead.
 
+## CorrelationId = IntegrationId
+
 ### Changing or multiplying IDs
 
 There are some processes where the InterChangeId has to change by nature of the process enforced upon it. This most notably affects [splitting](/Transformation/Splitting.md) and [batching](/Transformation/Batching.md) scenarios, where the former splits one file into a number of new files each with its own ID, and the latter batches a number of messages into a single file. In both of these scenarios, keeping the original ID is impossible, therefore CX creates new ID's for the messages, there are currently no way to predict these ID's or set them from a customer perspective, this feature could be added later, but for now a customer can track the messages through the original ID as the original ID is logged with the last and first log events in both cases.
 
 A customer *cannot* change the InterchangeId themselves at any point of CX's message processing.
 
+## What is an integration?
+
+`Add this section`
+
 ## A stateless service
 
 CX is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages we hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or event the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing CX automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](/Logging.md) or [resending](Resending.md) see the respective articles.
 
-By leveraging other services like Azure Storage you can orchestrate CX to be semi stateful. Read more in the [orchestration](#orchestration) section.
+By leveraging other services like Azure Storage you can orchestrate CX to be semi stateful. Read more in the [orchestration](/Use%20cases/Persistent%20Orchestration.md) section.
 
 ## Parallel processing
 
@@ -43,7 +50,7 @@ When a message is picked up or enters the CX ecosystem we do our outmost to neve
 
 ## Orchestration
 
-Cx support a lot of orchestration scenarios.
+CX supports a variety of orchestration scenarios.
 
 > By *orchestration* we mean the process of contacting or waiting for multiple systems, services or even manual input to piece together the correct output.
 
@@ -54,4 +61,4 @@ Consider the following two scenarios:
 
 In scenario 1 we integrate two systems without orchestration and use point to point transfer only. In scenario 2 however we short circuit the process while waiting for manual input and do two passes through CX to ensure the integration is completed and written to the SFTP catalog.
 
-CX  supports both of these scenarios even though one requires orchestration and the other does not. This differs from other offerings in that its more loosely coupled. Please contact us for more information if you are implementing a challenging orchestration scenario, there are very few orchestration processes that can't be solved with CX.
+CX  supports both of these scenarios even though one requires orchestration and the other does not. This differs from other offerings within the iPAAs space in that it's more loosely coupled. Please contact us for more information if you are implementing a challenging orchestration scenario, there are very few orchestration processes that can't be solved with CX.

@@ -33,6 +33,8 @@ All endpoints also require you to supply a [subscription header](https://docs.mi
 
 ### OAuth
 
+Oauth is a complex authorization mechanism, read more about it here: <https://oauth.net/getting-started/>
+
 To get access to the CX Api you need to contact us through your contact point and order a set of 5 keys:
 
 - client_id

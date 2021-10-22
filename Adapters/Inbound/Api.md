@@ -2,8 +2,7 @@
 
 - [The ConnXio Api](#the-connxio-api)
   - [Api definition](#api-definition)
-  - [Security](#security)
-    - [Credentials](#credentials)
+    - [Authorization](#authorization)
     - [OAuth](#oauth)
     - [Basic](#basic)
     - [Eventgrid](#eventgrid)
@@ -21,13 +20,9 @@ The Api definition can be found in the Api swagger here: <https://cmh-prod-api-w
 
 This definition is based on established [swagger](https://swagger.io/resources/articles/documenting-apis-with-swagger/) documentation, but we have disabled the test feature for non-communicate employees. If you need to test the Api manually please do so through tools like [postman](https://www.postman.com/).
 
-## Security
+### Authorization
 
-You need three things to be able to connect and send messages to the CX Api:
-
-### Credentials
-
-We support several different credential schemes; Oauth, Basic and EventGrid.
+To be able to send messages to CX you need to authorize yourself as a CX customer. We support several different credential schemes; Oauth, Basic and EventGrid.
 
 All endpoints also require you to supply a [subscription header](https://docs.microsoft.com/en-us/azure/api-management/api-management-subscriptions), this basically works as a form of authorization since only valid keys let you access the api. We will show more complete examples later, but a subscription header looks like this: `Ocp-Apim-Subscription-Key:007603d399999999xxxx9964y91x7x29`.
 
@@ -58,7 +53,7 @@ This returns a token that you add into the Authorization header as `Authorizatio
 
 ### Basic
 
-We do allow our customers to use basic authentication for webhook flows. This is done by simply using the [subscription header](#credentials) as authentication. Please contact us for a subscription header that allows this, enabling this option is a lot less secure than using [OAuth](#oauth).
+We do allow our customers to use basic authentication for webhook flows. This is done by simply using the [subscription header](#credentials) as authentication. Please contact us for a subscription header that allows this, be aware however that enabling this option is a lot less secure than using [OAuth](#oauth).
 
 ### Eventgrid
 

@@ -40,7 +40,7 @@ To get access to the CX Api you need to contact us through your contact point an
 
 When you have these 5 keys you send a request like described in the curl code below:
 
-```csharp
+```curl
 curl --location --request POST 'https://cuppliedbycommunicate.com/oauth2/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'client_id={client_id}' \
@@ -79,7 +79,7 @@ After ensuring you have the right Url and security credentials a valid request s
 
 ### /api/message
 
-```csharp
+```curl
 curl --location --request POST 'https://cmh-messagehub-apim-prod.azure-api.net/api/message?ConfigCorrelationId=xxxx-xxx-xxxx-xxxxx-xxxxxxx' \
 --header 'Content-Type: application/json' \
 --header 'Ocp-Apim-Subscription-Key: xxxxxxxxxxxxxxxxxxxxx' \
@@ -91,7 +91,7 @@ curl --location --request POST 'https://cmh-messagehub-apim-prod.azure-api.net/a
 
 ### /api/message/new
 
-```csharp
+```curl
 curl --location --request POST 'https://cmh-messagehub-apim-prod.azure-api.net/api/message/new' \
 --header 'Content-Type: application/json' \
 --header 'Ocp-Apim-Subscription-Key: 631373d321784590baff7464d91a7c69' \

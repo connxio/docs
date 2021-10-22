@@ -2,7 +2,7 @@
 
 - [The ConnXio Api](#the-connxio-api)
   - [Api definition](#api-definition)
-    - [Authorization](#authorization)
+  - [Authorization](#authorization)
     - [OAuth](#oauth)
     - [Basic](#basic)
     - [Eventgrid](#eventgrid)
@@ -20,7 +20,7 @@ The Api definition can be found in the Api swagger here: <https://cmh-prod-api-w
 
 This definition is based on established [swagger](https://swagger.io/resources/articles/documenting-apis-with-swagger/) documentation, but we have disabled the test feature for non-communicate employees. If you need to test the Api manually please do so through tools like [postman](https://www.postman.com/).
 
-### Authorization
+## Authorization
 
 To be able to send messages to CX you need to authorize yourself as a CX customer. We support several different credential schemes; Oauth, Basic and EventGrid.
 

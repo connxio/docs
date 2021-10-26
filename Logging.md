@@ -73,7 +73,7 @@ Depending on the log provider the cost of thousands or even millions of messages
 
 ### Is the message content important enough to include?
 
-As seen above you can exclude the actual message content from all logs. In a lot of cases the metadata that is the log event itself is enough to monitor integration flows. Think carefully before you log the actual content.
+As seen above you can exclude the actual message content from all logs. In a lot of cases the [metadata](/Metadata.md) that is the log event itself is enough to monitor integration flows. Think carefully before you log the actual content.
 
 ### What level of logging is suited for this integration?
 

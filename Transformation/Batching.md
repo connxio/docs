@@ -1,6 +1,6 @@
 # Batching
 
-ConnXio (CX) gives customers the ability to batch messages into larger single units. We do this by creating a bucket where messages are queued for a set interval until they are picked up, ran through a [code mapping](/Transformation/Code%20Mapping.md) and then sent as a single message through the pipeline. There are certain limits to batching functionality that will be explained on this page as well the process of batching itself.
+ConnXio (CX) gives customers the ability to batch messages into larger single units. We do this by creating a bucket where messages are queued for a set interval until they are picked up, run through a [code mapping](/Transformation/Code%20Mapping.md) and then sent as a single message through the pipeline. There are certain limits to batching functionality that will be explained on this page as well the process of batching itself.
 
 > Batching entails waiting for messages within a set interval and then transforming said messages into a single unit before processing that unit through the CX pipeline
 
@@ -60,4 +60,4 @@ public class Initialize
 }
 ```
 
-**Upload the component** by using the methods described on the [code components page](/Transformation/Code%20Components.md).
+**Upload the component** by using the methods described on the [code components page](/Transformation/Code%20Components.md). Remember to choose the *batching* type.

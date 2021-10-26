@@ -17,19 +17,17 @@ After you create the project and open it you need to create a file called **Init
 /// The method name must be Map but you can add as many files and other methods that you want, and call them inside Map. But you must use this signature and return a string.
 /// </summary>
 /// <param name="message">The message content as it is currently. This changes as the engine runs trough different transformations</param>
-/// <param name="encoding">The encoding the message is in currently, this should always be UTF-8 and is mostly used for backwards compatibility.</param>
-/// <param name="outEncoding">The encoding the should be in on return, this should always be UTF-8 and is mostly used for backwards compatibility.</param>
 /// <param name="dataCollection">The data collection properties you have collected earlier in the transformation pipeline</param>
 /// <param name="userDefinedProperties">The user defined properties that are transferred with the message metadata. Put variables here to access them later outside message content.</param>
 /// <returns>A string of the transformed message</returns>
-public string Map(byte[] message, Encoding encoding, Encoding outEncoding, Dictionary<string, string> dataCollection, Dictionary<string, string> userDefinedProperties)
+public string Map(string message, Dictionary<string, string> dataCollection, Dictionary<string, string> userDefinedProperties)
 {
     //Add error handling as necessary, this will give better error messages in the logs
     if (message == null)
         throw new ArgumentException("Message field is null");
 
     //You can use newtonsoft and other basic nuget packages. Contact the CX team if you need a non supported package.
-    dynamic obj = JsonConvert.DeserializeObject(encoding.GetString(message));
+    dynamic obj = JsonConvert.DeserializeObject(message);
     obj.Prop = "Done";
     
     //Add data to user properties if needed

@@ -46,7 +46,7 @@ Variable replacement uses a simple query language to function. The following tab
 </note>
 ```
 
-Metadata is explained [here](/Transformation/Metadata.md) but for reference we have copied the structure here:
+Metadata is explained [here](/Metadata.md) but for reference we have copied the structure here:
 
 ```csharp
 public class MetaData

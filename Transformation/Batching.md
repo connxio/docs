@@ -21,7 +21,7 @@ This limitation is in place for a number of reasons, the first being that we wan
 
 When implementing batching into your integration the first step is to create the code that joins your messages together into a cohesive whole. This is done in more or less the same way as [map code components](/Transformation/Code%20Components.md) but with a few key differences.
 
-Firstly you need to create the mapping itself, see the map components page for a simple rundown of the process, but instead of using the boiler plate detailed for maps you use the one detailed below:
+Firstly you need to create the batching code itself, see the map components page for a simple rundown of the process, but instead of using the boiler plate detailed for maps you use the one detailed below:
 
 ```csharp
 public class Initialize
@@ -61,3 +61,9 @@ public class Initialize
 ```
 
 **Upload the component** by using the methods described on the [code components page](/Transformation/Code%20Components.md). Remember to choose the *batching* type.
+
+## Retry
+
+Batching has multiple retry patterns that differ based on which step of the batching process that fails. If the process fails on transient errors before running the batching code component the system puts messages back in queue and tries again 60 seconds later. If the failure is happens after running the batching code the algorithm tries to send the message multiple times with increasing delay until the message is scheduled for retry through the [disaster pipeline](/Retry.md).
+
+Retry can end up sending smaller files than anticipated. If you experience problems like this, your logging provider should have received warnings about the fault, if not please contact your representative.

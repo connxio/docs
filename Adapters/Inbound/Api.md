@@ -6,6 +6,7 @@
     - [OAuth](#oauth)
     - [Basic](#basic)
     - [Eventgrid](#eventgrid)
+  - [Enable message delivery `needs corraltionid picture`](#enable-message-delivery-needs-corraltionid-picture)
   - [Correlation Id](#correlation-id)
   - [Endpoints](#endpoints)
   - [Request Example](#request-example)
@@ -57,7 +58,13 @@ We do allow our customers to use basic authentication for webhook flows. This is
 
 ### Eventgrid
 
-Eventgrid is used extensivly inside Azure and is a framework for building event based archetecture on top of Azure components. Read more about eventgrid here <https://docs.microsoft.com/en-us/azure/event-grid/overview>. We support eventgrid and if you follow the driections provided by Microsoft all you should need to do is point your eventgrid url to the Eventgrid endpoint at `/api/EventGrid`. You need to supply the endpoint with a set of query parameters like so: `/api/EventGrid?ConfigCorrelationId={guid}&InterchangeId={guid}`. The only required parameter is CorrelationId. DocumentType, RecieverId and SenderId are obsolete. FileName supplies the pipeline with a FileName parameter that can be used in [variable replacement](/Transformation/Variable%20Replacement.md) and InterchangeId supplies the pipeline with a custom InterchangeId like described [here](/Core%20Concepts.md).
+Eventgrid is used extensively inside Azure and is a framework for building event based architecture on top of Azure components. Read more about eventgrid here <https://docs.microsoft.com/en-us/azure/event-grid/overview>. We support eventgrid and if you follow the directions provided by Microsoft all you should need to do is point your eventgrid url to the Eventgrid endpoint at `/api/EventGrid`. You need to supply the endpoint with a set of query parameters like so: `/api/EventGrid?ConfigCorrelationId={guid}&InterchangeId={guid}`. The only required parameter is CorrelationId. DocumentType, RecieverId and SenderId are obsolete. FileName supplies the pipeline with a FileName parameter that can be used in [variable replacement](/Transformation/Variable%20Replacement.md) and InterchangeId supplies the pipeline with a custom InterchangeId like described [here](/Core%20Concepts.md).
+
+## Enable message delivery `needs corraltionid picture`
+
+Even if you have all the authorization and message delivery handled CX will not allow you to communicate with the API unless you have set up an integration and configured it to receive messages through the API. To do this you click the "Inbound Connection" shape and simply select the "Api" option. No other configuration is necessary.
+
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Api%20menu.png?sv=2020-04-08&st=2021-10-27T11%3A49%3A45Z&se=2040-10-28T12%3A49%3A00Z&sr=b&sp=r&sig=OXEdJEImDuRRfHTzsSm%2Bm54TEFILE1itF%2FPRWfUbr2o%3D)
 
 ## Correlation Id
 
@@ -65,7 +72,7 @@ All request **need to contain a valid CorrealtionId** for CX to be able to proce
 
 ## Endpoints
 
-Cx supllies three endpoint for pure message delivery. All endpoint end up with the same result but allow for different use cases:
+Cx supplies three endpoint for pure message delivery. All endpoint end up with the same result but allow for different use cases:
 
 1. `/api/message` lets you supply your parameters as query parameters. This is excellent for scenarios where you do not have access to the message body or are setting up the request through a third party. The body of the request is treted as the raw message body.
 2. `/api/message/new` this endpoint lets you supply messages in a ordered JSON format. This lets you supply your message with your chosen encoding in the `messageBody` parameter as base64 encoded bytes. This is more code heavy way of communicating with the Api and lets you have total control over your message body and parameters without having to deal with the peculiars of Urls and query parameters.

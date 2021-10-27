@@ -3,6 +3,8 @@
 - [Splitting](#splitting)
   - [Limits](#limits)
   - [Testing and best practices](#testing-and-best-practices)
+  - [Creating splitting code components](#creating-splitting-code-components)
+  - [Retry](#retry)
 
 ConnXio (CX) gives customers the ability to split messages into smaller units. We do this by running the content through a [Code Component](/Transformation/Code%20Components.md) that defines how the file should be split and then sends the smaller units through the pipeline as new messages. This page describes how to utilize the splitting functionality.
 
@@ -22,3 +24,53 @@ Splitting requires special care when testing since it can generate millions of m
 
 Obviously you can ignore steps that are unrealistic for production level load, ie. if you are estimating a load of 10 messages a day you can go straight to testing with production load levels. We do ask that you test for **peak load traffic** multiplied by 2. This adds stability for unexpected scenario's as well a prepares the receiving system for future load.\
  The reason for this recommended testing pipeline is that testing generates traffic which is payable, and we do not want our customers to incur costs for failed test runs caused by non-tested code and bad setup.
+
+## Creating splitting code components
+
+When implementing splitting into your integration the first step is to create the code that splits your message into smaller components. This is done in more or less the same way as [map code components](/Transformation/Code%20Components.md) but with a few key differences.
+
+Firstly you need to create the splitting code itself, see the map components page for a simple rundown of the process, but instead of using the boiler plate described there for maps you use the  for splitting detailed below:
+
+```csharp
+public class Initialize
+{
+      /// <summary>
+    /// Method name must be Split and class name Initialize
+    /// </summary>
+    /// <param name="originalMessage"The whole input message</param>
+    /// <param name="encoding">Added mostly for backwards compatibility, is always utf-8</param>
+    /// <returns>List with new messages</returns>
+    public List<string> Split(byte[] originalMessage, Encoding encoding)
+    {
+        //Create object from byte array
+        var inboundMessage = JsonConvert.DeserializeObject<InboundMessage>(encoding.GetString(originalMessage));
+        
+        //Create list that holds new messages
+        var outboundStringList = new List<string>();
+
+        //Add elements to list
+        foreach(var city in inboundMessage.Cities)
+        {
+            var outboundMessage = new OutboundMessage
+            {
+                CityName = city.CityName,
+                Comment = city.Comment,
+                Id = inboundMessage.Id
+            };
+ 
+            outboundStringList.Add(JsonConvert.SerializeObject(outboundMessage));
+        }
+
+        //Return new messages as list
+        return outboundStringList;
+    }
+}
+```
+
+**Upload the component** by using the methods described on the [code components page](/Transformation/Code%20Components.md). Remember to choose the *splitting* type.
+
+## Retry
+
+Splitting has multiple retry patterns that differ based on which step of the splitting process that fails. If the process fails on transient errors before running the splitting code component the system puts the original messages back in queue and tries again 10 times. If the failure is happens after running the splitting code the algorithm tries to send the message to the next pipeline step multiple times with increasing delay until the message is scheduled for retry through the [disaster pipeline](/Retry.md).
+
+REtry can end up causing delays in the delivery of splitted message units. If you experience problems like this, your logging provider should have received warnings about the fault, if not please contact your representative.

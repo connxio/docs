@@ -12,6 +12,7 @@
   - [Request Example](#request-example)
     - [/api/message](#apimessage)
     - [/api/message/new](#apimessagenew)
+  - [Retry](#retry)
 
 The ConnXio (CX) Api is reachable through our [Api Management](https://azure.microsoft.com/en-us/services/api-management/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE:G:s&OCID=AID2200230_SEM_CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE#overview) (APIM) proxy and gives customers the ability to push messages through the CX pipeline with webhooks as well as use direct transformation endpoints that uses CX's internal logic to [map](/Transformation/Code%20Components.md), [split](/Transformation/Splitting.md) or [batch](/Transformation/Batching.md) messages with code components within their own flows. This page describes the api including information and resources needed to use it.
 
@@ -111,3 +112,7 @@ curl --location --request POST 'https://cmh-messagehub-apim-prod.azure-api.net/a
   "fileName": "myfile"
 }'
 ```
+
+## Retry
+
+Be aware that when using out Api you are required to handle all retry on the client side. Our regular SLA is in effect at all times but hiccups can happen within all network infrastructure and should be assessed and handled as needed.

@@ -4,12 +4,13 @@
   - [Limitations](#limitations)
   - [Configuring Event Grid message intake](#configuring-event-grid-message-intake)
   - [Configuring Event Grid endpoints in Azure `needs picture of correlationid`](#configuring-event-grid-endpoints-in-azure-needs-picture-of-correlationid)
+  - [Retry](#retry)
 
 ConnXio (CX) lets customers provide messages to the CX pipeline by leveraging [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview). This page details how to configure Event Grid in CX but does not describe how to set up or configure Event Grid itself, please refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/event-grid/blob-event-quickstart-portal) for more information about Event Grid.
 
 ## Limitations
 
-At this point in time we only support the Blob Storage option for Event Grid. Adding new options is possible, please contact us if you need other options.
+At this point in time we only support the Blob Storage for Event Grid. Adding new options is possible, please contact us if you need other options.
 
 There are very few limitations on Azure Event Grid communication. Since Event Grid functions as a event emitter towards the CX [Api](/Adapters/Inbound/Api.md) the only limitations are on bandwidth and traffic. The CX Api scales with traffic and is thoroughly monitored and should handle a lot of traffic, if you have peak loads of thousands of messages per second we do recommend looking at [queue options](/Adapters/Inbound/Service%20Bus.md) instead to mitigate risk.
 
@@ -35,3 +36,7 @@ Event grid uses simple authentication patterns and does, at the point of writing
 >`https://cmh-messagehub-apim-prod.azure-api.net/api/eventgrid?subscription-key=xxxx-xxxx-xxx-xxxx-xxxx&ConfigCorrelationId=xxxx-xxxx-xxx-xxxx`
 
 Where **subscription-key** refers to your authentication key supplied by your ConnXio representative, and **ConfigCorrelationId** refers to the Id of the integration in the portal.
+
+## Retry
+
+Retry on Event Grid is handled by the Event Grid itself. Please refer to the [Microsoft Documentation](https://docs.microsoft.com/en-us/azure/event-grid/delivery-and-retry).

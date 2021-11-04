@@ -115,4 +115,4 @@ curl --location --request POST 'https://cmh-messagehub-apim-prod.azure-api.net/a
 
 ## Retry
 
-Be aware that when using out Api you are required to handle all retry on the client side. Our regular SLA is in effect at all times but hiccups can happen within all network infrastructure and should be assessed and handled as needed.
+Be aware that when using our Api you are required to handle all retry on the client side. Our regular SLA is in effect at all times but hiccups can happen within all network infrastructure and should be assessed and handled as needed.

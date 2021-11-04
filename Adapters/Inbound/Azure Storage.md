@@ -3,7 +3,7 @@
 - [Azure Storage Inbound Adapter](#azure-storage-inbound-adapter)
   - [Limits](#limits)
   - [Configuring Azure Storage connections](#configuring-azure-storage-connections)
-  - [Polling interval `needs picture`](#polling-interval-needs-picture)
+  - [Polling interval](#polling-interval)
   - [Retry](#retry)
 
 ConnXio (CX) lets customers provide messages to the CX pipeline by configuring connections to Azure Storage accounts. We currently support messages as [blobs](https://azure.microsoft.com/en-us/services/storage/blobs/) or [files](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share?tabs=azure-portal). This page details how to configure Azure storage connections and what functionality is available by delivering files through this medium.
@@ -32,10 +32,11 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 
 For files the only difference is the **directory** field which specifies which directory CX should target for file pickup. If this is kept blank the root directory is used.
 
-## Polling interval `needs picture`
+## Polling interval
 
+`needs picture`
 Polling interval dictates when files are picked from the Azure Storage account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
 
 ## Retry
 
-Since CX reaches out and pick up files when using Azure Storage, retry is handled by the CX framework. If a fault happens when the [polling interval](#polling-interval-needs-picture) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds.
+Since CX reaches out and pick up files when using Azure Storage, retry is handled by the CX framework. If a fault happens when the [polling interval](#polling-interval) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds.

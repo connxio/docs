@@ -1,6 +1,6 @@
-# Azure Storage Inbound Adapter
+# Azure Storage Outbound Adapter
 
-- [Azure Storage Inbound Adapter](#azure-storage-inbound-adapter)
+- [Azure Storage Outbound Adapter](#azure-storage-outbound-adapter)
   - [Limits](#limits)
   - [Configuring Azure Storage connections](#configuring-azure-storage-connections)
   - [Polling interval](#polling-interval)
@@ -25,12 +25,11 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 - **Storage type**: Select storage type to use.
 - **Storage Connection string**: This can be found in the azure portal on your resource tab.
 - **Container Name**: The name of the container. This container must exist before CX start picking messages. We will not create it for you.
-- **Outbound Filename Pattern**: Described in [variable replacement](/Transformation/Variable%20Replacement.md).
 - **Batch Size**: The number of messages to in a single thread. The lower the number the more threads are spawned, ie. 1000 messages are stored on blob, batch size is set to 100, CX reads that there are 1000 files and spawns 10 parallel threads for pickup and processing.
 - **File Pick Limit**: The amount of files to pick per run of the engine. If polling interval is set to 1 minute and this variable is set to 1 message, CX will pick 1 message per minute. This variable is primarily used to slow down message processing to not kill receiving services.
 - **File Pick Sort Type**: Changed the way files are sorted when **File Pick Limit** is used. Has no effect without **File Pick Limit**
 
-For files the only difference is the **directory** field which specifies which directory CX should target for file pickup. If this is kept blank the root directory is used.
+**For Azure Files** the only difference is the *directory* field which specifies which directory CX should target for file pickup. If this is kept blank the root directory is used.
 
 ## Polling interval
 

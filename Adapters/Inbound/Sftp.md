@@ -6,7 +6,7 @@
   - [Polling interval](#polling-interval)
   - [Retry](#retry)
 
-ConnXio (CX) lets customers provide messages to the CX pipeline by supplying files via Sftp (there are very few differences between FTP and Sftp while configuring CX, when we write Sftp we mean both FTP and Sftp unless otherwise specified). We currently support POP3 and IMAP protocols. This page details limitations of the Sftp protocol and how to configure and connect to a Sftp server.
+ConnXio (CX) lets customers provide messages to the CX pipeline by supplying files via Sftp (there are very few differences between FTP and Sftp while configuring CX, when we write Sftp we mean both FTP and Sftp unless otherwise specified). This page details limitations of the Sftp protocol and how to configure and connect to a Sftp server.
 
 ## Limitations
 
@@ -16,7 +16,7 @@ To handle these limitations in the best way possible for each individual server 
 
 ## Configuring Sftp connections
 
-To configure CX to start processing your email messages select the Sftp option in "Inbound Connection" shape:
+To configure CX to start processing your Sftp messages select the Sftp option in "Inbound Connection" shape:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Azure%20storage%20menu.png?sv=2020-04-08&st=2021-10-27T11%3A56%3A53Z&se=2040-10-28T12%3A56%3A00Z&sr=b&sp=r&sig=S%2FltUS0elTLePVt5Aq536uNkr7Pa9XcY8ovTFJLUhmc%3D)
 
@@ -35,7 +35,7 @@ A new window pops up. Add data as seen below:
 - **File Pick Rate**: The number of files to be picked from the catalog per adapter run. If this option is set to 2 and polling interval is set to 1 min. The adapter will pick 2 files/min.
 - **File Pick Sorting Method**: The Sorting method specifies how the adapter sorts the files in the directory when picking them. Be aware that on text, numbers must be padded with zeroes on two digits or more.
 - **Batch Size**: The number of files per batch. If set to 100 and 400 msgs are dropped on server, 4 connections with 100 files will be created when CX starts processing messages. Be aware that SFTP and FTP are usually severely limited on resources so the batch size should be set to a high number depending on how many files there are at peak load. 1000 is usually a good starting number, *decrease* this number to speed up the picking process.
-- **Use Static Ip**: Forces CX to run Sftp traffic on static Ip. This uses a separately hosted functionality that limits parallelization and can effect performance on large numbers of files.
+- **Use Static Ip**: Forces CX to run Sftp traffic on static Ip. This uses a separately hosted functionality that limits parallelization and can effect performance on high traffic scenarios.
 - **Lock On Folder**: Decides if a connection should lock on folder in SFTP server or the whole server (false means that the lock is applied on the whole server). If you have multiple inbound configs on one server this **must** be enabled.
 - **Perform Duplicate Detection**: Turns on duplicate detection. This does not give a guarantee for no duplicates but detects duplicates on inbound pickup only. The detection works by MD5 hashing the file contents and creating a unique id with the generated hash combined with the name of the file. This is not 100% foolproof but should work in 99% of cases. The detection is costly and should only be turned on if absolutely necessary. Be aware that addition costs may be incurred by turning this on depending on your price plan.
 - **Terminate On Duplicate Detection**: If the duplicate detection system finds a duplicate this parameter decides if the message should be sent through the system, or terminated. If the file is terminated it's moved to a sub-folder called *duplicates* on the same area where the file was picked up from.
@@ -47,6 +47,6 @@ Polling interval dictates when files are picked from the Sftp account. The minim
 
 ## Retry
 
-Since CX reaches out and pick up files when using the Sftp inbound adapter, retry is handled by the CX framework. If a fault happens when the [polling interval](#polling-interval) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however, since CX cant be sure the message is possible to requeue on the external system. The message will be sent to catastrophic retry as described in the [Retry Page](/Retry.md) when fault happen after message pickup and deletion.
+Since CX reaches out and pick up files when using the Sftp inbound adapter, retry is handled by the CX framework. If a fault happens when the [polling interval](#polling-interval) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however, since CX cant be sure the message is possible to requeue on the external server. The message will be sent to catastrophic retry as described in the [Retry Page](/Retry.md) when fault happen after message pickup and deletion.
 
 It is worth noting that if a catastrophic failure should occur where we cant reach our internal failure system files may be added back to the Sftp server in an "Error" directory. If you see files in such a directory you can usually just put them back into the normal directory. If this keeps happening however, please check you logging provider or contact us directly.

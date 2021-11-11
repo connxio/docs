@@ -9,11 +9,11 @@
   - [Polling interval](#polling-interval)
   - [Retry](#retry)
 
-ConnXio (CX) lets customers provide data to the CX pipeline by enqueueing it onto [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview). This page details how to create an integration which pick up files from Azure Service Bus.
+ConnXio (CX) lets customers provide data to the CX pipeline by enqueueing it onto [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview). This page details how to create an integration which pick up messages from Azure Service Bus.
 
 ## Limitations
 
-There are almost no limitations on Service Bus, it is in many ways the superior way to handle and transfer data on the internet. We use Service Bus almost exclusively internally. Service Bus handles almost an unlimited amount of messages and can be scaled to fit your needs. There are some patterns you should be familiar with when using Service Bus, if you opt out of these patterns be aware that you might end up hitting limitations of your own making.
+There are almost no limitations on Service Bus, it is in many ways the superior way to handle and transfer data in the cloud. We use Service Bus exclusively internally. Service Bus handles almost an unlimited amount of messages and can be scaled to fit your needs. There are some patterns you should be familiar with when using Service Bus, if you opt out of these patterns be aware that you might end up hitting limitations of your own making.
 
 The Service Bus adapter is limited to using [Topics](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions) currently. If you need Queue functionality or other changes blease contact your CX representative.
 
@@ -23,7 +23,7 @@ We support two patterns when providing data to CX via Service Bus:
 
 ### Metadata on Bus, data as blob
 
-This pattern is by far the most secure, robust, fast and reliable way to use Service Bus, and entails simply supplying Service Bus with metadata messages that contain a reference to a file hosted in a way that lets you retrieve it by Rest. The easiest and most cost efficient way to do this is by using AzureStorage Blob and supplying CX with the [SasUri](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview). The messages you out on the configured Service Bus should be JSON and look like this:
+This pattern is by far the most secure, robust, fast and reliable way to use Service Bus, and entails simply supplying Service Bus with metadata messages that contain a reference to a file hosted in a way that lets you retrieve it by Rest. The easiest and most cost efficient way to do this is by using AzureStorage Blob and supplying CX with the [SasUri](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview). The messages you send to the configured Service Bus should be JSON and look like this:
 
 ```json
 {
@@ -67,4 +67,4 @@ Polling interval dictates when the fetch operation triggers from CX. The minimum
 
 ## Retry
 
-Since CX reaches out and picks up files when using the Service Bus inbound adapter, retry is handled by the CX framework. If a fault happens when the [polling interval](#polling-interval) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however since CX cant be sure the message is possible to requeue on the external message. The message will then be sent to catastrophic retry as described in the [Retry Page](/Retry.md).
+Since CX reaches out and picks up files when using the Service Bus inbound adapter, retry is handled by the CX framework. If a fault happens when the [polling interval](#polling-interval) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however since CX cant be sure the message is possible to requeue on the external Service Bus. The message will then be sent to catastrophic retry as described in the [Retry Page](/Retry.md).

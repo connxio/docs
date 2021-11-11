@@ -1,8 +1,8 @@
-# Azure Storage Inbound Adapter
+# Azure Storage Outbound Adapter
 
-- [Azure Storage Inbound Adapter](#azure-storage-inbound-adapter)
+- [Azure Storage Outbound Adapter](#azure-storage-outbound-adapter)
   - [Limits](#limits)
-  - [Configuring Azure Storage connections](#configuring-azure-storage-connections)
+  - [Configuring Azure Storage delivery](#configuring-azure-storage-delivery)
   - [Retry](#retry)
 
 ConnXio (CX) lets customers receive messages from the CX pipeline by configuring connections to Azure Storage accounts. We currently support messages as [blobs](https://azure.microsoft.com/en-us/services/storage/blobs/) or [files](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share?tabs=azure-portal). This page details how to configure Azure storage connections and what functionality is available by delivering files through this medium.
@@ -11,7 +11,7 @@ ConnXio (CX) lets customers receive messages from the CX pipeline by configuring
 
 Azure Storage provides a modern interface for file and message transfer which is robust, fast and cheap. By leveraging the Azure infrastructure Microsoft has turned storage into a powerhouse in and of itself which CX takes full advantage of. Essentially this means that there are very few limitations on the technology itself, this enables CX to handle an almost unlimited amount of messages, different types of files and metadata through the Azure Storage technology. The only real limitation is the CX-wide limit of 100mb per message.
 
-## Configuring Azure Storage connections
+## Configuring Azure Storage delivery
 
 To configure CX to start sending your messages select the Azure Storage option in "Outbound Connections" shape:
 
@@ -25,7 +25,7 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 - **Storage type**: Select storage type to use.
 - **Storage Connection string**: This can be found in the azure portal on your resource tab.
 - **Container Name**: The name of the container. This container must exist before CX start picking messages. We will not create it for you.
-- **Outbound Filename Pattern**: Described in [variable replacement](/Transformation/Variable%20Replacement.md).
+- **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/Transformation/Variable%20Replacement.md) page.
 - **Send Acknowledgement**: Is explained [here](/Adapters/Outbound/Acknowledgment.md).
 
 **For Azure Files** the only difference is the *directory* field which specifies which directory CX should target for file pickup. If this is kept blank the root directory is used.

@@ -1,9 +1,10 @@
-# Rest Inbound Adapter
+# Rest Outbound Adapter
 
-- [Rest Inbound Adapter](#rest-inbound-adapter)
+- [Rest Outbound Adapter](#rest-outbound-adapter)
   - [Limitations](#limitations)
-  - [Configuring Restful message intake](#configuring-restful-message-intake)
+  - [Configuring Restful message delivery](#configuring-restful-message-delivery)
   - [Carousel](#carousel)
+    - [What is Carousel used for?](#what-is-carousel-used-for)
   - [Fallback](#fallback)
   - [Polling interval](#polling-interval)
   - [Retry](#retry)
@@ -18,7 +19,7 @@ Using Rest as a means of sending and receiving data is probably the most widely 
 
 There are several technologies and protocols that provide decoupling, but Rest is not one of them since it relies on the Http protocol. So why are we so interested in decoupling? Well, since Rest doesn't decouple we have to handle faults synchronously instead of asynchronously, this means that when receiving messages from CX on Rest you need to be able to handle multiple retries and potentially high traffic. As such your endpoints should conform to a the highest meaningful standard of reliability and robustness. There are hundreds of articles about this and we recommend thoroughly reading up on the subject, and be warned that a *poorly programmed* Rest endpoint is inferior to using outdated or less secure protocols.
 
-## Configuring Restful message intake
+## Configuring Restful message delivery
 
 To configure CX to start sending data to a Rest endpoint select the "REST" option in the "Outbound Connections" shape:
 
@@ -35,9 +36,18 @@ A new window pops up. Add data as seen below:
 - **Headers & Authorization Header Type**: Add headers here as necessary to either authenticate the request or add other needed parameters.
 - **Send Acknowledgement**: Is explained [here](/Adapters/Outbound/Acknowledgment.md).
 - **Use Internal**: Uses the internal Restful adapter to resend the message back to CX. Is explained in detail under the  [carousel entry](#carousel).
-- **Send Acknowledgement**: Is explained [here](/Adapters/Outbound/Acknowledgment.md).
 
 ## Carousel
+
+`needs picture`
+Carousel is what we've called the functionality that lets you run a message through the CX pipeline more than once. This functionality is easily enabled but hard to configure. To enable the Carousel functionality you simply check the "Enable Carousel" checkbox and the following menu pops up:
+
+- **Carousel Integration CorrelationId**: Specifies which integration to use when the message renters the CX pipeline. This is usually a separate integration to the one you are standing in.
+- **Preserve Interchange Id**: If this is left unchecked the new integration will run on a new InterchangeId, if checked the same InterchangeId as the one used for the current integration will be used for the Carousel as well.
+
+### What is Carousel used for?
+
+Carousel is used when you need to to simulate [high level orchestration](/Core%20Concepts.md) in CX. Say you need to perform tasks that can't be done without massive amounts of input, or you need to pre process messages before you can collect enrichment data. We will not be going into specifics here because Carousel is not recommended for most scenarios and should be used as a last resort for specific integrations. There is nothing wrong with utilizing Carousel, but that said, it adds a level of complexity to integrations that leads to more user and system errors because of the enormous amount of data transfer and processing.
 
 ## Fallback
 

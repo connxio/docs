@@ -59,7 +59,7 @@ When handling RESTful communication a common set of status codes are defined by 
 | 400 | Bad Request | Is not retried. Not retried because payload does not change on each retry. |
 | 404 | Not Found | Is not retried. Can be configured by the ["Continue On 404"](#how-to-add-data-collection) property |
 | 408 | Request Timeout | Is retried with both linear and endpoint retry |
-| 409 | Conflict | Is not retried. There are conflicts in the current state, this is not expected to change on retry. |
+| 409 | Conflict | Is not retried and is logged as Terminated. There are conflicts in the current state, this is not expected to change on retry. |
 | 429 | Too Many Requests | Is retried with both linear and endpoint retry |
 | 500 | Internal Server Error | Is retried with both linear and endpoint retry. We have chosen to include 500 in retry as this is the default code for unhandled exceptions, and since this is the most common code received on connection issues inside external endpoints. |
 | 502 | Bad Gateway | Is retried with both linear and endpoint retry |

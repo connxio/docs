@@ -1,5 +1,14 @@
 # Acknowledgements
 
+- [Acknowledgements](#acknowledgements)
+  - [Limitations](#limitations)
+  - [Use cases](#use-cases)
+    - [Ensuring delivery](#ensuring-delivery)
+    - [Reacting to delivery](#reacting-to-delivery)
+    - [Keeping track of delivery](#keeping-track-of-delivery)
+  - [Configuring Acknowledgments](#configuring-acknowledgments)
+  - [Retry](#retry)
+
 ConnXio (CX) provides users with the option to receive acknowledgement (ack) events when a message has been delivered to the receiving system. The concept of sending ACK messages is inspired by the [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_establishment) protocol and gives our customers the ability to verify that a message has been delivered successfully in close to real time. When enabled, this feature supplies an external system with an event with contents supplied by using the standard CX [code mapping functionality](/Transformation/Code%20Mapping.md), which makes the ACK message extremely powerful as it can contain almost anything, even the delivered message itself. This page describes how to enable this functionality and common use cases.
 
 ## Limitations

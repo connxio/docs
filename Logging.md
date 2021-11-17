@@ -12,9 +12,12 @@
     - [Archeo Contract](#archeo-contract)
   - [Internal contract](#internal-contract)
   - [Metadata](#metadata)
+    - [Secondary content](#secondary-content)
+      - [Archeo behavior](#archeo-behavior)
+      - [Internal contract behavior](#internal-contract-behavior)
   - [How to start logging](#how-to-start-logging)
     - [Webhook](#webhook)
-    - [Archeo (Needs work)](#archeo-needs-work)
+    - [Archeo](#archeo)
   - [To log or not to log?](#to-log-or-not-to-log)
     - [Is the traffic low enough and the contents important enough that we should log on success?](#is-the-traffic-low-enough-and-the-contents-important-enough-that-we-should-log-on-success)
     - [Is the message content important enough to include?](#is-the-message-content-important-enough-to-include)
@@ -81,7 +84,7 @@ CX has a set of default statuses that correspond to the logging event context. W
 
 ## Contracts
 
-CX provides users with a set of contracts to use when logging. A contract refers to the json model that defines the received event body. Currently we provide two contracts; Archeo and Internal.
+CX provides users with a set of contracts to use when logging. A contract refers to the json model that defines the received event body. Currently we provide two contracts; Archeo and Internal. We would like to point out that it's entirely possible to use the Archeo contract even if you do not use the Archeo logging provider
 
 ### Archeo Contract
 
@@ -97,7 +100,7 @@ The Archeo contract looks like this, the value of the field describes what CX pr
   "sender": "sender",
   "receiver": "receiver",
   "description": "the custom description for outbound or inbound when applicable, the system message from CX when not",
-  "fileName": "the filename supplied with the file on CX pipeline entry",
+  "fileName": "calculated by the internal CX system based upon the configured format",
   "status": "the status as described in the statuses section",
   "bodyContent": "the message content that has passed through the CX pipeline and undergone transformations",
   "metadata": "described under the metadata section"
@@ -106,19 +109,16 @@ The Archeo contract looks like this, the value of the field describes what CX pr
 
 ## Internal contract
 
-`needs descriptions of fields`
 The internal contract is the internal format used by CX itself. This format has the conventional CX names for all properties and includes the maximum amount of information available at the time of event creation:
 
 ```json
 {
-  "interchangeId": null,
-  "eventContent": null,
-  "eventContentUri": null,
-  "secondaryContent": null,
-  "fileName": null,
-  "logContentEncoding": null,
-  "status": null,
-  "message": null,
+  "interchangeId": "interchangeId for the current instance of the pipeline",
+  "secondaryContent": "explained under the secondary content header",
+  "fileName": "calculated by the internal CX system based upon the configured format",
+  "logContentEncoding": "the encoding of the log content in text ie. utf-8",
+  "status": "the status as explained in the status section",
+  "message": "the description of the event or error represented by this event",
   "receiverId": null,
   "senderId": null,
   "eventFired": "0001-01-01T00:00:00",
@@ -152,11 +152,55 @@ The internal contract is the internal format used by CX itself. This format has 
 
 ## Metadata
 
-`needs work`
+When the pipeline instance is created within CX upon data entering through an adapter, a context is implicitly created with the message. This context describes what type of message and what type of transformations said message will experience through CX. All of this information is compiled into an object we have called `metadata` which follows the message on its journey through the CX pipeline. The metadata object is used for various purposes internally in CX and it's also possible make CX include the object in log events. For Archeo we have a separate system for metadata that is displayed in its own section of the archeo log (see [Archeo](https://api.archeo.no/swagger/index.html) for further information), for other logging providers the metadata is included in the JSON as its own object.
 
-- Describe secondary content
-- Describe error going to metadata when file content is logged and metadata is on
-- Describe error concatenation when metadata is off and file is on
+Depending on if you have metadata logging enabled or not, the look and feel of the logging will change. This is implemented to give customers the most streamlined performance possible. Before we go any further we need to explain the concept of secondary content.
+
+### Secondary content
+
+Secondary content is data that is logged either as a replacement to the message content itself or beside it. Consider the following example; we send a message to the CX Api and CX accepts and starts processing said message. The message fails with an exception message but you, as a customer, have configured CX to log message content. Where do we put the exception message? We can't replace the message content because this may be critical for the debugging process, so we needed a secondary field, and we named it *secondary content*. We use secondary content exclusively for failures and exception messages. To be specific we have defined the following scenarios, dependant on the contract choice:
+
+#### Archeo behavior
+
+Refer to the [how to start logging](#how-to-start-logging) section for explanations for the properties mentioned in the scenarios below.
+
+1. If message *content logging* is enabled but *metadata logging* is turned off we concatenate the exception message and the file-content into a single file. A concatenated file looks something like this:
+
+```json
+Information:
+Null reference exception was handled while transforming message. Exception:
+Stacktrace...
+
+-----------------------
+
+FileContent:
+{
+  "node":"content"
+}
+
+```
+
+2. If message *content logging* is enabled and *metadata logging* is turned on we add the error message to the metadata object. You will find the file content in the content section of Archeo as usual and the error content will look like this in the metadata section:
+
+```json
+{
+    "ConfigCorrelationId": "guid",
+    "DataCollection": "{}",
+    "ErrorMessage": "MessageHub.Models.Exceptions.NonTransientException: Failure example at ConnXio.TransformationEngine.Functions.Transformation.Mapping.Code.CodeTransformer.MapWithCode(CodeMappingProperties codeMappingProperties, Byte[] fileContent, String interchangeId, MetaData metaData) in D:\\a\\1\\s\\ConnXio.TransformationEngine\\Functions\\Transformation\\Mapping\\Code\\CodeTransformer.cs:line 186\r\n   at ConnXio.TransformationEngine.Functions.Transformation.Mapping.Code.CodeTransformer.Transform(Byte[] fileContent, Int32 index, IntegrationConfig integrationConfig, SubIntegration subIntegration, TransformationAction transformationAction, ConfigurationBasedSbMessage sbMsg, ILogEventHandler logEventHandler, Int32 deliveryCount, Int32 maxRetryCount) in D:\\a\\1\\s\\ConnXio.TransformationEngine\\Functions\\Transformation\\Mapping\\Code\\CodeTransformer.cs:line 44",
+    "InboundAdapter": "SFTP",
+    "InboundFileName": "filename.txt",
+    "InterchangeId": "guid",
+    "ManualResendCount": "0",
+    "Started": "11/11/2021 2:42:38 PM",
+    "TransactionType": "Account",
+    "TransformationBlobName": "guid.txt",
+    "UserDefinedProperties": "{}"
+}
+```
+
+3. If message *content logging* is disabled and *metadata logging* is turned off the exception message is logged as the file content.
+
+#### Internal contract behavior
   
 ## How to start logging
 
@@ -166,7 +210,6 @@ All logging options require a [Security Configuration](/Security/Security%20Conf
 
 ### Webhook
 
-`Needs work`
 Use this option for all logging providers except Archeo. Logging is configured under the "Logging" section situated inside the "Integration Configuration Window":
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Logging%20menu.png?sv=2020-08-04&st=2021-11-16T12%3A21%3A06Z&se=2040-11-17T12%3A21%3A00Z&sr=b&sp=r&sig=dXMd8Mn%2FuZPVXVEQDHHd3T9CckwWyN45qH%2B%2FPQqxdTo%3D)
@@ -179,11 +222,41 @@ Expand this section and click the "Add Logging" button to add a new webhook. Eve
 - **Endpoint Url**: The url of the endpoint.
 - **Security Configuration**: The [security configuration](/Security/Security%20Configurations.md) to use for authenticating the request.
 - **Log Level**: Explained in the [Log Levels section](#log-levels).
-- Contract:
+- **Contract**: Is explained under the [Contracts section](#contracts).
+- **Inbound message type**: Changes the message type for the first success message logged.
+- **Outbound message type**: Changes the message type for the last success message logged.
+- **Custom Inbound Description**: Changes the description for the first success message logged.
+- **Custom Outbound Description**: Changes the description for the last success message logged.
+- **Transaction Tag**: Adds content to the `customTag` property.
+- **Log Metadata**: Enables logging of metadata when switched on. Read more under [Metadata](#metadata).
+- **Log Message Content**: Enables logging of message content when switched on. Read more under [Secondary Content](#secondary-content).
+- **Enabled**: Turns off this instance of the log event handler. No logs will be sent *at all* with this setting switched off.
 
-### Archeo (Needs work)
+### Archeo
 
-Use this convenience option if you want to send logs generated by CX to Archeo. This requires an [active Archeo subscription](https://www.archeo.no/pricing) that supports the amount of logs sent from CX.
+Use this convenience option if you want to send logs generated by CX to Archeo. This requires an [active Archeo subscription](https://www.archeo.no/pricing) that is scaled to handle the amount of logs sent from CX (see [To log or not to log?](#to-log-or-not-to-log) for more information).
+
+Logging is configured under the "Logging" section situated inside the "Integration Configuration Window":
+
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Logging%20menu.png?sv=2020-08-04&st=2021-11-16T12%3A21%3A06Z&se=2040-11-17T12%3A21%3A00Z&sr=b&sp=r&sig=dXMd8Mn%2FuZPVXVEQDHHd3T9CckwWyN45qH%2B%2FPQqxdTo%3D)
+
+Expand this section and click the "Add Logging" button to add a new webhook. Events will be duplicated across all configured webhooks, but will respect the individual configuration for each logging instance like "Log Level" or "Custom Description". Configure the webhook with the required parameters like so:
+
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Logging%20archeo%20configuration.png?sv=2020-08-04&st=2021-11-17T13%3A06%3A59Z&se=2040-11-18T13%3A06%3A00Z&sr=b&sp=r&sig=R6XMLyqkAbXDiyohCttjyrAx2Abxi6re9ayY3ARNH9E%3D)
+
+- **Archeo Security Configuration**: The [security configuration](/Security/Security%20Configurations.md) to use for authenticating the request to Archeo.
+- **Log Level**: Explained in the [Log Levels section](#log-levels).
+- **Contract**: Is explained under the [Contracts section](#contracts).
+- **Inbound message type**: Changes the message type for the first success message logged.
+- **Outbound message type**: Changes the message type for the last success message logged.
+- **Custom Inbound Description**: Changes the description for the first success message logged.
+- **Custom Outbound Description**: Changes the description for the last success message logged.
+- **Transaction Tag**: Adds content to the `customTag` property.
+- **Log Metadata**: Enables logging of metadata when switched on. Read more under [Metadata](#metadata).
+- **Log Message Content**: Enables logging of message content when switched on. Read more under [Secondary Content](#secondary-content).
+- **Enabled**: Turns off this instance of the log event handler. No logs will be sent *at all* with this setting switched off.
+
+The example above uses the minimum viable settings to set up Archeo logging. Feel free to fill in all fields for your logging config.
 
 ## To log or not to log?
 

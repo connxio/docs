@@ -7,7 +7,7 @@
       - [Basic](#basic)
       - [Header or custom](#header-or-custom)
 
-A security configuration is basically just a smart way to store credentials for HTTP communication. This gives customers the ability to securely store credentials and reuse them on multiple integrations. This page describes how to create a *security configuration*.
+A security configuration is basically just a convenient way to store credentials for HTTP communication. This gives customers the ability to securely store credentials and reuse them on multiple integrations. This page describes how to create a *security configuration*.
 
 ## Creating a Security Configuration
 

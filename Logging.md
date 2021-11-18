@@ -94,7 +94,7 @@ The Archeo contract looks like this, the value of the field describes what CX pr
 {
   "transactionId": "interchangeId",
   "transactionType": "transactionType",
-  "messageType": "custom type or the engine in CX where the event originated ie. InboundInteractionEngine",
+  "messageType": "custom type or the engine inside CX where the event originated ie. InboundInteractionEngine",
   "transactionTag": "custom transaction tag or empty",
   "processed": "0001-01-01T00:00:00", //The timestamp of the log being generated
   "sender": "sender",
@@ -119,33 +119,17 @@ The internal contract is the internal format used by CX itself. This format has 
   "logContentEncoding": "the encoding of the log content in text ie. utf-8",
   "status": "the status as explained in the status section",
   "message": "the description of the event or error represented by this event",
-  "receiverId": null,
-  "senderId": null,
-  "eventFired": "0001-01-01T00:00:00",
-  "customTag": null,
-  "environment": null,
-  "eventOrigin": null,
-  "transactionType": null,
-  "order": null,
-  "direction": null,
-  "logLevel": null,
-  "metadata": {
-    "userDefinedProperties": null,
-    "outboundEndpoint": null,
-    "outboundAdapter": null,
-    "inboundEndpoint": null,
-    "inboundAdapter": null,
-    "outboundBlobName": null,
-    "transformationBlobName": null,
-    "configCorrelationId": null,
-    "manualResendCount": 0,
-    "dataCollection": null,
-    "started": "0001-01-01T00:00:00",
-    "outboundFileName": null,
-    "inboundFileName": null,
-    "interchangeId": null,
-    "transactionType": null
-  },
+  "receiverId": "sender",
+  "senderId": "Receiver",
+  "eventFired": "0001-01-01T00:00:00", //The timestamp of the log being generated
+  "customTag": "custom transaction tag or empty",
+  "environment": "The cx environment the pipeline was run on",
+  "eventOrigin": "the engine inside CX where the event originated ie. InboundInteractionEngine",
+  "transactionType": "the transaction type",
+  "order": "not used at the moment, but will denote the order of the action performed",
+  "direction": "inbound until it hits the transformation engine outbound after",
+  "logLevel": "the log level for the current log event",
+  "metadata": "described under the metadata section",
   "useCustomDirectionalValues": false
 }
 ```
@@ -154,7 +138,27 @@ The internal contract is the internal format used by CX itself. This format has 
 
 When the pipeline instance is created within CX upon data entering through an adapter, a context is implicitly created with the message. This context describes what type of message and what type of transformations said message will experience through CX. All of this information is compiled into an object we have called `metadata` which follows the message on its journey through the CX pipeline. The metadata object is used for various purposes internally in CX and it's also possible make CX include the object in log events. For Archeo we have a separate system for metadata that is displayed in its own section of the archeo log (see [Archeo](https://api.archeo.no/swagger/index.html) for further information), for other logging providers the metadata is included in the JSON as its own object.
 
-Depending on if you have metadata logging enabled or not, the look and feel of the logging will change. This is implemented to give customers the most streamlined performance possible. Before we go any further we need to explain the concept of secondary content.
+Depending on if you have metadata logging enabled or not, the look and feel of the logging will change. This is implemented to give customers the most streamlined performance possible. Before we go any further we need to explain the concept of secondary content. The metadata object has the following contract:
+
+```json
+  {
+    "userDefinedProperties": "Is filled with properties defined within code components",
+    "outboundEndpoint": "the outbound endpoint if applicable",
+    "outboundAdapter": "the outbound adapter name. Ie. SFTP, Rest, ++",
+    "inboundEndpoint": "the inbound endpoint if applicable",
+    "inboundAdapter": "the inbound adapter name. Ie. SFTP, Rest, ++",
+    "outboundBlobName": "the name of the blob inside CX when handled in the outbound enige. This is used for debug purposes when cases are reported to the CX team",
+    "transformationBlobName": "See outboundBlobName",
+    "configCorrelationId": "The correlationId",
+    "manualResendCount": "The number of times the message has been resent using the resend framework for manual resend by the customer",
+    "dataCollection": "all data collected by data collection. Is shortened if too long.",
+    "started": "0001-01-01T00:00:00", // When the pipeline in cx was started
+    "outboundFileName": "the name of the file outbound if applicable",
+    "inboundFileName": "the name of the file inbound if applicable",
+    "interchangeId": "the interchangeId",
+    "transactionType": "the transaction Type"
+  }
+```
 
 ### Secondary content
 

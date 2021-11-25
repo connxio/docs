@@ -30,7 +30,12 @@ A customer *cannot* change the InterchangeId themselves at any point of CX's mes
 
 ## What is an integration?
 
-`Add this section`
+An integration is a logical unit within CX that can be a little hard to grasp. When we talk about or reference "an integration" we refer to this unit which has the following characteristics:
+
+1. Is represented by *one* integration configuration.
+2. Moves *one* message/file/data to one or more receivers.
+
+This essentially means that when we refer to one integration we refer to one single integration configuration.
 
 ## A stateless service
 

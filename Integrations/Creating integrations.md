@@ -45,7 +45,7 @@ The sub integration contains the following configuration (refer to the picture u
 
 ## Structure
 
-A sub integration is structured as a pipeline. This mirrors the pipeline in Cx itself and includes the engines as boxes the user can interact with. The following boxes are present:
+A sub integration is structured as a pipeline. This mirrors the pipeline in CX itself and includes the engines as boxes the user can interact with. The following boxes are present:
 
 - **Inbound Connection**: This box is technically outside the sub integration but is the catalyst for all sub integrations in the integration. It represents the inbound adapter and fetching/receiving of data to the CX pipeline. You can only configure a single inbound connection on an integration configuration. The inbound section under "Adapters" explains how all the different adapters work.
 - **Split/Batch**: Represents the act of splitting or batching messages. This is explained on the [splitting](/Transformation/Splitting.md) and [batching](/Transformation/Batching.md) pages respectively.

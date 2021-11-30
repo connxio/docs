@@ -29,6 +29,8 @@ Every engine uses an optimal number of retries based on the kind of operation at
 
 ### Backoff retry
 
+> `This functionality is in development. Read more on the:` [functionality page](/Functionality.md).
+
 Backoff retry uses the [message scheduling](https://docs.microsoft.com/en-us/azure/service-bus-messaging/message-sequencing) feature of Service Bus to stagger retries in a way that causes less load on external endpoints during peak traffic. In essence the backoff retry functionality keeps track of failures, and based upon customer configured or default variables, it delays traffic to more evenly distribute messages and external calls. The default variables are as follows (subject to change dependant on performance):
 
 | Variable | Value | Description |

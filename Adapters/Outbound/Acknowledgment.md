@@ -7,6 +7,7 @@
     - [Reacting to delivery](#reacting-to-delivery)
     - [Keeping track of delivery](#keeping-track-of-delivery)
   - [Configuring Acknowledgments](#configuring-acknowledgments)
+  - [Ack Code Component code definition](#ack-code-component-code-definition)
   - [Retry](#retry)
 
 ConnXio (CX) provides users with the option to receive acknowledgement (ack) events when a message has been delivered to the receiving system. The concept of sending ACK messages is inspired by the [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_establishment) protocol and gives our customers the ability to verify that a message has been delivered successfully in close to real time. When enabled, this feature supplies an external system with an event with contents supplied by using the standard CX [code mapping functionality](/Transformation/Code%20Mapping.md), which makes the ACK message extremely powerful as it can contain almost anything, even the delivered message itself. This page describes how to enable this functionality and common use cases.
@@ -42,15 +43,56 @@ Ack delivery can be configured on all outbound adapters in CX. You can use any o
 
 When you enable the "Send Acknowledgment" switch a menu pops up, if you need to enter this menu at a later time use the "Edit Ack options" button depicted above. Configure the Ack options window like so to start sending ack messages:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Ack%20options%20config.png?sv=2020-08-04&st=2021-11-16T11%3A21%3A07Z&se=2040-11-17T11%3A21%3A00Z&sr=b&sp=r&sig=pgTsDiH8AAcdsbXpZ27GQFY6aLv071v6Udh7ktfEVRU%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Ack%20Options%20config.png?sv=2020-08-04&st=2022-01-11T12%3A32%3A18Z&se=2040-01-12T12%3A32%3A00Z&sr=b&sp=r&sig=nixBhAC%2BcjSGQl6ql1L6Z0DlaO%2FX0LaHDYZzl%2BwS%2Bj4%3D)
 
-- **Code Component**: Select or input the code component that creates the ack message content. If left empty the message content of the delivered message is used.
-- **Adapter Type**: The type of adapter to use to deliver the ack message. All adapter configuration is explained under the `Adapters` header.
+- **Code Acknowledgement Map (Code Component)**: The *Code Component* is selected as described in the [Code Components](/Transformation£Code%20Components.md) section.
 - **Outbound file format**: Only applicable if the adapter delivers a file and denotes the file format and ending of the file.
+- **Adapter Type**: The type of adapter to use to deliver the ack message. All adapter configuration is explained under the `Adapters` header.
 
 When acc is enabled for an adapter the adapter will display an icon like this in the master view:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Ack%20icon%20image.png?sv=2020-08-04&st=2021-11-16T11%3A33%3A15Z&se=2040-11-17T11%3A33%3A00Z&sr=b&sp=r&sig=wre4L15vsKCLNXyHC1xrnH6GMe80RCUNvF4AFeROJsk%3D)
+
+## Ack Code Component code definition
+
+```csharp
+    public class Initialize
+    {
+        /// <summary>
+        /// The method name must be Map but you can add as many files and other methods that you want, and call them inside Map. But you must use this signature and return a string.
+        /// </summary>
+        /// <param name="message">The message content as it is currently. This changes as the engine runs trough different transformations</param>
+        /// <param name="successful">This value is true if the message was delivered successful to its destination by the outbound adapter</param>
+        /// <param name="dataCollection">The data collection properties you have collected earlier in the transformation pipeline</param>
+        /// <param name="userDefinedProperties">The user defined properties that are transferred with the message metadata. Put variables here to access them later outside message content.</param>
+        /// <returns>A string of the transformed message</returns>
+        public string Map(string message, bool successful, Dictionary<string, string> dataCollection, Dictionary<string, string> userDefinedProperties)
+        {
+            //Add error handling as necessary, this will give better error messages in the logs
+            if (message == null)
+                throw new ArgumentException("Message field is null");
+
+            //You can use newtonsoft and other basic nuget packages. Contact the CX team if you need a non supported package.
+            dynamic obj = JsonConvert.DeserializeObject(message);
+
+            //Creating an instance of the ack message to send
+            CustomAck ack = new CustomAck
+            {
+                Id = obj.Id,
+                SuccessfulDelivery = successful
+            };
+
+            //Return string representation of the ack
+            return JsonConvert.SerializeObject(ack);
+        }
+    }
+
+    public class CustomAck
+    {
+        public string Id { get; set; }
+        public bool SuccessfulDelivery { get; set; }
+    }
+```
 
 ## Retry
 

@@ -3,7 +3,6 @@
 - [(S)FTP inbound adapter](#sftp-inbound-adapter)
   - [Limitations](#limitations)
   - [Configuring Sftp connections](#configuring-sftp-connections)
-  - [Polling interval](#polling-interval)
   - [Retry](#retry)
 
 ConnXio (CX) lets customers provide messages to the CX pipeline by supplying files via Sftp (there are very few differences between FTP and Sftp while configuring CX, when we write Sftp we mean both FTP and Sftp unless otherwise specified). This page details limitations of the Sftp protocol and how to configure and connect to a Sftp server.
@@ -22,13 +21,11 @@ To configure CX to start processing your Sftp messages select the Sftp option in
 
 A new window pops up. Add data as seen below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Sftp%20inbound%20config.png?sv=2020-08-04&st=2021-11-05T11%3A53%3A00Z&se=2040-11-06T11%3A53%3A00Z&sr=b&sp=r&sig=ukhVTUSgqRb8Ck5MfiSdFTQi2VO14B5GZjbsL3X5XYs%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Sftp%20inbound%20config.png?sv=2020-08-04&st=2022-01-11T07%3A08%3A09Z&se=2040-01-12T07%3A08%3A00Z&sr=b&sp=r&sig=Fp9pIOvsynojbPl%2FsLmRs42Bm3WjUg3TmGDcRnBCJso%3D)
 
-- **Url**: The url to the SFTP server.
-- **Username**: The username CX uses to authenticate to server.
-- **Password**: The password CX uses to authenticate to server.
+- **Polling Ingerval in Secounds**:Polling interval dictates when files are picked from the Sftp account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
+- **SFTP Security Configuration**: Reference to the [Security Configuration](/Security/Security%20Configurations.md) that contains the relevant connection properties.
 - **Directory**: he directory to pickup files in. Files will be deleted after pickup unless CopyMoveFolder is set.
-- **SSH HostKey Fingerprint**: The fingerprint of the server certificate. Read more in the [WinScp documentation](https://winscp.net/eng/docs/faq_hostkey).
 - **CopyMoveFolder**: Specifies a folder to move files to after pickup and disables deletion of files on pickup if set. This is mainly used to keep track of picked up files and can also be used to facilitate separate flows and other integrations.
 - **File Mask**: Specifies a search patter for files. This uses the WinScp syntax, read more about it in [the documentation there](https://winscp.net/eng/docs/file_mask). All files not matching the set pattern will be ignored.
 - **Concurrent Sftp Connections**: Limits the number of concurrent connections to the FTP/SFTP server. This does not effect the connection count on Batch Size. But will prevent the connection from being re-established on the timer while the previous connection is active. Ie. if CX polling interval triggers (set to 60 seconds) and there are 10 000 files on the server. Cx will start picking files but will not finish before the polling interval triggers again. If this property is set to 1 the next connection will be blocked until the former operation finishes.
@@ -39,11 +36,6 @@ A new window pops up. Add data as seen below:
 - **Lock On Folder**: Decides if a connection should lock on folder in SFTP server or the whole server (false means that the lock is applied on the whole server). If you have multiple inbound configs on one server this **must** be enabled.
 - **Perform Duplicate Detection**: Turns on duplicate detection. This does not give a guarantee for no duplicates but detects duplicates on inbound pickup only. The detection works by MD5 hashing the file contents and creating a unique id with the generated hash combined with the name of the file. This is not 100% foolproof but should work in 99% of cases. The detection is costly and should only be turned on if absolutely necessary. Be aware that addition costs may be incurred by turning this on depending on your price plan.
 - **Terminate On Duplicate Detection**: If the duplicate detection system finds a duplicate this parameter decides if the message should be sent through the system, or terminated. If the file is terminated it's moved to a sub-folder called *duplicates* on the same area where the file was picked up from.
-
-## Polling interval
-
-`needs picture`
-Polling interval dictates when files are picked from the Sftp account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
 
 ## Retry
 

@@ -22,9 +22,9 @@ To configure CX to start processing your event grid events select the Event Grid
 
 A new window pops up. Add data as seen below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/EventGrid%20config.PNG?sv=2020-04-08&st=2021-11-03T12%3A17%3A38Z&se=2040-11-04T12%3A17%3A00Z&sr=b&sp=r&sig=n9fBkdScT9uhEFRcGSzhPtJ0oB1aFxzP8QM%2BVV0blPM%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Event%20grid%20inbound%20config.png?sv=2020-08-04&st=2022-01-11T11%3A48%3A52Z&se=2040-01-12T11%3A48%3A00Z&sr=b&sp=r&sig=gD1Vukqa6rmrcr0MidyJq2xCrIv2jr6ctBF8gixg0j0%3D)
 
-- **Even Grid Storage Account Connection String**: The connection string tot the Storage Account that holds the data represented by the message sent to the API from Event Grid.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](/Security/Security%20Configurations.md) that contains the connection string to the Storage Account that holds the data represented by the message sent to the API from Event Grid.
 - **Event Grid Blob Container Name List**: A comma separated list over possible containers referenced in the EventGrid message.
 
 ## Configuring Event Grid endpoints in Azure `needs picture of correlationid`

@@ -53,10 +53,11 @@ To configure CX to start fetching data from Service Bus select the "Service Bus"
 
 A new window pops up. Add data as seen below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Service%20bus%20inbound%20config.png?sv=2020-08-04&st=2021-11-04T12%3A38%3A37Z&se=2040-11-05T12%3A38%3A00Z&sr=b&sp=r&sig=aeAvf01XoEY8cY5iLXfhqQ4oteEU3QTODLO42oraLZs%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Service%20bus%20inbound%20config.png?sv=2020-08-04&st=2022-01-11T10%3A05%3A24Z&se=2040-01-12T10%3A05%3A00Z&sr=b&sp=r&sig=7Yh9XRzX%2FKF99aoiGDSFT43w9XkDUcRQwKPbufYpl60%3D)
 
+- **Polling Interval**: Dictates when files are picked from the Azure Storage account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](/Security/Security%20Configurations.md) that contains the relevant connection properties.
 - **Topic Name**: The name of the topic.
-- **Topic Connection String**: The Connection string for the topic.
 - **Subscription Name**: The name of the subscription to pick files from.
 - **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) pattern is used.
 

@@ -21,11 +21,9 @@ To configure CX to start delivering your Sftp messages select the Sftp option in
 
 A new window pops up. Add data as seen below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Sftp%20outbound%20config.png?sv=2020-08-04&st=2021-11-11T13%3A15%3A26Z&se=2040-11-12T13%3A15%3A00Z&sr=b&sp=r&sig=ZA%2FoBZNckRrLIto734UWACBVwdDwy4AfwH5eNETdNLM%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Sftp%20outbound%20config.png?sv=2020-08-04&st=2022-01-11T09%3A36%3A18Z&se=2040-01-12T09%3A36%3A00Z&sr=b&sp=r&sig=4nXP2spsPsh59JDs7GprAvoloBNRGiIRTge7c5pXyy0%3D)
 
-- **Url**: The url to the SFTP server.
-- **Username**: The username CX uses to authenticate to server.
-- **Password**: The password CX uses to authenticate to server.
+- **SFTP Security Configuration**: Reference to the [Security Configuration](/Security/Security%20Configurations.md) that contains the relevant connection properties.
 - **Directory**: he directory to pickup files in.
 - **SSH HostKey Fingerprint**: The fingerprint of the server certificate. Read more in the [WinScp documentation](https://winscp.net/eng/docs/faq_hostkey).
 - **Use Static Ip**: Forces CX to run Sftp traffic on static Ip. This uses a separately hosted functionality that limits parallelization and can effect performance on high traffic scenarios.

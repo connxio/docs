@@ -4,6 +4,8 @@
   - [Limitations](#limitations)
   - [Message transfer pattern](#message-transfer-pattern)
     - [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob)
+      - [SasUri Only](#sasuri-only)
+      - [Deafult contract](#deafult-contract)
     - [Pure Message Sending](#pure-message-sending)
   - [Configuring Service Bus message delivery](#configuring-service-bus-message-delivery)
   - [Retry](#retry)
@@ -22,7 +24,13 @@ We support two patterns when sending data to external Service Bus from the CX pi
 
 ### Metadata on Bus, data as blob
 
-This pattern is by far the most secure, robust, fast and reliable way to use Service Bus, and entails CX pushing metadata messages to Service Bus that contain a reference to a file hosted in a way that lets you retrieve it by Rest. The easiest and most cost efficient way to do this is by using AzureStorage Blob which is why CX includes a [SasUri](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview) within the output message. The messages you receive on the configured Service Bus is simply the SasUri and nothing more and looks something like this:
+This pattern is by far the most secure, robust, fast and reliable way to use Service Bus, and entails CX pushing metadata messages to Service Bus that contain a reference to a file hosted in a way that lets you retrieve it by Rest. The easiest and most cost efficient way to do this is by using AzureStorage Blob which is why CX includes a [SasUri](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview) within the output message.
+
+There are multiple advantages to using this metadata pattern instead of supplying the data inside the Service Bus. **Firstly** there are limits on how much data Service Bus allows on the bus which suggests that adding data directly is not recommended. **Secondly** a blob framework is much more robust and cost efficient at storing data than a Queue infrastructure. **Thirdly** you can scale down your service bus since large messages will not be hogging your message unit capacity. There are even more benefits to using metadata on bus but these are easily accessible on the internet and in Microsoft documentation.
+
+#### SasUri Only
+
+The messages you receive on the configured Service Bus is simply the SasUri and nothing more and looks something like this:
 
 `
 https://cx.blob.core.windows.net/container/Azure%20storage%20menu.png?sv=2020-04-08&st=2021-10-27T11%3A56%3A53Z&se=2040-10-28T12%3A56%3A00Z&sr=b&sp=r&sig=S%2FltxxxlTLePVt5xxxx6uNkr7Pa9XcY8ovTFJxxx%3D
@@ -32,7 +40,21 @@ https://cx.blob.core.windows.net/container/Azure%20storage%20menu.png?sv=2020-04
 
 When a message arrives on your Service Bus all you need to do to precess it is to pick up the content with the SasUri and the InterchangeId from UserProperties (if needed for further logging or other uses)
 
-There are multiple advantages to using this metadata pattern instead of supplying the data inside the Service Bus. **Firstly** there are limits on how much data Service Bus allows on the bus which suggests that adding data directly is not recommended. **Secondly** a blob framework is much more robust and cost efficient at storing data than a Queue infrastructure. **Thirdly** you can scale down your service bus since large messages will not be hogging your message unit capacity. There are even more benefits to using metadata on bus but these are easily accessible on the internet and in Microsoft documentation.
+#### Deafult contract
+
+The default contract is the same as the one used when sending messages to the inbound Service Bus adapter.The messages you will receive on your Service Bus is a JSON and looks like this:
+
+```json
+{
+    "SasUri": "***********************************",
+    "FileName": "file.json",
+    "InterchangeId": "f681382-****-567c-81d8-****""
+}
+```
+
+- **SasUri**: The uri that hosts the actual message data.
+- **FileName**: A generated file name for det message.
+- **InterchangeId**: If needed for further logging or other uses.
 
 ### Pure Message Sending
 
@@ -46,13 +68,14 @@ To configure CX to start sending data to your Service Bus select the "Service Bu
 
 A new window pops up. Add data as seen below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Service%20Bus%20outbound%20config.png?sv=2020-08-04&st=2021-11-11T13%3A06%3A17Z&se=2040-11-12T13%3A06%3A00Z&sr=b&sp=r&sig=8scdxN%2FU%2FYzcZH%2BRzSgLw4DrTMHRU42MWKg4X%2FkkJU4%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Service%20bus%20outbound%20config.png?sv=2020-08-04&st=2022-01-11T11%3A21%3A52Z&se=2040-01-12T11%3A21%3A00Z&sr=b&sp=r&sig=Rk7hCLNEsnVb9WtFCalC0wziHPojVAij4IMVLjid6MY%3D)
 
+- **Connection String Security Configuration**: Reference to the [Security Configuration](/Security/Security%20Configurations.md) that contains the relevant connection properties.
 - **Adapter Name**: The logical name of the adapter. This is shown in the configuration view on close.
 - **Topic Name**: The name of the topic.
-- **Topic Connection String**: The Connection string for the topic.
 - **Subscription Name**: The name of the subscription to pick files from.
-- **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) pattern is used.
+- **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked one of the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) patterns is used.
+- **Service bus message body contract**: Specifies witch of the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) patterns is used.
 - **Send Acknowledgement**: Is explained [here](/Adapters/Outbound/Acknowledgment.md).
 
 ## Retry

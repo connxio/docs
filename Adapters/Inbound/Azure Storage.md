@@ -3,7 +3,6 @@
 - [Azure Storage Outbound Adapter](#azure-storage-outbound-adapter)
   - [Limits](#limits)
   - [Configuring Azure Storage connections](#configuring-azure-storage-connections)
-  - [Polling interval](#polling-interval)
   - [Retry](#retry)
 
 ConnXio (CX) lets customers provide messages to the CX pipeline by configuring connections to Azure Storage accounts. We currently support messages as [blobs](https://azure.microsoft.com/en-us/services/storage/blobs/) or [files](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share?tabs=azure-portal). This page details how to configure Azure storage connections and what functionality is available by delivering files through this medium.
@@ -20,21 +19,16 @@ To configure CX to start picking your messages select the Azure Storage option i
 
 A new window pops up, we will be using *blob* communication as an example. Add data as seen below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Azure%20storage%20blob%20configuration.png?sv=2020-04-08&st=2021-10-27T12%3A07%3A02Z&se=2040-10-28T13%3A07%3A00Z&sr=b&sp=r&sig=QQP%2FU0qUaeshk8VAgNC8E2SyTsHKnj%2B8hBLBWCzdkqs%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Azure%20storage%20inbound%20config.png?sv=2020-08-04&st=2022-01-11T09%3A41%3A50Z&se=2040-01-12T09%3A41%3A00Z&sr=b&sp=r&sig=z9%2BSZHX%2FJBl4eTScIlSkg3mxnlPEVwXIKIHehVv0hYs%3D)
 
+- **Polling Interval**: Dictates when files are picked from the Azure Storage account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
 - **Storage type**: Select storage type to use.
-- **Storage Connection string**: This can be found in the azure portal on your resource tab.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](/Security/Security%20Configurations.md) that contains the relevant connection properties.
 - **Container Name**: The name of the container. This container must exist before CX start picking messages. We will not create it for you.
+- **Directory**: Specifies which directory CX should target for file pickup. If this is kept blank the root directory is used (Azure Storage *File Share* only).
 - **Batch Size**: The number of messages to in a single thread. The lower the number the more threads are spawned, ie. 1000 messages are stored on blob, batch size is set to 100, CX reads that there are 1000 files and spawns 10 parallel threads for pickup and processing.
 - **File Pick Limit**: The amount of files to pick per run of the engine. If polling interval is set to 1 minute and this variable is set to 1 message, CX will pick 1 message per minute. This variable is primarily used to slow down message processing to not kill receiving services.
 - **File Pick Sort Type**: Changed the way files are sorted when **File Pick Limit** is used. Has no effect without **File Pick Limit**
-
-**For Azure Files** the only difference is the *directory* field which specifies which directory CX should target for file pickup. If this is kept blank the root directory is used.
-
-## Polling interval
-
-`needs picture`
-Polling interval dictates when files are picked from the Azure Storage account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
 
 ## Retry
 

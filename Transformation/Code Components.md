@@ -44,7 +44,7 @@ public string Map(string message, Dictionary<string, string> dataCollection, Dic
 The code above adds examples of the most basic functionality provided by code components and is an boiler plate for most transformations. We would recommend adding a method to yor project to run the Map method with sample input. This can be done either in the Program.cs of a console project or through a Unit test or some other means, this is all subjective preference. An example of a the unit test method is featured below:
 
 ```csharp
-public class InvoiceAckTest
+public class CodeComponentTest
 {
     public Initialize Mapper { get; set; }
 
@@ -63,7 +63,7 @@ public class InvoiceAckTest
         Dictionary<string, string> dataCol = new Dictionary<string, string>();
         dataCol.Add("invoice", testDataColContentAsString);
 
-        var mappedContent = Mapper.Map(Encoding.UTF8.GetBytes(testContentAsString), Encoding.UTF8, Encoding.UTF8, dataCol, new Dictionary<string, string>());
+        var mappedContent = Mapper.Map(testContentAsString, dataCol, new Dictionary<string, string>());
     }
 
     private string GetTestDataColContentString()

@@ -57,7 +57,7 @@ public class MetaData
     public DateTime Started { get; set; }
     public Dictionary<string, string> DataCollection { get; set; }
     public Dictionary<string, string> UserDefinedProperties { get; set; }
-    public string ConfigCorrelatioId { get; set; }
+    public string ConfigCorrelationId { get; set; }
     public string TransformationBlobName { get; set; }
     public string OutboundBlobName { get; set; }
     public string InboundAdapter { get; set; }

@@ -82,6 +82,8 @@ CX has a set of default statuses that correspond to the logging event context. W
 | Error | A failure has happened while executing the CX pipeline and the process has stopped. This can be cause by external services like enrichment endpoints, transformations or adapter targets, but can also be caused by internal faults in CX. Refer to the description to analyze and react to the error.|
 | Terminated | The pipeline was terminated by the user. Either via [code components](/Transformation/Code%20Components.md) of via [data collection](/Transformation/Data%20Collection.md).|
 
+> Attention! When using Archeo logging remember to add all these statuses to Archeo
+
 ## Contracts
 
 CX provides users with a set of contracts to use when logging. A contract refers to the json model that defines the received event body. Currently we provide two contracts; Archeo and Internal. We would like to point out that it's entirely possible to use the Archeo contract even if you do not use the Archeo logging provider

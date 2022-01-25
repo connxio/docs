@@ -41,6 +41,8 @@ public string Map(string message, Dictionary<string, string> dataCollection, Dic
 }
 ```
 
+>`NOTE: JsonConvert requires Newtonsoft version 12.0.3 or older.`
+
 The code above adds examples of the most basic functionality provided by code components and is an boiler plate for most transformations. We would recommend adding a method to yor project to run the Map method with sample input. This can be done either in the Program.cs of a console project or through a Unit test or some other means, this is all subjective preference. An example of a the unit test method is featured below:
 
 ```csharp

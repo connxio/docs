@@ -5,6 +5,7 @@
   - [Message transfer pattern](#message-transfer-pattern)
     - [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob)
     - [Pure Message Sending](#pure-message-sending)
+      - [InterchangeId](#interchangeid)
   - [Configuring Service Bus message intake](#configuring-service-bus-message-intake)
   - [Polling interval](#polling-interval)
   - [Retry](#retry)
@@ -44,6 +45,17 @@ There are multiple advantages to using this metadata pattern instead of supplyin
 ### Pure Message Sending
 
 This pattern involves sending data through Service Bus. This is not recommended and should only be done is special cases where handling blobs are impossible or contributes to higher risk. A message sent with pure messaging is composed of data only, to be more specific you send the data *as the service bus message*. Cx will then handle the Service Bus message itself as the content. With this pattern you loose the ability to supply your own InterchangeId and Filename.
+
+#### InterchangeId
+
+You can supply your own InterchangeId for transactional logging purposes by adding a user property to the message with the key `InterchangeId` and the string value for the InterchangeId itself. I.e.:
+
+```csharp
+Message sbMessage = new Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(msgCont)));
+sbMessage.UserProperties.Add("InterchangeId", "3c8701dc-858b-4f98-915a-5b3432eb37ec");
+```
+
+Be sure to read the [Core Concepts](/Core%20Concepts.md) for more information about supplying your own InterchangeId.
 
 ## Configuring Service Bus message intake
 

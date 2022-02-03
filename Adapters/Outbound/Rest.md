@@ -3,10 +3,10 @@
 - [Rest Outbound Adapter](#rest-outbound-adapter)
   - [Limitations](#limitations)
   - [Configuring Restful message delivery](#configuring-restful-message-delivery)
+  - [Headers](#headers)
   - [Carousel](#carousel)
     - [What is Carousel used for?](#what-is-carousel-used-for)
   - [Fallback](#fallback)
-  - [Polling interval](#polling-interval)
   - [Retry](#retry)
 
 ConnXio (CX) lets customers receive data from the CX pipeline through a RESTful endpoint. This page details how to set up a RESTful receive adapter and the limits of using Rest to receive information from CX. When we describe something as "using Rest" or being "a Rest endpoint" we are implicitly stating that it's [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer).
@@ -37,9 +37,13 @@ A new window pops up. Add data as seen below:
 - **Send Acknowledgement**: Is explained [here](/Adapters/Outbound/Acknowledgment.md).
 - **Use Internal**: Uses the internal Restful adapter to resend the message back to CX. Is explained in detail under the  [carousel entry](#carousel).
 
+## Headers
+
+CX will add an `InterchangeId` header to the outgoing request to facilitate for continued transactional logging on the receiver side.
+
 ## Carousel
 
-`needs picture`
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Rest_Outbound_Carousel.png?sv=2020-10-02&st=2022-02-03T07%3A35%3A31Z&se=2040-02-04T07%3A35%3A00Z&sr=b&sp=r&sig=YYolmjsR7QheeE0szBietXXW3j%2B3tZ5x5IJ8EoUU4KA%3D)
 Carousel is what we've called the functionality that lets you run a message through the CX pipeline more than once. This functionality is easily enabled but hard to configure. To enable the Carousel functionality you simply check the "Enable Carousel" checkbox and the following menu pops up:
 
 - **Carousel Integration CorrelationId**: Specifies which integration to use when the message renters the CX pipeline. This is usually a separate integration to the one you are standing in.
@@ -51,15 +55,11 @@ Carousel is used when you need to to simulate [high level orchestration](/Core%2
 
 ## Fallback
 
-`needs picture`
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Rest_Outbound_Fallback.png?sv=2020-10-02&st=2022-02-03T07%3A37%3A07Z&se=2040-02-04T07%3A37%3A00Z&sr=b&sp=r&sig=1XXg8zjmjhFEypu6%2FFKaTefB%2BGpQWd0UPZKbnBY2kKs%3D)
+
 Fallback lets you react to errors by handling errors with external services or logging. By enabling this functionality you specify an endpoint that can be used to react to events, terminate the process or retry it through a backup endpoint. The message will be completed and logged as successfully if the endpoint return a success 2xx status code. If a non success status code is returned the message will be retried as described in the [retry](#retry) section.
 
 An example of how this functionality can be useful is to configure a fallback endpoint thats in another region or on another platform that can process requests when the main service is down. Another example could be an endpoint that puts messages back into a queue or backup pipeline that holds the message for future processing. The examples are more or less endless and fallback should be used for most critical RESTful endpoint.
-
-## Polling interval
-
-`needs picture`
-Polling interval dictates when the fetch operation triggers from CX. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
 
 ## Retry
 

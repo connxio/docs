@@ -44,6 +44,7 @@ CX will add an `InterchangeId` header to the outgoing request to facilitate for 
 ## Carousel
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Rest_Outbound_Carousel.png?sv=2020-10-02&st=2022-02-03T07%3A35%3A31Z&se=2040-02-04T07%3A35%3A00Z&sr=b&sp=r&sig=YYolmjsR7QheeE0szBietXXW3j%2B3tZ5x5IJ8EoUU4KA%3D)
+
 Carousel is what we've called the functionality that lets you run a message through the CX pipeline more than once. This functionality is easily enabled but hard to configure. To enable the Carousel functionality you simply check the "Enable Carousel" checkbox and the following menu pops up:
 
 - **Carousel Integration CorrelationId**: Specifies which integration to use when the message renters the CX pipeline. This is usually a separate integration to the one you are standing in.

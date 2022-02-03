@@ -64,7 +64,7 @@ An example of how this functionality can be useful is to configure a fallback en
 
 ## Retry
 
-Rest outbound uses [linear retry](/Retry.md), we are looking into switching to backoff retry, but this is not implemented yet.
+*Rest outbound uses [linear retry](/Retry.md), we are looking into switching to backoff retry, but this is not implemented yet.*
 
 When handling RESTful communication a set of status codes are defined. We handle the ones in the list below. Be aware that all status codes not handles here defaults to no retry unless [fallback](#fallback) is set. All retry is handled as linear retry with endpoint retry or with endpoint retry only, read more about retry on the [Retry page](/Retry.md).
 

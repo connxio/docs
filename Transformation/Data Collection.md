@@ -47,6 +47,7 @@ Add the necessary fields to your data collection. See below for an example:
 - **Use Content As Request Body**: The current version of the content at the time of the data collection is sent to the collection endpoint as the body of the request. Default value is empty body.
 - **Use Response As Content**: The current content is replaced by the body returned by the data collection endpoint, this happens regardless of what is returned.
 - **Headers**: Add any custom header you might need. This can include custom Authorization if needed.
+- **Current Message Content Type**: The current content type of the message. Use this only if the content type of the message at this stage is different from the message format defined for the configuration.
 - **Continue on 404**: Turning this on means the data collection will continue if it cant find the resource its looking for. Be careful since this might make other transformations like code components fail.
 - **Stop on empty**: Stops if data is empty and [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) is positive.
 

@@ -44,6 +44,8 @@ Add the necessary fields to your data collection. See below for an example:
 - **Rest Url**: The endpoint to get the data from. This could be an API, data store or similar REST service.
 - **Security Configuration**: Select your security configuration from the list. See [here](/Security/Security%20Configurations.md) for more information.
 - **Variable name**: The name used for the variable through CX. USe this name if you want to target the variable in a [code component](/Transformation/Code%20Components.md) or [variable replacement](/Transformation/Variable%20Replacement.md).
+- **Use Content As Request Body**: The current version of the content at the time of the data collection is sent to the collection endpoint as the body of the request. Default value is empty body.
+- **Use Response As Content**: The current content is replaced by the body returned by the data collection endpoint, this happens regardless of what is returned.
 - **Headers**: Add any custom header you might need. This can include custom Authorization if needed.
 - **Continue on 404**: Turning this on means the data collection will continue if it cant find the resource its looking for. Be careful since this might make other transformations like code components fail.
 - **Stop on empty**: Stops if data is empty and [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) is positive.

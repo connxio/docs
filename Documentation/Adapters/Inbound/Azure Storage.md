@@ -23,7 +23,7 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 
 - **Polling Interval**: Dictates when files are picked from the Azure Storage account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
 - **Storage type**: Select storage type to use.
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/Security/Security%20Configurations.md) that contains the relevant connection properties.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](/Documentation/Security/Security%20Configurations.md) that contains the relevant connection properties.
 - **Container Name**: The name of the container. This container must exist before CX start picking messages. We will not create it for you.
 - **Directory**: Specifies which directory CX should target for file pickup. If this is kept blank the root directory is used (Azure Storage *File Share* only).
 - **Batch Size**: The number of messages to in a single thread. The lower the number the more threads are spawned, ie. 1000 messages are stored on blob, batch size is set to 100, CX reads that there are 1000 files and spawns 10 parallel threads for pickup and processing.
@@ -32,4 +32,4 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 
 ## Retry
 
-Since CX reaches out and picks up files when using Azure Storage, retry is handled by the CX framework. If a fault happens when the [polling interval](#polling-interval) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however since CX cant be sure the message is possible to requeue on the external storage. The message will then be sent to catastrophic retry as described in the [Retry Page](/Retry.md).
+Since CX reaches out and picks up files when using Azure Storage, retry is handled by the CX framework. If a fault happens when the [polling interval](#polling-interval) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however since CX cant be sure the message is possible to requeue on the external storage. The message will then be sent to catastrophic retry as described in the [Retry Page](/Documentation/Retry.md).

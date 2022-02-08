@@ -23,13 +23,13 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 
 - **Adapter Name**: The logical name of the adapter. This is shown in the configuration view on close.
 - **Storage type**: Select storage type to use.
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/Security/Security%20Configurations.md) that contains the relevant connection properties.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](/Documentation/Security/Security%20Configurations.md) that contains the relevant connection properties.
 - **Container Name**: The name of the container. This container must exist before CX start picking messages. We will not create it for you.
-- **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/Transformation/Variable%20Replacement.md) page.
-- **Send Acknowledgement**: Is explained [here](/Adapters/Outbound/Acknowledgment.md).
+- **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/Documentation/Transformation/Variable%20Replacement.md) page.
+- **Send Acknowledgement**: Is explained [here](/Documentation/Adapters/Outbound/Acknowledgment.md).
 
 **For Azure Files** the only difference is the *directory* field which specifies which directory CX should target for file pickup. If this is kept blank the root directory is used.
 
 ## Retry
 
-Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/Retry.md). This may change in the future as we are looking into enabling backoff retry.
+Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/Documentation/Retry.md). This may change in the future as we are looking into enabling backoff retry.

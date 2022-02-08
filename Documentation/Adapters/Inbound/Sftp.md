@@ -24,7 +24,7 @@ A new window pops up. Add data as seen below:
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Sftp%20inbound%20config.png?sv=2020-08-04&st=2022-01-11T07%3A08%3A09Z&se=2040-01-12T07%3A08%3A00Z&sr=b&sp=r&sig=Fp9pIOvsynojbPl%2FsLmRs42Bm3WjUg3TmGDcRnBCJso%3D)
 
 - **Polling Ingerval in Secounds**:Polling interval dictates when files are picked from the Sftp account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
-- **SFTP Security Configuration**: Reference to the [Security Configuration](/Security/Security%20Configurations.md) that contains the relevant connection properties.
+- **SFTP Security Configuration**: Reference to the [Security Configuration](/Documentation/Security/Security%20Configurations.md) that contains the relevant connection properties.
 - **Directory**: he directory to pickup files in. Files will be deleted after pickup unless CopyMoveFolder is set.
 - **CopyMoveFolder**: Specifies a folder to move files to after pickup and disables deletion of files on pickup if set. This is mainly used to keep track of picked up files and can also be used to facilitate separate flows and other integrations.
 - **File Mask**: Specifies a search patter for files. This uses the WinScp syntax, read more about it in [the documentation there](https://winscp.net/eng/docs/file_mask). All files not matching the set pattern will be ignored.
@@ -39,6 +39,6 @@ A new window pops up. Add data as seen below:
 
 ## Retry
 
-Since CX reaches out and pick up files when using the Sftp inbound adapter, retry is handled by the CX framework. If a fault happens when the [polling interval](#polling-interval) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however, since CX cant be sure the message is possible to requeue on the external server. The message will be sent to catastrophic retry as described in the [Retry Page](/Retry.md) when fault happen after message pickup and deletion.
+Since CX reaches out and pick up files when using the Sftp inbound adapter, retry is handled by the CX framework. If a fault happens when the [polling interval](#polling-interval) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however, since CX cant be sure the message is possible to requeue on the external server. The message will be sent to catastrophic retry as described in the [Retry Page](/Documentation/Retry.md) when fault happen after message pickup and deletion.
 
 It is worth noting that if a catastrophic failure should occur where we cant reach our internal failure system files may be added back to the Sftp server in an "Error" directory. If you see files in such a directory you can usually just put them back into the normal directory. If this keeps happening however, please check you logging provider or contact us directly.

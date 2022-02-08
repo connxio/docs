@@ -1,6 +1,6 @@
 # Batching
 
-ConnXio (CX) gives customers the ability to batch messages into larger single units. We do this by creating a bucket where messages are queued for a set interval until they are picked up, run through a [code mapping](/Transformation/Code%20Mapping.md) and then sent as a single message through the pipeline. There are certain limits to batching functionality that will be explained on this page as well the process of batching itself.
+ConnXio (CX) gives customers the ability to batch messages into larger single units. We do this by creating a bucket where messages are queued for a set interval until they are picked up, run through a [code mapping](/Documentation/Transformation/Code%20Mapping.md) and then sent as a single message through the pipeline. There are certain limits to batching functionality that will be explained on this page as well the process of batching itself.
 
 > Batching entails waiting for messages within a set interval and then transforming said messages into a single unit before processing that unit through the CX pipeline
 
@@ -9,7 +9,7 @@ ConnXio (CX) gives customers the ability to batch messages into larger single un
 There are certain limits imposed upon the batching functionality to not overwhelm the system. These boundaries are fluent and subject to change in the future. As of now the following limits are in effect:
 
 1. MaxMessageBatchCount is set to `1000`
-2. ConnXio only supports messages below `100mb` (see [Integration limitations](/Integrations/Limitations.md))
+2. ConnXio only supports messages below `100mb` (see [Integration limitations](/Documentation/Integrations/Limitations.md))
 
 **MaxMessageBatchCount** is a variable that governs how many messages are possible to batch into a single message. If the bucket containing messages is larger than 1000 messages before the batching interval triggers then one message will be created per 1000 messages in the bucket. To use an example:
 
@@ -19,7 +19,7 @@ This limitation is in place for a number of reasons, the first being that we wan
 
 ## Creating batching code components
 
-When implementing batching into your integration the first step is to create the code that joins your messages together into a cohesive whole. This is done in more or less the same way as [map code components](/Transformation/Code%20Components.md) but with a few key differences.
+When implementing batching into your integration the first step is to create the code that joins your messages together into a cohesive whole. This is done in more or less the same way as [map code components](/Documentation/Transformation/Code%20Components.md) but with a few key differences.
 
 Firstly you need to create the batching code itself, see the map components page for a simple rundown of the process, but instead of using the boiler plate detailed for maps you use the one detailed below:
 
@@ -60,10 +60,10 @@ public class Initialize
 }
 ```
 
-**Upload the component** by using the methods described on the [code components page](/Transformation/Code%20Components.md). Remember to choose the *batching* type.
+**Upload the component** by using the methods described on the [code components page](/Documentation/Transformation/Code%20Components.md). Remember to choose the *batching* type.
 
 ## Retry
 
-Batching has multiple retry patterns that differ based on which step of the batching process that fails. If the process fails on transient errors before running the batching code component the system puts messages back in queue and tries again 60 seconds later. If the failure is happens after running the batching code the algorithm tries to send the message multiple times with increasing delay until the message is scheduled for retry through the [disaster pipeline](/Retry.md).
+Batching has multiple retry patterns that differ based on which step of the batching process that fails. If the process fails on transient errors before running the batching code component the system puts messages back in queue and tries again 60 seconds later. If the failure is happens after running the batching code the algorithm tries to send the message multiple times with increasing delay until the message is scheduled for retry through the [disaster pipeline](/Documentation/Retry.md).
 
 Retry can end up sending smaller files than anticipated. If you experience problems like this, your logging provider should have received warnings about the fault, if not please contact your representative.

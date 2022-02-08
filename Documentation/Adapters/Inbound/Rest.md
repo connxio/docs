@@ -24,7 +24,7 @@ A new window pops up. Add data as seen below:
 
 - **Method**: The Http verb (or method as its properly called) to use when contacting the restful endpoint.
 - **Endpoint Url**: The url of the endpoint.
-- **Security Configuration**: The [security configuration](/Security/Security%20Configurations.md) to use for authenticating the request.
+- **Security Configuration**: The [security configuration](/Documentation/Security/Security%20Configurations.md) to use for authenticating the request.
 - **Headers & Authorization Header Type**: Add headers here as necessary to either authenticate the request or add other needed parameters.
 
 ## Polling interval
@@ -34,4 +34,4 @@ Polling interval dictates when the fetch operation triggers from CX. The minimum
 
 ## Retry
 
-Since CX reaches out and picks up files when using the Rest inbound adapter, retry is handled by the CX framework. If a fault happens when the [polling interval](#polling-interval) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however since CX cant be sure the message is possible to requeue on the external message. The message will then be sent to catastrophic retry as described in the [Retry Page](/Retry.md).
+Since CX reaches out and picks up files when using the Rest inbound adapter, retry is handled by the CX framework. If a fault happens when the [polling interval](#polling-interval) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however since CX cant be sure the message is possible to requeue on the external message. The message will then be sent to catastrophic retry as described in the [Retry Page](/Documentation/Retry.md).

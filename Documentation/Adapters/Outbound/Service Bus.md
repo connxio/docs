@@ -70,14 +70,14 @@ A new window pops up. Add data as seen below:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Service%20bus%20outbound%20config.png?sv=2020-08-04&st=2022-01-11T12%3A50%3A53Z&se=2040-01-12T12%3A50%3A00Z&sr=b&sp=r&sig=jMBe7uBwH3cAr6V2cey878AVoFXTJZufjt7MPWRZe0c%3D)
 
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/Security/Security%20Configurations.md) that contains the relevant connection properties.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](/Documentation/Security/Security%20Configurations.md) that contains the relevant connection properties.
 - **Adapter Name**: The logical name of the adapter. This is shown in the configuration view on close.
 - **Topic Name**: The name of the topic.
 - **Service bus message label**: The label to be added to the service bus message.
 - **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked one of the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) patterns is used.
 - **Service bus message body contract**: Specifies witch of the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) patterns is used.
-- **Send Acknowledgement**: Is explained [here](/Adapters/Outbound/Acknowledgment.md).
+- **Send Acknowledgement**: Is explained [here](/Documentation/Adapters/Outbound/Acknowledgment.md).
 
 ## Retry
 
-Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/Retry.md). This may change in the future as we are looking into enabling backoff retry.
+Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/Documentation/Retry.md). This may change in the future as we are looking into enabling backoff retry.

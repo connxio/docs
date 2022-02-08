@@ -23,12 +23,12 @@ A new window pops up. Add data as seen below:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Sftp%20outbound%20config.png?sv=2020-08-04&st=2022-01-11T09%3A36%3A18Z&se=2040-01-12T09%3A36%3A00Z&sr=b&sp=r&sig=4nXP2spsPsh59JDs7GprAvoloBNRGiIRTge7c5pXyy0%3D)
 
-- **SFTP Security Configuration**: Reference to the [Security Configuration](/Security/Security%20Configurations.md) that contains the relevant connection properties.
+- **SFTP Security Configuration**: Reference to the [Security Configuration](/Documentation/Security/Security%20Configurations.md) that contains the relevant connection properties.
 - **Directory**: he directory to pickup files in.
 - **SSH HostKey Fingerprint**: The fingerprint of the server certificate. Read more in the [WinScp documentation](https://winscp.net/eng/docs/faq_hostkey).
 - **Use Static Ip**: Forces CX to run Sftp traffic on static Ip. This uses a separately hosted functionality that limits parallelization and can effect performance on high traffic scenarios.
-- **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/Transformation/Variable%20Replacement.md) page.
+- **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/Documentation/Transformation/Variable%20Replacement.md) page.
 
 ## Retry
 
-Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/Retry.md). This may change in the future as we are looking into enabling backoff retry.
+Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/Documentation/Retry.md). This may change in the future as we are looking into enabling backoff retry.

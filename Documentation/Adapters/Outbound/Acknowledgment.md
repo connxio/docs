@@ -10,7 +10,7 @@
   - [Ack Code Component code definition](#ack-code-component-code-definition)
   - [Retry](#retry)
 
-ConnXio (CX) provides users with the option to receive acknowledgement (ack) events when a message has been delivered to the receiving system. The concept of sending ACK messages is inspired by the [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_establishment) protocol and gives our customers the ability to verify that a message has been delivered successfully in close to real time. When enabled, this feature supplies an external system with an event with contents supplied by using the standard CX [code mapping functionality](/Transformation/Code%20Mapping.md), which makes the ACK message extremely powerful as it can contain almost anything, even the delivered message itself. This page describes how to enable this functionality and common use cases.
+ConnXio (CX) provides users with the option to receive acknowledgement (ack) events when a message has been delivered to the receiving system. The concept of sending ACK messages is inspired by the [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_establishment) protocol and gives our customers the ability to verify that a message has been delivered successfully in close to real time. When enabled, this feature supplies an external system with an event with contents supplied by using the standard CX [code mapping functionality](/Documentation/Transformation/Code%20Mapping.md), which makes the ACK message extremely powerful as it can contain almost anything, even the delivered message itself. This page describes how to enable this functionality and common use cases.
 
 ## Limitations
 
@@ -28,7 +28,7 @@ Using ack's you can ensure delivery in the source system by reacting to negative
 
 Reacting to delivery entails performing en action when something is delivered, this could include starting a new CX flow or a separate internal integration pipeline or process. Take en example where a customer is migrated to a new system, and access rights have to be sent after the user is stored in the receiver system. An ack could be sent to update the originating system with the user created status and an automatic process could start the user access update.
 
-Reactions could also include alert from internal systems or logging providers like Slack, Teams or Archeo. This can also be handled by [logging events](/Logging.md) but ack messages can represent another pipeline and since the message is ensured delivered it represents an unique opportunity to react to the delivery itself without any extra rules or customization.
+Reactions could also include alert from internal systems or logging providers like Slack, Teams or Archeo. This can also be handled by [logging events](/Documentation/Logging.md) but ack messages can represent another pipeline and since the message is ensured delivered it represents an unique opportunity to react to the delivery itself without any extra rules or customization.
 
 ### Keeping track of delivery
 
@@ -45,7 +45,7 @@ When you enable the "Send Acknowledgment" switch a menu pops up, if you need to 
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Ack%20Options%20config.png?sv=2020-08-04&st=2022-01-11T12%3A32%3A18Z&se=2040-01-12T12%3A32%3A00Z&sr=b&sp=r&sig=nixBhAC%2BcjSGQl6ql1L6Z0DlaO%2FX0LaHDYZzl%2BwS%2Bj4%3D)
 
-- **Code Acknowledgement Map (Code Component)**: The *Code Component* is selected as described in the [Code Components](/Transformation£Code%20Components.md) section.
+- **Code Acknowledgement Map (Code Component)**: The *Code Component* is selected as described in the [Code Components](/Documentation/Transformation£Code%20Components.md) section.
 - **Outbound file format**: Only applicable if the adapter delivers a file and denotes the file format and ending of the file.
 - **Adapter Type**: The type of adapter to use to deliver the ack message. All adapter configuration is explained under the `Adapters` header.
 

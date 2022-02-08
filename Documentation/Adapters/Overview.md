@@ -13,8 +13,8 @@ Inbound adapters are set up to trigger off of a time interval with a minimum int
 
 ## Retry
 
-General retry information can be found [here](../Retry.md). For specific information see the detailed information per adapter.
+General retry information can be found [here](/Documentation/Retry.md). For specific information see the detailed information per adapter.
 
 ## Acknowledgment events
 
-All outbound adapters supply users with the ability to send an acknowledgement (ACK) of a completed message delivery. The guide describing the configuration process is detailed [here](/Adapters/Outbound/Acknowledgment.md). The concept of sending ACK messages is inspired by the [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_establishment) protocol and gives our customers the ability to verify that a message has been delivered successfully in close to real time. When enabled, this feature supplies an external system with an event with contents supplied by using the standard CX [code mapping functionality](/Transformation/Code%20Mapping.md), which makes the ACK message extremely powerful as it can contain almost anything, even the delivered message itself.
+All outbound adapters supply users with the ability to send an acknowledgement (ACK) of a completed message delivery. The guide describing the configuration process is detailed [here](/Documentation/Adapters/Outbound/Acknowledgment.md). The concept of sending ACK messages is inspired by the [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_establishment) protocol and gives our customers the ability to verify that a message has been delivered successfully in close to real time. When enabled, this feature supplies an external system with an event with contents supplied by using the standard CX [code mapping functionality](/Transformation/Code%20Mapping.md), which makes the ACK message extremely powerful as it can contain almost anything, even the delivered message itself.

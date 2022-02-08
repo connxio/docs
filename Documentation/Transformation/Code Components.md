@@ -1,6 +1,6 @@
 # Code components
 
-ConnXio (CX) uses C# code to transform data at multiple points through the CX pipeline. This page describes how to create a *code component* for transformation, where you can use it and what possibilities open up to you by using it. See [splitting](/Transformation/Splitting.md) and [batching](/Transformation/Batching.md) for information on code components within those processes.
+ConnXio (CX) uses C# code to transform data at multiple points through the CX pipeline. This page describes how to create a *code component* for transformation, where you can use it and what possibilities open up to you by using it. See [splitting](/Documentation/Transformation/Splitting.md) and [batching](/Transformation/Batching.md) for information on code components within those processes.
 
 ## What is a code component?
 
@@ -85,7 +85,7 @@ You can terminate a message by throwing a 'NotImplementedException' from you tra
 You can supply the termination error message with a set of code words to influence the behavior of the termination process. The pipeline is always terminated but the code word controls the logging associated with it. You supply these code words in the following way:
 
 ```csharp
-//The code word before the pipe (|) is used to select the action while the text after the pipe is used as the log event message sent via the [logging events functionality](/Logging.md).
+//The code word before the pipe (|) is used to select the action while the text after the pipe is used as the log event message sent via the [logging events functionality](/Documentation/Logging.md).
 throw new NotImplementedException("Warning|Pipeline terminated with warning");
 ```
 
@@ -117,7 +117,7 @@ Internal upload management can be done in the *Code Components* view inside the 
 
 ## Using the component
 
-To use the component you have created you enter the [Integrations](/Integrations/Creating%20integrations.md) menu and either select or create your integration. Use the [transformation](/Transformation/Overview.md) menu to add a code component shape as seen below.
+To use the component you have created you enter the [Integrations](/Documentation/Integrations/Creating%20integrations.md) menu and either select or create your integration. Use the [transformation](/Documentation/Transformation/Overview.md) menu to add a code component shape as seen below.
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Code%20mapping%20add%20tranformation.png?sv=2020-04-08&st=2021-10-21T11%3A01%3A19Z&se=2040-10-22T11%3A01%3A00Z&sr=b&sp=r&sig=7sKZFsU0p1B4EJDZowq6aAL8GDtkm2tkpbw94JjzTlo%3D)
 

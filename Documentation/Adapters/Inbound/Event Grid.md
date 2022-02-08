@@ -12,7 +12,7 @@ ConnXio (CX) lets customers provide messages to the CX pipeline by leveraging [A
 
 At this point in time we only support the Blob Storage for Event Grid. Adding new options is possible, please contact us if you need other options.
 
-There are very few limitations on Azure Event Grid communication. Since Event Grid functions as a event emitter towards the CX [Api](/Adapters/Inbound/Api.md) the only limitations are on bandwidth and traffic. The CX Api scales with traffic and is thoroughly monitored and should handle a lot of traffic, if you have peak loads of thousands of messages per second we do recommend looking at [queue options](/Adapters/Inbound/Service%20Bus.md) instead to mitigate risk.
+There are very few limitations on Azure Event Grid communication. Since Event Grid functions as a event emitter towards the CX [Api](/Documentation/Adapters/Inbound/Api.md) the only limitations are on bandwidth and traffic. The CX Api scales with traffic and is thoroughly monitored and should handle a lot of traffic, if you have peak loads of thousands of messages per second we do recommend looking at [queue options](/Documentation/Adapters/Inbound/Service%20Bus.md) instead to mitigate risk.
 
 ## Configuring Event Grid message intake
 
@@ -24,12 +24,12 @@ A new window pops up. Add data as seen below:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Event%20grid%20inbound%20config.png?sv=2020-08-04&st=2022-01-11T11%3A48%3A52Z&se=2040-01-12T11%3A48%3A00Z&sr=b&sp=r&sig=gD1Vukqa6rmrcr0MidyJq2xCrIv2jr6ctBF8gixg0j0%3D)
 
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/Security/Security%20Configurations.md) that contains the connection string to the Storage Account that holds the data represented by the message sent to the API from Event Grid.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](/Documentation/Security/Security%20Configurations.md) that contains the connection string to the Storage Account that holds the data represented by the message sent to the API from Event Grid.
 - **Event Grid Blob Container Name List**: A comma separated list over possible containers referenced in the EventGrid message.
 
 ## Configuring Event Grid endpoints in Azure `needs picture of correlationid`
 
-Please refer to the [Swagger documentation](https://cmh-prod-api-wa.azurewebsites.net/index.html) for what parameters are accepted for the CX `EventGrid` endpoint. As with other Api endpoints (as described on the [Api page](/Adapters/Inbound/Api.md) only CorrelationId is required for new integrations.
+Please refer to the [Swagger documentation](https://cmh-prod-api-wa.azurewebsites.net/index.html) for what parameters are accepted for the CX `EventGrid` endpoint. As with other Api endpoints (as described on the [Api page](/Documentation/Adapters/Inbound/Api.md) only CorrelationId is required for new integrations.
 
 Event grid uses simple authentication patterns and does, at the point of writing, not support OAuth 2.0. Since this is the case we accept OCP token verification through [APIM](https://azure.microsoft.com/en-us/services/api-management/#overview). Supply this by configuring the APIM uri `https://cmh-messagehub-apim-prod.azure-api.net` with query parameters in your Event Grid configuration in Azure like so:
 

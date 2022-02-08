@@ -24,7 +24,7 @@ This means that if you can't guarantee an unique ID you should not supply your o
 
 ### Changing or multiplying IDs
 
-There are some processes where the InterChangeId has to change by nature of the process enforced upon it. This most notably affects [splitting](/Transformation/Splitting.md) and [batching](/Transformation/Batching.md) scenarios, where the former splits one file into a number of new files each with its own ID, and the latter batches a number of messages into a single file. In both of these scenarios, keeping the original ID is impossible, therefore CX creates new ID's for the messages, there are currently no way to predict these ID's or set them from a customer perspective, this feature could be added later, but for now a customer can track the messages through the original ID as the original ID is logged with the last and first log events in both cases.
+There are some processes where the InterChangeId has to change by nature of the process enforced upon it. This most notably affects [splitting](/Documentation/Transformation/Splitting.md) and [batching](/Documentation/Transformation/Batching.md) scenarios, where the former splits one file into a number of new files each with its own ID, and the latter batches a number of messages into a single file. In both of these scenarios, keeping the original ID is impossible, therefore CX creates new ID's for the messages, there are currently no way to predict these ID's or set them from a customer perspective, this feature could be added later, but for now a customer can track the messages through the original ID as the original ID is logged with the last and first log events in both cases.
 
 A customer *cannot* change the InterchangeId themselves at any point of CX's message processing.
 
@@ -39,9 +39,9 @@ This essentially means that when we refer to one integration we refer to one sin
 
 ## A stateless service
 
-CX is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages we hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or event the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing CX automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](/Logging.md) or [resending](Resending.md) see the respective articles.
+CX is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages we hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or event the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing CX automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](/Documentation/Logging.md) or [resending](/Documentation/Resending.md) see the respective articles.
 
-By leveraging other services like Azure Storage you can orchestrate CX to be semi stateful. Read more in the [orchestration](/Use%20cases/Persistent%20Orchestration.md) section.
+By leveraging other services like Azure Storage you can orchestrate CX to be semi stateful. Read more in the [orchestration](/Documentation/Use%20cases/Persistent%20Orchestration.md) section.
 
 ## Parallel processing
 
@@ -51,7 +51,7 @@ Parallel processing, while disqualifying ordered delivery, does give CX an enorm
 
 ## Robust message transfer and retention
 
-When a message is picked up or enters the CX ecosystem we do our outmost to never loose a it and keep the process going, even if external or internal systems should fail. This means that all message pipelines are based upon a queue system and even distributed across multiple regions to ensure message retention in catastrophic failure scenarios. Read more about retry [here](Retry.md).
+When a message is picked up or enters the CX ecosystem we do our outmost to never loose a it and keep the process going, even if external or internal systems should fail. This means that all message pipelines are based upon a queue system and even distributed across multiple regions to ensure message retention in catastrophic failure scenarios. Read more about retry [here](/Documentation/Retry.md).
 
 ## Orchestration
 

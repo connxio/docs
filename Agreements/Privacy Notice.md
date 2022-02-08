@@ -1,6 +1,6 @@
 # PRIVACY NOTICE
 
-**Last updated January 01 , 2021**
+**Last updated January 01 , 2022**
 
 Thank you for choosing to be part of our ConnXio Integration Service at **Communicate Norge
 AS**. We are committed to protecting personal information and your right to privacy.

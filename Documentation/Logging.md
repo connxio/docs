@@ -51,7 +51,7 @@ The *None* log-level does not send any logs to the logging provider with a notab
 
 #### Minimum
 
-The *Minimum* log-level logs when the message is first seen by CX, this could be when the message is received by the API or picked from the chosen protocol like SFTP or Azure Storage. It also enables logs for the last time CX sees the message, this could be when the message is safely delivered to an SFTP folder or Service Bus topic. If you use the [Acknowledgement functionality](/Adapters/Outbound/Acknowledgment.md), the acknowledgement message is also logged on this level.
+The *Minimum* log-level logs when the message is first seen by CX, this could be when the message is received by the API or picked from the chosen protocol like SFTP or Azure Storage. It also enables logs for the last time CX sees the message, this could be when the message is safely delivered to an SFTP folder or Service Bus topic. If you use the [Acknowledgement functionality](/Documentation/Adapters/Outbound/Acknowledgment.md), the acknowledgement message is also logged on this level.
 
 **Statuses logged:**
 
@@ -78,9 +78,9 @@ CX has a set of default statuses that correspond to the logging event context. W
 | Status | Description |
 |---|---|
 | Success | The event represents a success such as the message being received successfully in an adapter or transformed successfully in a code component |
-| Warning | A failure has happened while executing the CX pipeline, but is non critical and the process is either continued or retried as described on the [retry page](/Retry.md). |
+| Warning | A failure has happened while executing the CX pipeline, but is non critical and the process is either continued or retried as described on the [retry page](/Documentation/Documentation/Retry.md). |
 | Error | A failure has happened while executing the CX pipeline and the process has stopped. This can be cause by external services like enrichment endpoints, transformations or adapter targets, but can also be caused by internal faults in CX. Refer to the description to analyze and react to the error.|
-| Terminated | The pipeline was terminated by the user. Either via [code components](/Transformation/Code%20Components.md) of via [data collection](/Transformation/Data%20Collection.md).|
+| Terminated | The pipeline was terminated by the user. Either via [code components](/Documentation/Transformation/Code%20Components.md) of via [data collection](/Documentation/Transformation/Data%20Collection.md).|
 
 > Attention! When using Archeo logging remember to add all these statuses to Archeo
 
@@ -138,7 +138,7 @@ The internal contract is the internal format used by CX itself. This format has 
 
 ## Metadata
 
-When the pipeline instance is created within CX upon data entering through an adapter, a context is implicitly created with the message. This context is described on [the Metadata page](/Metadata.md). Below we describe how you can influence logging by turning metadata on or off.
+When the pipeline instance is created within CX upon data entering through an adapter, a context is implicitly created with the message. This context is described on [the Metadata page](/Documentation/Metadata.md). Below we describe how you can influence logging by turning metadata on or off.
 
 ### Secondary content
 
@@ -190,7 +190,7 @@ FileContent:
 
 All logging providers are treated equally in relation to CX, and we do have a goal of adding provider specific convenience configuration for the largest providers in the future, currently however we only have a convenience configuration section for Archeo, but you can configure both Archeo and all other RESTful providers by selecting the Webhook configuration option.
 
-All logging options require a [Security Configuration](/Security/Security%20Configurations.md). Set this up by following the steps described on the Security Configuration page and select the definition as described below.
+All logging options require a [Security Configuration](/Documentation/Security/Security%20Configurations.md). Set this up by following the steps described on the Security Configuration page and select the definition as described below.
 
 ### Webhook
 
@@ -204,7 +204,7 @@ Expand this section and click the "Add Logging" button to add a new webhook. Eve
 
 - **Method**: The Http verb (or method as its properly called) to use when contacting the restful endpoint.
 - **Endpoint Url**: The url of the endpoint.
-- **Security Configuration**: The [security configuration](/Security/Security%20Configurations.md) to use for authenticating the request.
+- **Security Configuration**: The [security configuration](/Documentation/Security/Security%20Configurations.md) to use for authenticating the request.
 - **Log Level**: Explained in the [Log Levels section](#log-levels).
 - **Contract**: Is explained under the [Contracts section](#contracts).
 - **Inbound message type**: Changes the message type for the first success message logged.
@@ -252,7 +252,7 @@ Depending on the log provider the cost of thousands or even millions of messages
 
 ### Is the message content important enough to include?
 
-As seen above you can exclude the actual message content from all logs. In a lot of cases the [metadata](/Metadata.md) that is the log event itself is enough to monitor integration flows. Think carefully before you log the actual content.
+As seen above you can exclude the actual message content from all logs. In a lot of cases the [metadata](/Documentation/Metadata.md) that is the log event itself is enough to monitor integration flows. Think carefully before you log the actual content.
 
 ### What level of logging is suited for this integration?
 
@@ -260,4 +260,4 @@ This really depends on the criticality of the integration itself, the potential 
 
 ## Logging outside CX
 
-In many cases there is integration being done either before of after a message is passed of to CX for processing. We recommend tying these actions into the CX flow with you own logging, in this way you get a complete picture of the actual actions involved in you integration. This is very easy with Archeo, and should be possible with most third party providers as well. When setting this up you need to use your InterchangeId to pair your internal logs with CX's generated log events. See more about InterchangeId [here](/Core%20Concepts.md).
+In many cases there is integration being done either before of after a message is passed of to CX for processing. We recommend tying these actions into the CX flow with you own logging, in this way you get a complete picture of the actual actions involved in you integration. This is very easy with Archeo, and should be possible with most third party providers as well. When setting this up you need to use your InterchangeId to pair your internal logs with CX's generated log events. See more about InterchangeId [here](/Documentation/Core%20Concepts.md).

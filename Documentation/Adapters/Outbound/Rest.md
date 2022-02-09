@@ -3,7 +3,7 @@
 - [Rest Outbound Adapter](#rest-outbound-adapter)
   - [Limitations](#limitations)
   - [Configuring Restful message delivery](#configuring-restful-message-delivery)
-  - [Headers](#headers)
+  - [Extending Logging](#extending-logging)
   - [Carousel](#carousel)
     - [What is Carousel used for?](#what-is-carousel-used-for)
   - [Fallback](#fallback)
@@ -37,9 +37,11 @@ A new window pops up. Add data as seen below:
 - **Send Acknowledgement**: Is explained [here](/Documentation/Adapters/Outbound/Acknowledgment.md).
 - **Use Internal**: Uses the internal Restful adapter to resend the message back to CX. Is explained in detail under the  [carousel entry](#carousel).
 
-## Headers
+## Extending Logging
 
-CX will add an `InterchangeId` header to the outgoing request to facilitate for continued transactional logging on the receiver side.
+If you want to use the InterchangeId used by CX for further logging we reccomend either including it in the message by using [transformations](/Documentation/Transformation/Code%20Components.md) or adding the InterchangeId as a query parameter with [Variable Replacement](/Documentation/Transformation/Variable%20Replacement.md). 
+
+> E.g.: `http://www.myapi.com?InterchangeId={interchange}`
 
 ## Carousel
 

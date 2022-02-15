@@ -1,4 +1,4 @@
-# Core Concepts `[needs work]`
+# Core Concepts
 
 - [Core Concepts `[needs work]`](#core-concepts-needs-work)
   - [InterchangeId](#interchangeid)

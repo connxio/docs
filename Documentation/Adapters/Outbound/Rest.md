@@ -39,7 +39,9 @@ A new window pops up. Add data as seen below:
 
 ## Extending Logging
 
-If you want to use the InterchangeId used by CX for further logging we reccomend either including it in the message by using [transformations](/Documentation/Transformation/Code%20Components.md) or adding the InterchangeId as a query parameter with [Variable Replacement](/Documentation/Transformation/Variable%20Replacement.md). 
+CX will add an `InterchangeId` header to the outgoing request to facilitate for continued transactional logging on the receiver side.
+
+If you need to receive the InterchangeId by other means we recommend either including it in the message by using [transformations](/Documentation/Transformation/Code%20Components.md) or adding the InterchangeId as a query parameter with [Variable Replacement](/Documentation/Transformation/Variable%20Replacement.md).
 
 > E.g.: `http://www.myapi.com?InterchangeId={interchange}`
 

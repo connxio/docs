@@ -2,6 +2,7 @@
 
 - [Rest Inbound Adapter](#rest-inbound-adapter)
   - [Limitations](#limitations)
+  - [Extending Logging](#extending-logging)
   - [Configuring Restful message intake](#configuring-restful-message-intake)
   - [Polling interval](#polling-interval)
   - [Retry](#retry)
@@ -11,6 +12,10 @@ ConnXio (CX) lets customers provide data to the CX pipeline by providing it thro
 ## Limitations
 
 The greatest limitation calling Api's is the general statelessness of Api endpoints, in essence; how does CX know what it picked up from the endpoint last time and how do we ensure that data arrives in the correct order on the receiver side? The most obvious way to solve the problem of knowing what was requested is to keep track of this on the Api side. This could however cause desynchronization when messages fail and are not handled before the [polling interval](#polling-interval) fires again. Another solution is to practice [soft delete](https://en.wiktionary.org/wiki/soft_deletion#:~:text=Noun,data%20itself%20from%20the%20database.) on items and make the receiving system [idempotent](https://en.wikipedia.org/wiki/Idempotence). A third solution is to update the Api side with Acknowledgements on another endpoint for every file that is successfully delivered to the receiver. All of these strategies are applicable and could be used to mitigate desynchronization, however they are only necessary because data is picked up via Rest and are usually not needed when using other adapters, it's therefore seen as a limitation of the Rest adapter.
+
+## Extending Logging
+
+CX will add an `InterchangeId` header to the intake request to facilitate for continued transactional logging on the sender side if applicable.
 
 ## Configuring Restful message intake
 

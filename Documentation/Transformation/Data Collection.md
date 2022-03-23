@@ -4,6 +4,7 @@
   - [Limits and External demands](#limits-and-external-demands)
     - [Data size](#data-size)
     - [Traffic](#traffic)
+  - [Extending Logging](#extending-logging)
     - [Availability](#availability)
   - [How to add data collection](#how-to-add-data-collection)
   - [Retry](#retry)
@@ -25,6 +26,10 @@ Be careful about how much data your endpoints or resources return. We spawn unen
 Data collection is performed *every time* an integration pipeline fires. This can generate a large amount of traffic. Be sure to test you endpoints and resources for the expected amount of traffic. Since CX processes transformations in parallel thousands upon thousands of requests can be fired at the same time at peak load. CX uses a staggering algorithm to stop endpoints from crashing under heavy load, but this is no guarantee that the integration will perform as expected.
 
 >Ensure that your endpoint or resource can handle the load
+
+## Extending Logging
+
+CX will add an `InterchangeId` header to the intake request to facilitate for continued transactional logging on the sender side if applicable.
 
 ### Availability
 

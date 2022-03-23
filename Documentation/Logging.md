@@ -18,6 +18,7 @@
   - [How to start logging](#how-to-start-logging)
     - [Webhook](#webhook)
     - [Archeo](#archeo)
+  - [External content](#external-content)
   - [To log or not to log?](#to-log-or-not-to-log)
     - [Is the traffic low enough and the contents important enough that we should log on success?](#is-the-traffic-low-enough-and-the-contents-important-enough-that-we-should-log-on-success)
     - [Is the message content important enough to include?](#is-the-message-content-important-enough-to-include)
@@ -241,6 +242,18 @@ Expand this section and click the "Add Logging" button to add a new webhook. Eve
 - **Enabled**: Turns off this instance of the log event handler. No logs will be sent *at all* with this setting switched off.
 
 The example above uses the minimum viable settings to set up Archeo logging. Feel free to fill in all fields for your logging config.
+
+## External content
+
+Archeo allows customers to host message content externally. CX has incorporated this process and has implemented a webhook interface which lets a customer receive the logged message content from CX and return a Uri to the content storage location. To start using this functionality, first enable the "Log Message Content" option, a new option to log content externally will then become visible as you see below:
+
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Logging%20external%20content.png?sv=2020-10-02&st=2022-03-23T11%3A00%3A16Z&se=2040-03-24T11%3A00%3A00Z&sr=b&sp=r&sig=CJRRtxmH%2FxXKfs%2BF2DK0kscGa4us1gUWgOEYKklGbHc%3D)
+
+- **Method**: The Http verb (or method as its properly called) to use when contacting the restful endpoint.
+- **Endpoint Url**: The url of the endpoint.
+- **Security Configuration**: The [security configuration](/Documentation/Security/Security%20Configurations.md) to use for authenticating the request.
+- **Add Header**: Adds a header to every request handled by this webhook.
+- **Send content on External Failure**: If enabled the option will cause CX to send the file content to Archeo if the external service fails. If disabled no content will be sent on external service failure.
 
 ## To log or not to log?
 

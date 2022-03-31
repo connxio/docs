@@ -19,6 +19,7 @@
     - [Webhook](#webhook)
     - [Archeo](#archeo)
   - [External content](#external-content)
+    - [Expected API behavior](#expected-api-behavior)
   - [To log or not to log?](#to-log-or-not-to-log)
     - [Is the traffic low enough and the contents important enough that we should log on success?](#is-the-traffic-low-enough-and-the-contents-important-enough-that-we-should-log-on-success)
     - [Is the message content important enough to include?](#is-the-message-content-important-enough-to-include)
@@ -254,6 +255,16 @@ Archeo allows customers to host message content externally. CX has incorporated 
 - **Security Configuration**: The [security configuration](/Documentation/Security/Security%20Configurations.md) to use for authenticating the request.
 - **Add Header**: Adds a header to every request handled by this webhook.
 - **Send content on External Failure**: If enabled the option will cause CX to send the file content to Archeo if the external service fails. If disabled no content will be sent on external service failure.
+
+### Expected API behavior
+
+CX sends the file content in the body of the configured HTTP request and expects a json object containing the uri as a response:
+
+```csharp
+{
+  "uri":"https://mynewlygeneratedsasuri.com"
+}
+```
 
 ## To log or not to log?
 

@@ -20,7 +20,7 @@ The creation window for integrations is displayed. This is the interface that ho
 
 The main options of the integration configurations describes what type of integration the configuration represents and basic information related to the messages it will handle. The following properties are regarded as "main options":
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Integrations%20main%20options.png?sv=2020-08-04&st=2021-11-22T11%3A59%3A17Z&se=2040-11-23T11%3A59%3A00Z&sr=b&sp=r&sig=0xowERKJRrZCrSkXuAi%2BxPsb7S653q351mXNoBEjeVY%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Integration%20main%20options.png?sv=2020-08-04&st=2022-04-06T11%3A48%3A36Z&se=2040-04-07T11%3A48%3A00Z&sr=b&sp=r&sig=htiFT2bzgFIgjNsoPZ1nj6dJ4RHemfZeYgu5aeraBms%3D)
 
 - **Transaction type**: Describes the transaction the integration represents. This is typically something like "Invoice" or "User".
 - **Description**: Describes the integration in required detail. Should make it easier to recognize the integration when searching.
@@ -28,8 +28,9 @@ The main options of the integration configurations describes what type of integr
 - **Receiver**: Represents the system receiving the message or data.
 - **Message Inbound format**: Defines the inbound format of the message. This is typically "xml", "json", "csv", etc. It's important to be precise here as CX will use this property to name files when logging or handling data. We recommend using lowercase but all casing will work.
 - **Message Inbound Encoding**: Defines the encoding of the message. It's *very* important to be exact when specifying encoding or the message could en up garbled. If this field is invalid or missing utf-8 encoding is used by default. Please see [encoding](/Documentation/Encoding.md) for more information
-- **Remove Bom**: BOM or "byte order mark" is explained here <https://en.wikipedia.org/wiki/Byte_order_mark>. Witch this on if you want CX to remove BOM from all message that enter the CX pipeline in this integration.
-
+- **Remove Bom**: BOM or "byte order mark" is explained here <https://en.wikipedia.org/wiki/Byte_order_mark>. Switch this on if you want CX to remove BOM from all message that enter the CX pipeline in this integration.
+- **Handle file as binary**: This will enable you to send binaries, such as pdf documents and pictures. Note that when sending binaries split/batch and transformations are not supported.
+  
 ## Logging
 
 Logging is described on the [Logging page](/Documentation/Logging.md).

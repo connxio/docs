@@ -21,7 +21,7 @@ To configure CX to start delivering your Sftp messages select the Sftp option in
 
 A new window pops up. Add data as seen below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Sftp%20outbound%20config.png?sv=2020-08-04&st=2022-01-11T09%3A36%3A18Z&se=2040-01-12T09%3A36%3A00Z&sr=b&sp=r&sig=4nXP2spsPsh59JDs7GprAvoloBNRGiIRTge7c5pXyy0%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Sftp%20outbound%20config.png?sv=2020-08-04&st=2022-05-02T11%3A59%3A36Z&se=2040-05-03T11%3A59%3A00Z&sr=b&sp=r&sig=c%2FpVC6YhqWqKwUwc6t28zIriTqItJ6QJhg7IBtXZGag%3D)
 
 - **SFTP Security Configuration**: Reference to the [Security Configuration](/Documentation/Security/Security%20Configurations.md) that contains the relevant connection properties.
 - **Directory**: he directory to pickup files in.

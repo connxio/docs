@@ -68,7 +68,7 @@ To configure CX to start sending data to your Service Bus select the "Service Bu
 
 A new window pops up. Add data as seen below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Service%20bus%20outbound%20config.png?sv=2020-08-04&st=2022-01-11T12%3A50%3A53Z&se=2040-01-12T12%3A50%3A00Z&sr=b&sp=r&sig=jMBe7uBwH3cAr6V2cey878AVoFXTJZufjt7MPWRZe0c%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Service%20bus%20outbound%20config.png?sv=2020-08-04&st=2022-05-02T11%3A59%3A06Z&se=2040-05-03T11%3A59%3A00Z&sr=b&sp=r&sig=cYMR8m3f2ugTGubirtHz%2BIPtARJL1YDavcCkL5MlUH8%3D)
 
 - **Connection String Security Configuration**: Reference to the [Security Configuration](/Documentation/Security/Security%20Configurations.md) that contains the relevant connection properties.
 - **Adapter Name**: The logical name of the adapter. This is shown in the configuration view on close.

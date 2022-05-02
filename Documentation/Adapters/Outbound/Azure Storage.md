@@ -19,7 +19,7 @@ To configure CX to start sending your messages select the Azure Storage option i
 
 A new window pops up, we will be using *blob* communication as an example. Add data as seen below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Azure%20storage%20outbound%20config.png?sv=2020-08-04&st=2022-01-11T10%3A02%3A00Z&se=2040-01-12T10%3A02%3A00Z&sr=b&sp=r&sig=n1M2hC1A8hmmwepy%2Fcd%2FdQ78%2FTCQ5lIH3MXoKaSXcnY%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Azure%20storage%20outbound%20config.png?sv=2020-08-04&st=2022-05-02T11%3A58%3A37Z&se=2040-05-03T11%3A58%3A00Z&sr=b&sp=r&sig=%2BtYKjaHUTO2l6eaV4h%2BnMnhTTZrplJu2A5JyqM9NjHM%3D)
 
 - **Adapter Name**: The logical name of the adapter. This is shown in the configuration view on close.
 - **Storage type**: Select storage type to use.

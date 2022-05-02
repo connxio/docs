@@ -27,7 +27,7 @@ To configure CX to start sending data to a Rest endpoint select the "REST" optio
 
 A new window pops up. Add data as seen below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/REst%20outbound%20config.PNG?sv=2020-08-04&st=2021-11-09T12%3A34%3A11Z&se=2040-11-10T12%3A34%3A00Z&sr=b&sp=r&sig=JWfZLWIlSrvrf8kCL8JTjqfdXFYo5MXTNw4mO%2B36OzU%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/REst%20outbound%20config.png?sv=2020-08-04&st=2022-05-02T11%3A52%3A43Z&se=2040-05-03T11%3A52%3A00Z&sr=b&sp=r&sig=auHqdR6EFMFhh86xKDBv4gAReSAst1zoM3hJeI8Nwes%3D)
 
 - **Adapter Name**: The logical name of the adapter. This is shown in the configuration view on close.
 - **Method**: The Http verb (or method as its properly called) to use when contacting the restful endpoint.
@@ -36,6 +36,8 @@ A new window pops up. Add data as seen below:
 - **Headers & Authorization Header Type**: Add headers here as necessary to either authenticate the request or add other needed parameters.
 - **Send Acknowledgement**: Is explained [here](/Documentation/Adapters/Outbound/Acknowledgment.md).
 - **Use Internal**: Uses the internal Restful adapter to resend the message back to CX. Is explained in detail under the  [carousel entry](#carousel).
+- **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days.
+- **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 
 ## Extending Logging
 

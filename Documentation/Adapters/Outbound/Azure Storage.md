@@ -27,6 +27,8 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 - **Container Name**: The name of the container. This container must exist before CX start picking messages. We will not create it for you.
 - **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/Documentation/Transformation/Variable%20Replacement.md) page.
 - **Send Acknowledgement**: Is explained [here](/Documentation/Adapters/Outbound/Acknowledgment.md).
+- **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days.
+- **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 
 **For Azure Files** the only difference is the *directory* field which specifies which directory CX should target for file pickup. If this is kept blank the root directory is used.
 

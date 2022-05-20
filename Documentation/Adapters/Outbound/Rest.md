@@ -6,8 +6,9 @@
   - [Extending Logging](#extending-logging)
   - [Carousel](#carousel)
     - [What is Carousel used for?](#what-is-carousel-used-for)
-  - [Fallback](#fallback)
-  - [Retry](#retry)
+  - [Advanced error handling](#advanced-error-handling)
+    - [Fallback](#fallback)
+    - [Retry](#retry)
 
 ConnXio (CX) lets customers receive data from the CX pipeline through a RESTful endpoint. This page details how to set up a RESTful receive adapter and the limits of using Rest to receive information from CX. When we describe something as "using Rest" or being "a Rest endpoint" we are implicitly stating that it's [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
@@ -60,15 +61,30 @@ Carousel is what we've called the functionality that lets you run a message thro
 
 Carousel is used when you need to to simulate [high level orchestration](/Documentation/Core%20Concepts.md) in CX. Say you need to perform tasks that can't be done without massive amounts of input, or you need to pre process messages before you can collect enrichment data. We will not be going into specifics here because Carousel is not recommended for most scenarios and should be used as a last resort for specific integrations. There is nothing wrong with utilizing Carousel, but that said, it adds a level of complexity to integrations that leads to more user and system errors because of the enormous amount of data transfer and processing.
 
-## Fallback
+## Advanced error handling
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Rest_Outbound_Fallback.png?sv=2020-10-02&st=2022-02-03T07%3A37%3A07Z&se=2040-02-04T07%3A37%3A00Z&sr=b&sp=r&sig=1XXg8zjmjhFEypu6%2FFKaTefB%2BGpQWd0UPZKbnBY2kKs%3D)
+BILDE! :D 
+
+By default, all failed REST requests will be retried according to the [retry](#retry) pattern. If the request is still not successful, the transaction will be logged as an error and terminated. Advanced error handling allows you to create rules for handling specific unsuccessful status codes beyond the standard pattern.
+
+| Input&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description |
+|---|---| --- |
+| Status codes | int , - | A comma-separated list of status codes on which the rule should act. A range of status codes can be defined by using '-', for instance, 401-408 will represent all status codes from and including 401 to and including 408. |
+| Action | Terminate,</br> Redirect to secondary | "Terminate" stops the transaction, while "Redirect to secondary" redirects the request to the [Fallback](#Fallback) adapter and makes one attempt to make the request. If this request fails, the transaction will be terminated and logged as "Error" unless something else is defined in the "Custom status" field |
+| Custom status | string | By default all transactions will be logged as "Error". This property overrides the default status. |
+| Retry | true,</br>false | If disabled, no retry attempts will be made and the Rule Action will trigger immediately. If enabled, the default [retry](#retry) pattern will run before the Rule Action triggers. |
+
+### Fallback
+
+<!-- ![img](https://cmhpictsa.blob.core.windows.net/pictures/Rest_Outbound_Fallback.png?sv=2020-10-02&st=2022-02-03T07%3A37%3A07Z&se=2040-02-04T07%3A37%3A00Z&sr=b&sp=r&sig=1XXg8zjmjhFEypu6%2FFKaTefB%2BGpQWd0UPZKbnBY2kKs%3D) -->
+
+ET BILDE AV FALBACK CONFING?
 
 Fallback lets you react to errors by handling errors with external services or logging. By enabling this functionality you specify an endpoint that can be used to react to events, terminate the process or retry it through a backup endpoint. The message will be completed and logged as successfully if the endpoint return a success 2xx status code. If a non success status code is returned the message will be retried as described in the [retry](#retry) section.
 
 An example of how this functionality can be useful is to configure a fallback endpoint thats in another region or on another platform that can process requests when the main service is down. Another example could be an endpoint that puts messages back into a queue or backup pipeline that holds the message for future processing. The examples are more or less endless and fallback should be used for most critical RESTful endpoint.
 
-## Retry
+### Retry
 
 *Rest outbound uses [linear retry](/Documentation/Retry.md), we are looking into switching to backoff retry, but this is not implemented yet.*
 

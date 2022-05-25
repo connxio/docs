@@ -29,10 +29,26 @@ steps:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)/site/build'
     includeRootFolder: false
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: './site/build'
+    Contents: '*.zip'
+    TargetFolder: '$(build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+    OverWrite: true
+  displayName: 'Copy build files'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+  displayName: 'Publish build files'
+
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Communicate MessageHub Dev (9a170947-7f4c-4757-aa83-d01a51283a99)'
     appName: 'cnx-docu-dev'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
     appType: 'webApp'
 #    customWebConfig: '-Handler iisnode -NodeStartFile server.js -appType node'

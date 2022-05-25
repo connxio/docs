@@ -49,13 +49,13 @@ const config = {
   ],
   plugins: [
     [
-      '@docusaurus/plugin-content-docs',
+      "@docusaurus/plugin-content-docs",
       {
-        id: 'agreements',
-        path: 'agreements',
-        routeBasePath: 'agreements',
-        sidebarPath: require.resolve('./sidebars.js'),
-      }, 
+        id: "agreements",
+        path: "agreements",
+        routeBasePath: "agreements",
+        sidebarPath: require.resolve("./sidebars.js"),
+      },
     ],
   ],
   themeConfig:
@@ -137,6 +137,9 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      colorMode: {
+        respectPrefersColorScheme: true,
       },
     }),
   themes: [

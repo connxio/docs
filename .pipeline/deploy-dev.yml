@@ -1,6 +1,9 @@
 trigger:
 - development
 
+variables: 
+- group: connxio-docs-dev
+
 pool:
   vmImage: ubuntu-latest
 
@@ -42,7 +45,7 @@ steps:
 
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'Communicate MessageHub Dev (9a170947-7f4c-4757-aa83-d01a51283a99)'
-    appName: 'cnx-docu-dev'
+    azureSubscription: '$(azureSubscription)'
+    appName: '$(appName)'
     package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
     appType: 'webApp'

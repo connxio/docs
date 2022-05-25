@@ -34,6 +34,7 @@ const config = {
       ({
         docs: {
           routeBasePath: "/",
+          path: "../docs",
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -79,6 +80,11 @@ const config = {
             position: "left",
           },
           {
+            href: "https://www.communicate.no",
+            label: "Communicate Norge",
+            position: "left",
+          },
+          {
             href: "https://github.com/communicatenorge/connxio-doc",
             label: "GitHub",
             position: "right",
@@ -96,8 +102,16 @@ const config = {
                 to: "/",
               },
               {
-                label: "Agreements",
-                to: "/agreements/",
+                label: "Cookie Policy",
+                to: "/agreements/cookie-policy",
+              },
+              {
+                label: "Privacy Notice",
+                to: "/agreements/privacy-notice",
+              },
+              {
+                label: "Data Processing Agreement",
+                to: "/agreements/data-processing-agreement",
               },
             ],
           },

@@ -1,6 +1,6 @@
 ---
   title: Data Processing Agreement
-  sidebar_position: 4
+  sidebar_position: 3
 ---
 
 # Communicate Integration Services - Data Processing Agreement

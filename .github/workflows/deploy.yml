@@ -21,16 +21,17 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16.x
-          cache: yarn
+          cache: npm
+          cache-dependency-path: site/package-lock.json
 
       - name: Install dependencies
         working-directory: './site'
         run: |
-          yarn install --frozen-lockfile
+          npm ci
       - name: Build website
         working-directory: './site'
         run: |
-          yarn build
+          npm build
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus

@@ -20,7 +20,7 @@ steps:
   displayName: 'Install dependencies'
   workingDirectory: './site'
 
-- script: npm build
+- script: npm run build
   displayName: 'Build website'
   workingDirectory: './site'
 

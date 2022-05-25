@@ -1,0 +1,38 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'
+  displayName: 'Use Node 16.x'
+
+- script: npm ci
+  displayName: 'Install dependencies'
+  workingDirectory: './site'
+
+- script: npm build
+  displayName: 'Build website'
+  workingDirectory: './site'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/site/build'
+    includeRootFolder: false
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Communicate MessageHub Dev (9a170947-7f4c-4757-aa83-d01a51283a99)'
+    appName: 'cnx-docu-dev'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    appType: 'webApp'
+#    customWebConfig: '-Handler iisnode -NodeStartFile server.js -appType node'

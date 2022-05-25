@@ -6,10 +6,10 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "ConnXio Docs",
-  tagline: "Documentation is cool",
-  url: "https://communicatenorge.github.io",
-  baseUrl: "/connxio-doc/",
+  title: "ConnXio Documentation",
+  tagline: "ConnXio Integration Engine",
+  url: "https://docs.connxio.no",
+  baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "ignore",
   favicon: "img/favicon.ico",

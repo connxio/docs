@@ -1,5 +1,13 @@
 trigger:
-- main
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - '*'
+    exclude:
+    - 'README.md'
+    - '**/*.yml'
 
 variables: 
 - group: connxio-docs-prod
@@ -13,6 +21,11 @@ steps:
   inputs:
     versionSpec: '16.x'
   displayName: 'Use Node 16.x'
+
+- task: qetza.replacetokens.replacetokens-task.replacetokens@5
+  displayName: 'Enable SEO'
+  inputs:
+    targetFiles: '**/docusaurus.config.js'
 
 - script: npm ci
   displayName: 'Install dependencies'

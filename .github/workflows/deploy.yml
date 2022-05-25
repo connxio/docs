@@ -1,13 +1,13 @@
 name: Build application
 
 on:
-  push:
-    branches:
-      - main
-      - feature/docusaurus
-    paths-ignore:
-      - "**/README.md"
-      - "README.md"
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+  #   paths-ignore:
+  #     - "**/README.md"
+  #     - "README.md"
     # Review gh actions docs if you want to further define triggers, paths, etc
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 

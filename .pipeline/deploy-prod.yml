@@ -1,0 +1,48 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'
+  displayName: 'Use Node 16.x'
+
+- script: npm ci
+  displayName: 'Install dependencies'
+  workingDirectory: './site'
+
+- script: npm run build
+  displayName: 'Build website'
+  workingDirectory: './site'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/site/build'
+    includeRootFolder: false
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: './site/build'
+    Contents: '*.zip'
+    TargetFolder: '$(build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+    OverWrite: true
+  displayName: 'Copy build files'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+  displayName: 'Publish build files'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Communicate MessageHub Prod (f2889f7c-0703-4365-a156-671774b96fd9)'
+    appName: 'cnx-docu-prod'
+    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    appType: 'webApp'

@@ -27,11 +27,11 @@ steps:
   inputs:
     targetFiles: '**/docusaurus.config.js'
 
-- script: npm ci
+- script: yarn install --frozen-lockfile
   displayName: 'Install dependencies'
   workingDirectory: './site'
 
-- script: npm run build
+- script: yarn build
   displayName: 'Build website'
   workingDirectory: './site'
 

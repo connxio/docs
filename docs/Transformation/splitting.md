@@ -23,40 +23,38 @@ Obviously you can ignore steps that are unrealistic for production level load, i
 
 When implementing splitting into your integration the first step is to create the code that splits your message into smaller components. This is done in more or less the same way as [map code components](/Transformation/Code-Components) but with a few key differences.
 
-Firstly you need to create the splitting code itself, see the map components page for a simple rundown of the process, but instead of using the boiler plate described there for maps you use the  for splitting detailed below:
+Firstly you need to create the splitting code itself, see the code components page for a simple rundown of the process, but instead of using the boiler plate described there for maps you use the  for splitting detailed below:
 
 ```csharp
-public class Initialize
+public class MyFirstSplitter : IConnXioSplit
 {
-      /// <summary>
-    /// Method name must be Split and class name Initialize
-    /// </summary>
-    /// <param name="originalMessage"The whole input message</param>
-    /// <param name="encoding">Added mostly for backwards compatibility, is always utf-8</param>
-    /// <returns>List with new messages</returns>
-    public List<string> Split(byte[] originalMessage, Encoding encoding)
+    public IEnumerable<TransformationContext> Split(TransformationContext transformationContext)
     {
-        //Create object from byte array
-        var inboundMessage = JsonConvert.DeserializeObject<InboundMessage>(encoding.GetString(originalMessage));
-        
+        // Create object from byte array
+        MyInboundMessageType inboundMessage = JsonConvert.DeserializeObject<MyInboundMessageType>(transformationContext.Content);
+
         //Create list that holds new messages
-        var outboundStringList = new List<string>();
+        List<TransformationContext> outboundTransformationContexts = new List<TransformationContext>();
 
         //Add elements to list
-        foreach(var city in inboundMessage.Cities)
+        foreach (var city in inboundMessage.Cities)
         {
-            var outboundMessage = new OutboundMessage
+            var outboundMessage = new MyOutboundMessageType
             {
                 CityName = city.CityName,
                 Comment = city.Comment,
                 Id = inboundMessage.Id
             };
- 
-            outboundStringList.Add(JsonConvert.SerializeObject(outboundMessage));
+
+            outboundTransformationContexts.Add(new TransformationContext
+            {
+                Content = JsonConvert.SerializeObject(outboundMessage),
+                MetaData = transformationContext.MetaData.Copy()
+            });
         }
 
         //Return new messages as list
-        return outboundStringList;
+        return outboundTransformationContexts;
     }
 }
 ```

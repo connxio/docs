@@ -12,36 +12,44 @@ A code component is essentially C# code compiled into a dll file. We use reflect
 
 ## Creating a component
 
-The easiest way to create you own code component is to start by opening Visual Studio and creating a new [console project](https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-console?view=vs-2019). Use .net core 3.1 or .net standard 2.1 for new components. We do have some backwards compatibility, and if you cant get your code to work feel free to contact us.
+The easiest way to create you own code component is to start by opening Visual Studio and creating a new [console project](https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-console?view=vs-2019) or a [class library](https://docs.microsoft.com/en-us/dotnet/core/tutorials/library-with-visual-studio?pivots=dotnet-core-3-1). Use .net core 3.1 or .net standard 2.1 for new components. We do have some backwards compatibility, and if you cant get your code to work feel free to contact us.
 
-After you create the project and open it you need to create a file called **Initialize** and paste this code inside:
+After you create the project, navigate to "Manage nuGet packages" and download the nuget named [Communicate.ConnXio.Transformation](https://www.nuget.org/packages/Communicate.ConnXio.Transformation/1.0.1?_src=template), and then create a file and paste this code inside:
 
 ```csharp
 /// <summary>
-/// The method name must be Map but you can add as many files and other methods that you want, and call them inside Map. But you must use this signature and return a string.
+/// The class containg the mapping code must implement the interface "IConnXioMap". This interface contains the definition of the method "Map" which is where the mapping code goes. 
+/// The interface implementation with the Map method is the only mandatory code, but you can add as many files and other methods that you want, and call them from inside the Map method.
 /// </summary>
-/// <param name="message">The message content as it is currently. This changes as the engine runs trough different transformations</param>
-/// <param name="dataCollection">The data collection properties you have collected earlier in the transformation pipeline</param>
-/// <param name="userDefinedProperties">The user defined properties that are transferred with the message metadata. Put variables here to access them later outside message content.</param>
-/// <returns>A string of the transformed message</returns>
-public string Map(string message, Dictionary<string, string> dataCollection, Dictionary<string, string> userDefinedProperties)
+public class MyFirstConnXioMap : IConnXioMap
 {
-    //Add error handling as necessary, this will give better error messages in the logs
-    if (message == null)
-        throw new ArgumentException("Message field is null");
+    /// <summary>
+    /// The method called from the engine when a mapping is executed.
+    /// </summary>
+    /// <param name="transformationContext">The object containing the message content as it is currently and metadata relevant for the current context</param>
+    /// <returns>An instance of TransformationContext. You can return the same instance as the one received in as input parameter, after making some chacges as in the example, or create a brand new one</returns>
+    public TransformationContext Map(TransformationContext transformationContext)
+    {
+        //Add error handling as necessary, this will give better error messages in the logs
+        if (transformationContext.Content == null)
+            throw new ArgumentException("Content field is null");
 
-    //You can use newtonsoft and other basic nuget packages. Contact the CX team if you need a non supported package.
-    dynamic obj = JsonConvert.DeserializeObject(message);
-    obj.Prop = "Done";
-    
-    //Add data to user properties if needed
-    userDefinedProperties("INeedThisLater", obj.prop);
+        //You can use newtonsoft and other basic nuget packages. Contact the CX team if you need a non supported package.
+        dynamic obj = JsonConvert.DeserializeObject(transformationContext.Content);
+        obj.Prop = "Done";
 
-    //Use collected data as needed
-    obj.Prop2 = dataCollection["MyCollectedData"];
+        //Add data to user properties if needed
+        transformationContext.MetaData.UserDefinedProperties.Add("INeedThisLater", obj.prop);
 
-    //Return string representation of the message to propagate through pipeline
-    return JsonConvert.SerializeObject(obj);
+        //Use collected data as needed
+        obj.Prop2 = transformationContext.MetaData.DataCollection["MyCollectedData"];
+
+        //Replace the original content with a string representation of the object "obj"
+        transformationContext.Content = JsonConvert.SerializeObject(obj);
+
+        //Return the updated transformationContext
+        return transformationContext;
+    }
 }
 ```
 
@@ -52,12 +60,12 @@ The code above adds examples of the most basic functionality provided by code co
 ```csharp
 public class CodeComponentTest
 {
-    public Initialize Mapper { get; set; }
+    public MyFirstConnXioMap Mapper { get; set; }
 
     [SetUp]
     public void Setup()
     {
-        Mapper = new Initialize();
+        Mapper = new MyFirstConnXioMap();
     }
 
     [Test]
@@ -69,7 +77,18 @@ public class CodeComponentTest
         Dictionary<string, string> dataCol = new Dictionary<string, string>();
         dataCol.Add("invoice", testDataColContentAsString);
 
-        var mappedContent = Mapper.Map(testContentAsString, dataCol, new Dictionary<string, string>());
+        ContextMetaData contextMetaData = new ContextMetaData
+        {
+            DataCollection = dataCol
+        };
+
+        TransformationContext transformationContext = new TransformationContext
+        {
+            Content = testContentAsString,
+            MetaData = contextMetaData
+        };            
+
+        var mappedContent = Mapper.Map(transformationContext);
     }
 
     private string GetTestDataColContentString()

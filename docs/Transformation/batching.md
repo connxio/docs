@@ -24,22 +24,16 @@ When implementing batching into your integration the first step is to create the
 Firstly you need to create the batching code itself, see the map components page for a simple rundown of the process, but instead of using the boiler plate detailed for maps you use the one detailed below:
 
 ```csharp
-public class Initialize
+public class MyFirstBatcher : IConnXioBatch
 {
-    /// <summary>
-    /// Method name must be Batch and class name Initialize
-    /// </summary>
-    /// <param name="messages">A list of the messages picked from the bucket in bytes</param>
-    /// <param name="encoding">Added mostly for backwards compatibility, is always utf-8</param>
-    /// <returns></returns>
-    public string Batch(List<byte[]> messages, Encoding encoding)
+    public TransformationContext Batch(IEnumerable<TransformationContext> transformationContexts)
     {
         var msgIns = new List<MsgIn>();
 
         //Make list of objects instead of bytes
-        foreach (var message in messages)
+        foreach (var transformationContext in transformationContexts)
         {
-            msgIns.Add(JsonConvert.DeserializeObject<MsgIn>(encoding.GetString(message)));
+            msgIns.Add(JsonConvert.DeserializeObject<MsgIn>(transformationContext.Content));
         }
 
         //Create new outbound message
@@ -54,8 +48,14 @@ public class Initialize
             msgOut.Values.Add(msg.Value);
         }
 
+        TransformationContext outTransformationContext = new TransformationContext
+        {
+            Content = JsonConvert.SerializeObject(msgOut),
+            MetaData = transformationContexts.First().MetaData.Copy()
+        };
+
         //Return message as string
-        return JsonConvert.SerializeObject(msgOut);
+        return outTransformationContext;
     }
 }
 ```

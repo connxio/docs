@@ -1,7 +1,3 @@
----
-    slug: /transformation/integration-account/flat-file
----
-
 # Flat File
 
 Flat file transformation is facilitated by [Azure Integration Account](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-enterprise-integration-create-integration-account?tabs=azure-portal) and uses the [XSLT transform feature](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-enterprise-integration-maps?tabs=consumption). This is specialized enterprise functionality that requires in-depth knowledge of advanced BizTalk features. We do not recommend using this feature unless you have said knowledge and experience.

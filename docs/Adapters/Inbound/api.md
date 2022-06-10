@@ -47,7 +47,7 @@ We do allow our customers to use basic authentication for webhook flows. This is
 
 Eventgrid is used extensively inside Azure and is a framework for building event based architecture on top of Azure components. Read more about eventgrid here <https://docs.microsoft.com/en-us/azure/event-grid/overview>. We support eventgrid and if you follow the directions provided by Microsoft all you should need to do is point your eventgrid url to the Eventgrid endpoint at `/api/EventGrid`. You need to supply the endpoint with a set of query parameters like so: `/api/EventGrid?ConfigCorrelationId={guid}&InterchangeId={guid}`. The only required parameter is CorrelationId. DocumentType, RecieverId and SenderId are obsolete. FileName supplies the pipeline with a FileName parameter that can be used in [variable replacement](/Transformation/Variable-Replacement) and InterchangeId supplies the pipeline with a custom InterchangeId like described [here](/Core-Concepts).
 
-## Enable message delivery `needs corraltionid picture`
+## Enable message delivery 
 
 Even if you have all the authorization and message delivery handled CX will not allow you to communicate with the API unless you have set up an integration and configured it to receive messages through the API. To do this you click the "Inbound Connection" shape and simply select the "Api" option. No other configuration is necessary.
 

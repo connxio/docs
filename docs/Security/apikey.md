@@ -30,7 +30,7 @@ There are three defines scopes, and they relate to different CX Api functionalit
 
 ### Messaging
 
-The *Messaging* scope relates to the actual sending of messages to CX by using the Api endpoints defined in the [Api adapter](/docs/Adapters/Inbound/api.md). These endpoints also require OAuth and a APIM tracking key. This is the primary scope for connecting to CX through inbound rest communication.
+The *Messaging* scope relates to the actual sending of messages to CX by using the Api endpoints defined in the [Api adapter](/Adapters/Inbound/api.md). These endpoints also require OAuth and a APIM tracking key. This is the primary scope for connecting to CX through inbound rest communication.
 
 ### Webhook
 
@@ -38,7 +38,7 @@ The webhook scope is only usable for integrations requiring basic authentication
 
 ### Management
 
-The management scope is used for updating, creating and deleting integrations programmatically and has its own Api for this purpose. More information can be found [here](/docs/Management/management-api.md).
+The management scope is used for updating, creating and deleting integrations programmatically and has its own Api for this purpose. More information can be found [here](/Management/management-api.md).
 
 ## Subscription
 

@@ -11,7 +11,7 @@ You create a key by opening the *API Keys* menu item under the *Administration* 
 
 A key requires a name as well as a scope on creation. You enter the name and select the scope as you see in the picture below:
 
-![img](/site/static/img/ApiKey_create.png)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/ApiKey_create.png?sv=2020-10-02&st=2022-06-10T11%3A57%3A23Z&se=2040-06-11T11%3A57%3A00Z&sr=b&sp=r&sig=J1aKZcpbXt4XP4uoyfP%2B04F2wKsP8HUDedH9HeIg9SM%3D)
 
 - **Api Key Name**: The name of the api key, consider using stakeholders as a part of the name for easier lifecycle management.
 - **Scopes**: Select the scope(s) the Api Key should be valid for. We talk about scopes in grater detail [below](#scopes).
@@ -24,13 +24,13 @@ The key is base64 encoded and is available to edit in the list. By default the k
 
 To enable more granulated security for CX endpoints we have created scopes for our Api Keys. We recommend only using one scope per key for the best security, but since CX uses multiple forms of security for our Api's, using one key for multiple scopes only lessens the security slightly.
 
-![img](/site/static/img/ApiKey_Scopes.png)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/ApiKey_Scopes.png?sv=2020-10-02&st=2022-06-10T11%3A56%3A38Z&se=2040-06-11T11%3A56%3A00Z&sr=b&sp=r&sig=QR1yJFNOq8htrguGLwyWgfzczcKQmf3m%2BVxIQbZVp7w%3D)
 
 There are three defines scopes, and they relate to different CX Api functionality:
 
 ### Messaging
 
-The *Messaging* scope relates to the actual sending of messages to CX by using the Api endpoints defined in the [Api adapter](/docs/Adapters/Inbound/api.md). These endpoints also require OAuth and a APIM tracking key. This is the primary scope for connecting to CX throung inbound rest communication.
+The *Messaging* scope relates to the actual sending of messages to CX by using the Api endpoints defined in the [Api adapter](/docs/Adapters/Inbound/api.md). These endpoints also require OAuth and a APIM tracking key. This is the primary scope for connecting to CX through inbound rest communication.
 
 ### Webhook
 
@@ -38,7 +38,7 @@ The webhook scope is only usable for integrations requiring basic authentication
 
 ### Management
 
-The management scope is used for updating, creating and deleting integrations programmatically and has its own Api for this purpose. More information can be found [here](/docs/Managament/management-api.md).
+The management scope is used for updating, creating and deleting integrations programmatically and has its own Api for this purpose. More information can be found [here](/docs/Management/management-api.md).
 
 ## Subscription
 

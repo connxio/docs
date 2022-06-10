@@ -11,7 +11,7 @@ You create a key by opening the *API Keys* menu item under the *Administration* 
 
 A key requires a name as well as a scope on creation. You enter the name and select the scope as you see in the picture below:
 
-![img](/site/static/img/ApiKey%20create.png)
+![img](/site/static/img/ApiKey_create.png)
 
 - **Api Key Name**: The name of the api key, consider using stakeholders as a part of the name for easier lifecycle management.
 - **Scopes**: Select the scope(s) the Api Key should be valid for. We talk about scopes in grater detail [below](#scopes).

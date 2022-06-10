@@ -1,7 +1,3 @@
----
-    slug: /transformation/integration-account/mapping
----
-
 # Integration Account Mapping
 
 Integration account mapping is built upon [Azure Integration Account](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-enterprise-integration-create-integration-account?tabs=azure-portal) and uses the [maps feature](https://docs.microsoft.com/en-us/azure/templates/microsoft.logic/integrationaccounts/maps?tabs=bicep). This is specialized enterprise functionality that requires in-depth knowledge of advanced BizTalk features. We do not recommend using this feature unless you have said knowledge and experience.

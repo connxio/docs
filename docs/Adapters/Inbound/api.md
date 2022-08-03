@@ -45,7 +45,7 @@ We do allow our customers to use basic authentication for webhook flows. This is
 
 ### Api Key
 
-To add a layer of extra security to the CX Api we added a basic user controlled security key which is configured on the *Api Key* page. This key is sent within the special header key `ConnXio-Api-Key` and can be limited and deprecated as needed. See the [Api Key page](/docs/Security/apikey.md) for more information.
+To add a layer of extra security to the CX Api we added a basic user controlled security key which is configured on the *Api Key* page. This key is sent within the special header key `ConnXio-Api-Key` and can be limited and deprecated as needed. See the [Api Key page](/Security/apikey.md) for more information.
 
 ### Eventgrid
 

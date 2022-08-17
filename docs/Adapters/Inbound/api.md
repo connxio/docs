@@ -69,7 +69,7 @@ All request **need to contain a valid CorrelationId** for CX to be able to proce
 
 Cx supplies three endpoint for pure message delivery. All endpoint end up with the same result but allow for different use cases:
 
-1. `/api/message` lets you supply your parameters as query parameters. This is excellent for scenarios where you do not have access to the message body or are setting up the request through a third party. The body of the request is treted as the raw message body.
+1. `/api/message` lets you supply your parameters as query parameters. This is excellent for scenarios where you do not have access to the message body or are setting up the request through a third party. The body of the request is treated as the raw message body.
 2. `/api/message/new` this endpoint lets you supply messages in a ordered JSON format. This lets you supply your message with your chosen encoding in the `messageBody` parameter as base64 encoded bytes. This is more code heavy way of communicating with the Api and lets you have total control over your message body and parameters without having to deal with the peculiars of Urls and query parameters.
 3. `/api/Message/new/batch` does the exact same thing as **2** but lets you supply an array to the Api. This cuts down on traffic and is easier to handle in large traffic scenarios. As such delivering messages as batches may speed up message processing.
 

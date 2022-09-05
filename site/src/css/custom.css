@@ -32,3 +32,8 @@
 html[data-theme="dark"] .navbar .navbar__logo {
   content: url(/img/connxio-logo-dark.svg) !important;
 }
+
+[data-theme="light"] img[src$="#dark-only"],
+[data-theme="dark"] img[src$="#light-only"] {
+  display: none;
+}

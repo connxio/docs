@@ -67,15 +67,6 @@ const config = {
         },
       },
     ],
-    // [
-    //   "@docusaurus/plugin-content-docs",
-    //   {
-    //     id: "changelog",
-    //     path: "../changelog",
-    //     routeBasePath: "/changelog",
-    //     sidebarPath: require.resolve("./sidebars.js"),
-    //   },
-    // ],
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -162,7 +153,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['csharp']
+        additionalLanguages: ["csharp"],
       },
       colorMode: {
         respectPrefersColorScheme: true,

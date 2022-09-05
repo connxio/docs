@@ -4,9 +4,9 @@ ConnXio (CX) gives customers the ability to split messages into smaller units. W
 
 ## Limitations
 
-There are very few limits to splitting the only one being that we support files up to `100mb` only. However, you can split files into any amount of messages, and process them in any shape or form in further transformations. After the splitting is run all files will be handled as a unique message inside CX which means they will generate separate [logs](/Logging), [resend-events](/Resending) and errors.
+There are very few limits to splitting the only one being that we support files up to `100mb` only. However, you can split files into any amount of messages, and process them in any shape or form in further transformations. After the splitting is run all files will be handled as a unique message inside CX which means they will generate separate [logs](/Logging), [resend-events](/Resending/archeo-resending) and errors.
 
->Splitting can generate enormous amounts of traffic. Be sure that you test your receiving systems thoroughly before you send production level loads.
+> Splitting can generate enormous amounts of traffic. Be sure that you test your receiving systems thoroughly before you send production level loads.
 
 ## Testing and best practices
 
@@ -23,7 +23,7 @@ Obviously you can ignore steps that are unrealistic for production level load, i
 
 When implementing splitting into your integration the first step is to create the code that splits your message into smaller components. This is done in more or less the same way as [map code components](/Transformation/Code-Components) but with a few key differences.
 
-Firstly you need to create the splitting code itself, see the code components page for a simple rundown of the process, but instead of using the boiler plate described there for maps you use the  for splitting detailed below:
+Firstly you need to create the splitting code itself, see the code components page for a simple rundown of the process, but instead of using the boiler plate described there for maps you use the for splitting detailed below:
 
 ```csharp
 public class MyFirstSplitter : IConnXioSplit
@@ -59,7 +59,7 @@ public class MyFirstSplitter : IConnXioSplit
 }
 ```
 
-**Upload the component** by using the methods described on the [code components page](/Transformation/Code-Components). Remember to choose the *splitting* type.
+**Upload the component** by using the methods described on the [code components page](/Transformation/Code-Components). Remember to choose the _splitting_ type.
 
 ## Retry
 

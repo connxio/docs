@@ -4,10 +4,10 @@ This page explores the core concepts that make up the building blocks of the Con
 
 ## InterchangeId
 
-The *InterchangeId* is a simple but powerful part of the CX eco-system. In its most basic form it's nothing more than an ID that follows a message through the entire CX pipeline. The InterchangeId can be supplied by the customer in most cases (some protocols make this difficult, but it's implemented wherever possible), this enables the customer to track the message through CX with [logging](/Logging) events, and use the ID itself for other purposes like naming files or editing the message itself.\
+The _InterchangeId_ is a simple but powerful part of the CX eco-system. In its most basic form it's nothing more than an ID that follows a message through the entire CX pipeline. The InterchangeId can be supplied by the customer in most cases (some protocols make this difficult, but it's implemented wherever possible), this enables the customer to track the message through CX with [logging](/Logging) events, and use the ID itself for other purposes like naming files or editing the message itself.\
 If the InterchangeId is not supplied by the customer it's generated in the form of a [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier), this makes the ID unique for this exact message and is used to identify it through the internal pipeline as well as for other storage and transformation purposes.
 
->Since it's used for complex internal processing an InterchangeID **must** be unique. Using a non unique ID *voids* *all* guarantees concerning message transfer inside CX.
+> Since it's used for complex internal processing an InterchangeID **must** be unique. Using a non unique ID _voids_ _all_ guarantees concerning message transfer inside CX.
 
 This means that if you can't guarantee an unique ID you should not supply your own InterchangeID but let CX generate it for you instead.
 
@@ -17,20 +17,20 @@ This means that if you can't guarantee an unique ID you should not supply your o
 
 There are some processes where the InterChangeId has to change by nature of the process enforced upon it. This most notably affects [splitting](/Transformation/Splitting) and [batching](/Transformation/Batching) scenarios, where the former splits one file into a number of new files each with its own ID, and the latter batches a number of messages into a single file. In both of these scenarios, keeping the original ID is impossible, therefore CX creates new ID's for the messages, there are currently no way to predict these ID's or set them from a customer perspective, this feature could be added later, but for now a customer can track the messages through the original ID as the original ID is logged with the last and first log events in both cases.
 
-A customer *cannot* change the InterchangeId themselves at any point of CX's message processing.
+A customer _cannot_ change the InterchangeId themselves at any point of CX's message processing.
 
 ## What is an integration?
 
 An integration is a logical unit within CX that can be a little hard to grasp. When we talk about or reference "an integration" we refer to this unit which has the following characteristics:
 
-1. Is represented by *one* integration configuration.
-2. Moves *one* message/file/data to one or more receivers.
+1. Is represented by _one_ integration configuration.
+2. Moves _one_ message/file/data to one or more receivers.
 
 This essentially means that when we refer to one integration we refer to one single integration configuration.
 
 ## A stateless service
 
-CX is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages we hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or event the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing CX automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](/Logging) or [resending](/Resending) see the respective articles.
+CX is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages we hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or event the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing CX automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](/Logging) or [resending](/Resending/archeo-resending) see the respective articles.
 
 By leveraging other services like Azure Storage you can orchestrate CX to be semi stateful. Read more in the [orchestration](/use-cases/persistent-orchestration) section.
 
@@ -48,7 +48,7 @@ When a message is picked up or enters the CX ecosystem we do our outmost to neve
 
 CX supports a variety of orchestration scenarios.
 
-> By *orchestration* we mean the process of contacting or waiting for multiple systems, services or even manual input to piece together the correct output.
+> By _orchestration_ we mean the process of contacting or waiting for multiple systems, services or even manual input to piece together the correct output.
 
 Consider the following two scenarios:
 
@@ -57,4 +57,4 @@ Consider the following two scenarios:
 
 In scenario 1 we integrate two systems without orchestration and use point to point transfer only. In scenario 2 however we short circuit the process while waiting for manual input and do two passes through CX to ensure the integration is completed and written to the SFTP catalog.
 
-CX  supports both of these scenarios even though one requires orchestration and the other does not. This differs from other offerings within the iPAAs space in that it's more loosely coupled. Please contact us for more information if you are implementing a challenging orchestration scenario, there are very few orchestration processes that can't be solved with CX.
+CX supports both of these scenarios even though one requires orchestration and the other does not. This differs from other offerings within the iPAAs space in that it's more loosely coupled. Please contact us for more information if you are implementing a challenging orchestration scenario, there are very few orchestration processes that can't be solved with CX.

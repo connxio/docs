@@ -41,15 +41,19 @@ This returns a token that you add into the Authorization header as `Authorizatio
 
 ### Basic
 
-We do allow our customers to use basic authentication for webhook flows. This is done by adding [Api Key](#api-key)
+We do allow our customers to use basic authentication for webhook flows. This is done by adding the [Api Key](#api-key) header to the request and enabling webhook functionality for the key. Keep in mind that we do *not* recommend using basic auth unless it is absolutely necessary. Be very particular with key management and do not use the same key for basic webhooks and other endpoints.
 
 ### Api Key
 
 To add a layer of extra security to the CX Api we added a basic user controlled security key which is configured on the *Api Key* page. This key is sent within the special header key `ConnXio-Api-Key` and can be limited and deprecated as needed. See the [Api Key page](/Security/apikey.md) for more information.
 
+Api key is used in tandem with other security and does not replace other security measures like OAuth and APIM sub key.
+
 ### Eventgrid
 
-Eventgrid is used extensively inside Azure and is a framework for building event based architecture on top of Azure components. Read more about eventgrid here <https://docs.microsoft.com/en-us/azure/event-grid/overview>. We support eventgrid and if you follow the directions provided by Microsoft all you should need to do is point your eventgrid url to the Eventgrid endpoint at `/api/EventGrid`. You need to supply the endpoint with a set of query parameters like so: `/api/EventGrid?ConfigCorrelationId={guid}&InterchangeId={guid}`. The only required parameter is CorrelationId. DocumentType, ReceiverId and SenderId are obsolete. FileName supplies the pipeline with a FileName parameter that can be used in [variable replacement](/Transformation/Variable-Replacement) and InterchangeId supplies the pipeline with a custom InterchangeId like described [here](/Core-Concepts).
+Eventgrid is used extensively inside Azure and is a framework for building event based architecture on top of Azure components. Read more about eventgrid here <https://docs.microsoft.com/en-us/azure/event-grid/overview>. We support eventgrid, and if you follow the directions provided by Microsoft all you should need to do is point your eventgrid url to the Eventgrid endpoint at `/api/EventGrid`. You need to supply the endpoint with a set of query parameters like so: `/api/EventGrid?ConfigCorrelationId={guid}&InterchangeId={guid}`. The only required parameter is CorrelationId. DocumentType, ReceiverId and SenderId are obsolete. FileName supplies the pipeline with a FileName parameter that can be used in [variable replacement](/Transformation/Variable-Replacement) and InterchangeId supplies the pipeline with a custom InterchangeId like described [here](/Core-Concepts).
+
+Eventgrid uses an Api Key in the same was as [basic auth](#basic) and falls under the *webhook* banner as well.
 
 ## Enable message delivery
 
@@ -65,7 +69,7 @@ All request **need to contain a valid CorrelationId** for CX to be able to proce
 
 Cx supplies three endpoint for pure message delivery. All endpoint end up with the same result but allow for different use cases:
 
-1. `/api/message` lets you supply your parameters as query parameters. This is excellent for scenarios where you do not have access to the message body or are setting up the request through a third party. The body of the request is treted as the raw message body.
+1. `/api/message` lets you supply your parameters as query parameters. This is excellent for scenarios where you do not have access to the message body or are setting up the request through a third party. The body of the request is treated as the raw message body.
 2. `/api/message/new` this endpoint lets you supply messages in a ordered JSON format. This lets you supply your message with your chosen encoding in the `messageBody` parameter as base64 encoded bytes. This is more code heavy way of communicating with the Api and lets you have total control over your message body and parameters without having to deal with the peculiars of Urls and query parameters.
 3. `/api/Message/new/batch` does the exact same thing as **2** but lets you supply an array to the Api. This cuts down on traffic and is easier to handle in large traffic scenarios. As such delivering messages as batches may speed up message processing.
 

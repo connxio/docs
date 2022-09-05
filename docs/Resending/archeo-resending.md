@@ -1,6 +1,6 @@
-# Resending
+# Resending With Archeo
 
-Resending in ConnXio (CX) functions differently based upon the event type you react to. Only one of the two event types are enabled at present which means that CX supports only one type of resending mechanism. We will describe both of them here, the non-active methods will be marked. If you need to use non-active methods, please contact us for more information.
+Resending with Archeo behaves differently based upon the event type you react to. Only one of the two event types are enabled at present which means that CX supports only one type of Archeo-resending mechanism. We will describe both of them here, the non-active methods will be marked. If you need to use non-active methods, please contact us for more information.
 
 ## Stateless resending
 
@@ -38,7 +38,7 @@ If you use the Archeo resending functionality all these fields are set and handl
 
 As log as these three properties are set the resending event should restart the pipeline and keep logging to the same InterchangeId.
 
->If you use Archeo as the resending provider you do not need to set these properties manually as they are handled by Archeo when you set up a resending webhook.
+> If you use Archeo as the resending provider you do not need to set these properties manually as they are handled by Archeo when you set up a resending webhook.
 
 This concludes the description and tutorial for stateless resending. To summarize all you need to do to resend with this method is to create a Api request that contains a message Uri (presumably provided by the log event framework from CX and saved by your logging provider), an InterchangeId and a CorrelationId.
 

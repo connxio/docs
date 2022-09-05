@@ -13,13 +13,10 @@ const config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "ignore",
   favicon: "img/favicon.ico",
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
-  // i18n: {
-  //   defaultLocale: "en",
-  //   locales: ["en"],
-  // },
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en"],
+  },
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -29,9 +26,6 @@ const config = {
           routeBasePath: "/",
           path: "../docs",
           sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl: "https://github.com/communicatenorge/connxio-doc/tree/main/",
         },
         blog: false,
         theme: {
@@ -45,16 +39,48 @@ const config = {
       "@docusaurus/plugin-content-docs",
       {
         id: "agreements",
-        path: "agreements",
+        path: "../agreements",
         routeBasePath: "agreements",
         sidebarPath: require.resolve("./sidebars.js"),
       },
     ],
+    [
+      require.resolve("./src/plugins/changelog/index.js"),
+      {
+        blogTitle: "ConnXio changelog",
+        blogDescription:
+          "Keep yourself up-to-date about new features in every release",
+        blogSidebarCount: "ALL",
+        blogSidebarTitle: "Changelog",
+        routeBasePath: "/changelog",
+        showReadingTime: false,
+        postsPerPage: 20,
+        archiveBasePath: null,
+        authorsMapPath: "authors.json",
+        feedOptions: {
+          type: "all",
+          title: "Docusaurus changelog",
+          description:
+            "Keep yourself up-to-date about new features in every release",
+          copyright: `Copyright © ${new Date().getFullYear()} EVIDI`,
+          language: "en",
+        },
+      },
+    ],
+    // [
+    //   "@docusaurus/plugin-content-docs",
+    //   {
+    //     id: "changelog",
+    //     path: "../changelog",
+    //     routeBasePath: "/changelog",
+    //     sidebarPath: require.resolve("./sidebars.js"),
+    //   },
+    // ],
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      metadata: [{name: 'robots', content: '#{ seo }#'}],
+      metadata: [{ name: "robots", content: "#{ seo }#" }],
       navbar: {
         title: "",
         logo: {
@@ -62,6 +88,11 @@ const config = {
           src: "img/connxio-logo.svg",
         },
         items: [
+          {
+            href: "/changelog",
+            label: "Changelog",
+            position: "left",
+          },
           {
             href: "https://portal.connxio.no",
             label: "ConnXio Portal",

@@ -1,10 +1,12 @@
-# 1.9.0 (2022-08-19)
+# ConnXio Changelog
 
-## :rocket: New Feature
+## 1.9.0 (2022-08-19)
+
+#### :rocket: New Features
 
 - `Error broker and Customer failure handling`
   - added new error-broker engine that handles error persistance and indexing
-  - added customer facing UI called *Failures* which exposes functionality for resending of failed messages
+  - added customer facing UI called _Failures_ which exposes functionality for resending of failed messages
 - `Backoff retry`
   - enabled previously created functionality for backoff retry and circuit breaker pattern which ties into error brokerage and error persistance
   - added customer facing UI panel inside integration details page which lets customers configure retry per integration
@@ -17,22 +19,21 @@
 - `Discard Endpoint`
   - added discard endpoint which lets customers discard integration output when testing
 - `Data Collection`
-  - added rule engine sourced from *outbound rest* adapter, used to react to http codes on http communication
+  - added rule engine sourced from _outbound rest_ adapter, used to react to http codes on http communication
 
-## :bug: Bug Fix
+#### :bug: Bug Fix
 
 - `Audit`
   - fixed sorting not using date as date but as string
 
-## :nail_care: Polish
+#### :nail_care: Polish
 
 - `Code components`
   - added automatic suggestion of "next" version number on new code component upload
 - `Audit`
   - spruced up UI to conform to new standard
 
-## :memo: Documentation
+#### :memo: Documentation
 
 - `Changelog`
   - added changelog 😉
-  - 

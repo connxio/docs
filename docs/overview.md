@@ -6,15 +6,15 @@ sidebar_position: 1
 
 # What is ConnXio?
 
-When we decided to explore the concept of an *integration by configuration* solution we used every ounce of our experience and insight into the integration challenges of our customers, our employees and the business at large to imagine a tool that could help everyone develop more robust integration-solutions faster, smarter and cheaper.  With the advent of ConnXio we've reached that goal, and we are proud to announce our solution to the world.
+When we decided to explore the concept of a SAAS solution for integration solution we used every ounce of our experience and insight into the integration challenges of our customers, our employees and the business at large to imagine a tool that could help everyone develop more robust integration-solutions faster, smarter and cheaper.  With the advent of ConnXio we've reached that goal, and we are proud to announce our solution to the world.
 
 ## Integration by Configuration
 
-Some of you may have heard of iPAAS (integration platform as a service) solutions and products, ConnXio falls squarely into this space as well. We call it *Integration by Configuration* and supply our users with a user friendly, robust and pre-defined interface for creating configurations which in turn corresponds directly to an integration which can be edited and released on the fly.
+Some of you may have heard of iPAAS (integration platform as a service) solutions and products, ConnXio exists within this domain but we take it a step further into the SaaS space where we offer something we like to call *Integration by Configuration*. *Integration by Configuration* furnishes our customers with a user friendly, robust and pre-defined interface for creating configurations which in turn correspond directly to an integration flow. The flows our customers create can be edited and released on the fly by leveraging easy-to-use UI backed by a powerful self scaling backend.
 
 ## Robustness
 
-By using a PAAS solution to perform integration and file transfer, the source systems can outsource not only the actual work but also the demands of logging, resending, stability and performance. By using ConnXio you force your solutions into a pattern which gives your internal systems something to compete with in terms of quality as well as a standard for which to build you own integrations when necessary.
+By using a SAAS solution to perform integration and file transfer, the source systems can outsource not only the actual work but also the demands of logging, resending, stability and performance. By using ConnXio you force your solutions into a pattern which gives your internal systems something to compete with in terms of quality as well as a standard for which to build you own integrations when necessary.
 
 By leveraging distributed cloud and computing principles we made ConnXio faster and more scalable than normal in-house platforms and solutions have the ability to be. We scale our internal systems on demand and always try to have plenty of power left in the tank.
 

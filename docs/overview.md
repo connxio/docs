@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # What is ConnXio?
 
-When we decided to explore the concept of a SAAS solution for integration solution we used every ounce of our experience and insight into the integration challenges of our customers, our employees and the business at large to imagine a tool that could help everyone develop more robust integration-solutions faster, smarter and cheaper.  With the advent of ConnXio we've reached that goal, and we are proud to announce our solution to the world.
+When we decided to explore the concept of a SAAS solution for integration we used every ounce of our experience gathered from the integration challenges of our customers, our employees and the IT-business at large to imagine a tool that could help our customers develop more robust integration-solutions faster, smarter and cheaper.  With the advent of ConnXio we've reached beyond exploration and into the realm of reality, and as such we are proud to announce our product to the world.
 
 ## Integration by Configuration
 
@@ -14,9 +14,11 @@ Some of you may have heard of iPAAS (integration platform as a service) solution
 
 ## Robustness
 
-By using a SAAS solution to perform integration and file transfer, the source systems can outsource not only the actual work but also the demands of logging, resending, stability and performance. By using ConnXio you force your solutions into a pattern which gives your internal systems something to compete with in terms of quality as well as a standard for which to build you own integrations when necessary.
+By using a SAAS solution like ConnXio to perform integration and file transfer, source systems can outsource not only the actual work but also the demands of logging, resending, stability and performance (which together specify the robustness of a platform). The pattern ConnXio uses enables all this and we have experienced a bleed effect where the pattern bleeds into customer created solutions which in turn elevates internal integration or systems to a new level of quality.
 
-By leveraging distributed cloud and computing principles we made ConnXio faster and more scalable than normal in-house platforms and solutions have the ability to be. We scale our internal systems on demand and always try to have plenty of power left in the tank.
+ To achieve greater robustness we leveraged distributed cloud and computing principles and made ConnXio faster and more scalable than normal in-house platforms and solutions have the ability to be. The reason we can do this and not most integration departments is simply the fact that we utilize the trial and error accumulated by multiple customers combined with the development cycle of a product to take a long lived and stable approach to integration development.
+
+ By also scaling our internal infrastructure on demand to always have plenty of power left in the tank, we have the opportunity to abstract the hassle of resource management away from consumers which lets customers focus on the important parts of integration where their domain is involved. To ensure that data from multiple customers do not interfere with each other we separating traffic by customer subscriptions and even per integration for some functionality.
 
 ## A tool or a platform
 

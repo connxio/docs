@@ -6,11 +6,11 @@ sidebar_position: 1
 
 # What is ConnXio?
 
-When we decided to explore the concept of a SAAS solution for integration we used every ounce of our experience gathered from the integration challenges of our customers, our employees and the IT-business at large to imagine a tool that could help our customers develop more robust integration-solutions faster, smarter and cheaper.  With the advent of ConnXio we've reached beyond exploration and into the realm of reality, and as such we are proud to announce our product to the world.
+When we decided to explore the concept of a SaaS solution for integration we used every ounce of our experience gathered from the integration challenges of our customers, our employees and the IT-business at large to imagine a tool that could help our customers develop more robust integration-solutions faster, smarter and cheaper.  With the advent of ConnXio we've reached beyond exploration and into the realm of reality, and as such we are proud to announce our product to the world.
 
 ## Integration by Configuration
 
-Some of you may have heard of iPAAS (integration platform as a service) solutions and products, ConnXio exists within this domain but we take it a step further into the SaaS space where we offer something we like to call *Integration by Configuration*. *Integration by Configuration* furnishes our customers with a user friendly, robust and pre-defined interface for creating configurations which in turn correspond directly to an integration flow. The flows our customers create can be edited and released on the fly by leveraging easy-to-use UI backed by a powerful self scaling backend.
+Some of you may have heard of iPaaS (integration platform as a service) solutions and products, ConnXio exists within this domain but we take it a step further into the SaaS space where we offer something we like to call *Integration by Configuration*. *Integration by Configuration* furnishes our customers with a user friendly, robust and pre-defined interface for creating configurations which in turn correspond directly to an integration flow. The flows our customers create can be edited and released on the fly by leveraging easy-to-use UI backed by a powerful self scaling backend.
 
 ## Robustness
 

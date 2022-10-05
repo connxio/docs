@@ -1,6 +1,8 @@
 # ConnXio Changelog
 
-## 1.9.0 (2022-08-19)
+## 1.9.0 (2022-10-03)
+
+> This is the next planned release for ConnXio and is currently under development. This notice will be removed when the features are available in production
 
 #### :rocket: New Features
 

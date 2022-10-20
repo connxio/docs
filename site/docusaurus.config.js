@@ -95,12 +95,12 @@ const config = {
             position: "left",
           },
           {
-            href: "https://www.communicate.no",
-            label: "Communicate Norge",
+            href: "https://www.evidi.com",
+            label: "Evidi",
             position: "left",
           },
           {
-            href: "https://github.com/communicatenorge/connxio-doc",
+            href: "https://github.com/connxio/connxio",
             label: "GitHub",
             position: "right",
           },
@@ -134,8 +134,8 @@ const config = {
             title: "Pages",
             items: [
               {
-                label: "Communicate",
-                href: "https://www.communicate.no",
+                label: "Evidi",
+                href: "https://www.evidi.com",
               },
               {
                 label: "ConnXio",
@@ -148,7 +148,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Communicate Norge. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Evidi. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

@@ -6,10 +6,10 @@ ConnXio (CX) lets customers send messages from the CX pipeline by configuring co
 
 There are some limitations to our Outbound Email Adapter, these include:
 
- - It is not possible to send more or less the same content to more than 500 recipients within 24 hours.
- - It is not possible to send more or less the same content to more than 2,500 recipients within 30 days.
- - It is not possible to send email to more than 500 recipients within 24 hours.
- - It is not possible to send email to more than 2,500 recipients within 30 days.
+- It is not possible to send more or less the same content to more than 500 recipients within 24 hours.
+- It is not possible to send more or less the same content to more than 2,500 recipients within 30 days.
+- It is not possible to send email to more than 500 recipients within 24 hours.
+- It is not possible to send email to more than 2,500 recipients within 30 days.
 
  In addition to this SMTP allows the use of SSL and TLS. Of the two protocols, we recommend using TLS since this is the newer, more secure choice.
 
@@ -28,11 +28,10 @@ A new window pops up. Add data as seen below:
 - **Subject**: The password for the email address.
 - **Outbound Filename Pattern**: The server that hosts the email account.
 - **Send Attachments**: When turned on the CX message will be sent as an attachment. Both this and Send Message Body can be active at the same time.
-- **Send Message Body**: When turned on the CX will be sent as a messagebody. Both this and Send Attachments can be active at the same time.
+- **Send Message Body**: When turned on the CX will be sent as a message body. Both this and Send Attachments can be active at the same time.
 - **Use SSL**: Most hosts require SSL. Turn this on to make CX contact the host with SSL enabled.
 - **Duplicate Detection**: Terminate the message if the exact same has been processed any time within the last five days.
 
 ## Retry
 
-Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/Retry). This may change in the future as we are looking into enabling backoff retry.
-
+Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/Retry). This may change in the future as we are looking into enabling back-off retry.

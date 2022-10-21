@@ -47,17 +47,21 @@ Add the necessary fields to your data collection. See below for an example:
 - **Continue on 404**: Turning this on means the data collection will continue if it cant find the resource its looking for. Be careful since this might make other transformations like code components fail.
 - **Stop on empty**: Stops if data is empty and [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) is positive.
 
+## Retry
+
+Data collection is currently using the linear retry described on the [Retry](/docs/retry.md) page. This may change in the future as we are looking into enabling back-off retry.
+
 ## Advanced error handling
 
 By default, all failed requests will be retried according to the [retry](#retry) pattern. If the request is still not successful, the transaction will be logged as an error and terminated. Advanced error handling allows you to create rules for handling specific unsuccessful status codes beyond the standard pattern.
 
 > For legacy integration support (integrations created using DataCollection before Advanced Error Handling was integrated) there is a toggleable "Continue on 404".
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/AdvancedErrorHandling%20-%20DC.png)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/AdvancedErrorHandling%20-%20DC.png?sv=2021-04-10&st=2022-10-21T08%3A26%3A31Z&se=2040-10-22T08%3A26%3A00Z&sr=b&sp=r&sig=XM30B3bCKRSWsyEC1DcGSZyTFAUCR%2BxKbOzrxuVW%2FhA%3D)
 
 | Input&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description |
 |---|---| --- |
 | Status codes | int , - | A comma-separated list of status codes on which the rule should act. A range of status codes can be defined by using '-', for instance, 401-408 will represent all status codes from and including 401 to and including 408. |
-| Action | Terminate,<br /> Continue | "Terminate" stops the transaction, while "Continue" continues the transaction, looging it as error unless something else is defined in the "Custom status" field |
+| Action | Terminate,<br /> Continue | "Terminate" stops the transaction, while "Continue" continues the transaction, logging it as error unless something else is defined in the "Custom status" field |
 | Custom status | string | By default all transactions will be logged as "Error". This property overrides the default status. |
 | Retry | true,<br />false | If disabled, no retry attempts will be made and the Rule Action will trigger immediately. If enabled, the default [retry](#retry) pattern will run before the Rule Action triggers. |

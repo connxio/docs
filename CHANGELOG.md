@@ -27,6 +27,8 @@
 
 - `Audit`
   - fixed sorting not using date as date but as string
+- `Outbound SFTP`
+  - Added retry to "Cannot find WinScp exe. Stopping execution" exceptions
 
 #### :nail_care: Polish
 

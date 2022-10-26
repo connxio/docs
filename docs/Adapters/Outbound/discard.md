@@ -1,5 +1,7 @@
 # Outbound Discard Adapter
 
+`This functionality is not in production. More information can be found on the` [functionality page](/Functionality)
+
 ConnXio (CX) lets customers send messages from the CX and discard them for testing purposes. This is great tool for debugging and logging your messages as they get processed by the CX pipeline.
 
 ## Limitations
@@ -15,4 +17,3 @@ The Discard adapter requires no configuration to use as the messages are simply 
 ## Retry
 
 Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/Retry). This may change in the future as we are looking into enabling backoff retry.
-

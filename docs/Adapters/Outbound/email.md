@@ -1,15 +1,17 @@
 # Email Outbound Adapter
 
+`This functionality is not in production. More information can be found on the` [functionality page](/Functionality)
+
 ConnXio (CX) lets customers send messages from the CX pipeline by configuring connections to email accounts. We currently support the SMTP protocol. This page details limitations of said protocol and how to configure and connect to an email account.
 
 ## Limitations
 
 There are some limitations to our Outbound Email Adapter, these include:
 
- - It is not possible to send more or less the same content to more than 500 recipients within 24 hours.
- - It is not possible to send more or less the same content to more than 2,500 recipients within 30 days.
- - It is not possible to send email to more than 500 recipients within 24 hours.
- - It is not possible to send email to more than 2,500 recipients within 30 days.
+- It is not possible to send more or less the same content to more than 500 recipients within 24 hours.
+- It is not possible to send more or less the same content to more than 2,500 recipients within 30 days.
+- It is not possible to send email to more than 500 recipients within 24 hours.
+- It is not possible to send email to more than 2,500 recipients within 30 days.
 
  In addition to this SMTP allows the use of SSL and TLS. Of the two protocols, we recommend using TLS since this is the newer, more secure choice.
 
@@ -35,4 +37,3 @@ A new window pops up. Add data as seen below:
 ## Retry
 
 Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/Retry). This may change in the future as we are looking into enabling backoff retry.
-

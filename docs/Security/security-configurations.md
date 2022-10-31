@@ -60,7 +60,7 @@ The SFTP configuration contains all the relevant properties for connection to th
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Security%20Config%20SFTP%20new.png?sv=2020-08-04&st=2022-01-11T06%3A04%3A36Z&se=2040-01-12T06%3A04%3A00Z&sr=b&sp=r&sig=E8O5GDIFeCd4QgS0aH2BLDSXpM5c1lbDIsFm2AQIjqE%3D)
 
 - **Name**: The name that pops up when you select the configuration on an integration.
-- **Url**: The url to the SFTP server.
+- **Url**: The url to the SFTP server. The url support port number of suffixed with a colon, ie: sftp-server.net:1337
 - **Username**: The username CX uses to authenticate to server.
 - **Password**: The password CX uses to authenticate to server.
 - **SSH HostKey Fingerprint**: The fingerprint of the server certificate. Read more in the [WinScp documentation](https://winscp.net/eng/docs/faq_hostkey).
@@ -72,7 +72,7 @@ The FTP configuration contains all the relevant properties for connection to the
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Security%20Config%20FTP%20new.png?sv=2020-08-04&st=2022-01-11T06%3A08%3A04Z&se=2040-01-12T06%3A08%3A00Z&sr=b&sp=r&sig=DJaxv0KMulGnCJV%2FHYncM2%2FDWP4czaaL5pIjf7MTtsQ%3D)
 
 - **Name**: The name that pops up when you select the configuration on an integration.
-- **Url**: The url to the SFTP server.
+- **Url**: The url to the FTP server.  The url support port number of suffixed with a colon, ie: ftp-server.net:1337.
 - **Username**: The username CX uses to authenticate to server.
 - **Password**: The password CX uses to authenticate to server.
 

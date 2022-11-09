@@ -4,7 +4,9 @@ sidebar_position: 1
 
 # Resending With ConnXio
 
-### Overview
+Resending within CX was added in version [1.9.0](/site/changelog/source/1.9.0.md) and replaces the old resending system. We will not be phasing out the current retry system wholesale but we do expect customers to start learning and using the new system to be able to handle errors themselves withing the subscription context. Please contact your CX representative if you have further questions.
+
+## Overview
 
 ConnXio will catch and persist all failures that occur in any integration flow. The purpose of this is to allow customers to be able to either resend these messages (if e.g. the receiver system experienced an outage), or delete the messages if resending is not appropriate.
 
@@ -16,7 +18,7 @@ On this page you view the failures and when, why and where they failed. You can 
 
 ![Failed integration page](https://i.imgur.com/roBF7aH.png#light-only)![Docusaurus themed image](https://i.imgur.com/gg3So7Q.png#dark-only)
 
-### Resending and deleting messages
+## Resending and deleting messages
 
 There are two options for resending or deleting messages. The process for each of them is the same.
 

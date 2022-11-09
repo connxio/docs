@@ -6,6 +6,10 @@ CX uses multiple layers of retry to ensure the highest possible robustness. We c
 2. Engine retry
 3. Catastrophic failure retry
 
+## Update 1.9.0
+
+In update 1.9.0 backoff retry was added to all engines within CX and works as described in the [backoff-retry](#backoff-retry) section. This change was accompanied by the new [Resending system](/Resending/connxio-resending.md).
+
 ## Endpoint retry
 
 All adapters use retry logic to compensate for protocol instability on delivery and pickup of messages. Thus endpoint retry refers to the instant retry mechanisms used when the instability of the protocol or the receivers themselves are unreachable or experiencing some kind of transient failure. The nature of the retry varies by protocol and will be described in the specific articles per adapter, however all the adapters do have some similarities imposed by external limitations, such as the number of retries which varies by protocol but is kept within a time-range of 1 minute to conform to the transient nature of CX's scaling architecture.\

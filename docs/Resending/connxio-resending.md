@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Resending With ConnXio
 
-Resending within CX was added in version [1.9.0](/site/changelog/source/1.9.0.md) and replaces the old resending system. We will not be phasing out the current retry system wholesale but we do expect customers to start learning and using the new system to be able to handle errors themselves withing the subscription context. Please contact your CX representative if you have further questions.
+Resending within CX was added in version 1.9.0 and replaces the old resending system. We will not be phasing out the current retry system wholesale but we do expect customers to start learning and using the new system to be able to handle errors themselves withing the subscription context. Please contact your CX representative if you have further questions.
 
 ## Overview
 

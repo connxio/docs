@@ -1,8 +1,39 @@
 # ConnXio Changelog
 
-## 1.9.0 (2022-10-03)
+## 1.9.1 (2022-12-06)
 
 > This is the next planned release for ConnXio and is currently under development. This notice will be removed when the features are available in production
+
+#### :rocket: New Features
+
+- `Variable replacement for sender and receiver`
+  - you can now use variable replacement functionality for sender and receiver fields
+  - added *fallback* keyword error pipe to handle fallback on required properties like sender and receiver
+- `Two-factor login`
+  - you can now enable MFA authentication on the user settings page. This is disabled by default. Email is used for code retrieval. App is considered for implementation.
+- `Api-key`
+  - enabled Api Key for management api
+  - work to make Api Keys opt-in has started
+- `Service bus queue adapter`
+  - added new queue adapter type to service bus adapter
+- `Storage queue adapter`
+  - added new queue adapter type to Azure Storage adapter
+- `Table storage adapter`
+  - added new table adapter type to Azure Storage adapter
+
+#### :bug: Bug Fix
+
+- `Hotfix: SFTP retry`
+  - fixed "WinScp not found" error on outbound Sftp adapter for Sftp and Ftp
+
+#### :nail_care: Polish
+
+- `Added new transformation interface to Ack functionality`
+  - Ack functionality now uses the new mapping specification
+- `Added process lock to inbound adapters`
+  - added new option for locking on process for inbound adapters with locking functionality. This affects Azure Storage, Rest and (S)ftp adapters.
+
+## 1.9.0 (2022-11-15)
 
 #### :rocket: New Features
 
@@ -41,3 +72,5 @@
 
 - `Changelog`
   - added changelog 😉
+
+

@@ -47,39 +47,36 @@ When acc is enabled for an adapter the adapter will display an icon like this in
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Ack%20icon%20image.png?sv=2020-08-04&st=2021-11-16T11%3A33%3A15Z&se=2040-11-17T11%3A33%3A00Z&sr=b&sp=r&sig=wre4L15vsKCLNXyHC1xrnH6GMe80RCUNvF4AFeROJsk%3D)
 
-## Ack Code Component code definition
+## Creating Ack code components
+
+Creating an Ack code component is done in more or less the same way as [map code components](/Transformation/Code-Components). The only differences are that an Ack code componenet requires the 'IConnXioAck' interface and that is takes 'bool success' as a parameter.
 
 ```csharp
-    public class Initialize
+    public class Mapper : IConnXioAck
     {
-        /// <summary>
-        /// The method name must be Map but you can add as many files and other methods that you want, and call them inside Map. But you must use this signature and return a string.
-        /// </summary>
-        /// <param name="message">The message content as it is currently. This changes as the engine runs trough different transformations</param>
-        /// <param name="successful">This value is true if the message was delivered successful to its destination by the outbound adapter</param>
-        /// <param name="dataCollection">The data collection properties you have collected earlier in the transformation pipeline</param>
-        /// <param name="userDefinedProperties">The user defined properties that are transferred with the message metadata. Put variables here to access them later outside message content.</param>
-        /// <returns>A string of the transformed message</returns>
-        public string Map(string message, bool successful, Dictionary<string, string> dataCollection, Dictionary<string, string> userDefinedProperties)
+        public TransformationContext Map(TransformationContext transformationContext, bool success)
         {
             //Add error handling as necessary, this will give better error messages in the logs
-            if (message == null)
+            if (transformationContext.Content == null)
                 throw new ArgumentException("Message field is null");
 
             //You can use newtonsoft and other basic nuget packages. Contact the CX team if you need a non supported package.
-            dynamic obj = JsonConvert.DeserializeObject(message);
+            dynamic obj = JsonConvert.DeserializeObject(transformationContext.Content);
 
             //Creating an instance of the ack message to send
             CustomAck ack = new CustomAck
             {
                 Id = obj.Id,
-                SuccessfulDelivery = successful
+                SuccessfulDelivery = success
             };
 
+            //Replace content in the original TransformationContext with the new ack content
+            transformationContext.Content = JsonConvert.SerializeObject(ack);
+
             //Return string representation of the ack
-            return JsonConvert.SerializeObject(ack);
+            return transformationContext;
         }
-    }
+    }    
 
     public class CustomAck
     {

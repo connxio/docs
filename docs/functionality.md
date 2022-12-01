@@ -6,7 +6,13 @@ We categorize functionality in CX by two states; in development and production r
 
 Functionality that is "in development" will be marked with the following warning:
 
-> `This functionality is in development. Read more on the:` [functionality page](/Functionality).
+---
+
+**NOTE**
+
+*This functionality is in development. Read more on the [functionality page](/Functionality).*
+
+---
 
 The warning can mark sub sections of a document or the whole document itself. When a page or section is marked with the above paragraph it is essentially not fully tester and subject to future changes. We do not guarantee that you won't have to make changes to pipelines or systems that make use of the functionality when the development process ends or continues. Essentially you should use features that are "in development" on on critical integrations and facilitate a dialog with the CX team on how this functionality may change.
 

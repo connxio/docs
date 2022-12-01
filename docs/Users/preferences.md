@@ -1,5 +1,12 @@
 # User Preferences
 
+---
+
+**NOTE**
+
+*This functionality is not in production for messaging Api's only for management. More information can be found on the [functionality page](/Functionality).*
+
+---
 
 The user preferences page in the ConnXio Portal allows users to manage their user details, change password and enabling two-factor authentication.
 

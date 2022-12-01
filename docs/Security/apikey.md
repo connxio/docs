@@ -5,7 +5,7 @@
 
 **NOTE**
 
-This functionality is not in production for messaging Api's only for management. More information can be found on the [functionality page](/Functionality).
+*This functionality is not in production for messaging Api's only for management. More information can be found on the [functionality page](/Functionality).*
 
 ---
 

@@ -16,8 +16,6 @@ Administrator and Owners have full access to all subscriptions in the company.
 ## Access rights
 Users with the "User" role can have one of three different access right.
 
-<!-- ![Setting access rights](../images/users/access_right_light.webp#light-only)![Setting access rights](../images/users/access_right_dark.webp#dark-only) -->
-
 - **Read** (Users can view information about Integrations, Code Components and Security Configurations)
 - **Create or update** (Users can create and update Integrations, Code Components and Security Configurations)
 - **Delete** (Users can delete Integrations, Code Components and Security Configurations)
@@ -25,7 +23,7 @@ Users with the "User" role can have one of three different access right.
 ## Inviting users
 To invite more users into a subscription, you'll need to have the **Administrator** or **Owner** role. On the Users page, click **Invite users** and invite users by inputting their email address.
 
-![Inviting users](../images/users/invite_light.webp#light-only)![Inviting users](../images/users/invite_dark.webp#dark-only)
+![Inviting users](https://cmhpictsa.blob.core.windows.net/pictures/invite_light.webp?sv=2021-04-10&st=2022-12-01T10%3A22%3A19Z&se=2099-12-02T10%3A22%3A00Z&sr=b&sp=r&sig=B%2BGMnouMGOkcybcnvu7c8ooads74U9WGo6bJGYhDcm0%3D#light-only)![Inviting users](https://cmhpictsa.blob.core.windows.net/pictures/invite_dark.webp?sv=2021-04-10&st=2022-12-01T10%3A21%3A47Z&se=2099-12-02T10%3A21%3A00Z&sr=b&sp=r&sig=F%2FRyfMCBBEbGgTkK5IIDcvDFDPn0XOom5MxhY7fKf7Q%3D#dark-only)
 
 After sending an invite, the user will receive an email detailing how to create their user account.
 

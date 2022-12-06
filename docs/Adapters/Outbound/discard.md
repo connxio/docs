@@ -1,6 +1,4 @@
-# Outbound Discard Adapter
-
-`This functionality is not in production. More information can be found on the` [functionality page](/Functionality)
+# Discard Adapter
 
 ConnXio (CX) lets customers send messages from the CX and discard them for testing purposes. This is great tool for debugging and logging your messages as they get processed by the CX pipeline.
 

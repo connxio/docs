@@ -1,7 +1,13 @@
 
 # Api Keys
 
-`This functionality is not in production for messaging Api's only for management. More information can be found on the` [functionality page](/Functionality)
+---
+
+**NOTE**
+
+*This functionality is not in production for messaging Api's only for management. More information can be found on the [functionality page](/Functionality).*
+
+---
 
 To better secure the communication with ConnXio (CX) Api's we have created a security mechanism we call *Api Keys*. By using Api Keys to secure RestFul communication you can put limitations on what actions are allowed within the key scope which facilitates a narrower security model. We also offer lifecycle management for keys which lets you throw away keys that may have been compromised or dole out keys to your partners which can be revoked in the future.
 

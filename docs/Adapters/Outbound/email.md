@@ -1,7 +1,5 @@
 # Email Outbound Adapter
 
-`This functionality is not in production. More information can be found on the` [functionality page](/Functionality)
-
 ConnXio (CX) lets customers send messages from the CX pipeline by configuring connections to email accounts. We currently support the SMTP protocol. This page details limitations of said protocol and how to configure and connect to an email account.
 
 ## Limitations

@@ -14,13 +14,14 @@
 
 #### :bug: Bug Fix
 
-- `Hotfix: SFTP retry`
-  - fixed "WinScp not found" error on outbound Sftp adapter for Sftp and Ftp
+- Nothing yet ;)
 
 #### :nail_care: Polish
 
 - `Added process lock to inbound adapters`
   - added new option for locking on process for inbound adapters with locking functionality. This affects Azure Storage, Rest and (S)ftp adapters.
+- `Added filepath to metadata for (S)FTP`
+  - The filepath field contains the full path including the filename to the file
 
 ## 1.9.1 (2022-12-06)
 

@@ -53,7 +53,7 @@ Carousel is used when you need to to simulate [high level orchestration](/Core-C
 
 ## Advanced error handling
 
-BILDE! :D 
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Outbound%20Rest%20advenced%20errror%20handling%20double.png?sv=2021-04-10&st=2022-12-08T11%3A46%3A10Z&se=2040-12-09T11%3A46%3A00Z&sr=b&sp=r&sig=Bc8cG%2BrooYdptjDPSnhfCaUPDb0wjkjnyUtIW9TPsXU%3D)
 
 By default, all failed REST requests will be retried according to the [retry](#retry) pattern. If the request is still not successful, the transaction will be logged as an error and terminated. Advanced error handling allows you to create rules for handling specific unsuccessful status codes beyond the standard pattern.
 
@@ -66,17 +66,13 @@ By default, all failed REST requests will be retried according to the [retry](#r
 
 ### Fallback
 
-<!-- ![img](https://cmhpictsa.blob.core.windows.net/pictures/Rest_Outbound_Fallback.png?sv=2020-10-02&st=2022-02-03T07%3A37%3A07Z&se=2040-02-04T07%3A37%3A00Z&sr=b&sp=r&sig=1XXg8zjmjhFEypu6%2FFKaTefB%2BGpQWd0UPZKbnBY2kKs%3D) -->
-
-ET BILDE AV FALBACK CONFING?
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Rest%20Outbound%20Advanced%20error%20handling.png?sv=2021-04-10&st=2022-12-08T11%3A42%3A49Z&se=2040-12-09T11%3A42%3A00Z&sr=b&sp=r&sig=UXcrFw0pGpcdZjQDiWPIH%2FUSQVnuLll0x5QeBeFaW4Y%3D)
 
 Fallback lets you react to errors by handling errors with external services or logging. By enabling this functionality you specify an endpoint that can be used to react to events, terminate the process or retry it through a backup endpoint. The message will be completed and logged as successfully if the endpoint return a success 2xx status code. If a non success status code is returned the message will be retried as described in the [retry](#retry) section.
 
-An example of how this functionality can be useful is to configure a fallback endpoint thats in another region or on another platform that can process requests when the main service is down. Another example could be an endpoint that puts messages back into a queue or backup pipeline that holds the message for future processing. The examples are more or less endless and fallback should be used for most critical RESTful endpoint.
+An example of how this functionality can be useful is to configure a fallback endpoint thats in another region or on another platform that can process requests when the main service is down. Another example could be an endpoint that puts messages back into a queue or backup pipeline that holds the message for future processing. The examples are more or less endless and fallback could be used for most critical RESTful endpoint.
 
 ### Retry
-
-*Rest outbound uses [linear retry](/Retry), we are looking into switching to backoff retry, but this is not implemented yet.*
 
 When handling RESTful communication a set of status codes are defined. We handle the ones in the list below. Be aware that all status codes not handles here defaults to no retry unless [fallback](#fallback) is set. All retry is handled as linear retry with endpoint retry or with endpoint retry only, read more about retry on the [Retry page](/Retry).
 
@@ -102,3 +98,65 @@ We also have special handling on some network issues. You might see references i
 | SocketException | Describes issues the established connection, usually happens when connections close unexpectedly because of timeouts on the endpoint side. | **Uses linear retry only**.  | If retry fails please review error logs from your logging provider and make changes as necessary. Turning off message intake might be a good idea *if possible* to stop error spam if retry has not handled the error. |
 | SocketException | Describes issues the established connection, usually happens when connections close unexpectedly because of timeouts on the endpoint side. | **Uses linear retry only**.  | If retry fails please review error logs from your logging provider and make changes as necessary. Turning off message intake might be a good idea *if possible* to stop error spam if retry has not handled the error. |
 | IOException | Describes issues related to http communication that does not fit a narrower category. | **Uses linear retry only**.  | If retry fails please review error logs from your logging provider and make changes as necessary. Turning off message intake might be a good idea *if possible* to stop error spam if retry has not handled the error. |
+
+## Receive content as bytes
+
+When using the "Handle File As Binary" option you have to receive the payload as an `application/octet-stream` as CX sends the content as bytes. The whole body of the request is your content as usual for CX payloads.
+
+The easiest way to receive bytes as body in a C# API is to receive the body directly. Below is an example of this method:
+
+```csharp
+    [HttpPost]
+    public async Task<IActionResult> Post()
+    {
+        byte[] contentBytes;
+
+        using (var memoryStream = new MemoryStream())
+        {
+            await Request.Body.CopyToAsync(memoryStream);
+            contentBytes = memoryStream.ToArray();
+        }
+
+        // Do something
+        return Ok("foo bar");
+    }
+```
+
+Note that this method requires you to not receive anything in the controller method.
+
+The other option is to create your own InputFormatter, this tells the model-binder how to handle binary content and receives it as a `byte[]` directly. Below is an example of the InputFormatter in question:
+
+```csharp
+    public class BinaryInputFormatter : InputFormatter
+    {
+        const string binaryContentType = "application/octet-stream";
+        const int bufferLength = 16384;
+
+        public BinaryInputFormatter()
+        {
+            SupportedMediaTypes.Add(MediaTypeHeaderValue.Parse(binaryContentType));
+        }
+
+        public async override Task<InputFormatterResult> ReadRequestBodyAsync(InputFormatterContext context)
+        {
+            using (MemoryStream ms = new MemoryStream(bufferLength))
+            {
+                await context.HttpContext.Request.Body.CopyToAsync(ms);
+                object result = ms.ToArray();
+                return await InputFormatterResult.SuccessAsync(result);
+            }
+        }
+
+        protected override bool CanReadType(Type type)
+        {
+            if (type == typeof(byte[]))
+                return true;
+            else
+                return false;
+        }
+    }
+```
+
+Add the formatter to your startup. For .net core this is done in the `AddMvc` method, this may vary for other .net frameworks.
+
+When the InputFormatter is added you simply receive the content as `byte[]` in your controller.

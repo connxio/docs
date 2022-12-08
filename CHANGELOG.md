@@ -6,11 +6,10 @@
 
 #### :rocket: New Features
 
-- `Api-key`
-  - enabled Api Key for management api
-  - work to make Api Keys opt-in has started
 - `Table storage adapter`
   - added new table adapter type to Azure Storage adapter
+- `Global variables`
+  - many of you have requested global variables to enable switching between environments without having to hold the variables outside CX. This new functionality adds a new menu option called Global Variables.
 
 #### :bug: Bug Fix
 
@@ -23,10 +22,27 @@
 - `Added filepath to metadata for (S)FTP`
   - The filepath field contains the full path including the filename to the file
 
+### :sparkles: Under Development
+
+> This section details customer facing tasks we are currently working on. These are primarily long running tasks which will not be coming in the next release but are planned for future releases and is mostly meant as a way to keep track of what is currently high priority. There are no guarantee that the functionality ever reaches production.
+
+- `New Inbound engine`
+  - Work has started on a totally new architecture for the Inbound CX Engine which handles all inbound adapters. This new architecture will add performance, continuous fetch from Queues and cron expressions for polling adapters.
+  - The new architecture uses Microsoft Orleans and adds both separation and scaling beyond what was possible in the old engine.
+  - The IP's for CX will change when the new engine is deployed. We will be sending e-mails and warning way in advance for all affected customers.
+- `New Mapping Engine`
+  - Mapping is being moved into a new engine. This will add better security and lets us manage mappings in a more streamlined way.
+- `New queue handling between engines`
+  - All engines including Transformation, Splitting, Logging and Batching are being upgraded to .net 6 and are being rewritten to use a new mode of transport between engines.
+  - This enabled better performance and a more robust engine.
+
 ## 1.9.1 (2022-12-06)
 
 #### :rocket: New Features
 
+- `Api-key (Hotfix: 08.12.22)`
+  - enabled Api Key for management api
+  - work to make Api Keys opt-in has started
 - `Variable replacement for sender and receiver`
   - you can now use variable replacement functionality for sender and receiver fields
   - added *fallback* keyword error pipe to handle fallback on required properties like sender and receiver
@@ -39,8 +55,12 @@
 
 #### :bug: Bug Fix
 
-- `Hotfix: SFTP retry`
+- `Hotfix (30.11.22): SFTP retry`
   - fixed "WinScp not found" error on outbound Sftp adapter for Sftp and Ftp
+- `Hotfix (08.12.22): Fixed API not accepting query requests`
+  - Api did not accept request after deployment. This was caused by a mismatch of model packages withing the NuGet tree.
+- `Hotfix (08.12.22): Fixed outbound REST not adding headers on binary file`
+  - Api did not add headers when "Handle As Binary File" was checked for integration. Also added the "application/octet-stream" header when sending as binary.
 
 #### :nail_care: Polish
 

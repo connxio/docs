@@ -74,7 +74,7 @@ An example of how this functionality can be useful is to configure a fallback en
 
 ### Retry
 
-When handling RESTful communication a set of status codes are defined. We handle the ones in the list below. Be aware that all status codes not handles here defaults to no retry unless [fallback](#fallback) is set. All retry is handled as linear retry with endpoint retry or with endpoint retry only, read more about retry on the [Retry page](/Retry).
+When handling RESTful communication a set of status codes are defined. We handle the ones in the list below. Be aware that all status codes not handles here defaults to no retry unless [fallback](#fallback) is set. All retry is handled as backoff retry with endpoint retry or with endpoint retry only, read more about retry on the [Retry page](/Retry).
 
 | Status Code | Description | Retry Action |
 |---|---|---|
@@ -83,9 +83,9 @@ When handling RESTful communication a set of status codes are defined. We handle
 | 408 | Request Timeout | Is retried with endpoint retry only |
 | 409 | Conflict | Is not retried. There are conflicts in the current state, this is not expected to change on retry. |
 | 429 | Too Many Requests | Is retried with endpoint retry only |
-| 500 | Internal Server Error | Is retried with both linear and endpoint retry. We have chosen to include 500 in retry as this is the default code for unhandled exceptions, and since this is the most common code received on connection issues inside external endpoints. |
-| 502 | Bad Gateway | Is retried with both linear and endpoint retry |
-| 503 | Service Unavailable | Is retried with both linear and endpoint retry |
+| 500 | Internal Server Error | Is retried with both backoff and endpoint retry. We have chosen to include 500 in retry as this is the default code for unhandled exceptions, and since this is the most common code received on connection issues inside external endpoints. |
+| 502 | Bad Gateway | Is retried with both backoff and endpoint retry |
+| 503 | Service Unavailable | Is retried with both backoff and endpoint retry |
 | 504 | Gateway Timeout | Is retried with endpoint retry only |
 
 We also have special handling on some network issues. You might see references in error logs to the exception type as described below. This list does not describe all actions taken to ensure message delivery stability but describes the errors usually seen by customers:
@@ -93,11 +93,11 @@ We also have special handling on some network issues. You might see references i
 | Network Issue | Description | Retry Action | Customer Action |
 |---|---|---|---|
 | AuthenticationException | Describes issues with SSL certificates and other formal security issues | **Is not retried** since fault correction requires formal changes to authentication. | Please check you ssl certificates or other endpoint security and verify that everything is valid. Turning off message intake might be a good idea to stop error spam. |
-| HttpRequestException | Describes issues with underlying protocols and network infrastructure. | Is retried linear since the issue is usually transient. AuthenticationException is a subset of this issue and handled separately. | If retry fails please review logs from your logging provider and make changes as necessary. Turning off message intake might be a good idea *if possible* to stop error spam. |
-| TaskCanceledException | Describes issues with external endpoint taking too long to respond and CX closing the connection. | **Uses linear retry only**. Retrying canceled requests can be dangerous if the receiving endpoint is not idempotent. Please contact us if you have problems with these kinds of issues and have a non idempotent endpoint. | If retry fails please review error logs from your logging provider and make changes as necessary. Be aware that the message could be delivered multiple times when the task is canceled and check your receiving database for duplicates. Turning off message intake might be a good idea *if possible* to stop error spam if retry has not handled the error. |
-| SocketException | Describes issues the established connection, usually happens when connections close unexpectedly because of timeouts on the endpoint side. | **Uses linear retry only**.  | If retry fails please review error logs from your logging provider and make changes as necessary. Turning off message intake might be a good idea *if possible* to stop error spam if retry has not handled the error. |
-| SocketException | Describes issues the established connection, usually happens when connections close unexpectedly because of timeouts on the endpoint side. | **Uses linear retry only**.  | If retry fails please review error logs from your logging provider and make changes as necessary. Turning off message intake might be a good idea *if possible* to stop error spam if retry has not handled the error. |
-| IOException | Describes issues related to http communication that does not fit a narrower category. | **Uses linear retry only**.  | If retry fails please review error logs from your logging provider and make changes as necessary. Turning off message intake might be a good idea *if possible* to stop error spam if retry has not handled the error. |
+| HttpRequestException | Describes issues with underlying protocols and network infrastructure. | Is retried with backoff since the issue is usually transient. AuthenticationException is a subset of this issue and handled separately. | If retry fails please review logs from your logging provider and make changes as necessary. Turning off message intake might be a good idea *if possible* to stop error spam. |
+| TaskCanceledException | Describes issues with external endpoint taking too long to respond and CX closing the connection. | **Uses backoff retry only**. Retrying canceled requests can be dangerous if the receiving endpoint is not idempotent. Please contact us if you have problems with these kinds of issues and have a non idempotent endpoint. | If retry fails please review error logs from your logging provider and make changes as necessary. Be aware that the message could be delivered multiple times when the task is canceled and check your receiving database for duplicates. Turning off message intake might be a good idea *if possible* to stop error spam if retry has not handled the error. |
+| SocketException | Describes issues the established connection, usually happens when connections close unexpectedly because of timeouts on the endpoint side. | **Uses backoff retry only**.  | If retry fails please review error logs from your logging provider and make changes as necessary. Turning off message intake might be a good idea *if possible* to stop error spam if retry has not handled the error. |
+| SocketException | Describes issues the established connection, usually happens when connections close unexpectedly because of timeouts on the endpoint side. | **Uses backoff retry only**.  | If retry fails please review error logs from your logging provider and make changes as necessary. Turning off message intake might be a good idea *if possible* to stop error spam if retry has not handled the error. |
+| IOException | Describes issues related to http communication that does not fit a narrower category. | **Uses backoff retry only**.  | If retry fails please review error logs from your logging provider and make changes as necessary. Turning off message intake might be a good idea *if possible* to stop error spam if retry has not handled the error. |
 
 ## Receive content as bytes
 

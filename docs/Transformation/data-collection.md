@@ -49,7 +49,7 @@ Add the necessary fields to your data collection. See below for an example:
 
 ## Retry
 
-Data collection is currently using the linear retry described on the [Retry](/retry) page. This may change in the future as we are looking into enabling back-off retry.
+Data collection is currently using the backoff retry described on the [Retry](/retry) page.
 
 ## Advanced error handling
 

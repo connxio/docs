@@ -8,8 +8,8 @@
 
 - `Table storage adapter`
   - added new table adapter type to Azure Storage adapter
-- `Global variables`
-  - many of you have requested global variables to enable switching between environments without having to hold the variables outside CX. This new functionality adds a new menu option called Global Variables.
+- `Environment variables`
+  - many of you have requested environment variables to enable switching between environments without having to hold the variables outside CX. This new functionality adds a new menu option called Environment Variables.
 
 #### :bug: Bug Fix
 

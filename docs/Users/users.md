@@ -27,7 +27,11 @@ To invite more users into a subscription, you'll need to have the **Administrato
 
 After sending an invite, the user will receive an email detailing how to create their user account.
 
-> **_NOTE:_** If the invitation email is blank in Microsoft Outlook, try opening the email in the [Outlook web client](https://outlook.office.com/mail/).
+:::info
+
+If the invitation email is blank in Microsoft Outlook, try opening the email in the [Outlook web client](https://outlook.office.com/mail/).
+
+:::
 
 ## User deletion
 To delete a user, a support request must be sent to [support@connxio.no](mailto:support@connxio.no).

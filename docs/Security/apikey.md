@@ -1,7 +1,7 @@
 
 # Api Keys
 
-:::caution
+:::caution in development
 
 Currently, only API Keys for the management API is in production. API Keys for the messaging API will be enabled at a later date. More information can be found on the [functionality page](/Functionality).
 

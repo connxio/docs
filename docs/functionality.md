@@ -6,7 +6,7 @@ We categorize functionality in CX by two states; in development and production r
 
 Functionality that is "in development" will be marked with the following warning:
 
-:::caution
+:::caution in development
 
 This functionality is in development. Read more on the [functionality page](/Functionality).
 

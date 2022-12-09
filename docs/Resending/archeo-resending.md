@@ -44,7 +44,7 @@ This concludes the description and tutorial for stateless resending. To summariz
 
 ## Stateful resending
 
-:::caution
+:::caution in development
 
 This functionality is in development. Read more on the [functionality page](/Functionality).
 

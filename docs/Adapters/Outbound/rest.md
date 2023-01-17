@@ -34,7 +34,7 @@ A new window pops up. Add data as seen below:
 
 CX will add an `InterchangeId` header to the outgoing request to facilitate for continued transactional logging on the receiver side.
 
-If you need to receive the InterchangeId by other means we recommend either including it in the message by using [transformations](/Transformation/Code-Components) or adding the InterchangeId as a query parameter with [Variable Replacement](/Transformation/Variable-Replacement).
+If you need to receive the InterchangeId by other means we recommend either including it in the message by using [transformations](/Transformation/Code-Components) or adding the InterchangeId as a query parameter with [Variable Replacement](/Variables/Variable-Replacement).
 
 > E.g.: `http://www.myapi.com?InterchangeId={interchange}`
 

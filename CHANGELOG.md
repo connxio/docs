@@ -1,6 +1,6 @@
 # ConnXio Changelog
 
-## 1.9.2 (2023-01-30)
+## 1.9.2 (2023-01-17)
 
 > This is the next planned release for ConnXio and is currently under development. This notice will be removed when the features are available in production
 

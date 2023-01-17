@@ -20,7 +20,7 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 - **Storage type**: Select storage type to use.
 - **Connection String Security Configuration**: Reference to the [Security Configuration](/Security/Security-Configurations) that contains the relevant connection properties.
 - **Container Name**: The name of the container. This container must exist before CX start picking messages. We will not create it for you.
-- **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/Transformation/Variable-Replacement) page.
+- **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/Variables/Variable-Replacement) page.
 - **Send Acknowledgement**: Is explained [here](/Adapters/Outbound/Acknowledgment).
 - **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'

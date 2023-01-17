@@ -1,6 +1,6 @@
 # Data Collection
 
-ConnXio (CX) supports various forms of [orchestration](/Core-Concepts) most prominent among them is enrichment and this is fueled by *data collection*. Data collection refers to the act of getting data over HTTP as a transformations tep. This enables customers to collect data from all resources that support HTTP and use them within transformations, [variable replacements](/Transformation/Variable-Replacement) and url generation. This page describes how to use and configure data collection.
+ConnXio (CX) supports various forms of [orchestration](/Core-Concepts) most prominent among them is enrichment and this is fueled by *data collection*. Data collection refers to the act of getting data over HTTP as a transformations tep. This enables customers to collect data from all resources that support HTTP and use them within transformations, [variable replacements](/Variables/Variable-Replacement) and url generation. This page describes how to use and configure data collection.
 
 ## Limitations and External demands
 
@@ -39,11 +39,11 @@ Add the necessary fields to your data collection. See below for an example:
 - **Method**: The verb to use for HTTP communication.
 - **Rest Url**: The endpoint to get the data from. This could be an API, data store or similar REST service.
 - **Security Configuration**: Select your security configuration from the list. See [here](/Security/Security-Configurations) for more information.
-- **Variable name**: The name used for the variable through CX. USe this name if you want to target the variable in a [code component](/Transformation/Code-Components) or [variable replacement](/Transformation/Variable-Replacement).
+- **Variable name**: The name used for the variable through CX. USe this name if you want to target the variable in a [code component](/Transformation/Code-Components) or [variable replacement](/Variables/Variable-Replacement).
 - **Use Content As Request Body**: The current version of the content at the time of the data collection is sent to the collection endpoint as the body of the request. Default value is empty body.
 - **Use Response As Content**: The current content is replaced by the body returned by the data collection endpoint, this happens regardless of what is returned.
 - **Headers**: Add any custom header you might need. This can include custom Authorization if needed.
-- **Current Message Content Type**: The current content type of the message. Use this only if the content type of the message at this stage is different from the message format defined for the configuration. Used for [variable replacement](/Transformation/Variable-Replacement) only.
+- **Current Message Content Type**: The current content type of the message. Use this only if the content type of the message at this stage is different from the message format defined for the configuration. Used for [variable replacement](/Variables/Variable-Replacement) only.
 - **Continue on 404**: Turning this on means the data collection will continue if it cant find the resource its looking for. Be careful since this might make other transformations like code components fail.
 - **Stop on empty**: Stops if data is empty and [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) is positive.
 

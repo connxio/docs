@@ -1,6 +1,6 @@
 # ConnXio Changelog
 
-## 1.9.2 (2023-01-17)
+## 1.9.3 (2023-02-14)
 
 > This is the next planned release for ConnXio and is currently under development. This notice will be removed when the features are available in production
 
@@ -8,8 +8,6 @@
 
 - `Table storage adapter`
   - added new table adapter type to Azure Storage adapter
-- `Environment variables`
-  - many of you have requested environment variables to enable switching between environments without having to hold the variables outside CX. This new functionality adds a new menu option called Environment Variables.
 
 #### :bug: Bug Fix
 
@@ -17,10 +15,8 @@
 
 #### :nail_care: Polish
 
-- `Added process lock to inbound adapters`
+- `Added delta and paging to Rest inbound adapter`
   - added new option for locking on process for inbound adapters with locking functionality. This affects Azure Storage, Rest and (S)ftp adapters.
-- `Added filepath to metadata for (S)FTP`
-  - The filepath field contains the full path including the filename to the file
 
 ### :sparkles: Under Development
 
@@ -35,6 +31,24 @@
 - `New queue handling between engines`
   - All engines including Transformation, Splitting, Logging and Batching are being upgraded to .net 6 and are being rewritten to use a new mode of transport between engines.
   - This enabled better performance and a more robust engine.
+
+## 1.9.2 (2023-01-17)
+
+#### :rocket: New Features
+
+- `Environment variables`
+  - many of you have requested environment variables to enable switching between environments without having to hold the variables outside CX. This new functionality adds a new menu option called Environment Variables.
+
+#### :bug: Bug Fix
+
+- Nothing yet ;)
+
+#### :nail_care: Polish
+
+- `Added process lock to inbound adapters`
+  - added new option for locking on process for inbound adapters with locking functionality. This affects Azure Storage, Rest and (S)ftp adapters.
+- `Added filepath to metadata for (S)FTP`
+  - The filepath field contains the full path including the filename to the file
 
 ## 1.9.1 (2022-12-06)
 

@@ -29,7 +29,7 @@ After sending an invite, the user will receive an email detailing how to create 
 
 :::info
 
-If the invitation email is blank in Microsoft Outlook, try opening the email in the [Outlook web client](https://outlook.office.com/mail/).
+If the user already has a ConnXio account, they will instead receive an email telling them to log in to their account to review the invitation.
 
 :::
 

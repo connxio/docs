@@ -41,7 +41,12 @@
 
 #### :bug: Bug Fix
 
-- Nothing yet ;)
+- `HotFix (23.01.23):Fixed management API not returning tuned off integrations`
+  - management api was throwing 400 on non enabled integrations from get endpoint. Fixed to return all integrations
+- `HotFix (23.01.23):Fixed management API not returning non api integrations`
+  - management api was throwing 400 on non api and event-grid integrations. Fixed to return all integrations
+- `HotFix (23.01.23):Fixed management API translating env vars`
+  - management api was translating environment variables when it should be returning the non translated value.
 
 #### :nail_care: Polish
 

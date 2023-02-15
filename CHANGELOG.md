@@ -1,6 +1,6 @@
 # ConnXio Changelog
 
-## 1.9.3 (2023-02-14)
+## 1.9.3 (2023-02-21)
 
 > This is the next planned release for ConnXio and is currently under development. This notice will be removed when the features are available in production
 
@@ -8,10 +8,12 @@
 
 - `Table storage adapter`
   - added new table adapter type to Azure Storage adapter
+- `Queue storage adapter`
+  - added new queue adapter type to Azure Storage adapter
 
 #### :bug: Bug Fix
 
-- Nothing yet ;)
+- Added timeout to process lock (15 min)
 
 #### :nail_care: Polish
 

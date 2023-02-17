@@ -17,7 +17,7 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Azure%20storage%20inbound%20config.png?sv=2020-08-04&st=2022-01-11T09%3A41%3A50Z&se=2040-01-12T09%3A41%3A00Z&sr=b&sp=r&sig=z9%2BSZHX%2FJBl4eTScIlSkg3mxnlPEVwXIKIHehVv0hYs%3D)
 
 - **Polling Interval**: Dictates when files are picked from the Azure Storage account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
-- **Storage type**: Select storage type to use.
+- **Storage type**: Select storage type to use. Types include: Blob, File, Queue and Table.
 - **Connection String Security Configuration**: Reference to the [Security Configuration](/Security/Security-Configurations) that contains the relevant connection properties.
 - **Container Name**: The name of the container. This container must exist before CX start picking messages. We will not create it for you.
 - **Directory**: Specifies which directory CX should target for file pickup. If this is kept blank the root directory is used (Azure Storage *File Share* only).

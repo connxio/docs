@@ -17,7 +17,7 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Azure%20storage%20outbound%20config.png?sv=2020-08-04&st=2022-05-02T11%3A58%3A37Z&se=2040-05-03T11%3A58%3A00Z&sr=b&sp=r&sig=%2BtYKjaHUTO2l6eaV4h%2BnMnhTTZrplJu2A5JyqM9NjHM%3D)
 
 - **Adapter Name**: The logical name of the adapter. This is shown in the configuration view on close.
-- **Storage type**: Select storage type to use.
+- **Storage type**: Select storage type to use. Types include: Blob, File, Queue and Table.
 - **Connection String Security Configuration**: Reference to the [Security Configuration](/Security/Security-Configurations) that contains the relevant connection properties.
 - **Container Name**: The name of the container. This container must exist before CX start picking messages. We will not create it for you.
 - **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/Variables/Variable-Replacement) page.

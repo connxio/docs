@@ -27,7 +27,7 @@ A new window pops up. Add data as seen below:
 - **Pagination**: By using pagination, ConnXio will scan the response of the API request for the Pathname/Propname you provided. 
 You have two options to choose from:
 * NextLink: The URI will either be replaced by the value to the pathname property, or the value will be appended to the URI. 
-ConnXio will keep making API requests until maxpages(number of requests) reach 50, or the pathname/propname doesn't contain a valid URI.
+ConnXio will keep making API requests until the pathname/propname value doesn't contain a valid URI.
 * ContinuationToken: By using the variable [continuationToken] in either the URI, body or header-value - the variable will be replaced
 by the value to the pathname/propname received from the API-response. ConnXio will keep making API requests until the continuationtoken is empty 
 or maxpages(number of requests) reach 50.

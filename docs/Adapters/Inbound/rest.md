@@ -28,3 +28,17 @@ A new window pops up. Add data as seen below:
 ## Retry
 
 Since CX reaches out and picks up files when using the Rest inbound adapter, retry is handled by the CX framework. If a fault happens when the polling interval hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, CX will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however since CX cant be sure the message is possible to requeue on the external message. The message will then be sent to catastrophic retry as described in the [Retry Page](/Retry).
+
+## Pagination
+By using pagination, ConnXio will scan the response of the API request for the Pathname/Propname you provided. 
+You have two options to choose from:
+- **NextLink**: The URI will either be replaced by the value to the pathname property, or the value will be appended to the URI. 
+ConnXio will keep making API requests until maxpages(number of requests) reach 50, or the pathname/propname doesn't contain a valid URI.
+- **ContinuationToken**: By using the variable [continuationToken] in either the URI, body or header-value - the variable will be replaced
+by the value to the pathname/propname received from the API-response. ConnXio will keep making API requests until the continuationtoken is empty 
+or maxpages(number of requests) reach 50.
+
+## DateDelta
+Makes requests to the API, using a date variable - {date.UseDateTimeDelta} which will work as a starting/from date. The Polling interval will determine the difference in time, until the next run where the from-date will be set to datetime now.
+This variable can be used in the URI, body or header-value.
+Example of variable used in URI: http://example.com/api/getStuff?FromDate={date.UseDateTimeDelta(1980-01-01T08:00:00.00).SetCstZone(Central Europe Standard Time) | date: dd.MM.yyyy HH.mm.ss | error: fallback 2023-02-02T08:00:00.00}&ToDate={date.SetCstZone(Central Europe Standard Time)}

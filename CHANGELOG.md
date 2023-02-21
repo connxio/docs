@@ -13,7 +13,10 @@
 
 #### :bug: Bug Fix
 
-- Added timeout to process lock (15 min)
+- `Timeout on process lock`
+  - Added timeout to process lock (15 min)
+- `Performance logging fix`
+  - Removed specific information from one log in inbound that caused massive storage issues on metrics
 
 #### :nail_care: Polish
 

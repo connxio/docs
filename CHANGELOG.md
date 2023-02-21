@@ -10,6 +10,8 @@
   - added new table adapter type to Azure Storage adapter
 - `Queue storage adapter`
   - added new queue adapter type to Azure Storage adapter
+- `Auto complete on variable injection`
+  - the UI for integrations will help users add Variable Replacement with an autocomplete drop-down
 
 #### :bug: Bug Fix
 

@@ -1,6 +1,6 @@
 # ConnXio Changelog
 
-## 2.0.0 (Q1 2024)
+## 2.0.0 (2024-03-01)
 
 #### :rocket: New Features
 

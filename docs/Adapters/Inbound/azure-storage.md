@@ -14,7 +14,7 @@ To configure CX to start picking your messages select the Azure Storage option i
 
 A new window pops up, we will be using *blob* communication as an example. Add data as seen below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Azure%20storage%20inbound%20config.png?sv=2020-08-04&st=2022-01-11T09%3A41%3A50Z&se=2040-01-12T09%3A41%3A00Z&sr=b&sp=r&sig=z9%2BSZHX%2FJBl4eTScIlSkg3mxnlPEVwXIKIHehVv0hYs%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/Azure%20storage%20inbound%20config.jpeg?sv=2021-10-04&st=2023-02-22T12%3A21%3A24Z&se=2040-02-23T12%3A21%3A00Z&sr=b&sp=r&sig=qmSHo%2BJIFxhSMe%2FFjuUBoeIMc9lWch8G9THZsFKkVfg%3D)
 
 - **Polling Interval**: Dictates when files are picked from the Azure Storage account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
 - **Storage type**: Select storage type to use. Types include: Blob, File, Queue and Table.
@@ -25,6 +25,11 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 - **File Pick Limit**: The amount of files to pick per run of the engine. If polling interval is set to 1 minute and this variable is set to 1 message, CX will pick 1 message per minute. This variable is primarily used to slow down message processing to not kill receiving services.
 - **File Pick Sort Type**: Changed the way files are sorted when **File Pick Limit** is used. Has no effect without **File Pick Limit**.
 - **Ignore Inbound MetaData**: If enabled, the adapter will ignore all blob related metadata, such as interchangeId.
+- **Regex Filter:** An inclusive regex filter that lets you pick only the messages matching the supplied regex. We use the standard C# regex syntax.
+
+## Data Lake
+
+CX supports data lake for Azure Storage Blob. We flatten the folder architecture and get all files on the file system. No changes are needed for your configuration when using data lake functionality.
 
 ## Leasing
 

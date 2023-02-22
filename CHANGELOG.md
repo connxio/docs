@@ -15,6 +15,8 @@
 - `New queue handling between engines`
   - All engines including Transformation, Splitting, Logging and Batching are being upgraded to .net 6 and are being rewritten to use a new mode of transport between engines.
   - This enabled better performance and a more robust engine.
+- `Blue green architecture`
+  - ConnXio is being moved into a new environment and will be running a blue green architecture pattern. This will give you a smoother deployment experience and a far more robust and performant product.
 
 ## 1.9.3 (2023-02-21)
 

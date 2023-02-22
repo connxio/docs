@@ -1,5 +1,21 @@
 # ConnXio Changelog
 
+## 2.0.0 (Q1 2024)
+
+#### :rocket: New Features
+
+> These are upcoming changes that will go into production in early 2024. More details will be added to the changelog continuously until release.
+
+- `New Inbound engine`
+  - Work has started on a totally new architecture for the Inbound CX Engine which handles all inbound adapters. This new architecture will add performance, continuous fetch from Queues and cron expressions for polling adapters.
+  - The new architecture uses Microsoft Orleans and adds both separation and scaling beyond what was possible in the old engine.
+  - The IP's for CX will change when the new engine is deployed. We will be sending e-mails and warning way in advance for all affected customers.
+- `New Mapping Engine`
+  - Mapping is being moved into a new engine. This will add better security and lets us manage mappings in a more streamlined way.
+- `New queue handling between engines`
+  - All engines including Transformation, Splitting, Logging and Batching are being upgraded to .net 6 and are being rewritten to use a new mode of transport between engines.
+  - This enabled better performance and a more robust engine.
+
 ## 1.9.3 (2023-02-21)
 
 #### :rocket: New Features
@@ -25,20 +41,6 @@
 
 - `Added delta and paging to Rest inbound adapter`
   - added new functionality that lets you specify start time for delta time on getting data from external endpoint. Also added paging in the form of continuation token and top skip.
-
-### :sparkles: Under Development
-
-> This section details customer facing tasks we are currently working on. These are primarily long running tasks which will not be coming in the next release but are planned for future releases and is mostly meant as a way to keep track of what is currently high priority. There are no guarantee that the functionality ever reaches production.
-
-- `New Inbound engine`
-  - Work has started on a totally new architecture for the Inbound CX Engine which handles all inbound adapters. This new architecture will add performance, continuous fetch from Queues and cron expressions for polling adapters.
-  - The new architecture uses Microsoft Orleans and adds both separation and scaling beyond what was possible in the old engine.
-  - The IP's for CX will change when the new engine is deployed. We will be sending e-mails and warning way in advance for all affected customers.
-- `New Mapping Engine`
-  - Mapping is being moved into a new engine. This will add better security and lets us manage mappings in a more streamlined way.
-- `New queue handling between engines`
-  - All engines including Transformation, Splitting, Logging and Batching are being upgraded to .net 6 and are being rewritten to use a new mode of transport between engines.
-  - This enabled better performance and a more robust engine.
 
 ## 1.9.2 (2023-01-17)
 

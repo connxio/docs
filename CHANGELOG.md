@@ -2,16 +2,17 @@
 
 ## 1.9.3 (2023-02-21)
 
-> This is the next planned release for ConnXio and is currently under development. This notice will be removed when the features are available in production
-
 #### :rocket: New Features
 
 - `Table storage adapter`
-  - added new table adapter type to Azure Storage adapter
+  - Added new table adapter type to Azure Storage adapter
 - `Queue storage adapter`
-  - added new queue adapter type to Azure Storage adapter
+  - Added new queue adapter type to Azure Storage adapter
 - `Auto complete on variable injection`
-  - the UI for integrations will help users add Variable Replacement with an autocomplete drop-down
+  - The UI for integrations will help users add Variable Replacement with an autocomplete drop-down
+- `Service Bus meta data`
+  - Added a feture to inbound Service Bus adapter for perserving meta data properties from the original Service Bus Message.
+  - Added support for setting meta data properties for outbound Service Bus message form code components.
 
 #### :bug: Bug Fix
 

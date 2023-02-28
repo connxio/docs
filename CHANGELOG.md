@@ -16,6 +16,18 @@
   - All engines including Transformation, Splitting, Logging and Batching are being upgraded to .net 6 and are being rewritten to use a new mode of transport between engines.
   - This enabled better performance and a more robust engine.
 
+## 1.9.4 (2023-02-28)
+
+#### :rocket: New Features
+
+- `Datalake handling for Blob Azure Storage Adapter`
+  - Enables users to get files from hierarchical folder structures in datalake gen2.
+
+#### :bug: Bug Fix
+
+- `SFTP Static IP binary file fix`
+  - Fixed inbound SFTP bug where binary files would fail if static IP was enabled.
+
 ## 1.9.3 (2023-02-21)
 
 #### :rocket: New Features

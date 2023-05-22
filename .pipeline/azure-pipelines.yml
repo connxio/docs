@@ -1,0 +1,88 @@
+trigger:
+  branches:
+    include:
+    - next
+  paths:
+    include:
+    - '*'
+    exclude:
+    - 'README.md'
+    - '**/*.yml'
+
+variables: 
+  - group: Pipeline
+  - name: "isNext"
+    value: $[eq(variables['Build.SourceBranch'], 'refs/heads/next')]
+  - name: "seo"
+    ${{ if eq( variables['Build.SourceBranch'], 'refs/heads/next') }}:
+      value: "noindex,nofollow"
+    ${{ if eq( variables['Build.SourceBranch'], 'refs/heads/main' ) }}:
+      value: "all"
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: Build
+    jobs:
+      - job: Build
+        displayName: Build Website
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '16.x'
+            displayName: 'Use Node 16.x'
+
+          - task: qetza.replacetokens.replacetokens-task.replacetokens@5
+            displayName: 'Toggle SEO'
+            inputs:
+              targetFiles: '**/docusaurus.config.js'
+
+          - script: npm ci
+            displayName: 'Install dependencies'
+            workingDirectory: './site'
+
+          - script: npm run build
+            displayName: 'Build website'
+            workingDirectory: './site'
+
+          - task: ArchiveFiles@2
+            inputs:
+              
+              rootFolderOrFile: '$(System.DefaultWorkingDirectory)/site/build'
+              includeRootFolder: false
+
+          - task: CopyFiles@2
+            displayName: 'Copy build files'
+            inputs:
+              SourceFolder: './site/build'
+              Contents: 'site.zip'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+              CleanTargetFolder: true
+              OverWrite: true
+
+          - task: PublishPipelineArtifact@1
+            displayName: 'Publish build files'
+            inputs:
+              targetPath: '$(Build.ArtifactStagingDirectory)'
+              artifact: 'drop'
+              publishLocation: 'pipeline'
+              
+  - stage: DeployNextDev
+    condition: and(not(canceled()), not(failed('Build')), eq(variables.isNext, 'true'))
+    dependsOn: Build
+    jobs:
+      - deployment: DeployWebApp
+        environment: ratchet
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: none
+
+                - task: AzureWebApp@1
+                  inputs:
+                    azureSubscription: $(devServiceConnection)
+                    appName: 'app-cx-core-docs'
+                    package: '$(Pipeline.Workspace)/drop/*.zip'
+                    appType: 'webAppLinux'

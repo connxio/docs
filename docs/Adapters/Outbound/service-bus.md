@@ -67,7 +67,7 @@ A new window pops up. Add data as seen below:
 - **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked one of the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) patterns is used.
 - **Service bus message body contract**: Specifies witch of the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) patterns is used.
 - **Send Acknowledgement**: Is explained [here](/Adapters/Outbound/Acknowledgment).
-- **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days.
+- **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days. ConnXio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 
 ## Retry

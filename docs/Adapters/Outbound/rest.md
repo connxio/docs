@@ -27,7 +27,7 @@ A new window pops up. Add data as seen below:
 - **Headers & Authorization Header Type**: Add headers here as necessary to either authenticate the request or add other needed parameters.
 - **Send Acknowledgement**: Is explained [here](/Adapters/Outbound/Acknowledgment).
 - **Use Internal**: Uses the internal Restful adapter to resend the message back to CX. Is explained in detail under the  [carousel entry](#carousel).
-- **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days.
+- **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days. ConnXio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 
 ## Extending Logging

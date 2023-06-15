@@ -30,7 +30,7 @@ A new window pops up. Add data as seen below:
 - **Send Attachments**: When turned on the CX message will be sent as an attachment. Both this and Send Message Body can be active at the same time.
 - **Send Message Body**: When turned on the CX will be sent as a message body. Both this and Send Attachments can be active at the same time.
 - **Use SSL**: Most hosts require SSL. Turn this on to make CX contact the host with SSL enabled.
-- **Duplicate Detection**: Terminate the message if the exact same has been processed any time within the last five days.
+- **Duplicate Detection**: Terminate the message if the exact same has been processed any time within the last five days. ConnXio does not guarantee that no duplicates will be sent.
 
 ## Retry
 

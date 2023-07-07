@@ -1,8 +1,8 @@
 # User Management
 
-User accounts are needed to access the ConnXio Portal. The user account allows a user to access the companies and subscriptions that the user has access to. 
+User accounts are needed to access the Connxio Portal. The user account allows a user to access the companies and subscriptions that the user has access to. 
 
-Access in ConnXio is split up into companies and subscriptions. A user can have access to one or more subscriptions using the same login information.
+Access in Connxio is split up into companies and subscriptions. A user can have access to one or more subscriptions using the same login information.
 The active subscription is selected in the dropdown menu at the top of the screen.
 
 There are three different roles of users.
@@ -29,7 +29,7 @@ After sending an invite, the user will receive an email detailing how to create 
 
 :::info
 
-If the user already has a ConnXio account, they will instead receive an email telling them to log in to their account to review the invitation.
+If the user already has a Connxio account, they will instead receive an email telling them to log in to their account to review the invitation.
 
 :::
 

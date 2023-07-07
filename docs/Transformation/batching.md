@@ -1,6 +1,6 @@
 # Batching
 
-ConnXio (CX) gives customers the ability to batch messages into larger single units. We do this by creating a bucket where messages are queued for a set interval until they are picked up, run through a [code mapping](/Transformation/code-components) and then sent as a single message through the pipeline. There are certain limits to batching functionality that will be explained on this page as well the process of batching itself.
+Connxio (CX) gives customers the ability to batch messages into larger single units. We do this by creating a bucket where messages are queued for a set interval until they are picked up, run through a [code mapping](/Transformation/code-components) and then sent as a single message through the pipeline. There are certain limits to batching functionality that will be explained on this page as well the process of batching itself.
 
 > Batching entails waiting for messages within a set interval and then transforming said messages into a single unit before processing that unit through the CX pipeline
 
@@ -9,7 +9,7 @@ ConnXio (CX) gives customers the ability to batch messages into larger single un
 There are certain limits imposed upon the batching functionality to not overwhelm the system. These boundaries are fluent and subject to change in the future. As of now the following limits are in effect:
 
 1. MaxMessageBatchCount is set to `1000`
-2. ConnXio only supports messages below `100mb` (see [Integration limitations](/adapters/inbound/azure-storage#Limitations))
+2. Connxio only supports messages below `100mb` (see [Integration limitations](/adapters/inbound/azure-storage#Limitations))
 
 **MaxMessageBatchCount** is a variable that governs how many messages are possible to batch into a single message. If the bucket containing messages is larger than 1000 messages before the batching interval triggers then one message will be created per 1000 messages in the bucket. To use an example:
 

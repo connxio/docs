@@ -1,6 +1,6 @@
-# Email Inbound Adapter
+# Email
 
-ConnXio (CX) lets customers provide messages to the CX pipeline by configuring connections to email accounts. We currently support POP3 and IMAP protocols. This page details limitations of email protocols and how to configure and connect to an email account.
+Connxio (CX) lets customers provide messages to the CX pipeline by configuring connections to email accounts. We currently support POP3 and IMAP protocols. This page details limitations of email protocols and how to configure and connect to an email account.
 
 ## Limitations
 

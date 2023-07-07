@@ -1,10 +1,10 @@
-# The ConnXio Api
+# Connxio API
 
-The ConnXio (CX) Api is reachable through our [Api Management](https://azure.microsoft.com/en-us/services/api-management/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE:G:s&OCID=AID2200230_SEM_CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE#overview) (APIM) proxy and gives customers the ability to push messages through the CX pipeline with webhooks as well as use direct transformation endpoints that uses CX's internal logic to [map](/Transformation/Code-Components), [split](/Transformation/Splitting) or [batch](/Transformation/Batching) messages with code components within their own flows. This page describes the api including information and resources needed to use it.
+The Connxio (CX) Api is reachable through our [Api Management](https://azure.microsoft.com/en-us/services/api-management/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE:G:s&OCID=AID2200230_SEM_CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE#overview) (APIM) proxy and gives customers the ability to push messages through the CX pipeline with webhooks as well as use direct transformation endpoints that uses CX's internal logic to [map](/Transformation/Code-Components), [split](/Transformation/Splitting) or [batch](/Transformation/Batching) messages with code components within their own flows. This page describes the api including information and resources needed to use it.
 
 ## Api definition
 
-The Api definition can be found in the Api swagger here: <https://cmh-prod-api-wa.azurewebsites.net/index.html>. This swagger is hosted by the Api url itself but you will not be able to contact the Api on this url. To be able to contact the api you need to use the APIM endpoint found here: `https://cmh-messagehub-apim-prod.azure-api.net`. Don't mind the "messagehub" name, this is the earlier moniker for ConnXio before we implemented our name-change, in the future we will change the url as well, but the old one will always be operational.
+The Api definition can be found in the Api swagger here: <https://cmh-prod-api-wa.azurewebsites.net/index.html>. This swagger is hosted by the Api url itself but you will not be able to contact the Api on this url. To be able to contact the api you need to use the APIM endpoint found here: `https://cmh-messagehub-apim-prod.azure-api.net`. Don't mind the "messagehub" name, this is the earlier moniker for Connxio before we implemented our name-change, in the future we will change the url as well, but the old one will always be operational.
 
 This definition is based on established [swagger](https://swagger.io/resources/articles/documenting-apis-with-swagger/) documentation, but we have disabled the test feature for non-communicate employees. If you need to test the Api manually please do so through tools like [postman](https://www.postman.com/).
 
@@ -45,15 +45,15 @@ We do allow our customers to use basic authentication for webhook flows. This is
 
 ### Api Key
 
-To add a layer of extra security to the CX Api we added a basic user controlled security key which is configured on the *Api Key* page. This key is sent within the special header key `ConnXio-Api-Key` and can be limited and deprecated as needed. See the [Api Key page](/Security/apikey.md) for more information.
+To add a layer of extra security to the CX Api we added a basic user controlled security key which is configured on the *Api Key* page. This key is sent within the special header key `Connxio-Api-Key` and can be limited and deprecated as needed. See the [Api Key page](/Security/apikey.md) for more information.
 
 Api key is used in tandem with other security and does not replace other security measures like OAuth and APIM sub key.
 
-### Eventgrid
+### Event Grid
 
-Eventgrid is used extensively inside Azure and is a framework for building event based architecture on top of Azure components. Read more about eventgrid here <https://docs.microsoft.com/en-us/azure/event-grid/overview>. We support eventgrid, and if you follow the directions provided by Microsoft all you should need to do is point your eventgrid url to the Eventgrid endpoint at `/api/EventGrid`. You need to supply the endpoint with a set of query parameters like so: `/api/EventGrid?ConfigCorrelationId={guid}&InterchangeId={guid}`. The only required parameter is CorrelationId. DocumentType, ReceiverId and SenderId are obsolete. FileName supplies the pipeline with a FileName parameter that can be used in [variable replacement](/Variables/Variable-Replacement) and InterchangeId supplies the pipeline with a custom InterchangeId like described [here](/Core-Concepts).
+Event Grid is used extensively inside Azure and is a framework for building event based architecture on top of Azure components. Read more about eventgrid here <https://docs.microsoft.com/en-us/azure/event-grid/overview>. We support eventgrid, and if you follow the directions provided by Microsoft all you should need to do is point your eventgrid url to the Event Grid endpoint at `/api/EventGrid`. You need to supply the endpoint with a set of query parameters like so: `/api/EventGrid?ConfigCorrelationId={guid}&InterchangeId={guid}`. The only required parameter is CorrelationId. DocumentType, ReceiverId and SenderId are obsolete. FileName supplies the pipeline with a FileName parameter that can be used in [variable replacement](/Variables/Variable-Replacement) and InterchangeId supplies the pipeline with a custom InterchangeId like described [here](/Core-Concepts).
 
-Eventgrid uses an Api Key in the same was as [basic auth](#basic) and falls under the *webhook* banner as well.
+Event Grid uses an Api Key in the same was as [basic auth](#basic) and falls under the *webhook* banner as well.
 
 ## Enable message delivery
 

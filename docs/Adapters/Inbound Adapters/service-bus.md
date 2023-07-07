@@ -1,6 +1,6 @@
-# Service Bus Inbound Adapter
+# Azure Service Bus
 
-ConnXio (CX) lets customers provide data to the CX pipeline by enqueueing it onto [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview). This page details how to create an integration which pick up messages from Azure Service Bus.
+Connxio (CX) lets customers provide data to the CX pipeline by enqueueing it onto [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview). This page details how to create an integration which pick up messages from Azure Service Bus.
 
 ## Limitations
 

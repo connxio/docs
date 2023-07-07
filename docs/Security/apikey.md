@@ -7,7 +7,7 @@ Currently, only API Keys for the management API is in production. API Keys for t
 
 :::
 
-To better secure the communication with ConnXio (CX) Api's we have created a security mechanism we call *Api Keys*. By using Api Keys to secure RestFul communication you can put limitations on what actions are allowed within the key scope which facilitates a narrower security model. We also offer lifecycle management for keys which lets you throw away keys that may have been compromised or dole out keys to your partners which can be revoked in the future.
+To better secure the communication with Connxio (CX) Api's we have created a security mechanism we call *Api Keys*. By using Api Keys to secure RestFul communication you can put limitations on what actions are allowed within the key scope which facilitates a narrower security model. We also offer lifecycle management for keys which lets you throw away keys that may have been compromised or dole out keys to your partners which can be revoked in the future.
 
 ## Creating a key
 
@@ -18,7 +18,7 @@ A key requires a name as well as a scope on creation. You enter the name and sel
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/ApiKey_create.png?sv=2020-10-02&st=2022-06-10T11%3A57%3A23Z&se=2040-06-11T11%3A57%3A00Z&sr=b&sp=r&sig=J1aKZcpbXt4XP4uoyfP%2B04F2wKsP8HUDedH9HeIg9SM%3D)
 
 - **Name**: The name of the api key, consider using stakeholders as a part of the name for easier lifecycle management.
-- **Key**: The key itself. Copy this into the `ConnXio-Api-Key` header on your request.
+- **Key**: The key itself. Copy this into the `Connxio-Api-Key` header on your request.
 - **Created**: The date of creation for this key.
 - **Active**: If the active state is changed the key stops working.
 - **Scopes**: Selects the scope(s) the Api Key should be valid for. We talk about scopes in grater detail [below](#scopes).
@@ -30,7 +30,7 @@ The key is base64 encoded and is available to edit in the list. By default the k
 
 ## Using a key
 
-Using the key is as simple as adding the key value to a header called `ConnXio-Api-Key`. The following picture shows how this is done in postman:
+Using the key is as simple as adding the key value to a header called `Connxio-Api-Key`. The following picture shows how this is done in postman:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/ApiKey_Postman.png?sv=2020-10-02&st=2022-08-03T09%3A25%3A35Z&se=2030-08-04T09%3A25%3A00Z&sr=b&sp=r&sig=eIN4qgy68j2IoryW2%2BTrj1dDEy0h5%2FKLouq9xfFeZGs%3D)
 

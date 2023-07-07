@@ -4,7 +4,7 @@
 
 # Code components
 
-ConnXio (CX) uses C# code to transform data at multiple points through the CX pipeline. This page describes how to create a *code component* for transformation, where you can use it and what possibilities open up to you by using it. See [splitting](/Transformation/Splitting) and [batching](/Transformation/Batching) for information on code components within those processes.
+Connxio (CX) uses C# code to transform data at multiple points through the CX pipeline. This page describes how to create a *code component* for transformation, where you can use it and what possibilities open up to you by using it. See [splitting](/Transformation/Splitting) and [batching](/Transformation/Batching) for information on code components within those processes.
 
 ## What is a code component?
 
@@ -14,7 +14,7 @@ A code component is essentially C# code compiled into a dll file. We use reflect
 
 The easiest way to create you own code component is to start by opening Visual Studio and creating a new [console project](https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-console?view=vs-2019) or a [class library](https://docs.microsoft.com/en-us/dotnet/core/tutorials/library-with-visual-studio?pivots=dotnet-core-3-1). Use .net core 3.1 or .net standard 2.1 for new components. We do have some backwards compatibility, and if you cant get your code to work feel free to contact us.
 
-After you create the project, navigate to "Manage nuGet packages" and download the nuget named [Communicate.ConnXio.Transformation](https://www.nuget.org/packages/Communicate.ConnXio.Transformation/1.0.1?_src=template), and then create a file and paste this code inside:
+After you create the project, navigate to "Manage nuGet packages" and download the nuget named [Communicate.Connxio.Transformation](https://www.nuget.org/packages/Communicate.Connxio.Transformation/1.0.1?_src=template), and then create a file and paste this code inside:
 
 ```csharp
 /// <summary>
@@ -137,7 +137,7 @@ CX supports both internal and external component upload locations. If you want t
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Code%20Mapping%20Self%20hosted.PNG?sv=2020-04-08&st=2021-10-20T11%3A20%3A16Z&se=2040-10-21T11%3A20%3A00Z&sr=b&sp=r&sig=iwI0j%2Fyh8iCN48%2BrktJaxgGrqXqA9DmOl5sT2HHCyMU%3D)
 
-Internal upload management can be done in the *Code Components* view inside the ConnXio Portal. Choose *Upload new component* and fill in the necessary fields like so:
+Internal upload management can be done in the *Code Components* view inside the Connxio Portal. Choose *Upload new component* and fill in the necessary fields like so:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Internal%20code%20mapping.PNG?sv=2020-04-08&st=2021-10-20T11%3A25%3A22Z&se=2040-10-21T11%3A25%3A00Z&sr=b&sp=r&sig=xPBSb9XGhTGJvEuCQBVEttFnvsXigrtdyKzwmbgFWzk%3D)
 

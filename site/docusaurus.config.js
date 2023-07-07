@@ -6,8 +6,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "ConnXio Documentation",
-  tagline: "ConnXio Integration Engine",
+  title: "Connxio Documentation",
+  tagline: "Connxio Integration Engine",
   url: "https://docs.connxio.no",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -26,6 +26,7 @@ const config = {
           routeBasePath: "/",
           path: "../docs",
           sidebarPath: require.resolve("./sidebars.js"),
+          sidebarCollapsed: true,
         },
         blog: false,
         theme: {
@@ -35,6 +36,7 @@ const config = {
     ],
   ],
   plugins: [
+    require.resolve("docusaurus-plugin-image-zoom"),
     [
       "@docusaurus/plugin-content-docs",
       {
@@ -47,7 +49,7 @@ const config = {
     [
       require.resolve("./src/plugins/changelog/index.js"),
       {
-        blogTitle: "ConnXio changelog",
+        blogTitle: "Connxio changelog",
         blogDescription:
           "Keep yourself up-to-date about new features in every release",
         blogSidebarCount: "ALL",
@@ -86,12 +88,12 @@ const config = {
           },
           {
             href: "https://portal.connxio.no",
-            label: "ConnXio Portal",
+            label: "Connxio Portal",
             position: "left",
           },
           {
             href: "https://www.communicate.no/en/connxio",
-            label: "About ConnXio",
+            label: "About Connxio",
             position: "left",
           },
           {
@@ -138,11 +140,11 @@ const config = {
                 href: "https://www.evidi.com",
               },
               {
-                label: "ConnXio",
+                label: "Connxio",
                 href: "https://www.communicate.no/en/connxio",
               },
               {
-                label: "ConnXio Portal",
+                label: "Connxio Portal",
                 href: "https://portal.connxio.no",
               },
             ],
@@ -158,6 +160,9 @@ const config = {
       colorMode: {
         respectPrefersColorScheme: true,
       },
+      zoom: {
+        selector: ".markdown img",
+      }
     }),
   themes: [
     [

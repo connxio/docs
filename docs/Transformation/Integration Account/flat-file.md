@@ -4,7 +4,7 @@ Flat file transformation is facilitated by [Azure Integration Account](https://d
 
 ## Limitations
 
-There are pretty stringent limitations on Integration Account features. We do not recommend using this transformation type for high traffic integrations (ie. traffic above 100 messages per day), since high traffic causes delays and failures towards the service itself. We are, on the other hand, interested in working together with our customers to create good integrations, so if you feel the need to run high traffic integrations through this feature please contact your ConnXio representative.
+There are pretty stringent limitations on Integration Account features. We do not recommend using this transformation type for high traffic integrations (ie. traffic above 100 messages per day), since high traffic causes delays and failures towards the service itself. We are, on the other hand, interested in working together with our customers to create good integrations, so if you feel the need to run high traffic integrations through this feature please contact your Connxio representative.
 
 ## Creating a flat file conversion
 

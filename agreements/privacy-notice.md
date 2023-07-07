@@ -7,7 +7,7 @@
 
 **Last updated January 01 , 2022**
 
-Thank you for choosing to be part of our ConnXio Integration Service at **Communicate Norge
+Thank you for choosing to be part of our Connxio Integration Service at **Communicate Norge
 AS**. We are committed to protecting personal information and your right to privacy.
 
 The Data Controller for the Personal Data we process is Communicate Norge AS c/o the General
@@ -21,14 +21,14 @@ Company Registration No.: 980 719 766
 For any questions you may have regarding our processing of your Personal Data, please contact
 us by e-mail: privacy@communicate.no switchboard: +47 90 21 18 00.
 
-When you or your company use ConnXio Integration Service, we appreciate that you are trusting
+When you or your company use Connxio Integration Service, we appreciate that you are trusting
 us with your personal information. We take your and your customers privacy very seriously. In
 this privacy notice, we seek to explain to you in the clearest way possible what information we
 collect, how we use it and what rights you have in relation to it. We hope you take some time to
 read through it carefully, as it is important. If there are any terms in this privacy notice that you
 do not agree with, please discontinue use of our Services immediately.
 
-This privacy notice applies to all information collected through our ConnXio Integration Service
+This privacy notice applies to all information collected through our Connxio Integration Service
 (which, as described above, includes our ), as well as, any related services, sales, marketing or
 events.
 
@@ -50,13 +50,13 @@ information that we collect.**
 
 ## 1. WHAT INFORMATION DO WE COLLECT?
 
-***In Short:** ConnXio integration-service collects personal information that you provide to us*
+***In Short:** Connxio integration-service collects personal information that you provide to us*
 
-ConnXio Integration Service collects personal information that you and your systems voluntarily
+Connxio Integration Service collects personal information that you and your systems voluntarily
 provide to us when signing up for our integration service. The collected information is purely
 used for transactional handling and support purposes. Information will not be distributed to
 external systems or parties than the agreed upon. Each new integration in our services is verified
-by a customer-approved specification. ConnXio does not verify the content of the distributed
+by a customer-approved specification. Connxio does not verify the content of the distributed
 data and therefore the transactions might include personal information such as:
 
 **Personal Information Provided:** Names; phone numbers; email addresses; mailing
@@ -67,8 +67,8 @@ addresses; usernames; job titles; passwords; contact preferences; contact or aut
 ***In Short:** The integration service process information for purposes based on legitimate business
 interests, the fulfillment of our contract with you, compliance with our legal obligations, and/or your consent.*
 
-As an Integration partner our ConnXio Integration Service will collect different kind of data.
-Personal information might be collected by ConnXio for the following business purposes
+As an Integration partner our Connxio Integration Service will collect different kind of data.
+Personal information might be collected by Connxio for the following business purposes
 described below. We process personal information for these purposes in reliance on our
 legitimate business interests, in order do deliver a contract with you, with your consent, and/or
 for compliance with our legal obligations. We indicate the specific processing grounds we rely on
@@ -89,7 +89,7 @@ on a weighing of interest. We have found that this is often necessary for us to 
 ```
 
 ```text
-▪ Fulfill and deliver the requirements for ConnXio according to the agreed upon SLA.
+▪ Fulfill and deliver the requirements for Connxio according to the agreed upon SLA.
 As the integration service collects, transforms, and delivers data according to the
 specifications. Person sensitive data might be handled by the service to fulfill the
 integration specifications and the customer SLA. The information that the service
@@ -118,7 +118,7 @@ agreements to ensure information security at all stages of the processing. Prese
 following Data Processors:
 
 - Microsoft Azure
-  - ConnXio Integration Service
+  - Connxio Integration Service
 - Apache Cassandra
   - Data Storage
 
@@ -160,7 +160,7 @@ as evidence in litigation in which we are involved.
 ***In Short:** We keep your information for as long as necessary to fulfill the service and customer
 requirements for the purposes outlined in this privacy notice.*
 
-ConnXio temporarily store data with the potential of being personal data to fulfill our service
+Connxio temporarily store data with the potential of being personal data to fulfill our service
 requirements. Data the service processes will continuously be deleted within the service
 retention time. The standard Retention Time for our service is 3 months. The service can also
 archive information longer than the retention time when archiving is required for fulfilling
@@ -189,7 +189,7 @@ defeat our security, and improperly collect, access, steal, or modify your infor
 we will do our best to protect your personal information, transmission of personal information
 to and from our is at your own risk.
 
-As a standard ConnXio supports the “Best of Breed” protocols for securely transferring and
+As a standard Connxio supports the “Best of Breed” protocols for securely transferring and
 obtaining data. The integration team will at all time advice customers to use secure protocols
 for integrations and transactions. However, it is the customers responsibility to have systems
 that supports these protocols for communication. If a customer despite our advices chooses

@@ -1,39 +1,37 @@
 ---
-slug: /
-title: 'Overview'
-sidebar_position: 1
+title: 'Why Connxio'
 ---
 
-# What is ConnXio?
+# What is Connxio?
 
-When we decided to explore the concept of a SaaS solution for integration we used every ounce of our experience gathered from the integration challenges of our customers, our employees and the IT-business at large to imagine a tool that could help our customers develop more robust integration-solutions faster, smarter and cheaper.  With the advent of ConnXio we've reached beyond exploration and into the realm of reality, and as such we are proud to announce our product to the world.
+When we decided to explore the concept of a SaaS solution for integration we used every ounce of our experience gathered from the integration challenges of our customers, our employees and the IT-business at large to imagine a tool that could help our customers develop more robust integration-solutions faster, smarter and cheaper.  With the advent of Connxio we've reached beyond exploration and into the realm of reality, and as such we are proud to announce our product to the world.
 
 ## Integration by Configuration
 
-Some of you may have heard of iPaaS (integration platform as a service) solutions and products, ConnXio exists within this domain but we take it a step further into the SaaS space where we offer something we like to call *Integration by Configuration*. *Integration by Configuration* furnishes our customers with a user friendly, robust and pre-defined interface for creating configurations which in turn correspond directly to an integration flow. The flows our customers create can be edited and released on the fly by leveraging easy-to-use UI backed by a powerful self scaling backend.
+Some of you may have heard of iPaaS (integration platform as a service) solutions and products, Connxio exists within this domain but we take it a step further into the SaaS space where we offer something we like to call *Integration by Configuration*. *Integration by Configuration* furnishes our customers with a user friendly, robust and pre-defined interface for creating configurations which in turn correspond directly to an integration flow. The flows our customers create can be edited and released on the fly by leveraging easy-to-use UI backed by a powerful self scaling backend.
 
 ## Robustness
 
-By using a SAAS solution like ConnXio to perform integration and file transfer, source systems can outsource not only the actual work but also the demands of logging, resending, stability and performance (which together specify the robustness of a platform). The pattern ConnXio uses enables all this and we have experienced a bleed effect where the pattern bleeds into customer created solutions which in turn elevates internal integration or systems to a new level of quality.
+By using a SAAS solution like Connxio to perform integration and file transfer, source systems can outsource not only the actual work but also the demands of logging, resending, stability and performance (which together specify the robustness of a platform). The pattern Connxio uses enables all this and we have experienced a bleed effect where the pattern bleeds into customer created solutions which in turn elevates internal integration or systems to a new level of quality.
 
- To achieve greater robustness we leveraged distributed cloud and computing principles and made ConnXio faster and more scalable than normal in-house platforms and solutions have the ability to be. The reason we can do this and not most integration departments is simply the fact that we utilize the trial and error accumulated by multiple customers combined with the development cycle of a product to take a long lived and stable approach to integration development.
+ To achieve greater robustness we leveraged distributed cloud and computing principles and made Connxio faster and more scalable than normal in-house platforms and solutions have the ability to be. The reason we can do this and not most integration departments is simply the fact that we utilize the trial and error accumulated by multiple customers combined with the development cycle of a product to take a long lived and stable approach to integration development.
 
  By also scaling our internal infrastructure on demand to always have plenty of power left in the tank, we have the opportunity to abstract the hassle of resource management away from consumers which lets customers focus on the important parts of integration where their domain is involved. To ensure that data from multiple customers do not interfere with each other we separating traffic by customer subscriptions and even per integration for some functionality.
 
 ## A tool or a platform
 
-ConnXio can be used both as a tool and a platform. **When used as a tool** it integrates seamlessly into an already established or in progress integration platform as a purveyor of easy to use integration on the fly. In this mode you usually leverage ConnXio where you need to do cookie-cutter integration that is time consuming and often times boring for programmers to deal with. Your core integration flows and large scale advanced transfer needs can also leverage ConnXio as part of the solution or as a last point proxy. As you use the ConnXio tool you come to realize the most important part of ConnXio driven architecture is to leverage it where appropriate and have the foresight to use custom code where it's not.\
-When used as a tool, proxy services between ConnXio and external systems should be created when necessary or they are more efficient for the process at hand. This mode is mostly used by large integration departments and enterprise customers.
+Connxio can be used both as a tool and a platform. **When used as a tool** it integrates seamlessly into an already established or in progress integration platform as a purveyor of easy to use integration on the fly. In this mode you usually leverage Connxio where you need to do cookie-cutter integration that is time consuming and often times boring for programmers to deal with. Your core integration flows and large scale advanced transfer needs can also leverage Connxio as part of the solution or as a last point proxy. As you use the Connxio tool you come to realize the most important part of Connxio driven architecture is to leverage it where appropriate and have the foresight to use custom code where it's not.\
+When used as a tool, proxy services between Connxio and external systems should be created when necessary or they are more efficient for the process at hand. This mode is mostly used by large integration departments and enterprise customers.
 
-**When used as a platform** ConnXio acts as a complete integration solution that handles all aspects of integration from fetching of messages to mapping, transformations, enrichment, splitting and eventually sending to external or internal systems. There are usually no proxies used between ConnXio and the internal or external systems. This mode is usually used by smaller integration departments or by businesses who want pure integration as a service.
+**When used as a platform** Connxio acts as a complete integration solution that handles all aspects of integration from fetching of messages to mapping, transformations, enrichment, splitting and eventually sending to external or internal systems. There are usually no proxies used between Connxio and the internal or external systems. This mode is usually used by smaller integration departments or by businesses who want pure integration as a service.
 
-Even though ConnXio works both as a tool and a platform neither of the modes are mutually exclusive and both modes really just require a shift in perception. We use the mode descriptors mostly for convenience and they are detailed here mostly to illuminate the potential of ConnXio, don't let the confines of this description limit the possibilities.
+Even though Connxio works both as a tool and a platform neither of the modes are mutually exclusive and both modes really just require a shift in perception. We use the mode descriptors mostly for convenience and they are detailed here mostly to illuminate the potential of Connxio, don't let the confines of this description limit the possibilities.
 
-# Why use ConnXio?
+# Why use Connxio?
 
 ## Cost Saving
 
-ConnXio (CX) is built to decrease costs on boilerplate and semi advanced integration. With a library of adapters and an interchangeable transformation system, its main concern is to help our customers on their way to create faster, more dynamic, stable and secure integrations.
+Connxio (CX) is built to decrease costs on boilerplate and semi advanced integration. With a library of adapters and an interchangeable transformation system, its main concern is to help our customers on their way to create faster, more dynamic, stable and secure integrations.
 
 Let us take a look at the different parts and concepts that together create the building blocks of CX and how they help our customers save costs.
 
@@ -50,7 +48,7 @@ First of all, let’s look at the practical definition of the “Vendor lock-in�
 
 This effect is especially easy to quantify within cloud computing seeing as cloud providers like Amazon, Microsoft and others create massive eco systems around their platforms, that in some cases are designed specifically to be difficult to escape from. It is also a big factor within software architecture where both programming language, library specific choices and platforms create some sort of vendor lock-in. Some of this can be mitigated with containerization, but since containerization is in and of itself a sort of lock-in, this leaves the customer in a world where lock-in is impossible to escape in some sense and maybe even preferential to a massive ballooning in scope and complexity.
 
-This is obviously a gross oversimplification of the concept, but gives us a thin foundation to build some arguments upon, which is why we will now take a closer look at ConnXio (CX) specifically and what lock-ins our cloud service demands, avoids and mitigates.
+This is obviously a gross oversimplification of the concept, but gives us a thin foundation to build some arguments upon, which is why we will now take a closer look at Connxio (CX) specifically and what lock-ins our cloud service demands, avoids and mitigates.
 
 CX is a product that acts as a middleman between applications. We offer a service that is mostly stateless (has no long-lived internal data store or database) and which offers highly customizable logging and event connections that use the customers choice of third-party applications or internally built services. From this perspective CX is a lot better equipped to deal with vendor lock-in compared to many other services that internalize these processes.
 

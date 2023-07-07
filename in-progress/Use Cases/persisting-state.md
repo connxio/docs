@@ -6,7 +6,7 @@
 
 > This page is incomplete and should not be used.
 
-There are many scenarios where you might want to persist state when integrating systems. This page will describe and handle a common scenario where persistent state is required, it will also describe the pitfalls and discuss the complexity introduced when using ConnXio (CX) with persisted state.
+There are many scenarios where you might want to persist state when integrating systems. This page will describe and handle a common scenario where persistent state is required, it will also describe the pitfalls and discuss the complexity introduced when using Connxio (CX) with persisted state.
 
 ## The Case
 

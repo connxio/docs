@@ -1,6 +1,6 @@
-# Rest Inbound Adapter
+# REST
 
-ConnXio (CX) lets customers provide data to the CX pipeline by providing it through a Rest endpoint. This page details how to set up a Rest fetch integration and the limits of using Api's in this way.
+Connxio (CX) lets customers provide data to the CX pipeline by providing it through a Rest endpoint. This page details how to set up a Rest fetch integration and the limits of using Api's in this way.
 
 ## Limitations
 
@@ -24,11 +24,11 @@ A new window pops up. Add data as seen below:
 - **Endpoint Url**: The url of the endpoint.
 - **Security Configuration**: The [security configuration](/Security/Security-Configurations) to use for authenticating the request.
 - **Headers & Authorization Header Type**: Add headers here as necessary to either authenticate the request or add other needed parameters.
-- **Pagination**: By using pagination, ConnXio will scan the response of the API request for the Pathname/Prop-name you provided.
+- **Pagination**: By using pagination, Connxio will scan the response of the API request for the Pathname/Prop-name you provided.
 You have two options to choose from:
 - **NextLink**: The URI will either be replaced by the value to the pathname property, or the value will be appended to the URI.
-ConnXio will keep making API requests until the Pathname/Prop-name value doesn't contain a valid URI.
-- **ContinuationToken**: By using the variable [continuationToken] in either the URI, body or header-value - the variable will be replaced by the value to the Pathname/Prop-name received from the API-response. ConnXio will keep making API requests until the ContinuationToken is empty or max pages (number of requests) reach 50.
+Connxio will keep making API requests until the Pathname/Prop-name value doesn't contain a valid URI.
+- **ContinuationToken**: By using the variable [continuationToken] in either the URI, body or header-value - the variable will be replaced by the value to the Pathname/Prop-name received from the API-response. Connxio will keep making API requests until the ContinuationToken is empty or max pages (number of requests) reach 50.
 - **DateDelta**: Makes requests to the API, using a date variable - {date.UseDateTimeDelta} which will work as a starting/from date. The Polling interval will determine the difference in time, until the next run where the from-date will be set to datetime now.
 This variable can be used in the URI, body or header-value.
 Example of variable used in URI: http://example.com/api/getStuff?FromDate={date.UseDateTimeDelta(1980-01-01T08:00:00.00).SetCstZone(Central Europe Standard Time) | date: dd.MM.yyyy HH.mm.ss | error: fallback 2023-02-02T08:00:00.00}&ToDate={date.SetCstZone(Central Europe Standard Time)}

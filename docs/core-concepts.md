@@ -1,6 +1,6 @@
 # Core Concepts
 
-This page explores the core concepts that make up the building blocks of the ConnXio (CX) service. Understanding these concepts are essential to being successfully withing the ConnXio eco-system and we would strongly recommend reading the points below carefully.
+This page explores the core concepts that make up the building blocks of the Connxio (CX) service. Understanding these concepts are essential to being successfully withing the Connxio eco-system and we would strongly recommend reading the points below carefully.
 
 ## InterchangeId
 

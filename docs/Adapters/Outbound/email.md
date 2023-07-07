@@ -1,6 +1,6 @@
-# Email Outbound Adapter
+# Email
 
-ConnXio (CX) lets customers send messages from the CX pipeline by configuring connections to email accounts. We currently support the SMTP protocol. This page details limitations of said protocol and how to configure and connect to an email account.
+Connxio (CX) lets customers send messages from the CX pipeline by configuring connections to email accounts. We currently support the SMTP protocol. This page details limitations of said protocol and how to configure and connect to an email account.
 
 ## Limitations
 
@@ -30,7 +30,7 @@ A new window pops up. Add data as seen below:
 - **Send Attachments**: When turned on the CX message will be sent as an attachment. Both this and Send Message Body can be active at the same time.
 - **Send Message Body**: When turned on the CX will be sent as a message body. Both this and Send Attachments can be active at the same time.
 - **Use SSL**: Most hosts require SSL. Turn this on to make CX contact the host with SSL enabled.
-- **Duplicate Detection**: Terminate the message if the exact same has been processed any time within the last five days. ConnXio does not guarantee that no duplicates will be sent.
+- **Duplicate Detection**: Terminate the message if the exact same has been processed any time within the last five days. Connxio does not guarantee that no duplicates will be sent.
 
 ## Retry
 

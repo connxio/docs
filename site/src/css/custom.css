@@ -29,8 +29,8 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-html[data-theme="dark"] .navbar .navbar__logo {
-  content: url(/img/connxio-logo-dark.svg) !important;
+.navbar .navbar__logo {
+  height: 1.9rem;
 }
 
 [data-theme="light"] img[src$="#dark-only"],

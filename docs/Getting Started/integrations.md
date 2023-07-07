@@ -1,11 +1,12 @@
 ---
-slug: creating-integrations
-sidebar_position: 1
+slug: /getting-started/integrations
+title: "Integrations"
+sidebar_position: 3
 ---
 
 # Creating Integrations
 
-Before reading this page please read the [core concepts page](/core-concepts) where we explain a lot of the concepts essential to understanding ConnXio (CX). This page describes the integration creation process and design in CX.
+Before reading this page please read the [core concepts page](/core-concepts) where we explain a lot of the concepts essential to understanding Connxio (CX). This page describes the integration creation process and design in CX.
 
 ## Starting out
 
@@ -32,10 +33,10 @@ The main options of the integration configurations describes what type of integr
 - **Sender**: Represents the system sending the message or data. A typical example is the name of the system or it's function like "Visma" or "AccountingSystem".
 - **Receiver**: Represents the system receiving the message or data.
 - **Message Inbound format**: Defines the inbound format of the message. This is typically "xml", "json", "csv", etc. It's important to be precise here as CX will use this property to name files when logging or handling data. We recommend using lowercase but all casing will work.
-- **Message Inbound Encoding**: Defines the encoding of the message. It's *very* important to be exact when specifying encoding or the message could en up garbled. If this field is invalid or missing utf-8 encoding is used by default. Please see [encoding](/encoding) for more information
+- **Message Inbound Encoding**: Defines the encoding of the message. It's _very_ important to be exact when specifying encoding or the message could en up garbled. If this field is invalid or missing utf-8 encoding is used by default. Please see [encoding](/encoding) for more information
 - **Remove Bom**: BOM or "byte order mark" is explained here <https://en.wikipedia.org/wiki/Byte_order_mark>. Switch this on if you want CX to remove BOM from all message that enter the CX pipeline in this integration.
 - **Handle file as binary**: This will enable you to send binaries, such as pdf documents and pictures. Note that when sending binaries split/batch and transformations are not supported.
-  
+
 ## Logging
 
 Logging is described on the [Logging page](/logging).

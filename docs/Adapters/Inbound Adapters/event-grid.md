@@ -1,6 +1,6 @@
-# Event Grid Adapter
+# Event Grid
 
-ConnXio (CX) lets customers provide messages to the CX pipeline by leveraging [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview). This page details how to configure Event Grid in CX but does not describe how to set up or configure Event Grid itself, please refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/event-grid/blob-event-quickstart-portal) for more information about Event Grid.
+Connxio (CX) lets customers provide messages to the CX pipeline by leveraging [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview). This page details how to configure Event Grid in CX but does not describe how to set up or configure Event Grid itself, please refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/event-grid/blob-event-quickstart-portal) for more information about Event Grid.
 
 ## Limitations
 
@@ -29,7 +29,7 @@ Event grid uses simple authentication patterns and does, at the point of writing
 
 >`https://cmh-messagehub-apim-prod.azure-api.net/api/eventgrid?subscription-key=xxxx-xxxx-xxx-xxxx-xxxx&ConfigCorrelationId=xxxx-xxxx-xxx-xxxx`
 
-Where **subscription-key** refers to your authentication key supplied by your ConnXio representative, and **ConfigCorrelationId** refers to the Id of the integration in the portal.
+Where **subscription-key** refers to your authentication key supplied by your Connxio representative, and **ConfigCorrelationId** refers to the Id of the integration in the portal.
 
 ## Retry
 

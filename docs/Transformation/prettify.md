@@ -1,6 +1,6 @@
 # Prettify Content
 
-ConnXio (CX) supports prettifying message content in XML and JSON. As JSON data is often output without line breaks to save space, it can be extremely difficult to actually read and make sense of it. This feature hopes to solve the problem by formatting and beautifying the JSON data so that it is easy to read and debug by human beings.
+Connxio (CX) supports prettifying message content in XML and JSON. As JSON data is often output without line breaks to save space, it can be extremely difficult to actually read and make sense of it. This feature hopes to solve the problem by formatting and beautifying the JSON data so that it is easy to read and debug by human beings.
 
 ## Adding prettify to content
 

@@ -1,6 +1,6 @@
 # Variable Replacement
 
-At various stages through ConnXio (CX) you can use the *variable replacement* functionality to access metadata and message content to enrich everything from URL's to file names and logging options. This page details where and how to use variable replacement.
+At various stages through Connxio (CX) you can use the *variable replacement* functionality to access metadata and message content to enrich everything from URL's to file names and logging options. This page details where and how to use variable replacement.
 
 ## Query language
 
@@ -29,7 +29,7 @@ Variable replacement uses a simple query language to function. The following tab
     <to>You</to>
     <from>Me</from>
     <heading>Integration</heading>
-    <body>Use ConnXio!</body>
+    <body>Use Connxio!</body>
 </note>
 ```
 

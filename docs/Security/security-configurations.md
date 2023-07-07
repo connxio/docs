@@ -26,7 +26,7 @@ Add values as needed for your HTTP resource. If you need to add headers you can 
 
 #### Choosing your authentication scheme
 
-We supply thee authentication schemes in ConnXio (CX):
+We supply thee authentication schemes in Connxio (CX):
 
 ##### OAuth 2.0
 

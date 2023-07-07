@@ -1,6 +1,6 @@
-# Azure Storage Outbound Adapter
+# Azure Storage
 
-ConnXio (CX) lets customers receive messages from the CX pipeline by configuring connections to Azure Storage accounts. We currently support messages as [blobs](https://azure.microsoft.com/en-us/services/storage/blobs/) or [files](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share?tabs=azure-portal). This page details how to configure Azure storage connections and what functionality is available by delivering files through this medium.
+Connxio (CX) lets customers receive messages from the CX pipeline by configuring connections to Azure Storage accounts. We currently support messages as [blobs](https://azure.microsoft.com/en-us/services/storage/blobs/) or [files](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share?tabs=azure-portal). This page details how to configure Azure storage connections and what functionality is available by delivering files through this medium.
 
 ## Limitations
 
@@ -22,7 +22,7 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 - **Container Name**: The name of the container. This container must exist before CX start picking messages. We will not create it for you.
 - **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/Variables/Variable-Replacement) page.
 - **Send Acknowledgement**: Is explained [here](/Adapters/Outbound/Acknowledgment).
-- **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days. ConnXio does not guarantee that no duplicates will be sent.
+- **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 
 **For Azure Files** the only difference is the *directory* field which specifies which directory CX should target for file pickup. If this is kept blank the root directory is used.

@@ -1,6 +1,6 @@
 # Data Collection
 
-ConnXio (CX) supports various forms of [orchestration](/Core-Concepts) most prominent among them is enrichment and this is fueled by *data collection*. Data collection refers to the act of getting data over HTTP as a transformations tep. This enables customers to collect data from all resources that support HTTP and use them within transformations, [variable replacements](/Variables/Variable-Replacement) and url generation. This page describes how to use and configure data collection.
+Connxio (CX) supports various forms of [orchestration](/Core-Concepts) most prominent among them is enrichment and this is fueled by *data collection*. Data collection refers to the act of getting data over HTTP as a transformations tep. This enables customers to collect data from all resources that support HTTP and use them within transformations, [variable replacements](/Variables/Variable-Replacement) and url generation. This page describes how to use and configure data collection.
 
 ## Limitations and External demands
 

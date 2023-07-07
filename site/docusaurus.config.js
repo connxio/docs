@@ -7,6 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Connxio Documentation",
+  staticDirectories: ["static"],
   tagline: "Connxio Integration Engine",
   url: "https://docs.connxio.no",
   baseUrl: "/",
@@ -76,6 +77,7 @@ const config = {
       metadata: [{ name: "robots", content: "#{ seo }#" }],
       navbar: {
         title: "",
+        hideOnScroll: true,
         logo: {
           alt: "Connxio Logo",
           src: "img/connxio-logo.svg",
@@ -101,10 +103,16 @@ const config = {
             label: "Evidi",
             position: "left",
           },
+          // {
+          //   href: "https://github.com/connxio/connxio",
+          //   label: "GitHub",
+          //   position: "right",
+          // },
           {
             href: "https://github.com/connxio/connxio",
-            label: "GitHub",
             position: "right",
+            className: "header-github-link",
+            "aria-label": "GitHub repository",
           },
         ],
       },
@@ -150,7 +158,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Evidi. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Evidi`,
       },
       prism: {
         theme: lightCodeTheme,
@@ -162,7 +170,7 @@ const config = {
       },
       zoom: {
         selector: ".markdown img",
-      }
+      },
     }),
   themes: [
     [

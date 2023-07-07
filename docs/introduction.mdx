@@ -2,25 +2,29 @@
 slug: /
 title: 'Introduction'
 sidebar_position: 1
+hide_title: true
+hide_table_of_contents: true
 ---
 
-import ConnxioLogo from './assets/connxio-logo.svg';
+import ConnxioLogo from '@site/static/img/connxio-logo.svg';
 
-<img src={require('./assets/connxio-logo.svg')} width="200" />
+<ConnxioLogo className="logo-markdown" />
 
-Connxio, developed by Evidi, is a powerful integration platform designed to facilitate seamless data and file exchange between two systems. It enables users to establish connections, known as integrations, between a sender and a receiver system. Connxio supports a wide range of protocols, referred to as Adapters, to accommodate various integration scenarios.
+Connxio, developed by Evidi, is a powerful integration platform designed to facilitate seamless data and file exchange between systems. It enables users to establish connections, known as integrations, between a sender and a receiver system. Connxio supports a wide range of protocols, referred to as Adapters, to accommodate various integration scenarios.
 
 ### Key Features
-- 💪 Flexible Integration Setup: Connxio provides a user-friendly web portal with a graphical user interface (GUI) for easy configuration of integrations.
-- 🤖 Diverse Adapter Support: Connxio supports the following protocols for integration setups:
-   - API/Webhook
-   - Azure Storage (Blob, File, Table, Queue)
-   - Email
-   - Azure Event Grid
-   - REST (Polling)
-   - Azure Service Bus
+💪 Flexible Integration Setup: Connxio provides a user-friendly web portal with a graphical user interface (GUI) for easy configuration of integrations.
+
+🤖 Diverse Adapter Support: Connxio supports the following protocols for integration setups:
+   - API
    - FTP & SFTP
-- 🐧 Extensive Transformation Capabilities: Connxio allows users to define file transformations to manipulate data during the integration process. The available transformations include:
+   - Azure Storage (Blob, File, Table, Queue)
+   - Azure Service Bus
+   - Azure Event Grid
+   - REST
+   - Email
+
+🐧 Extensive Transformation Capabilities: Connxio allows users to define file transformations to manipulate data during the integration process. Some available transformations include:
    - Code Components: Enables mapping with custom code implemented in a .NET library uploaded as a .dll file.
    - Batching: Combines one or more files into a larger file using a specific batching interface implementation.
    - Splitting: Divides a larger file into multiple smaller files using a splitting-specific interface implementation.

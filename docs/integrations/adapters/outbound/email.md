@@ -23,7 +23,7 @@ A new window pops up. Add data as seen below:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Email%20config.PNG?sv=2020-04-08&st=2021-11-03T09%3A18%3A05Z&se=2040-11-04T09%3A18%3A00Z&sr=b&sp=r&sig=EBWhGmnlgHWBK8tH5JmkqcRVkU7rlR9B9XrD0tDKEro%3D)
 
-- **Email Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security/security-configurations) that contains the relevant connection properties.
+- **Email Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
 - **Receiver Addresses**: The email addresses that the CX message will be sent to.
 - **Subject**: The password for the email address.
 - **Outbound Filename Pattern**: The server that hosts the email account.

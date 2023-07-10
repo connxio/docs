@@ -170,7 +170,7 @@ FileContent:
 
 All logging providers are treated equally in relation to CX, and we do have a goal of adding provider specific convenience configuration for the largest providers in the future, currently however we only have a convenience configuration section for Archeo, but you can configure both Archeo and all other RESTful providers by selecting the Webhook configuration option.
 
-All logging options require a [Security Configuration](/connxio-portal/security/security-configurations). Set this up by following the steps described on the Security Configuration page and select the definition as described below.
+All logging options require a [Security Configuration](/connxio-portal/security-configurations). Set this up by following the steps described on the Security Configuration page and select the definition as described below.
 
 ### Webhook
 
@@ -184,7 +184,7 @@ Expand this section and click the "Add Logging" button to add a new webhook. Eve
 
 - **Method**: The Http verb (or method as its properly called) to use when contacting the restful endpoint.
 - **Endpoint Url**: The url of the endpoint.
-- **Security Configuration**: The [security configuration](/connxio-portal/security/security-configurations) to use for authenticating the request.
+- **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
 - **Log Level**: Explained in the [Log Levels section](#log-levels).
 - **Contract**: Is explained under the [Contracts section](#contracts).
 - **Inbound message type**: Changes the message type for the first success message logged.
@@ -208,7 +208,7 @@ Expand this section and click the "Add Logging" button to add a new webhook. Eve
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Logging%20archeo%20configuration.png?sv=2020-08-04&st=2021-11-17T13%3A06%3A59Z&se=2040-11-18T13%3A06%3A00Z&sr=b&sp=r&sig=R6XMLyqkAbXDiyohCttjyrAx2Abxi6re9ayY3ARNH9E%3D)
 
-- **Archeo Security Configuration**: The [security configuration](/connxio-portal/security/security-configurations) to use for authenticating the request to Archeo.
+- **Archeo Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request to Archeo.
 - **Log Level**: Explained in the [Log Levels section](#log-levels).
 - **Contract**: Is explained under the [Contracts section](#contracts).
 - **Inbound message type**: Changes the message type for the first success message logged.
@@ -230,7 +230,7 @@ Archeo allows customers to host message content externally. CX has incorporated 
 
 - **Method**: The Http verb (or method as its properly called) to use when contacting the restful endpoint.
 - **Endpoint Url**: The url of the endpoint.
-- **Security Configuration**: The [security configuration](/connxio-portal/security/security-configurations) to use for authenticating the request.
+- **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
 - **Add Header**: Adds a header to every request handled by this webhook.
 - **Send content on External Failure**: If enabled the option will cause CX to send the file content to Archeo if the external service fails. If disabled no content will be sent on external service failure.
 

@@ -14,7 +14,7 @@ A new window pops up, we will be using *blob* communication as an example. Add d
 
 - **Adapter Name**: The logical name of the adapter. This is shown in the configuration view on close.
 - **Storage type**: Select storage type to use. Types include: Blob, File, Queue and Table.
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security/security-configurations) that contains the relevant connection properties.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
 - **Container Name**: The name of the container. This container must exist before CX start picking messages. We will not create it for you.
 - **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/connxio-portal/variables/variable-replacement) page.
 - **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/Acknowledgment).

@@ -21,7 +21,7 @@ To get started with Connxio and set up your first integration, follow the steps 
 A security configuration in Connxio is a reusable set of credentials and settings that enables secure connections with external systems. It provides a centralized and protected way to store sensitive information, such as API keys and authentication details, ensuring the secure and confidential exchange of data during integrations.
 <br />
 <br />
-<a href="/connxio-portal/security/security-configurations">Read more about security configurations here.</a>
+<a href="/connxio-portal/security-configurations">Read more about security configurations here.</a>
     </p>
 </details>
 

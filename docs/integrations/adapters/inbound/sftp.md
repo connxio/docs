@@ -23,7 +23,7 @@ A new window pops up. Add data as seen below:
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/SFTP%20inbound%20config.png?sv=2020-08-04&st=2022-01-11T07%3A08%3A09Z&se=2040-01-12T07%3A08%3A00Z&sr=b&sp=r&sig=Fp9pIOvsynojbPl%2FsLmRs42Bm3WjUg3TmGDcRnBCJso%3D)
 
 - **Polling Interval in Seconds**:Polling interval dictates when files are picked from the SFTP account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
-- **SFTP Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security/security-configurations) that contains the relevant connection properties.
+- **SFTP Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
 - **Directory**: he directory to pickup files in. Files will be deleted after pickup unless CopyMoveFolder is set.
 - **CopyMoveFolder**: Specifies a folder to move files to after pickup and disables deletion of files on pickup if set. This is mainly used to keep track of picked up files and can also be used to facilitate separate flows and other integrations.
 - **File Mask**: Specifies a search patter for files. This uses the WinScp syntax, read more about it in [the documentation there](https://winscp.net/eng/docs/file_mask). All files not matching the set pattern will be ignored.

@@ -60,7 +60,7 @@ A new window pops up. Add data as seen below:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Service%20bus%20outbound%20config.png?sv=2020-08-04&st=2022-05-02T11%3A59%3A06Z&se=2040-05-03T11%3A59%3A00Z&sr=b&sp=r&sig=cYMR8m3f2ugTGubirtHz%2BIPtARJL1YDavcCkL5MlUH8%3D)
 
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security/security-configurations) that contains the relevant connection properties. Note that a servicebus connection string cannot contain 'EntityPath', as this information is set in the 'Topic Name' or 'Queue Name' field.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties. Note that a servicebus connection string cannot contain 'EntityPath', as this information is set in the 'Topic Name' or 'Queue Name' field.
 - **Adapter Name**: The logical name of the adapter. This is shown in the configuration view on close.
 - **Topic Name**: The name of the topic.
 - **Service bus message label**: The label to be added to the service bus message.

@@ -22,7 +22,7 @@ A new window pops up. Add data as seen below:
 
 - **Method**: The Http verb (or method as its properly called) to use when contacting the restful endpoint.
 - **Endpoint Url**: The url of the endpoint.
-- **Security Configuration**: The [security configuration](/connxio-portal/security/security-configurations) to use for authenticating the request.
+- **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
 - **Headers & Authorization Header Type**: Add headers here as necessary to either authenticate the request or add other needed parameters.
 - **Pagination**: By using pagination, Connxio will scan the response of the API request for the Pathname/Prop-name you provided.
 You have two options to choose from:

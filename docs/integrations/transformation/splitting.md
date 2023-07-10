@@ -4,7 +4,7 @@ Connxio (CX) gives customers the ability to split messages into smaller units. W
 
 ## Limitations
 
-There are very few limits to splitting the only one being that we support files up to `100mb` only. However, you can split files into any amount of messages, and process them in any shape or form in further transformations. After the splitting is run all files will be handled as a unique message inside CX which means they will generate separate [logs](/integrations/logging), [resend-events](/connxio-portal/resending/archeo-resending) and errors.
+There are very few limits to splitting the only one being that we support files up to `100mb` only. However, you can split files into any amount of messages, and process them in any shape or form in further transformations. After the splitting is run all files will be handled as a unique message inside CX which means they will generate separate [logs](/integrations/logging), [resend-events](/connxio-api/archeo-resending) and errors.
 
 > Splitting can generate enormous amounts of traffic. Be sure that you test your receiving systems thoroughly before you send production level loads.
 

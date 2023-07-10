@@ -23,7 +23,7 @@ A new window pops up. Add data as seen below:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/SFTP%20outbound%20config.png?sv=2020-08-04&st=2022-05-02T11%3A59%3A36Z&se=2040-05-03T11%3A59%3A00Z&sr=b&sp=r&sig=c%2FpVC6YhqWqKwUwc6t28zIriTqItJ6QJhg7IBtXZGag%3D)
 
-- **SFTP Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security/security-configurations) that contains the relevant connection properties.
+- **SFTP Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
 - **Directory**: he directory to pickup files in.
 - **SSH HostKey Fingerprint**: The fingerprint of the server certificate. Read more in the [WinScp documentation](https://winscp.net/eng/docs/faq_hostkey).
 - **Use Static Ip**: Forces CX to run SFTP traffic on static Ip. This uses a separately hosted functionality that limits parallelization and can effect performance on high traffic scenarios.

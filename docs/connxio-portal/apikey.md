@@ -49,7 +49,7 @@ The webhook scope is only usable for integrations requiring basic authentication
 
 ### Management
 
-The management scope is used for updating, creating and deleting integrations programmatically and has its own Api for this purpose. More information can be found [here](/Management/management-api.md).
+The management scope is used for updating, creating and deleting integrations programmatically and has its own Api for this purpose. More information can be found [here](/connxio-api/management-api).
 
 ## Subscription
 

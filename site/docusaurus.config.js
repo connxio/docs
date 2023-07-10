@@ -48,17 +48,6 @@ const config = {
       },
     ],
     [
-      "@docusaurus/plugin-client-redirects",
-      {
-        redirects: [
-          {
-            to: '/integrations',
-            from: '/spacer',
-          },
-        ]
-      }
-    ],
-    [
       require.resolve("./src/plugins/changelog/index.js"),
       {
         blogTitle: "Connxio changelog",

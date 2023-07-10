@@ -23,7 +23,7 @@ A new window pops up. Add data as seen below:
 - **Adapter Name**: The logical name of the adapter. This is shown in the configuration view on close.
 - **Method**: The Http verb (or method as its properly called) to use when contacting the restful endpoint.
 - **Endpoint Url**: The url of the endpoint.
-- **Security Configuration**: The [security configuration](/connxio-portal/security/security-configurations) to use for authenticating the request.
+- **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
 - **Headers & Authorization Header Type**: Add headers here as necessary to either authenticate the request or add other needed parameters.
 - **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/Acknowledgment).
 - **Use Internal**: Uses the internal Restful adapter to resend the message back to CX. Is explained in detail under the  [carousel entry](#carousel).

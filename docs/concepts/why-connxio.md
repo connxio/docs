@@ -1,0 +1,62 @@
+---
+title: 'Why Connxio'
+sidebar_position: 1
+---
+
+# What is Connxio?
+
+When we decided to explore the concept of a SaaS solution for integration we used every ounce of our experience gathered from the integration challenges of our customers, our employees and the IT-business at large to imagine a tool that could help our customers develop more robust integration-solutions faster, smarter and cheaper.  With the advent of Connxio we've reached beyond exploration and into the realm of reality, and as such we are proud to announce our product to the world.
+
+## Integration by Configuration
+
+Some of you may have heard of iPaaS (integration platform as a service) solutions and products, Connxio exists within this domain but we take it a step further into the SaaS space where we offer something we like to call *Integration by Configuration*. *Integration by Configuration* furnishes our customers with a user friendly, robust and pre-defined interface for creating configurations which in turn correspond directly to an integration flow. The flows our customers create can be edited and released on the fly by leveraging easy-to-use UI backed by a powerful self scaling backend.
+
+## Robustness
+
+By using a SAAS solution like Connxio to perform integration and file transfer, source systems can outsource not only the actual work but also the demands of logging, resending, stability and performance (which together specify the robustness of a platform). The pattern Connxio uses enables all this and we have experienced a bleed effect where the pattern bleeds into customer created solutions which in turn elevates internal integration or systems to a new level of quality.
+
+ To achieve greater robustness we leveraged distributed cloud and computing principles and made Connxio faster and more scalable than normal in-house platforms and solutions have the ability to be. The reason we can do this and not most integration departments is simply the fact that we utilize the trial and error accumulated by multiple customers combined with the development cycle of a product to take a long lived and stable approach to integration development.
+
+ By also scaling our internal infrastructure on demand to always have plenty of power left in the tank, we have the opportunity to abstract the hassle of resource management away from consumers which lets customers focus on the important parts of integration where their domain is involved. To ensure that data from multiple customers do not interfere with each other we separating traffic by customer subscriptions and even per integration for some functionality.
+
+## A tool or a platform
+
+Connxio can be used both as a tool and a platform. **When used as a tool** it integrates seamlessly into an already established or in progress integration platform as a purveyor of easy to use integration on the fly. In this mode you usually leverage Connxio where you need to do cookie-cutter integration that is time consuming and often times boring for programmers to deal with. Your core integration flows and large scale advanced transfer needs can also leverage Connxio as part of the solution or as a last point proxy. As you use the Connxio tool you come to realize the most important part of Connxio driven architecture is to leverage it where appropriate and have the foresight to use custom code where it's not.\
+When used as a tool, proxy services between Connxio and external systems should be created when necessary or they are more efficient for the process at hand. This mode is mostly used by large integration departments and enterprise customers.
+
+**When used as a platform** Connxio acts as a complete integration solution that handles all aspects of integration from fetching of messages to mapping, transformations, enrichment, splitting and eventually sending to external or internal systems. There are usually no proxies used between Connxio and the internal or external systems. This mode is usually used by smaller integration departments or by businesses who want pure integration as a service.
+
+Even though Connxio works both as a tool and a platform neither of the modes are mutually exclusive and both modes really just require a shift in perception. We use the mode descriptors mostly for convenience and they are detailed here mostly to illuminate the potential of Connxio, don't let the confines of this description limit the possibilities.
+
+# Why use Connxio?
+
+## Cost Saving
+
+Connxio (CX) is built to decrease costs on boilerplate and semi advanced integration. With a library of adapters and an interchangeable transformation system, its main concern is to help our customers on their way to create faster, more dynamic, stable and secure integrations.
+
+Let us take a look at the different parts and concepts that together create the building blocks of CX and how they help our customers save costs.
+
+**Adapters** are the fundamental building block that facilitates the actual transfer and sending of data from system to system. Creating code to connect to different cloud services like blob and ServiceBus or protocol like SFTP and email is one of the most time consuming and redundant programming challenges that face a lot of software development teams within integration. To mitigate the mind-numbing boredom of tackling this challenge, CX offers adapters that have been built and added to over long periods of time to cover even the strangest edge cases of file transfer. The adapters are also continually developed as times and technology changes and comes with a set of logging options that ensure traceability even on very simple integration scenarios. In terms of cost reduction, the actual implementation cost of these service-connections and the continued development and the traceability and fault handling are essentially eliminated from the customers expenses and put on the product instead.
+
+**Transformations** provide the customer with a way to create small pieces of code or BizTalk mappings++ to perform transformations on data of all types and sizes. The formats with the most built-in support within CX are XML and Json. With these formats the customer can enjoy a plethora ready-made functionality to collect tertiary data to supplement transformations, prettify messages or convert them between formats. This saves costs for our customers by either eliminating the need for actual transformation or making the transformation simpler and a lot easier to manage with versioning and on the fly production environment bug fixing possibilities.
+
+**Traceability** and fault handling is built into CX and is always modified and upgraded to suit our customers need. Because CX’s integration transfer is standardized the days of choosing which integration flows you want to be able to trace is over. All flows configured in CX receive the same fault handling and traceability as the most complex and tweaked solutions. This saves costs by elevating all integration flows to a premium traceability and fault handling level and saves the customer the development cost of doing this for their own flows again and again, possibly with varying results.
+
+## Soft Lock-In
+
+First of all, let’s look at the practical definition of the “Vendor lock-in” from Wikipedia:
+> “In economics, vendor lock-in, also known as proprietary lock-in or customer lock-in, makes a customer dependent on a vendor for products and services, unable to use another vendor without substantial switching costs. Lock-in costs that create barriers to market entry may result in antitrust action against a monopoly. “
+
+This effect is especially easy to quantify within cloud computing seeing as cloud providers like Amazon, Microsoft and others create massive eco systems around their platforms, that in some cases are designed specifically to be difficult to escape from. It is also a big factor within software architecture where both programming language, library specific choices and platforms create some sort of vendor lock-in. Some of this can be mitigated with containerization, but since containerization is in and of itself a sort of lock-in, this leaves the customer in a world where lock-in is impossible to escape in some sense and maybe even preferential to a massive ballooning in scope and complexity.
+
+This is obviously a gross oversimplification of the concept, but gives us a thin foundation to build some arguments upon, which is why we will now take a closer look at Connxio (CX) specifically and what lock-ins our cloud service demands, avoids and mitigates.
+
+CX is a product that acts as a middleman between applications. We offer a service that is mostly stateless (has no long-lived internal data store or database) and which offers highly customizable logging and event connections that use the customers choice of third-party applications or internally built services. From this perspective CX is a lot better equipped to deal with vendor lock-in compared to many other services that internalize these processes.
+
+**First**, CX’s stateless nature lends itself to portability in a way that stateful services cannot. One of the principal concerns when evaluating vendor lock-in is looking at data extraction, which becomes a moot point in CX. The only applicable data is transferred to the customers choice of logging solution and is therefore not even accessible to CX itself, and since the customer chooses the logging solution the lock-in lies with that party rather than CX. All other data used in our product to facilitate the middleman process is hard deleted after 7 days and is only used for internal transportation and configuration.
+
+**Secondly**, the transformations that make up the backbone of CX’s configurable functionality is hosted and available to customers and is either created in C# .net standard 2.0 or in Microsoft’s own Integration account mapping functionality. In the latter instance the vendor lock-in lies with Microsoft’s BizTalk platform and not with CX. In the former scenario the lock-in lies with the C# language and platform only and can be ported to all cloud services that can run either containers or C# code natively.
+
+**Thirdly**, since CX is based upon adapters (pieces of code that are made to retrieve or send data through one or more protocols) the customer does not need to create, generalize and fault handle their own method of protocol handling and transfer. Regarding vendor lock-in this creates less of a lock-in and more of a void that needs to be filled in the event of cancelling the service. Since the adapters are maintained and created by a team over a long period of time with strict security, performance and stability requirements, recreation of this functionality could incur a large cost to the customer unless they specifically change to a service that provides the same level of adapter service.
+
+In conclusion we can see that CX’s nature lends itself quite well to being replaced in comparison to other more orthodox options. CX is a SaaS application that is specifically aimed at saving time and money for our customers by eliminating boilerplate development and offering easy to configure and changeable integration. Since this is the paradigm for the products existence, lock-in is also minimized since lock-in at its core is the absence of changeability and configurability.

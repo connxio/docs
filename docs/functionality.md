@@ -1,3 +1,8 @@
+---
+sidebar_class_name: hidden
+slug: /functionality
+---
+
 # Functionality
 
 We categorize functionality in CX by two states; in development and production ready. This page describes the two states and how they are handled within the documentation.

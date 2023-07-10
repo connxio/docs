@@ -23,3 +23,6 @@ yarn-error.log*
 
 # Changelog source files
 /site/changelog
+
+.vs
+.vs/

@@ -48,6 +48,17 @@ const config = {
       },
     ],
     [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            to: '/integrations',
+            from: '/spacer',
+          },
+        ]
+      }
+    ],
+    [
       require.resolve("./src/plugins/changelog/index.js"),
       {
         blogTitle: "Connxio changelog",
@@ -62,10 +73,10 @@ const config = {
         authorsMapPath: "authors.json",
         feedOptions: {
           type: "all",
-          title: "Docusaurus changelog",
+          title: "Connxio changelog",
           description:
             "Keep yourself up-to-date about new features in every release",
-          copyright: `Copyright © ${new Date().getFullYear()} EVIDI`,
+          copyright: `Copyright © ${new Date().getFullYear()} Evidi`,
           language: "en",
         },
       },
@@ -103,11 +114,6 @@ const config = {
             label: "Evidi",
             position: "left",
           },
-          // {
-          //   href: "https://github.com/connxio/connxio",
-          //   label: "GitHub",
-          //   position: "right",
-          // },
           {
             href: "https://github.com/connxio/connxio",
             position: "right",

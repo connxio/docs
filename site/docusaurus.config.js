@@ -19,10 +19,30 @@ const config = {
     locales: ["en"],
   },
   presets: [
+    // [
+    //   "@docusaurus/preset-classic",
+    //   /** @type {import('@docusaurus/preset-classic').Options} */
+    //   ({
+    //     docs: {
+    //       routeBasePath: "/",
+    //       path: "../docs",
+    //       sidebarPath: require.resolve("./sidebars.js"),
+    //       sidebarCollapsed: true,
+    //     },
+    //     blog: false,
+    //     theme: {
+    //       customCss: require.resolve("./src/css/custom.css"),
+    //     },
+    //   }),
+    // ],
     [
-      "@docusaurus/preset-classic",
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      "docusaurus-preset-openapi",
+      /** @type {import('docusaurus-preset-openapi').Options} */
+      {
+        api: {
+          path: "./openapi/openapi-v2.yaml",
+          routeBasePath: "/api",
+        },
         docs: {
           routeBasePath: "/",
           path: "../docs",
@@ -33,7 +53,7 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-      }),
+      },
     ],
   ],
   plugins: [
@@ -77,7 +97,7 @@ const config = {
       metadata: [{ name: "robots", content: "#{ seo }#" }],
       navbar: {
         title: "",
-        hideOnScroll: true,
+        hideOnScroll: false,
         logo: {
           alt: "Connxio Logo",
           src: "img/connxio-logo.svg",

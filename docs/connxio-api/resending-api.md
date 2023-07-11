@@ -1,3 +1,8 @@
+---
+sidebar_position: 4
+title: Resending API
+---
+
 # Resending With Archeo
 
 Resending with Archeo behaves differently based upon the event type you react to. Only one of the two event types are enabled at present which means that CX supports only one type of Archeo-resending mechanism. We will describe both of them here, the non-active methods will be marked. If you need to use non-active methods, please contact us for more information.

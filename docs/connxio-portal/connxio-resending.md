@@ -6,13 +6,13 @@ sidebar_position: 5
 
 Connxio will catch and persist all failures that occur in any integration flow. The purpose of this is to allow customers to be able to either resend these messages (if e.g. the receiver system experienced an outage), or delete the messages if resending is not appropriate.
 
-When a failure has occurred it can be viewed in the Failures page in the Connxio Portal.
-![Failures page](https://i.imgur.com/bdF3Oy8.png#light-only)![Docusaurus themed image](https://i.imgur.com/qdbc01O.png#dark-only)
+When a failure has occurred it can be viewed in the Failures page in the Connxio Portal, which you can find by clicking the **Failures** link in the main navigation menu.
+
 This page shows all integrations where failures have occurred. To view the specific failures, click the integration to open a new page where all failures can be viewed individually.
 
 On this page you view the failures and when, why and where they failed. You can also click a failure to view additional details and see the message content.
 
-![Failed integration page](https://i.imgur.com/roBF7aH.png#light-only)![Docusaurus themed image](https://i.imgur.com/gg3So7Q.png#dark-only)
+![Failure details](/img/docs/failure-details-light.webp#light-only)![Failure details](/img/docs/failure-details-dark.webp#dark-only)
 
 ## Resending and deleting messages
 
@@ -20,11 +20,11 @@ There are two options for resending or deleting messages. The process for each o
 
 You can use the "Select all messages" toggle to select all failed messages and resend them. If you only want to resend a specific subset of all failures, you can use the built-in search tool to scope down the result list to only those messages. You are able to filter messages by time, failure message, sender, receiver and failure origin.
 
-![Failed integration page](https://i.imgur.com/ZWZozn1.png#light-only)![Docusaurus themed image](https://i.imgur.com/ZwHKhNo.png#dark-only)
+![Start resend job](/img/docs/start-resending-light.webp#light-only)![Start resend job](/img/docs/start-resending-dark.webp#dark-only)
 
 When you have either selected all messages, or a subset of messages you can select to either Delete or Retry the messages. When you start a new job for either of those, a new card will appear on the page where you can track the status of the operation.
 
-![Failed integration page](https://i.imgur.com/ZJN126C.png#light-only)![Docusaurus themed image](https://i.imgur.com/FoEwXRF.png#dark-only)
+![Active resend job](/img/docs/active-job-light.webp#light-only)![Active resend job](/img/docs/active-job-dark.webp#dark-only)
 
 :::note
 You can only have one active resending job per integration at any one time.

@@ -1,0 +1,1409 @@
+openapi: 3.0.1
+info:
+  title: Connxio API
+  description: Messaging and management Api for Connxio. This API version has been deprecated. Please use one of the new APIs available from the explorer.
+  contact:
+    name: Evidi
+    url: https://www.evidi.com
+    email: support@connxio.no
+  version: '1.0'
+paths:
+  /api/v1/management/integration:
+    get:
+      tags:
+        - Integration
+      summary: Gets a list of integration configurations for the subscription
+      parameters:
+        - name: subscriptionId
+          in: query
+          description: ''
+          schema:
+            type: string
+        - name: companyId
+          in: header
+          description: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of integrations for the subscription
+          content:
+            text/plain; x-api-version=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IntegrationConfig'
+            application/json; x-api-version=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IntegrationConfig'
+            text/json; x-api-version=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IntegrationConfig'
+            application/xml; x-api-version=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IntegrationConfig'
+            text/xml; x-api-version=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IntegrationConfig'
+        '502':
+          description: Could not contact internal services. Please try again later or contact our support department
+    post:
+      tags:
+        - Integration
+      summary: Creates or updates an integration configuration
+      parameters:
+        - name: companyId
+          in: header
+          description: ''
+          schema:
+            type: string
+      requestBody:
+        description: ''
+        content:
+          application/json; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/IntegrationPostRequest'
+          text/json; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/IntegrationPostRequest'
+          application/*+json; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/IntegrationPostRequest'
+          application/xml; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/IntegrationPostRequest'
+          text/xml; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/IntegrationPostRequest'
+          application/*+xml; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/IntegrationPostRequest'
+      responses:
+        '200':
+          description: The updated integration configuration
+          content:
+            text/plain; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+            application/json; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+            text/json; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+            application/xml; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+            text/xml; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+        '201':
+          description: The created integration configuration
+        '400':
+          description: Request did not pass validation. Check your request and error message.
+        '502':
+          description: Could not contact internal services. Please try again later or contact our support department
+  '/api/v1/management/integration/{id}':
+    get:
+      tags:
+        - Integration
+      summary: Gets the integration configuration corresponding to the configCorrelationId
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: companyId
+          in: header
+          description: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The integration corresponding to the configCorrelationId
+          content:
+            text/plain; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+            application/json; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+            text/json; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+            application/xml; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+            text/xml; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+        '404':
+          description: A integration corresponding to the configCorrelationId could not be found
+        '502':
+          description: Could not contact internal services. Please try again later or contact our support department
+  '/api/v1/management/integration/{id}/subscription/{subscriptionId}':
+    delete:
+      tags:
+        - Integration
+      summary: Deletes the integration configuration corresponding to the configCorrelationId
+      parameters:
+        - name: id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: subscriptionId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: companyId
+          in: header
+          description: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+            application/json; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+            text/json; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+            application/xml; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+            text/xml; x-api-version=1.0:
+              schema:
+                $ref: '#/components/schemas/IntegrationConfig'
+        '204':
+          description: Integration configuration deleted
+        '400':
+          description: Request did not pass validation. Check your request and error message.
+        '502':
+          description: Could not contact internal services. Please try again later or contact our support department
+  /api/v1/message:
+    post:
+      tags:
+        - Message
+      summary: Sends a single message to Connxio
+      parameters:
+        - name: MessageEncoding
+          in: query
+          schema:
+            type: string
+        - name: ConfigCorrelationId
+          in: query
+          schema:
+            type: string
+        - name: InterchangeId
+          in: query
+          schema:
+            type: string
+        - name: SenderId
+          in: query
+          schema:
+            type: string
+        - name: ReceiverId
+          in: query
+          schema:
+            type: string
+        - name: DocumentType
+          in: query
+          schema:
+            type: string
+        - name: FileName
+          in: query
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageBodyRequest'
+            examples:
+              Example request:
+                value: '{"foo":"bar"}'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/MessageBodyRequest'
+            examples:
+              Example request:
+                value: "<root>\n  <Foo>bar</Foo>\n</root>"
+        required: true
+      responses:
+        '200':
+          description: The message was validated and sent to the Connxio engine
+        '400':
+          description: The supplied message or metadata did not pass validation
+        '502':
+          description: Could not contact internal services. Please try again later or contact our support department
+  /api/v1/message/new/batch:
+    post:
+      tags:
+        - Message
+      summary: Sends a batch of messages to Connxio
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MessageBodyRequest'
+            examples:
+              Array of MessageBodyRequest:
+                value: '[{"messageBody":"string","fileName":"string","configCorrelationId":"string","interchangeId":"string","messageEncoding":"string","documentType":"string","senderId":"string","receiverId":"string"}]'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ArrayOfMessageBodyRequest'
+            examples:
+              Array of MessageBodyRequest:
+                value: "<ArrayOfMessageBodyRequest>\n  <MessageBodyRequest>\n    <MessageBody>string</MessageBody>\n    <FileName>string</FileName>\n    <ConfigCorrelationId>string</ConfigCorrelationId>\n    <InterchangeId>string</InterchangeId>\n    <MessageEncoding>string</MessageEncoding>\n    <DocumentType>string</DocumentType>\n    <SenderId>string</SenderId>\n    <ReceiverId>string</ReceiverId>\n  </MessageBodyRequest>\n</ArrayOfMessageBodyRequest>"
+        required: true
+      responses:
+        '200':
+          description: The message was validated and sent to the Connxio engine
+        '400':
+          description: The supplied message or metadata did not pass validation
+        '502':
+          description: Could not contact internal services. Please try again later or contact our support department
+  /api/v1/message/new:
+    post:
+      tags:
+        - Message
+      summary: Sends a single message to Connxio
+      requestBody:
+        description: The messages and metadata as an array
+        content:
+          application/json; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/MessageBodyRequest'
+          text/json; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/MessageBodyRequest'
+          application/*+json; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/MessageBodyRequest'
+          application/xml; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/MessageBodyRequest'
+          text/xml; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/MessageBodyRequest'
+          application/*+xml; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/MessageBodyRequest'
+      responses:
+        '200':
+          description: The message was validated and sent to the Connxio engine
+        '400':
+          description: The supplied message or metadata did not pass validation
+        '502':
+          description: Could not contact internal services. Please try again later or contact our support department
+  /api/v1/eventgrid:
+    post:
+      tags:
+        - Message
+      summary: Sends an Event Grid message to Connxio. Use query parameters for metadata and the full content body for the Event Grid message.
+      parameters:
+        - name: MessageEncoding
+          in: query
+          schema:
+            type: string
+        - name: ConfigCorrelationId
+          in: query
+          schema:
+            type: string
+        - name: InterchangeId
+          in: query
+          schema:
+            type: string
+        - name: SenderId
+          in: query
+          schema:
+            type: string
+        - name: ReceiverId
+          in: query
+          schema:
+            type: string
+        - name: DocumentType
+          in: query
+          schema:
+            type: string
+        - name: FileName
+          in: query
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/EventGridMessage'
+            examples:
+              Array of EventGridMessage:
+                value: '[{"topic":"string","subject":"string","eventType":"string","eventTime":"2023-03-31T19:29:12.612Z","id":"string","data":"string","dataVersion":"string","metadataVersion":"string"}]'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ArrayOfEventGridMessage'
+            examples:
+              Array of EventGridMessage:
+                value: "<ArrayOfEventGridMessage>\n  <EventGridMessage>\n    <Topic>string</Topic>\n    <Subject>string</Subject>\n    <EventType>string</EventType>\n    <EventTime>2023-03-31T19:27:48.597Z</EventTime>\n    <Id>string</Id>\n    <Data>string</Data>\n    <DataVersion>string</DataVersion>\n    <MetadataVersion>string</MetadataVersion>\n  </EventGridMessage>\n</ArrayOfEventGridMessage>"
+        required: true
+      responses:
+        '200':
+          description: The message was validated and sent to the Connxio engine
+        '400':
+          description: The supplied message or metadata did not pass validation
+        '502':
+          description: Could not contact internal services. Please try again later or contact our support department
+  /api/v1/resend/archeo:
+    post:
+      tags:
+        - Resend
+      summary: Resend a resendable Archeo Logstep
+      requestBody:
+        description: The message and metadata as json
+        content:
+          application/json; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/ArcheoResendEventRequest'
+          text/json; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/ArcheoResendEventRequest'
+          application/*+json; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/ArcheoResendEventRequest'
+          application/xml; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/ArcheoResendEventRequest'
+          text/xml; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/ArcheoResendEventRequest'
+          application/*+xml; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/ArcheoResendEventRequest'
+      responses:
+        '200':
+          description: The message was validated and sent to the Connxio engine
+        '400':
+          description: The supplied message or metadata did not pass validation
+        '502':
+          description: Could not contact internal services. Please try again later or contact our support department
+  /api/v1/resend/archeo/restart:
+    post:
+      tags:
+        - Resend
+      summary: Resend any Archeo Logstep from the begynning of the trasaction
+      requestBody:
+        description: The message and metadata as json
+        content:
+          application/json; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/ArcheoResendEventRequest'
+          text/json; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/ArcheoResendEventRequest'
+          application/*+json; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/ArcheoResendEventRequest'
+          application/xml; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/ArcheoResendEventRequest'
+          text/xml; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/ArcheoResendEventRequest'
+          application/*+xml; x-api-version=1.0:
+            schema:
+              $ref: '#/components/schemas/ArcheoResendEventRequest'
+      responses:
+        '200':
+          description: The message was validated and sent to the Connxio engine
+        '400':
+          description: The supplied message or metadata did not pass validation
+        '502':
+          description: Could not contact internal services. Please try again later or contact our support department
+  /api/v1/management/subscription:
+    get:
+      tags:
+        - Subscription
+      summary: Returns the list of subscriptions for a company
+      parameters:
+        - name: companyId
+          in: header
+          description: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of subscriptions for the company
+          content:
+            text/plain; x-api-version=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConnXioSubscription'
+            application/json; x-api-version=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConnXioSubscription'
+            text/json; x-api-version=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConnXioSubscription'
+            application/xml; x-api-version=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConnXioSubscription'
+            text/xml; x-api-version=1.0:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConnXioSubscription'
+        '502':
+          description: Could not contact internal services. Please try again later or contact our support department
+components:
+  schemas:
+    AckOptions:
+      type: object
+      properties:
+        sendAck:
+          type: boolean
+        adapterType:
+          type: string
+          nullable: true
+        connectionProperties:
+          type: string
+          nullable: true
+        transformationSasUri:
+          type: string
+          nullable: true
+        transformationId:
+          type: string
+          nullable: true
+        transformationVersion:
+          type: string
+          nullable: true
+        ackOutboundFormat:
+          type: string
+          nullable: true
+        sendNegativeAck:
+          type: boolean
+      additionalProperties: false
+    AckOptionsViewModel:
+      type: object
+      properties:
+        sendAck:
+          type: boolean
+        adapterType:
+          type: string
+          nullable: true
+        connectionProperties:
+          type: string
+          nullable: true
+        transformationSasUri:
+          type: string
+          nullable: true
+        transformationId:
+          type: string
+          nullable: true
+        transformationVersion:
+          type: string
+          nullable: true
+        ackOutboundFormat:
+          type: string
+          nullable: true
+        sendNegativeAck:
+          type: boolean
+      additionalProperties: false
+    AdapterConnectionProperties:
+      type: object
+      properties:
+        adapterType:
+          type: string
+          nullable: true
+        useProcessLock:
+          type: boolean
+        wrapperType:
+          $ref: '#/components/schemas/WrapperType'
+        mightBeWrapped:
+          type: boolean
+        adapterId:
+          type: string
+          nullable: true
+        adapterName:
+          type: string
+          nullable: true
+        connectionProperties:
+          type: string
+          nullable: true
+        ackOptions:
+          $ref: '#/components/schemas/AckOptions'
+      additionalProperties: false
+    AdapterConnectionPropertiesViewModel:
+      required:
+        - adapterType
+        - connectionProperties
+      type: object
+      properties:
+        adapterType:
+          type: string
+        adapterId:
+          type: string
+          nullable: true
+        adapterName:
+          type: string
+          nullable: true
+        connectionProperties:
+          type: string
+        ackOptions:
+          $ref: '#/components/schemas/AckOptionsViewModel'
+      additionalProperties: false
+    AdapterType:
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+      type: integer
+      format: int32
+    ArcheoLogStepMetaData:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        transactionTypeName:
+          type: string
+          nullable: true
+        messageTypeName:
+          type: string
+          nullable: true
+        senderName:
+          type: string
+          nullable: true
+        recieverName:
+          type: string
+          nullable: true
+        statusName:
+          type: string
+          nullable: true
+        fileName:
+          type: string
+          nullable: true
+        processed:
+          type: string
+          format: date-time
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+      additionalProperties: false
+    ArcheoResendEventRequest:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          nullable: true
+        contentSasUri:
+          type: string
+          nullable: true
+        resendDateTime:
+          type: string
+          nullable: true
+        logStepMetaData:
+          $ref: '#/components/schemas/ArcheoLogStepMetaData'
+      additionalProperties: false
+    ArrayOfEventGridMessage:
+      type: object
+      properties:
+        eventGridMessages:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGridMessage'
+          nullable: true
+      additionalProperties: false
+    ArrayOfMessageBodyRequest:
+      type: object
+      properties:
+        messageBodyRequests:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageBodyRequest'
+          nullable: true
+      additionalProperties: false
+    ConnXioSubscription:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        active:
+          type: boolean
+        companyId:
+          type: string
+          nullable: true
+        companyName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Contract:
+      enum:
+        - 0
+        - 1
+      type: integer
+      format: int32
+    EventGridMessage:
+      type: object
+      properties:
+        topic:
+          type: string
+          nullable: true
+        subject:
+          type: string
+          nullable: true
+        eventType:
+          type: string
+          nullable: true
+        eventTime:
+          type: string
+          format: date-time
+        id:
+          type: string
+          nullable: true
+        data:
+          nullable: true
+        dataVersion:
+          type: string
+          nullable: true
+        metadataVersion:
+          type: string
+          nullable: true
+      additionalProperties: false
+    IntegrationConfig:
+      type: object
+      properties:
+        configCorrelationId:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        inboundConnection:
+          $ref: '#/components/schemas/AdapterConnectionProperties'
+        subIntegrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubIntegration'
+          nullable: true
+        companyName:
+          type: string
+          nullable: true
+        companyId:
+          type: string
+          nullable: true
+        subscriptionName:
+          type: string
+          nullable: true
+        subscriptionId:
+          type: string
+          nullable: true
+        transactionType:
+          type: string
+          nullable: true
+        loggingWebhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoggingWebhookConfig'
+          nullable: true
+        resendWebhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResendWebhookConfig'
+          nullable: true
+        internalLoggingOptions:
+          $ref: '#/components/schemas/InternalLoggingOptions'
+        retryOptions:
+          $ref: '#/components/schemas/RetryOptions'
+        sender:
+          type: string
+          nullable: true
+        receiver:
+          type: string
+          nullable: true
+        messageInboundFormat:
+          type: string
+          nullable: true
+        messageInboundEncoding:
+          type: string
+          nullable: true
+        removeBom:
+          type: boolean
+        handleAsBinaryFile:
+          type: boolean
+        internalProperties:
+          $ref: '#/components/schemas/InternalProperties'
+        stopOnEncodingError:
+          type: boolean
+        pollingIntervalInSeconds:
+          type: integer
+          format: int32
+        intervalExpression:
+          type: string
+          nullable: true
+        enabled:
+          type: boolean
+        useApiKey:
+          type: boolean
+        id:
+          type: string
+          nullable: true
+        _etag:
+          type: string
+          nullable: true
+        cosmosEntityName:
+          type: string
+          nullable: true
+          readOnly: true
+        createdBy:
+          type: string
+          nullable: true
+        updatedBy:
+          type: string
+          nullable: true
+        createdAtUtc:
+          type: string
+          format: date-time
+          nullable: true
+        updatedAtUtc:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    IntegrationPostRequest:
+      required:
+        - companyId
+        - configCorrelationId
+        - description
+        - inboundConnection
+        - messageInboundEncoding
+        - messageInboundFormat
+        - receiver
+        - sender
+        - subIntegrations
+        - subscriptionId
+        - transactionType
+      type: object
+      properties:
+        pollingIntervalInSeconds:
+          type: integer
+          format: int32
+        stopOnEncodingError:
+          type: boolean
+        removeBom:
+          type: boolean
+        messageInboundEncoding:
+          type: string
+        messageInboundFormat:
+          type: string
+        receiver:
+          type: string
+        sender:
+          type: string
+        retryOptions:
+          $ref: '#/components/schemas/RetryOptions'
+        loggingWebhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoggingWebhookConfig'
+          nullable: true
+        transactionType:
+          type: string
+        subscriptionId:
+          type: string
+          format: uuid
+        companyId:
+          type: string
+        subIntegrations:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/SubIntegrationViewModel'
+        inboundConnection:
+          $ref: '#/components/schemas/AdapterConnectionPropertiesViewModel'
+        description:
+          minLength: 3
+          type: string
+        configCorrelationId:
+          type: string
+          format: uuid
+        resendWebhooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResendWebhookConfig'
+          nullable: true
+        enabled:
+          type: boolean
+      additionalProperties: false
+    InternalLoggingOptions:
+      type: object
+      properties:
+        logLevel:
+          $ref: '#/components/schemas/LogLevel'
+        logMessageContent:
+          type: boolean
+          nullable: true
+        logMetaData:
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    InternalProperties:
+      type: object
+      properties:
+        redirectInboundToRetry:
+          type: boolean
+        redirectBatchingToRetry:
+          type: boolean
+        redirectSplittingToRetry:
+          type: boolean
+      additionalProperties: false
+    LoggingWebhookConfig:
+      type: object
+      properties:
+        contract:
+          $ref: '#/components/schemas/Contract'
+        endpointURL:
+          type: string
+          nullable: true
+        httpVerb:
+          type: string
+          nullable: true
+        webhookConnectionId:
+          type: string
+          nullable: true
+        adapterType:
+          $ref: '#/components/schemas/AdapterType'
+        queryString:
+          type: string
+          nullable: true
+        maxRetries:
+          type: integer
+          format: int32
+        timeout:
+          type: integer
+          format: int32
+        authorizationHeaderKey:
+          $ref: '#/components/schemas/Secret'
+        type:
+          $ref: '#/components/schemas/WebhookType'
+        enabled:
+          type: boolean
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+        logLevel:
+          $ref: '#/components/schemas/LogLevel'
+        inboundMesssageType:
+          type: string
+          nullable: true
+        outboundMessageType:
+          type: string
+          nullable: true
+        logMessageContent:
+          type: boolean
+          nullable: true
+        transactionTag:
+          type: string
+          nullable: true
+        customInboundDescription:
+          type: string
+          nullable: true
+        customOutboundDescription:
+          type: string
+          nullable: true
+        logMetaData:
+          type: boolean
+          nullable: true
+        useExternalContentService:
+          type: boolean
+          nullable: true
+        sendContentOnExternalServiceFailure:
+          type: boolean
+          nullable: true
+        externalContentServiceWebhook:
+          $ref: '#/components/schemas/RestConnectionProperties'
+      additionalProperties: false
+    LogLevel:
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+      type: integer
+      format: int32
+    MessageBodyRequest:
+      required:
+        - messageBody
+      type: object
+      properties:
+        messageFormat:
+          type: string
+          nullable: true
+        messageEncoding:
+          type: string
+          nullable: true
+        configCorrelationId:
+          type: string
+          nullable: true
+        interchangeId:
+          type: string
+          nullable: true
+        senderId:
+          type: string
+          nullable: true
+        receiverId:
+          type: string
+          nullable: true
+        recieverId:
+          type: string
+          nullable: true
+          deprecated: true
+        documentType:
+          type: string
+          nullable: true
+        messageBody:
+          type: string
+          format: byte
+        fileName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    NextLinkType:
+      enum:
+        - 0
+        - 1
+      type: integer
+      format: int32
+    PagingType:
+      enum:
+        - 0
+        - 1
+      type: integer
+      format: int32
+    ResendWebhookConfig:
+      type: object
+      properties:
+        contract:
+          $ref: '#/components/schemas/Contract'
+        endpointURL:
+          type: string
+          nullable: true
+        httpVerb:
+          type: string
+          nullable: true
+        webhookConnectionId:
+          type: string
+          nullable: true
+        adapterType:
+          $ref: '#/components/schemas/AdapterType'
+        queryString:
+          type: string
+          nullable: true
+        maxRetries:
+          type: integer
+          format: int32
+        timeout:
+          type: integer
+          format: int32
+        authorizationHeaderKey:
+          $ref: '#/components/schemas/Secret'
+        type:
+          $ref: '#/components/schemas/WebhookType'
+        enabled:
+          type: boolean
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+        usePureMessageSending:
+          type: boolean
+      additionalProperties: false
+    RestConnectionProperties:
+      type: object
+      properties:
+        endpointURL:
+          type: string
+          nullable: true
+        httpVerb:
+          type: string
+          nullable: true
+        webhookConnectionId:
+          type: string
+          nullable: true
+        authorizationHeaderType:
+          type: string
+          nullable: true
+        apimSubscriptionKey:
+          $ref: '#/components/schemas/Secret'
+        oAuthUrl:
+          type: string
+          nullable: true
+        oAuthBody:
+          type: string
+          nullable: true
+        oAuthClientId:
+          type: string
+          nullable: true
+        oAuthClientSecret:
+          $ref: '#/components/schemas/Secret'
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+        body:
+          type: string
+          nullable: true
+        usePaging:
+          type: boolean
+        useDateDelta:
+          type: boolean
+        pagingType:
+          $ref: '#/components/schemas/PagingType'
+        nextLinkType:
+          $ref: '#/components/schemas/NextLinkType'
+        pathName:
+          type: string
+          nullable: true
+        oAuthGrantType:
+          type: string
+          nullable: true
+        oAuthUserName:
+          type: string
+          nullable: true
+        oAuthPwd:
+          $ref: '#/components/schemas/Secret'
+        oAuthResource:
+          type: string
+          nullable: true
+        oAuthScope:
+          type: string
+          nullable: true
+        basicAuthenticationUserName:
+          type: string
+          nullable: true
+        basicAuthenticationPassword:
+          $ref: '#/components/schemas/Secret'
+        newInternalMessageCorrelationId:
+          type: string
+          nullable: true
+        newInternalMessagePreserveInterchangeId:
+          type: boolean
+        useFallBackOnRequestFailed:
+          type: boolean
+        fallBackOnThreeHoundred:
+          type: boolean
+        fallBackOnFourHoundred:
+          type: boolean
+        fallBackOnFiveHoundred:
+          type: boolean
+        restConnectionPropertiesSecondary:
+          $ref: '#/components/schemas/RestConnectionProperties'
+        useStaticIp:
+          type: boolean
+        terminateOnDuplicateDetection:
+          type: boolean
+        duplicateTerminationStatus:
+          type: string
+          nullable: true
+        restResponseErrorHandlingRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestResponseErrorHandlingRule'
+          nullable: true
+      additionalProperties: false
+    RestResponseErrorHandlingActionType:
+      enum:
+        - 0
+        - 1
+        - 2
+      type: integer
+      format: int32
+    RestResponseErrorHandlingRule:
+      type: object
+      properties:
+        statusCodes:
+          type: string
+          nullable: true
+        action:
+          $ref: '#/components/schemas/RestResponseErrorHandlingActionType'
+        retry:
+          type: boolean
+        customStatus:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RetryOptions:
+      type: object
+      properties:
+        failureCountIntervalMinutes:
+          type: integer
+          format: int32
+          nullable: true
+        reQueueMaxDelaySeconds:
+          type: integer
+          format: int32
+          nullable: true
+        reQueueMinDelaySeconds:
+          type: integer
+          format: int32
+          nullable: true
+        maxErrorsPerInterval:
+          type: integer
+          format: int32
+          nullable: true
+        numberOfRetries:
+          type: integer
+          format: int32
+          nullable: true
+        enabled:
+          type: boolean
+        turnOffErrorPersistance:
+          type: boolean
+        maxDelayActions:
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+    Secret:
+      type: object
+      properties:
+        decryptedValue:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        version:
+          type: string
+          nullable: true
+      additionalProperties: false
+    SubIntegration:
+      type: object
+      properties:
+        subIntegrationId:
+          type: string
+          nullable: true
+        subintegrationName:
+          type: string
+          nullable: true
+        sender:
+          type: string
+          nullable: true
+        receiver:
+          type: string
+          nullable: true
+        loggingWebhookOverrides:
+          $ref: '#/components/schemas/SubintegrationLoggingConfigOverride'
+        transformations:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransformationAction'
+          nullable: true
+        passThrough:
+          type: boolean
+        outboundConnections:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdapterConnectionProperties'
+          nullable: true
+        messageOutboundFormat:
+          type: string
+          nullable: true
+        messageOutboundEncoding:
+          type: string
+          nullable: true
+        internalProperties:
+          $ref: '#/components/schemas/InternalProperties'
+        enabled:
+          type: boolean
+        preDefinedUserProperties:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+      additionalProperties: false
+    SubintegrationLoggingConfigOverride:
+      type: object
+      properties:
+        logLevel:
+          $ref: '#/components/schemas/LogLevel'
+        inboundMesssageType:
+          type: string
+          nullable: true
+        outboundMessageType:
+          type: string
+          nullable: true
+        logMessageContent:
+          type: boolean
+          nullable: true
+        transactionTag:
+          type: string
+          nullable: true
+        customInboundDescription:
+          type: string
+          nullable: true
+        customOutboundDescription:
+          type: string
+          nullable: true
+        logMetaData:
+          type: boolean
+          nullable: true
+        enabled:
+          type: boolean
+      additionalProperties: false
+    SubIntegrationViewModel:
+      required:
+        - messageOutboundFormat
+        - outboundConnections
+        - subIntegrationId
+      type: object
+      properties:
+        subIntegrationId:
+          type: string
+          format: uuid
+        subintegrationName:
+          type: string
+          nullable: true
+        receiver:
+          type: string
+          nullable: true
+        loggingWebhookOverrides:
+          $ref: '#/components/schemas/SubintegrationLoggingConfigOverride'
+        transformations:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransformationActionViewModel'
+          nullable: true
+        passThrough:
+          type: boolean
+        outboundConnections:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/AdapterConnectionPropertiesViewModel'
+        messageOutboundFormat:
+          type: string
+        messageOutboundEncoding:
+          type: string
+          nullable: true
+        preDefinedUserProperties:
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+        enabled:
+          type: boolean
+      additionalProperties: false
+    TransformationAction:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        transformationType:
+          type: string
+          nullable: true
+        transformationName:
+          type: string
+          nullable: true
+        properties:
+          type: string
+          nullable: true
+      additionalProperties: false
+    TransformationActionViewModel:
+      required:
+        - properties
+        - transformationType
+      type: object
+      properties:
+        transformationType:
+          type: string
+        transformationName:
+          type: string
+          nullable: true
+        properties:
+          type: string
+      additionalProperties: false
+    WebhookType:
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+      type: integer
+      format: int32
+    WrapperType:
+      enum:
+        - 0
+        - 1
+        - 2
+      type: integer
+      format: int32
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://login.microsoftonline.com/0b933fc9-3391-4302-9d86-85fe9bb5370e/oauth2/authorize
+          scopes:
+            user_impersonation: Access API
+    Connxio API Key:
+      type: apiKey
+      description: API Key for Connxio API
+      name: Connxio-Api-Key
+      in: header
+security:
+  - oauth2:
+      - readAccess
+      - writeAccess
+  - Connxio API Key: [ ]

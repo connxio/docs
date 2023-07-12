@@ -58,7 +58,7 @@ CX has a set of default statuses that correspond to the logging event context. W
 | Status | Description |
 |---|---|
 | Success | The event represents a success such as the message being received successfully in an adapter or transformed successfully in a code component |
-| Warning | A failure has happened while executing the CX pipeline, but is non critical and the process is either continued or retried as described on the [retry page](/concepts/retry). |
+| Warning | A failure has happened while executing the CX pipeline, but is non critical and the process is either continued or retried as described on the [retry page](/integrations/retry). |
 | Error | A failure has happened while executing the CX pipeline and the process has stopped. This can be cause by external services like enrichment endpoints, transformations or adapter targets, but can also be caused by internal faults in CX. Refer to the description to analyze and react to the error.|
 | Terminated | The pipeline was terminated by the user. Either via [code components](/integrations/transformation/code-components) of via [data collection](/integrations/transformation/data-collection).|
 
@@ -262,4 +262,4 @@ This really depends on the criticality of the integration itself, the potential 
 
 ## Logging outside CX
 
-In many cases there is integration being done either before of after a message is passed of to CX for processing. We recommend tying these actions into the CX flow with you own logging, in this way you get a complete picture of the actual actions involved in you integration. This is very easy with Archeo, and should be possible with most third party providers as well. When setting this up you need to use your InterchangeId to pair your internal logs with CX's generated log events. See more about InterchangeId [here](/concepts/core-concepts).
+In many cases there is integration being done either before of after a message is passed of to CX for processing. We recommend tying these actions into the CX flow with you own logging, in this way you get a complete picture of the actual actions involved in you integration. This is very easy with Archeo, and should be possible with most third party providers as well. When setting this up you need to use your InterchangeId to pair your internal logs with CX's generated log events. See more about InterchangeId [here](/getting-started/connxio-concepts).

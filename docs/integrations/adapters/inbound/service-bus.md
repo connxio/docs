@@ -45,7 +45,7 @@ Message sbMessage = new Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObje
 sbMessage.UserProperties.Add("InterchangeId", "3c8701dc-858b-4f98-915a-5b3432eb37ec");
 ```
 
-Be sure to read the [Core Concepts](/concepts/core-concepts) for more information about supplying your own InterchangeId.
+Be sure to read the [Core Concepts](/getting-started/connxio-concepts) for more information about supplying your own InterchangeId.
 
 ## Configuring Service Bus message intake
 

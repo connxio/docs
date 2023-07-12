@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-    - next
+    - temp
   paths:
     include:
     - '*'

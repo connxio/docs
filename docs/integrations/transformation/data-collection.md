@@ -1,6 +1,6 @@
 # Data Collection
 
-Connxio (CX) supports various forms of [orchestration](/concepts/core-concepts) most prominent among them is enrichment and this is fueled by *data collection*. Data collection refers to the act of getting data over HTTP as a transformations tep. This enables customers to collect data from all resources that support HTTP and use them within transformations, [variable replacements](/connxio-portal/variables/variable-replacement) and url generation. This page describes how to use and configure data collection.
+Connxio (CX) supports various forms of [orchestration](/getting-started/connxio-concepts) most prominent among them is enrichment and this is fueled by *data collection*. Data collection refers to the act of getting data over HTTP as a transformations tep. This enables customers to collect data from all resources that support HTTP and use them within transformations, [variable replacements](/connxio-portal/variables/variable-replacement) and url generation. This page describes how to use and configure data collection.
 
 ## Limitations and External demands
 
@@ -49,7 +49,7 @@ Add the necessary fields to your data collection. See below for an example:
 
 ## Retry
 
-Data collection is currently using the backoff retry described on the [Retry](/concepts/retry) page.
+Data collection is currently using the backoff retry described on the [Retry](/integrations/retry) page.
 
 ## Advanced error handling
 

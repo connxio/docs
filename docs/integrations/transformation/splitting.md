@@ -4,7 +4,7 @@ Connxio (CX) gives customers the ability to split messages into smaller units. W
 
 ## Limitations
 
-There are very few limits to splitting the only one being that we support files up to `100mb` only. However, you can split files into any amount of messages, and process them in any shape or form in further transformations. After the splitting is run all files will be handled as a unique message inside CX which means they will generate separate [logs](/integrations/logging), [resend-events](/connxio-api/archeo-resending) and errors.
+There are very few limits to splitting the only one being that we support files up to `100mb` only. However, you can split files into any amount of messages, and process them in any shape or form in further transformations. After the splitting is run all files will be handled as a unique message inside CX which means they will generate separate [logs](/integrations/logging), [resend-events](/connxio-api/resending-api) and errors.
 
 > Splitting can generate enormous amounts of traffic. Be sure that you test your receiving systems thoroughly before you send production level loads.
 
@@ -63,6 +63,6 @@ public class MyFirstSplitter : IConnXioSplit
 
 ## Retry
 
-Splitting has multiple retry patterns that differ based on which step of the splitting process that fails. If the process fails on transient errors before running the splitting code component the system puts the original messages back in queue and tries again 10 times. If the failure is happens after running the splitting code the algorithm tries to send the message to the next pipeline step multiple times with increasing delay until the message is scheduled for retry through the [disaster pipeline](/concepts/retry).
+Splitting has multiple retry patterns that differ based on which step of the splitting process that fails. If the process fails on transient errors before running the splitting code component the system puts the original messages back in queue and tries again 10 times. If the failure is happens after running the splitting code the algorithm tries to send the message to the next pipeline step multiple times with increasing delay until the message is scheduled for retry through the [disaster pipeline](/integrations/retry).
 
 REtry can end up causing delays in the delivery of splitted message units. If you experience problems like this, your logging provider should have received warnings about the fault, if not please contact your representative.

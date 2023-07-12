@@ -26,7 +26,7 @@ This pattern is by far the most secure, robust, fast and reliable way to use Ser
 
 - **SasUri**: The uri that hosts the actual message data.
 - **FileName**: Used for [variable replacement](/connxio-portal/variables/variable-replacement).
-- **InterchangeId**: Used as InterchangeId as detailed in [core concepts](/concepts/core-concepts).
+- **InterchangeId**: Used as InterchangeId as detailed in [core concepts](/getting-started/connxio-concepts).
 
 When the CX inbound adapter fires the metadata message will be picked up from Service Bus and the data will be fetched from the Uri before the data is sent to the next part of the CX pipeline.
 

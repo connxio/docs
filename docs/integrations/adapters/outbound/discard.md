@@ -14,4 +14,4 @@ The Discard adapter requires no configuration to use as the messages are simply 
 
 ## Retry
 
-Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/concepts/retry). This may change in the future as we are looking into enabling back-off retry.
+Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/integrations/retry). This may change in the future as we are looking into enabling back-off retry.

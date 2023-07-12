@@ -4,7 +4,16 @@ sidebar_position: 2
 
 # Security Configurations
 
-A security configuration is basically just a convenient way to store adapter and logging credentials. This gives customers the ability to securely store credentials and reuse them on multiple integrations. This page describes how to create a *security configuration*.
+Security configurations in Connxio are reusable blocks of information that contain credentials and other necessary details for securely connecting to various systems. These configurations help streamline the setup process and ensure the secure transmission of data between Connxio and external systems. Connxio stores all sensitive information securely in a secure key storage, ensuring the confidentiality of passwords and credentials.
+
+### Purpose of Security Configurations
+
+Security configurations serve the following purposes in Connxio:
+
+- **Secure Connections**: Security configurations store sensitive information, such as credentials or API keys, required to establish secure connections with external systems.
+- **Reusability**: By creating reusable security configurations, users can easily apply the same set of credentials across multiple integrations, saving time and effort in configuration management.
+- **Centralized Management**: Storing security information in one place allows for centralized management and ensures consistency in connection details.
+- **Enhanced Security**: By keeping passwords and sensitive information separate from integration configurations, Connxio minimizes the risk of exposing confidential data.
 
 ## Creating a Security Configuration
 
@@ -57,7 +66,7 @@ In addition to to the name, the Archeo security config only holds one field:
 - **Name**: The name that pops up when you select the configuration on an integration.
 - **Archeo API Key**: The Archeo API Key provided from Archeo, used when logging to Archeo.
 
-### Sftp
+### SFTP
 
 The SFTP configuration contains all the relevant properties for connection to the SFTP server. The path to witch folder to connect to is set on the adapter.
 
@@ -69,7 +78,7 @@ The SFTP configuration contains all the relevant properties for connection to th
 - **Password**: The password CX uses to authenticate to server.
 - **SSH HostKey Fingerprint**: The fingerprint of the server certificate. Read more in the [WinScp documentation](https://winscp.net/eng/docs/faq_hostkey).
 
-### Ftp
+### FTP
 
 The FTP configuration contains all the relevant properties for connection to the SFTP server. The path to witch folder to connect to is set on the adapter.
 

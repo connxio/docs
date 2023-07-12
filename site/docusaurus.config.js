@@ -77,7 +77,7 @@ const config = {
       metadata: [{ name: "robots", content: "#{ seo }#" }],
       navbar: {
         title: "",
-        hideOnScroll: true,
+        hideOnScroll: false,
         logo: {
           alt: "Connxio Logo",
           src: "img/connxio-logo.svg",

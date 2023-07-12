@@ -10,11 +10,22 @@ To create an Environment Variable, navigate to the menu item with the same name.
 - **Default Value:** This is the default value of the variable. If no Subscription Value is set, this is the value that the variable will output in all subscriptions.
 - **Subscription Value:** Here you define the specific value for all subscriptions. You can define specific values for one or more subscriptions. Subscriptions where this value is not set will fall back to using the Default Value.
 
-![Environment variables](https://cmhpictsa.blob.core.windows.net/pictures/variable-details-light.webp?sv=2021-08-06&st=2023-01-17T07%3A57%3A01Z&se=2099-01-18T07%3A57%3A00Z&sr=b&sp=r&sig=75qn57%2BcGTnDFPRoS0Y6qp4%2FNpdOcYHpK9DUOHF4Ezc%3D#light-only)![Environment variables](https://cmhpictsa.blob.core.windows.net/pictures/variable-details-dark.webp?sv=2021-08-06&st=2023-01-17T07%3A56%3A43Z&se=2099-01-18T07%3A56%3A00Z&sr=b&sp=r&sig=WrNmHDbo5QdRKIKTIs1aGhF9pzAwYOrUYf8jMajgUJk%3D#dark-only)
+![Environment variables](/img/docs/env-vars-light.webp#light-only)![Environment variables](/img/docs/env-vars-dark.webp#dark-only)
 
 ## Using Environment Variables
 
-Once the environment variable is set, you can reference it in your code by using the macro `{env:[MY-VARIABLE]}`.
-For example, if you have an environment variable named "Customer.ApiUrl" you can refer to it in your integration by using the macro `{env:Customer.ApiUrl}`. If a subscription-specific value is set for an environment variable, the macro will be replaced with that value when the integration is running within that subscription's context. If no subscription-specific value is set, the default value will be used.
+Once the environment variable is set, you can reference it in your code by using the macro
+```
+{env:[MY-VARIABLE]}
+```
 
->`NOTE: When referencing an Environment Variable, do not use whitespaces in between the '{' and '}' and the macro text`
+For example, if you have an environment variable named "Customer.ApiUrl" you can refer to it in your integration by using the macro:
+```
+{env:Customer.ApiUrl}
+```
+
+If a subscription-specific value is set for an environment variable, the macro will be replaced with that value when the integration is running within that subscription's context. If no subscription-specific value is set, the default value will be used instead.
+
+:::caution
+When referencing an Environment Variable, do not use whitespaces in between the '{' and '}' and the macro text.
+:::

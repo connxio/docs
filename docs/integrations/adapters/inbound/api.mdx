@@ -1,0 +1,29 @@
+# Connxio API
+
+
+The Connxio API provides a powerful capability as an inbound adapter within the Connxio integration platform. By leveraging Connxio's Messaging API, users can programmatically push data to Connxio, seamlessly triggering integration processes. This feature enables smooth integration between external systems and Connxio, empowering users to streamline data flow, automate workflows, and unlock the full potential of their integrations. With the Connxio API as an inbound adapter, users can effortlessly optimize their integration processes and enhance overall efficiency.
+
+<h2><a href="/connxio-api/introduction">Connxio's API docs are found here 🦄</a></h2>
+
+<div style={{paddingTop: '1px'}}></div>
+
+### Configure API connection
+
+To set up the Connxio API as an inbound connection, select the API adapter in the adapter list as shown below:
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="Configuring API connection"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound-api-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound-api-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+## Retry
+
+Be aware that when using our Api you are required to handle all retry on the client side. Our regular SLA is in effect at all times but hiccups can happen within all network infrastructure and should be assessed and handled as needed.

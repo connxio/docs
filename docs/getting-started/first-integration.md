@@ -1,6 +1,5 @@
 ---
-sidebar_position: 2
-pagination_next: null
+sidebar_position: 3
 ---
 
 # Creating your first integration
@@ -46,7 +45,7 @@ A security configuration in Connxio is a reusable set of credentials and setting
 An adapter serves as a bridge between systems, facilitating the transfer of data using various protocols. It enables seamless integration by providing standardized methods for sending and receiving information, allowing for efficient and flexible data exchange within the Connxio platform.
 <br />
 <br />
-<a href="/integrations/adapters">Read more about adapters here.</a>
+<a href="/integrations/adapters/introduction">Read more about adapters here.</a>
     </p>
 </details>
 
@@ -67,4 +66,4 @@ An adapter serves as a bridge between systems, facilitating the transfer of data
 
 Congratulations! You have successfully created your first integration in Connxio. You can now start leveraging the power of Connxio to seamlessly exchange data and files between systems.
 
-Please note that this guide provides a high-level overview of the integration creation process. For more detailed instructions and advanced configurations, [refer to the in-depth documentation found here](/integrations).
+Please note that this guide provides a high-level overview of the integration creation process. For more detailed instructions and advanced configurations, [refer to the in-depth documentation found here](/integrations/introduction).

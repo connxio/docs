@@ -1,5 +1,5 @@
 ---
-title: 'Why Connxio'
+title: 'What is Connxio?'
 sidebar_position: 1
 ---
 

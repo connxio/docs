@@ -6,14 +6,14 @@ sidebar_position: 2
 
 The Connxio Messaging API provides a set of endpoints that allow users to push messages to Connxio using the API inbound adapter. This enables users to proactively send messages to Connxio instead of relying on Connxio to fetch messages from their systems. The Messaging API consists of the following endpoints:
 
-## 1. /api/v2/messages/**&lt;integrationConfigId&gt;**
+## 1. /api/v2/messages/**{integrationConfigId}**
 
 This endpoint expects the message itself in the request body as plain text. Users can also include optional query parameters to customize the message handling:
 - `MessageEncoding` (optional): Sets the encoding of the message file.
 - `InterchangeId` (optional): Specifies the interchange ID associated with the message.
 - `FileName` (optional): Used for logging purposes and specifies the filename of the message.
 
-## 2. /api/v2/messages/**&lt;integrationConfigId&gt;**/batch
+## 2. /api/v2/messages/**{integrationConfigId}**/batch
 
 This endpoint is used to send a batch of messages to Connxio. The request body should contain a list of messages in the following format:
 ```json
@@ -29,7 +29,7 @@ This endpoint is used to send a batch of messages to Connxio. The request body s
 
 The messageBody property should contain the message in Base64 encoded format.
 
-## 3. /api/v2/messages/&lt;integrationId&gt;/eventgrid
+## 3. /api/v2/messages/{integrationId}/eventgrid
 This endpoint is specifically designed for use with Azure Event Grid. Users can send messages to Connxio in the following format:
 ```json
 [
@@ -51,3 +51,39 @@ These endpoints enable seamless integration with Connxio by allowing users to pu
 Please note that proper authentication and authorization mechanisms are necessary to ensure secure access to the Messaging API endpoints. Refer to the Connxio API documentation for more details on authentication and request/response formats.
 
 For any further assistance or inquiries related to the Connxio Messaging API, please reach out to our support team.
+
+
+
+## Request Example
+
+After ensuring you have the right Url and security credentials a valid request should look something like this:
+
+>DocumentType, RecieverId and SenderId are obsolete.
+
+### /api/message
+
+```curl
+curl --location --request POST 'https://cmh-messagehub-apim-prod.azure-api.net/api/message?ConfigCorrelationId=xxxx-xxx-xxxx-xxxxx-xxxxxxx' \
+--header 'Content-Type: application/json' \
+--header 'Ocp-Apim-Subscription-Key: xxxxxxxxxxxxxxxxxxxxx' \
+--header 'Authorization: Bearer {token}' \
+--data-raw '{
+ "Prop": "Superdupertest"
+}'
+```
+
+### /api/message/new
+
+```curl
+curl --location --request POST 'https://cmh-messagehub-apim-prod.azure-api.net/api/message/new' \
+--header 'Content-Type: application/json' \
+--header 'Ocp-Apim-Subscription-Key: 631373d321784590baff7464d91a7c69' \
+--header 'Authorization: Bearer {token}' \
+--data-raw '{
+  "messageEncoding": "utf-8",
+  "configCorrelationId": "xxxx-xxxx-xxx-xxx-xxx",
+  "interchangeId": "x1xx-1xxx-xxx-111-x1x",
+  "messageBody": "ewoJIlByb3AiOiAiU3VwZXJkdXBlcnRlc3QiLAoJIlByb3AiOiAiU3VwZXJkdXBlcnRlc3QiLAoJIlByb3AiOiAiU3VwZXJkdXBlcnRlc3QiCn0=",
+  "fileName": "myfile"
+}'
+```

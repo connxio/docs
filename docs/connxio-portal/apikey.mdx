@@ -8,11 +8,24 @@ To better secure the communication with Connxio (CX) Api's we have created a sec
 
 ## Creating a key
 
-You create a key by opening the *API Keys* menu item under the *Administration* section in the sidebar. Administrator privileges are required to generate new keys for your company.
+You create a key by opening the *API Keys* menu item in the sidebar. Administrator privileges are required to generate new keys for your company.
 
-A key requires a name as well as a scope on creation. You enter the name and select the scope as you see in the picture below:
+When creating a key you must provide a name, a scope and in which subscription it should be attached to.
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/ApiKey_create.png?sv=2020-10-02&st=2022-06-10T11%3A57%3A23Z&se=2040-06-11T11%3A57%3A00Z&sr=b&sp=r&sig=J1aKZcpbXt4XP4uoyfP%2B04F2wKsP8HUDedH9HeIg9SM%3D)
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div style={{maxWidth: '800px'}}>
+  <ThemedImage
+    alt="How to create an API key"
+    sources={{
+      light: useBaseUrl('/img/docs/create-apikey-light.webp'),
+      dark: useBaseUrl('/img/docs/create-apikey-dark.webp'),
+    }}
+  />
+</div>
+<br />
 
 - **Name**: The name of the api key, consider using stakeholders as a part of the name for easier lifecycle management.
 - **Key**: The key itself. Copy this into the `Connxio-Api-Key` header on your request.

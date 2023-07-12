@@ -24,7 +24,21 @@ You can use the "Select all messages" toggle to select all failed messages and r
 
 When you have either selected all messages, or a subset of messages you can select to either Delete or Retry the messages. When you start a new job for either of those, a new card will appear on the page where you can track the status of the operation.
 
-![Active resend job](/img/docs/active-job-light.webp#light-only)![Active resend job](/img/docs/active-job-dark.webp#dark-only)
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="Active resend job"
+    sources={{
+      light: useBaseUrl('/img/docs/active-job-light.webp'),
+      dark: useBaseUrl('/img/docs/active-job-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+<br />
+<br />
 
 :::note
 You can only have one active resending job per integration at any one time.

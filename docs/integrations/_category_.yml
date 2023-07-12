@@ -2,3 +2,4 @@ position: 4
 label: 'Integrations'
 collapsible: true
 collapsed: true
+className: 'sidebar-platform'

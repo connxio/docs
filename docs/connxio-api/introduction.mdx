@@ -1,0 +1,56 @@
+---
+sidebar_position: 1
+title: 'Introduction'
+---
+
+# Connxio API
+
+
+The Connxio API is a comprehensive interface that allows users to interact programmatically with the Connxio platform.
+It provides a range of endpoints and functionalities to facilitate integration management, messaging, and configuration operations.
+With the Connxio API, users can create and manage integrations, retrieve integration details, perform CRUD operations on integration configurations, 
+and retrieve information about subscriptions linked to their account.
+The API enables seamless integration with external systems, allowing users to automate and streamline their integration processes.
+By leveraging the Connxio API, users gain flexibility, scalability, and the ability to integrate Connxio functionalities into their own applications and workflows.
+Proper authentication and authorization measures must be implemented to ensure secure access and data protection.
+
+Click the link below to view the OpenAPI Definition:
+
+<a style={{ fontSize: '1.25rem', fontWeight: '500', padding: '.75rem 2rem'}} href="https://app-cx-ratchet-api.azurewebsites.net/index.html" className="action-button">Connxio API Definition</a>
+
+<br />
+<br />
+
+## Authenticating with the Connxio API
+
+The Connxio API requires proper authentication to ensure secure access to its endpoints. Authentication is achieved through a combination of OAuth 2.0 and a custom Connxio API key. This documentation provides an overview of the authentication process.
+
+### Obtaining OAuth 2.0 Credentials
+
+To obtain OAuth 2.0 credentials for accessing the Connxio API, you need to contact the Connxio team directly. They will provide you with the necessary OAuth client ID and client secret. These credentials will be used for OAuth 2.0 authentication when making API requests.
+
+### Generating a Connxio API Key
+
+To generate a Connxio API key, follow these steps:
+
+1. Log in to the Connxio Portal using your account credentials.
+2. Navigate to the API Key section in the portal.
+3. Click on the "Generate API Key" button.
+4. A unique API key will be generated for you.
+5. Take note of the generated API key, as it will be used for authentication.
+
+### Authenticating API Requests
+
+To authenticate your API requests to the Connxio API, follow these guidelines:
+
+1. Include the Connxio API key in the request header with the key name "Connxio-Api-Key".
+   Example: `Connxio-Api-Key: YOUR_API_KEY`
+
+2. For API endpoints that require OAuth 2.0 authentication, include the OAuth 2.0 credentials in the request header or body, as specified in the API documentation. The exact method and format will be provided by the Connxio team when they supply the OAuth 2.0 credentials.
+
+With proper authentication in place, you can securely make requests to the Connxio API and access its various endpoints and functionalities.
+
+Please note that the Connxio API key should be kept confidential and securely stored. If you suspect any unauthorized access to your API key or credentials, promptly regenerate the API key and update your integration configurations accordingly.
+
+If you have any questions or encounter any issues related to authentication with the Connxio API, please contact our support team for assistance.
+

@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Core Concepts
+# Connxio Concepts
 
 This page explores the core concepts that make up the building blocks of the Connxio (CX) service. Understanding these concepts are essential to being successfully withing the Connxio eco-system and we would strongly recommend reading the points below carefully.
 

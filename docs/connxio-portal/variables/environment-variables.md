@@ -14,7 +14,18 @@ To create an Environment Variable, navigate to the menu item with the same name.
 
 ## Using Environment Variables
 
-Once the environment variable is set, you can reference it in your code by using the macro `{env:[MY-VARIABLE]}`.
-For example, if you have an environment variable named "Customer.ApiUrl" you can refer to it in your integration by using the macro `{env:Customer.ApiUrl}`. If a subscription-specific value is set for an environment variable, the macro will be replaced with that value when the integration is running within that subscription's context. If no subscription-specific value is set, the default value will be used.
+Once the environment variable is set, you can reference it in your code by using the macro
+```
+{env:[MY-VARIABLE]}
+```
 
->`NOTE: When referencing an Environment Variable, do not use whitespaces in between the '{' and '}' and the macro text`
+For example, if you have an environment variable named "Customer.ApiUrl" you can refer to it in your integration by using the macro:
+```
+{env:Customer.ApiUrl}
+```
+
+If a subscription-specific value is set for an environment variable, the macro will be replaced with that value when the integration is running within that subscription's context. If no subscription-specific value is set, the default value will be used instead.
+
+:::caution
+When referencing an Environment Variable, do not use whitespaces in between the '{' and '}' and the macro text.
+:::

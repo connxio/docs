@@ -3,50 +3,47 @@ sidebar_position: 2
 ---
 
 # Connxio Concepts
+These core concepts form the foundation of Connxio and are integral to building robust integrations, managing data exchanges, and ensuring seamless communication between systems. Understanding these concepts will empower users to leverage the full potential of the Connxio platform for their integration needs.
 
-This page explores the core concepts that make up the building blocks of the Connxio (CX) service. Understanding these concepts are essential to being successfully withing the Connxio eco-system and we would strongly recommend reading the points below carefully.
+## Integration
+
+An integration in Connxio represents a configuration that enables the seamless transfer of data and messages between two systems. It defines the specific settings, adapters, transformations, and endpoints involved in the data exchange process. With Connxio integrations, users can establish robust connections between systems, enabling efficient data flow and automation.
+
+The ID of an integration will sometimes be called:
+- IntegrationId
+- IntegrationConfigId
+- ConfigCorrelationId
 
 ## InterchangeId
 
-The _InterchangeId_ is a simple but powerful part of the CX eco-system. In its most basic form it's nothing more than an ID that follows a message through the entire CX pipeline. The InterchangeId can be supplied by the customer in most cases (some protocols make this difficult, but it's implemented wherever possible), this enables the customer to track the message through CX with [logging](/integrations/logging) events, and use the ID itself for other purposes like naming files or editing the message itself.\
-If the InterchangeId is not supplied by the customer it's generated in the form of a [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier), this makes the ID unique for this exact message and is used to identify it through the internal pipeline as well as for other storage and transformation purposes.
+The InterchangeId is a unique identifier assigned to each message or data interchange processed by Connxio. It is used extensively by Connxio itself, while also allowing users, in conjuction with Connxio's [logging tools](/integrations/logging), to trace messages, identify specific data exchanges, and monitor the progress and status of individual messages within the Connxio pipeline.
 
-> Since it's used for complex internal processing an InterchangeID **must** be unique. Using a non unique ID _voids_ _all_ guarantees concerning message transfer inside CX.
+When a new message proccess is started, Connxio will generate a UUID v4 as it's InterchangeId, however users can also in most cases supply their own ID instead (some protocols make this difficult, but it's implemented wherever possible). When providing your own InterchangeId you are responsible for ensuring it's uniqueness. Using a non-unique ID **_voids all_** guarantees concerning message transfer inside Connxio.
 
-This means that if you can't guarantee an unique ID you should not supply your own InterchangeID but let CX generate it for you instead.
+In scenarios such as [batching](/integrations/transformation/batching) and [splitting](/integrations/transformation/splitting), the InterchangeId may change during processing. During batching, multiple interchangeIds are consolidated into a single new one, while splitting results in a single interchangeId being split into multiple new ones based on the original message.
 
-## CorrelationId = IntegrationId
 
-### Changing or multiplying IDs
+## Adapter
 
-There are some processes where the InterChangeId has to change by nature of the process enforced upon it. This most notably affects [splitting](/integrations/transformation/splitting) and [batching](/integrations/transformation/batching) scenarios, where the former splits one file into a number of new files each with its own ID, and the latter batches a number of messages into a single file. In both of these scenarios, keeping the original ID is impossible, therefore CX creates new ID's for the messages, there are currently no way to predict these ID's or set them from a customer perspective, this feature could be added later, but for now a customer can track the messages through the original ID as the original ID is logged with the last and first log events in both cases.
+An adapter in Connxio represents a specific protocol or mechanism used to interact with systems and handle data transfer. Adapters serve as connectors between the integration pipeline and external systems, facilitating seamless communication. Connxio supports various adapters, including API/webhook, Azure Blob Storage, FTP/SFTP, email, and more, enabling flexible integration possibilities.
 
-A customer _cannot_ change the InterchangeId themselves at any point of CX's message processing.
+## Transformation
 
-## What is an integration?
+Transformations in Connxio are operations applied to data during the integration process. These transformations allow users to modify, reformat, or manipulate data as it passes through the integration pipeline. Connxio supports different types of transformations, such as code components, batching, splitting, format conversion, and prettifying, providing users with the flexibility to customize data processing based on their specific requirements.
 
-An integration is a logical unit within CX that can be a little hard to grasp. When we talk about or reference "an integration" we refer to this unit which has the following characteristics:
+## Retry
 
-1. Is represented by _one_ integration configuration.
-2. Moves _one_ message/file/data to one or more receivers.
+Retry and guaranteed delivery mechanisms ensure the reliable transfer of messages within Connxio. In case of transmission failures or temporary system unavailability, Connxio employs automated [retry mechanisms](/integrations/retry) to reattempt message delivery. If the retry process is unable to successfully deliver the message, it will be persisted to Connxio's error persistence store. Users can access the Connxio web portal to view these failures, identify the error occurrence, and manually resend the messages. This feature enables users to actively manage and troubleshoot message delivery issues.
 
-This essentially means that when we refer to one integration we refer to one single integration configuration.
+[Read more about resending here](/connxio-portal/connxio-resending).
 
-## A stateless service
+## Parallel Processing
 
-CX is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages we hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or event the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing CX automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](/integrations/logging) or [resending](/api/resending-api) see the respective articles.
+Connxio utilizes parallel processing to handle integrations, enabling efficient and simultaneous processing of messages. It should be noted that due to parallel processing, Connxio does not guarantee the processing of messages in a specific order. However, when using the API inbound adapter, users have the option to set the "Use Synchronous Communication" flag, allowing them to wait for one request to finish before starting another, enabling more controlled and ordered communication.
 
-<!-- By leveraging other services like Azure Storage you can orchestrate CX to be semi stateful. Read more in the [orchestration](/use-cases/persistent-orchestration) section. -->
+## Stateless
 
-## Parallel processing
-
-CX processes all messages in parallel, this means that CX has no guarantee concerning message ordering. If you need ordered messaging you can leverage certain adapters' options to stagger and sort message pick rate to create a semi ordered pipeline. This is however not possible with all protocols and for all intents and purposes, CX does not support ordered message delivery. If you need this for your system please contact ut to look at small ordering services or other customized options.
-
-Parallel processing, while disqualifying ordered delivery, does give CX an enormous processing power. We can process almost limitless amounts of messages by scaling internal systems.
-
-## Robust message transfer and retention
-
-When a message is picked up or enters the CX ecosystem we do our outmost to never loose a it and keep the process going, even if external or internal systems should fail. This means that all message pipelines are based upon a queue system and even distributed across multiple regions to ensure message retention in catastrophic failure scenarios. Read more about retry [here](/integrations/retry).
+Connxio is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages Connxio will hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or even the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing Connxio automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](/integrations/logging) or [resending](/api/resending-api) see the respective articles.
 
 ## Orchestration
 

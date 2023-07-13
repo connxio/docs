@@ -66,4 +66,4 @@ An adapter serves as a bridge between systems, facilitating the transfer of data
 
 Congratulations! You have successfully created your first integration in Connxio. You can now start leveraging the power of Connxio to seamlessly exchange data and files between systems.
 
-Please note that this guide provides a high-level overview of the integration creation process. For more detailed instructions and advanced configurations, [refer to the in-depth documentation found here](/integrations/introduction).
+Please note that this guide provides a high-level overview of the integration creation process. For more detailed instructions and advanced configurations, [refer to the in-depth documentation found here](/integrations).

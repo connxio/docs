@@ -51,7 +51,7 @@
     "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
   --code-block-bg: linear-gradient(140deg, black 40%, hotpink 350%);
-  /* --code-block-bg: linear-gradient(to right,var(--brand) 0%,var(--brand-accent) 100%); */
+  --ifm-navbar-item-padding-horizontal: 0.5rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -93,6 +93,17 @@ strong {
 [data-theme="light"] img[src$="#dark-only"],
 [data-theme="dark"] img[src$="#light-only"] {
   display: none;
+}
+
+.header-portal-link {
+  border: 2px solid;
+  padding-block: 3px;
+  padding-inline: 15px;
+  margin-right: 5px;
+  border-radius: var(--ifm-global-radius);
+}
+.header-portal-link::after {
+  content: "Log in";
 }
 
 .header-github-link::before {
@@ -182,11 +193,41 @@ strong {
   font-size: 13px;
 }
 
+.navbar__link {
+  margin: 0 var(--ifm-navbar-item-padding-horizontal);
+  font-size: 14px;
+}
+
+.navbar__item {
+  white-space: nowrap;
+}
+
+.navbar__link--active,
+.navbar__link--active:hover {
+  border-radius: var(--ifm-global-radius);
+  background: var(--ifm-menu-color-background-active);
+}
+
+.navbar__link:hover:not(.navbar__link--active) {
+  opacity: 0.8;
+}
+
+.navbar__logo {
+  width: 9.5rem;
+}
+
+.navbar__link svg {
+  display: none;
+}
+
+.navbar__item.dropdown {
+  padding: 0;
+}
+
 .navbar-sidebar__back {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 13px;
-  color: #9121c2;
   background: transparent;
   padding-left: 1rem;
 }

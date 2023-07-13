@@ -84,24 +84,41 @@ const config = {
         },
         items: [
           {
-            href: "/changelog",
+            to: "/",
+            label: "Home",
+            activeBaseRegex: "^((?!api|changelog).)*$",
+          },
+          {
+            to: "/api",
+            label: "REST API",
+            activeBasePath: "api",
+          },
+          {
+            to: "/changelog",
             label: "Changelog",
             position: "left",
+            activeBasePath: "changelog",
           },
+          // {
+          //   href: "https://portal.connxio.no",
+          //   label: "Connxio Portal",
+          //   position: "left",
+          // },
+          // {
+          //   href: "https://www.communicate.no/en/connxio",
+          //   label: "About Connxio",
+          //   position: "left",
+          // },
+          // {
+          //   href: "https://www.evidi.com",
+          //   label: "Evidi",
+          //   position: "left",
+          // },
           {
-            href: "https://portal.connxio.no",
-            label: "Connxio Portal",
-            position: "left",
-          },
-          {
-            href: "https://www.communicate.no/en/connxio",
-            label: "About Connxio",
-            position: "left",
-          },
-          {
-            href: "https://www.evidi.com",
-            label: "Evidi",
-            position: "left",
+            href: "https://app-cx-ratchet-customerportal.azurewebsites.net",
+            position: "right",
+            className: "header-portal-link",
+            "aria-label": "Connxio Portal",
           },
           {
             href: "https://github.com/connxio/connxio",

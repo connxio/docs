@@ -34,7 +34,7 @@ This essentially means that when we refer to one integration we refer to one sin
 
 ## A stateless service
 
-CX is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages we hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or event the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing CX automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](/integrations/logging) or [resending](/connxio-api/resending-api) see the respective articles.
+CX is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages we hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or event the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing CX automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](/integrations/logging) or [resending](/api/resending-api) see the respective articles.
 
 <!-- By leveraging other services like Azure Storage you can orchestrate CX to be semi stateful. Read more in the [orchestration](/use-cases/persistent-orchestration) section. -->
 

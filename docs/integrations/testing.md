@@ -1,5 +1,6 @@
 ---
 title: "Testing"
+sidebar_position: 7
 ---
 
 # Testing Your Integrations with Connxio

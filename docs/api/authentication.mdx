@@ -1,0 +1,54 @@
+---
+sidebar_position: 2
+title: Authentication
+hide_title: true
+---
+
+# Authenticating with the Connxio API
+
+The Connxio API requires proper authentication to ensure secure access to its endpoints. Authentication is achieved through a combination of OAuth 2.0 and a custom Connxio API key. This documentation provides an overview of the authentication process.
+
+## Obtaining OAuth 2.0 Credentials
+
+To obtain OAuth 2.0 credentials for accessing the Connxio API, you need to contact the Connxio team directly. They will provide you with the necessary OAuth client ID and client secret. These credentials will be used for OAuth 2.0 authentication when making API requests.
+
+## Generating a Connxio API Key
+
+To generate a Connxio API key, follow these steps:
+
+1. Log in to the Connxio Portal using your account credentials.
+2. Navigate to the API Key section in the portal.
+3. Enter a name, scope and subscription for the API key. [Learn more about API keys here](/connxio-portal/apikey).
+4. Click on the "Create API Key" button.
+5. A unique API key will be generated for you.
+6. Take note of the generated API key using the "Copy key to clipboard" button.
+
+## Authenticating API Requests
+
+When making API requests to the Connxio API, you must include both of the following authentication credentials:
+
+1. **OAuth 2.0**: Generate a JWT token using the OAuth client ID and client secret obtained from the Connxio team. Include the token in the Authorization header with the "Bearer " prefix.
+   Example: `Authorization: Bearer YOUR_JWT_TOKEN`.
+
+2. **API Key**: Include the API key in the request header using the key name "Connxio-Api-Key".
+   Example: `Connxio-Api-Key: YOUR_API_KEY`.
+
+**Example request**
+```curl
+curl --location --request POST 'https://api.connxio.no/messages/xxxxxxxx-xxx-xxxx-xxxxx-xxxxxxxxxxxx' \
+--header 'Content-Type: application/json' \
+--header 'Connxio-Api-Key: {apiKey}' \
+--header 'Authorization: Bearer {token}' \
+--data-raw '{
+ "Prop": "Superdupertest"
+}'
+```
+
+<br />
+
+With proper authentication in place, you can securely make requests to the Connxio API and access its various endpoints and functionalities.
+
+Please note that the Connxio API key should be kept confidential and securely stored. If you suspect any unauthorized access to your API key or credentials, promptly regenerate the API key and update your integration configurations accordingly.
+
+If you have any questions or encounter any issues related to authentication with the Connxio API, please contact our support team for assistance.
+

@@ -1,0 +1,43 @@
+---
+sidebar_position: 2
+title: 'Send a single message'
+---
+
+# Send a single message
+
+Use this endpoint if the message body must be sent as plain text in the request body. When sending multiple messages, considers using the [batch endpoint](/api/messaging-api/send-batch) for better performance.
+
+
+**URL:** `https://api.connxio.no/messages/:integrationConfigId`
+
+**Method:** <span class="method post">POST</span>
+
+**Route Parameters:**
+
+| Key        | Type   | Description |
+| ---------- | ------ | ----------- |
+| integrationConfigId | string | The ID of the integration configuration to use when sending the message. |
+
+**Query Parameters:**
+
+| Key        | Type   | Optional | Description |
+| ---------- | ------ | -------- | ----------- |
+| messageEncoding | string | yes | Sets the encoding of the message file. |
+| interchangeId | string | yes | Specifies the interchange ID associated with the message. |
+| fileName | string | yes | Used for logging purposes and specifies the filename of the message. |
+
+**Body:** 
+
+The message itself as plain text.
+
+### **Example request**
+
+```json
+// POST https://api.connxio.no/messages/6cd585f1-e408-4f00-9253-76b717ab12de
+
+// REQUEST BODY
+{ "foo": "bar" }
+
+// RESPONSE
+200 OK
+```

@@ -1,6 +1,7 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 title: Resending API
+pagination_next: null
 ---
 
 # Resending With Archeo
@@ -12,27 +13,27 @@ Resending with Archeo behaves differently based upon the event type you react to
 By stateless resending we mean the process of resending a message from the beginning of the pipeline. This is really just a way to access any CX pipeline via an Api entry point. The endpoint used for stateless resending is hosted in the CX Api in the same way as the [Api adapter](/integrations/adapters/inbound/Api) in the `resend/archeo/restart` Uri. We currently support the Archeo contract for resending only. This does not disqualify other systems from using the resending, they just have to conform to the Archeo contract which looks like this:
 
 ```csharp
-    public class ArcheoResendEventRequest
-    {
-        public string TransactionId { get; set; }
-        public string ContentSasUri { get; set; }
-        public string ResendDateTime { get; set; }
-        public ArcheoLogStepMetaData LogStepMetaData { get; set; }
-    }
+public class ArcheoResendEventRequest
+{
+    public string TransactionId { get; set; }
+    public string ContentSasUri { get; set; }
+    public string ResendDateTime { get; set; }
+    public ArcheoLogStepMetaData LogStepMetaData { get; set; }
+}
 
-    public class ArcheoLogStepMetaData
-    {
-        public string TransactionId { get; set; }
-        public string Description { get; set; }
-        public string TransactionTypeName { get; set; }
-        public string MessageTypeName { get; set; }
-        public string SenderName { get; set; }
-        public string RecieverName { get; set; }
-        public string StatusName { get; set; }
-        public string FileName { get; set; }
-        public DateTime Processed { get; set; }
-        public Dictionary<string, string> Metadata { get; set; }
-    }
+public class ArcheoLogStepMetaData
+{
+    public string TransactionId { get; set; }
+    public string Description { get; set; }
+    public string TransactionTypeName { get; set; }
+    public string MessageTypeName { get; set; }
+    public string SenderName { get; set; }
+    public string RecieverName { get; set; }
+    public string StatusName { get; set; }
+    public string FileName { get; set; }
+    public DateTime Processed { get; set; }
+    public Dictionary<string, string> Metadata { get; set; }
+}
 ```
 
 If you use the Archeo resending functionality all these fields are set and handled for you. If you want to use another system to pass resending requests to CX you need to fill out at least three fields:

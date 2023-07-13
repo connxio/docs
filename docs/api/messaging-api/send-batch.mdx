@@ -1,0 +1,46 @@
+---
+sidebar_position: 3
+title: 'Send a batch of messages'
+---
+
+# Send a batch of messages
+
+Use this endpoint when sending a batch of messages. This endpoint is recommended when sending multiple messages at once, but can also be used when sending a single message.
+
+**URL:** `https://api.connxio.no/messages/:integrationConfigId/batch`
+
+**Method:** <span class="method post">POST</span>
+
+**Route Parameters:**
+
+| Key        | Type   | Description |
+| ---------- | ------ | ----------- |
+| integrationConfigId | string | The ID of the integration configuration to use when sending the message. |
+
+**Request body:** 
+
+| Key        | Type   | Optional | Description |
+| ---------- | ------ | -------- | ----------- |
+| messageBody | binary/base64 | no | The message body to send. |
+| messageEncoding | string | yes | Sets the encoding of the message file. |
+| interchangeId | string | yes | Specifies the interchange ID associated with the message. |
+| fileName | string | yes | Used for logging purposes and specifies the filename of the message. |
+
+### **Example request**
+
+```json
+// POST https://api.connxio.no/messages/6cd585f1-e408-4f00-9253-76b717ab12de
+
+// REQUEST BODY
+[
+  {
+    "messageEncoding": "UTF-8",
+    "interchangeId": "7a87e231-8387-447b-9c70-57ffb1f2b539", // this will be generated automatically if not specified
+    "messageBody": "eyAiZm9vIjogImJhciIgfQ==",
+    "fileName": "file.json"
+  }
+]
+
+// RESPONSE
+200 OK
+```

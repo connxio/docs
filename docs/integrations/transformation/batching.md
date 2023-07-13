@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Batching
 
 Connxio (CX) gives customers the ability to batch messages into larger single units. We do this by creating a bucket where messages are queued for a set interval until they are picked up, run through a [code mapping](/integrations/transformation/code-components) and then sent as a single message through the pipeline. There are certain limits to batching functionality that will be explained on this page as well the process of batching itself.

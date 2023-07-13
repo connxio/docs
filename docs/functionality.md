@@ -1,6 +1,8 @@
 ---
 sidebar_class_name: hidden
 slug: /functionality
+pagination_next: null
+pagination_prev: null
 ---
 
 # Functionality

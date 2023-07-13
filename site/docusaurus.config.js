@@ -156,7 +156,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Evidi`,
       },
       prism: {
-        theme: lightCodeTheme,
+        theme: darkCodeTheme,
         darkTheme: darkCodeTheme,
         additionalLanguages: ["csharp"],
       },

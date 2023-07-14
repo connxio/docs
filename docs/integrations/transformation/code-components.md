@@ -57,9 +57,9 @@ public class MyFirstConnXioMap : IConnXioMap
 The test project below uses NUnit to test the DLL. The following NuGet packages are required to run the tests (versions are just for reference, latest version is usually the best bet):
 
 ```xml
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.1" />
-    <PackageReference Include="NUnit" Version="3.13.3" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />`
+<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.1" />
+<PackageReference Include="NUnit" Version="3.13.3" />
+<PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />`
 ```
 
 The code above adds examples of the most basic functionality provided by code components and is an boiler plate for most transformations. We would recommend adding a method to yor project to run the Map method with sample input. This can be done either in the Program.cs of a console project or through a Unit test or some other means, this is all subjective preference. An example of a the unit test method is featured below:

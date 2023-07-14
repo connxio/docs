@@ -22,8 +22,8 @@ Use this endpoint when sending a batch of messages. This endpoint is recommended
 | Key        | Type   | Optional | Description |
 | ---------- | ------ | -------- | ----------- |
 | messageBody | binary/base64 | no | The message body to send. |
-| messageEncoding | string | yes | Sets the encoding of the message file. |
-| interchangeId | string | yes | Specifies the interchange ID associated with the message. |
+| messageEncoding | string | yes | The encoding of the message. Defaults to UTF-8 if not specified |
+| interchangeId | string | yes | Sets the interchange ID associated with the message. A random unique ID is generated if not provided. |
 | fileName | string | yes | Used for logging purposes and specifies the filename of the message. |
 
 ### **Example request**
@@ -34,8 +34,8 @@ Use this endpoint when sending a batch of messages. This endpoint is recommended
 // REQUEST BODY
 [
   {
-    "messageEncoding": "UTF-8",
-    "interchangeId": "7a87e231-8387-447b-9c70-57ffb1f2b539", // this will be generated automatically if not specified
+    "messageEncoding": "ASCII",
+    "interchangeId": null,
     "messageBody": "eyAiZm9vIjogImJhciIgfQ==",
     "fileName": "file.json"
   }

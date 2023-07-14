@@ -5,7 +5,7 @@ title: 'Send an Event Grid message'
 
 # Send an Event Grid message
 
-Use this endpoint when using Azure Event Grid to messages to Connxio.
+Use this endpoint when using Azure Event Grid to messages to Connxio. Read more about the [Event Grid adapter here](/integrations/adapters/inbound/event-grid).
 
 
 **URL:** `https://api.connxio.no/messages/:integrationConfigId/eventgrid`
@@ -22,7 +22,7 @@ Use this endpoint when using Azure Event Grid to messages to Connxio.
 
 | Key        | Type   | Optional | Description |
 | ---------- | ------ | -------- | ----------- |
-| Connxio-Api-Key | string | no | Event Grid does currently support adding custom headers, so you need to add the API key as a query parameter. |
+| Connxio-Api-Key | string | no | Event Grid does not currently support adding custom headers, instead we'll add the API key as a query parameter. |
 
 **Request body:** 
 

@@ -26,7 +26,7 @@ This pattern is by far the most secure, robust, fast and reliable way to use Ser
 
 - **SasUri**: The uri that hosts the actual message data.
 - **FileName**: Used for [variable replacement](/connxio-portal/variables/variable-replacement).
-- **InterchangeId**: Used as InterchangeId as detailed in [core concepts](/getting-started/connxio-concepts).
+- **InterchangeId**: Used as InterchangeId as detailed in [core concepts](/getting-started/core-concepts).
 
 When the CX inbound adapter fires the metadata message will be picked up from Service Bus and the data will be fetched from the Uri before the data is sent to the next part of the CX pipeline.
 
@@ -45,7 +45,7 @@ Message sbMessage = new Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObje
 sbMessage.UserProperties.Add("InterchangeId", "3c8701dc-858b-4f98-915a-5b3432eb37ec");
 ```
 
-Be sure to read the [Core Concepts](/getting-started/connxio-concepts) for more information about supplying your own InterchangeId.
+Be sure to read the [Core Concepts](/getting-started/core-concepts) for more information about supplying your own InterchangeId.
 
 ## Configuring Service Bus message intake
 

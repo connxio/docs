@@ -2,8 +2,8 @@
 sidebar_position: 2
 ---
 
-# Connxio Concepts
-These core concepts form the foundation of Connxio and are integral to building robust integrations, managing data exchanges, and ensuring seamless communication between systems. Understanding these concepts will empower users to leverage the full potential of the Connxio platform for their integration needs.
+# Core Concepts
+> Terms and concepts you will commonly see when you use Connxio.
 
 ## Integration
 

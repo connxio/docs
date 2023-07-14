@@ -49,7 +49,7 @@ Carousel is what we've called the functionality that lets you run a message thro
 
 ### What is Carousel used for?
 
-Carousel is used when you need to to simulate [high level orchestration](/getting-started/connxio-concepts) in CX. Say you need to perform tasks that can't be done without massive amounts of input, or you need to pre process messages before you can collect enrichment data. We will not be going into specifics here because Carousel is not recommended for most scenarios and should be used as a last resort for specific integrations. There is nothing wrong with utilizing Carousel, but that said, it adds a level of complexity to integrations that leads to more user and system errors because of the enormous amount of data transfer and processing.
+Carousel is used when you need to to simulate [high level orchestration](/getting-started/core-concepts) in CX. Say you need to perform tasks that can't be done without massive amounts of input, or you need to pre process messages before you can collect enrichment data. We will not be going into specifics here because Carousel is not recommended for most scenarios and should be used as a last resort for specific integrations. There is nothing wrong with utilizing Carousel, but that said, it adds a level of complexity to integrations that leads to more user and system errors because of the enormous amount of data transfer and processing.
 
 ## Advanced error handling
 

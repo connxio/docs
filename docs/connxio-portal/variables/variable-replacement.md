@@ -96,7 +96,7 @@ However, since most of the variables don't make sense so early in the pipeline, 
 
 ### Data collection
 
-[Data collection](/integrations/transformation/data-collection) supports all forms of variable replacement. Below you can see a pretty complex example that calculates the route based on the file and the [InterchangeId](/getting-started/connxio-concepts).
+[Data collection](/integrations/transformation/data-collection) supports all forms of variable replacement. Below you can see a pretty complex example that calculates the route based on the file and the [InterchangeId](/getting-started/core-concepts).
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Datacollection%20variable%20replacement.PNG?sv=2020-04-08&st=2021-09-19T11%3A12%3A00Z&se=2040-10-20T11%3A12%3A00Z&sr=b&sp=r&sig=2gUVxSSnsXFWskM5v9tr56kzv4OG6iBdmG9v%2FYG3r1c%3D)
 

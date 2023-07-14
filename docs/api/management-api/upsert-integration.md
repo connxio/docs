@@ -7,7 +7,7 @@ title: 'Create or update an integration'
 
 This endpoint allows for creating or updating an integration within Connxio. Users can programmatically configure the integration properties using the same properties available in the Connxio Web Portal UI. This endpoint supports creating new integrations or updating existing ones.
 
-**URL:** `https://api.connxio.no/integrations/:integrationConfigId`
+**URL:** `https://api.connxio.no/integrations`
 
 **Method:** <span class="method post">POST</span>
 

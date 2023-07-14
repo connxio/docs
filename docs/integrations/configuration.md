@@ -6,7 +6,7 @@ pagination_prev: null
 
 # Creating Integrations
 
-Before reading this page please read the [core concepts page](/getting-started/connxio-concepts) where we explain a lot of the concepts essential to understanding Connxio (CX). This page describes the integration creation process and design in CX.
+Before reading this page please read the [core concepts page](/getting-started/core-concepts) where we explain a lot of the concepts essential to understanding Connxio (CX). This page describes the integration creation process and design in CX.
 
 ## Starting out
 

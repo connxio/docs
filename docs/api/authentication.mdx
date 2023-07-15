@@ -25,13 +25,14 @@ To generate a Connxio API key, follow these steps:
 
 ## Authenticating API Requests
 
-When making API requests to the Connxio API, you must include both of the following authentication credentials:
+When making API requests to the Connxio API, you must include both of the following headers to authenticate your request:
 
 1. **OAuth 2.0**: Generate a JWT token using the OAuth client ID and client secret obtained from the Connxio team. Include the token in the Authorization header with the "Bearer " prefix.
    Example: `Authorization: Bearer YOUR_JWT_TOKEN`.
 
 2. **API Key**: Include the API key in the request header using the key name "Connxio-Api-Key".
    Example: `Connxio-Api-Key: YOUR_API_KEY`.
+
 
 **Example request**
 ```curl

@@ -5,7 +5,7 @@ title: 'Get all subscriptions'
 
 # Get all subscriptions
 
-This endpoint retrieves a list of all subscriptions the user has access to. Each integration within Connxio is linked to a subscription ID, allowing the owner to manage and organize their integrations based on different subscriptions.
+This endpoint retrieves a list of all subscriptions associated with the company. Each integration within Connxio is linked to a subscription ID, allowing the owner to manage and organize their integrations based on different subscriptions.
 
 **URL:** `https://api.connxio.no/subscriptions`
 

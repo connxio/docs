@@ -1,0 +1,47 @@
+---
+sidebar_position: 2
+---
+
+# API Keys
+
+By using API Keys, users can securely authenticate their requests to the Connxio REST API and ensure the appropriate level of access and functionality based on the assigned scopes.
+
+Please note that the Connxio API Key is associated with the subscription level, and its usage is subject to the permissions and access control defined within the associated subscription.
+
+## Creating an API Key
+
+To create an API Key in Connxio, users need to navigate to the API Keys settings within the Connxio Portal. From there, they can generate an API Key and associate it with a specific subscription. During the creation process, users must set a scope for the API Key to define the level of access it grants.
+
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div style={{maxWidth: '800px'}}>
+  <ThemedImage
+    alt="How to create an API key"
+    sources={{
+      light: useBaseUrl('/img/docs/create-apikey-light.webp'),
+      dark: useBaseUrl('/img/docs/create-apikey-dark.webp'),
+    }}
+  />
+</div>
+
+## Using API Keys
+
+When making API requests, users need to include the necessary headers as described on the [authentication page](/api/authentication).
+
+## Scopes
+
+API Keys in Connxio support different scopes that determine the specific functionalities and endpoints they can access. The following scopes are available:
+
+- **Messaging**: Grants access to the [Messaging API](/api/messages), enabling users to use the messaging endpoints for message submission and retrieval.
+
+- **Management**: Provides access to the [Integrations](/api/integrations) and [Subscriptions API](/api/subscriptions), allowing users to perform CRUD operations on integrations and manage subscription-related functionalities.
+
+- **Webhook**: Allows bypassing the Oauth2.0 requirement when authenticating webhook requests. Please note that the use of the webhook scope is not recommended, and it's advisable to use other authentication methods whenever possible.
+
+Users can assign multiple scopes to a single API Key if required. However, the recommended approach is to use separate API Keys for each specific scope.
+
+## Disabling API Keys
+
+API Keys can be disabled at any time from the Connxio Portal. This allows administrators to revoke access and enhance security if needed.

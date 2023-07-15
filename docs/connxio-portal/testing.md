@@ -25,7 +25,7 @@ Test groups allow you to group together different integration configurations and
 4. Add the desired integration configurations to the test group.
 5. For each integration, upload an input file that will be used for testing.
 ![Start test run options](/img/docs/start-test-run-light.webp#light-only)![Start test run options](/img/docs/start-test-run-dark.webp#dark-only)
-6. If any of the integrations in the test group has the API adapter configured as the inbound adapter, you must also select an [API Key](/connxio-portal/apikey) which will be used when sending the file to the Connxio API.
+6. If any of the integrations in the test group has the API adapter configured as the inbound adapter, you must also select an [API Key](/connxio-portal/apikeys) which will be used when sending the file to the Connxio API.
 7. Once the configurations and input files are set, click on "Start test run" to begin the test.
 
 ## Test Runs

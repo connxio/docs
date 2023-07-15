@@ -6,9 +6,7 @@ slug: '/api/integrations'
 
 # Integrations API
 
-The Connxio Integrations API offers users the capability to programmatically manage and control integrations within the Connxio platform. It provides a set of endpoints and functionalities that enable users to perform essential operations such as creating, updating, and deleting integration configurations.
-
-By leveraging the Integrations API, users gain flexibility and automation in managing their integrations, streamlining their integration processes, and integrating Connxio functionality into their own applications and workflows. The Connxio Integrations API empowers users with efficient integration management, enhancing control and scalability in their integration workflows.
+The Integrations API in Connxio enables users to programmatically manage and configure their integrations within the Connxio platform. It provides endpoints for creating, retrieving, updating, and deleting integration configurations, allowing users to automate integration setup and management processes and seamlessly integrate Connxio into their existing workflows and systems.
 
 Check out the operations listed below to learn more about the Management API and how to use it.
 - [Get all integrations](/api/integrations/get-all-integrations)

@@ -7,9 +7,9 @@
 > These are upcoming changes that will go into production in early 2024. More details will be added to the changelog continuously until release.
 
 - `New Inbound engine`
-  - Work has started on a totally new architecture for the Inbound CX Engine which handles all inbound adapters. This new architecture will add performance, continuous fetch from Queues and cron expressions for polling adapters.
+  - Work has started on a totally new architecture for the Inbound Connxio Engine which handles all inbound adapters. This new architecture will add performance, continuous fetch from Queues and cron expressions for polling adapters.
   - The new architecture uses Microsoft Orleans and adds both separation and scaling beyond what was possible in the old engine.
-  - The IP's for CX will change when the new engine is deployed. We will be sending e-mails and warning way in advance for all affected customers.
+  - The IP's for Connxio will change when the new engine is deployed. We will be sending e-mails and warning way in advance for all affected customers.
 - `New Mapping Engine`
   - Mapping is being moved into a new engine. This will add better security and lets us manage mappings in a more streamlined way.
 - `New queue handling between engines`
@@ -61,7 +61,7 @@
 #### :rocket: New Features
 
 - `Environment variables`
-  - many of you have requested environment variables to enable switching between environments without having to hold the variables outside CX. This new functionality adds a new menu option called Environment Variables.
+  - many of you have requested environment variables to enable switching between environments without having to hold the variables outside Connxio. This new functionality adds a new menu option called Environment Variables.
 
 #### :bug: Bug Fix
 
@@ -123,7 +123,7 @@
 - `Api-key`
   - added restrictions to integrations UI that forces customers to upgrade to using api-key on already existing api integrations on save
   - implemented api-key inside api and ensured verification starting now
-  - added customer facing api-key UI which lets customers limit access to webhook, management and messaging endpoints on the CX api by limiting api key access
+  - added customer facing api-key UI which lets customers limit access to webhook, management and messaging endpoints on the Connxio api by limiting api key access
 - `Email outbound adapter`
   - added new email outbound adapter for customer use. Messaging limits apply.
 - `Discard Endpoint`

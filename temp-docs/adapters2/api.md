@@ -1,6 +1,6 @@
 # Connxio API
 
-The Connxio (CX) Api is reachable through our [Api Management](https://azure.microsoft.com/en-us/services/api-management/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE:G:s&OCID=AID2200230_SEM_CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE#overview) (APIM) proxy and gives customers the ability to push messages through the CX pipeline with webhooks as well as use direct transformation endpoints that uses CX's internal logic to [map](/integrations/transformation/code-components), [split](/integrations/transformation/splitting) or [batch](/integrations/transformation/batching) messages with code components within their own flows. This page describes the api including information and resources needed to use it.
+The Connxio Api is reachable through our [Api Management](https://azure.microsoft.com/en-us/services/api-management/?&ef_id=CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE:G:s&OCID=AID2200230_SEM_CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE:G:s&gclid=CjwKCAjwwsmLBhACEiwANq-tXF5xcD2EmPBq9wtxn2fHg1vExNIvKK1siM9sKzYFiT56qywH12O1QxoCAykQAvD_BwE#overview) (APIM) proxy and gives customers the ability to push messages through the Connxio pipeline with webhooks as well as use direct transformation endpoints that uses Connxio's internal logic to [map](/integrations/transformation/code-components), [split](/integrations/transformation/splitting) or [batch](/integrations/transformation/batching) messages with code components within their own flows. This page describes the api including information and resources needed to use it.
 
 ## Api definition
 
@@ -10,7 +10,7 @@ This definition is based on established [swagger](https://swagger.io/resources/a
 
 ## Authorization
 
-To be able to send messages to CX you need to authorize yourself as a CX customer. We support several different credential schemes; Oauth, Basic and EventGrid.
+To be able to send messages to Connxio you need to authorize yourself as a Connxio customer. We support several different credential schemes; Oauth, Basic and EventGrid.
 
 All endpoints also require you to supply a [subscription header](https://docs.microsoft.com/en-us/azure/api-management/api-management-subscriptions), this basically works as a form of authorization since only valid keys let you access the api. We will show more complete examples later, but a subscription header looks like this: `Ocp-Apim-Subscription-Key:007603d399999999xxxx9964y91x7x29`.
 
@@ -18,7 +18,7 @@ All endpoints also require you to supply a [subscription header](https://docs.mi
 
 Oauth is a complex authorization mechanism, read more about it here: <https://oauth.net/getting-started/>
 
-To get access to the CX Api you need to contact us through your contact point and order a set of 5 keys:
+To get access to the Connxio Api you need to contact us through your contact point and order a set of 5 keys:
 
 - client_id
 - client_secret
@@ -45,7 +45,7 @@ We do allow our customers to use basic authentication for webhook flows. This is
 
 ### Api Key
 
-To add a layer of extra security to the CX Api we added a basic user controlled security key which is configured on the *Api Key* page. This key is sent within the special header key `Connxio-Api-Key` and can be limited and deprecated as needed. See the [Api Key page](/connxio-portal/apikeys) for more information.
+To add a layer of extra security to the Connxio Api we added a basic user controlled security key which is configured on the *Api Key* page. This key is sent within the special header key `Connxio-Api-Key` and can be limited and deprecated as needed. See the [Api Key page](/connxio-portal/apikeys) for more information.
 
 Api key is used in tandem with other security and does not replace other security measures like OAuth and APIM sub key.
 
@@ -57,13 +57,13 @@ Event Grid uses an Api Key in the same was as [basic auth](#basic) and falls und
 
 ## Enable message delivery
 
-Even if you have all the authorization and message delivery handled CX will not allow you to communicate with the API unless you have set up an integration and configured it to receive messages through the API. To do this you click the "Inbound Connection" shape and simply select the "Api" option. No other configuration is necessary.
+Even if you have all the authorization and message delivery handled Connxio will not allow you to communicate with the API unless you have set up an integration and configured it to receive messages through the API. To do this you click the "Inbound Connection" shape and simply select the "Api" option. No other configuration is necessary.
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Api%20menu.png?sv=2020-04-08&st=2021-10-27T11%3A49%3A45Z&se=2040-10-28T12%3A49%3A00Z&sr=b&sp=r&sig=OXEdJEImDuRRfHTzsSm%2Bm54TEFILE1itF%2FPRWfUbr2o%3D)
 
 ## Correlation Id
 
-All request **need to contain a valid CorrelationId** for CX to be able to process them. This Id can be found on your integrations inside the portal. CorrelationId refers to which integration is to be run on your message, CorrelationId explained in more detail inside the [Core Concepts page](/concepts/core-concepts).
+All request **need to contain a valid CorrelationId** for Connxio to be able to process them. This Id can be found on your integrations inside the portal. CorrelationId refers to which integration is to be run on your message, CorrelationId explained in more detail inside the [Core Concepts page](/concepts/core-concepts).
 
 ## Endpoints
 

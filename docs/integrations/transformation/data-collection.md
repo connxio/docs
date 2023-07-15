@@ -4,11 +4,11 @@ sidebar_position: 5
 
 # Data Collection
 
-Connxio (CX) supports various forms of [orchestration](/getting-started/core-concepts) most prominent among them is enrichment and this is fueled by *data collection*. Data collection refers to the act of getting data over HTTP as a transformations tep. This enables customers to collect data from all resources that support HTTP and use them within transformations, [variable replacements](/connxio-portal/variables/variable-replacement) and url generation. This page describes how to use and configure data collection.
+Connxio supports various forms of [orchestration](/getting-started/core-concepts) most prominent among them is enrichment and this is fueled by *data collection*. Data collection refers to the act of getting data over HTTP as a transformations tep. This enables customers to collect data from all resources that support HTTP and use them within transformations, [variable replacements](/connxio-portal/variables/variable-replacement) and url generation. This page describes how to use and configure data collection.
 
 ## Limitations and External demands
 
-There are a few things to consider when using data collection, some pertain to the constraints on the process in CX internally but there are even more demands put on the external endpoints and resources that provide data. The following should always be considered and reviewed:
+There are a few things to consider when using data collection, some pertain to the constraints on the process in Connxio internally but there are even more demands put on the external endpoints and resources that provide data. The following should always be considered and reviewed:
 
 ### Data size
 
@@ -18,13 +18,13 @@ Be careful about how much data your endpoints or resources return. We spawn unen
 
 ### Traffic
 
-Data collection is performed *every time* an integration pipeline fires. This can generate a large amount of traffic. Be sure to test you endpoints and resources for the expected amount of traffic. Since CX processes transformations in parallel thousands upon thousands of requests can be fired at the same time at peak load. CX uses a staggering algorithm to stop endpoints from crashing under heavy load, but this is no guarantee that the integration will perform as expected.
+Data collection is performed *every time* an integration pipeline fires. This can generate a large amount of traffic. Be sure to test you endpoints and resources for the expected amount of traffic. Since Connxio processes transformations in parallel thousands upon thousands of requests can be fired at the same time at peak load. Connxio uses a staggering algorithm to stop endpoints from crashing under heavy load, but this is no guarantee that the integration will perform as expected.
 
 >Ensure that your endpoint or resource can handle the load
 
 ## Extending Logging
 
-CX will add an `InterchangeId` header to the intake request to facilitate for continued transactional logging on the sender side if applicable.
+Connxio will add an `InterchangeId` header to the intake request to facilitate for continued transactional logging on the sender side if applicable.
 
 ### Availability
 
@@ -43,7 +43,7 @@ Add the necessary fields to your data collection. See below for an example:
 - **Method**: The verb to use for HTTP communication.
 - **Rest Url**: The endpoint to get the data from. This could be an API, data store or similar REST service.
 - **Security Configuration**: Select your security configuration from the list. See [here](/connxio-portal/security-configurations) for more information.
-- **Variable name**: The name used for the variable through CX. USe this name if you want to target the variable in a [code component](/integrations/transformation/code-components) or [variable replacement](/connxio-portal/variables/variable-replacement).
+- **Variable name**: The name used for the variable through Connxio. USe this name if you want to target the variable in a [code component](/integrations/transformation/code-components) or [variable replacement](/connxio-portal/variables/variable-replacement).
 - **Use Content As Request Body**: The current version of the content at the time of the data collection is sent to the collection endpoint as the body of the request. Default value is empty body.
 - **Use Response As Content**: The current content is replaced by the body returned by the data collection endpoint, this happens regardless of what is returned.
 - **Headers**: Add any custom header you might need. This can include custom Authorization if needed.

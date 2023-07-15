@@ -39,7 +39,7 @@ Add values as needed for your HTTP resource. If you need to add headers you can 
 
 #### Choosing your authentication scheme
 
-We supply thee authentication schemes in Connxio (CX):
+We supply thee authentication schemes in Connxio:
 
 ##### OAuth 2.0
 
@@ -74,8 +74,8 @@ The SFTP configuration contains all the relevant properties for connection to th
 
 - **Name**: The name that pops up when you select the configuration on an integration.
 - **Url**: The url to the SFTP server. The url support port number of suffixed with a colon, ie: sftp-server.net:1337
-- **Username**: The username CX uses to authenticate to server.
-- **Password**: The password CX uses to authenticate to server.
+- **Username**: The username Connxio uses to authenticate to server.
+- **Password**: The password Connxio uses to authenticate to server.
 - **SSH HostKey Fingerprint**: The fingerprint of the server certificate. Read more in the [WinScp documentation](https://winscp.net/eng/docs/faq_hostkey).
 
 ### FTP
@@ -86,8 +86,8 @@ The FTP configuration contains all the relevant properties for connection to the
 
 - **Name**: The name that pops up when you select the configuration on an integration.
 - **Url**: The url to the FTP server.  The url support port number of suffixed with a colon, ie: ftp-server.net:1337.
-- **Username**: The username CX uses to authenticate to server.
-- **Password**: The password CX uses to authenticate to server.
+- **Username**: The username Connxio uses to authenticate to server.
+- **Password**: The password Connxio uses to authenticate to server.
 
 ### Connection String
 

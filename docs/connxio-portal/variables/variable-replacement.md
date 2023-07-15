@@ -1,6 +1,6 @@
 # Variable Replacement
 
-At various stages through Connxio (CX) you can use the *variable replacement* functionality to access metadata and message content to enrich everything from URL's to file names and logging options. This page details where and how to use variable replacement.
+At various stages through Connxio you can use the *variable replacement* functionality to access metadata and message content to enrich everything from URL's to file names and logging options. This page details where and how to use variable replacement.
 
 ## Query language
 
@@ -62,7 +62,7 @@ public class MetaData
 | --- | --- | --- | --- |
 | filename | Replaced with the name of the file if available, if not then defaults to empty string. Does not include the extension. | myfilename.txt | `http://www.myapi.com/{filename}` <br/>  becomes `http://www.myapi.com/myfilename` |
 | guid | Replaced with totally random GUID | 4ec6cc49-6d66-4a2a-b0ac-c5ab942cbdab | `http://www.myapi.com/{guid}` <br/>  becomes `http://www.myapi.com/4ec6cc49-6d66-4a2a-b0ac-c5ab942cbdab` |
-| interchange | Replaced with the interchange id that is either generated as a guid when the message hits CX or specified by the customer on entry | myid-1 | `http://www.myapi.com/{interchange}` <br/> becomes `http://www.myapi.com/myid-1` |
+| interchange | Replaced with the interchange id that is either generated as a guid when the message hits Connxio or specified by the customer on entry | myid-1 | `http://www.myapi.com/{interchange}` <br/> becomes `http://www.myapi.com/myid-1` |
 | file | Searches the file for the hierarchy specified after the "file:" keyword e.g. "{file:rootNode.secondsNode.thirdNode}". This works for JSON and XML. In json you can also specify arrays using the bracket syntax like this; "file:rootNode.array[0].node}" | See example json and xml above | JSON: `http://www.myapi.com/{file:node1.array[1].element2}` <br/>  becomes `http://www.myapi.com/Value2` <br/> <br/> XML: `http://www.myapi.com/{file:note.heading}` <br/>  becomes `http://www.myapi.com/integration`
 | metadata | Accesses metadata, which is essentially a JSON object which can be accessed in the same way as JSON files as described above e.g. {metadata:rootNode.secondNode.thirdNode}. | See *Metadata* structure above | `http://www.myapi.com/{metadata:InboundFileName}` <br/>  becomes `http://www.myapi.com/filename` |
 | datacollection, datacollection#json | Access the data collection key/value set. This set is populated by the [datacollection transformation](/integrations/transformation/data-collection). Use the key set in the configured data collection to select the corresponding value. If the value is JSON parsable you can add the "#json" suffix to target JSON nodes. | Key is "mykey" and value is the example JSON file above. | `http://www.myapi.com/{datacollection#json:mykey.node1.array[1].element1}` becomes `http://www.myapi.com/value1` |

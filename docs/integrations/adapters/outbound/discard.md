@@ -1,10 +1,6 @@
 # Discard
 
-Connxio (CX) lets customers send messages from the CX and discard them for testing purposes. This is great tool for debugging and logging your messages as they get processed by the CX pipeline.
-
-## Limitations
-
-The Discard adapter serves only one purpose. Any potential limitations would be a result of the logging systems used.
+Connxio lets customers send messages from the Connxio and discard them for testing purposes. This is great tool for debugging and logging your messages as they get processed by the Connxio pipeline.
 
 ## Using the Discard adapter
 

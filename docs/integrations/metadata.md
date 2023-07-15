@@ -21,8 +21,8 @@ Below is a description of each field within the JSON structure of the metadata o
 | outboundFileName       | Name of the outbound file associated with the message, if applicable.                                                                                                  |
 | outboundEndpoint       | Outbound endpoint associated with the message, indicating the target system or destination.                                                                            |
 | outboundAdapter        | Name of the outbound adapter associated with the message, such as SFTP, REST, or others.                                                                               |
-| outboundBlobName       | Name of the blob inside Connxio (CX) when handled in the outbound engine for debugging purposes. <br /> The format of the blob name is "interchangeId_&lt;subintegrationId&gt;.&lt;messageFormat&gt;"|
-| transformationBlobName | Name of the blob inside Connxio (CX) during transformation processes. <br /> The format of the blob name is "interchangeId_&lt;subintegrationId&gt;.&lt;messageFormat&gt;"          |
+| outboundBlobName       | Name of the blob inside Connxio when handled in the outbound engine for debugging purposes. <br /> The format of the blob name is "interchangeId_&lt;subintegrationId&gt;.&lt;messageFormat&gt;"|
+| transformationBlobName | Name of the blob inside Connxio during transformation processes. <br /> The format of the blob name is "interchangeId_&lt;subintegrationId&gt;.&lt;messageFormat&gt;"          |
 | manualResendCount      | Number of times the message has been manually resent using the resend framework by the customer.                                                                       |
 | dataCollection         | Data collected by the data collection feature, shortened if too long.                                                                                                  |
 | userDefinedProperties  | Properties defined within code components for customization and flexibility.                                                                                           |

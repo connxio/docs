@@ -5,7 +5,7 @@
 
 # Code components
 
-Connxio (CX) uses C# code to transform data at multiple points through the CX pipeline. This page describes how to create a *code component* for transformation, where you can use it and what possibilities open up to you by using it. See [splitting](/integrations/transformation/splitting) and [batching](/integrations/transformation/batching) for information on code components within those processes.
+Connxio uses C# code to transform data at multiple points through the Connxio pipeline. This page describes how to create a *code component* for transformation, where you can use it and what possibilities open up to you by using it. See [splitting](/integrations/transformation/splitting) and [batching](/integrations/transformation/batching) for information on code components within those processes.
 
 ## What is a code component?
 
@@ -35,7 +35,7 @@ public class MyFirstConnXioMap : IConnXioMap
         if (transformationContext.Content == null)
             throw new ArgumentException("Content field is null");
 
-        //You can use newtonsoft and other basic nuget packages. Contact the CX team if you need a non supported package.
+        //You can use newtonsoft and other basic nuget packages. Contact the Connxio team if you need a non supported package.
         dynamic obj = JsonConvert.DeserializeObject(transformationContext.Content);
         obj.Prop = "Done";
 
@@ -134,7 +134,7 @@ We support the following options on termination:
 
 ## Uploading your component
 
-CX supports both internal and external component upload locations. If you want to use external upload management the only real requirement is that the raw component dll is available on a REST GET request at the endpoint you specify in your integration configuration like shown below:
+Connxio supports both internal and external component upload locations. If you want to use external upload management the only real requirement is that the raw component dll is available on a REST GET request at the endpoint you specify in your integration configuration like shown below:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Code%20Mapping%20Self%20hosted.PNG?sv=2020-04-08&st=2021-10-20T11%3A20%3A16Z&se=2040-10-21T11%3A20%3A00Z&sr=b&sp=r&sig=iwI0j%2Fyh8iCN48%2BrktJaxgGrqXqA9DmOl5sT2HHCyMU%3D)
 

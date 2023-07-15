@@ -1,16 +1,16 @@
 # Event Grid
 
-Connxio (CX) lets customers provide messages to the CX pipeline by leveraging [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview). This page details how to configure Event Grid in CX but does not describe how to set up or configure Event Grid itself, please refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/event-grid/blob-event-quickstart-portal) for more information about Event Grid.
+Connxio lets customers provide messages to the Connxio pipeline by leveraging [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview). This page details how to configure Event Grid in Connxio but does not describe how to set up or configure Event Grid itself, please refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/event-grid/blob-event-quickstart-portal) for more information about Event Grid.
 
 ## Limitations
 
 At this point in time we only support the Blob Storage for Event Grid. Adding new options is possible, please contact us if you need other options.
 
-There are very few limitations on Azure Event Grid communication. Since Event Grid functions as a event emitter towards the CX [Api](/integrations/adapters/inbound/Api) the only limitations are on bandwidth and traffic. The CX Api scales with traffic and is thoroughly monitored and should handle a lot of traffic, if you have peak loads of thousands of messages per second we do recommend looking at [queue options](/integrations/adapters/inbound/Service-Bus) instead to mitigate risk.
+There are very few limitations on Azure Event Grid communication. Since Event Grid functions as a event emitter towards the Connxio [Api](/integrations/adapters/inbound/Api) the only limitations are on bandwidth and traffic. The Connxio Api scales with traffic and is thoroughly monitored and should handle a lot of traffic, if you have peak loads of thousands of messages per second we do recommend looking at [queue options](/integrations/adapters/inbound/Service-Bus) instead to mitigate risk.
 
 ## Configuring Event Grid message intake
 
-To configure CX to start processing your event grid events select the Event Grid option in "Inbound Connection" shape:
+To configure Connxio to start processing your event grid events select the Event Grid option in "Inbound Connection" shape:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Azure%20storage%20menu.png?sv=2020-04-08&st=2021-10-27T11%3A56%3A53Z&se=2040-10-28T12%3A56%3A00Z&sr=b&sp=r&sig=S%2FltUS0elTLePVt5Aq536uNkr7Pa9XcY8ovTFJLUhmc%3D)
 
@@ -23,7 +23,7 @@ A new window pops up. Add data as seen below:
 
 ## Configuring Event Grid endpoints in Azure `needs picture of correlationid`
 
-Please refer to the [Swagger documentation](https://cmh-prod-api-wa.azurewebsites.net/index.html) for what parameters are accepted for the CX `EventGrid` endpoint. As with other Api endpoints (as described on the [Api page](/integrations/adapters/inbound/Api) only CorrelationId is required for new integrations.
+Please refer to the [Swagger documentation](https://cmh-prod-api-wa.azurewebsites.net/index.html) for what parameters are accepted for the Connxio `EventGrid` endpoint. As with other Api endpoints (as described on the [Api page](/integrations/adapters/inbound/Api) only CorrelationId is required for new integrations.
 
 Event grid uses simple authentication patterns and does, at the point of writing, not support OAuth 2.0. Since this is the case we accept OCP token verification through [APIM](https://azure.microsoft.com/en-us/services/api-management/#overview). Supply this by configuring the APIM uri `https://cmh-messagehub-apim-prod.azure-api.net` with query parameters in your Event Grid configuration in Azure like so:
 

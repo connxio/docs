@@ -4,17 +4,17 @@ sidebar_position: 4
 
 # Splitting
 
-Connxio (CX) gives customers the ability to split messages into smaller units. We do this by running the content through a [Code Component](/integrations/transformation/code-components) that defines how the file should be split and then sends the smaller units through the pipeline as new messages. This page describes how to utilize the splitting functionality.
+Connxio gives customers the ability to split messages into smaller units. We do this by running the content through a [Code Component](/integrations/transformation/code-components) that defines how the file should be split and then sends the smaller units through the pipeline as new messages. This page describes how to utilize the splitting functionality.
 
 ## Limitations
 
-There are very few limits to splitting the only one being that we support files up to `100mb` only. However, you can split files into any amount of messages, and process them in any shape or form in further transformations. After the splitting is run all files will be handled as a unique message inside CX which means they will generate separate [logs](/integrations/logging), [resend-events](/api/resending-api) and errors.
+There are very few limits to splitting the only one being that we support files up to `100mb` only. However, you can split files into any amount of messages, and process them in any shape or form in further transformations. After the splitting is run all files will be handled as a unique message inside Connxio which means they will generate separate [logs](/integrations/logging), [resend-events](/api/resending-api) and errors.
 
 > Splitting can generate enormous amounts of traffic. Be sure that you test your receiving systems thoroughly before you send production level loads.
 
 ## Testing and best practices
 
-Splitting requires special care when testing since it can generate millions of messages in a short amount of time. CX has a heavily tuned splitting algorithm that utilizes parallelization to generate messages in a rate of about 4000 per second at full capacity. This means that we recommend the following test pipeline:
+Splitting requires special care when testing since it can generate millions of messages in a short amount of time. Connxio has a heavily tuned splitting algorithm that utilizes parallelization to generate messages in a rate of about 4000 per second at full capacity. This means that we recommend the following test pipeline:
 
 1. Test you integration with a single file that splits into 2 messages.
 2. Add 2 files with 200 messages.

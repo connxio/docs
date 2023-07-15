@@ -7,7 +7,7 @@ pagination_prev: null
 
 # Functionality
 
-We categorize functionality in CX by two states; in development and production ready. This page describes the two states and how they are handled within the documentation.
+We categorize functionality in Connxio by two states; in development and production ready. This page describes the two states and how they are handled within the documentation.
 
 ## In development
 
@@ -20,7 +20,7 @@ This functionality is in development. Read more on the [functionality page](/Fun
 :::
 
 
-The warning can mark sub sections of a document or the whole document itself. When a page or section is marked with the above paragraph it is essentially not fully tester and subject to future changes. We do not guarantee that you won't have to make changes to pipelines or systems that make use of the functionality when the development process ends or continues. Essentially you should use features that are "in development" on on critical integrations and facilitate a dialog with the CX team on how this functionality may change.
+The warning can mark sub sections of a document or the whole document itself. When a page or section is marked with the above paragraph it is essentially not fully tester and subject to future changes. We do not guarantee that you won't have to make changes to pipelines or systems that make use of the functionality when the development process ends or continues. Essentially you should use features that are "in development" on on critical integrations and facilitate a dialog with the Connxio team on how this functionality may change.
 
 ## Production ready
 

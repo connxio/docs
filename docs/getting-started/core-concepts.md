@@ -47,15 +47,15 @@ Connxio is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When
 
 ## Orchestration
 
-CX supports a variety of orchestration scenarios.
+Connxio supports a variety of orchestration scenarios.
 
 > By _orchestration_ we mean the process of contacting or waiting for multiple systems, services or even manual input to piece together the correct output.
 
 Consider the following two scenarios:
 
 1. A message is picked up from an SFTP server, transformed to XML and sent to a REST endpoint.
-2. A message is picked up from an SFTP server, we enrich it with data from an external REST endpoint, transform it to XML and send it for manual review in an external system by REST. When the manual review is completed an new message is sent to CX by REST and the message is delivered to another SFTP server.
+2. A message is picked up from an SFTP server, we enrich it with data from an external REST endpoint, transform it to XML and send it for manual review in an external system by REST. When the manual review is completed an new message is sent to Connxio by REST and the message is delivered to another SFTP server.
 
-In scenario 1 we integrate two systems without orchestration and use point to point transfer only. In scenario 2 however we short circuit the process while waiting for manual input and do two passes through CX to ensure the integration is completed and written to the SFTP catalog.
+In scenario 1 we integrate two systems without orchestration and use point to point transfer only. In scenario 2 however we short circuit the process while waiting for manual input and do two passes through Connxio to ensure the integration is completed and written to the SFTP catalog.
 
-CX supports both of these scenarios even though one requires orchestration and the other does not. This differs from other offerings within the iPAAs space in that it's more loosely coupled. Please contact us for more information if you are implementing a challenging orchestration scenario, there are very few orchestration processes that can't be solved with CX.
+Connxio supports both of these scenarios even though one requires orchestration and the other does not. This differs from other offerings within the iPAAs space in that it's more loosely coupled. Please contact us for more information if you are implementing a challenging orchestration scenario, there are very few orchestration processes that can't be solved with Connxio.

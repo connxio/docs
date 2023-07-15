@@ -4,9 +4,9 @@ sidebar_position: 3
 
 # Batching
 
-Connxio (CX) gives customers the ability to batch messages into larger single units. We do this by creating a bucket where messages are queued for a set interval until they are picked up, run through a [code mapping](/integrations/transformation/code-components) and then sent as a single message through the pipeline. There are certain limits to batching functionality that will be explained on this page as well the process of batching itself.
+Connxio gives customers the ability to batch messages into larger single units. We do this by creating a bucket where messages are queued for a set interval until they are picked up, run through a [code mapping](/integrations/transformation/code-components) and then sent as a single message through the pipeline. There are certain limits to batching functionality that will be explained on this page as well the process of batching itself.
 
-> Batching entails waiting for messages within a set interval and then transforming said messages into a single unit before processing that unit through the CX pipeline
+> Batching entails waiting for messages within a set interval and then transforming said messages into a single unit before processing that unit through the Connxio pipeline
 
 ## Limitations
 
@@ -19,7 +19,7 @@ There are certain limits imposed upon the batching functionality to not overwhel
 
 > 2300 messages are present in the bucket. The interval fires. Three files are created, the first and second file contains 1000 batched messages, the third file contains 300 messages.
 
-This limitation is in place for a number of reasons, the first being that we want to force users to not create files too big for CX to handle. The seconds reason is that each batch is given its own set of resources and currently these resources have their limit set to not create files that will overwhelm external and internal systems. We do have future plans to support large files above 100mb, contact us for more information.
+This limitation is in place for a number of reasons, the first being that we want to force users to not create files too big for Connxio to handle. The seconds reason is that each batch is given its own set of resources and currently these resources have their limit set to not create files that will overwhelm external and internal systems. We do have future plans to support large files above 100mb, contact us for more information.
 
 ## Creating batching code components
 

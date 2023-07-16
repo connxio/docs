@@ -28,7 +28,7 @@ This endpoint retrieves a list of all subscriptions associated with the company.
     },
     {
         "id": "443365db-e94d-499c-abdc-e502356b2a3b",
-        "name": "Subscription1",
+        "name": "Subscription2",
         "active": true,
         "companyId": "8b3c0f1d-8eda-47b4-bf53-896f51ea5d0b",
         "companyName": "Company1"

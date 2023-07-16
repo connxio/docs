@@ -86,12 +86,12 @@ const config = {
           {
             to: "/",
             label: "Home",
-            activeBaseRegex: "^((?!api|changelog).)*$",
+            activeBaseRegex: "^((?!reference|changelog).)*$",
           },
           {
-            to: "/api",
+            to: "/reference",
             label: "REST API",
-            activeBasePath: "api",
+            activeBasePath: "reference",
           },
           {
             to: "/changelog",
@@ -99,21 +99,6 @@ const config = {
             position: "left",
             activeBasePath: "changelog",
           },
-          // {
-          //   href: "https://portal.connxio.no",
-          //   label: "Connxio Portal",
-          //   position: "left",
-          // },
-          // {
-          //   href: "https://www.communicate.no/en/connxio",
-          //   label: "About Connxio",
-          //   position: "left",
-          // },
-          // {
-          //   href: "https://www.evidi.com",
-          //   label: "Evidi",
-          //   position: "left",
-          // },
           {
             href: "https://app-cx-ratchet-customerportal.azurewebsites.net",
             position: "right",

@@ -23,3 +23,10 @@ yarn-error.log*
 
 # Changelog source files
 /site/changelog
+.vs/docs/FileContentIndex/55297c38-d7c7-4b9a-956a-8f42b0f962f8.vsidx
+.vs/docs/FileContentIndex/5d638a6b-d349-499c-aa40-62fe2206df43.vsidx
+.gitignore
+
+.vs
+.vs/slnx.sqlite
+.vs/slnx.sqlite

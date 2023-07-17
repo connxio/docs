@@ -55,7 +55,7 @@ To configure CX to start fetching data from Service Bus select the "Service Bus"
 
 A new window pops up. Add data as seen below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Service%20bus%20inbound%20config.png?sv=2020-08-04&st=2022-01-11T10%3A05%3A24Z&se=2040-01-12T10%3A05%3A00Z&sr=b&sp=r&sig=7Yh9XRzX%2FKF99aoiGDSFT43w9XkDUcRQwKPbufYpl60%3D)
+![img](https://cmhpictsa.blob.core.windows.net/pictures/inbound_sb.png?sp=r&st=2023-07-16T12:03:39Z&se=2040-07-17T20:03:39Z&spr=https&sv=2022-11-02&sr=b&sig=cGxjQkgBlslCSdmpDuHufglMUuMo%2FkB7SgzTWlID4Xw%3D)
 
 - **Polling Interval**: Dictates when files are picked from the Azure Storage account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
 - **Connection String Security Configuration**: Reference to the [Security Configuration](/Security/Security-Configurations) that contains the relevant connection properties. Note that a servicebus connection string cannot contain 'EntityPath', as this information is set in the 'Topic Name' or 'Queue Name' field.
@@ -65,7 +65,6 @@ A new window pops up. Add data as seen below:
 
 ## Polling interval
 
-`needs picture`
 Polling interval dictates when the fetch operation triggers from CX. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds. Be aware that Service Bus keeps connections open for a while after the connection is established so messages may be picked for up to 5 minutes after the polling interval.
 
 ## Retry

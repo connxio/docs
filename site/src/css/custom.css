@@ -65,7 +65,7 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-table-border-color: var(--ifm-color-gray-800);
-  --code-block-bg: linear-gradient(140deg, black 50%, hotpink 400%);
+  --code-block-bg: linear-gradient(140deg, black 60%, hotpink 500%);
 }
 
 .markdown h1:first-child {

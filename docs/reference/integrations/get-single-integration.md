@@ -15,7 +15,7 @@ This endpoint retrieves a specific integration based on the given integrationCon
 
 | Key        | Type   | Description |
 | ---------- | ------ | ----------- |
-| integrationConfigId | string | The ID of the integration configuration to use when sending the message. |
+| integrationConfigId | string | The ID of the integration. |
 
 ### **Example request**
 

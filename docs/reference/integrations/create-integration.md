@@ -11,13 +11,6 @@ This endpoint allows for creating or updating an integration within Connxio. Use
 
 **Method:** <span class="method post">POST</span>
 
-**Route Parameters:**
-
-| Key        | Type   | Description |
-| ---------- | ------ | ----------- |
-| integrationConfigId | string | The ID of the integration configuration to use when sending the message. |
-
-
 **Request body:** 
 
 | Key        | Type   | Optional | Description |

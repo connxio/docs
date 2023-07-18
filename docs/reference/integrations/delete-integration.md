@@ -15,7 +15,7 @@ This endpoint enables deletion of an integration from Connxio. By providing the 
 
 | Key        | Type   | Description |
 | ---------- | ------ | ----------- |
-| integrationConfigId | string | The ID of the integration configuration to use when sending the message. |
+| integrationConfigId | string | The ID of the integration. |
 
 ### **Example request**
 

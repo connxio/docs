@@ -6,9 +6,166 @@ info:
     name: Evidi
     url: https://www.evidi.com
     email: support@connxio.no
-  version: '2.0'
+  version: "2.0"
 paths:
-  '/api/v2/messages/{configCorrelationId}':
+  /api/v2/integrations:
+    get:
+      tags:
+        - Integrations
+      summary: Gets a list of all integrations
+      responses:
+        "200":
+          description: The list of integrations for the subscription
+          content:
+            text/plain; x-api-version=2.0:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/IntegrationConfig"
+            application/json; x-api-version=2.0:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/IntegrationConfig"
+            text/json; x-api-version=2.0:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/IntegrationConfig"
+            application/xml; x-api-version=2.0:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/IntegrationConfig"
+            text/xml; x-api-version=2.0:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/IntegrationConfig"
+        "502":
+          description: Could not contact internal services. Please try again later or contact our support department
+    post:
+      tags:
+        - Integrations
+      summary: Creates or updates an integration
+      requestBody:
+        description: ""
+        content:
+          application/json; x-api-version=2.0:
+            schema:
+              $ref: "#/components/schemas/IntegrationPostRequest"
+          text/json; x-api-version=2.0:
+            schema:
+              $ref: "#/components/schemas/IntegrationPostRequest"
+          application/*+json; x-api-version=2.0:
+            schema:
+              $ref: "#/components/schemas/IntegrationPostRequest"
+          application/xml; x-api-version=2.0:
+            schema:
+              $ref: "#/components/schemas/IntegrationPostRequest"
+          text/xml; x-api-version=2.0:
+            schema:
+              $ref: "#/components/schemas/IntegrationPostRequest"
+          application/*+xml; x-api-version=2.0:
+            schema:
+              $ref: "#/components/schemas/IntegrationPostRequest"
+      responses:
+        "200":
+          description: The updated integration configuration
+          content:
+            text/plain; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+            application/json; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+            text/json; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+            application/xml; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+            text/xml; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+        "201":
+          description: The created integration configuration
+        "400":
+          description: Request did not pass validation. Check your request and error message.
+        "502":
+          description: Could not contact internal services. Please try again later or contact our support department
+  "/api/v2/integrations/{configCorrelationId}":
+    get:
+      tags:
+        - Integrations
+      summary: Find integration by ID
+      parameters:
+        - name: configCorrelationId
+          in: path
+          description: ""
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The integration corresponding to the ID
+          content:
+            text/plain; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+            application/json; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+            text/json; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+            application/xml; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+            text/xml; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+        "404":
+          description: A integration corresponding to the ID could not be found
+        "502":
+          description: Could not contact internal services. Please try again later or contact our support department
+    delete:
+      tags:
+        - Integrations
+      summary: Deletes an integration
+      parameters:
+        - name: configCorrelationId
+          in: path
+          description: ""
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+            application/json; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+            text/json; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+            application/xml; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+            text/xml; x-api-version=2.0:
+              schema:
+                $ref: "#/components/schemas/IntegrationConfig"
+        "204":
+          description: Integration configuration deleted
+        "400":
+          description: Request did not pass validation. Check your request and error message.
+        "502":
+          description: Could not contact internal services. Please try again later or contact our support department
+  "/api/v2/messages/{configCorrelationId}":
     post:
       tags:
         - Messages
@@ -28,33 +185,36 @@ paths:
             type: string
         - name: configCorrelationId
           in: path
-          description: ''
+          description: ""
           required: true
           schema:
             type: string
       requestBody:
         content:
+          text/plain:
+            schema:
+              type: string
           application/json:
             schema:
-              $ref: '#/components/schemas/MessageBodyRequest'
+              type: string
             examples:
               Example request:
                 value: '{"foo":"bar"}'
           application/xml:
             schema:
-              $ref: '#/components/schemas/MessageBodyRequest'
+              type: string
             examples:
               Example request:
                 value: "<root>\n  <Foo>bar</Foo>\n</root>"
         required: true
       responses:
-        '200':
+        "200":
           description: The message was validated and sent to the Connxio engine
-        '400':
+        "400":
           description: The supplied message or metadata did not pass validation
-        '502':
+        "502":
           description: Could not contact internal services. Please try again later or contact our support department
-  '/api/v2/messages/{configCorrelationId}/batch':
+  "/api/v2/messages/{configCorrelationId}/batch":
     post:
       tags:
         - Messages
@@ -62,7 +222,7 @@ paths:
       parameters:
         - name: configCorrelationId
           in: path
-          description: ''
+          description: ""
           required: true
           schema:
             type: string
@@ -72,25 +232,25 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/MessageBodyRequest'
+                $ref: "#/components/schemas/MessageBodyRequest"
             examples:
               Array of MessageBodyRequest:
                 value: '[{"messageEncoding":"string","interchangeId":"string","messageBody":"string","fileName":"string"}]'
           application/xml:
             schema:
-              $ref: '#/components/schemas/ArrayOfMessageBodyRequest'
+              $ref: "#/components/schemas/ArrayOfMessageBodyRequest"
             examples:
               Array of MessageBodyRequest:
                 value: "<ArrayOfMessageBodyRequest>\n  <MessageBodyRequest>\n    <MessageEncoding>string</MessageEncoding>\n    <InterchangeId>string</InterchangeId>\n    <MessageBody>string</MessageBody>\n    <FileName>string</FileName>\n  </MessageBodyRequest>\n</ArrayOfMessageBodyRequest>"
         required: true
       responses:
-        '200':
+        "200":
           description: The message was validated and sent to the Connxio engine
-        '400':
+        "400":
           description: The supplied message or metadata did not pass validation
-        '502':
+        "502":
           description: Could not contact internal services. Please try again later or contact our support department
-  '/api/v2/messages/{configCorrelationId}/eventgrid':
+  "/api/v2/messages/{configCorrelationId}/eventgrid":
     post:
       tags:
         - Messages
@@ -110,7 +270,7 @@ paths:
             type: string
         - name: configCorrelationId
           in: path
-          description: ''
+          description: ""
           required: true
           schema:
             type: string
@@ -120,23 +280,59 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/EventGridMessage'
+                $ref: "#/components/schemas/EventGridMessage"
             examples:
               Array of EventGridMessage:
                 value: '[{"topic":"string","subject":"string","eventType":"string","eventTime":"2023-03-31T19:29:12.612Z","id":"string","data":"string","dataVersion":"string","metadataVersion":"string"}]'
           application/xml:
             schema:
-              $ref: '#/components/schemas/ArrayOfEventGridMessage'
+              $ref: "#/components/schemas/ArrayOfEventGridMessage"
             examples:
               Array of EventGridMessage:
                 value: "<ArrayOfEventGridMessage>\n  <EventGridMessage>\n    <Topic>string</Topic>\n    <Subject>string</Subject>\n    <EventType>string</EventType>\n    <EventTime>2023-03-31T19:27:48.597Z</EventTime>\n    <Id>string</Id>\n    <Data>string</Data>\n    <DataVersion>string</DataVersion>\n    <MetadataVersion>string</MetadataVersion>\n  </EventGridMessage>\n</ArrayOfEventGridMessage>"
         required: true
       responses:
-        '200':
+        "200":
           description: The message was validated and sent to the Connxio engine
-        '400':
+        "400":
           description: The supplied message or metadata did not pass validation
-        '502':
+        "502":
+          description: Could not contact internal services. Please try again later or contact our support department
+  /api/v2/subscriptions:
+    get:
+      tags:
+        - Subscriptions
+      summary: Returns a list of subscriptions
+      responses:
+        "200":
+          description: The a of subscriptions
+          content:
+            text/plain; x-api-version=2.0:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ConnXioSubscription"
+            application/json; x-api-version=2.0:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ConnXioSubscription"
+            text/json; x-api-version=2.0:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ConnXioSubscription"
+            application/xml; x-api-version=2.0:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ConnXioSubscription"
+            text/xml; x-api-version=2.0:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ConnXioSubscription"
+        "502":
           description: Could not contact internal services. Please try again later or contact our support department
 components:
   schemas:
@@ -201,7 +397,7 @@ components:
         useProcessLock:
           type: boolean
         wrapperType:
-          $ref: '#/components/schemas/WrapperType'
+          $ref: "#/components/schemas/WrapperType"
         mightBeWrapped:
           type: boolean
         adapterId:
@@ -214,7 +410,7 @@ components:
           type: string
           nullable: true
         ackOptions:
-          $ref: '#/components/schemas/AckOptions'
+          $ref: "#/components/schemas/AckOptions"
       additionalProperties: false
     AdapterConnectionPropertiesViewModel:
       required:
@@ -233,7 +429,7 @@ components:
         connectionProperties:
           type: string
         ackOptions:
-          $ref: '#/components/schemas/AckOptionsViewModel'
+          $ref: "#/components/schemas/AckOptionsViewModel"
       additionalProperties: false
     AdapterType:
       enum:
@@ -255,7 +451,7 @@ components:
         eventGridMessages:
           type: array
           items:
-            $ref: '#/components/schemas/EventGridMessage'
+            $ref: "#/components/schemas/EventGridMessage"
           nullable: true
       additionalProperties: false
     ArrayOfMessageBodyRequest:
@@ -264,7 +460,7 @@ components:
         messageBodyRequests:
           type: array
           items:
-            $ref: '#/components/schemas/MessageBodyRequest'
+            $ref: "#/components/schemas/MessageBodyRequest"
           nullable: true
       additionalProperties: false
     ConnXioSubscription:
@@ -328,11 +524,11 @@ components:
           type: string
           nullable: true
         inboundConnection:
-          $ref: '#/components/schemas/AdapterConnectionProperties'
+          $ref: "#/components/schemas/AdapterConnectionProperties"
         subIntegrations:
           type: array
           items:
-            $ref: '#/components/schemas/SubIntegration'
+            $ref: "#/components/schemas/SubIntegration"
           nullable: true
         companyName:
           type: string
@@ -352,17 +548,17 @@ components:
         loggingWebhooks:
           type: array
           items:
-            $ref: '#/components/schemas/LoggingWebhookConfig'
+            $ref: "#/components/schemas/LoggingWebhookConfig"
           nullable: true
         resendWebhooks:
           type: array
           items:
-            $ref: '#/components/schemas/ResendWebhookConfig'
+            $ref: "#/components/schemas/ResendWebhookConfig"
           nullable: true
         internalLoggingOptions:
-          $ref: '#/components/schemas/InternalLoggingOptions'
+          $ref: "#/components/schemas/InternalLoggingOptions"
         retryOptions:
-          $ref: '#/components/schemas/RetryOptions'
+          $ref: "#/components/schemas/RetryOptions"
         sender:
           type: string
           nullable: true
@@ -380,7 +576,7 @@ components:
         handleAsBinaryFile:
           type: boolean
         internalProperties:
-          $ref: '#/components/schemas/InternalProperties'
+          $ref: "#/components/schemas/InternalProperties"
         stopOnEncodingError:
           type: boolean
         pollingIntervalInSeconds:
@@ -449,11 +645,11 @@ components:
         sender:
           type: string
         retryOptions:
-          $ref: '#/components/schemas/RetryOptions'
+          $ref: "#/components/schemas/RetryOptions"
         loggingWebhooks:
           type: array
           items:
-            $ref: '#/components/schemas/LoggingWebhookConfig'
+            $ref: "#/components/schemas/LoggingWebhookConfig"
           nullable: true
         transactionType:
           type: string
@@ -466,9 +662,9 @@ components:
           minItems: 1
           type: array
           items:
-            $ref: '#/components/schemas/SubIntegrationViewModel'
+            $ref: "#/components/schemas/SubIntegrationViewModel"
         inboundConnection:
-          $ref: '#/components/schemas/AdapterConnectionPropertiesViewModel'
+          $ref: "#/components/schemas/AdapterConnectionPropertiesViewModel"
         description:
           minLength: 3
           type: string
@@ -478,7 +674,7 @@ components:
         resendWebhooks:
           type: array
           items:
-            $ref: '#/components/schemas/ResendWebhookConfig'
+            $ref: "#/components/schemas/ResendWebhookConfig"
           nullable: true
         enabled:
           type: boolean
@@ -487,7 +683,7 @@ components:
       type: object
       properties:
         logLevel:
-          $ref: '#/components/schemas/LogLevel'
+          $ref: "#/components/schemas/LogLevel"
         logMessageContent:
           type: boolean
           nullable: true
@@ -509,7 +705,7 @@ components:
       type: object
       properties:
         contract:
-          $ref: '#/components/schemas/Contract'
+          $ref: "#/components/schemas/Contract"
         endpointURL:
           type: string
           nullable: true
@@ -520,7 +716,7 @@ components:
           type: string
           nullable: true
         adapterType:
-          $ref: '#/components/schemas/AdapterType'
+          $ref: "#/components/schemas/AdapterType"
         queryString:
           type: string
           nullable: true
@@ -531,9 +727,9 @@ components:
           type: integer
           format: int32
         authorizationHeaderKey:
-          $ref: '#/components/schemas/Secret'
+          $ref: "#/components/schemas/Secret"
         type:
-          $ref: '#/components/schemas/WebhookType'
+          $ref: "#/components/schemas/WebhookType"
         enabled:
           type: boolean
         headers:
@@ -542,7 +738,7 @@ components:
             type: string
           nullable: true
         logLevel:
-          $ref: '#/components/schemas/LogLevel'
+          $ref: "#/components/schemas/LogLevel"
         inboundMesssageType:
           type: string
           nullable: true
@@ -571,7 +767,7 @@ components:
           type: boolean
           nullable: true
         externalContentServiceWebhook:
-          $ref: '#/components/schemas/RestConnectionProperties'
+          $ref: "#/components/schemas/RestConnectionProperties"
       additionalProperties: false
     LogLevel:
       enum:
@@ -615,7 +811,7 @@ components:
       type: object
       properties:
         contract:
-          $ref: '#/components/schemas/Contract'
+          $ref: "#/components/schemas/Contract"
         endpointURL:
           type: string
           nullable: true
@@ -626,7 +822,7 @@ components:
           type: string
           nullable: true
         adapterType:
-          $ref: '#/components/schemas/AdapterType'
+          $ref: "#/components/schemas/AdapterType"
         queryString:
           type: string
           nullable: true
@@ -637,9 +833,9 @@ components:
           type: integer
           format: int32
         authorizationHeaderKey:
-          $ref: '#/components/schemas/Secret'
+          $ref: "#/components/schemas/Secret"
         type:
-          $ref: '#/components/schemas/WebhookType'
+          $ref: "#/components/schemas/WebhookType"
         enabled:
           type: boolean
         headers:
@@ -666,7 +862,7 @@ components:
           type: string
           nullable: true
         apimSubscriptionKey:
-          $ref: '#/components/schemas/Secret'
+          $ref: "#/components/schemas/Secret"
         oAuthUrl:
           type: string
           nullable: true
@@ -677,7 +873,7 @@ components:
           type: string
           nullable: true
         oAuthClientSecret:
-          $ref: '#/components/schemas/Secret'
+          $ref: "#/components/schemas/Secret"
         headers:
           type: object
           additionalProperties:
@@ -691,9 +887,9 @@ components:
         useDateDelta:
           type: boolean
         pagingType:
-          $ref: '#/components/schemas/PagingType'
+          $ref: "#/components/schemas/PagingType"
         nextLinkType:
-          $ref: '#/components/schemas/NextLinkType'
+          $ref: "#/components/schemas/NextLinkType"
         pathName:
           type: string
           nullable: true
@@ -704,7 +900,7 @@ components:
           type: string
           nullable: true
         oAuthPwd:
-          $ref: '#/components/schemas/Secret'
+          $ref: "#/components/schemas/Secret"
         oAuthResource:
           type: string
           nullable: true
@@ -715,7 +911,7 @@ components:
           type: string
           nullable: true
         basicAuthenticationPassword:
-          $ref: '#/components/schemas/Secret'
+          $ref: "#/components/schemas/Secret"
         newInternalMessageCorrelationId:
           type: string
           nullable: true
@@ -730,7 +926,7 @@ components:
         fallBackOnFiveHoundred:
           type: boolean
         restConnectionPropertiesSecondary:
-          $ref: '#/components/schemas/RestConnectionProperties'
+          $ref: "#/components/schemas/RestConnectionProperties"
         useStaticIp:
           type: boolean
         terminateOnDuplicateDetection:
@@ -741,7 +937,7 @@ components:
         restResponseErrorHandlingRules:
           type: array
           items:
-            $ref: '#/components/schemas/RestResponseErrorHandlingRule'
+            $ref: "#/components/schemas/RestResponseErrorHandlingRule"
           nullable: true
       additionalProperties: false
     RestResponseErrorHandlingActionType:
@@ -758,7 +954,7 @@ components:
           type: string
           nullable: true
         action:
-          $ref: '#/components/schemas/RestResponseErrorHandlingActionType'
+          $ref: "#/components/schemas/RestResponseErrorHandlingActionType"
         retry:
           type: boolean
         customStatus:
@@ -826,18 +1022,18 @@ components:
           type: string
           nullable: true
         loggingWebhookOverrides:
-          $ref: '#/components/schemas/SubintegrationLoggingConfigOverride'
+          $ref: "#/components/schemas/SubintegrationLoggingConfigOverride"
         transformations:
           type: array
           items:
-            $ref: '#/components/schemas/TransformationAction'
+            $ref: "#/components/schemas/TransformationAction"
           nullable: true
         passThrough:
           type: boolean
         outboundConnections:
           type: array
           items:
-            $ref: '#/components/schemas/AdapterConnectionProperties'
+            $ref: "#/components/schemas/AdapterConnectionProperties"
           nullable: true
         messageOutboundFormat:
           type: string
@@ -846,7 +1042,7 @@ components:
           type: string
           nullable: true
         internalProperties:
-          $ref: '#/components/schemas/InternalProperties'
+          $ref: "#/components/schemas/InternalProperties"
         enabled:
           type: boolean
         preDefinedUserProperties:
@@ -859,7 +1055,7 @@ components:
       type: object
       properties:
         logLevel:
-          $ref: '#/components/schemas/LogLevel'
+          $ref: "#/components/schemas/LogLevel"
         inboundMesssageType:
           type: string
           nullable: true
@@ -901,11 +1097,11 @@ components:
           type: string
           nullable: true
         loggingWebhookOverrides:
-          $ref: '#/components/schemas/SubintegrationLoggingConfigOverride'
+          $ref: "#/components/schemas/SubintegrationLoggingConfigOverride"
         transformations:
           type: array
           items:
-            $ref: '#/components/schemas/TransformationActionViewModel'
+            $ref: "#/components/schemas/TransformationActionViewModel"
           nullable: true
         passThrough:
           type: boolean
@@ -913,7 +1109,7 @@ components:
           minItems: 1
           type: array
           items:
-            $ref: '#/components/schemas/AdapterConnectionPropertiesViewModel'
+            $ref: "#/components/schemas/AdapterConnectionPropertiesViewModel"
         messageOutboundFormat:
           type: string
         messageOutboundEncoding:
@@ -982,13 +1178,15 @@ components:
           authorizationUrl: https://login.microsoftonline.com/0b933fc9-3391-4302-9d86-85fe9bb5370e/oauth2/authorize
           scopes:
             user_impersonation: Access API
-    Connxio API Key:
+    connxio-api-key:
       type: apiKey
       description: API Key for Connxio API
       name: Connxio-Api-Key
       in: header
-security:
-  - oauth2:
-      - readAccess
-      - writeAccess
-  - Connxio API Key: [ ]
+security: [{ connxio-api-key: [], oauth2: [] }]
+servers: [{ url: https://app-cx-ratchet-api.azurewebsites.net/ }]
+# security:
+#   - connxio-api-key: []
+#     oauth2:
+#       - readAccess
+#       - writeAccess

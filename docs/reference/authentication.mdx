@@ -10,7 +10,7 @@ The Connxio API requires proper authentication to ensure secure access to its en
 
 ## Obtaining OAuth 2.0 Credentials
 
-To obtain OAuth 2.0 credentials for accessing the Connxio API, you need to contact your Connxio representative. They will provide you with the necessary OAuth client ID and client secret. These credentials will be used to generate Json Web Tokens for authentication when making API requests.
+To obtain OAuth 2.0 credentials for accessing the Connxio API, you need to contact your Connxio representative. They will provide you with the necessary OAuth client ID and client secret. These credentials will be used to generate authentication tokens (JWT) for use when making API requests.
 
 ## Generating a Connxio API Key
 
@@ -27,7 +27,7 @@ To generate a Connxio API key, follow these steps:
 
 When making API requests to the Connxio API, you must include both of the following headers to authenticate your request:
 
-1. **OAuth 2.0**: Generate a JWT token using the OAuth client ID and client secret obtained from the Connxio team. Include the token in the Authorization header with the "Bearer " prefix.
+1. **OAuth 2.0**: Generate an authentication token (JWT) using the OAuth client ID and client secret obtained from the Connxio team. Include the token in the Authorization header with the "Bearer " prefix.
    Example: `Authorization: Bearer YOUR_JWT_TOKEN`.
 
 2. **API Key**: Include the API key in the request header using the key name "Connxio-Api-Key".

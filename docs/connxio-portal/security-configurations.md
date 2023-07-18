@@ -19,7 +19,7 @@ Security configurations serve the following purposes in Connxio:
 
 Navigate to "Security Configurations" in the right hand menu and click "Add new configuration". Your are then greeted by a select menu where you will choose what kind of configuration you want to create. The possible options are:
 
-- **Webhook**: Used for Http/Rest adapters, data collection and webhook logging
+- **Webhook**: Used for HTTP/REST adapters, data collection and webhook logging
 - **Archeo**: Credentials for Archeo logging
 - **SFTP**: Credentials for SFTP adapters
 - **FTP**: Credentials for FTP adapters

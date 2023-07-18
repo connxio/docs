@@ -16,7 +16,7 @@ In addition to this SMTP allows the use of SSL and TLS. Of the two protocols, we
 </p>
 </details>
 
-## Configuring email connections
+## Configuring the Email adapter
 
 To configure Connxio to start processing your email messages select the Email option in "Outbound Connection" shape:
 

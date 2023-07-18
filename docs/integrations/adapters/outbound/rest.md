@@ -12,7 +12,7 @@ When choosing between the REST adapter and an asynchronous adapter in Connxio, u
 
 ## Configuring the REST adapter
 
-To configure Connxio to start sending data to a Rest endpoint select the "REST" option in the "Outbound Connections" shape:
+To configure Connxio to start sending data to a REST endpoint select the "REST" option in the "Outbound Connections" shape:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Outbound%20adapter%20menu.PNG?sv=2020-08-04&st=2021-11-08T12%3A31%3A58Z&se=2040-11-09T12%3A31%3A00Z&sr=b&sp=r&sig=a6JtbEkJT287%2BgNvJN3pR5fpONaBX6eyXHeDQS%2FD5cs%3D)
 
@@ -21,12 +21,12 @@ A new window pops up. Add data as seen below:
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/REst%20outbound%20config.png?sv=2020-08-04&st=2022-05-02T11%3A52%3A43Z&se=2040-05-03T11%3A52%3A00Z&sr=b&sp=r&sig=auHqdR6EFMFhh86xKDBv4gAReSAst1zoM3hJeI8Nwes%3D)
 
 - **Adapter Name**: The logical name of the adapter. This is shown in the configuration view on close.
-- **Method**: The Http verb (or method as its properly called) to use when contacting the restful endpoint.
+- **Method**: The HTTP verb to use when contacting the restful endpoint.
 - **Endpoint Url**: The url of the endpoint.
 - **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
 - **Headers & Authorization Header Type**: Add headers here as necessary to either authenticate the request or add other needed parameters.
 - **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/Acknowledgment).
-- **Use Internal**: Uses the internal Restful adapter to resend the message back to Connxio. Is explained in detail under the  [carousel entry](#carousel).
+- **Use Internal**: Uses the internal RESTful adapter to resend the message back to Connxio. Is explained in detail under the  [carousel entry](#carousel).
 - **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 

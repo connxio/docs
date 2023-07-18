@@ -10,9 +10,9 @@ When using the inbound REST adapter in Connxio, there are a few considerations t
 </details>
 
 
-## Configuring Restful message intake
+## Configuring the REST adapter
 
-To configure Connxio to start fetching data from a Rest endpoint select the "REST" option in the "Inbound Connection" shape:
+To configure Connxio to start fetching data from a REST endpoint select the "REST" option in the "Inbound Connection" shape:
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -30,8 +30,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <br />
 The following properties are used to configure the adapter:
 
-- **Method**: The Http verb (or method as its properly called) to use when contacting the restful endpoint.
-- **Endpoint Url**: The url of the endpoint.
+- **Method**: The HTTP verb to use when contacting the restful endpoint.
+- **Endpoint Url**: The URL of the endpoint.
 - **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
 - **Headers & Authorization Header Type**: Add headers here as necessary to either authenticate the request or add other needed parameters.
 - **Pagination**: By using pagination, Connxio will scan the response of the API request for the Pathname/Prop-name you provided.
@@ -49,4 +49,4 @@ Connxio will add an `InterchangeId` header to the intake request to facilitate f
 
 ## Retry
 
-Since Connxio reaches out and picks up files when using the Rest inbound adapter, retry is handled by the Connxio framework. If a fault happens when the polling interval hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, Connxio will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however since Connxio cant be sure the message is possible to requeue on the external message. The message will then be sent to catastrophic retry as described in the [Retry Page](/integrations/retry).
+Since Connxio reaches out and picks up files when using the REST inbound adapter, retry is handled by the Connxio framework. If a fault happens when the polling interval hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, Connxio will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however since Connxio cant be sure the message is possible to requeue on the external message. The message will then be sent to catastrophic retry as described in the [Retry Page](/integrations/retry).

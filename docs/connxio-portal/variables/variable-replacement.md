@@ -88,7 +88,7 @@ Variable replacement can be used in various ways to simulate orchestration or to
 
 #### REST Fetch
 
-You can use variable replacement on the [inbound REST adapter](/integrations/adapters/inbound/Rest) URL field like shown below.
+You can use variable replacement on the [inbound REST adapter](/integrations/adapters/inbound/rest) URL field like shown below.
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Http%20Inbound%20Variable%20Incection.PNG?sv=2020-04-08&st=2021-09-19T11%3A02%3A00Z&se=2037-10-20T11%3A02%3A00Z&sr=b&sp=r&sig=rfVbo%2BwsjzX7XfQqp09vLfCqutI3riI1X1a0oEgOjsQ%3D)
 

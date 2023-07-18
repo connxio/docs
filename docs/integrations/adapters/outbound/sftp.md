@@ -13,7 +13,7 @@ To handle these limitations in the best way possible for each individual server 
     </p>
 </details>
 
-## Configuring SFTP connections
+## Configuring the FTP and SFTP adapters
 
 To configure Connxio to start delivering your SFTP messages select the SFTP option in "Outbound Connections" shape:
 

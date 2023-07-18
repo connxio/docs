@@ -53,7 +53,7 @@
 
 #### :nail_care: Polish
 
-- `Added delta and paging to Rest inbound adapter`
+- `Added delta and paging to REST inbound adapter`
   - added new functionality that lets you specify start time for delta time on getting data from external endpoint. Also added paging in the form of continuation token and top skip.
 
 ## 1.9.2 (2023-01-17)
@@ -75,7 +75,7 @@
 #### :nail_care: Polish
 
 - `Added process lock to inbound adapters`
-  - added new option for locking on process for inbound adapters with locking functionality. This affects Azure Storage, Rest and (S)ftp adapters.
+  - added new option for locking on process for inbound adapters with locking functionality. This affects Azure Storage, REST and (S)ftp adapters.
 - `Added filepath to metadata for (S)FTP`
   - The filepath field contains the full path including the filename to the file
 

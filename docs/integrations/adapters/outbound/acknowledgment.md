@@ -27,7 +27,7 @@ This is just one of the many uses for tracking delivery, but this example illust
 
 ## Configuring Acknowledgments
 
-Ack delivery can be configured on all outbound adapters in Connxio. You can use any outbound adapter to deliver the ACK as well. So say you want to deliver the message data itself through Sftp, you can still deliver the ACK through Service Bus or Rest to another part of the system or another system entirely. To start sending ACK messages enable the "Send Acknowledgment" switch in the outbound adapter window:
+Ack delivery can be configured on all outbound adapters in Connxio. You can use any outbound adapter to deliver the ACK as well. So say you want to deliver the message data itself through Sftp, you can still deliver the ACK through Service Bus or REST to another part of the system or another system entirely. To start sending ACK messages enable the "Send Acknowledgment" switch in the outbound adapter window:
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Ack%20enable%20on%20adapter.png?sv=2020-08-04&st=2021-11-16T11%3A14%3A39Z&se=2040-11-17T11%3A14%3A00Z&sr=b&sp=r&sig=nxGH1A8rQw7uw1XSoda0nusLAJEh1UW4752GPHGy4GQ%3D)
 

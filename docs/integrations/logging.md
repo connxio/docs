@@ -182,7 +182,7 @@ Expand this section and click the "Add Logging" button to add a new webhook. Eve
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Logging%20configuration%20webhook.png?sv=2020-08-04&st=2021-11-16T12%3A28%3A39Z&se=2040-11-17T12%3A28%3A00Z&sr=b&sp=r&sig=lbkqEtWro1lQ8EFTauAk%2FD3gXiOCHQDkCq6tcjDcfqk%3D)
 
-- **Method**: The Http verb (or method as its properly called) to use when contacting the restful endpoint.
+- **Method**: The HTTP verb to use when contacting the restful endpoint.
 - **Endpoint Url**: The url of the endpoint.
 - **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
 - **Log Level**: Explained in the [Log Levels section](#log-levels).
@@ -228,7 +228,7 @@ Archeo allows customers to host message content externally. Connxio has incorpor
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Logging%20external%20content.png?sv=2020-10-02&st=2022-03-23T11%3A00%3A16Z&se=2040-03-24T11%3A00%3A00Z&sr=b&sp=r&sig=CJRRtxmH%2FxXKfs%2BF2DK0kscGa4us1gUWgOEYKklGbHc%3D)
 
-- **Method**: The Http verb (or method as its properly called) to use when contacting the restful endpoint.
+- **Method**: The HTTP verb to use when contacting the restful endpoint.
 - **Endpoint Url**: The url of the endpoint.
 - **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
 - **Add Header**: Adds a header to every request handled by this webhook.

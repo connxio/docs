@@ -41,7 +41,7 @@ Add the necessary fields to your data collection. See below for an example:
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Data%20collection%20main%20config%20screen.png?sv=2020-04-08&st=2021-10-25T12%3A50%3A59Z&se=2040-10-26T12%3A50%3A00Z&sr=b&sp=r&sig=p9OxPueX6cSQoz3Rb01iV37wg23iGIRetvt6Tdbaa5I%3D)
 
 - **Method**: The verb to use for HTTP communication.
-- **Rest Url**: The endpoint to get the data from. This could be an API, data store or similar REST service.
+- **REST Url**: The endpoint to get the data from. This could be an API, data store or similar REST service.
 - **Security Configuration**: Select your security configuration from the list. See [here](/connxio-portal/security-configurations) for more information.
 - **Variable name**: The name used for the variable through Connxio. USe this name if you want to target the variable in a [code component](/integrations/transformation/code-components) or [variable replacement](/connxio-portal/variables/variable-replacement).
 - **Use Content As Request Body**: The current version of the content at the time of the data collection is sent to the collection endpoint as the body of the request. Default value is empty body.

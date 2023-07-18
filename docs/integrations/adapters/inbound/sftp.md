@@ -12,9 +12,9 @@ To handle these limitations in the best way possible for each individual server 
 </p>
 </details>
 
-## Configuring FTP and SFTP connections
+## Configuring the FTP and SFTP adapters
 
-To configure Connxio to start processing your FTPSFTP messages select the FTP or SFTP option in "Inbound Connection" shape:
+To configure Connxio to start processing your FTP/SFTP messages select the FTP or SFTP option in "Inbound Connection" shape:
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';

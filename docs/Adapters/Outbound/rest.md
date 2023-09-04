@@ -47,6 +47,10 @@ Carousel is what we've called the functionality that lets you run a message thro
 - **Carousel Integration CorrelationId**: Specifies which integration to use when the message renters the CX pipeline. This is usually a separate integration to the one you are standing in.
 - **Preserve Interchange Id**: If this is left unchecked the new integration will run on a new InterchangeId, if checked the same InterchangeId as the one used for the current integration will be used for the Carousel as well.
 
+:::info
+When configuring the carousel functionality, the Endpoint URL **must** be set to "**internal**".
+:::
+
 ### What is Carousel used for?
 
 Carousel is used when you need to to simulate [high level orchestration](/Core-Concepts) in CX. Say you need to perform tasks that can't be done without massive amounts of input, or you need to pre process messages before you can collect enrichment data. We will not be going into specifics here because Carousel is not recommended for most scenarios and should be used as a last resort for specific integrations. There is nothing wrong with utilizing Carousel, but that said, it adds a level of complexity to integrations that leads to more user and system errors because of the enormous amount of data transfer and processing.

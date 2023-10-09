@@ -90,11 +90,6 @@ const config = {
             position: "left",
           },
           {
-            href: "https://www.communicate.no/en/connxio",
-            label: "About ConnXio",
-            position: "left",
-          },
-          {
             href: "https://www.evidi.com",
             label: "Evidi",
             position: "left",

@@ -5,6 +5,7 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: [next]
+    # branches: [main, next]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -48,11 +49,10 @@ jobs:
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          # Upload entire repository
-          path: site/build
       - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         id: deployment
-        uses: actions/deploy-pages@v2
+        with:
+          clean-exclude: pr-preview/
+          # Upload entire repository
+          folder: site/build

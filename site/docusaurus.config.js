@@ -1,7 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-import { Highlight, themes } from "prism-react-renderer";
+import { themes } from "prism-react-renderer";
 
 const organizationName = "connxio";
 const projectName = "docs";

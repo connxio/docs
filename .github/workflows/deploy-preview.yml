@@ -15,7 +15,7 @@ jobs:
   deploy-preview:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.deployment_url }}
+      url: ${{ steps.deployment.outputs.deployment-url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -39,5 +39,6 @@ jobs:
         id: deployment
         with:
           source-dir: ./site/build/
+          preview-branch: gh-pages
           umbrella-dir: pr-preview
           action: auto

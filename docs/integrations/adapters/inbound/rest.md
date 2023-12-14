@@ -41,7 +41,7 @@ Connxio will keep making API requests until the Pathname/Prop-name value doesn't
 - **ContinuationToken**: By using the variable [continuationToken] in either the URI, body or header-value - the variable will be replaced by the value to the Pathname/Prop-name received from the API-response. Connxio will keep making API requests until the ContinuationToken is empty or max pages (number of requests) reach 50.
 - **DateDelta**: Makes requests to the API, using a date variable - {date.UseDateTimeDelta} which will work as a starting/from date. The Polling interval will determine the difference in time, until the next run where the from-date will be set to datetime now.
 This variable can be used in the URI, body or header-value.
-Example of variable used in URI: http://example.com/api/getStuff?FromDate={date.UseDateTimeDelta(1980-01-01T08:00:00.00).SetCstZone(Central Europe Standard Time) | date: dd.MM.yyyy HH.mm.ss | error: fallback 2023-02-02T08:00:00.00}&ToDate={date.SetCstZone(Central Europe Standard Time)}
+Example of variable used in URI: `http://example.com/api/getStuff?FromDate={date.UseDateTimeDelta(1980-01-01T08:00:00.00).SetCstZone(Central Europe Standard Time) | date: dd.MM.yyyy HH.mm.ss | error: fallback 2023-02-02T08:00:00.00}&ToDate={date.SetCstZone(Central Europe Standard Time)}`
 
 ## Extending Logging
 

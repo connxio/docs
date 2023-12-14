@@ -13,7 +13,7 @@ const config = {
   tagline: "Connxio Integration Engine",
   projectName: projectName,
   organizationName: organizationName,
-  trailingSlash: false,
+  trailingSlash: true,
   url: `https://${organizationName}.github.io`,
   baseUrl: `/${projectName}/`,
   onBrokenLinks: "throw",

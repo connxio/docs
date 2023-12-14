@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkconnxio_docs=self.webpackChunkconnxio_docs||[]).push([[9359],{1057:e=>{e.exports=JSON.parse('{"permalink":"/docs/changelog","page":1,"postsPerPage":20,"totalPages":1,"totalCount":6,"blogDescription":"Keep yourself up-to-date about new features in every release","blogTitle":"Connxio changelog"}')}}]);

@@ -30,25 +30,30 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.deployment_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
           cache: npm
           cache-dependency-path: ./site/package-lock.json
+
       - name: Install dependencies
         working-directory: ./site
         run: npm ci
+
       - name: Build
         working-directory: ./site
         run: npm run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
+      
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         id: deployment

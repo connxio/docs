@@ -29,14 +29,10 @@ concurrency:
 env:
   # Hosted GitHub runners have 7 GB of memory available, let's use 6 GB
   NODE_OPTIONS: --max-old-space-size=6144
-  BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
 
 jobs:
   # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.deployment-url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -59,11 +55,29 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        id: deployment
+
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          clean-exclude: pr-preview/
-          # Upload entire repository
-          folder: site/build
+          path: site/build
+      
+      # - name: Deploy to GitHub Pages
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   id: deployment
+      #   with:
+      #     clean-exclude: pr-preview/
+      #     # Upload entire repository
+      #     folder: site/build
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3

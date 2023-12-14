@@ -3,13 +3,16 @@
 
 import { Highlight, themes } from "prism-react-renderer";
 
+const organizationName = "connxio";
+const projectName = "docs";
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Connxio Documentation",
   staticDirectories: ["static"],
   tagline: "Connxio Integration Engine",
-  url: "https://docs.connxio.no",
-  baseUrl: "/",
+  url: `https://${organizationName}.github.io`,
+  baseUrl: `/${projectName}/`,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "ignore",
   favicon: "img/favicon.ico",

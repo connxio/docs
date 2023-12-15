@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Connxio changelog</title>
+        <link>https://connxio.github.io/changelog</link>
+        <description>Keep yourself up-to-date about new features in every release</description>
+        <lastBuildDate>Fri, 01 Mar 2024 20:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <copyright>Copyright © 2023 Evidi</copyright>
+        <item>
+            <title><![CDATA[2.0.0]]></title>
+            <link>https://connxio.github.io/changelog/2.0.0</link>
+            <guid>https://connxio.github.io/changelog/2.0.0</guid>
+            <pubDate>Fri, 01 Mar 2024 20:00:00 GMT</pubDate>
+            <description><![CDATA[New Features]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/changelog/2.0.0#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
+<blockquote>
+<p>These are upcoming changes that will go into production in early 2024. More details will be added to the changelog continuously until release.</p>
+</blockquote>
+<ul>
+<li><code>New Inbound engine</code>
+<ul>
+<li>Work has started on a totally new architecture for the Inbound Connxio Engine which handles all inbound adapters. This new architecture will add performance, continuous fetch from Queues and cron expressions for polling adapters.</li>
+<li>The new architecture uses Microsoft Orleans and adds both separation and scaling beyond what was possible in the old engine.</li>
+<li>The IP's for Connxio will change when the new engine is deployed. We will be sending e-mails and warning way in advance for all affected customers.</li>
+</ul>
+</li>
+<li><code>New Mapping Engine</code>
+<ul>
+<li>Mapping is being moved into a new engine. This will add better security and lets us manage mappings in a more streamlined way.</li>
+</ul>
+</li>
+<li><code>New queue handling between engines</code>
+<ul>
+<li>All engines including Transformation, Splitting, Logging and Batching are being upgraded to .net 6 and are being rewritten to use a new mode of transport between engines.</li>
+<li>This enabled better performance and a more robust engine.</li>
+</ul>
+</li>
+<li><code>Blue green architecture</code>
+<ul>
+<li>Connxio is being moved into a new environment and will be running a blue green architecture pattern. This will give you a smoother deployment experience and a far more robust and performant product.</li>
+</ul>
+</li>
+</ul>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[1.9.4]]></title>
+            <link>https://connxio.github.io/changelog/1.9.4</link>
+            <guid>https://connxio.github.io/changelog/1.9.4</guid>
+            <pubDate>Tue, 28 Feb 2023 20:00:00 GMT</pubDate>
+            <description><![CDATA[New Features]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/changelog/1.9.4#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
+<ul>
+<li><code>Datalake handling for Blob Azure Storage Adapter</code>
+<ul>
+<li>Enables users to get files from hierarchical folder structures in datalake gen2.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/changelog/1.9.4#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
+<ul>
+<li><code>SFTP Static IP binary file fix</code>
+<ul>
+<li>Fixed inbound SFTP bug where binary files would fail if static IP was enabled.</li>
+</ul>
+</li>
+</ul>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[1.9.3]]></title>
+            <link>https://connxio.github.io/changelog/1.9.3</link>
+            <guid>https://connxio.github.io/changelog/1.9.3</guid>
+            <pubDate>Tue, 21 Feb 2023 20:00:00 GMT</pubDate>
+            <description><![CDATA[New Features]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/changelog/1.9.3#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
+<ul>
+<li><code>Table storage adapter</code>
+<ul>
+<li>Added new table adapter type to Azure Storage adapter</li>
+</ul>
+</li>
+<li><code>Queue storage adapter</code>
+<ul>
+<li>Added new queue adapter type to Azure Storage adapter</li>
+</ul>
+</li>
+<li><code>Auto complete on variable injection</code>
+<ul>
+<li>The UI for integrations will help users add Variable Replacement with an autocomplete drop-down</li>
+</ul>
+</li>
+<li><code>Service Bus meta data</code>
+<ul>
+<li>Added a feture to inbound Service Bus adapter for perserving meta data properties from the original Service Bus Message.</li>
+<li>Added support for setting meta data properties for outbound Service Bus message form code components.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/changelog/1.9.3#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
+<ul>
+<li><code>Timeout on process lock</code>
+<ul>
+<li>Added timeout to process lock (15 min)</li>
+</ul>
+</li>
+<li><code>Performance logging fix</code>
+<ul>
+<li>Removed specific information from one log in inbound that caused massive storage issues on metrics</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="nail_care-polish">💅 Polish<a href="https://connxio.github.io/changelog/1.9.3#nail_care-polish" class="hash-link" aria-label="Direct link to 💅 Polish" title="Direct link to 💅 Polish">​</a></h2>
+<ul>
+<li><code>Added delta and paging to REST inbound adapter</code>
+<ul>
+<li>added new functionality that lets you specify start time for delta time on getting data from external endpoint. Also added paging in the form of continuation token and top skip.</li>
+</ul>
+</li>
+</ul>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[1.9.2]]></title>
+            <link>https://connxio.github.io/changelog/1.9.2</link>
+            <guid>https://connxio.github.io/changelog/1.9.2</guid>
+            <pubDate>Tue, 17 Jan 2023 20:00:00 GMT</pubDate>
+            <description><![CDATA[New Features]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/changelog/1.9.2#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
+<ul>
+<li><code>Environment variables</code>
+<ul>
+<li>many of you have requested environment variables to enable switching between environments without having to hold the variables outside Connxio. This new functionality adds a new menu option called Environment Variables.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/changelog/1.9.2#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
+<ul>
+<li><code>HotFix (23.01.23):Fixed management API not returning tuned off integrations</code>
+<ul>
+<li>management api was throwing 400 on non enabled integrations from get endpoint. Fixed to return all integrations</li>
+</ul>
+</li>
+<li><code>HotFix (23.01.23):Fixed management API not returning non api integrations</code>
+<ul>
+<li>management api was throwing 400 on non api and event-grid integrations. Fixed to return all integrations</li>
+</ul>
+</li>
+<li><code>HotFix (23.01.23):Fixed management API translating env vars</code>
+<ul>
+<li>management api was translating environment variables when it should be returning the non translated value.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="nail_care-polish">💅 Polish<a href="https://connxio.github.io/changelog/1.9.2#nail_care-polish" class="hash-link" aria-label="Direct link to 💅 Polish" title="Direct link to 💅 Polish">​</a></h2>
+<ul>
+<li><code>Added process lock to inbound adapters</code>
+<ul>
+<li>added new option for locking on process for inbound adapters with locking functionality. This affects Azure Storage, REST and (S)ftp adapters.</li>
+</ul>
+</li>
+<li><code>Added filepath to metadata for (S)FTP</code>
+<ul>
+<li>The filepath field contains the full path including the filename to the file</li>
+</ul>
+</li>
+</ul>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[1.9.1]]></title>
+            <link>https://connxio.github.io/changelog/1.9.1</link>
+            <guid>https://connxio.github.io/changelog/1.9.1</guid>
+            <pubDate>Tue, 06 Dec 2022 20:00:00 GMT</pubDate>
+            <description><![CDATA[New Features]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/changelog/1.9.1#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
+<ul>
+<li><code>Api-key (Hotfix: 08.12.22)</code>
+<ul>
+<li>enabled Api Key for management api</li>
+<li>work to make Api Keys opt-in has started</li>
+</ul>
+</li>
+<li><code>Variable replacement for sender and receiver</code>
+<ul>
+<li>you can now use variable replacement functionality for sender and receiver fields</li>
+<li>added <em>fallback</em> keyword error pipe to handle fallback on required properties like sender and receiver</li>
+</ul>
+</li>
+<li><code>Two-factor login</code>
+<ul>
+<li>you can now enable MFA authentication on the user settings page. This is disabled by default. Email is used for code retrieval. App is considered for implementation.</li>
+</ul>
+</li>
+<li><code>Service bus queue adapter</code>
+<ul>
+<li>added new queue adapter type to service bus adapter</li>
+</ul>
+</li>
+<li><code>Storage queue adapter</code>
+<ul>
+<li>added new queue adapter type to Azure Storage adapter</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/changelog/1.9.1#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
+<ul>
+<li><code>Hotfix (30.11.22): SFTP retry</code>
+<ul>
+<li>fixed "WinScp not found" error on outbound Sftp adapter for Sftp and Ftp</li>
+</ul>
+</li>
+<li><code>Hotfix (08.12.22): Fixed API not accepting query requests</code>
+<ul>
+<li>Api did not accept request after deployment. This was caused by a mismatch of model packages withing the NuGet tree.</li>
+</ul>
+</li>
+<li><code>Hotfix (08.12.22): Fixed outbound REST not adding headers on binary file</code>
+<ul>
+<li>Api did not add headers when "Handle As Binary File" was checked for integration. Also added the "application/octet-stream" header when sending as binary.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="nail_care-polish">💅 Polish<a href="https://connxio.github.io/changelog/1.9.1#nail_care-polish" class="hash-link" aria-label="Direct link to 💅 Polish" title="Direct link to 💅 Polish">​</a></h2>
+<ul>
+<li><code>Added new transformation interface to Ack functionality</code>
+<ul>
+<li>Ack functionality now uses the new mapping specification</li>
+</ul>
+</li>
+</ul>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[1.9.0]]></title>
+            <link>https://connxio.github.io/changelog/1.9.0</link>
+            <guid>https://connxio.github.io/changelog/1.9.0</guid>
+            <pubDate>Tue, 15 Nov 2022 20:00:00 GMT</pubDate>
+            <description><![CDATA[New Features]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/changelog/1.9.0#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
+<ul>
+<li><code>Error broker and Customer failure handling</code>
+<ul>
+<li>added new error-broker engine that handles error persistance and indexing</li>
+<li>added customer facing UI called <em>Failures</em> which exposes functionality for resending of failed messages</li>
+</ul>
+</li>
+<li><code>Backoff retry</code>
+<ul>
+<li>enabled previously created functionality for backoff retry and circuit breaker pattern which ties into error brokerage and error persistance</li>
+<li>added customer facing UI panel inside integration details page which lets customers configure retry per integration</li>
+</ul>
+</li>
+<li><code>Api-key</code>
+<ul>
+<li>added restrictions to integrations UI that forces customers to upgrade to using api-key on already existing api integrations on save</li>
+<li>implemented api-key inside api and ensured verification starting now</li>
+<li>added customer facing api-key UI which lets customers limit access to webhook, management and messaging endpoints on the Connxio api by limiting api key access</li>
+</ul>
+</li>
+<li><code>Email outbound adapter</code>
+<ul>
+<li>added new email outbound adapter for customer use. Messaging limits apply.</li>
+</ul>
+</li>
+<li><code>Discard Endpoint</code>
+<ul>
+<li>added discard endpoint which lets customers discard integration output when testing</li>
+</ul>
+</li>
+<li><code>Data Collection</code>
+<ul>
+<li>added rule engine sourced from <em>outbound rest</em> adapter, used to react to http codes on http communication</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/changelog/1.9.0#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
+<ul>
+<li><code>Audit</code>
+<ul>
+<li>fixed sorting not using date as date but as string</li>
+</ul>
+</li>
+<li><code>Outbound SFTP</code>
+<ul>
+<li>Added retry to "Cannot find WinScp exe. Stopping execution" exceptions</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="nail_care-polish">💅 Polish<a href="https://connxio.github.io/changelog/1.9.0#nail_care-polish" class="hash-link" aria-label="Direct link to 💅 Polish" title="Direct link to 💅 Polish">​</a></h2>
+<ul>
+<li><code>Code components</code>
+<ul>
+<li>added automatic suggestion of "next" version number on new code component upload</li>
+</ul>
+</li>
+<li><code>Audit</code>
+<ul>
+<li>spruced up UI to conform to new standard</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="memo-documentation">📝 Documentation<a href="https://connxio.github.io/changelog/1.9.0#memo-documentation" class="hash-link" aria-label="Direct link to 📝 Documentation" title="Direct link to 📝 Documentation">​</a></h2>
+<ul>
+<li><code>Changelog</code>
+<ul>
+<li>added changelog 😉</li>
+</ul>
+</li>
+</ul>]]></content:encoded>
+        </item>
+    </channel>
+</rss>

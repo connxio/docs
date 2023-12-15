@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://connxio.github.io/changelog</id>
+    <id>https://connxio.github.io/docs/changelog</id>
     <title>Connxio changelog</title>
     <updated>2024-03-01T20:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://connxio.github.io/changelog"/>
+    <link rel="alternate" href="https://connxio.github.io/docs/changelog"/>
     <subtitle>Keep yourself up-to-date about new features in every release</subtitle>
-    <icon>https://connxio.github.io/img/favicon.ico</icon>
+    <icon>https://connxio.github.io/docs/img/favicon.ico</icon>
     <rights>Copyright © 2023 Evidi</rights>
     <entry>
         <title type="html"><![CDATA[2.0.0]]></title>
-        <id>https://connxio.github.io/changelog/2.0.0</id>
-        <link href="https://connxio.github.io/changelog/2.0.0"/>
+        <id>https://connxio.github.io/docs/changelog/2.0.0</id>
+        <link href="https://connxio.github.io/docs/changelog/2.0.0"/>
         <updated>2024-03-01T20:00:00.000Z</updated>
         <summary type="html"><![CDATA[New Features]]></summary>
-        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/changelog/2.0.0#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/docs/changelog/2.0.0#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
 <blockquote>
 <p>These are upcoming changes that will go into production in early 2024. More details will be added to the changelog continuously until release.</p>
 </blockquote>
@@ -46,11 +46,11 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[1.9.4]]></title>
-        <id>https://connxio.github.io/changelog/1.9.4</id>
-        <link href="https://connxio.github.io/changelog/1.9.4"/>
+        <id>https://connxio.github.io/docs/changelog/1.9.4</id>
+        <link href="https://connxio.github.io/docs/changelog/1.9.4"/>
         <updated>2023-02-28T20:00:00.000Z</updated>
         <summary type="html"><![CDATA[New Features]]></summary>
-        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/changelog/1.9.4#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/docs/changelog/1.9.4#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
 <ul>
 <li><code>Datalake handling for Blob Azure Storage Adapter</code>
 <ul>
@@ -58,7 +58,7 @@
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/changelog/1.9.4#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/docs/changelog/1.9.4#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
 <ul>
 <li><code>SFTP Static IP binary file fix</code>
 <ul>
@@ -69,11 +69,11 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[1.9.3]]></title>
-        <id>https://connxio.github.io/changelog/1.9.3</id>
-        <link href="https://connxio.github.io/changelog/1.9.3"/>
+        <id>https://connxio.github.io/docs/changelog/1.9.3</id>
+        <link href="https://connxio.github.io/docs/changelog/1.9.3"/>
         <updated>2023-02-21T20:00:00.000Z</updated>
         <summary type="html"><![CDATA[New Features]]></summary>
-        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/changelog/1.9.3#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/docs/changelog/1.9.3#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
 <ul>
 <li><code>Table storage adapter</code>
 <ul>
@@ -97,7 +97,7 @@
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/changelog/1.9.3#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/docs/changelog/1.9.3#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
 <ul>
 <li><code>Timeout on process lock</code>
 <ul>
@@ -110,7 +110,7 @@
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="nail_care-polish">💅 Polish<a href="https://connxio.github.io/changelog/1.9.3#nail_care-polish" class="hash-link" aria-label="Direct link to 💅 Polish" title="Direct link to 💅 Polish">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="nail_care-polish">💅 Polish<a href="https://connxio.github.io/docs/changelog/1.9.3#nail_care-polish" class="hash-link" aria-label="Direct link to 💅 Polish" title="Direct link to 💅 Polish">​</a></h2>
 <ul>
 <li><code>Added delta and paging to REST inbound adapter</code>
 <ul>
@@ -121,11 +121,11 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[1.9.2]]></title>
-        <id>https://connxio.github.io/changelog/1.9.2</id>
-        <link href="https://connxio.github.io/changelog/1.9.2"/>
+        <id>https://connxio.github.io/docs/changelog/1.9.2</id>
+        <link href="https://connxio.github.io/docs/changelog/1.9.2"/>
         <updated>2023-01-17T20:00:00.000Z</updated>
         <summary type="html"><![CDATA[New Features]]></summary>
-        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/changelog/1.9.2#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/docs/changelog/1.9.2#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
 <ul>
 <li><code>Environment variables</code>
 <ul>
@@ -133,7 +133,7 @@
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/changelog/1.9.2#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/docs/changelog/1.9.2#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
 <ul>
 <li><code>HotFix (23.01.23):Fixed management API not returning tuned off integrations</code>
 <ul>
@@ -151,7 +151,7 @@
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="nail_care-polish">💅 Polish<a href="https://connxio.github.io/changelog/1.9.2#nail_care-polish" class="hash-link" aria-label="Direct link to 💅 Polish" title="Direct link to 💅 Polish">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="nail_care-polish">💅 Polish<a href="https://connxio.github.io/docs/changelog/1.9.2#nail_care-polish" class="hash-link" aria-label="Direct link to 💅 Polish" title="Direct link to 💅 Polish">​</a></h2>
 <ul>
 <li><code>Added process lock to inbound adapters</code>
 <ul>
@@ -167,11 +167,11 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[1.9.1]]></title>
-        <id>https://connxio.github.io/changelog/1.9.1</id>
-        <link href="https://connxio.github.io/changelog/1.9.1"/>
+        <id>https://connxio.github.io/docs/changelog/1.9.1</id>
+        <link href="https://connxio.github.io/docs/changelog/1.9.1"/>
         <updated>2022-12-06T20:00:00.000Z</updated>
         <summary type="html"><![CDATA[New Features]]></summary>
-        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/changelog/1.9.1#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/docs/changelog/1.9.1#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
 <ul>
 <li><code>Api-key (Hotfix: 08.12.22)</code>
 <ul>
@@ -201,7 +201,7 @@
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/changelog/1.9.1#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/docs/changelog/1.9.1#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
 <ul>
 <li><code>Hotfix (30.11.22): SFTP retry</code>
 <ul>
@@ -219,7 +219,7 @@
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="nail_care-polish">💅 Polish<a href="https://connxio.github.io/changelog/1.9.1#nail_care-polish" class="hash-link" aria-label="Direct link to 💅 Polish" title="Direct link to 💅 Polish">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="nail_care-polish">💅 Polish<a href="https://connxio.github.io/docs/changelog/1.9.1#nail_care-polish" class="hash-link" aria-label="Direct link to 💅 Polish" title="Direct link to 💅 Polish">​</a></h2>
 <ul>
 <li><code>Added new transformation interface to Ack functionality</code>
 <ul>
@@ -230,11 +230,11 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[1.9.0]]></title>
-        <id>https://connxio.github.io/changelog/1.9.0</id>
-        <link href="https://connxio.github.io/changelog/1.9.0"/>
+        <id>https://connxio.github.io/docs/changelog/1.9.0</id>
+        <link href="https://connxio.github.io/docs/changelog/1.9.0"/>
         <updated>2022-11-15T20:00:00.000Z</updated>
         <summary type="html"><![CDATA[New Features]]></summary>
-        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/changelog/1.9.0#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rocket-new-features">🚀 New Features<a href="https://connxio.github.io/docs/changelog/1.9.0#rocket-new-features" class="hash-link" aria-label="Direct link to 🚀 New Features" title="Direct link to 🚀 New Features">​</a></h2>
 <ul>
 <li><code>Error broker and Customer failure handling</code>
 <ul>
@@ -271,7 +271,7 @@
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/changelog/1.9.0#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-bug-fix">🐛 Bug Fix<a href="https://connxio.github.io/docs/changelog/1.9.0#bug-bug-fix" class="hash-link" aria-label="Direct link to 🐛 Bug Fix" title="Direct link to 🐛 Bug Fix">​</a></h2>
 <ul>
 <li><code>Audit</code>
 <ul>
@@ -284,7 +284,7 @@
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="nail_care-polish">💅 Polish<a href="https://connxio.github.io/changelog/1.9.0#nail_care-polish" class="hash-link" aria-label="Direct link to 💅 Polish" title="Direct link to 💅 Polish">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="nail_care-polish">💅 Polish<a href="https://connxio.github.io/docs/changelog/1.9.0#nail_care-polish" class="hash-link" aria-label="Direct link to 💅 Polish" title="Direct link to 💅 Polish">​</a></h2>
 <ul>
 <li><code>Code components</code>
 <ul>
@@ -297,7 +297,7 @@
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="memo-documentation">📝 Documentation<a href="https://connxio.github.io/changelog/1.9.0#memo-documentation" class="hash-link" aria-label="Direct link to 📝 Documentation" title="Direct link to 📝 Documentation">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="memo-documentation">📝 Documentation<a href="https://connxio.github.io/docs/changelog/1.9.0#memo-documentation" class="hash-link" aria-label="Direct link to 📝 Documentation" title="Direct link to 📝 Documentation">​</a></h2>
 <ul>
 <li><code>Changelog</code>
 <ul>

@@ -180,7 +180,7 @@ const config = {
         hashed: true,
         indexBlog: false,
         docsRouteBasePath: "/",
-        highlightSearchTermsOnTargetPage: true,
+        highlightSearchTermsOnTargetPage: false,
       },
     ],
   ],

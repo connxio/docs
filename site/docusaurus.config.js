@@ -104,7 +104,7 @@ const config = {
             activeBasePath: "changelog",
           },
           {
-            href: "https://app-cx-ratchet-customerportal.azurewebsites.net",
+            href: "https://app.connxio.com",
             position: "right",
             className: "header-portal-link",
             "aria-label": "Connxio Portal",

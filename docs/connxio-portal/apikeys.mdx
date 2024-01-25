@@ -28,17 +28,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Using API Keys
 
-When making API requests, users need to include the necessary headers as described on the [authentication page](/reference/authentication).
+When making API requests, users need to include the necessary headers as described on the [authentication page](/reference/connxio-api).
 
 ## Scopes
 
 API Keys in Connxio support different scopes that determine the specific functionalities and endpoints they can access. The following scopes are available:
 
-- **Messaging**: Grants access to the [Messaging API](/reference/messages), enabling users to use the messaging endpoints for message submission and retrieval.
+- **Messaging**: Grants access to the Messaging API, enabling users to use the messaging endpoints for message submission and retrieval.
 
-- **Management**: Provides access to the [Integrations](/reference/integrations) and [Subscriptions API](/reference/subscriptions), allowing users to perform CRUD operations on integrations and manage subscription-related functionalities.
+- **Management**: Provides access to the Management API, allowing users to perform CRUD operations on integrations, security configurations, code components and more.
 
-- **Webhook**: Allows bypassing the Oauth2.0 requirement when authenticating webhook requests. Please note that the use of the webhook scope is not recommended, and it's advisable to use other authentication methods whenever possible.
+- **Webhook**: Allows access to the API without an OAuth2.0 JWT. Please note that the use of the webhook scope is not recommended, and it's advisable to use other authentication methods whenever possible.
 
 Users can assign multiple scopes to a single API Key if required. However, the recommended approach is to use separate API Keys for each specific scope.
 

@@ -24,14 +24,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
             node-version: 18.x
-            cache: npm
-            cache-dependency-path: ./site/package-lock.json
+            cache: yarn
+            cache-dependency-path: ./site/yarn.lock
 
       - name: Install and Build
         working-directory: ./site
         run: |
-          npm ci
-          npm run build
+          yarn install --frozen-lockfile
+          yarn build
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1

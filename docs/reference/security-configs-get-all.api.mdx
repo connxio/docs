@@ -1,0 +1,927 @@
+---
+id: security-configs-get-all
+title: "List all security configurations"
+description: "List all security configurations"
+sidebar_label: "List all security configurations"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: reference/connxio-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  List all security configurations
+</h1>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v2/securityconfigs"}
+>
+  
+</MethodEndpoint>
+
+
+
+List all security configurations
+
+## Request
+
+<div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          The list of security configurations for the company
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"text/plain; x-api-version=2.0"}
+              value={"text/plain; x-api-version=2.0"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                        >
+                          Array [
+                        </div>
+                      </li><SchemaItem
+                        collapsible={false}
+                        name={"createdBy"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"updatedBy"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"createdAtUtc"}
+                        required={false}
+                        schemaName={"date-time"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","format":"date-time","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"updatedAtUtc"}
+                        required={false}
+                        schemaName={"date-time"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","format":"date-time","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"deletedAtUtc"}
+                        required={false}
+                        schemaName={"date-time"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","format":"date-time","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"deletedBy"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"id"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"correlationId"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"apimSubscription"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"eTag"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"cosmosEntityName"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true,"readOnly":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"name"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"companyId"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"auditCorrelationId"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"isGlobal"}
+                        required={false}
+                        schemaName={"boolean"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"boolean"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"securityType"}
+                        required={false}
+                        schemaName={"int32"}
+                        qualifierMessage={"**Possible values:** [`0`, `1`, `2`, `3`, `4`, `5`]"}
+                        schema={{"enum":[0,1,2,3,4,5],"type":"integer","format":"int32","title":"SecurityType"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                globalSecurityProperties
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                securityProperties
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__nullable"}
+                              >
+                                nullable
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              name={"property name*"}
+                              required={false}
+                              schemaName={""}
+                              qualifierMessage={{"type":"object","additionalProperties":false,"title":"SecurityProperties"}}
+                              schema={{"type":"object","additionalProperties":{"type":"object","additionalProperties":false,"title":"SecurityProperties"},"nullable":true}}
+                              collapsible={false}
+                              discriminator={false}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem><li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                        >
+                          ]
+                        </div>
+                      </li>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"[\n  {\n    \"createdBy\": \"string\",\n    \"updatedBy\": \"string\",\n    \"createdAtUtc\": \"2024-01-25T21:42:01.316Z\",\n    \"updatedAtUtc\": \"2024-01-25T21:42:01.316Z\",\n    \"deletedAtUtc\": \"2024-01-25T21:42:01.316Z\",\n    \"deletedBy\": \"string\",\n    \"id\": \"string\",\n    \"correlationId\": \"string\",\n    \"apimSubscription\": \"string\",\n    \"eTag\": \"string\",\n    \"cosmosEntityName\": \"string\",\n    \"name\": \"string\",\n    \"companyId\": \"string\",\n    \"auditCorrelationId\": \"string\",\n    \"isGlobal\": true,\n    \"securityType\": 0,\n    \"globalSecurityProperties\": {},\n    \"securityProperties\": {}\n  }\n]"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem><TabItem
+              label={"application/json; x-api-version=2.0"}
+              value={"application/json; x-api-version=2.0"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                        >
+                          Array [
+                        </div>
+                      </li><SchemaItem
+                        collapsible={false}
+                        name={"createdBy"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"updatedBy"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"createdAtUtc"}
+                        required={false}
+                        schemaName={"date-time"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","format":"date-time","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"updatedAtUtc"}
+                        required={false}
+                        schemaName={"date-time"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","format":"date-time","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"deletedAtUtc"}
+                        required={false}
+                        schemaName={"date-time"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","format":"date-time","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"deletedBy"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"id"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"correlationId"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"apimSubscription"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"eTag"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"cosmosEntityName"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true,"readOnly":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"name"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"companyId"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"auditCorrelationId"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"isGlobal"}
+                        required={false}
+                        schemaName={"boolean"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"boolean"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"securityType"}
+                        required={false}
+                        schemaName={"int32"}
+                        qualifierMessage={"**Possible values:** [`0`, `1`, `2`, `3`, `4`, `5`]"}
+                        schema={{"enum":[0,1,2,3,4,5],"type":"integer","format":"int32","title":"SecurityType"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                globalSecurityProperties
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                securityProperties
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__nullable"}
+                              >
+                                nullable
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              name={"property name*"}
+                              required={false}
+                              schemaName={""}
+                              qualifierMessage={{"type":"object","additionalProperties":false,"title":"SecurityProperties"}}
+                              schema={{"type":"object","additionalProperties":{"type":"object","additionalProperties":false,"title":"SecurityProperties"},"nullable":true}}
+                              collapsible={false}
+                              discriminator={false}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem><li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                        >
+                          ]
+                        </div>
+                      </li>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"[\n  {\n    \"createdBy\": \"string\",\n    \"updatedBy\": \"string\",\n    \"createdAtUtc\": \"2024-01-25T21:42:01.316Z\",\n    \"updatedAtUtc\": \"2024-01-25T21:42:01.316Z\",\n    \"deletedAtUtc\": \"2024-01-25T21:42:01.316Z\",\n    \"deletedBy\": \"string\",\n    \"id\": \"string\",\n    \"correlationId\": \"string\",\n    \"apimSubscription\": \"string\",\n    \"eTag\": \"string\",\n    \"cosmosEntityName\": \"string\",\n    \"name\": \"string\",\n    \"companyId\": \"string\",\n    \"auditCorrelationId\": \"string\",\n    \"isGlobal\": true,\n    \"securityType\": 0,\n    \"globalSecurityProperties\": {},\n    \"securityProperties\": {}\n  }\n]"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem><TabItem
+              label={"text/json; x-api-version=2.0"}
+              value={"text/json; x-api-version=2.0"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                        >
+                          Array [
+                        </div>
+                      </li><SchemaItem
+                        collapsible={false}
+                        name={"createdBy"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"updatedBy"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"createdAtUtc"}
+                        required={false}
+                        schemaName={"date-time"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","format":"date-time","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"updatedAtUtc"}
+                        required={false}
+                        schemaName={"date-time"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","format":"date-time","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"deletedAtUtc"}
+                        required={false}
+                        schemaName={"date-time"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","format":"date-time","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"deletedBy"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"id"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"correlationId"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"apimSubscription"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"eTag"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"cosmosEntityName"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true,"readOnly":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"name"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"companyId"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"auditCorrelationId"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"isGlobal"}
+                        required={false}
+                        schemaName={"boolean"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"boolean"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"securityType"}
+                        required={false}
+                        schemaName={"int32"}
+                        qualifierMessage={"**Possible values:** [`0`, `1`, `2`, `3`, `4`, `5`]"}
+                        schema={{"enum":[0,1,2,3,4,5],"type":"integer","format":"int32","title":"SecurityType"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                globalSecurityProperties
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                securityProperties
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__nullable"}
+                              >
+                                nullable
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              name={"property name*"}
+                              required={false}
+                              schemaName={""}
+                              qualifierMessage={{"type":"object","additionalProperties":false,"title":"SecurityProperties"}}
+                              schema={{"type":"object","additionalProperties":{"type":"object","additionalProperties":false,"title":"SecurityProperties"},"nullable":true}}
+                              collapsible={false}
+                              discriminator={false}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem><li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                        >
+                          ]
+                        </div>
+                      </li>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"[\n  {\n    \"createdBy\": \"string\",\n    \"updatedBy\": \"string\",\n    \"createdAtUtc\": \"2024-01-25T21:42:01.317Z\",\n    \"updatedAtUtc\": \"2024-01-25T21:42:01.317Z\",\n    \"deletedAtUtc\": \"2024-01-25T21:42:01.317Z\",\n    \"deletedBy\": \"string\",\n    \"id\": \"string\",\n    \"correlationId\": \"string\",\n    \"apimSubscription\": \"string\",\n    \"eTag\": \"string\",\n    \"cosmosEntityName\": \"string\",\n    \"name\": \"string\",\n    \"companyId\": \"string\",\n    \"auditCorrelationId\": \"string\",\n    \"isGlobal\": true,\n    \"securityType\": 0,\n    \"globalSecurityProperties\": {},\n    \"securityProperties\": {}\n  }\n]"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"502"}
+        value={"502"}
+      >
+        <div>
+          
+          
+          Could not contact internal services. Please try again later or contact our support department
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

@@ -43,7 +43,7 @@ Connxio utilizes parallel processing to handle integrations, enabling efficient 
 
 ## Stateless
 
-Connxio is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages Connxio will hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or even the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing Connxio automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](/integrations/logging) or [resending](/reference/resending-api) see the respective articles.
+Connxio is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages Connxio will hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or even the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing Connxio automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](/integrations/logging) or [resending](/connxio-portal/resending-api) see the respective articles.
 
 ## Orchestration
 

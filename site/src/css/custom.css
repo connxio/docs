@@ -38,6 +38,7 @@
   --ifm-color-primary-light: #1bcd98;
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
+  --ifm-container-width-xl: 1440px;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-table-border-color: var(--ifm-color-gray-200);
@@ -66,6 +67,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-table-border-color: var(--ifm-color-gray-800);
   --code-block-bg: linear-gradient(140deg, black 60%, hotpink 500%);
+  --ifm-background-color: #161819;
 }
 
 .markdown h1:first-child {
@@ -177,12 +179,20 @@ strong {
 [data-theme="dark"] .medium-zoom-image {
   box-shadow: 1px 4px 20px 5px rgba(0, 0, 0, 0.5);
 }
-.markdown img {
+
+.markdown img:not(.openapi__logo) {
   border-radius: 8px;
   box-shadow: 1px 4px 20px 5px rgba(0, 0, 0, 0.1);
 }
-[data-theme="dark"] .markdown img {
+[data-theme="dark"] .markdown img:not(.openapi__logo) {
   box-shadow: 1px 4px 20px 5px rgba(0, 0, 0, 0.5);
+}
+.openapi__logo,
+[data-theme="dark"] .openapi__logo {
+  box-shadow: none;
+  width: 350px;
+  margin-block: 1rem;
+  border-radius: 0;
 }
 
 .theme-doc-sidebar-item-category-level-1 > .menu__list {
@@ -341,7 +351,7 @@ strong {
   border-radius: 2px;
 }
 
-.theme-doc-sidebar-item-link-level-1 .menu__link:before,
+/* .theme-doc-sidebar-item-link-level-1 .menu__link:before,
 .theme-doc-sidebar-item-category-level-1
   > .menu__list-item-collapsible
   .menu__link:before {
@@ -352,7 +362,7 @@ strong {
   background-repeat: no-repeat;
   background-position: center;
   margin-right: 12px;
-}
+} */
 
 .theme-doc-sidebar-item-category-level-1 > .menu__list {
   padding-left: 27px;
@@ -400,6 +410,20 @@ strong {
 
 .sidebar-getting-started .menu__link--active:before {
   background-image: url(/img/sidebar-icons/gettingstarted-active.svg);
+}
+
+.sidebar-home > .menu__link:before,
+.sidebar-api-reference > .menu__list-item-collapsible > .menu__link:before,
+.sidebar-channels > .menu__list-item-collapsible > .menu__link:before,
+.sidebar-platform > .menu__list-item-collapsible > .menu__link:before,
+.sidebar-getting-started > .menu__list-item-collapsible > .menu__link:before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 12px;
 }
 
 code {
@@ -460,7 +484,7 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 .language-json .token.comment {
   color: rgb(159 165 187) !important;
 }
-
+/* 
 .method {
   color: black;
   font-size: 14px;
@@ -480,4 +504,87 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 }
 .method.put {
   background: #fff3bb;
+} */
+
+/* Sidebar Method labels */
+.api-method > .menu__link {
+  align-items: center;
+  justify-content: start;
+}
+
+.api-method > .menu__link::before {
+  width: 40px;
+  height: 20px;
+  font-size: 11px;
+  line-height: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  margin-right: var(--ifm-spacing-horizontal);
+  text-align: center;
+  flex-shrink: 0;
+  border-color: transparent;
+  color: white;
+}
+
+.get > .menu__link::before {
+  content: "get";
+  background-color: var(--ifm-color-primary);
+}
+
+.put > .menu__link::before {
+  content: "put";
+  background-color: var(--openapi-code-blue);
+}
+
+.post > .menu__link::before {
+  content: "post";
+  background-color: var(--openapi-code-green);
+}
+
+.delete > .menu__link::before {
+  content: "del";
+  background-color: var(--openapi-code-red);
+}
+
+.patch > .menu__link::before {
+  content: "patch";
+  background-color: var(--openapi-code-orange);
+}
+
+.theme-doc-version-badge p {
+  margin: 0;
+}
+.openapi__heading {
+  visibility: hidden;
+  height: 0;
+}
+.openapi__heading p {
+  display: none;
+}
+.openapi-explorer__code-block-code-line-number::before {
+  content: counter(line-number) !important;
+}
+.openapi-explorer__code-block-code-line-number {
+  background: var(--code-block-bg) !important;
+}
+.openapi-explorer__code-block-lines
+  .openapi-explorer__code-block-code-line::before {
+  display: none;
+}
+.version-button {
+  float: left;
+  z-index: 10;
+  padding-inline: 0 !important;
+}
+.version-button button {
+  background: var(--ifm-breadcrumb-item-background-active) !important;
+  color: var(--ifm-breadcrumb-color-active) !important;
+  font-size: calc(1rem * 0.8);
+  border: none;
+  border-radius: 100px;
+}
+.version-crumb {
+  margin-bottom: 1rem;
 }

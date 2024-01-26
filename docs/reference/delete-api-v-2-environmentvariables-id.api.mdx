@@ -1,0 +1,132 @@
+---
+id: delete-api-v-2-environmentvariables-id
+title: "Deletes environment variable by id"
+description: "Deletes environment variable by id"
+sidebar_label: "Deletes environment variable by id"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVltPKzcQ/ivW8gIoyaIc2qp5Kg1Uoj0SR5CKBw6qzO5k18Jrb21vQhrlv/cb7yXh0p6Wlyz2XL6Z+WbG2yTIwiezh+TKrJSzpiITxEo6JZ80+eRxlNianAzKmus8mSWXV5+vFld/yFqlq2lKe6VBJ92qfJeMklo6WVEgx+a3icE/0Fc5rpTBVy1Die+cfOZUzQ5wuChJqFzYpQj4og8wiWBFThqGoezoz0Y5ArDgGholPiupkslsm4RNze58cMoUyW73yMK+tsYjKtxPz87457X3uybLyPtkN8L9+fv7xT9hyqxrrefwxggZ/fWlWEvfgc3Z6PlHTm8RA/kgcsRtLBvVKpcIDwrfnU3fK8xto1vRzJogsyCUQZqN1MKTWymEMBFfNEmPZLmNkIVURmiYdMK6Qck2Tvimrq2Db0K1AseEVL2tyWUMwH8c+dNGxJKi0qVlggy1ifWdJd+iCUPuOdI4DY0yhNrP0hQcG+e0mgCweVEWv1XCdfSUNU6FTVSZt5fjiy/X49+IzyDxM0lHjr8P5e+YHG3132kNhIFTPnibAwgKnIslEtgpC5xBruP1YBGgWwOR5CXJHEh2e0yDJw7znZ9f7xfiokEqnforNp1oLYjGR2aBVq0hEalOk6QjPVt8al1wBZVZ2uhLBX0Ar8P82ufRkbg2wdm8yfjkqxH4W5TKs7TAT26zhmtHOZgWMZye3tRk+BoJqWQ4PRXS5KJ2dqVgHGhRUrFWoeSzAoMAQioTMvZX3yA9qBrcZDsjIbW26y7QisUis5mt0Rb7YPo6qyMDbeOF9DVlwXcjQ7moUrQTy0eNtXXPS9hFV9yzlUPXCGHUoc2kEbIJFkjp0AhHwKjJj0QljSy43c1SFU3nZNTHPsSJMDZvoLNTkM/LgsPLZC2flFZBsdU2bXy+1PSi4sWmDbbxANRTwdZtUExCT7LSnMtDpL0nZAF2fGCTfuMDVX7ytSssqj131vvxjVPAIm7JYxJkJO5KybPyTfmXJEOD2fbvSsfzm9u7E6GqWtOeKWjYWitpIDfk4OH+01xwyR6P+z5fr9eT9aeJdUW6uE0xSn16ItalysqWD23AWfSfozyt5aoxSHQMe+lsFY0/OUiTm7QxXGgthpkvSrkiIQFE55l0ufDo27Ftw6mtVtnmMEXcg4ij89Dn5BVvwLgl8yasbeyCSEH5Sm/WKgoxFg/9BDnud9bJ43GKzvJpN9/GPIml5rH3TBt/cqB7w3Cm+4xZdjMxFNJpOsjtQfauUMLeWUyhjAmJ22boQchOolLr400AbOKwqPsp9DDXihfBHMZZXmovfkGx9iCxw2RAAzyjIIrCMhYYAadlqHTqltn3P5z/eIThzI7G55Pzk0h5eMTStqZACzniQpPJvxEARlq31XjmdRP5insKN6+XCpON+Cauk1GC54Li+24T/tQvG2N5aPNmaofkdHIG6ZextkUcrK3VVFXFUD++mvhVATmpw4JewsHg/cx6PJlr6wPGyAHQ/7RfX43sYYcEOEkxPrFrdl2k227xPiSrKcf3werF8QxGsRpLgGHR7fYJr4Xfnd7t+BgZdt0q7ZXiss2V52+s+SXqTe9QcRH4DTFLjm97lov/+aT7MLJ+ORterHggNfwfPp95d/Obcve4O3iDtI9UpPtvYtDLQg==
+sidebar_class_name: "delete api-method"
+info_path: reference/connxio-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Deletes environment variable by id
+</h1>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v2/environmentvariables/{id}"}
+>
+  
+</MethodEndpoint>
+
+
+
+Deletes environment variable by id
+
+## Request
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"id","in":"path","description":"The id of the environment variable to delete","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Success
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem><TabItem
+        label={"204"}
+        value={"204"}
+      >
+        <div>
+          
+          
+          The environment variable corresponding to the ID was deleted
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem><TabItem
+        label={"400"}
+        value={"400"}
+      >
+        <div>
+          
+          
+          Request did not validate
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem><TabItem
+        label={"502"}
+        value={"502"}
+      >
+        <div>
+          
+          
+          Could not contact internal services. Please try again later or contact our support department
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

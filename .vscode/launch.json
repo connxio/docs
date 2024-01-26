@@ -10,7 +10,7 @@
       "request": "launch",
       "preLaunchTask": "npm: start",
       "postDebugTask": "terminate",
-      "cwd": "${workspaceFolder}/site",
+      "cwd": "${workspaceFolder}",
       "url": "http://localhost:3000/docs"
     }
   ]

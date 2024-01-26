@@ -6,7 +6,6 @@
       "type": "npm",
       "script": "start",
       "isBackground": true,
-      "path": "site",
     },
     {
       "label": "terminate",

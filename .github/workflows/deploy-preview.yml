@@ -25,10 +25,9 @@ jobs:
         with:
             node-version: 18.x
             cache: yarn
-            cache-dependency-path: ./site/yarn.lock
+            cache-dependency-path: ./yarn.lock
 
       - name: Install and Build
-        working-directory: ./site
         run: |
           yarn install --frozen-lockfile
           yarn build
@@ -37,7 +36,7 @@ jobs:
         uses: rossjrw/pr-preview-action@v1
         id: deployment
         with:
-          source-dir: ./site/build/
+          source-dir: ./build/
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           action: auto

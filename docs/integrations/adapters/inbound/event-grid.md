@@ -38,7 +38,7 @@ The following properties are used to configure the adapter:
 
 ## Configuring Event Grid endpoints in Azure
 
-To configure Event Grid to send events to Connxio, please [review the API documentation here](/reference/messages-post-3).
+To configure Event Grid to send events to Connxio, please [review the API documentation here](/reference/post-api-v-2-messages-integration-id-eventgrid).
 
 ## Retry
 

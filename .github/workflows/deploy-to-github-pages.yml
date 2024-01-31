@@ -8,7 +8,7 @@ on:
     #   - "docs/**"
     #   - "agreements/**"
     #   - "CHANGELOG.md"
-    branches: [next]
+    branches: [main]
     # branches: [main, next]
 
   # Allows you to run this workflow manually from the Actions tab

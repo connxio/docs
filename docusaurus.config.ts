@@ -54,7 +54,7 @@ const config: Config = {
         config: {
           connxio: {
             specPath:
-              "https://api-dev.connxio.com/definition/v2/openapi.yaml?omit-version=false&omit-api-prefix=true",
+              "https://api.connxio.com/definition/v2/openapi.yaml?omit-version=false&omit-api-prefix=true",
             outputDir: "docs/reference",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -66,14 +66,14 @@ const config: Config = {
             versions: {
               "1.0.0": {
                 specPath:
-                  "https://api-dev.connxio.com/definition/v1/openapi.yaml?omit-version=false&omit-api-prefix=true",
+                  "https://api.connxio.com/definition/v1/openapi.yaml?omit-version=false&omit-api-prefix=true",
                 outputDir: "docs/reference/1.0.0", // No trailing slash
                 label: "v1.0.0",
                 baseUrl: "/docs/reference/1.0.0/connxio-api",
               },
             },
             downloadUrl:
-              "https://api-dev.connxio.com/definition/v2/openapi.yaml?omit-api-prefix=true",
+              "https://api.connxio.com/definition/v2/openapi.yaml?omit-api-prefix=true",
           } satisfies OpenApiPlugin.Options,
         },
       },
@@ -104,7 +104,7 @@ const config: Config = {
     ],
   ],
   themeConfig: {
-    metadata: [{ name: "robots", content: "#{ seo }#" }],
+    metadata: [{ name: "robots", content: "all" }],
     navbar: {
       title: "",
       hideOnScroll: false,

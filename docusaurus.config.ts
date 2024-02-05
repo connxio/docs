@@ -62,7 +62,7 @@ const config: Config = {
             },
             version: "2.0.0", // Current version
             label: "v2.0.0", // Current version label
-            baseUrl: "/docs/reference/connxio-api",
+            baseUrl: "/reference/connxio-api",
             versions: {
               "1.0.0": {
                 specPath:
@@ -119,7 +119,7 @@ const config: Config = {
           activeBaseRegex: "^((?!reference|changelog|api).)*$",
         },
         {
-          to: "/docs/reference/connxio-api",
+          to: "/reference/connxio-api",
           label: "REST API",
           activeBasePath: "reference",
         },

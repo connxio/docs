@@ -2,7 +2,7 @@
   {
     "version": "2.0.0",
     "label": "v2.0.0",
-    "baseUrl": "/docs/reference/connxio-api"
+    "baseUrl": "/reference/connxio-api"
   },
   {
     "version": "1.0.0",

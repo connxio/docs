@@ -13,7 +13,7 @@ Connxio gives customers the ability to batch messages into larger single units. 
 There are certain limits imposed upon the batching functionality to not overwhelm the system. These boundaries are fluent and subject to change in the future. As of now the following limits are in effect:
 
 1. MaxMessageBatchCount is set to `1000`
-2. Connxio only supports messages below `100mb` (see [Integration limitations](/integrations/adapters/inbound/azure-storage#Limitations))
+2. Connxio only supports messages below `100mb`
 
 **MaxMessageBatchCount** is a variable that governs how many messages are possible to batch into a single message. If the bucket containing messages is larger than 1000 messages before the batching interval triggers then one message will be created per 1000 messages in the bucket. To use an example:
 

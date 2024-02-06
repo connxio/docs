@@ -105,7 +105,7 @@ The internal contract is the internal format used by Connxio itself. This format
   "senderId": "Receiver",
   "eventFired": "0001-01-01T00:00:00", //The timestamp of the log being generated
   "customTag": "custom transaction tag or empty",
-  "environment": "The cx environment the pipeline was run on",
+  "environment": "The Connxio environment the pipeline was run on",
   "eventOrigin": "the engine inside Connxio where the event originated ie. InboundInteractionEngine",
   "transactionType": "the transaction type",
   "order": "not used at the moment, but will denote the order of the action performed",

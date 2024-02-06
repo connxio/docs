@@ -1,6 +1,6 @@
 # Event Grid
 
-he Azure Event Grid inbound adapter in Connxio allows seamless integration with Azure Event Grid, a fully managed event routing service. With this adapter, users can receive and process events published to Azure Event Grid in their Connxio integrations.
+The Azure Event Grid inbound adapter in Connxio allows seamless integration with Azure Event Grid, a fully managed event routing service. With this adapter, users can receive and process events published to Azure Event Grid in their Connxio integrations.
 
 <details>
 <summary>Limitations</summary>

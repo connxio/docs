@@ -14,7 +14,7 @@ Works in the same way as the synchronous http handler, but without a return obje
 The synchronous and asynchronous versions have separate injections, but use the same Options-object. The options are important to include when using this functionality. You must specify the data type you wish to use for the HTTP Handlers. We recommend separating handlers based on the data you wish to send, and using strongly typed objects. 
 ::::info [Info]
 You may instantiate a handler with e.g. string-type if you need to send various types through the same integration. 
-:::warning [Warning]
+:::danger [Transformations]
 Transformations may fail or behave incorrectly.
 :::
 ::::

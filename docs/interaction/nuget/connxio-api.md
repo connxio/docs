@@ -4,6 +4,10 @@ sidebar_position: 2
 
 # Connxio API
 
+:::info [Authorization]
+Ask your CX representative for API credentials. The API Management endpoint is api.connxio.com.
+:::
+
 ## Synchronous HTTP
 This way of communicating with CX allows for working directly towards the synchronous functionality which will also return the response from the endpoint(s), as well as any errors and exceptions that have been encountered along the way. The batching endpoint is only available asynchronously.
 
@@ -28,7 +32,3 @@ builder.Services.AddInteractionHTTP<ConnxioJsonWrapper>(options.SetRetries(5));
 ```
 
 
-
-:::info [Authorization]
-Ask your CX representative for API credentials. The API Management endpoint is api.connxio.com.
-:::

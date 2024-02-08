@@ -35,7 +35,7 @@ The main options of the integration configurations describes what type of integr
 - **Message Inbound format**: Defines the inbound format of the message. This is typically "xml", "json", "csv", etc. It's important to be precise here as Connxio will use this property to name files when logging or handling data. We recommend using lowercase but all casing will work.
 - **Message Inbound Encoding**: Defines the encoding of the message. It's _very_ important to be exact when specifying encoding or the message could en up garbled. If this field is invalid or missing utf-8 encoding is used by default. Please see [encoding](/integrations/encoding) for more information
 - **Remove Bom**: BOM or "byte order mark" is explained [here](https://en.wikipedia.org/wiki/Byte_order_mark). Switch this on if you want Connxio to remove BOM from all message that enter the Connxio pipeline in this integration.
-- **Handle file as binary**: This will enable you to send binaries, such as pdf documents and pictures. Note that when sending binaries split/batch and transformations are not supported.
+- **Handle file as binary**: This will enable you to send binaries, such as pdf documents and pictures. Note that when sending binaries split/batch and transformations are not supported. [Read More](/integrations/encoding/#binary-file-flag)
 
 ## Logging
 

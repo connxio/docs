@@ -26,7 +26,7 @@ Transformations are not supported when this flag is enabled.
 Example:
 ```csharp
 // fetch your data then convert
-var converted = Convert.FromBase64String(data);
+byte[] converted = Convert.FromBase64String(data);
 using (var file = new FileStream(filePath, FileMode.Create))
 {
     file.Write(converted, 0, Convert.ToInt32(converted.Length));

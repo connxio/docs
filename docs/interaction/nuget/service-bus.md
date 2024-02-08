@@ -15,11 +15,11 @@ builder.Services.AddInteractionServiceBus(new ServiceBusClientOptions()
 });
 ```
 
-##### Compression
+### Compression
 When using our BlobHandler, compression is done automatically. It is important to note that the compression algorithm used for objects through CX is GZip. The body of the blob-data needs to be compressed correctly and the InboundMessageFormat needs to be **gz** (both in the portal and in your code). When using the wrapped option, the body in the wrapper needs to be compressed in this same way as well. There is a Helper-class for getting the correct compression if you wish to use your own implementation instead. 
 This does not affect PureMessageSending
  
-##### Handle()-method
+### Handle()-method
 You may interact with the NuGet in multiple ways to pass service bus messages. The standard version is using the Handle-method which takes an InboundServiceBusMessage-object which requires a SaSUri for the blob. CX uses the uri to pick up the data along the way to process it. The BlobHandler has the GetSasUri() method for retrieving the uri. It also returns the uri when you use the handler to store an object. If you wish to wrap your object, you need to do it manually here.
 
 Example:
@@ -37,7 +37,7 @@ var msg = new InboundServiceBusMessage()
 await _serviceBusHandler.Handle(msg);
 ```
 
-##### UploadBlobSendSBMessage()-method
+### UploadBlobSendSBMessage()-method
 This method uploads a blob to your storage account and sends a message to your Service Bus where it is picked up by CX. The input is a string representation of your object, and you may specify filename, the queue or topic to send it to, as well as the container on your blob storage that you want to store to. Compression is handled for you.
 Example:
 ```csharp
@@ -62,7 +62,7 @@ You may also do pure message sending whilst uploading to Blob. This can be usefu
 
 
 
-##### HandlePureMessage
+### HandlePureMessage
 Sends a plain representation of the object-body as a string. When using this option, no compression is needed on the objects. 
 ```csharp
 var testModel = new TestModel() { Id = 1, Name = "name" };

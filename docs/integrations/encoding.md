@@ -17,14 +17,14 @@ By understanding Connxio's default UTF-8 conversion and considering the implicat
 
 ## Binary File Flag 
 Files that contain binary data or require non-textual encoding, users should enable the appropriate flag to prevent automatic UTF-8 conversion and ensure the file's integrity. Users do not need to set encoding formats when using the Binary File Flag. Upon the completion of the integration, files will be passed in multiple ways.
- 
+
 :::warning
 Transformations are not supported when this flag is enabled.
 :::
 
 - **Azure Storage**: The content will be sent as **Byte Arrays** containing **Base64 Encoded Strings**. To ease conversion back to the file's original format, set the Message Outbound Format to a text-type like .txt. When fetching files that used Binary handling, fetch them as strings, convert them from Base64 to a Byte Array and finally write the array to a Stream.
 Example:
-``` C#
+```csharp
 // fetch your data then convert
 var converted = Convert.FromBase64String(data);
 using (var file = new FileStream(filePath, FileMode.Create))

@@ -16,7 +16,7 @@ Transformations may fail or behave incorrectly.
 :::
 ::::
 Example DI of both Synchronous and Asynchronous Http Handlers:
-``` C#
+```csharp
 var options = builder.Configuration.GetSection(nameof(HttpClientOptions)).Get<HttpClientOptions>();
 
 

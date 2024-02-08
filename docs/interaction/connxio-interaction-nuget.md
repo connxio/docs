@@ -12,7 +12,7 @@ The synchronous and asynchronous versions have separate injections, but use the 
 Works in the same way as the synchronous http handler, but without a return object. You may also use this handler for batching.
 
 Example DI of both Synchronous and Asynchronous Http Handlers:
-``` C#
+```csharp
 var options = builder.Configuration.GetSection(nameof(HttpClientOptions)).Get<HttpClientOptions>();
 
 
@@ -25,7 +25,7 @@ Ask your CX representative for API credentials. The API Management endpoint is a
 #### Service Bus
 ##### Dependency Injection
 Use the AddInteractionServiceBus()-method to inject the Service Bus handler for use. If you wish to use the UploadBlobSendSBMessage()-method, you need to inject the blob handler as well. If you include queueOrTopic name in the ServiceBusClientOptions-object, you do not need to pass this value when using handler-methods. This goes for the BlobStorage DI as well. You may inject both without options, and use the factories directly.
-``` C#
+```csharp
 builder.Services.AddInteractionServiceBus(new ServiceBusClientOptions()
 {
     ConnectionString = builder.Configuration["ServiceBusConnectionString"]!,
@@ -50,7 +50,7 @@ Sends a plain representation of the object-body as a string. When using this opt
 ##### Dependency Injection
 When using the Blob-functionality, you need to inject it in your program.cs file. You do this by using the AddInteractionBlobStorage()-method. The method takes one optional parameter of object-type BlobClientOptions. The options should contain your Container Name, Connection String and a CreateContainerIfNotExists-boolean.
 
-``` C#
+```csharp
 builder.Services.AddInteractionBlobStorage(new BlobClientOptions()
 {
     CreateContainerIfNotExists = false,

@@ -18,7 +18,7 @@ This object only configures the message behaviour up to the point of sending it 
 E.g. setting the configuration with PureMessageSending to true, whilst sending normal messages in the CX Integration Configuration will fail, as there is no SasUri for the normal message pipeline to fetch the file.
 :::
 Example:
-``` C#
+```csharp
 MessageConfig config = new()
 {
     MessageInboundEncoding = MessageInboundEncoding.UTF8,

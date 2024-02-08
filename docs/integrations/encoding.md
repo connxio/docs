@@ -16,7 +16,8 @@ Users should be aware of the following regarding the repercussions of file conve
 By understanding Connxio's default UTF-8 conversion and considering the implications of encoding changes, users can effectively manage data consistency and compatibility within their integrations.
 
 ## Binary File Flag 
-Files that contain binary data or require non-textual encoding, users should enable the appropriate flag to prevent automatic UTF-8 conversion and ensure the file's integrity. Users do not need to set encoding formats when using the Binary File Flag. Upon the completion of the integration, files will be passed in multiple ways. 
+Files that contain binary data or require non-textual encoding, users should enable the appropriate flag to prevent automatic UTF-8 conversion and ensure the file's integrity. Users do not need to set encoding formats when using the Binary File Flag. Upon the completion of the integration, files will be passed in multiple ways.
+ 
 :::warning
 Transformations are not supported when this flag is enabled.
 :::

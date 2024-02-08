@@ -29,6 +29,6 @@ builder.Services.AddInteractionHTTP<ConnxioJsonWrapper>(options.SetRetries(5));
 
 
 
-:::info [Api Keys]
+:::info [Authorization]
 Ask your CX representative for API credentials. The API Management endpoint is api.connxio.com.
 :::

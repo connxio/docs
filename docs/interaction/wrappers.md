@@ -2,11 +2,11 @@
 
 Not all adapters can handle metadata outside the actual message. (S)FTP is a good example, where the protocol doesn't lend itself to sending anything but the actual file, so if you want to send something like a folder location into CX you need to include that in the message itself which is then sent to all the engines and has to be filtered out if you don't want it included in the outbound message. To circumvent this we added the concept of wrappers. A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Examples of things to include are folder paths, ids, testing information, etc.
 
-We still support several native metadata options or some adapters, but all adapters support wrappers, including the API.
+We still support several native metadata options on some adapters, but all adapters support wrappers, including the API.
 
 ## How to start using wrappers
 
-The first thing you want to do is add the [ConnXio.Interaction](/connxio-interaction-nuget) NuGet package to your project. This NuGet holds the `ConnxioJsonWrapper` class which can be used to wrap your message. If you cant use the NuGet you can use the following definition inside your app or code:
+The first thing you want to do is add the [ConnXio.Interaction](/connxio-interaction-nuget) NuGet package to your project. This NuGet holds the `ConnxioJsonWrapper` class which can be used to wrap your message. If you can't use the NuGet you can use the following definition inside your app or code:
 
 ``` json
 {

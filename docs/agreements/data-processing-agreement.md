@@ -10,8 +10,7 @@ This data processing agreement (the “Agreement”) is entered into between:
 - Evidi AS, a Norwegian limited company/company with registration
     number 927 119 781 (“**Data Processor**“); and
 - The company which has signed an Integration Services agreement, and, in connection
-    therewith, has agreed to be bound by Evidi’s Privacy Policy, Terms of Use,
-    and this Agreement (“**Data Controller**“).
+    therewith, has agreed to be bound by Evidi’s Privacy Policy and this Agreement (“**Data Controller**“).
 
 - [Evidi Integration Services - Data Processing Agreement](#evidi-integration-services---data-processing-agreement)
   - [1. Background](#1-background)

@@ -158,8 +158,8 @@ const config: Config = {
               to: "/agreements/cookie-policy",
             },
             {
-              label: "Privacy Notice",
-              to: "/agreements/privacy-notice",
+              label: "Privacy Policy",
+              to: "/agreements/privacy-policy",
             },
             {
               label: "Data Processing Agreement",

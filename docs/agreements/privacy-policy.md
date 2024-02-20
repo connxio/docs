@@ -1,9 +1,9 @@
 ---
-  title: Privacy Notice
+  title: Privacy Policy
   sidebar_position: 2
 ---
 
-# PRIVACY NOTICE
+# PRIVACY POLICY
 
 **Last updated January 01 , 2022**
 
@@ -23,21 +23,21 @@ us by e-mail: privacy@communicate.no switchboard: +47 90 21 18 00.
 
 When you or your company use Connxio Integration Service, we appreciate that you are trusting
 us with your personal information. We take your and your customers privacy very seriously. In
-this privacy notice, we seek to explain to you in the clearest way possible what information we
+this privacy policy, we seek to explain to you in the clearest way possible what information we
 collect, how we use it and what rights you have in relation to it. We hope you take some time to
-read through it carefully, as it is important. If there are any terms in this privacy notice that you
+read through it carefully, as it is important. If there are any terms in this privacy v that you
 do not agree with, please discontinue use of our Services immediately.
 
-This privacy notice applies to all information collected through our Connxio Integration Service
+This privacy policy applies to all information collected through our Connxio Integration Service
 (which, as described above, includes our ), as well as, any related services, sales, marketing or
 events.
 
-**Please read this privacy notice carefully as it will help you understand what we do with the
+**Please read this privacy policy carefully as it will help you understand what we do with the
 information that we collect.**
 
 ## Table of Contents
 
-- [PRIVACY NOTICE](#privacy-notice)
+- [PRIVACY POLICY](#privacy-policy)
   - [Table of Contents](#table-of-contents)
   - [1. WHAT INFORMATION DO WE COLLECT?](#1-what-information-do-we-collect)
   - [2. WHY DO WE COLLECT PERSONAL DATA, AND WHAT DATA DO WE COLLECT?](#2-why-do-we-collect-personal-data-and-what-data-do-we-collect)
@@ -45,7 +45,7 @@ information that we collect.**
   - [4. HOW LONG DO WE KEEP YOUR INFORMATION (RETENTION TIME)?](#4-how-long-do-we-keep-your-information-retention-time)
     - [5. HOW DO WE KEEP YOUR INFORMATION SAFE?](#5-how-do-we-keep-your-information-safe)
   - [6. WHAT ARE YOUR PRIVACY RIGHTS?](#6-what-are-your-privacy-rights)
-  - [7. DO WE MAKE UPDATES TO THIS NOTICE?](#7-do-we-make-updates-to-this-notice)
+  - [7. DO WE MAKE UPDATES TO THIS POLICY?](#7-do-we-make-updates-to-this-policy)
   - [8. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU OR YOUR COMPANY?](#8-how-can-you-review-update-or-delete-the-data-we-collect-from-you-or-your-company)
 
 ## 1. WHAT INFORMATION DO WE COLLECT?
@@ -158,7 +158,7 @@ as evidence in litigation in which we are involved.
 ## 4. HOW LONG DO WE KEEP YOUR INFORMATION (RETENTION TIME)?
 
 ***In Short:** We keep your information for as long as necessary to fulfill the service and customer
-requirements for the purposes outlined in this privacy notice.*
+requirements for the purposes outlined in this privacy policy.*
 
 Connxio temporarily store data with the potential of being personal data to fulfill our service
 requirements. Data the service processes will continuously be deleted within the service
@@ -223,15 +223,15 @@ processing your personal information, you also have the right to complain to you
 protection supervisory authority. You can find their contact details
 here: [http://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm.](http://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm.)
 
-## 7. DO WE MAKE UPDATES TO THIS NOTICE?
+## 7. DO WE MAKE UPDATES TO THIS POLICY?
 
-***In Short:** Yes, we will update this notice as necessary to stay compliant with relevant laws.*
+***In Short:** Yes, we will update this policy as necessary to stay compliant with relevant laws.*
 
-We may update this privacy notice from time to time. The updated version will be indicated by
+We may update this privacy policy from time to time. The updated version will be indicated by
 an updated "Revised" date and the updated version will be effective as soon as it is accessible. If
-we make material changes to this privacy notice, we may notify you either by prominently
-posting a notice of such changes or by directly sending you a notification. We encourage you to
-review this privacy notice frequently to be informed of how we are protecting your information.
+we make material changes to this privacy policy, we may notify you either by prominently
+posting a policy of such changes or by directly sending you a notification. We encourage you to
+review this privacy policy frequently to be informed of how we are protecting your information.
 
 ## 8. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU OR YOUR COMPANY?
 

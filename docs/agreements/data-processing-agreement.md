@@ -3,17 +3,17 @@
   sidebar_position: 3
 ---
 
-# Communicate Integration Services - Data Processing Agreement
+# Evidi Integration Services - Data Processing Agreement
 
 This data processing agreement (the “Agreement”) is entered into between:
 
-- Communicate Norge AS, a Norwegian limited company/company with registration
-    number 980 719 766 (“**Data Processor**“); and
+- Evidi AS, a Norwegian limited company/company with registration
+    number 927 119 781 (“**Data Processor**“); and
 - The company which has signed an Integration Services agreement, and, in connection
-    therewith, has agreed to be bound by Communicate’s Privacy Policy, Terms of Use,
+    therewith, has agreed to be bound by Evidi’s Privacy Policy, Terms of Use,
     and this Agreement (“**Data Controller**“).
 
-- [Communicate Integration Services - Data Processing Agreement](#communicate-integration-services---data-processing-agreement)
+- [Evidi Integration Services - Data Processing Agreement](#evidi-integration-services---data-processing-agreement)
   - [1. Background](#1-background)
     - [1.1 Definitions](#11-definitions)
   - [2. Processing of Personal Data](#2-processing-of-personal-data)
@@ -63,7 +63,7 @@ from the Data Controller.
 - **Data Controller** means the natural or legal person under this Agreement, which, alone or
     jointly with others, determines the purposes and means of the Processing of Personal
     Data, cf. Article 4 (7) of the GDPR.
-- **Data Processor** means Communicate Norge AS, the legal entity that Processes Personal
+- **Data Processor** means Evidi AS, the legal entity that Processes Personal
     Data on behalf of the Data Controller, cf. Article 4 (8) of the GDPR.
 - **Third Country** means countries outside the EU/EEA which are not considered to ensure
     adequate level of protection for the Processing of Personal Data.

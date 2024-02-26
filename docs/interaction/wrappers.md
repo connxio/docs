@@ -6,7 +6,7 @@ We still support several native metadata options on some adapters, but all adapt
 
 ## How to start using wrappers
 
-The first thing you want to do is add the [ConnXio.Interaction](/interaction/connxio-interaction-nuget) NuGet package to your project. This NuGet holds the `ConnxioJsonWrapper` class which can be used to wrap your message. If you can't use the NuGet you can use the following definition inside your app or code:
+The first thing you want to do is add the [ConnXio.Interaction](/interaction/nuget/introduction) NuGet package to your project. This NuGet holds the `ConnxioJsonWrapper` class which can be used to wrap your message. If you can't use the NuGet you can use the following definition inside your app or code:
 
 ``` json
 {

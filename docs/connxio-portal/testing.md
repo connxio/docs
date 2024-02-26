@@ -8,7 +8,7 @@ sidebar_position: 4
 Connxio provides powerful testing features to ensure the smooth operation of your integrations. You can create test groups, execute test runs, and even perform load testing to verify the performance of your systems. This documentation will guide you through using these testing features effectively.
 
 :::caution Note
-Please note that when using ConnXio's testing features, all messages generated during testing will count towards your subscription usage.
+Please note that when using Connxio's testing features, all messages generated during testing will count towards your subscription usage.
 
 **Important**: Load testing, which simulates high message volumes, can lead to increased usage and associated charges. We strongly recommend closely monitoring your testing activities and considering the potential cost implications before initiating load tests or extensive testing.
 

@@ -38,18 +38,6 @@ If you need to receive the InterchangeId by other means we recommend either incl
 
 > E.g.: `http://www.myapi.com?InterchangeId={interchange}`
 
-## Carousel
-
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Rest_Outbound_Carousel.png?sv=2020-10-02&st=2022-02-03T07%3A35%3A31Z&se=2040-02-04T07%3A35%3A00Z&sr=b&sp=r&sig=YYolmjsR7QheeE0szBietXXW3j%2B3tZ5x5IJ8EoUU4KA%3D)
-
-Carousel is what we've called the functionality that lets you run a message through the Connxio pipeline more than once. This functionality is easily enabled but hard to configure. To enable the Carousel functionality you simply check the "Enable Carousel" checkbox and the following menu pops up:
-
-- **Carousel Integration CorrelationId**: Specifies which integration to use when the message renters the Connxio pipeline. This is usually a separate integration to the one you are standing in.
-- **Preserve Interchange Id**: If this is left unchecked the new integration will run on a new InterchangeId, if checked the same InterchangeId as the one used for the current integration will be used for the Carousel as well.
-
-### What is Carousel used for?
-
-Carousel is used when you need to to simulate [high level orchestration](/getting-started/core-concepts) in Connxio. Say you need to perform tasks that can't be done without massive amounts of input, or you need to pre process messages before you can collect enrichment data. We will not be going into specifics here because Carousel is not recommended for most scenarios and should be used as a last resort for specific integrations. There is nothing wrong with utilizing Carousel, but that said, it adds a level of complexity to integrations that leads to more user and system errors because of the enormous amount of data transfer and processing.
 
 ## Advanced error handling
 

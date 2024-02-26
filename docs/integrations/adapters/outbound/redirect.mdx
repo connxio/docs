@@ -1,0 +1,30 @@
+# Redirect
+
+The Redirect adapter in Connxio enables integrations to redirect messages to another integration within Connxio. This feature is particularly useful for routing messages between different workflows or processing pipelines.
+
+## Configuring the Redirect adapter
+
+When configuring the Redirect adapter, users have the following options:
+
+- **Integration**: Users can choose the target integration to which the message will be redirected.
+- **Preserve Interchange ID**: Users can opt to keep the original interchange ID intact when redirecting the message. This option preserves the unique identifier associated with the message. Keep this setting disabled to generate a new interchange ID.
+
+import ThemedImage from "@theme/ThemedImage";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+<div style={{ maxWidth: "800px" }}>
+  <ThemedImage
+    style={{ borderRadius: "20px" }}
+    alt="Redirect configuration"
+    sources={{
+      light: useBaseUrl("/img/docs/redirect-light.webp"),
+      dark: useBaseUrl("/img/docs/redirect-dark.webp"),
+    }}
+  />
+</div>
+
+<br></br>
+
+:::caution Note
+Connxio will allow you to set up circular references with the Redirect adapter. This can make your integrations run in infinite loops, which will count towards your subscription usage and affect your billing costs.
+:::

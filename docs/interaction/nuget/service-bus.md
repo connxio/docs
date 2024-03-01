@@ -35,21 +35,32 @@ builder.Services.AddInteractionServiceBus(options, sbConfig);
 
  
 ### Handle()-method
-You may interact with the NuGet in multiple ways to pass service bus messages. The standard version is using the Handle-method which takes an InboundServiceBusMessage-object which requires a SaSUri for the blob. CX uses the uri to pick up the data along the way to process it. The BlobHandler has the GetSasUri() method for retrieving the uri. It also returns the uri when you use the handler to store an object. If you wish to wrap your object, you need to do it manually here.
+You may interact with the NuGet in multiple ways to pass service bus messages. The standard version is using the Handle-method which takes an InboundServiceBusMessage-object which requires a SaSUri for the blob. CX uses the uri to pick up the data along the way to process it. The BlobHandler has the GetSasUri() method for retrieving the uri. It also returns the uri when you use the handler to store an object. If you wish to wrap your object, either pass a config or you need to do it manually here.
 
 Example:
 ```csharp
+ServiceBusMessageConfig config = new()
+{
+    MessageInboundEncoding = "utf-8",
+    MessageInboundFormat = "json",
+    PureMessageSending = false,
+    Wrap = true,
+    WrapperType = WrapperType.Json,
+    InterchangeId = interchangeId,
+    IsLoadTest = false,
+    IsTest = false
+};
 var testModel = new TestModel() { Id = 1, Name = "name" };
 var input = new BinaryData(testModel);
-(var metaData, var sasUri) = await _blobHandler.Handle(input);
+//item is a tuple(BlobMetadata, string(SaSUri))
+var item = await _blobHandler.Handle(new BinaryData(testModel), config: config);
 var msg = new InboundServiceBusMessage()
 {
-    FileName = $"{interchangeId}.json",
-    InterchangeId = interchangeId,
-    SasUri = sasUri
+    FileName = fileName,
+    InterchangeId = item.Item1.Metadata["InterchangeId"],
+    SasUri = item.Item2
 };
-
-await _serviceBusHandler.Handle(msg);
+await _serviceBusHandler.Handle(msg, config:config);
 ```
 
 ### UploadBlobSendSBMessage()-method

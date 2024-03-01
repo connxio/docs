@@ -53,7 +53,7 @@ ServiceBusMessageConfig config = new()
 var testModel = new TestModel() { Id = 1, Name = "name" };
 var input = new BinaryData(testModel);
 //item is a tuple(BlobMetadata, string(SaSUri))
-var item = await _blobHandler.Handle(new BinaryData(testModel), config: config);
+var item = await _blobHandler.Handle(input, config: config);
 var msg = new InboundServiceBusMessage()
 {
     FileName = fileName,

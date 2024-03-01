@@ -12,7 +12,7 @@ The package can be found here: [Interaction NuGet](https://www.nuget.org/package
 - .NET version >= 8.0
 
 ## Message Config
-The MessageConfig-object allows you to control some parts of the flow when using the Blob or ServiceBus handlers. When using the config, it is required that it reflects your integration in the CX portal. When using the Wrapped functionality in CX, you may set the values here and automatically wrap your message, or manually wrap it yourself.
+The MessageConfig-object allows you to control some parts of the flow when using the handlers. When using the config, it is required that it reflects your integration in the CX portal. When using the Wrapped functionality in CX, you may set the values here and automatically wrap your message, or manually wrap it yourself using the WrapperHelper.
 :::info [Set up your integration] 
 This object only configures the message behaviour up to the point of sending it to Connxio. If you have not configured your Integration accordingly, your message might fail.
 E.g. setting the configuration with PureMessageSending to true, whilst sending normal messages in the CX Integration Configuration will fail, as there is no SasUri for the normal message pipeline to fetch the file.

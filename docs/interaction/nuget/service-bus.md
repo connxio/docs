@@ -40,7 +40,7 @@ You may interact with the NuGet in multiple ways to pass service bus messages. T
 Example:
 ```csharp
 var testModel = new TestModel() { Id = 1, Name = "name" };
-var input = JsonSerializer.Serialize(testModel);
+var input = new BinaryData(testModel);
 (var metaData, var sasUri) = await _blobHandler.Handle(input);
 var msg = new InboundServiceBusMessage()
 {

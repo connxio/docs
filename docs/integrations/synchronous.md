@@ -1,5 +1,5 @@
 ---
-title: Synchronous Communication
+title: Synchronous
 sidebar_position: 7
 ---
 

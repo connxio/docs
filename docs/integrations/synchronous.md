@@ -6,7 +6,7 @@ sidebar_position: 7
 # Synchronous Communication
 
 
-Connxio provides an option for synchronous communication through its API. We included this for multiple reasons. We wanted to facilitate communication with systems on the outbound connection, and because, in many cases, it makes sense to wait for a response and do something with the data when the operation is completed, just to name a few.
+Connxio provides an option for synchronous communication through its API. We included this for multiple reasons, some of which relate to execution flows within systems. We wanted to facilitate communication with systems on the outbound connection, and because it can often make sense to wait for a response and do something with the data when the operation is completed.
 
 ## Configuring the Adapter
 

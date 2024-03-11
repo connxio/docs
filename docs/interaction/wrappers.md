@@ -4,6 +4,10 @@ Not all adapters can handle metadata outside the actual message. (S)FTP is a goo
 
 We still support several native metadata options on some adapters, but all adapters support wrappers, including the API.
 
+:::info [Wrapping]
+When using this functionality, make sure you are wrapping the correct layer of your message. E.g. a list of objects can be wrapped, but a list of wrapped objects will fail.
+:::
+
 ## How to start using wrappers
 
 The first thing you want to do is add the [ConnXio.Interaction](/interaction/nuget/introduction) NuGet package to your project. This NuGet holds the `ConnxioJsonWrapper` class which can be used to wrap your message. If you can't use the NuGet you can use the following definition inside your app or code:

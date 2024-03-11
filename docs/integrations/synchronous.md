@@ -15,7 +15,7 @@ To use the synchronous functionality, set up a regular [API Inbound Adapter](/in
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<div style={{maxWidth: '400px'}}>
+<div style={{maxWidth: '800px'}}>
   <ThemedImage
     alt="Configuring inbound connection"
     sources={{

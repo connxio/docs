@@ -10,7 +10,7 @@ Connxio provides an option for synchronous communication through its API. We inc
 
 ## Configuring the Adapter
 
-To use the synchronous functionality, set up a regular [API Inbound Adapter](adapters/inbound/api.mdx) and toggle the *Use Synchronous Communication* option.
+To use the synchronous functionality, set up a regular [API Inbound Adapter](/integrations/adapters/inbound/api.mdx) and toggle the *Use Synchronous Communication* option.
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -36,7 +36,7 @@ The synchronous API does not support batching transformations or messages sent t
 
 The Interaction NuGet can be easily implemented to use the Synchronous functionality of Connxio when working with C#/.NET.
 
-For a more detailed explanation of using the Interaction Nuget: [Click here](interaction/nuget/connxio-api)
+For a more detailed explanation of using the Interaction Nuget: [Click here](/interaction/nuget/connxio-api.md)
 
 The Interaction NuGet contains options for wrapping and sending messages, and already contains a class that reflects the returned values from the Synchronous API. The returned object can look as follows:
 

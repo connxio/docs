@@ -1,3 +1,8 @@
+---
+title: Synchronous Communication
+sidebar_position: 7
+---
+
 # Synchronous Communication
 
 

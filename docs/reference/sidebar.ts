@@ -118,6 +118,12 @@ const sidebar: SidebarsConfig = {
           label: "Delete integration by id",
           className: "api-method delete",
         },
+        {
+          type: "doc",
+          id: "reference/post-api-v-2-integrations-novalidation",
+          label: "Upsert an integration without validation. If the integration does not validate, it will be set to disabled.",
+          className: "api-method post",
+        },
       ],
     },
     {

@@ -34,8 +34,8 @@ builder.Services.AddInteractionServiceBus(options, sbConfig);
 ```
 
  
-### Handle()-method
-You may interact with the NuGet in multiple ways to pass service bus messages. The standard version is using the Handle-method which takes an InboundServiceBusMessage-object which requires a SaSUri for the blob. CX uses the uri to pick up the data along the way to process it. The BlobHandler has the GetSasUri() method for retrieving the uri. It also returns the uri when you use the handler to store an object. If you wish to wrap your object, either pass a config or you need to do it manually here.
+## Usage
+You may interact with the NuGet in multiple ways to pass Service Bus messages. The standard `Handle`-method takes an `InboundServiceBusMessage` which requires a **SaSUri** for the blob. CX uses the uri to pick up the data along the way to process it. The BlobHandler has the `GetSasUri()` method for retrieving the uri. It also returns the uri when you use the handler to store an object. If you wish to wrap your object, either pass a config or you need to do it manually here.
 
 Example:
 ```csharp
@@ -63,8 +63,8 @@ var msg = new InboundServiceBusMessage()
 await _serviceBusHandler.Handle(msg, config:config);
 ```
 
-### UploadBlobSendSBMessage()-method
-This method uploads a blob to your storage account and sends a message to your Service Bus where it is picked up by CX. The input is a BinaryData-object, and you may specify filename, the queue or topic to send it to, as well as the container on your blob storage that you want to store to.
+### Compounded handling
+Alternatively there is a method that uploads a blob to your storage account and sends a message to your Service Bus where it is picked up by CX, the `UploadBlobSendSBMessage`-method. The input is a BinaryData-object, and you may specify filename, the queue or topic to send it to, as well as the container on your blob storage that you want to store to.
 Example:
 ```csharp
 var testModel = new TestModel() { Id = 1, Name = "name" };
@@ -88,8 +88,8 @@ You may also do pure message sending whilst uploading to Blob. This can be usefu
 
 
 
-### HandlePureMessage
-Sends a plain representation of the object-body as a BinaryData-object. When using this option, your message is sendt as is through Connxio without needing to store it to a Blob. You may also pass a config and/or wrap your messages when using Pure Message Passing.
+### Pure Message Sending
+Send a plain representation of the object-body as a BinaryData-object using the `HandlePureMessage` method. When using this method, your message is sent as is through Connxio without needing to store it to a Blob. You may also pass a config and/or wrap your messages when using Pure Message Passing.
 ```csharp
 var testModel = new TestModel() { Id = 1, Name = "name" };
 var input = new BinaryData(testModel);

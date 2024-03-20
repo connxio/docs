@@ -74,12 +74,12 @@ Below is a sample cron expression set to activate at 1 PM, exclusively on Friday
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<div style={{maxWidth: '400px'}}>
+<div style={{maxWidth: '600px'}}>
   <ThemedImage
     alt="Configuring API connection"
     sources={{
       light: useBaseUrl('/img/docs/cron-example-light.webp#light-only'),
-      dark: useBaseUrl('/img/docs/cron-example-light.webp#dark-only'),
+      dark: useBaseUrl('/img/docs/cron-example-dark.webp#dark-only'),
     }}
   />
 </div>

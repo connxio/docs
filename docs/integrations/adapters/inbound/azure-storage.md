@@ -22,7 +22,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <br />
 The following properties are used to configure the adapter:
 
-- **Polling Interval**: Dictates when files are picked from the Azure Storage account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
+- **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
 - **Storage type**: Select storage type to use. Types include: Blob, File, Queue and Table.
 - **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
 - **Container Name**: The name of the container. This container must exist before Connxio start picking messages. We will not create it for you.

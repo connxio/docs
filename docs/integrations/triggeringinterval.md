@@ -71,8 +71,16 @@ In Connxio the user will get information based on the input of the Cron Expressi
 
 Below is a sample cron expression set to activate at 1 PM, exclusively on Fridays within Connxio:
 
-![Cron Example](
-/img/docs/cron-example-light.webp#light-only
-)![Cron Example](
-/img/docs/cron-example-dark.webp#dark-only
-)
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="Configuring API connection"
+    sources={{
+      light: useBaseUrl('/img/docs/cron-example-light.webp#light-only'),
+      dark: useBaseUrl('/img/docs/cron-example-light.webp#dark-only'),
+    }}
+  />
+</div>
+

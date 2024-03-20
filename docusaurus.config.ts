@@ -69,7 +69,7 @@ const config: Config = {
                   "https://api.connxio.com/definition/v1/openapi.yaml?omit-version=false&omit-api-prefix=true",
                 outputDir: "docs/reference/1.0.0", // No trailing slash
                 label: "v1.0.0",
-                baseUrl: "/docs/reference/1.0.0/connxio-api",
+                baseUrl: "/reference/1.0.0/connxio-api",
               },
             },
             downloadUrl:

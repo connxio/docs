@@ -78,7 +78,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   <ThemedImage
     alt="Configuring API connection"
     sources={{
-      light: useBaseUrl('/img/docs/cron-example-light.webp#light-only'),
+      light: useBaseUrl('/img/docs/cron-example-light.webp'),
       dark: useBaseUrl('/img/docs/cron-example-dark.webp#dark-only'),
     }}
   />

@@ -19,30 +19,30 @@ Each method offers distinct advantages and flexibility, allowing you to tailor d
 
 The Polling Interval feature provides users with a straightforward method for configuring data retrieval frequency. By inputting a numerical value of 5 or greater, users can determine the time interval, measured in seconds.
 
-### Pros
+- Pros
 
-- Enables rapid data retrieval intervals, surpassing the minimum limit of 60 seconds in Cron.
-- Offers simplicity in configuration, requiring only a numerical input
+    - Enables rapid data retrieval intervals, surpassing the minimum limit of 60 seconds in Cron.
+    - Offers simplicity in configuration, requiring only a numerical input
 
-### Cons
+- Cons
 
-- Limited to basic retrieval operations, lacking the capability for complex scheduling.
-- May not be suitable for scenarios requiring precise timing or intricate scheduling patterns.
+    - Limited to basic retrieval operations, lacking the capability for complex scheduling.
+    - May not be suitable for scenarios requiring precise timing or intricate scheduling patterns.
 
 ## Cron
 
 The Cron feature offers advanced scheduling capabilities for precise and flexible data retrieval. Using Cron expressions, users can define intricate time-based schedules to orchestrate data pickup operations according to their specific requirements.
 
-### Pros
+- Pros
 
-- Facilitates precise timing and intricate scheduling patterns, allowing for highly customized retrieval operations.
-- Offers flexibility to define complex schedules tailored to unique integration workflows.
+    - Facilitates precise timing and intricate scheduling patterns, allowing for highly customized retrieval operations.
+    - Offers flexibility to define complex schedules tailored to unique integration workflows.
 
-### Cons
+- Cons
 
-- Requires familiarity with Cron syntax, which may present a learning curve for some users.
-- Complexity in configuration compared to the straightforward numerical input of Polling Interval.
-- Minimum interval of data pickup is one minute.
+    - Requires familiarity with Cron syntax, which may present a learning curve for some users.
+    - Complexity in configuration compared to the straightforward numerical input of Polling Interval.
+    - Minimum interval of data pickup is one minute.
 
 While the Cron feature may initially seem more complex than the Polling Interval, its advanced scheduling capabilities make it invaluable for scenarios demanding precise timing and sophisticated scheduling patterns.
 

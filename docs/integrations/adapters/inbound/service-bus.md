@@ -74,4 +74,5 @@ Be sure to read the [Core Concepts](/getting-started/core-concepts) for more inf
 
 ## Retry
 
-Since Connxio reaches out and picks up files when using the Service Bus inbound adapter, retry is handled by the Connxio framework. If a fault happens when the [polling interval](#polling-interval) hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, Connxio will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however since Connxio cant be sure the message is possible to requeue on the external Service Bus. The message will then be sent to catastrophic retry as described in the [Retry Page](/integrations/retry).
+Given that the Service Bus no longer operates in polling mode but rather continuously, the retry mechanism persists indefinitely until connectivity is restored. By default, retries occur every 60 seconds when encountering transient errors. Alternatively, the customer-defined interval takes precedence should the error persist beyond transient conditions. Customization of retry behavior is achievable through inbound retry configuration, allowing customers to override the default settings.
+

@@ -23,7 +23,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <br />
 The following properties are used to configure the adapter:
 
-- **Polling Interval**: Dictates when files are picked from the Azure Storage account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
 - **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties. Note that a servicebus connection string cannot contain 'EntityPath', as this information is set in the 'Topic Name' or 'Queue Name' field.
 - **Topic Name**: The name of the topic.
 - **Subscription Name**: The name of the subscription to pick files from.

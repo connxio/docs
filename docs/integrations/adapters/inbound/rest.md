@@ -29,6 +29,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <br />
 The following properties are used to configure the adapter:
 
+- **Triggering interval**: Dictates when files are picked from the rest endpoint. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
 - **Method**: The HTTP verb to use when contacting the restful endpoint.
 - **Endpoint Url**: The URL of the endpoint.
 - **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
@@ -48,4 +49,4 @@ Connxio will add an `InterchangeId` header to the intake request to facilitate f
 
 ## Retry
 
-Since Connxio reaches out and picks up files when using the REST inbound adapter, retry is handled by the Connxio framework. If a fault happens when the polling interval hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, Connxio will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however since Connxio cant be sure the message is possible to requeue on the external message. The message will then be sent to catastrophic retry as described in the [Retry Page](/integrations/retry).
+Since Connxio reaches out and picks up files when using the REST inbound adapter, retry is handled by the Connxio framework. If a fault happens when the trigger interval hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval/cron set to trigger hourly or event daily, Connxio will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however since Connxio cant be sure the message is possible to requeue on the external message. The message will then be sent to catastrophic retry as described in the [Retry Page](/integrations/retry).

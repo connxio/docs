@@ -32,7 +32,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <br />
 The following properties are used to configure the adapter:
 
-- **Polling Interval in Seconds**:Polling interval dictates when files are picked from the SFTP account. The minimum interval allowed at this time is 60 seconds. You can specify intervals by typing in seconds.
+- **Triggering interval**: Dictates when files are picked from the SFTP account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
 - **SFTP Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
 - **Directory**: he directory to pickup files in. Files will be deleted after pickup unless CopyMoveFolder is set.
 - **CopyMoveFolder**: Specifies a folder to move files to after pickup and disables deletion of files on pickup if set. This is mainly used to keep track of picked up files and can also be used to facilitate separate flows and other integrations.
@@ -48,18 +48,9 @@ The following properties are used to configure the adapter:
 - **Perform Duplicate Detection**: Turns on duplicate detection. This does not give a guarantee for no duplicates but detects duplicates on inbound pickup only. The detection works by MD5 hashing the file contents and creating a unique id with the generated hash combined with the name of the file. This is not 100% foolproof but should work in 99% of cases. The detection is costly and should only be turned on if absolutely necessary. Be aware that addition costs may be incurred by turning this on depending on your price plan.
 - **Terminate On Duplicate Detection**: If the duplicate detection system finds a duplicate this parameter decides if the message should be sent through the system, or terminated. If the file is terminated it's moved to a sub-folder called _duplicates_ on the same area where the file was picked up from.
 
-## Leasing
-
-The (S)ftp inbound adapter uses leasing to ensure that only one process is picking from the server at any one time. This prevents deadlocks and race conditions towards files on the SFTP area. By default the leasing is set to the _polling interval_, which means that the thread processing the SFTP files is the sole worker for the same duration as the interval between polling. This is usually very effective as you ensure that only one process contacts the resource for every time you poll against it.
-
-If you have a server with a lot of messages arriving continually however, this can cause problems. This is because you probably want the process from Connxio to poll every minute to pick up files as fast as possible, but since new files are arriving constantly you cant guarantee that the process will finish before the minute mark which causes a new process to be created after the leasing has run out. This in turn causes multiple processes from Connxio to process the same files at the same time. This doesn't cause duplicates but _can_ cause race condition where already picked files are processed by both threads at the same time.
-
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Sftp%20inbound%20process%20lock.png?sv=2021-04-10&st=2022-12-01T07%3A54%3A23Z&se=2040-12-02T07%3A54%3A00Z&sr=b&sp=r&sig=YBfEB8vwE2PXr1tA0T%2BoE7sA8Z6swBtKJjVeLfL7PAE%3D)
-
-To solve this problem we have added the _Use Process Lock_ option which lets you lock the process for the time the process takes to complete. This can cause the _polling interval_ to become erratic as a new process is not allowed to start before the first one finishes. This will prevent race conditions when long running processes on constantly filling servers are causing problems. It's up to you as customers to enable this when needed as it depends on the server and load.
 
 ## Retry
 
-Since Connxio reaches out and pick up files when using the SFTP inbound adapter, retry is handled by the Connxio framework. If a fault happens when the polling interval hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval set to trigger hourly or event daily, Connxio will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however, since Connxio cant be sure the message is possible to requeue on the external server. The message will be sent to catastrophic retry as described in the [Retry Page](/integrations/retry) when fault happen after message pickup and deletion.
+Since Connxio reaches out and pick up files when using the SFTP inbound adapter, retry is handled by the Connxio framework. If a fault happens when the trigger interval hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval/cron set to trigger hourly or event daily, Connxio will try to execute the configuration every minute util it succeeds. This does not happen if the message is already picked up however, since Connxio cant be sure the message is possible to requeue on the external server. The message will be sent to catastrophic retry as described in the [Retry Page](/integrations/retry) when fault happen after message pickup and deletion.
 
 It is worth noting that if a catastrophic failure should occur where we cant reach our internal failure system files may be added back to the SFTP server in an "Error" directory. If you see files in such a directory you can usually just put them back into the normal directory. If this keeps happening however, please check you logging provider or contact us directly.

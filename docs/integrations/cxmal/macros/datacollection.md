@@ -16,13 +16,13 @@ Used to access the data populated by [Data Collection](/integrations/transformat
 
 #### Input
 
-```cxmal
+```
 {datacollection:apiResponse}
 ```
 
 #### Output
 
-```cxmal
+```
 {\"status\": 200, \"body\": { \"id\": 1, \"name\": \"John\" }}
 ```
 
@@ -39,11 +39,11 @@ The dataCollection macro supports the addition of `#json` to access json values.
 ```
 
 #### Input
-```cxmal
+```
 {datacollection#json:apiResponse.body.name}
 ```
 
 #### Output
-```cxmal
+```
 John
 ```

@@ -17,7 +17,7 @@ Returns the current UTC datetime as a string, with methods to add time or change
 ## Example
 
 #### Input
-```cxmal
+```
 {date}
 ```
 
@@ -29,7 +29,7 @@ Returns the current UTC datetime as a string, with methods to add time or change
 ## Example: Add time 
 
 #### Input
-```cxmal
+```
 Current date: {date} - Future date: {date.AddDays(10)}
 ```
 
@@ -43,7 +43,7 @@ Current date: 2024-03-27T09:36:57.7310356Z - Future date: 2024-04-06T09:36:57.73
 You can chain methods if you need to use more than one.
 
 #### Input
-```cxmal
+```
 Current date: {date} - Future date: {date.AddDays(10).AddMonths(1)}
 ```
 
@@ -56,7 +56,7 @@ Current date: 2024-03-27T09:41:46.4407240Z - Future date: 2024-05-06T09:41:46.44
 ## Example: Change Cst time zone
 
 #### Input
-```cxmal
+```
 UTC: {date} - CET: {date.SetCstZone(Central Europe Standard Time)}
 ```
 
@@ -70,9 +70,13 @@ UTC: 2024-03-27T09:44:03.1401250Z - CET: 2024-03-27T10:44:03.1407082
 You can use the [Date pipe](/integrations/cxmal/pipes/date) to format the output.
 
 #### Input
-```cxmal
+```
+Unformated: {date}     
+Formated: {date | date: dd.MM.yyyy HH.mm.ss}
 ```
 
 #### Output
 ```
+Unformated: 2024-04-03T10:50:12.2578416Z 
+Formated: 03.04.2024 12.50.12
 ```

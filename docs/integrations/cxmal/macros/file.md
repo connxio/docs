@@ -21,7 +21,7 @@ The file macro can be used to access the filecontent of an integration if it con
 ```
 
 Input:
-```cxmal
+```
 {file:user1.name}'s score: {file:user1.scores[1]}
 ```
 

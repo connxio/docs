@@ -7,7 +7,7 @@ sidebar_position: 10
 
 Conditional rules can be applied to subintegrations and outbound connections. These rules determine whether each message in the integration should continue or not.
 
-Use [CxMaL](cxmal/connxio-macro-language) macros in your conditions to create expressive rules.
+Use [CxMaL](/integrations/cxmal/connxio-macro-language) macros in your conditions to create expressive rules.
 
 ## Condition syntax
 

@@ -1,6 +1,6 @@
 ---
 title: Synchronous
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # Synchronous Communication
@@ -84,6 +84,68 @@ The Interaction NuGet contains options for wrapping and sending messages, and al
 ```
 
 Note that there are two seperate outputs for errors. The second "errors" field reflect client errors that occur when attempting to communicate with Connxio. The other error data is intended to reflect errors that occured when passing the message through Connxio and is present outside of the NuGet. The "errors" field only exists in the NuGet and is not a part of the standard return-object.
+
+## Remapping the Synchronous API response 
+
+You can customize the output of the API by creating a [Code component](/integrations/transformation/code-components) that remaps the response. Utilize the following records from the [Connxio.Transformation](https://www.nuget.org/packages/Connxio.Transformation) NuGet package to access the response data from the synchronous API.
+
+```csharp
+public record SynchronousMessageResponse
+{
+    public ContextMetaData MetaData { get; set; }
+    public string? ErrorMessage { get; set; }
+    public MessageErrorCode? MessageErrorCode { get; set; }
+    public string? StackTrace { get; set; }
+    public bool? TransientError { get; set; }
+    public string? Origin { get; set; }
+}
+
+public record FinalSynchronousMessageResponse
+{
+    public string? SubIntegrationName { get; set; }
+    public int TotalResponses { get { return SynchronousMessageResponses.Count(); } }
+    public IEnumerable<SynchronousMessageResponse> SynchronousMessageResponses { get; set; }
+}
+```
+Below is an example of a Code Component that remaps the output of the synchronous API:
+
+```csharp
+    public record MyOutput
+    {
+        public string? IntegrationName { get; set; }
+        public DateTime StartedAt { get; set; }
+    }
+
+    public class MyCodeMap : IConnXioMap
+    {
+        public TransformationContext Map(TransformationContext transformationContext)
+        {
+            
+            if (transformationContext.Content == null)
+                throw new ArgumentException("Content field is null");
+
+            // Each subintegration will have a FinalSynchronousMessageResponse
+            IEnumerable<FinalSynchronousMessageResponse> subintResponses = JsonConvert.DeserializeObject<IEnumerable<FinalSynchronousMessageResponse>>(transformationContext.Content);
+
+            List<MyOutput> output = [];
+
+            foreach (var subintResponse in subintResponses)
+            {
+                output.Add(new MyOutput
+                {
+                    IntegrationName = subintResponse.SubIntegrationName,
+                    StartedAt = subintResponse.SynchronousMessageResponses.First().MetaData.Started
+                });
+            }
+
+            // The data in transformationContext.Content will be your new API response.
+            transformationContext.Content = JsonConvert.SerializeObject(output);
+
+            return transformationContext;
+        }
+    }
+```
+
 
 ## Retry
 

@@ -27,8 +27,12 @@ Use [CxMaL](/integrations/cxmal/connxio-macro-language) macros in your condition
 
 ## Example: strings
 
-Strings must be enclosed in double quotation marks.
+Strings must be enclosed in single or double quotation marks.
 
+```
+'{filename}' == 'myFile'
+```
+or
 ```
 "{filename}" == "myFile"
 ```

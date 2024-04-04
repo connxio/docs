@@ -19,6 +19,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
+A new window pops up. Add data as seen below:
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="Configuring timer trigger properties"
+    sources={{
+      light: useBaseUrl('/img/docs/time-trigger-properties-light.webp#light-only'),
+      dark: useBaseUrl('/img/docs/time-trigger-properties-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
 The following properties are used to configure the adapter:
 - **Triggering interval**: Specifies the frequency at which the workflow is triggered. Read more about the triggering interval [here](/integrations/triggering-interval).
 - **Content Body**: Defines the payload used for the integration process.

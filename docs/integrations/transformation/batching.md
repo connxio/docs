@@ -66,6 +66,18 @@ public class MyFirstBatcher : IConnXioBatch
 
 **Upload the component** by using the methods described on the [code components page](/integrations/transformation/code-components). Remember to choose the *batching* type.
 
+## Trigger Interval
+The trigger interval plays a pivotal role in orchestrating the execution timing of batching operations within the integration framework. It serves as a mechanism to precisely control when the batching process is initiated.
+
+This interval can be configured using one of two methods: Cron expressions or Batching Trigger Interval.
+
+### Batching Trigger Interval
+The Batching Trigger Interval provides a straightforward approach to schedule batching operations. Users can specify a time interval in minutes, with a minimum limit of one minute. Alternatively, users can opt to trigger the batching operation at a specific time of day, defined in the format hh:mm.
+
+### Cron
+The Cron feature offers advanced scheduling capabilities for precise and flexible data retrieval. Using Cron expressions, users can define intricate time-based schedules to orchestrate batching operations according to their specific requirements.
+Read more about Cron [here](/integrations/triggering-interval/#cron).
+
 ## Retry
 
 Batching has multiple retry patterns that differ based on which step of the batching process that fails. If the process fails on transient errors before running the batching code component the system puts messages back in queue and tries again 60 seconds later. If the failure is happens after running the batching code the algorithm tries to send the message multiple times with increasing delay until the message is scheduled for retry through the [disaster pipeline](/integrations/retry).

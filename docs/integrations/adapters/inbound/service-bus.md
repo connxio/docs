@@ -27,6 +27,7 @@ The following properties are used to configure the adapter:
 - **Topic Name**: The name of the topic.
 - **Subscription Name**: The name of the subscription to pick files from.
 - **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) pattern is used.
+- **Keep message Properties**: When enabled, it keeps the servicebus properties as filecontent.
 
 
 ## Message Handling Patterns

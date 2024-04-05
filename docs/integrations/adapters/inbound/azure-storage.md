@@ -19,6 +19,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
+A new window pops up with the input fields for the adapter's properties:
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="properties"
+    sources={{
+      light: useBaseUrl('/img/docs/azure-storage-properties-light.webp'),
+      dark: useBaseUrl('/img/docs/azure-storage-properties-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
 <br />
 The following properties are used to configure the adapter:
 

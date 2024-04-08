@@ -27,8 +27,8 @@ Azure storage has 4 sections; Data Pickup Interval, Core Settings, Advanced Sett
   <ThemedImage
     alt="properties"
     sources={{
-      light: useBaseUrl('/img/docs/inbound/azure-storage-light.webp'),
-      dark: useBaseUrl('/img/docs/inbound/azure-storage-dark.webp#dark-only'),
+      light: useBaseUrl('/img/docs/inbound/sections-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/sections-dark.webp#dark-only'),
     }}
   />
 </div>
@@ -82,7 +82,7 @@ Read more about the properties in each section below:
   - **Regex Filter**: An inclusive regex filter that lets you pick only the messages matching the supplied regex. We use the standard C# regex syntax. (Blob)
   - **Data Lake**: Enables data lake functionality for blob. (Blob)
   - **Pure Message Sending**: Adapter expects the actual message to be sent on the queue instead of the SasUri. (Queue)
-  - **Query Table**: Enable to receive rows based on queries. If disabled all rows will be fetched.
+  - **Query Table**: Enable to receive rows based on queries. If disabled all rows will be fetched. (Table)
 
 - **Wrapper**:
   <div style={{maxWidth: '400px'}}>

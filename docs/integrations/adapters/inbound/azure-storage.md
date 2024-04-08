@@ -19,30 +19,84 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
-A new window pops up with the input fields for the adapter's properties:
+<br />
+On creating a new adapter, a popup with the adapter's input fields will appear.
+Azure storage has 4 sections; Data Pickup Interval, Core Settings, Advanced Settings and Wrapper.
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="properties"
     sources={{
-      light: useBaseUrl('/img/docs/azure-storage-properties-light.webp'),
-      dark: useBaseUrl('/img/docs/azure-storage-properties-dark.webp#dark-only'),
+      light: useBaseUrl('/img/docs/inbound/sections-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/sections-dark.webp#dark-only'),
     }}
   />
 </div>
 
-<br />
-The following properties are used to configure the adapter:
 
-- **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
-- **Storage type**: Select storage type to use. Types include: Blob, File, Queue and Table.
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
-- **Container Name**: The name of the container. This container must exist before Connxio start picking messages. We will not create it for you.
-- **Directory**: Specifies which directory Connxio should target for file pickup. If this is kept blank the root directory is used (Azure Storage *File Share* only).
-- **Batch Size**: The number of messages to in a single thread. The lower the number the more threads are spawned, ie. 1000 messages are stored on blob, batch size is set to 100, Connxio reads that there are 1000 files and spawns 10 parallel threads for pickup and processing.
-- **File Pick Limit**: The amount of files to pick per run of the engine. If polling interval is set to 1 minute and this variable is set to 1 message, Connxio will pick 1 message per minute. This variable is primarily used to slow down message processing to not kill receiving services.
-- **File Pick Sort Type**: Changed the way files are sorted when **File Pick Limit** is used. Has no effect without **File Pick Limit**.
-- **Ignore Inbound MetaData**: If enabled, the adapter will ignore all blob related metadata, such as interchangeId.
-- **Regex Filter:** An inclusive regex filter that lets you pick only the messages matching the supplied regex. We use the standard C# regex syntax.
+Read more about the properties in each section below:
+- **Data Pickup Interval**:
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/trigger-interval-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/trigger-interval-dark.webp#dark-only'),
+      }}
+    />
+  </div>
+  
+  - **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
+
+- **Core Settings**: 
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/azs-core-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/azs-core-dark.webp#dark-only'),
+      }}
+    />
+  </div>
+
+  - **Storage type**: Select storage type to use. Types include: Blob, File, Queue and Table.
+  - **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
+  - **Container Name**: The name of the container. This container must exist before Connxio start picking messages. We will not create it for you.
+  - **Directory**: Specifies which directory Connxio should target for file pickup. If this is kept blank the root directory is used (Azure Storage *File Share* only).
+
+- **Advanced settings**:
+  
+  Advanced settings differ based on storage type.
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/azs-advanced-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/azs-advanced-dark.webp#dark-only'),
+      }}
+    />
+  </div>
+
+  - **File Pick Limit**: The amount of files to pick per run of the engine. If polling interval is set to 1 minute and this variable is set to 1 message, Connxio will pick 1 message per minute. This variable is primarily used to slow down message processing to not kill receiving services. (All storage types)
+  - **File Pick Sort Type**: Changed the way files are sorted when **File Pick Limit** is used. Has no effect without **File Pick Limit**. (Blob, File, Table)
+  - **Regex Filter**: An inclusive regex filter that lets you pick only the messages matching the supplied regex. We use the standard C# regex syntax. (Blob)
+  - **Data Lake**: Enables data lake functionality for blob. (Blob)
+  - **Pure Message Sending**: Adapter expects the actual message to be sent on the queue instead of the SasUri. (Queue)
+  - **Query Table**: Enable to receive rows based on queries. If disabled all rows will be fetched. (Table)
+
+- **Wrapper**:
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/wrapper-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/wrapper-dark.webp#dark-only'),
+      }}
+    />
+  </div>
+
+  - **WrapperType**: Choose between Json, XML or None.
+  - **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
 
 ## Data Lake
 

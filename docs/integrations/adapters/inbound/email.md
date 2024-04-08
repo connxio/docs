@@ -29,30 +29,57 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
-A new window pops up with the input fields for the adapter's properties:
+<br />
+On creating a new adapter, a popup with the adapter's input fields will appear.
+Email has 4 sections; Data Pickup Interval, Core Settings, Advanced Settings and Wrapper.
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="properties"
     sources={{
-      light: useBaseUrl('/img/docs/email-properties-light.webp'),
-      dark: useBaseUrl('/img/docs/email-properties-dark.webp#dark-only'),
+      light: useBaseUrl('/img/docs/inbound/sections-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/sections-dark.webp#dark-only'),
     }}
   />
 </div>
 
-<br />
-The following properties are used to configure the adapter:
 
-- **Triggering interval**: Dictates when files are picked from the email account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
-- **Username**: The email username.
-- **Password**: The email account password.
-- **Host**: The server that hosts the email account.
-- **Host Type**: The type of protocol used on the server.
-- **Port**: The port for connecting to the server. IMAP typically uses port 993 over SSL.
-- **Send Attachments**: When turned on attachments are treated as separate messages, ie. if a message is delivered to the server with two attachments Connxio will process each attachment as a separate message.
-- **Send Message Body**: When turned on Connxio will process the message body as a single message through the pipeline.
-- **Delete Messages**: POP3 will always delete messages as the protocol does not support changing the *read* property. IMAP will mark messages asa read by default. Turn this property on to make IMAP delete messages.
-- **Use SSL**: Most hosts require SSL. Turn this on to make Connxio contact the host with SSL enabled.
+Read more about the properties in each section below:
+- **Data Pickup Interval**:
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/trigger-interval-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/trigger-interval-dark.webp#dark-only'),
+      }}
+    />
+  </div>
+  
+  - **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
+
+- **Core Settings**: 
+  - **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
+
+- **Advanced Settings**: 
+  - **Send Attachments**: When turned on attachments are treated as separate messages, ie. if a message is delivered to the server with two attachments Connxio will process each attachment as a separate message.
+  - **Send Message Body**: When turned on Connxio will process the message body as a single message through the pipeline.
+  - **Delete Messages**: POP3 will always delete messages as the protocol does not support changing the *read* property. IMAP will mark messages asa read by default. Turn this property on to make IMAP delete messages.
+  - **Use SSL**: Most hosts require SSL. Turn this on to make Connxio contact the host with SSL enabled.
+
+- **Wrapper**:
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/wrapper-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/wrapper-dark.webp#dark-only'),
+      }}
+    />
+  </div>
+
+  - **WrapperType**: Choose between Json, XML or None.
+  - **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
 
 
 ## Retry

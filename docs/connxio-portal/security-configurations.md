@@ -24,6 +24,7 @@ Navigate to "Security Configurations" in the right hand menu and click "Add new 
 - **SFTP**: Credentials for SFTP adapters
 - **FTP**: Credentials for FTP adapters
 - **Connection String**: Used for Azure Storage, Service Bus and Event Grid adapters
+- **Email**: Credentials for Email.
 
 ### Webhook
 
@@ -97,3 +98,13 @@ This Connection String Security Config is used wherever a Connection String is t
 
 - **Name**: The name that pops up when you select the configuration on an integration.
 - **Connection String**: The connection string for the relevant resource.
+
+### Email
+When selecting email these are the fields to be filled in: 
+- **Email Address**: The email address.
+- **Username**: The email username.
+- **Password**: The email account password.
+- **Host**: The server that hosts the email account.
+- **Host Type**: The type of protocol used on the server.
+- **Port**: The port for connecting to the server. IMAP typically uses port 993 over SSL.
+ - **Use SSL**: Most hosts require SSL. Turn this on to make Connxio contact the host with SSL enabled.

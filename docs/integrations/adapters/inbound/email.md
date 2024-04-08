@@ -59,13 +59,31 @@ Read more about the properties in each section below:
   - **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
 
 - **Core Settings**: 
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/email-core-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/email-core-dark.webp#dark-only'),
+      }}
+    />
+  </div>
+
   - **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
 
 - **Advanced Settings**: 
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/email-advanced-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/email-advanced-dark.webp#dark-only'),
+      }}
+    />
+  </div>
   - **Send Attachments**: When turned on attachments are treated as separate messages, ie. if a message is delivered to the server with two attachments Connxio will process each attachment as a separate message.
   - **Send Message Body**: When turned on Connxio will process the message body as a single message through the pipeline.
   - **Delete Messages**: POP3 will always delete messages as the protocol does not support changing the *read* property. IMAP will mark messages asa read by default. Turn this property on to make IMAP delete messages.
-  - **Use SSL**: Most hosts require SSL. Turn this on to make Connxio contact the host with SSL enabled.
 
 - **Wrapper**:
   <div style={{maxWidth: '400px'}}>

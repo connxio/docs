@@ -37,6 +37,15 @@ or
 "{filename}" == "myFile"
 ```
 
+## Example: Check file content
+
+Use the [CxMaL File Macro](/integrations/cxmal/macros/file.md) to create conditions based on whats in the file content of the message.
+
+```
+'{file:username}' == 'admin'
+```
+
+
 ## Example: Using Parentheses
 
 In this example, we use parentheses to ensure that the conditions `(true == true)` and `(5 != 10.5)` are evaluated separately and then combined using the logical AND operator `&&`. This allows for more precise control over the evaluation order and logic of the condition.

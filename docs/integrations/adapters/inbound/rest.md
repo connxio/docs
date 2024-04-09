@@ -39,7 +39,6 @@ REST has 4 sections; Data Pickup Interval, Core Settings, Advanced Settings and 
     }}
   />
 </div>
-The following properties are used to configure the adapter:
 
 Read more about the properties in each section below:
 - **Data Pickup Interval**:

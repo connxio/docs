@@ -68,37 +68,37 @@ Read more about the properties in each section below:
   - **Endpoint Url**: The URL of the endpoint.
   - **Security Configuration/Authorization**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
   - **Headers**: Add headers here as necessary to either authenticate the request or add other needed parameters.
-  <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-      alt="data pickup interval"
-      sources={{
-        light: useBaseUrl('/img/docs/inbound/rest-core-headers-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/rest-core-headers-dark.webp#dark-only'),
-      }}
-    />
-  </div>
+    <div style={{maxWidth: '400px'}}>
+      <ThemedImage
+        alt="data pickup interval"
+        sources={{
+          light: useBaseUrl('/img/docs/inbound/rest-core-headers-light.webp'),
+          dark: useBaseUrl('/img/docs/inbound/rest-core-headers-dark.webp#dark-only'),
+        }}
+      />
+    </div>
 
   - **Body**: The content body of the request.
-  <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-      alt="data pickup interval"
-      sources={{
-        light: useBaseUrl('/img/docs/inbound/rest-core-body-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/rest-core-body-dark.webp#dark-only'),
-      }}
-    />
-  </div>
+    <div style={{maxWidth: '400px'}}>
+      <ThemedImage
+        alt="data pickup interval"
+        sources={{
+          light: useBaseUrl('/img/docs/inbound/rest-core-body-light.webp'),
+          dark: useBaseUrl('/img/docs/inbound/rest-core-body-dark.webp#dark-only'),
+        }}
+      />
+    </div>
 
 - **Advanced settings**:
-<div style={{maxWidth: '400px'}}>
-    <ThemedImage
-      alt="data pickup interval"
-      sources={{
-        light: useBaseUrl('/img/docs/inbound/rest-advanced-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/rest-advanced-dark.webp#dark-only'),
-      }}
-    />
-</div>
+  <div style={{maxWidth: '400px'}}>
+      <ThemedImage
+        alt="data pickup interval"
+        sources={{
+          light: useBaseUrl('/img/docs/inbound/rest-advanced-light.webp'),
+          dark: useBaseUrl('/img/docs/inbound/rest-advanced-dark.webp#dark-only'),
+        }}
+      />
+  </div>
 
   - **Pagination**: By using pagination, Connxio will scan the response of the API request for the Pathname/Prop-name you provided.
   You have two options to choose from:

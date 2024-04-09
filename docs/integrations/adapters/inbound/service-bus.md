@@ -20,25 +20,65 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
-A new window pops up with the input fields for the adapter's properties:
+<br />
+On creating a new adapter, a popup with the adapter's input fields will appear.
+Azure Service Bus has 3 sections; Core Settings, Advanced Settings and Wrapper.
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="properties"
     sources={{
-      light: useBaseUrl('/img/docs/servicebus-properties-light.webp'),
-      dark: useBaseUrl('/img/docs/servicebus-properties-dark.webp#dark-only'),
+      light: useBaseUrl('/img/docs/inbound/sections--sb-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/sections-sb-dark.webp#dark-only'),
     }}
   />
 </div>
 
-<br />
-The following properties are used to configure the adapter:
+- **Core Settings**: 
 
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties. Note that a servicebus connection string cannot contain 'EntityPath', as this information is set in the 'Topic Name' or 'Queue Name' field.
-- **Topic Name**: The name of the topic.
-- **Subscription Name**: The name of the subscription to pick files from.
-- **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) pattern is used.
-- **Keep message Properties**: When enabled, it keeps the servicebus properties as filecontent.
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/sb-core-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/sb-core-dark.webp#dark-only'),
+      }}
+    />
+  </div>
+
+  - **Servicebus Type**: There are two types; Topic and Queue.
+  - **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties. Note that a servicebus connection string cannot contain 'EntityPath', as this information is set in the 'Topic Name' or 'Queue Name' field.
+  - **Topic Name**: The name of the topic.
+  - **Subscription Name**: The name of the subscription to pick files from.
+
+- **Advanced Settings**:
+
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/sb-advanced-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/sb-advanced-dark.webp#dark-only'),
+      }}
+    />
+  </div>
+
+  - **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) pattern is used.
+  - **Keep message Properties**: When enabled, it keeps the servicebus properties as filecontent.
+
+- **Wrapper**:
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/wrapper-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/wrapper-dark.webp#dark-only'),
+      }}
+    />
+  </div>
+
+  - **WrapperType**: Choose between Json, XML or None.
+  - **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
 
 
 ## Message Handling Patterns

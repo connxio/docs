@@ -67,7 +67,7 @@ Read more about the properties in each section below:
   - **Method**: The HTTP verb to use when contacting the restful endpoint.
   - **Endpoint Url**: The URL of the endpoint.
   - **Security Configuration/Authorization**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
-
+  - **Headers**: Add headers here as necessary to either authenticate the request or add other needed parameters.
   <div style={{maxWidth: '400px'}}>
     <ThemedImage
       alt="data pickup interval"
@@ -78,6 +78,7 @@ Read more about the properties in each section below:
     />
   </div>
 
+  - **Body**: The content body of the request.
   <div style={{maxWidth: '400px'}}>
     <ThemedImage
       alt="data pickup interval"
@@ -87,8 +88,6 @@ Read more about the properties in each section below:
       }}
     />
   </div>
-  - **Headers**: Add headers here as necessary to either authenticate the request or add other needed parameters.
-  - **Body**: The content body of the request.
 
 - **Advanced settings**:
 <div style={{maxWidth: '400px'}}>

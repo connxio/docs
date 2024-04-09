@@ -29,35 +29,81 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
-A new window pops up with the input fields for the adapter's properties:
+
+<br />
+On creating a new adapter, a popup with the adapter's input fields will appear.
+(S)FTP has 4 sections; Data Pickup Interval, Core Settings, Advanced Settings and Wrapper.
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="properties"
     sources={{
-      light: useBaseUrl('/img/docs/sftp-properties-light.webp'),
-      dark: useBaseUrl('/img/docs/sftp-properties-dark.webp#dark-only'),
+      light: useBaseUrl('/img/docs/inbound/sections-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/sections-dark.webp#dark-only'),
     }}
   />
 </div>
 
-<br />
-The following properties are used to configure the adapter:
+Read more about the properties in each section below:
+- **Data Pickup Interval**:
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/trigger-interval-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/trigger-interval-dark.webp#dark-only'),
+      }}
+    />
+  </div>
+  
+  - **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
 
-- **Triggering interval**: Dictates when files are picked from the SFTP account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
-- **SFTP Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
-- **Directory**: he directory to pickup files in. Files will be deleted after pickup unless CopyMoveFolder is set.
-- **CopyMoveFolder**: Specifies a folder to move files to after pickup and disables deletion of files on pickup if set. This is mainly used to keep track of picked up files and can also be used to facilitate separate flows and other integrations.
-- **File Mask**: Specifies a search patter for files. This uses the WinScp syntax, read more about it in [the documentation there](https://winscp.net/eng/docs/file_mask). All files not matching the set pattern will be ignored.
-- **Concurrent SFTP Connections**: Limitations the number of concurrent connections to the FTP/SFTP server. This does not effect the connection count on Batch Size. But will prevent the connection from being re-established on the timer while the previous connection is active. Ie. if Connxio polling interval triggers (set to 60 seconds) and there are 10 000 files on the server. Connxio will start picking files but will not finish before the polling interval triggers again. If this property is set to 1 the next connection will be blocked until the former operation finishes.
-- **File Pick Rate**: The number of files to be picked from the catalog per adapter run. If this option is set to 2 and polling interval is set to 1 min. The adapter will pick 2 files/min.
-- **File Pick Sorting Method**: The Sorting method specifies how the adapter sorts the files in the directory when picking them. Be aware that on text, numbers must be padded with zeroes on two digits or more.
-- **Use Recursive Folder Handling**: Files will be picked from all sub folders in the current directory. Files inside the top level will be picked as well. Default behavior with this option turned off is that the engine ignores folders entirely and picks files only.
-- **Add Blacklist Match**: Press this button to add a match field to the blacklist. Each field can contain a single regex which will be matched against the entire file path on the server in the order written. If you are looking for a file called file.xml the path could look something like this: `/Temp/cmh/testenvironment/files/Inbound/file.xml`. A valid regex to exclude could be `files` which would exclude all paths that have the file string in it. We follow the C# rules for regex. Blacklisting runs before file pick rate is calculated.
-- **Batch Size**: The number of files per batch. If set to 100 and 400 msgs are dropped on server, 4 connections with 100 files will be created when Connxio starts processing messages. Be aware that SFTP and FTP are usually severely limited on resources so the batch size should be set to a high number depending on how many files there are at peak load. 1000 is usually a good starting number, _decrease_ this number to speed up the picking process.
-- **Use Static Ip**: Forces Connxio to run SFTP traffic on static Ip. This uses a separately hosted functionality that limits parallelization and can effect performance on high traffic scenarios.
-- **Lock On Folder**: Decides if a connection should lock on folder in SFTP server or the whole server (false means that the lock is applied on the whole server). If you have multiple inbound configs on one server this **must** be enabled.
-- **Perform Duplicate Detection**: Turns on duplicate detection. This does not give a guarantee for no duplicates but detects duplicates on inbound pickup only. The detection works by MD5 hashing the file contents and creating a unique id with the generated hash combined with the name of the file. This is not 100% foolproof but should work in 99% of cases. The detection is costly and should only be turned on if absolutely necessary. Be aware that addition costs may be incurred by turning this on depending on your price plan.
-- **Terminate On Duplicate Detection**: If the duplicate detection system finds a duplicate this parameter decides if the message should be sent through the system, or terminated. If the file is terminated it's moved to a sub-folder called _duplicates_ on the same area where the file was picked up from.
+- **Core Settings**: 
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/sftp-core-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/sftp-core-dark.webp#dark-only'),
+      }}
+    />
+  </div>  
+  - **SFTP Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
+  - **Directory**: he directory to pickup files in. Files will be deleted after pickup unless CopyMoveFolder is set.
+
+- **Advanced settings**:
+
+  <div style={{maxWidth: '400px'}}>
+      <ThemedImage
+        alt="advanced settings"
+        sources={{
+          light: useBaseUrl('/img/docs/inbound/sftp-advanced-light.webp'),
+          dark: useBaseUrl('/img/docs/inbound/sftp-advanced-dark.webp#dark-only'),
+        }}
+      />
+    </div>
+
+  - **CopyMoveFolder**: Specifies a folder to move files to after pickup and disables deletion of files on pickup if set. This is mainly used to keep track of picked up files and can also be used to facilitate separate flows and other integrations.
+  - **File Mask**: Specifies a search patter for files. This uses the WinScp syntax, read more about it in [the documentation there](https://winscp.net/eng/docs/file_mask). All files not matching the set pattern will be ignored.
+  - **Concurrent SFTP Connections**: Limitations the number of concurrent connections to the FTP/SFTP server. This does not effect the connection count on Batch Size. But will prevent the connection from being re-established on the timer while the previous connection is active. Ie. if Connxio polling interval triggers (set to 60 seconds) and there are 10 000 files on the server. Connxio will start picking files but will not finish before the polling interval triggers again. If this property is set to 1 the next connection will be blocked until the former operation finishes.
+  - **File Pick Rate**: The number of files to be picked from the catalog per adapter run. If this option is set to 2 and polling interval is set to 1 min. The adapter will pick 2 files/min.
+  - **File Pick Sorting Method**: The Sorting method specifies how the adapter sorts the files in the directory when picking them. Be aware that on text, numbers must be padded with zeroes on two digits or more.
+  - **Use Recursive Folder Handling**: Files will be picked from all sub folders in the current directory. Files inside the top level will be picked as well. Default behavior with this option turned off is that the engine ignores folders entirely and picks files only.
+  - **Add Blacklist Match**: Press this button to add a match field to the blacklist. Each field can contain a single regex which will be matched against the entire file path on the server in the order written. If you are looking for a file called file.xml the path could look something like this: `/Temp/cmh/testenvironment/files/Inbound/file.xml`. A valid regex to exclude could be `files` which would exclude all paths that have the file string in it. We follow the C# rules for regex. Blacklisting runs before file pick rate is calculated.
+
+- **Wrapper**:
+  <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/wrapper-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/wrapper-dark.webp#dark-only'),
+      }}
+    />
+  </div>
+
+  - **WrapperType**: Choose between Json, XML or None.
+  - **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
 
 
 ## Retry

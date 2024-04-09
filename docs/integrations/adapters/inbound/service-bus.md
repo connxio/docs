@@ -28,7 +28,7 @@ Azure Service Bus has 3 sections; Core Settings, Advanced Settings and Wrapper.
   <ThemedImage
     alt="properties"
     sources={{
-      light: useBaseUrl('/img/docs/inbound/sections--sb-light.webp'),
+      light: useBaseUrl('/img/docs/inbound/sections-sb-light.webp'),
       dark: useBaseUrl('/img/docs/inbound/sections-sb-dark.webp#dark-only'),
     }}
   />

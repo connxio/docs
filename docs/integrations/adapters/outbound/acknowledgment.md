@@ -29,11 +29,30 @@ This is just one of the many uses for tracking delivery, but this example illust
 
 Ack delivery can be configured on all outbound adapters in Connxio. You can use any outbound adapter to deliver the ACK as well. So say you want to deliver the message data itself through Sftp, you can still deliver the ACK through Service Bus or REST to another part of the system or another system entirely. To start sending ACK messages enable the "Send Acknowledgment" switch in the outbound adapter window:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Ack%20enable%20on%20adapter.png?sv=2020-08-04&st=2021-11-16T11%3A14%3A39Z&se=2040-11-17T11%3A14%3A00Z&sr=b&sp=r&sig=nxGH1A8rQw7uw1XSoda0nusLAJEh1UW4752GPHGy4GQ%3D)
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-When you enable the "Send Acknowledgment" switch a menu pops up, if you need to enter this menu at a later time use the "Edit Ack options" button depicted above. Configure the Ack options window like so to start sending ACK messages:
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/ack-send-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/ack-send-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Ack%20Options%20config.png?sv=2020-08-04&st=2022-01-11T12%3A32%3A18Z&se=2040-01-12T12%3A32%3A00Z&sr=b&sp=r&sig=nixBhAC%2BcjSGQl6ql1L6Z0DlaO%2FX0LaHDYZzl%2BwS%2Bj4%3D)
+When you click the "Edit ACK Options" button a menu pops up. Configure the Ack options window like so to start sending ACK messages:
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/ack-edit-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/ack-edit-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
 - **Code Acknowledgement Map (Code Component)**: The *Code Component* is selected as described in the [Code Components](/integrations/transformation/code-components) section.
 - **Outbound file format**: Only applicable if the adapter delivers a file and denotes the file format and ending of the file.
@@ -41,7 +60,15 @@ When you enable the "Send Acknowledgment" switch a menu pops up, if you need to 
 
 When acc is enabled for an adapter the adapter will display an icon like this in the master view:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Ack%20icon%20image.png?sv=2020-08-04&st=2021-11-16T11%3A33%3A15Z&se=2040-11-17T11%3A33%3A00Z&sr=b&sp=r&sig=wre4L15vsKCLNXyHC1xrnH6GMe80RCUNvF4AFeROJsk%3D)
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/ack-icon-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/ack-icon-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
 ## Creating Ack code components
 

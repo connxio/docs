@@ -20,20 +20,67 @@ In addition to this SMTP allows the use of SSL and TLS. Of the two protocols, we
 
 To configure Connxio to start processing your email messages select the Email option in "Outbound Connection" shape:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Azure%20storage%20menu.png?sv=2020-04-08&st=2021-10-27T11%3A56%3A53Z&se=2040-10-28T12%3A56%3A00Z&sr=b&sp=r&sig=S%2FltUS0elTLePVt5Aq536uNkr7Pa9XcY8ovTFJLUhmc%3D)
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/outbound-connection-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/outbound-connection-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
-A new window pops up. Add data as seen below:
+On creating a new adapter, a popup with the adapter's input fields will appear.
+Email has 4 sections; Adapter name, Acknowledgement settings, Core settings and Advanced settings.
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Email%20config.PNG?sv=2020-04-08&st=2021-11-03T09%3A18%3A05Z&se=2040-11-04T09%3A18%3A00Z&sr=b&sp=r&sig=EBWhGmnlgHWBK8tH5JmkqcRVkU7rlR9B9XrD0tDKEro%3D)
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="properties"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/outbound-sections-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/outbound-sections-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
-- **Email Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
-- **Receiver Addresses**: The email addresses that the Connxio message will be sent to.
-- **Subject**: The password for the email address.
-- **Outbound Filename Pattern**: The server that hosts the email account.
-- **Send Attachments**: When turned on the Connxio message will be sent as an attachment. Both this and Send Message Body can be active at the same time.
+Read more about the properties in each section below:
+
+### Adaptername & Ack
+
+- **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
+- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/Acknowledgment).
+
+### Core Settings
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="email core"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/email-core-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/email-core-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
+- **To**: Receiver addresses in a comma separated list.
+- **Subject**: The email subject line.
 - **Send Message Body**: When turned on the Connxio will be sent as a message body. Both this and Send Attachments can be active at the same time.
-- **Use SSL**: Most hosts require SSL. Turn this on to make Connxio contact the host with SSL enabled.
+- **Send Attachments**: When turned on the Connxio message will be sent as an attachment. Both this and Send Message Body can be active at the same time.
+
+### Advanced settings
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="email advanced"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/email-advanced-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/email-advanced-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
 - **Duplicate Detection**: Terminate the message if the exact same has been processed any time within the last five days. Connxio does not guarantee that no duplicates will be sent.
+- **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 
 ## Retry
 

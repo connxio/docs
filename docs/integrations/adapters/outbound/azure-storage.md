@@ -11,7 +11,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
-    alt="data pickup interval"
+    alt="outbound connections"
     sources={{
       light: useBaseUrl('/img/docs/outbound/outbound-connection-light.webp'),
       dark: useBaseUrl('/img/docs/outbound/outbound-connection-dark.webp#dark-only'),

@@ -20,6 +20,9 @@ In addition to this SMTP allows the use of SSL and TLS. Of the two protocols, we
 
 To configure Connxio to start processing your email messages select the Email option in "Outbound Connection" shape:
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="outbound connections"

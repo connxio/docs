@@ -62,17 +62,17 @@ Read more about the properties in each section below:
 - **Endpoint Url**: The URL of the endpoint.
 - **Security Configuration/Authorization**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
 - **Headers**: Add headers here as necessary to either authenticate the request or add other needed parameters.
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="properties"
-    sources={{
-      light: useBaseUrl('/img/docs/outbound/rest-core-headers-light.webp'),
-      dark: useBaseUrl('/img/docs/outbound/rest-core-headers-dark.webp#dark-only'),
-    }}
-  />
-</div>
+    <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+        alt="properties"
+        sources={{
+        light: useBaseUrl('/img/docs/outbound/rest-core-headers-light.webp'),
+        dark: useBaseUrl('/img/docs/outbound/rest-core-headers-dark.webp#dark-only'),
+        }}
+    />
+    </div>
 
-- **Advanced Error Handling**: Advanced error handling allows you to create rules for handling specific unsuccessful status codes beyond the standard pattern. Read more about it [below](#Advanced-error-handling)
+- **Advanced Error Handling**: Advanced error handling allows you to create rules for handling specific unsuccessful status codes beyond the standard pattern. Read more about it [below](#advanced-error-handling)
 
 
 ### Advanced settings

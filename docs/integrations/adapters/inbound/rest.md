@@ -41,87 +41,90 @@ REST has 4 sections; Data Pickup Interval, Core Settings, Advanced Settings and 
 </div>
 
 Read more about the properties in each section below:
-- **Data Pickup Interval**:
-  <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-      alt="data pickup interval"
-      sources={{
-        light: useBaseUrl('/img/docs/inbound/trigger-interval-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/trigger-interval-dark.webp#dark-only'),
-      }}
-    />
-  </div>
+### Data Pickup Interval
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound/trigger-interval-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/trigger-interval-dark.webp#dark-only'),
+    }}
+  />
+</div>
   
-  - **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
+- **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
 
-- **Core Settings**: 
+### Core Settings
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound/rest-core-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/rest-core-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+- **Method**: The HTTP verb to use when contacting the restful endpoint.
+- **Endpoint Url**: The URL of the endpoint.
+- **Security Configuration/Authorization**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
+- **Headers**: Add headers here as necessary to either authenticate the request or add other needed parameters.
   <div style={{maxWidth: '400px'}}>
     <ThemedImage
       alt="data pickup interval"
       sources={{
-        light: useBaseUrl('/img/docs/inbound/rest-core-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/rest-core-dark.webp#dark-only'),
+        light: useBaseUrl('/img/docs/inbound/rest-core-headers-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/rest-core-headers-dark.webp#dark-only'),
       }}
     />
   </div>
-  - **Method**: The HTTP verb to use when contacting the restful endpoint.
-  - **Endpoint Url**: The URL of the endpoint.
-  - **Security Configuration/Authorization**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
-  - **Headers**: Add headers here as necessary to either authenticate the request or add other needed parameters.
-    <div style={{maxWidth: '400px'}}>
-      <ThemedImage
-        alt="data pickup interval"
-        sources={{
-          light: useBaseUrl('/img/docs/inbound/rest-core-headers-light.webp'),
-          dark: useBaseUrl('/img/docs/inbound/rest-core-headers-dark.webp#dark-only'),
-        }}
-      />
-    </div>
 
-  - **Body**: The content body of the request.
-    <div style={{maxWidth: '400px'}}>
-      <ThemedImage
-        alt="data pickup interval"
-        sources={{
-          light: useBaseUrl('/img/docs/inbound/rest-core-body-light.webp'),
-          dark: useBaseUrl('/img/docs/inbound/rest-core-body-dark.webp#dark-only'),
-        }}
-      />
-    </div>
-
-- **Advanced settings**:
+- **Body**: The content body of the request.
   <div style={{maxWidth: '400px'}}>
-      <ThemedImage
-        alt="data pickup interval"
-        sources={{
-          light: useBaseUrl('/img/docs/inbound/rest-advanced-light.webp'),
-          dark: useBaseUrl('/img/docs/inbound/rest-advanced-dark.webp#dark-only'),
-        }}
-      />
+    <ThemedImage
+      alt="data pickup interval"
+      sources={{
+        light: useBaseUrl('/img/docs/inbound/rest-core-body-light.webp'),
+        dark: useBaseUrl('/img/docs/inbound/rest-core-body-dark.webp#dark-only'),
+      }}
+    />
   </div>
 
-  - **Pagination**: By using pagination, Connxio will scan the response of the API request for the Pathname/Prop-name you provided.
+### Advanced settings
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound/rest-advanced-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/rest-advanced-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+- **Pagination**: By using pagination, Connxio will scan the response of the API request for the Pathname/Prop-name you provided.
   You have two options to choose from:
-    - **NextLink**: The URI will either be replaced by the value to the pathname property, or the value will be appended to the URI.
+- **NextLink**: The URI will either be replaced by the value to the pathname property, or the value will be appended to the URI.
     Connxio will keep making API requests until the Pathname/Prop-name value doesn't contain a valid URI.
-    - **ContinuationToken**: By using the variable [continuationToken] in either the URI, body or header-value - the variable will be replaced by the value to the Pathname/Prop-name received from the API-response. Connxio will keep making API requests until the ContinuationToken is empty or max pages (number of requests) reach 50.
-  - **DateDelta**: Makes requests to the API, using a date variable - `{date.UseDateTimeDelta}` which will work as a starting/from `date`. The Polling interval will determine the difference in time, until the next run where the from-date will be set to datetime now.
-    This variable can be used in the URI, body or header-value.
-    Example of variable used in URI: `http://example.com/api/getStuff?FromDate={date.UseDateTimeDelta(1980-01-01T08:00:00.00).SetCstZone(Central Europe Standard Time) | date: dd.MM.yyyy HH.mm.ss | error: fallback 2023-02-02T08:00:00.00}&ToDate={date.SetCstZone(Central Europe Standard Time)}`
+- **ContinuationToken**: By using the variable [continuationToken] in either the URI, body or header-value - the variable will be replaced by the value to the Pathname/Prop-name received from the API-response. Connxio will keep making API requests until the ContinuationToken is empty or max pages (number of requests) reach 50.
+- **DateDelta**: Makes requests to the API, using a date variable - `{date.UseDateTimeDelta}` which will work as a starting/from `date`. The Polling interval will determine the difference in time, until the next run where the from-date will be set to datetime now.
+This variable can be used in the URI, body or header-value.
+Example of variable used in URI: `http://example.com/api/getStuff?FromDate={date.UseDateTimeDelta(1980-01-01T08:00:00.00).SetCstZone(Central Europe Standard Time) | date: dd.MM.yyyy HH.mm.ss | error: fallback 2023-02-02T08:00:00.00}&ToDate={date.SetCstZone(Central Europe Standard Time)}`
 
-- **Wrapper**:
-  <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-      alt="data pickup interval"
-      sources={{
-        light: useBaseUrl('/img/docs/inbound/wrapper-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/wrapper-dark.webp#dark-only'),
-      }}
-    />
-  </div>
+### Wrapper
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound/wrapper-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/wrapper-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
-  - **WrapperType**: Choose between Json, XML or None.
-  - **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
+- **WrapperType**: Choose between Json, XML or None.
+- **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
 
 ## Extending Logging
 

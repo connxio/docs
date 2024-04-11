@@ -45,59 +45,62 @@ Email has 4 sections; Data Pickup Interval, Core Settings, Advanced Settings and
 
 
 Read more about the properties in each section below:
-- **Data Pickup Interval**:
-  <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-      alt="data pickup interval"
-      sources={{
-        light: useBaseUrl('/img/docs/inbound/trigger-interval-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/trigger-interval-dark.webp#dark-only'),
-      }}
-    />
-  </div>
+### Data Pickup Interval
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound/trigger-interval-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/trigger-interval-dark.webp#dark-only'),
+    }}
+  />
+</div>
   
-  - **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
+- **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
 
-- **Core Settings**: 
-  <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-      alt="data pickup interval"
-      sources={{
-        light: useBaseUrl('/img/docs/inbound/email-core-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/email-core-dark.webp#dark-only'),
-      }}
-    />
-  </div>
+### Core Settings
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound/email-core-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/email-core-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
-  - **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
 
-- **Advanced Settings**: 
-  <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-      alt="data pickup interval"
-      sources={{
-        light: useBaseUrl('/img/docs/inbound/email-advanced-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/email-advanced-dark.webp#dark-only'),
-      }}
-    />
-  </div>
-  - **Send Attachments**: When turned on attachments are treated as separate messages, ie. if a message is delivered to the server with two attachments Connxio will process each attachment as a separate message.
-  - **Send Message Body**: When turned on Connxio will process the message body as a single message through the pipeline.
-  - **Delete Messages**: POP3 will always delete messages as the protocol does not support changing the *read* property. IMAP will mark messages asa read by default. Turn this property on to make IMAP delete messages.
+### Advanced settings
 
-- **Wrapper**:
-  <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-      alt="data pickup interval"
-      sources={{
-        light: useBaseUrl('/img/docs/inbound/wrapper-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/wrapper-dark.webp#dark-only'),
-      }}
-    />
-  </div>
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound/email-advanced-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/email-advanced-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
-  - **WrapperType**: Choose between Json, XML or None.
-  - **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
+- **Send Attachments**: When turned on attachments are treated as separate messages, ie. if a message is delivered to the server with two attachments Connxio will process each attachment as a separate message.
+- **Send Message Body**: When turned on Connxio will process the message body as a single message through the pipeline.
+- **Delete Messages**: POP3 will always delete messages as the protocol does not support changing the *read* property. IMAP will mark messages asa read by default. Turn this property on to make IMAP delete messages.
+
+### Wrapper
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound/wrapper-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/wrapper-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+- **WrapperType**: Choose between Json, XML or None.
+- **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
 
 
 ## Retry

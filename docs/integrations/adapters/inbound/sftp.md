@@ -45,64 +45,66 @@ On creating a new adapter, a popup with the adapter's input fields will appear.
 </div>
 
 Read more about the properties in each section below:
-- **Data Pickup Interval**:
-  <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-      alt="data pickup interval"
-      sources={{
-        light: useBaseUrl('/img/docs/inbound/trigger-interval-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/trigger-interval-dark.webp#dark-only'),
-      }}
-    />
-  </div>
+### Data Pickup Interval
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound/trigger-interval-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/trigger-interval-dark.webp#dark-only'),
+    }}
+  />
+</div>
   
-  - **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
+- **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
 
-- **Core Settings**: 
-  <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-      alt="data pickup interval"
-      sources={{
-        light: useBaseUrl('/img/docs/inbound/sftp-core-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/sftp-core-dark.webp#dark-only'),
-      }}
-    />
-  </div>  
-  - **SFTP Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
-  - **Directory**: he directory to pickup files in. Files will be deleted after pickup unless CopyMoveFolder is set.
+### Core Settings
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound/sftp-core-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/sftp-core-dark.webp#dark-only'),
+    }}
+  />
+</div> 
 
-- **Advanced settings**:
+- **SFTP Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
+- **Directory**: he directory to pickup files in. Files will be deleted after pickup unless CopyMoveFolder is set.
 
-  <div style={{maxWidth: '400px'}}>
-      <ThemedImage
-        alt="advanced settings"
-        sources={{
-          light: useBaseUrl('/img/docs/inbound/sftp-advanced-light.webp'),
-          dark: useBaseUrl('/img/docs/inbound/sftp-advanced-dark.webp#dark-only'),
-        }}
-      />
-    </div>
+### Advanced settings
 
-  - **CopyMoveFolder**: Specifies a folder to move files to after pickup and disables deletion of files on pickup if set. This is mainly used to keep track of picked up files and can also be used to facilitate separate flows and other integrations.
-  - **File Mask**: Specifies a search patter for files. This uses the WinScp syntax, read more about it in [the documentation there](https://winscp.net/eng/docs/file_mask). All files not matching the set pattern will be ignored.
-  - **Concurrent SFTP Connections**: Limitations the number of concurrent connections to the FTP/SFTP server. This does not effect the connection count on Batch Size. But will prevent the connection from being re-established on the timer while the previous connection is active. Ie. if Connxio polling interval triggers (set to 60 seconds) and there are 10 000 files on the server. Connxio will start picking files but will not finish before the polling interval triggers again. If this property is set to 1 the next connection will be blocked until the former operation finishes.
-  - **File Pick Rate**: The number of files to be picked from the catalog per adapter run. If this option is set to 2 and polling interval is set to 1 min. The adapter will pick 2 files/min.
-  - **Use Recursive Folder Handling**: Files will be picked from all sub folders in the current directory. Files inside the top level will be picked as well. Default behavior with this option turned off is that the engine ignores folders entirely and picks files only.
-  - **Add Blacklist Match**: Press this button to add a match field to the blacklist. Each field can contain a single regex which will be matched against the entire file path on the server in the order written. If you are looking for a file called file.xml the path could look something like this: `/Temp/cmh/testenvironment/files/Inbound/file.xml`. A valid regex to exclude could be `files` which would exclude all paths that have the file string in it. We follow the C# rules for regex. Blacklisting runs before file pick rate is calculated.
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound/sftp-advanced-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/sftp-advanced-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
-- **Wrapper**:
-  <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-      alt="data pickup interval"
-      sources={{
-        light: useBaseUrl('/img/docs/inbound/wrapper-light.webp'),
-        dark: useBaseUrl('/img/docs/inbound/wrapper-dark.webp#dark-only'),
-      }}
-    />
-  </div>
+- **CopyMoveFolder**: Specifies a folder to move files to after pickup and disables deletion of files on pickup if set. This is mainly used to keep track of picked up files and can also be used to facilitate separate flows and other integrations.
+- **File Mask**: Specifies a search patter for files. This uses the WinScp syntax, read more about it in [the documentation there](https://winscp.net/eng/docs/file_mask). All files not matching the set pattern will be ignored.
+- **Concurrent SFTP Connections**: Limitations the number of concurrent connections to the FTP/SFTP server. This does not effect the connection count on Batch Size. But will prevent the connection from being re-established on the timer while the previous connection is active. Ie. if Connxio polling interval triggers (set to 60 seconds) and there are 10 000 files on the server. Connxio will start picking files but will not finish before the polling interval triggers again. If this property is set to 1 the next connection will be blocked until the former operation finishes.
+- **File Pick Rate**: The number of files to be picked from the catalog per adapter run. If this option is set to 2 and polling interval is set to 1 min. The adapter will pick 2 files/min.
+- **Use Recursive Folder Handling**: Files will be picked from all sub folders in the current directory. Files inside the top level will be picked as well. Default behavior with this option turned off is that the engine ignores folders entirely and picks files only.
+- **Add Blacklist Match**: Press this button to add a match field to the blacklist. Each field can contain a single regex which will be matched against the entire file path on the server in the order written. If you are looking for a file called file.xml the path could look something like this: `/Temp/cmh/testenvironment/files/Inbound/file.xml`. A valid regex to exclude could be `files` which would exclude all paths that have the file string in it. We follow the C# rules for regex. Blacklisting runs before file pick rate is calculated.
 
-  - **WrapperType**: Choose between Json, XML or None.
-  - **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
+### Wrapper
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/inbound/wrapper-light.webp'),
+      dark: useBaseUrl('/img/docs/inbound/wrapper-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+- **WrapperType**: Choose between Json, XML or None.
+- **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
 
 
 ## Retry

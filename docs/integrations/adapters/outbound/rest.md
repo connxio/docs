@@ -14,19 +14,78 @@ When choosing between the REST adapter and an asynchronous adapter in Connxio, u
 
 To configure Connxio to start sending data to a REST endpoint select the "REST" option in the "Outbound Connections" shape:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Outbound%20adapter%20menu.PNG?sv=2020-08-04&st=2021-11-08T12%3A31%3A58Z&se=2040-11-09T12%3A31%3A00Z&sr=b&sp=r&sig=a6JtbEkJT287%2BgNvJN3pR5fpONaBX6eyXHeDQS%2FD5cs%3D)
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-A new window pops up. Add data as seen below:
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/outbound-connection-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/outbound-connection-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/REst%20outbound%20config.png?sv=2020-08-04&st=2022-05-02T11%3A52%3A43Z&se=2040-05-03T11%3A52%3A00Z&sr=b&sp=r&sig=auHqdR6EFMFhh86xKDBv4gAReSAst1zoM3hJeI8Nwes%3D)
+On creating a new adapter, a popup with the adapter's input fields will appear.
+Email has 4 sections; Adapter name, Acknowledgement settings, Core settings and Advanced settings.
 
-- **Adapter Name**: The logical name of the adapter. This is shown in the configuration view on close.
-- **Method**: The HTTP verb to use when contacting the restful endpoint.
-- **Endpoint Url**: The url of the endpoint.
-- **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
-- **Headers & Authorization Header Type**: Add headers here as necessary to either authenticate the request or add other needed parameters.
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="properties"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/outbound-sections-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/outbound-sections-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+Read more about the properties in each section below:
+
+### Adaptername & Ack
+
+- **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
 - **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/Acknowledgment).
-- **Use Internal**: Uses the internal RESTful adapter to resend the message back to Connxio. Is explained in detail under the  [carousel entry](#carousel).
+
+### Core settings
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="properties"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/rest-core-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/rest-core-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+- **Method**: The HTTP verb to use when contacting the restful endpoint.
+- **Endpoint Url**: The URL of the endpoint.
+- **Security Configuration/Authorization**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
+- **Headers**: Add headers here as necessary to either authenticate the request or add other needed parameters.
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="properties"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/rest-core-headers-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/rest-core-headers-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+- **Advanced Error Handling**: Advanced error handling allows you to create rules for handling specific unsuccessful status codes beyond the standard pattern. Read more about it [below](#Advanced-error-handling)
+
+
+### Advanced settings
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="email advanced"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/email-advanced-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/email-advanced-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
 - **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 
@@ -41,7 +100,15 @@ If you need to receive the InterchangeId by other means we recommend either incl
 
 ## Advanced error handling
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Outbound%20Rest%20advenced%20errror%20handling%20double.png?sv=2021-04-10&st=2022-12-08T11%3A46%3A10Z&se=2040-12-09T11%3A46%3A00Z&sr=b&sp=r&sig=Bc8cG%2BrooYdptjDPSnhfCaUPDb0wjkjnyUtIW9TPsXU%3D)
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="properties"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/rest-core-error-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/rest-core-error-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
 By default, all failed REST requests will be retried according to the [retry](#retry) pattern. If the request is still not successful, the transaction will be logged as an error and terminated. Advanced error handling allows you to create rules for handling specific unsuccessful status codes beyond the standard pattern.
 

@@ -26,8 +26,8 @@ Azure storage has 4 sections; Adapter name, Acknowledgement settings, Core setti
   <ThemedImage
     alt="properties"
     sources={{
-      light: useBaseUrl('/img/docs/outbound/sections-light.webp'),
-      dark: useBaseUrl('/img/docs/outbound/sections-dark.webp#dark-only'),
+      light: useBaseUrl('/img/docs/outbound/outbound-sections-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/outbound-sections-dark.webp#dark-only'),
     }}
   />
 </div>
@@ -44,7 +44,7 @@ Read more about the properties in each section below:
 Core settings differ based on storage type.
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
-    alt="data pickup interval"
+    alt="core settings"
     sources={{
       light: useBaseUrl('/img/docs/outbound/azs-core-light.webp'),
       dark: useBaseUrl('/img/docs/outbound/azs-core-dark.webp#dark-only'),
@@ -63,7 +63,7 @@ Core settings differ based on storage type.
 ### Advanced settings
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
-    alt="data pickup interval"
+    alt="advanced settings"
     sources={{
       light: useBaseUrl('/img/docs/outbound/azs-advanced-light.webp'),
       dark: useBaseUrl('/img/docs/outbound/azs-advanced-dark.webp#dark-only'),

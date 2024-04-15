@@ -7,20 +7,72 @@ The Service Bus outbound adapter in Connxio integrates with Azure Service Bus, e
 
 To configure Connxio to start sending data to your Service Bus select the "Service Bus" option in the "Outbound Connections" shape:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Outbound%20adapter%20menu.PNG?sv=2020-08-04&st=2021-11-08T12%3A31%3A58Z&se=2040-11-09T12%3A31%3A00Z&sr=b&sp=r&sig=a6JtbEkJT287%2BgNvJN3pR5fpONaBX6eyXHeDQS%2FD5cs%3D)
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-The following properties are used to configure the adapter:
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/outbound-connection-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/outbound-connection-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
-- **Adapter Name**: The name of the adapter. Only used for UI purpouses.
+On creating a new adapter, a popup with the adapter's input fields will appear.
+Service Bus has 4 sections; Adapter name, Acknowledgement settings, Core settings and Advanced settings.
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="properties"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/outbound-sections-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/outbound-sections-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+Read more about the properties in each section below:
+
+### Adaptername & Ack
+
+- **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
 - **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/Acknowledgment).
+
+
+### Core Settings
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/sb-core-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/sb-core-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
 - **Service Bus Type**: Sets if queue or topic is used.
 - **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties. Note that a servicebus connection string cannot contain 'EntityPath', as this information is set in the 'Topic Name' or 'Queue Name' field.
 - **Queue/Topic Name**: The name of the queue or topic.
+
+### Advanced settings
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="data pickup interval"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/sb-advanced-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/sb-advanced-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
 - **Message label**: The label to be added to the service bus message.
 - **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked one of the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) patterns is used.
 - **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
-- **Keep Message Properties**: ?
+- **New Interchange Id**: Removes interchange id from adapter specific metadata to force new id on re-entry.
 
 ## Message Handling Patterns
 

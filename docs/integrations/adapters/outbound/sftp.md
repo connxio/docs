@@ -17,14 +17,66 @@ To handle these limitations in the best way possible for each individual server 
 
 To configure Connxio to start delivering your SFTP messages select the SFTP option in "Outbound Connections" shape:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Outbound%20adapter%20menu.PNG?sv=2020-08-04&st=2021-11-08T12%3A31%3A58Z&se=2040-11-09T12%3A31%3A00Z&sr=b&sp=r&sig=a6JtbEkJT287%2BgNvJN3pR5fpONaBX6eyXHeDQS%2FD5cs%3D)
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/outbound-connection-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/outbound-connection-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
 
-The following properties are used to configure the adapter:
-- **Adapter Name**: The name of the adapter. Only used for UI purpouses.
+On creating a new adapter, a popup with the adapter's input fields will appear.
+SFTP has 4 sections; Adapter name, Acknowledgement settings, Core settings and Advanced settings.
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="properties"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/outbound-sections-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/outbound-sections-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+Read more about the properties in each section below:
+
+### Adaptername & Ack
+
+- **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
 - **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/Acknowledgment).
+
+### Core Settings
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="sftp core"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/sftp-core-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/sftp-core-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
 - **SFTP Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
 - **SFTP Directory**: The directory to pickup files in. Must include a leading forward slash.
+
+### Advanced settings
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="sftp advanced"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/sftp-advanced-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/sftp-advanced-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
 - **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/connxio-portal/variables/variable-replacement) page.
 - **Duplicate Detection**: Attempts to terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'

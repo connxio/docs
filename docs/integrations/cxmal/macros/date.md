@@ -3,6 +3,10 @@
 
 Returns the current UTC datetime as a string, with methods to add time or change Cst time zone.
 
+
+`Note`: The macro returns the current datetime, and due to the processing time involved, calling the function successively may result in slightly different times in the milliseconds part of the output.
+
+
 ## Methods supported
 
 * `SetCstZone(cstZone)`

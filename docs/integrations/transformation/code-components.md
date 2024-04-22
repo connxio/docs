@@ -137,6 +137,7 @@ To configure Connxio to use code mapping as a transformation, select the Code ma
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="outbound connections"

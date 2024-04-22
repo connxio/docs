@@ -13,7 +13,7 @@ A code component is essentially C# code compiled into a dll file. We use reflect
 
 ## Creating a component
 
-The easiest way to create you own code component is to start by opening Visual Studio and creating a new [console project](https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-console?view=vs-2019) or a [class library](https://docs.microsoft.com/en-us/dotnet/core/tutorials/library-with-visual-studio?pivots=dotnet-core-3-1). Use .net core 3.1 or .net standard 2.1 for new components. We do have some backwards compatibility, and if you cant get your code to work feel free to contact us.
+The easiest way to create you own code component is to start by opening Visual Studio and creating a new [console project](https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-console?view=vs-2019) or a [class library](https://docs.microsoft.com/en-us/dotnet/core/tutorials/library-with-visual-studio?pivots=dotnet-core-3-1). Use .net 8 for new components. We do have some backwards compatibility, and if you cant get your code to work feel free to contact us.
 
 After you create the project, navigate to "Manage nuGet packages" and download the nuget named [Communicate.Connxio.Transformation](https://www.nuget.org/packages/Communicate.Connxio.Transformation/1.0.1?_src=template), and then create a file and paste this code inside:
 
@@ -132,32 +132,83 @@ We support the following options on termination:
 | Loglevel:Never| | The termination is not logged at all.|
 | *Default behavior* | The termination is logged with the terminated status on the minimum log level with the message: "Transaction terminated by code map" |
 
-## Uploading your component
+## Configuring Code mapping
+To configure Connxio to use code mapping as a transformation, select the Code mapping in the "Transformations" shape:
 
-Connxio supports both internal and external component upload locations. If you want to use external upload management the only real requirement is that the raw component dll is available on a REST GET request at the endpoint you specify in your integration configuration like shown below:
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/transformations-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/transformations-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Code%20Mapping%20Self%20hosted.PNG?sv=2020-04-08&st=2021-10-20T11%3A20%3A16Z&se=2040-10-21T11%3A20%3A00Z&sr=b&sp=r&sig=iwI0j%2Fyh8iCN48%2BrktJaxgGrqXqA9DmOl5sT2HHCyMU%3D)
+On creating a new transformation, a popup with the transformation's input fields will appear. Read more below on how 
+the Code mapping transformation works.
 
-Internal upload management can be done in the *Code Components* view inside the Connxio Portal. Choose *Upload new component* and fill in the necessary fields like so:
+### Uploading your component
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Internal%20code%20mapping.PNG?sv=2020-04-08&st=2021-10-20T11%3A25%3A22Z&se=2040-10-21T11%3A25%3A00Z&sr=b&sp=r&sig=xPBSb9XGhTGJvEuCQBVEttFnvsXigrtdyKzwmbgFWzk%3D)
+Connxio supports both internal and external component upload locations. 
+If you want to use external upload management the only real requirement is that the raw component dll is available on a REST GET request at the endpoint you specify in your integration configuration like shown below:
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/codemap-self-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/codemap-self-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+Internal upload management can be done in the *Code Components* page. You can access this either by clicking the "+" button seen in the codemapping transformation as seen above, or by navigating via the menu on the left-hand side where "Code Components" is one of the options as seen below. From there you can create a new code component or edit existing components.
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/codecomp-menu-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/codecomp-menu-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+When creating a new code component, these are the fields to be filled in:
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/codecomp-create-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/codecomp-create-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
 **Name:** The name of the map that you can reference in the component list.\
 **Type:** The type of map. Read more about types [here].\
 **Description:** A description of your map.\
 **Version:** The version of the map. You can deprecate and manage maps by version in the component view.
 
-## Using the component
+### Using the component
 
-To use the component you have created you enter the [Integrations](/integrations/configuration) menu and either select or create your integration. Use the [transformation](/integrations/transformation/code-components#using-the-component) menu to add a code component shape as seen below.
+If you use internal upload you can choose the code map component you've created from the drop down list as shown below:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Code%20mapping%20add%20tranformation.png?sv=2020-04-08&st=2021-10-21T11%3A01%3A19Z&se=2040-10-22T11%3A01%3A00Z&sr=b&sp=r&sig=7sKZFsU0p1B4EJDZowq6aAL8GDtkm2tkpbw94JjzTlo%3D)
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/codemap-codecomp-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/codemap-codecomp-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
-After you add the shape you need to select your component in the code component window. If you use internal upload the input will look something like shown below:
-
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Code%20Mapping%20select%20mapping.PNG?sv=2020-04-08&st=2021-10-21T11%3A05%3A02Z&se=2040-10-22T11%3A05%3A00Z&sr=b&sp=r&sig=8ViYt9AB%2B5blz8GJvbT4rsuHNXfZsWN%2Fj8IxhjdEteM%3D)
-
-If you use external upload you select the SasUsi option and paste your URI in the input field there.
+If you use external upload you paste your URI in the *Code Map Component Uri* input field.
 
 ## Caching
 

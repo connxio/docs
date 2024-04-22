@@ -16,14 +16,41 @@ Follow these steps to add delay to your integration.
 
 Add the Delay shape from the transformation shape menu. 
 
-![delay shape](/img/docs/delay-shape-light.webp#light-only)![delay shape](/img/docs/delay-shape-dark.webp#dark-only)
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/transformations-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/transformations-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
 Position the Delay shape before the action you wish to delay, and configure the delay duration as needed.
 
 Specify the delay duration in seconds to delay the execution of the next action for a predetermined amount of time.
 
-![Set delay ammount](/img/docs/delay-properties-light.webp#light-only)![Set delay ammount](/img/docs/delay-properties-dark.webp#dark-only)
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/delay-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/delay-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
 Enable the `Random` option to specify a lower and upper limit for the delay. The delay duration will then get randomized within the specified limits each time the shape is executed.
 
-![Set random delay ammount](/img/docs/delay-properties-random-light.webp#light-only)![Set random delay ammount](/img/docs/delay-properties-random-dark.webp#dark-only)
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/delay-random-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/delay-random-dark.webp#dark-only'),
+    }}
+  />
+</div>

@@ -10,11 +10,30 @@ Connxio supports Termination functionality that enables halting messages based o
 
 Add the Terminate shape from the transformation shape menu.
 
-![Termination shape](/img/docs/terminate-shape-light.webp#light-only)![Termination shape](/img/docs/terminate-shape-dark.webp#dark-only)
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/transformations-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/transformations-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
 Next, populate the properties with appropriate values.
 
-![Termination properties](/img/docs/terminate-properties-light.webp#light-only)![Termination properties](/img/docs/terminate-properties-dark.webp#dark-only)
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/terminate-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/terminate-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
 Specify the conditions for when message processing should be terminated. The message is terminated when the condition is evaluated to `true`. A simple check based on the contents of a file can be done like so:
 

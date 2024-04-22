@@ -166,7 +166,7 @@ If you want to use external upload management the only real requirement is that 
   />
 </div>
 
-Internal upload management can be done in the *Code Components* page. You can access this either by clicking the "+" button seen in the codemapping transformation as seen above, or by navigating via the menu on the left-hand side where "Code Components" is one of the options as seen below. From there you can create a new code component or edit existing components.
+Internal upload management can be done in the *Code Components* page. You can access this either by clicking the "+" button in the codemapping transformation as seen above, or by navigating via the menu on the left-hand side where "Code Components" is one of the options as seen below. From there you can create a new code component or edit existing components.
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage

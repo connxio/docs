@@ -23,6 +23,37 @@ Splitting requires special care when testing since it can generate millions of m
 Obviously you can ignore steps that are unrealistic for production level load, ie. if you are estimating a load of 10 messages a day you can go straight to testing with production load levels. We do ask that you test for **peak load traffic** multiplied by 2. This adds stability for unexpected scenario's as well a prepares the receiving system for future load.\
  The reason for this recommended testing pipeline is that testing generates traffic which is payable, and we do not want our customers to incur costs for failed test runs caused by non-tested code and bad setup.
 
+## Configuring Splitting
+To configure Connxio to use code mapping as a transformation, select *Splitting* in the "Transformations" shape:
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/transformations-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/transformations-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+On creating a new transformation, a popup with the transformation's input fields will appear. 
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/splitting-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/splitting-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+Read more below on how 
+the Splitting transformation works.
+
 ## Creating splitting code components
 
 When implementing splitting into your integration the first step is to create the code that splits your message into smaller components. This is done in more or less the same way as [map code components](/integrations/transformation/code-components) but with a few key differences.

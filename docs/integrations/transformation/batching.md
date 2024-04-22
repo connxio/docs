@@ -21,6 +21,37 @@ There are certain limits imposed upon the batching functionality to not overwhel
 
 This limitation is in place for a number of reasons, the first being that we want to force users to not create files too big for Connxio to handle. The seconds reason is that each batch is given its own set of resources and currently these resources have their limit set to not create files that will overwhelm external and internal systems. We do have future plans to support large files above 100mb, contact us for more information.
 
+## Configuring Batching
+To configure Connxio to use code mapping as a transformation, select *Batching* in the "Transformations" shape:
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/transformations-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/transformations-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+On creating a new transformation, a popup with the transformation's input fields will appear. 
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/batching-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/batching-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+Read more below on how 
+the Batching transformation works.
+
 ## Creating batching code components
 
 When implementing batching into your integration the first step is to create the code that joins your messages together into a cohesive whole. This is done in more or less the same way as [map code components](/integrations/transformation/code-components) but with a few key differences.

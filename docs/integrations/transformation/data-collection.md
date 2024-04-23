@@ -34,22 +34,76 @@ We provide [variables](#how-to-add-data-collection) for making data collection m
 
 Add the "Data Collection" shape from the "Transformations" menu:
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Data%20collection%20menu.png?sv=2020-04-08&st=2021-10-25T12%3A19%3A49Z&se=2040-10-26T12%3A19%3A00Z&sr=b&sp=r&sig=F1XwWeQevA0D7DSJ%2B%2FTdiPsFfRJcroLiXaAj%2BIxBH5M%3D)
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Add the necessary fields to your data collection. See below for an example:
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/transformations-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/transformations-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/Data%20collection%20main%20config%20screen.png?sv=2020-04-08&st=2021-10-25T12%3A50%3A59Z&se=2040-10-26T12%3A50%3A00Z&sr=b&sp=r&sig=p9OxPueX6cSQoz3Rb01iV37wg23iGIRetvt6Tdbaa5I%3D)
+On creating a new transformation, a popup with the transformation's input fields will appear. 
 
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/datacol-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/datacol-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+- **Variable name**: The name used for the variable through Connxio. USe this name if you want to target the variable in a [code component](/integrations/transformation/code-components) or [variable replacement](/connxio-portal/variables/variable-replacement).
 - **Method**: The verb to use for HTTP communication.
 - **REST Url**: The endpoint to get the data from. This could be an API, data store or similar REST service.
 - **Security Configuration**: Select your security configuration from the list. See [here](/connxio-portal/security-configurations) for more information.
-- **Variable name**: The name used for the variable through Connxio. USe this name if you want to target the variable in a [code component](/integrations/transformation/code-components) or [variable replacement](/connxio-portal/variables/variable-replacement).
+- **Headers**: Add any custom header you might need. This can include custom Authorization if needed.
+    <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+        alt="outbound connections"
+        sources={{
+        light: useBaseUrl('/img/docs/transformations/datacol-headers-light.webp'),
+        dark: useBaseUrl('/img/docs/transformations/datacol-headers-dark.webp#dark-only'),
+        }}
+    />
+    </div>
+
+- **Body**: The content body of the request.
+    <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+        alt="outbound connections"
+        sources={{
+        light: useBaseUrl('/img/docs/transformations/datacol-body-light.webp'),
+        dark: useBaseUrl('/img/docs/transformations/datacol-body-dark.webp#dark-only'),
+        }}
+    />
+    </div>
+- **Advanced Error Handling**: Read about advanced error handling [below](#advanced-error-handling).
+
+### Advanced
+Data Collection also has advanced settings where the properties can be seen when expanded.
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/datacol-advanced-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/datacol-advanced-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+- **Use Date Delta**: Makes requests to the API, using a date variable - {date.UseDateTimeDelta} which will work as a starting/from date. The Polling interval will determine the difference in time, until the next run where the from-date will be set to datetime now. This variable can be used in the URI, body or header-value. Example of variable used in URI: http://example.com/api/getStuff?FromDate={date.UseDateTimeDelta(1980-01-01T08:00:00.00).SetCstZone(Central Europe Standard Time) | date: dd.MM.yyyy HH.mm.ss | error: fallback 2023-02-02T08:00:00.00}&ToDate={date.SetCstZone(Central Europe Standard Time)}
 - **Use Content As Request Body**: The current version of the content at the time of the data collection is sent to the collection endpoint as the body of the request. Default value is empty body.
 - **Use Response As Content**: The current content is replaced by the body returned by the data collection endpoint, this happens regardless of what is returned.
-- **Headers**: Add any custom header you might need. This can include custom Authorization if needed.
 - **Current Message Content Type**: The current content type of the message. Use this only if the content type of the message at this stage is different from the message format defined for the configuration. Used for [variable replacement](/connxio-portal/variables/variable-replacement) only.
-- **Continue on 404**: Turning this on means the data collection will continue if it cant find the resource its looking for. Be careful since this might make other transformations like code components fail.
-- **Stop on empty**: Stops if data is empty and [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) is positive.
+
 
 ## Retry
 
@@ -61,7 +115,15 @@ By default, all failed requests will be retried according to the [retry](#retry)
 
 > For legacy integration support (integrations created using DataCollection before Advanced Error Handling was integrated) there is a toggleable "Continue on 404".
 
-![img](https://cmhpictsa.blob.core.windows.net/pictures/AdvancedErrorHandling%20-%20DC.png?sv=2021-04-10&st=2022-10-21T08%3A26%3A31Z&se=2040-10-22T08%3A26%3A00Z&sr=b&sp=r&sig=XM30B3bCKRSWsyEC1DcGSZyTFAUCR%2BxKbOzrxuVW%2FhA%3D)
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="outbound connections"
+    sources={{
+      light: useBaseUrl('/img/docs/transformations/datacol-error-light.webp'),
+      dark: useBaseUrl('/img/docs/transformations/datacol-error-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
 | Input&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description |
 |---|---| --- |

@@ -64,26 +64,29 @@ On creating a new transformation, a popup with the transformation's input fields
 - **REST Url**: The endpoint to get the data from. This could be an API, data store or similar REST service.
 - **Security Configuration**: Select your security configuration from the list. See [here](/connxio-portal/security-configurations) for more information.
 - **Headers**: Add any custom header you might need. This can include custom Authorization if needed.
+
     <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-        alt="outbound connections"
-        sources={{
-        light: useBaseUrl('/img/docs/transformations/datacol-headers-light.webp'),
-        dark: useBaseUrl('/img/docs/transformations/datacol-headers-dark.webp#dark-only'),
-        }}
-    />
+        <ThemedImage
+            alt="outbound connections"
+            sources={{
+            light: useBaseUrl('/img/docs/transformations/datacol-headers-light.webp'),
+            dark: useBaseUrl('/img/docs/transformations/datacol-headers-dark.webp#dark-only'),
+            }}
+        />
     </div>
 
 - **Body**: The content body of the request.
+
     <div style={{maxWidth: '400px'}}>
-    <ThemedImage
-        alt="outbound connections"
-        sources={{
-        light: useBaseUrl('/img/docs/transformations/datacol-body-light.webp'),
-        dark: useBaseUrl('/img/docs/transformations/datacol-body-dark.webp#dark-only'),
-        }}
-    />
+        <ThemedImage
+            alt="outbound connections"
+            sources={{
+            light: useBaseUrl('/img/docs/transformations/datacol-body-light.webp'),
+            dark: useBaseUrl('/img/docs/transformations/datacol-body-dark.webp#dark-only'),
+            }}
+        />
     </div>
+
 - **Advanced Error Handling**: Read about advanced error handling [below](#advanced-error-handling).
 
 ### Advanced
@@ -112,8 +115,6 @@ Data collection is currently using the backoff retry described on the [Retry](/i
 ## Advanced error handling
 
 By default, all failed requests will be retried according to the [retry](#retry) pattern. If the request is still not successful, the transaction will be logged as an error and terminated. Advanced error handling allows you to create rules for handling specific unsuccessful status codes beyond the standard pattern.
-
-> For legacy integration support (integrations created using DataCollection before Advanced Error Handling was integrated) there is a toggleable "Continue on 404".
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage

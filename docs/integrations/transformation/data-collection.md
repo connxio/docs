@@ -102,7 +102,7 @@ Data Collection also has advanced settings where the properties can be seen when
   />
 </div>
 
-- **DateDelta**: Makes requests to the API, using a date variable - `{date.UseDateTimeDelta}` which will work as a starting/from `date`. The Polling interval will determine the difference in time, until the next run where the from-date will be set to datetime now.
+- **DateDelta**: Makes requests to the API, using a date variable - `{date.UseDateTimeDelta}` which will work as a starting/from `date`. The next run will determine the difference in time where the from-date will be set to datetime now.
 This variable can be used in the URI, body or header-value.
 Example of variable used in URI: `http://example.com/api/getStuff?FromDate={date.UseDateTimeDelta(1980-01-01T08:00:00.00).SetCstZone(Central Europe Standard Time) | date: dd.MM.yyyy HH.mm.ss | error: fallback 2023-02-02T08:00:00.00}&ToDate={date.SetCstZone(Central Europe Standard Time)}`
 - **Use Content As Request Body**: The current version of the content at the time of the data collection is sent to the collection endpoint as the body of the request. Default value is empty body.

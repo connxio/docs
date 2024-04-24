@@ -1,0 +1,5 @@
+label: 'Video'
+position: 0
+className: 'hidden'
+collapsible: false
+collapsed: true

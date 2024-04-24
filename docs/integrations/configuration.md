@@ -29,7 +29,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 A list of all available integrations in your subscription pops up.
 You can search for integrations in the top left.
-To add a new integration click the **Add Integration** button on the top right: 
 
 <div style={{maxWidth: '800px'}}>
   <ThemedImage
@@ -42,6 +41,7 @@ To add a new integration click the **Add Integration** button on the top right:
 </div>
 
  To the right of the search bar, are settings where you can toggle to view *archived* integrations and dynamic columns- meaning you can change the integration list columns to your liking.
+ To add a new integration click the **Add Integration** button on the top right: 
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage

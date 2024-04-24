@@ -27,19 +27,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
-A list of all available integrations in your subscription pops up. You can search for integrations in the top left. To the right of the search bar, are settings where you can toggle to view *archived* integrations and dynamic columns- meaning you can change the integration list columns to your liking.
-
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="Configuring inbound connection"
-    sources={{
-      light: useBaseUrl('/img/docs/integration/integration-list-settings-light.webp'),
-      dark: useBaseUrl('/img/docs/integration/integration-list-settings-dark.webp#dark-only'),
-    }}
-  />
-</div>
-
-To add a new integration click the **Add Integration** button on the top right:
+A list of all available integrations in your subscription pops up.
+You can search for integrations in the top left.
+To add a new integration click the **Add Integration** button on the top right: 
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -51,11 +41,23 @@ To add a new integration click the **Add Integration** button on the top right:
   />
 </div>
 
+ To the right of the search bar, are settings where you can toggle to view *archived* integrations and dynamic columns- meaning you can change the integration list columns to your liking.
+
+<div style={{maxWidth: '800px'}}>
+  <ThemedImage
+    alt="Configuring inbound connection"
+    sources={{
+      light: useBaseUrl('/img/docs/integration/integration-list-settings-light.webp'),
+      dark: useBaseUrl('/img/docs/integration/integration-list-settings-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
 <!-- ![img](https://cmhpictsa.blob.core.windows.net/pictures/Integration%20list%20add%20new.png?sv=2020-08-04&st=2021-11-22T11%3A51%3A17Z&se=2040-11-23T11%3A51%3A00Z&sr=b&sp=r&sig=g8HvLY7odjlBj5uutoMUboHO8%2F%2F2IcZuPloK2P9KadM%3D) -->
 
 The creation window for integrations is displayed. This is the interface that holds all configuration related to integrations and where you will spend most of your time in Connxio. The complete interface looks like this when you first enter it, we will explain each section in turn further down this page:
 
-<div style={{maxWidth: '400px'}}>
+<div style={{maxWidth: '800px'}}>
   <ThemedImage
     alt="Configuring inbound connection"
     sources={{
@@ -98,7 +100,7 @@ Logging is described on the [Logging page](/integrations/logging).
 
 ## Advanced Settings
 
-<div style={{maxWidth: '400px'}}>
+<div style={{maxWidth: '800px'}}>
   <ThemedImage
     alt="Configuring inbound connection"
     sources={{

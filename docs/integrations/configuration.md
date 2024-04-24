@@ -116,7 +116,7 @@ A sub integration is a logical unit that represents the transformation and outbo
 
 The sub integration contains the following configuration:
 
-<div style={{maxWidth: '400px'}}>
+<div style={{maxWidth: '800px'}}>
   <ThemedImage
     alt="Configuring inbound connection"
     sources={{

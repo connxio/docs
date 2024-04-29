@@ -86,7 +86,7 @@ When selecting HTTP, you'll first encounter these fields:
 
 #### Choosing your authentication scheme
 
-We supply thee authentication schemes in Connxio:
+We supply these authentication schemes in Connxio:
 
 ##### OAuth 2.0
 
@@ -118,9 +118,10 @@ This is regular basic auth. Add username and password without encoding, we will 
   />
 </div>
 
+
 ### Archeo
 
-In addition to to the name, the Archeo security config only holds one field:
+Archeo holds one field, besides the config's name property:
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -137,7 +138,7 @@ In addition to to the name, the Archeo security config only holds one field:
 
 ### SFTP
 
-The SFTP configuration contains all the relevant properties for connection to the SFTP server. The path to witch folder to connect to is set on the adapter.
+The SFTP configuration contains all the relevant properties for connection to the SFTP server. The path to which folder to connect to is set in the configuration of the adapter.
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -157,7 +158,7 @@ The SFTP configuration contains all the relevant properties for connection to th
 
 ### FTP
 
-The FTP configuration contains all the relevant properties for connection to the SFTP server. The path to witch folder to connect to is set on the adapter.
+The FTP configuration contains all the relevant properties for connection to the SFTP server. The path to which folder to connect to is set in the configuration of the adapter.
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -192,7 +193,7 @@ The Connection String Security Config is used wherever a Connection String is to
 - **Connection String**: The connection string for the relevant resource.
 
 ### Email
-When selecting email these are the fields to be filled in: 
+When selecting email, these are the fields to be filled in: 
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage

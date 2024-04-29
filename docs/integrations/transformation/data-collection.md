@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Data Collection
 
-Connxio supports various forms of [orchestration](/getting-started/core-concepts) most prominent among them is enrichment and this is fueled by *data collection*. Data collection refers to the act of getting data over HTTP as a transformations tep. This enables customers to collect data from all resources that support HTTP and use them within transformations, [variable replacements](/connxio-portal/variables/variable-replacement) and url generation. This page describes how to use and configure data collection.
+Connxio supports various forms of [orchestration](/getting-started/core-concepts) most prominent among them is enrichment and this is fueled by *data collection*. Data collection refers to the act of getting data over HTTP as a transformations tep. This enables customers to collect data from all resources that support HTTP and use them within transformations, [Connxio Macro Language](/integrations/cxmal/connxio-macro-language) and url generation. This page describes how to use and configure data collection.
 
 ## Limitations and External demands
 
@@ -59,7 +59,7 @@ On creating a new transformation, a popup with the transformation's input fields
   />
 </div>
 
-- **Variable name**: The name used for the variable through Connxio. USe this name if you want to target the variable in a [code component](/integrations/transformation/code-components) or [variable replacement](/connxio-portal/variables/variable-replacement).
+- **Variable name**: The name used for the variable through Connxio. USe this name if you want to target the variable in a [code component](/integrations/transformation/code-components) or [Connxio Macro Language](/integrations/cxmal/connxio-macro-language).
 - **Method**: The verb to use for HTTP communication.
 - **REST Url**: The endpoint to get the data from. This could be an API, data store or similar REST service.
 - **Security Configuration**: Select your security configuration from the list. See [here](/connxio-portal/security-configurations) for more information.

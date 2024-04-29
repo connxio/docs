@@ -71,7 +71,7 @@ Core settings differ based on storage type.
   />
 </div>
 
-- **Outbound Filename Pattern**: Uses variable replacement to generate file names, this is described in detail on the [variable replacement](/connxio-portal/variables/variable-replacement) page.
+- **Outbound Filename Pattern**: Uses Connxio Macro Language to generate file names, this is described in detail on the [Connxio Macro Language](/integrations/cxmal/connxio-macro-language) page.
 - **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 - **New Interchange ID**: Removes interchangeid from adapter specific metadata to force new id on re-entry. (Blob)

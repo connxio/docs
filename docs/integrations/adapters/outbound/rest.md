@@ -93,7 +93,7 @@ Read more about the properties in each section below:
 
 Connxio will add an `InterchangeId` header to the outgoing request to facilitate for continued transactional logging on the receiver side.
 
-If you need to receive the InterchangeId by other means we recommend either including it in the message by using [transformations](/integrations/transformation/code-components) or adding the InterchangeId as a query parameter with [Variable Replacement](/connxio-portal/variables/variable-replacement).
+If you need to receive the InterchangeId by other means we recommend either including it in the message by using [transformations](/integrations/transformation/code-components) or adding the InterchangeId as a query parameter with [Connxio Macro Language](/integrations/cxmal/connxio-macro-language).
 
 > E.g.: `http://www.myapi.com?InterchangeId={interchange}`
 

@@ -107,7 +107,7 @@ This variable can be used in the URI, body or header-value.
 Example of variable used in URI: `http://example.com/api/getStuff?FromDate={date.UseDateTimeDelta(1980-01-01T08:00:00.00).SetCstZone(Central Europe Standard Time) | date: dd.MM.yyyy HH.mm.ss | error: fallback 2023-02-02T08:00:00.00}&ToDate={date.SetCstZone(Central Europe Standard Time)}`
 - **Use Content As Request Body**: The current version of the content at the time of the data collection is sent to the collection endpoint as the body of the request. Default value is empty body.
 - **Use Response As Content**: The current content is replaced by the body returned by the data collection endpoint, this happens regardless of what is returned.
-- **Current Message Content Type**: The current content type of the message. Use this only if the content type of the message at this stage is different from the message format defined for the configuration. Used for [variable replacement](/connxio-portal/variables/variable-replacement) only.
+- **Current Message Content Type**: The current content type of the message. Use this only if the content type of the message at this stage is different from the message format defined for the configuration. Used for [Connxio Macro Language](/integrations/cxmal/connxio-macro-language) only.
 
 
 ## Retry

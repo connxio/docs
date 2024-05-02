@@ -80,6 +80,11 @@ Read more about the properties in each section below:
 - **Outbound Filename Pattern**: Uses Connxio Macro Language to generate file names, this is described in detail on the [Connxio Macro Language](/integrations/cxmal/connxio-macro-language) page.
 - **Duplicate Detection**: Attempts to terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
+- **Use Batching**:
+  - **Triggering interval**: Specifies the frequency at which the batching operation is triggered. Read more about the triggering interval [here](/integrations/triggering-interval).
+  - **Disable Failure Retry**: Toggles the retry. The batching will run on its normal schedule even on errors.
+  - **Retry on non-transient failures**: Retry on all errors, even those that are labeled as non-retryable.
+  - **Failure Retry Interval Seconds**: Sets the interval in seconds for retries after batching error. This overrides the Cron and Polling interval on an error. Minimum value is 60 seconds.
 
 ## Retry
 

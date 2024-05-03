@@ -16,14 +16,14 @@ Connxio sends logs from the internal engine to the configured logging provider e
 
 Connxio operates with the term *log-levels*. A log-level is a set of logs that together define a level of information about the integrations journey through Connxio. Each log-level **includes the logs and statuses from the less verbose layer**. The log-levels are as follows:
 
-1. None - Nothing is logged except critical errors.
+1. Error - Nothing is logged except critical errors.
 2. Minimum - The first inbound step and the last outbound step are logged.
 3. Standard - All transformations are logged.
 4. Verbose - All possible information is logged
 
-#### None
+#### Error
 
-The *None* log-level does not send any logs to the logging provider with a notable exception; if a logging provider is defined on the configuration and the *None* log-level is selected all critical errors are still logged. Since you could turn logging off just by not configuring a logging provider the *None* level lets you log only critical errors and nothing else. We would highly recommend always configuring a logging provider and setting this log level even if you don't want any regular logging for the integration, so that you can catch irregularities and patch them as needed.
+The *Error* log-level does not send any logs to the logging provider with a notable exception; if a logging provider is defined on the configuration and the *Errpr* log-level is selected all critical errors are still logged. Since you could turn logging off just by not configuring a logging provider the *Error* level lets you log only critical errors and nothing else. We would highly recommend always configuring a logging provider and setting this log level even if you don't want any regular logging for the integration, so that you can catch irregularities and patch them as needed.
 
 **Statuses logged:**
 

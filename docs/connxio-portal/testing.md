@@ -5,12 +5,12 @@ sidebar_position: 4
 
 # Testing Your Integrations with Connxio
 
-Connxio provides powerful testing features to ensure the smooth operation of your integrations. You can create test groups, execute test runs, and even perform load testing to verify the performance of your systems. This documentation will guide you through using these testing features effectively.
+Connxio provides powerful testing features to ensure the smooth operation of your integrations. You can create test groups and execute test runs. This documentation will guide you through using these testing features effectively.
 
 :::caution Note
 Please note that when using Connxio's testing features, all messages generated during testing will count towards your subscription usage.
 
-**Important**: Load testing, which simulates high message volumes, can lead to increased usage and associated charges. We strongly recommend closely monitoring your testing activities and considering the potential cost implications before initiating load tests or extensive testing.
+**Important**: We strongly recommend closely monitoring your testing activities and considering the potential cost implications before initiating  extensive testing.
 
 We advise all customers to review the pricing details and usage limits outlined in their Connxio subscription plan. By using the testing features judiciously and monitoring testing activities, you can optimize your usage and effectively manage subscription costs.
 :::
@@ -20,13 +20,70 @@ We advise all customers to review the pricing details and usage limits outlined 
 Test groups allow you to group together different integration configurations and send files between systems for testing. To create a test group, follow these steps:
 
 1. Log in to the Connxio web portal and navigate to the "Testing" section.
-2. Click on the "New Test Group" button to initiate the creation process.
-3. Provide a name and description for your test group to identify its purpose.
-4. Add the desired integration configurations to the test group.
-5. For each integration, upload an input file that will be used for testing.
-![Start test run options](/img/docs/start-test-run-light.webp#light-only)![Start test run options](/img/docs/start-test-run-dark.webp#dark-only)
-6. If any of the integrations in the test group has the API adapter configured as the inbound adapter, you must also select an [API Key](/connxio-portal/apikeys) which will be used when sending the file to the Connxio API.
-7. Once the configurations and input files are set, click on "Start test run" to begin the test.
+2. Click on the "Create your first test group" button to initiate the creation process.
+
+    import ThemedImage from '@theme/ThemedImage';
+    import useBaseUrl from '@docusaurus/useBaseUrl';
+
+    <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+        alt="security config"
+        sources={{
+        light: useBaseUrl('/img/docs/testing/create-light.webp'),
+        dark: useBaseUrl('/img/docs/testing/create-dark.webp#dark-only'),
+        }}
+    />
+    </div>
+
+3. Provide a name for your test group to identify its purpose.
+4. Add the desired integration configurations to the test group from the list on the left hand side.
+
+    <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+        alt="security config"
+        sources={{
+        light: useBaseUrl('/img/docs/testing/edit-light.webp'),
+        dark: useBaseUrl('/img/docs/testing/edit-dark.webp#dark-only'),
+        }}
+    />
+    </div>
+
+5. Click the *Save* button.
+6. When the test group has been saved, two buttons appear on the test group; *Test file* and *Assert*
+
+    <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+        alt="security config"
+        sources={{
+        light: useBaseUrl('/img/docs/testing/saved-group-light.webp'),
+        dark: useBaseUrl('/img/docs/testing/saved-group-dark.webp#dark-only'),
+        }}
+    />
+    </div>
+
+7. On clicking *Test file* you can upload an input file or insert the text directly that will be used for testing. This can be done for each integration or toggle the *Apply to all*. Save any changes made.
+
+    <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+        alt="security config"
+        sources={{
+        light: useBaseUrl('/img/docs/testing/upload-light.webp'),
+        dark: useBaseUrl('/img/docs/testing/upload-dark.webp#dark-only'),
+        }}
+    />
+    </div>
+
+8. Once the configurations and input files are set, click on "Start test run" to begin the test.
+
+    <div style={{maxWidth: '400px'}}>
+    <ThemedImage
+        alt="security config"
+        sources={{
+        light: useBaseUrl('/img/docs/testing/start-testrun-light.webp'),
+        dark: useBaseUrl('/img/docs/testing/start-testrun-dark.webp#dark-only'),
+        }}
+    />
+    </div>
 
 ## Test Runs
 
@@ -41,7 +98,7 @@ Users can easily access and view detailed run details for each test run performe
 
 ![Detailed test status](/img/docs/test-details-light.webp#light-only)![Detailed test status](/img/docs/test-details-dark.webp#dark-only)
 
-## Load Testing
+<!-- ## Load Testing
 
 Load testing allows you to assess the performance and scalability of your integrations. To start a load test, follow these steps:
 
@@ -49,5 +106,5 @@ Load testing allows you to assess the performance and scalability of your integr
 2. Enter the desired number of messages Connxio should send during the load test.
 3. The number of messages will be evenly divided among each integration in the test group.
 
-Congratulations! You now know how to utilize Connxio's testing features to verify the functionality, performance, and scalability of your integrations. Regular testing ensures the reliability and efficiency of your integration workflows.
+Congratulations! You now know how to utilize Connxio's testing features to verify the functionality, performance, and scalability of your integrations. Regular testing ensures the reliability and efficiency of your integration workflows. -->
 

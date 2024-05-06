@@ -24,9 +24,9 @@ Test groups allow you to group together different integration configurations and
 1. Log in to the Connxio web portal and navigate to the "Testing" section.
 2. Click on the "Create your first test group" button to initiate the creation process.
 
-<div style={{maxWidth: '400px'}}>
+<div style={{maxWidth: '800px'}}>
     <ThemedImage
-        alt="security config"
+        alt="create test group"
         sources={{
         light: useBaseUrl('/img/docs/testing/create-light.webp'),
         dark: useBaseUrl('/img/docs/testing/create-dark.webp#dark-only'),
@@ -37,9 +37,9 @@ Test groups allow you to group together different integration configurations and
 3. Provide a name for your test group to identify its purpose.
 4. Add the desired integration configurations to the test group from the list on the left hand side.
 
-<div style={{maxWidth: '400px'}}>
+<div style={{maxWidth: '800px'}}>
     <ThemedImage
-        alt="security config"
+        alt="edit test group"
         sources={{
         light: useBaseUrl('/img/docs/testing/edit-light.webp'),
         dark: useBaseUrl('/img/docs/testing/edit-dark.webp#dark-only'),
@@ -50,9 +50,9 @@ Test groups allow you to group together different integration configurations and
 5. Click the *Save* button.
 6. When the test group has been saved, two buttons appear on the test group; *Test file* and *Assert*
 
-<div style={{maxWidth: '400px'}}>
+<div style={{maxWidth: '800px'}}>
     <ThemedImage
-        alt="security config"
+        alt="saved test group"
         sources={{
         light: useBaseUrl('/img/docs/testing/saved-group-light.webp'),
         dark: useBaseUrl('/img/docs/testing/saved-group-dark.webp#dark-only'),
@@ -62,9 +62,9 @@ Test groups allow you to group together different integration configurations and
 
 7. On clicking *Test file* you can upload an input file or insert the text directly that will be used for testing. This can be done for each integration or toggle the *Apply to all*. Save any changes made.
 
-<div style={{maxWidth: '400px'}}>
+<div style={{maxWidth: '800px'}}>
     <ThemedImage
-        alt="security config"
+        alt="upload files"
         sources={{
         light: useBaseUrl('/img/docs/testing/upload-light.webp'),
         dark: useBaseUrl('/img/docs/testing/upload-dark.webp#dark-only'),
@@ -74,9 +74,9 @@ Test groups allow you to group together different integration configurations and
 
 8. Once the configurations and input files are set, click on "Start test run" to begin the test.
 
-<div style={{maxWidth: '400px'}}>
+<div style={{maxWidth: '800px'}}>
     <ThemedImage
-        alt="security config"
+        alt="start test run"
         sources={{
         light: useBaseUrl('/img/docs/testing/start-testrun-light.webp'),
         dark: useBaseUrl('/img/docs/testing/start-testrun-dark.webp#dark-only'),

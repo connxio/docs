@@ -72,7 +72,7 @@ Test groups allow you to group together different integration configurations and
     />
     </div>
 
-8. Once the configurations and input files are set, click on "Start test run" to begin the test.
+8. Once the configurations and input files are set, click on "Start test run" to begin the test. You need to create an API key to start a test run that includes integrations with the API inbound type.
 
 <div style={{maxWidth: '800px'}}>
     <ThemedImage
@@ -86,16 +86,32 @@ Test groups allow you to group together different integration configurations and
 
 ## Test Runs
 
-Test runs execute the defined integration configurations within a test group and provide valuable insights into the status of each integration. When viewing the test group overview, the latest test run will be displayed as the test group's status. To view historical test runs, click the "History" button.
+Test runs execute the defined integration configurations within a test group and provide valuable insights into the status of each integration. When viewing the test group overview, the latest test run will be displayed as the test group's status. To view historical test runs, click the "History" button to the left of the "Start Test Run" button.
 
 To view the status of a test run, first expand the test group by clicking somewhere on the row. You will now see a list of the integrations in the test group, as well as the status for each of them.
 
-![Test group status](/img/docs/test-group-status-light.webp#light-only)![Test group status](/img/docs/test-group-status-dark.webp#dark-only)
+<div style={{maxWidth: '800px'}}>
+    <ThemedImage
+        alt="status test run"
+        sources={{
+        light: useBaseUrl('/img/docs/testing/status-run-light.webp'),
+        dark: useBaseUrl('/img/docs/testing/status-run-dark.webp#dark-only'),
+        }}
+    />
+    </div>
 
 ## Test Details
 Users can easily access and view detailed run details for each test run performed using Connxio's testing framework. By clicking an integration a test group's expanded panel, users can retrieve comprehensive information about the test run, including the status, duration, start time, and any associated errors or failures. These run details offer valuable insights into the execution and outcome of the test, enabling users to effectively analyze and troubleshoot any issues encountered during the testing process.
 
-![Detailed test status](/img/docs/test-details-light.webp#light-only)![Detailed test status](/img/docs/test-details-dark.webp#dark-only)
+<div style={{maxWidth: '800px'}}>
+    <ThemedImage
+        alt="status test run"
+        sources={{
+        light: useBaseUrl('/img/docs/testing/detailed-run-light.webp'),
+        dark: useBaseUrl('/img/docs/testing/detailed-run-dark.webp#dark-only'),
+        }}
+    />
+    </div>
 
 <!-- ## Load Testing
 

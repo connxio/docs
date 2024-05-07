@@ -1,6 +1,8 @@
 ---
 sidebar_position: 2
 ---
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # API Keys
 
@@ -10,18 +12,39 @@ Please note that the Connxio API Key is associated with the subscription level, 
 
 ## Creating an API Key
 
-To create an API Key in Connxio, users need to navigate to the API Keys settings within the Connxio Portal. From there, they can generate an API Key and associate it with a specific subscription. During the creation process, users must set a scope for the API Key to define the level of access it grants.
-
-
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+To create an API Key in Connxio, users need to navigate to the API Keys settings within the Connxio Portal. 
 
 <div style={{maxWidth: '800px'}}>
   <ThemedImage
     alt="How to create an API key"
     sources={{
-      light: useBaseUrl('/img/docs/create-apikey-light.webp'),
-      dark: useBaseUrl('/img/docs/create-apikey-dark.webp'),
+      light: useBaseUrl('/img/docs/apikeys/create-light.webp'),
+      dark: useBaseUrl('/img/docs/apikeys/create-dark.webp'),
+    }}
+  />
+</div>
+
+From there, they can generate an API Key and associate it with a specific subscription. During the creation process, users must set a scope for the API Key to define the level of access it grants.
+
+
+<div style={{maxWidth: '800px'}}>
+  <ThemedImage
+    alt="How to create an API key"
+    sources={{
+      light: useBaseUrl('/img/docs/apikeys/edit-light.webp'),
+      dark: useBaseUrl('/img/docs/apikeys/edit-dark.webp'),
+    }}
+  />
+</div>
+
+When the key has been created you will find it in the API keys list, where you can toggle if it's active and copy the key.
+
+<div style={{maxWidth: '800px'}}>
+  <ThemedImage
+    alt="How to create an API key"
+    sources={{
+      light: useBaseUrl('/img/docs/apikeys/created-light.webp'),
+      dark: useBaseUrl('/img/docs/apikeys/created-dark.webp'),
     }}
   />
 </div>

@@ -7,7 +7,7 @@ The user preferences page in the Connxio Portal allows users to manage their use
 
 <div style={{maxWidth: '800px'}}>
     <ThemedImage
-        alt="create test group"
+        alt="user profile"
         sources={{
         light: useBaseUrl('/img/docs/users/user-profile-light.webp'),
         dark: useBaseUrl('/img/docs/users/user-profile-dark.webp#dark-only'),

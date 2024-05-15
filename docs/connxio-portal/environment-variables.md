@@ -15,7 +15,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
-    alt="security config"
+    alt="environment variables"
     sources={{
       light: useBaseUrl('/img/docs/envvariables/env-variables-light.webp'),
       dark: useBaseUrl('/img/docs/envvariables/env-variables-dark.webp#dark-only'),

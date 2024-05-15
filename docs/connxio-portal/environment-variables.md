@@ -10,7 +10,18 @@ To create an Environment Variable, navigate to the menu item with the same name.
 - **Default Value:** This is the default value of the variable. If no Subscription Value is set, this is the value that the variable will output in all subscriptions.
 - **Subscription Value:** Here you define the specific value for all subscriptions. You can define specific values for one or more subscriptions. Subscriptions where this value is not set will fall back to using the Default Value.
 
-![Environment variables](/img/docs/env-vars-light.webp#light-only)![Environment variables](/img/docs/env-vars-dark.webp#dark-only)
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="security config"
+    sources={{
+      light: useBaseUrl('/img/docs/envvariables/env-variables-light.webp'),
+      dark: useBaseUrl('/img/docs/envvariables/env-variables-dark.webp#dark-only'),
+    }}
+  />
+</div>
 
 ## Using Environment Variables
 

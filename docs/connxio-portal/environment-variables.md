@@ -13,7 +13,7 @@ To create an Environment Variable, navigate to the menu item with the same name.
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<div style={{maxWidth: '400px'}}>
+<div style={{maxWidth: '800px'}}>
   <ThemedImage
     alt="environment variables"
     sources={{

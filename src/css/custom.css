@@ -173,7 +173,7 @@ strong {
 }
 
 .medium-zoom-image {
-  border-radius: 8px;
+  border-radius: 13px;
   box-shadow: 1px 4px 20px 5px rgba(0, 0, 0, 0.1);
 }
 [data-theme="dark"] .medium-zoom-image {
@@ -181,7 +181,7 @@ strong {
 }
 
 .markdown img:not(.openapi__logo) {
-  border-radius: 8px;
+  border-radius: 13px;
   box-shadow: 1px 4px 20px 5px rgba(0, 0, 0, 0.1);
 }
 [data-theme="dark"] .markdown img:not(.openapi__logo) {

@@ -1,8 +1,6 @@
+# StatusEvent macro
 
-# Statusevent macro
-
-Used to access data stored in statusevent. This object is used under [Testing](/connxio-portal/testing.md) to store various data. Use this macro in test assertions to create powerfull tests of your integrations.
-
+Used to access data stored in statusevent. This object is used under [Testing](/connxio-portal/testing.md) to store various data. Use this macro in test assertions to create powerful tests of your integrations.
 
 The following is the data available in the StatusEvent object, all of which can be retrieved with the statusevent macro.
 
@@ -36,11 +34,13 @@ The [Metadata](/integrations/metadata.md) object is also available in this macro
 ## Example
 
 #### Input
+
 ```
 {statusevent:Error.errorCode}
 ```
 
 #### Output
+
 ```
 551
 ```

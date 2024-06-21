@@ -42,7 +42,7 @@ After entering the APIs section of the portal, you will be met with a menu to cr
   />
 </div>
 
-To communicate with the API, set the correct HttpMethod and send a message to **custom.connxio.com/{my-api-path}** and set the **Connxio-Api-Key** header value to the value of the related API key.
+To communicate with the API, set the correct HttpMethod and send a message to **custom.connxio.com/\{my-api-path\}** and set the **Connxio-Api-Key** header value to the value of the related API key.
 
 When there are many APIs, it is possible to search for a specific API using the filter search in the selection menu.
 

@@ -8,6 +8,8 @@ pagination_next: null
 
 Custom APIs are a way of customizing the experience of using Connxio. Using the Custom API solution allows for setting up personalized endpoints which can be freely swapped between integrations based on need and can be used to standardize endpoints instead of using the ConfigCorrelationId for each integration. The custom APIs enable sending messages to the same endpoint using different Http Methods to decide which Connxio Configuration should be run, allowing for deep customization when combined with our [Rules Engine](/integrations/rules) and the [Connxio Macro Language](/integrations/cxmal/connxio-macro-language).
 
+
+
 ## Getting Started
 
 Setting up a custom API for your integration is super simple! When your Integrations are set up with API as their inbound connections, they will become available in the APIs section in the portal.
@@ -50,6 +52,8 @@ When there are many APIs, it is possible to search for a specific API using the 
 Http Methods will not be passed along to Connxio and only work to differentiate endpoints within the Custom API.
 :::
 
+
+
 ## Api Key
 
 When an API is created, a related API key will be generated. The API key is important, as it points to your API. You may create many APIs that look the same, where only the API key will be the difference. This allows for setting up multiple flows on the same endpoint, whose flows can be mediated with a single variable. That way, you may set up test flows, alternate flows or multiple flows, pointing to the same endpoint, where all you need to do is choose which key should be passed in the Connxio-Api-Key header.
@@ -65,6 +69,7 @@ The keys can be enabled and disabled at will, and it is possible to set the API 
     }}
   />
 </div>
+
 
 
 ## OpenAPI Specification

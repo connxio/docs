@@ -15,7 +15,7 @@ Setting up a custom API for your integration is super simple! When your Integrat
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<div style={{maxWidth: '800px'}}>
+<div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="portal menu apis section selected"
     sources={{
@@ -56,7 +56,7 @@ When an API is created, a related API key will be generated. The API key is impo
 
 The keys can be enabled and disabled at will, and it is possible to set the API key to also work as a webhook-key instead. You may also regenerate the API-key whenever you wish, and delete the api.
 
-<div style={{maxWidth: '800px'}}>
+<div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="api key drop down menu"
     sources={{

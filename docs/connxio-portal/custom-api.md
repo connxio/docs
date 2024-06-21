@@ -48,7 +48,7 @@ To communicate with the API, set the correct HttpMethod and send a message to **
 When there are many APIs, it is possible to search for a specific API using the filter search in the selection menu.
 
 :::info [HttpMethods]
-Http Methods will not be passed along to Connxio and only work to differentiate endpoints within the Custom API.
+Http Methods will not be passed along to Connxio and only works to differentiate endpoints within the Custom API.
 :::
 
 <br/>

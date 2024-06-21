@@ -51,7 +51,7 @@ When there are many APIs, it is possible to search for a specific API using the 
 Http Methods will not be passed along to Connxio and only work to differentiate endpoints within the Custom API.
 :::
 
-<br>
+<br/>
 
 ## Api Key
 
@@ -69,7 +69,7 @@ The keys can be enabled and disabled at will, and it is possible to set the API 
   />
 </div>
 
-<br>
+<br/>
 
 ## OpenAPI Specification
 

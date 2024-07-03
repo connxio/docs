@@ -1,8 +1,9 @@
 ---
 sidebar_position: 2
 ---
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+
+import ThemedImage from "@theme/ThemedImage";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # API Keys
 
@@ -12,39 +13,38 @@ Please note that the Connxio API Key is associated with the subscription level, 
 
 ## Creating an API Key
 
-To create an API Key in Connxio, users need to navigate to the API Keys settings within the Connxio Portal. 
+To create an API Key in Connxio, users need to navigate to the API Keys settings within the Connxio Portal.
 
-<div style={{maxWidth: '800px'}}>
+<div style={{ maxWidth: "800px" }}>
   <ThemedImage
     alt="How to create an API key"
     sources={{
-      light: useBaseUrl('/img/docs/apikeys/create-light.webp'),
-      dark: useBaseUrl('/img/docs/apikeys/create-dark.webp'),
+      light: useBaseUrl("/img/docs/apikeys/create-light.webp"),
+      dark: useBaseUrl("/img/docs/apikeys/create-dark.webp"),
     }}
   />
 </div>
 
 From there, they can generate an API Key and associate it with a specific subscription. During the creation process, users must set a scope for the API Key to define the level of access it grants.
 
-
-<div style={{maxWidth: '600px'}}>
+<div style={{ maxWidth: "600px" }}>
   <ThemedImage
     alt="How to create an API key"
     sources={{
-      light: useBaseUrl('/img/docs/apikeys/edit-light.webp'),
-      dark: useBaseUrl('/img/docs/apikeys/edit-dark.webp'),
+      light: useBaseUrl("/img/docs/apikeys/edit-light.webp"),
+      dark: useBaseUrl("/img/docs/apikeys/edit-dark.webp"),
     }}
   />
 </div>
 
 When the key has been created you will find it in the API keys list, where you can toggle if it's active and copy the key.
 
-<div style={{maxWidth: '800px'}}>
+<div style={{ maxWidth: "800px" }}>
   <ThemedImage
     alt="How to create an API key"
     sources={{
-      light: useBaseUrl('/img/docs/apikeys/created-light.webp'),
-      dark: useBaseUrl('/img/docs/apikeys/created-dark.webp'),
+      light: useBaseUrl("/img/docs/apikeys/created-light.webp"),
+      dark: useBaseUrl("/img/docs/apikeys/created-dark.webp"),
     }}
   />
 </div>
@@ -62,6 +62,7 @@ API Keys in Connxio support different scopes that determine the specific functio
 - **Management**: Provides access to the Management API, allowing users to perform CRUD operations on integrations, security configurations, code components and more.
 
 - **Webhook**: Allows access to the API without an OAuth2.0 JWT. Please note that the use of the webhook scope is not recommended, and it's advisable to use other authentication methods whenever possible.
+  - The header **`Connxio-Api-Webhook`**, with the value **`true`**, must be included in the request to use the webhook functionality.
 
 Users can assign multiple scopes to a single API Key if required. However, the recommended approach is to use separate API Keys for each specific scope.
 

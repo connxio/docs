@@ -65,12 +65,12 @@ import Export from "@theme/ApiExplorer/Export";
     className={"openapi-tabs__security-schemes"}
   >
     <TabItem
-      label={"API Key: Connxio-API-Key"}
-      value={"Connxio-API-Key"}
+      label={"API Key: Connxio-Api-Key"}
+      value={"Connxio-Api-Key"}
     >
       
       
-      API Key for Connxio API
+      API Key for Connxio API. If using the webhook functionality, the header 'Connxio-Api-Webhook' must also be set to 'true'
       
       <div>
         <table>
@@ -86,6 +86,33 @@ import Export from "@theme/ApiExplorer/Export";
                 Header parameter name:
               </th><td>
                 Connxio-Api-Key
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem><TabItem
+      label={"API Key: Connxio-Api-Webhook"}
+      value={"Connxio-Api-Webhook"}
+    >
+      
+      
+      This header must be set to 'true' to enable webhook functionality for the API key
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                apiKey
+              </td>
+            </tr><tr>
+              <th>
+                Header parameter name:
+              </th><td>
+                Connxio-Api-Webhook
               </td>
             </tr>
           </tbody>

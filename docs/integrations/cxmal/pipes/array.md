@@ -3,11 +3,11 @@
 
 The array pipe supports the following methods
 
-contains(value) <br />
-contains(variable == value)
+<code>array contains(value)</code> <br />
+<code>array contains(variable == value)</code>
 
-notContains(value) <br />
-notContains(variable == value)
+<code>array notContains(value)</code> <br />
+<code>array notContains(variable == value)</code>
 
 ## Example: array contains value
 

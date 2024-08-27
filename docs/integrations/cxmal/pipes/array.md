@@ -18,7 +18,7 @@ File content:
 
 #### Input
 ```
-{file:myArray | array contains(13)}
+{file:myArray | array: contains(13)}
 ```
 
 #### Output
@@ -35,7 +35,7 @@ File content:
 
 #### Input
 ```
-{file:myArray | array notContains('Joe')}
+{file:myArray | array: notContains('Joe')}
 ```
 
 #### Output
@@ -62,7 +62,7 @@ File content:
 
 #### Input
 ```
-{file:myArray | array contains(id == 1)}
+{file:myArray | array: contains(id == 1)}
 ```
 
 #### Output
@@ -89,7 +89,7 @@ File content:
 
 #### Input
 ```
-{file:myArray | array notContains(name == 'Lisa')}
+{file:myArray | array: notContains(name == 'Lisa')}
 ```
 
 #### Output

@@ -57,12 +57,10 @@ In this example, we use parentheses to ensure that the conditions `(true == true
 
 Use the [CxMaL File Macro](/integrations/cxmal/macros/file.md) in conjunction with the [CxMaL Array Pipe](/integrations/cxmal/pipes/array.md) to check if an array contains a value.
 
-Note that the following macro returns a boolean as a string, so we have to use <code>'true'</code> instead of <code>true</code>
-
 ```
-'{file:myArray | array: contains('John')}' == 'true'
+{file:myArray | array: contains('John')} == true
 ```
 
-* ```{file:myArray}``` retrieves the array from the file.
+* ```{file:myArray}``` Retrieves the array ```myArray``` from the file
 * ```| array:contains('John')``` checks if the array contains the value 'John'.
-* The result is compared to the string 'true' to determine if the condition is met.
+* The condition evaluates to true if ```'John'``` is present in the array.

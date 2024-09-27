@@ -12,7 +12,6 @@ If you're integration experiences peak traffic of several thousand messages per 
 </p>
 </details>
 
-
 ## Configuring the Azure Event Grid adapter
 
 To configure Connxio to start processing your event grid events select the Event Grid option in "Inbound Connection" shape:
@@ -31,6 +30,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 </div>
 
 A new window pops up with the input fields for the adapter's properties:
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="properties"
@@ -49,7 +49,7 @@ The following properties are used to configure the adapter:
 
 ## Configuring Event Grid endpoints in Azure
 
-To configure Event Grid to send events to Connxio, please [review the API documentation here](/reference/post-api-v-2-messages-integration-id-eventgrid).
+To configure Event Grid to send events to Connxio, please [review the API documentation here](/reference/post-api-v-3-messages-integration-id-eventgrid).
 
 ## Retry
 

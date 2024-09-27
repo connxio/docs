@@ -3,7 +3,6 @@
 
 import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
-import type * as Plugin from "@docusaurus/types/src/plugin";
 import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 import { themes } from "prism-react-renderer";
 
@@ -54,16 +53,23 @@ const config: Config = {
         config: {
           connxio: {
             specPath:
-              "https://api.connxio.com/definition/v2/openapi.yaml?omit-version=false&omit-api-prefix=true",
+              "https://api.connxio.com/definition/v3/openapi.yaml?omit-version=false&omit-api-prefix=true",
             outputDir: "docs/reference",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
             },
-            version: "2.0.0", // Current version
-            label: "v2.0.0", // Current version label
+            version: "3.0.0", // Current version
+            label: "v3.0.0", // Current version label
             baseUrl: "/reference/connxio-api",
             versions: {
+              "2.0.0": {
+                specPath:
+                  "https://api.connxio.com/definition/v2/openapi.yaml?omit-version=false&omit-api-prefix=true",
+                outputDir: "docs/reference/2.0.0", // No trailing slash
+                label: "v2.0.0",
+                baseUrl: "/reference/2.0.0/connxio-api",
+              },
               "1.0.0": {
                 specPath:
                   "https://api.connxio.com/definition/v1/openapi.yaml?omit-version=false&omit-api-prefix=true",
@@ -73,7 +79,7 @@ const config: Config = {
               },
             },
             downloadUrl:
-              "https://api.connxio.com/definition/v2/openapi.yaml?omit-api-prefix=true",
+              "https://api.connxio.com/definition/v3/openapi.yaml?omit-api-prefix=true",
           } satisfies OpenApiPlugin.Options,
         },
       },
@@ -260,7 +266,7 @@ const config: Config = {
         docsRouteBasePath: "/",
         highlightSearchTermsOnTargetPage: false,
         docsDir: "docs",
-      ignoreFiles: [/docs\/reference\/1.0.0\/.*/],
+        ignoreFiles: [/docs\/reference\/1.0.0\/.*/],
       },
     ],
   ],

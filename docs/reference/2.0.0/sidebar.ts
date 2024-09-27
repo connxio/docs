@@ -4,35 +4,11 @@ const sidebar: SidebarsConfig = {
   apisidebar: [
     {
       type: "doc",
-      id: "reference/connxio-api",
+      id: "reference/2.0.0/connxio-api",
     },
     {
       type: "category",
-      label: "Messages",
-      items: [
-        {
-          type: "doc",
-          id: "reference/post-api-v-3-messages-integration-id",
-          label: "Sends a single message to Connxio",
-          className: "api-method post",
-        },
-        {
-          type: "doc",
-          id: "reference/post-api-v-3-messages-integration-id-batch",
-          label: "Sends a batch of messages to Connxio",
-          className: "api-method post",
-        },
-        {
-          type: "doc",
-          id: "reference/post-api-v-3-messages-integration-id-eventgrid",
-          label: "Sends an Event Grid message to Connxio.",
-          className: "api-method post",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Code components (v2)",
+      label: "Code components",
       items: [
         {
           type: "doc",
@@ -80,7 +56,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Environment variables (v2)",
+      label: "Environment variables",
       items: [
         {
           type: "doc",
@@ -110,7 +86,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Integrations (v2)",
+      label: "Integrations",
       items: [
         {
           type: "doc",
@@ -145,15 +121,38 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "reference/2.0.0/post-api-v-2-integrations-novalidation",
-          label:
-            "Upsert an integration without validation. If the integration does not validate, it will be set to disabled.",
+          label: "Upsert an integration without validation. If the integration does not validate, it will be set to disabled.",
           className: "api-method post",
         },
       ],
     },
     {
       type: "category",
-      label: "Security configurations (v2)",
+      label: "Messages",
+      items: [
+        {
+          type: "doc",
+          id: "reference/2.0.0/post-api-v-2-messages-integration-id",
+          label: "Sends a single message to Connxio",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "reference/2.0.0/post-api-v-2-messages-integration-id-batch",
+          label: "Sends a batch of messages to Connxio",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "reference/2.0.0/post-api-v-2-messages-integration-id-eventgrid",
+          label: "Sends an Event Grid message to Connxio.",
+          className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Security configurations",
       items: [
         {
           type: "doc",
@@ -183,7 +182,7 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Subscriptions (v2)",
+      label: "Subscriptions",
       items: [
         {
           type: "doc",

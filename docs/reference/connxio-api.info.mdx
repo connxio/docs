@@ -13,34 +13,30 @@ import SchemaTabs from "@theme/SchemaTabs";
 import TabItem from "@theme/TabItem";
 import Export from "@theme/ApiExplorer/Export";
 
-<span
-  className={"theme-doc-version-badge badge badge--secondary"}
->
-  Version: 2.0
+<span className={"theme-doc-version-badge badge badge--secondary"}>
+  Version: 3.0
 </span>
 
 <Export
-  url={"https://api.connxio.com/definition/v2/openapi.yaml?omit-api-prefix=true"}
+  url={
+    "https://api.connxio.com/definition/v3/openapi.yaml?omit-api-prefix=true"
+  }
   proxy={undefined}
->
-  
-</Export>
+></Export>
 
-<h1
-  className={"openapi__heading"}
->
-  Connxio API
-</h1>
+<h1 className={"openapi__heading"}>Connxio API</h1>
 
 <ApiLogo
-  logo={{"url":"/img/connxio-logo.svg","altText":"Connxio Logo"}}
+  logo={{ url: "/img/connxio-logo.svg", altText: "Connxio Logo" }}
   darkLogo={undefined}
->
-  
-</ApiLogo>
+></ApiLogo>
 
 ## Introduction
+
     This API is documented in the **OpenAPI format** and provides users with programmatic access to the Connxio platform, allowing them to interact with and control various aspects of their integrations and workflows. With the Connxio API, users can automate integration processes, manage configurations, and programmatically interact with the messaging capabilities, providing flexibility and customization options for seamless integration with their existing systems.
+
+    ## Versioning
+    Both the Connxio API and Custom APIs uses versioning. The newest version of an endpoint is the one with the highest number for its type. Please browse the documented versions to find the desired endpoint.
 
     ## Cross-Origin Resource Sharing
     This API features Cross-Origin Resource Sharing(CORS) implemented in compliance with the [W3C spec](https://www.w3.org/TR/cors/) which allows for cross-domain communication from the browser.
@@ -50,141 +46,99 @@ import Export from "@theme/ApiExplorer/Export";
     The Connxio API offers two forms of authentication:
       - [API Key (required)](/connxio-portal/apikeys)
       - [OAuth2](https://oauth.net/2/)
-      
+
     The API Key is required for all requests to the API. The OAuth2 authentication is implemented using the [Client Credentials Flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4) and is strongly recommended for all requests to the API.
 
-<div
-  style={{"marginBottom":"2rem"}}
->
-  <h2
-    id={"authentication"}
-    style={{"marginBottom":"1rem"}}
-  >
+<div style={{ marginBottom: "2rem" }}>
+  <h2 id={"authentication"} style={{ marginBottom: "1rem" }}>
     Authentication
-  </h2><SchemaTabs
-    className={"openapi-tabs__security-schemes"}
-  >
+  </h2>
+  <SchemaTabs className={"openapi-tabs__security-schemes"}>
+    <TabItem label={"API Key: Connxio-Api-Key"} value={"Connxio-Api-Key"}>
+      API Key for Connxio API. Can also be set using a query parameter. If using
+      the webhook functionality, the header 'Connxio-Api-Webhook' must also be
+      set to 'true'
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>Security Scheme Type:</th>
+              <td>apiKey</td>
+            </tr>
+            <tr>
+              <th>Header parameter name:</th>
+              <td>Connxio-Api-Key</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
+    <TabItem label={"API Key: Connxio-Api-key"} value={"Connxio-Api-key"}>
+      API Key for Connxio API as a query parameter. Only use if headers are
+      unavailable to you.
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>Security Scheme Type:</th>
+              <td>apiKey</td>
+            </tr>
+            <tr>
+              <th>Header parameter name:</th>
+              <td>Connxio-Api-Key</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
     <TabItem
-      label={"API Key: Connxio-Api-Key"}
-      value={"Connxio-Api-Key"}
-    >
-      
-      
-      API Key for Connxio API. Can also be set using a query parameter. If using the webhook functionality, the header 'Connxio-Api-Webhook' must also be set to 'true'
-      
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <th>
-                Security Scheme Type:
-              </th><td>
-                apiKey
-              </td>
-            </tr><tr>
-              <th>
-                Header parameter name:
-              </th><td>
-                Connxio-Api-Key
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </TabItem><TabItem
-      label={"API Key: Connxio-Api-key"}
-      value={"Connxio-Api-key"}
-    >
-      
-      
-      API Key for Connxio API as a query parameter. Only use if headers are unavailable to you.
-      
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <th>
-                Security Scheme Type:
-              </th><td>
-                apiKey
-              </td>
-            </tr><tr>
-              <th>
-                Header parameter name:
-              </th><td>
-                Connxio-Api-Key
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </TabItem><TabItem
       label={"API Key: Connxio-Api-Webhook"}
       value={"Connxio-Api-Webhook"}
     >
-      
-      
-      This header must be set to 'true' to enable webhook functionality for the API key
-      
+      This header must be set to 'true' to enable webhook functionality for the
+      API key
       <div>
         <table>
           <tbody>
             <tr>
-              <th>
-                Security Scheme Type:
-              </th><td>
-                apiKey
-              </td>
-            </tr><tr>
-              <th>
-                Header parameter name:
-              </th><td>
-                Connxio-Api-Webhook
-              </td>
+              <th>Security Scheme Type:</th>
+              <td>apiKey</td>
+            </tr>
+            <tr>
+              <th>Header parameter name:</th>
+              <td>Connxio-Api-Webhook</td>
             </tr>
           </tbody>
         </table>
       </div>
-    </TabItem><TabItem
-      label={"HTTP: Bearer Auth"}
-      value={"Bearer"}
-    >
-      
-      
+    </TabItem>
+    <TabItem label={"HTTP: Bearer Auth"} value={"Bearer"}>
       JWT Authorization header using the Bearer scheme.
-      
       <div>
         <table>
           <tbody>
             <tr>
-              <th>
-                Security Scheme Type:
-              </th><td>
-                http
-              </td>
-            </tr><tr>
-              <th>
-                HTTP Authorization Scheme:
-              </th><td>
-                bearer
-              </td>
+              <th>Security Scheme Type:</th>
+              <td>http</td>
+            </tr>
+            <tr>
+              <th>HTTP Authorization Scheme:</th>
+              <td>bearer</td>
             </tr>
           </tbody>
         </table>
       </div>
     </TabItem>
   </SchemaTabs>
-</div><div
-  style={{"display":"flex","flexDirection":"column","marginBottom":"var(--ifm-paragraph-margin-bottom)"}}
->
-  <h3
-    style={{"marginBottom":"0.25rem"}}
-  >
-    Contact
-  </h3><span>
-    Evidi: [support@connxio.no](mailto:support@connxio.no)
-  </span><span>
-    URL: [https://www.evidi.com](mailto:https://www.evidi.com)
-  </span>
 </div>
-      
+<div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    marginBottom: "var(--ifm-paragraph-margin-bottom)",
+  }}
+>
+  <h3 style={{ marginBottom: "0.25rem" }}>Contact</h3>
+  <span>Evidi: [support@connxio.no](mailto:support@connxio.no)</span>
+  <span>URL: [https://www.evidi.com](mailto:https://www.evidi.com)</span>
+</div>

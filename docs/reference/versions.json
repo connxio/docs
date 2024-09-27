@@ -1,8 +1,13 @@
 [
   {
+    "version": "3.0.0",
+    "label": "v3.0.0",
+    "baseUrl": "/reference/connxio-api"
+  },
+  {
     "version": "2.0.0",
     "label": "v2.0.0",
-    "baseUrl": "/reference/connxio-api"
+    "baseUrl": "/reference/2.0.0/connxio-api"
   },
   {
     "version": "1.0.0",

@@ -15,6 +15,10 @@ A code component is essentially C# code compiled into a dll file. We use reflect
 
 The easiest way to create you own code component is to start by opening Visual Studio and creating a new [console project](https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-console?view=vs-2019) or a [class library](https://docs.microsoft.com/en-us/dotnet/core/tutorials/library-with-visual-studio?pivots=dotnet-core-3-1). Use .net 8 for new components. We do have some backwards compatibility, and if you cant get your code to work feel free to contact us.
 
+:::warning NuGet Packages
+We have historically used the **Communicate.ConnXio.Transformation** package for transformation. This package is depricated and should be replaced by the **Connxio.Transformation** Package.
+:::
+
 After you create the project, navigate to "Manage nuGet packages" and download the nuget named [Communicate.Connxio.Transformation](https://www.nuget.org/packages/Communicate.Connxio.Transformation/1.0.1?_src=template), and then create a file and paste this code inside:
 
 ```csharp
@@ -110,7 +114,101 @@ public class CodeComponentTest
 
 After writing and testing your component you need to create the dll file itself. The easiest way to do this is simply by building you code (which it should have done automatically by now). You will find you dll file inside a folder looking something like this: `...\MyProject\bin\Debug\netcoreapp3.1\bin\MyProject.dll`.
 
-### Termination
+## Zipped Code Components
+
+The standard code components do not support NuGet packages beyond the standard installed System packages. We've made an exception for some packages, but self-made or exotic packages will not work. To solve this issue we've added a new type of code component that runs in its own environment. We call this new type of code component Zip Components.
+
+Zip Components are a little different from the standard Code Components and subsequently require a few special changes to your project to work.
+
+:::warning Warning!
+If you don't need any special NuGets outside the ones supported by the Standard Code Components, we still recommend using the Standard version. It's faster and easier for CX to handle. Only use Zip Components when you need the NuGet functionality.
+:::
+
+### Requirements
+
+#### Step 1
+
+Make a standard Code Component as usual with the [guide](#creating-a-component) above.
+
+#### Step 2
+
+Edit the *.csproj* that contains the component and change the `PackageReference` for the `Connxio.Transformation` NuGet package so it looks like this:
+
+```xml
+<PackageReference Include="Connxio.Transformation" Version="0.1.6">
+  <ExcludeAssets>runtime</ExcludeAssets>
+</PackageReference>
+```
+
+The `<ExcludeAssets>runtime</ExcludeAssets>` line is the important one here. It stops the Code Component from creating versioning collisions with the host function inside CX.
+
+#### Step 3
+
+Still in the same *.csproj* add `<EnableDynamicLoading>true</EnableDynamicLoading>` to the `<PropertyGroup>` tag like so:
+
+```xml
+<PropertyGroup>
+  <TargetFramework>net8.0</TargetFramework>
+  <ImplicitUsings>enable</ImplicitUsings>
+  <Nullable>enable</Nullable>
+  <EnableDynamicLoading>true</EnableDynamicLoading>
+</PropertyGroup>
+```
+
+Your *.csproj* file should look something like this:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<EnableDynamicLoading>true</EnableDynamicLoading>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Connxio.Transformation" Version="0.1.6">
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+</Project>
+```
+
+#### Step 4
+
+Add whatever NuGet packages you want to your Code Component and add whatever code you need. Remember that Code Components do not support external calls.
+
+#### Step 5
+
+Build the project and zip the result. The whole bin folder, usually located at `"../MyCodeComponentSolution\MyCodeComponentProject\bin\Debug\net8.0"`, should be compressed into the zip. Note that its *just* the bottom level contents (the files) and not the `"net8.0"` folder itself that should be included.
+
+>Note: If you want to check that the archive is made correctly you can confirm that when unzipped the archive unzips all the files into the folder its placed in.
+
+Name the zip whatever you want as long as it has the .zip file extension.
+
+#### Step 6
+
+When the code component is zipped and ready for testing, you upload it exactly as described in [Uploading your component](#uploading-your-component) section. The upload dialog and drag-and-drop both supports .dll and .zip files and will recognize which type you are uploading based on the filetype.
+
+>Note: Other compressed filetypes like .rar or .7z are not supported at this time.
+
+### Step 7
+
+Before confirming the upload check that the code component has the Zip tag added to it at the top, below the name.
+
+Also remember to fill in the `DLL file name` field after selecting your file. This field should point to the main .dll file in your zip (the file used as the main .dll in standard Code Components). Use the whole filename e.g. `MyCodeComponent.dll`
+
+### Step 8
+
+You are now ready to use the Zip Code Component.
+
+We are looking into simplifying the process by offering a ready made project inside Visual Studio, but this is currently not implemented.
+
+If you don't need any special NuGets outside the ones supported by the Standard Code Component, we recommend using the Standard version. It's still faster and easier for CX to handle. Only use Zip Components when you need the NuGet functionality.
+
+## Termination
 
 You can terminate a message by throwing a 'NotImplementedException' from you transformation code component. This does not work on splitting and batching variants. The exception type is fairly mismatched as far as termination of messages but it's one of the only exception types that exists in the base C# system, package that is never thrown by the code itself. This is the reason we chose to use this exact exception. We might amend this with our own exceptions in the future.
 
@@ -133,6 +231,7 @@ We support the following options on termination:
 | *Default behavior* | The termination is logged with the terminated status on the minimum log level with the message: "Transaction terminated by code map" |
 
 ## Configuring Code mapping
+
 To configure Connxio to use code mapping as a transformation, select the Code mapping in the "Transformations" shape:
 
 import ThemedImage from '@theme/ThemedImage';

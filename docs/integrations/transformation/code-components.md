@@ -26,7 +26,7 @@ After you create the project, navigate to "Manage nuGet packages" and download t
 /// The class containg the mapping code must implement the interface "IConnXioMap". This interface contains the definition of the method "Map" which is where the mapping code goes. 
 /// The interface implementation with the Map method is the only mandatory code, but you can add as many files and other methods that you want, and call them from inside the Map method.
 /// </summary>
-public class MyFirstConnXioMap : IConnXioMap
+public class MyFirstConnXioMap : IConnxioMap
 {
     /// <summary>
     /// The method called from the engine when a mapping is executed.
@@ -110,9 +110,7 @@ public class CodeComponentTest
 }
 ```
 
->`NOTE: JsonConvert requires Newtonsoft version 12.0.3 or older.`
-
-After writing and testing your component you need to create the dll file itself. The easiest way to do this is simply by building you code (which it should have done automatically by now). You will find you dll file inside a folder looking something like this: `...\MyProject\bin\Debug\netcoreapp3.1\bin\MyProject.dll`.
+After writing and testing your component you need to create the dll file itself. The easiest way to do this is simply by building you code (which it should have done automatically by now). You will find you dll file inside a folder looking something like this: `...\MyProject\bin\Debug\net8.0\bin\MyProject.dll`.
 
 ## Zipped Code Components
 
@@ -190,7 +188,7 @@ Name the zip whatever you want as long as it has the .zip file extension.
 
 #### Step 6
 
-When the code component is zipped and ready for testing, you upload it exactly as described in [Uploading your component](#uploading-your-component) section. The upload dialog and drag-and-drop both supports .dll and .zip files and will recognize which type you are uploading based on the filetype.
+When the code component is zipped and ready for testing, you upload it exactly as described in the [Uploading your component](#uploading-your-component) section. The upload dialog and drag-and-drop both support .dll and .zip files and will recognize which type you are uploading based on the filetype.
 
 >Note: Other compressed filetypes like .rar or .7z are not supported at this time.
 

@@ -74,8 +74,45 @@ Read more about the properties in each section below:
 
 - **Advanced Error Handling**: Advanced error handling allows you to create rules for handling specific unsuccessful status codes beyond the standard pattern. Read more about it [below](#advanced-error-handling)
 
+### Batch processing
 
+This adapter support Batch Processing. Contrary to non-batch processing the batch processing pipeline batches messages before sending them to the receiver. This can be helpful in several scenarios. The actual usefulness and implementation varies from adapter to adapter.
+
+For the Rest adapter, Batch Processing is the act of batching messages before sending them to ensure semi-ordered delivery of said messages. We call it *semi-ordered* because ordering is not enforced from the inbound pipeline and all the way through the CX pipeline, but rather only on the outbound adapter step. This means that messages will be unordered, and can arrive in any random order, but will be delivered one after another in an ordered fashion.
+
+By using the supplied values on the rest adapter in the **Batch Processing** section you can change the batching behavior.
+
+The point of batching messages before delivery is to slow down CX outbound delivery. Many apps don't have the capability to receive as many requests as CX is able to send at once with our heavy parallelization.
+
+#### How it works
+
+Batching for the Rest adapter works like this:
+
+1. Message is processed through the CX pipeline as normal and arrives in a queue that corresponds to the adapter used.
+2. The outbound engine scans the queue every time the *Cron Expression* hits and gets the amount of messages specified in the *Batch size* parameter, or less iof there aren't enough on the queue.
+3. The messages are processed and sent one after the other. New batches are prevented from loading as long as the current batch is being processed. If the receiver is slow this can result in the batch taking a long time, as latency for every message will compound. We recommend setting the *Batch Size* and *Cron Expression* accordingly to avoid very slow and large batches. The exact configuration combination that enables the best performance for your scenario is only known by testing the endpoint with a diverse set of options.
+4. If a message fails it is not marked as failing and added to the failure handling system util the batch has finished. Be aware that exceptionally large and long lasting batches may time out.
+
+#### Configuring Batch Processing
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="sftp advanced"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/rest-batch-processing-light.webp'),
+      dark: useBaseUrl('/img/docs/outbound/rest-batch-processing-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+- **Cron Expression**: Specifies the frequency at which the batching operation is triggered. Read more about the triggering interval [here](/integrations/triggering-interval).
+- **Batch Size**: The size of a batch to get from the queue every interval.
+- **Disable Failure Retry**: Toggles the retry. The batching will run on its normal schedule even on errors.
+- **Retry on non-transient failures**: Retry on all errors, even those that are labeled as non-retryable.
+- **Failure Retry Interval Seconds**: Sets the interval in seconds for retries after batching error. This overrides the Cron and Polling interval on an error. Minimum value is 60 seconds.
+  
 ### Advanced settings
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="email advanced"

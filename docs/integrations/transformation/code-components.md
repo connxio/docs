@@ -19,7 +19,7 @@ The easiest way to create you own code component is to start by opening Visual S
 We have historically used the **Communicate.ConnXio.Transformation** package for transformation. This package is depricated and should be replaced by the **Connxio.Transformation** Package.
 :::
 
-After you create the project, navigate to "Manage nuGet packages" and download the nuget named [Communicate.Connxio.Transformation](https://www.nuget.org/packages/Communicate.Connxio.Transformation/1.0.1?_src=template), and then create a file and paste this code inside:
+After you create the project, navigate to "Manage nuGet packages" and download the nuget named [Communicate.Transformation](https://www.nuget.org/packages/Communicate.ConnXio.Transformation), and then create a file and paste this code inside:
 
 ```csharp
 /// <summary>

@@ -212,3 +212,12 @@ When selecting email, these are the fields to be filled in:
 - **Host Type**: The type of protocol used on the server.
 - **Port**: The port for connecting to the server. IMAP typically uses port 993 over SSL.
  - **Use SSL**: Most hosts require SSL. Turn this on to make Connxio contact the host with SSL enabled.
+
+### Dataverse
+When selecting dataverse, these are the fields to be filled in:
+ 
+- **Name**: The name that pops up when you select the configuration on an integration.
+- **URL**: The URL of a Dataverse instance
+- **Client Id**: The Client Id used to connect to a Dataverse instance.
+- **Client secret**: The secret used to connect to a Dataverse instance.
+ 

@@ -10,6 +10,7 @@ sidebar_position: 2
 An integration in Connxio represents a configuration that enables the seamless transfer of data and messages between two systems. It defines the specific settings, adapters, transformations, and endpoints involved in the data exchange process. With Connxio integrations, users can establish robust connections between systems, enabling efficient data flow and automation.
 
 The ID of an integration will sometimes be called:
+
 - IntegrationId
 - IntegrationConfigId
 - ConfigCorrelationId
@@ -22,10 +23,17 @@ When a new message proccess is started, Connxio will generate a UUID v4 as it's 
 
 In scenarios such as [batching](/integrations/transformation/batching) and [splitting](/integrations/transformation/splitting), the InterchangeId may change during processing. During batching, multiple interchangeIds are consolidated into a single new one, while splitting results in a single interchangeId being split into multiple new ones based on the original message.
 
-
 ## Adapter
 
 An adapter in Connxio represents a specific protocol or mechanism used to interact with systems and handle data transfer. Adapters serve as connectors between the integration pipeline and external systems, facilitating seamless communication. Connxio supports various adapters, including API/webhook, Azure Blob Storage, FTP/SFTP, email, and more, enabling flexible integration possibilities.
+
+## Delivery
+
+Connxio is built with the [at-least-once](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions#receive-modes) delivery guarantee. This is the same concept used by Azure Service Bus, and since Connxio is built on Azure building blocks we use the same principal.
+
+At-least-once delivery basically means that a message will always be delivered once, but might be delivered more than once. Therefore you - as a customer - need to take the appropriate measures on the receiver side to mitigate problems receiving duplicate messages if the endpoint is not [idempotent](https://en.wikipedia.org/wiki/Idempotence).
+
+We do have a solution for duplicate free processing called _duplicate detection_ which can be enabled on outbound adapters. However, duplicate detection is expensive and might incur additional cost depending on the amount of messages passing through the integration.
 
 ## Transformation
 
@@ -39,7 +47,7 @@ Retry and guaranteed delivery mechanisms ensure the reliable transfer of message
 
 ## Parallel Processing
 
-Connxio utilizes parallel processing to handle integrations, enabling efficient and simultaneous processing of messages. It should be noted that due to parallel processing, Connxio does not guarantee the processing of messages in a specific order. However, when using the API inbound adapter, users have the option to set the "Use Synchronous Communication" flag, allowing them to wait for one request to finish before starting another, enabling more controlled and ordered communication.
+Connxio utilizes parallel processing to handle integrations, enabling efficient and simultaneous processing of messages. It should be noted that due to parallel processing, Connxio does not guarantee processing of messages in a specific order. However, when using the API inbound adapter, users have the option to set the "Use Synchronous Communication" flag, allowing them to wait for one request to finish before starting another, enabling more controlled and ordered communication.
 
 ## Stateless
 

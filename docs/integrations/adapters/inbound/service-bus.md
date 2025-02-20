@@ -93,6 +93,7 @@ In this pattern, you can upload the message payload to an Azure Blob Storage con
 
 2. **JSON Structure:**
    Alternatively, you can choose to include the blob URI, file name, and interchange ID in a JSON structure within the Service Bus message. The structure looks like this:
+
 ```json
 {
     "SasUri": "the URI to the file",
@@ -103,14 +104,60 @@ In this pattern, you can upload the message payload to an Azure Blob Storage con
 
 This JSON structure provides a more organized representation of the necessary information related to the file in the Azure Blob Storage.
 
-
 ### Pure Message Sending
 
 Alternatively, you can opt for pure message sending, where the message payload is included directly within the Service Bus message itself. This pattern is suitable for smaller message payloads that do not require external storage. By embedding the message directly, you eliminate the need for additional storage and simplify the overall message handling process.
 
-<br />
+### Keep message properties
 
-When selecting a message handling pattern, consider the size of your message payloads and the desired level of storage flexibility. Both options offer their own advantages and can be chosen based on your specific integration requirements.
+The _Keep message Properties_ pattern is a more advanced pattern that enables modification of how the message is sent and received from the Service Bus (SB). When this option is selected Connxio reads the entire SB message and transforms it into a `ConnxioServiceBusMessage` which has the following properties:
+
+```csharp
+public class ConnxioServiceBusMessage
+{
+    public string BodyContent { get; set; }
+    public string MessageId { get; set; }
+    public string PartitionKey { get; set; }
+    public string TransactionPartitionKey { get; set; }
+    public string SessionId { get; set; }
+    public string ReplyToSessionId { get; set; }
+    public TimeSpan TimeToLive { get; set; }
+    public string CorrelationId { get; set; }
+    public string Subject { get; set; }
+    public string To { get; set; }
+    public string ContentType { get; set; }
+    public string ReplyTo { get; set; }
+    public DateTime ScheduledEnqueueTime { get; set; }
+    public Dictionary<string, string> ApplicationProperties { get; set; }
+    public string LockToken { get; set; }
+    public int DeliveryCount { get; set; }
+    public DateTime LockedUntil { get; set; }
+    public int SequenceNumber { get; set; }
+    public string DeadLetterSource { get; set; }
+    public int EnqueuedSequenceNumber { get; set; }
+    public DateTime EnqueuedTime { get; set; }
+    public DateTime ExpiresAt { get; set; }
+    public string DeadLetterReason { get; set; }
+    public string DeadLetterErrorDescription { get; set; }
+    public int State { get; set; }
+}
+```
+
+This class is supplied to you i the [Connxio.Transformation](https://www.nuget.org/packages/Connxio.Transformation/) nuget package and corresponds directly to the SB [ServiceBusReceivedMessage](https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage?view=azure-dotnet) class managed by Microsoft. 
+
+All attributes changed in the `ConnxioServiceBusMessage` are propagated to the outbound SB. When _Keep message Properties_ is enabled inbound the `ConnxioServiceBusMessage` is placed inside your file content and `TransformationContext.Content`. To change any of the properties you need to create a code map and deserialize the message like so:
+
+```csharp
+ConnxioServiceBusMessage obj = JsonConvert.DeserializeObject<ConnxioServiceBusMessage>(transformationContext.Content);
+```
+
+After the abject is serialized you can change the desired properties and then serialize the `ConnxioServiceBusMessage` back into `transformationContext.Content`.
+
+When this property is used for outbound adapters you can create the `ConnxioServiceBusMessage` class directly from whatever content you desire. Connxio will honor the properties set and send them to the Sb without the need for and SB inbound adapter.
+
+### Conclusion
+
+When selecting a message handling pattern, consider the size of your message payloads and the desired level of storage flexibility. All options offer their own advantages and can be chosen based on your specific integration requirements.
 
 #### InterchangeId
 

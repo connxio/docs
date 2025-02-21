@@ -93,6 +93,7 @@ Read more about the properties in each section below:
 - **Add Blacklist Match**: Press this button to add a match field to the blacklist. Each field can contain a single regex which will be matched against the entire file path on the server in the order written. If you are looking for a file called file.xml the path could look something like this: `/Temp/cmh/testenvironment/files/Inbound/file.xml`. A valid regex to exclude could be `files` which would exclude all paths that have the file string in it. We follow the C# rules for regex. Blacklisting runs before file pick rate is calculated.
 
 ### Wrapper
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="data pickup interval"
@@ -105,7 +106,6 @@ Read more about the properties in each section below:
 
 - **WrapperType**: Choose between Json, XML or None.
 - **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
-
 
 ## Retry
 

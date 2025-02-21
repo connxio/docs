@@ -6,7 +6,7 @@ sidebar_position: 3
 
 Security configurations in Connxio are reusable blocks of information that contain credentials and other necessary details for securely connecting to various systems. These configurations help streamline the setup process and ensure the secure transmission of data between Connxio and external systems. Connxio stores all sensitive information securely in a secure key storage, ensuring the confidentiality of passwords and credentials.
 
-### Purpose of Security Configurations
+## Purpose of Security Configurations
 
 Security configurations serve the following purposes in Connxio:
 
@@ -30,7 +30,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
-Navigate to "Security Configurations" in the right hand menu and click "Add new configuration". 
+Navigate to "Security Configurations" in the right hand menu and click "Add new configuration".
 
 Your are then greeted by a Security Type menu where you will choose what kind of configuration you want to create. The possible options are:
 
@@ -83,7 +83,6 @@ When selecting HTTP, you'll first encounter these fields:
 - **Headers**: Add headers here as necessary to either authenticate the request or add other needed parameters.
 - **Authorization Header Type**: Select the protocol used by your endpoint. Choose between *None*, *OAuth2(Bearer)* and *Basic*.
 
-
 #### Choosing your authentication scheme
 
 We supply these authentication schemes in Connxio:
@@ -117,7 +116,6 @@ This is regular basic auth. Add username and password without encoding, we will 
     }}
   />
 </div>
-
 
 ### Archeo
 
@@ -154,7 +152,15 @@ The SFTP configuration contains all the relevant properties for connection to th
 - **Connection URL**: The url to the SFTP server. The url support port number of suffixed with a colon, ie: sftp-server.net:1337
 - **Username**: The username Connxio uses to authenticate to server.
 - **Password**: The password Connxio uses to authenticate to server.
+- **Certificate**: Specifies a [SSH private certificate](https://winscp.net/eng/docs/public_key#private) in putty format that is used for authentication towards the sftp server.
+- **Certificate Passphrase**: Used only with *Certificate* to authenticate ssh private key.
 - **SSH HostKey Fingerprint**: The fingerprint of the server certificate. Read more in the [WinScp documentation](https://winscp.net/eng/docs/faq_hostkey).
+
+#### Certificates
+
+The certificate field for SFTP is used to select a [SSH private key](https://winscp.net/eng/docs/public_key#private). This is only relevant if your server supports this authentication method. We still support username and password.
+
+The SSH key, must be in putty format as detailed here: [Instructions](https://winscp.net/eng/docs/guide_public_key)
 
 ### FTP
 
@@ -193,7 +199,8 @@ The Connection String Security Config is used wherever a Connection String is to
 - **Connection String**: The connection string for the relevant resource.
 
 ### Email
-When selecting email, these are the fields to be filled in: 
+
+When selecting email, these are the fields to be filled in:
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -211,13 +218,13 @@ When selecting email, these are the fields to be filled in:
 - **Host**: The server that hosts the email account.
 - **Host Type**: The type of protocol used on the server.
 - **Port**: The port for connecting to the server. IMAP typically uses port 993 over SSL.
- - **Use SSL**: Most hosts require SSL. Turn this on to make Connxio contact the host with SSL enabled.
+- **Use SSL**: Most hosts require SSL. Turn this on to make Connxio contact the host with SSL enabled.
 
 ### Dataverse
+
 When selecting dataverse, these are the fields to be filled in:
- 
+
 - **Name**: The name that pops up when you select the configuration on an integration.
 - **URL**: The URL of a Dataverse instance
 - **Client Id**: The Client Id used to connect to a Dataverse instance.
 - **Client secret**: The secret used to connect to a Dataverse instance.
- 

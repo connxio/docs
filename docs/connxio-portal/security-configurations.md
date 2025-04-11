@@ -228,3 +228,11 @@ When selecting dataverse, these are the fields to be filled in:
 - **URL**: The URL of a Dataverse instance
 - **Client Id**: The Client Id used to connect to a Dataverse instance.
 - **Client secret**: The secret used to connect to a Dataverse instance.
+
+#### Dataverse batch limits
+
+These options are used when enabling batching on a dataverse adapter.
+
+- **Max Batch Size**: Upper limit of messages processed per interval.
+- **Batch interval in seconds**: Seconds to wait before processing next batch of messages.
+- **Max concurrent processors**: Upper limit of processor scaling. Scales up based on message count

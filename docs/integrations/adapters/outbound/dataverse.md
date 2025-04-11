@@ -40,6 +40,14 @@ Read more about the properties in each section below:
 - **Filter**: Conditions used to narrow down the data returned from Dataverse (`'foo' eq 'bar'`).
 - **Selected fields**: The columns to retrieve from Dataverse. Leave empty to retrieve all columns.
 
+### Batching
+
+You can enable message batching when using the `UPSERT` operation, which helps control the rate of messages into Dataverse per interval.
+
+Batching behavior is configured through the Dataverse security configuration and is applied per security configuration. This allows messages to be queued and sent to Dataverse in batches across multiple integrations. Read more about settings available for dataverse batching [here](/connxio-portal/security-configurations).
+
+As batched messages are queued before being sent to Dataverse, setting a low maximum batch size can help with throttling by reducing the number of messages sent at once and reducing the load on Dataverse.
+
 ### Using the Adapter
 
 The Dataverse adapter expects data to be in JSON format. The schema defines how fields in the JSON correspond to fields in Dataverse.

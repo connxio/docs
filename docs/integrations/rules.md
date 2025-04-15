@@ -25,19 +25,44 @@ Use [CxMaL](/integrations/cxmal/connxio-macro-language) macros in your condition
 
 * `()`: Parentheses can be used to create more complex conditions by altering the order of operations.
 
-## Example: strings
+## Datatypes
+
+Rules supports datatypes such as numbers, strings and boolean values.
+
+### Strings
 
 Strings must be enclosed in single or double quotation marks.
 
 ```
 '{filename}' == 'myFile'
 ```
-or
 ```
 "{filename}" == "myFile"
 ```
 
-## Example: Check file content
+### Numbers
+Both integer and decimal numbers are supported.
+```
+{file:myNumber} == 5
+```
+```
+{file:myNumber} > 5.23
+```
+
+### Boolean values
+
+Can be used to check boolean values in files, or check the result of other macros.
+```
+{file:myBoolValue} == true
+```
+
+```
+('{filename}' == 'myFile') == true
+```
+
+## Examples
+
+### Check file content
 
 Use the [CxMaL File Macro](/integrations/cxmal/macros/file.md) to create conditions based on whats in the file content of the message.
 
@@ -46,14 +71,14 @@ Use the [CxMaL File Macro](/integrations/cxmal/macros/file.md) to create conditi
 ```
 
 
-## Example: Using Parentheses
+### Using Parentheses
 
 In this example, we use parentheses to ensure that the conditions `(true == true)` and `(5 != 10.5)` are evaluated separately and then combined using the logical AND operator `&&`. This allows for more precise control over the evaluation order and logic of the condition.
 ```
 (true == true) && (5 != 10.5)
 ```
 
-## Example: Check if array contains a value
+### Check if array contains a value
 
 Use the [CxMaL File Macro](/integrations/cxmal/macros/file.md) in conjunction with the [CxMaL Array Pipe](/integrations/cxmal/pipes/array.md) to check if an array contains a value.
 

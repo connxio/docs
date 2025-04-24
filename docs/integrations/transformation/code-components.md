@@ -140,6 +140,10 @@ Edit the *.csproj* that contains the component and change the `PackageReference`
 
 The `<ExcludeAssets>runtime</ExcludeAssets>` line is the important one here. It stops the Code Component from creating versioning collisions with the host function inside CX.
 
+Currently we have identified the following public packages that needs to be decorated with the ExcludeAssets attribute:
+
+* Newtonsoft.Json
+
 #### Step 3
 
 Still in the same *.csproj* add `<EnableDynamicLoading>true</EnableDynamicLoading>` to the `<PropertyGroup>` tag like so:

@@ -198,6 +198,26 @@ The Connection String Security Config is used wherever a Connection String is to
 - **Name**: The name that pops up when you select the configuration on an integration.
 - **Connection String**: The connection string for the relevant resource.
 
+### Event Hub
+
+The Connection String Security Config is used for Azure Event Hub.
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="security config"
+    sources={{
+      light: useBaseUrl('/img/docs/securityconfig/event-hub.jpg'),
+      dark: useBaseUrl('/img/docs/securityconfig/event-hub-dark.jpg#dark-only'),
+    }}
+  />
+</div>
+
+- **Event hub name**: The name of the Event Hub.
+- **Event hub connection string**: The connection string for the Event Hub.
+- **Consumer group**: The Consumer Group to listen to.
+- **Checkpoint storage connection string**: The connection string for the Event Hub checkpoint storage. This is the storage that controls all your checkpoints and is required for stable transfer.
+- **Checkpoint storage container**: The container for the Event Hub checkpoint storage.
+
 ### Email
 
 When selecting email, these are the fields to be filled in:

@@ -45,6 +45,7 @@ EventHub only has 1 section since most of the settings are configured in the [Se
 - **System property filters**: A dictionary that filters messages picked from the Consumer Group based on the [EventData.Properties Properties](https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.eventhubs.eventdata.properties?view=azure-dotnet). If the value field is left blank any value will be accepted and only the existence of the key will be verified. You can add multiple filters. If the message matches one of the filters it will be processed by the integration.
 
 ### Wrapper
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="data pickup interval"

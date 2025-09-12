@@ -10,7 +10,7 @@ To create an Event Stream you configure your inbound adapter as normal by choosi
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
-    alt="data pickup interval"
+    alt="Left click trigger"
     sources={{
       light: useBaseUrl('/img/docs/eventstreams/es-left-click-light.jpg'),
       dark: useBaseUrl('/img/docs/eventstreams/es-left-click-dark.jpg#dark-only'),
@@ -26,7 +26,7 @@ An Event Stream source is not of any value until you have a consumer that proces
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
-    alt="data pickup interval"
+    alt="The trigger"
     sources={{
       light: useBaseUrl('/img/docs/eventstreams/es-trigger-light.jpg'),
       dark: useBaseUrl('/img/docs/eventstreams/es-trigger-dark.jpg#dark-only'),
@@ -38,7 +38,7 @@ When the Event Stream inbound trigger is selected you will be met with the follo
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
-    alt="data pickup interval"
+    alt="The consumer configuration"
     sources={{
       light: useBaseUrl('/img/docs/eventstreams/es-consumer-light.jpg'),
       dark: useBaseUrl('/img/docs/eventstreams/es-consumer-dark.jpg#dark-only'),

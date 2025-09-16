@@ -8,6 +8,9 @@ The first version of Event STreams will allow customers to define external event
 
 To create an Event Stream you configure your inbound adapter as normal by choosing an adapter and adding all the required fields. When the adapter is done you left click the adapter box and select *Convert to event stream* like shown here:
 
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="Left click trigger"

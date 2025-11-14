@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 30
 ---
 
 # Batching
@@ -22,7 +22,8 @@ There are certain limits imposed upon the batching functionality to not overwhel
 This limitation is in place for a number of reasons, the first being that we want to force users to not create files too big for Connxio to handle. The seconds reason is that each batch is given its own set of resources and currently these resources have their limit set to not create files that will overwhelm external and internal systems. We do have future plans to support large files above 100mb, contact us for more information.
 
 ## Configuring Batching
-To configure Connxio to use code mapping as a transformation, select *Batching* in the "Transformations" shape:
+
+To configure Connxio to use code mapping as a transformation, select _Batching_ in the "Transformations" shape:
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -37,7 +38,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
-On creating a new transformation, a popup with the transformation's input fields will appear. 
+On creating a new transformation, a popup with the transformation's input fields will appear.
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -49,7 +50,7 @@ On creating a new transformation, a popup with the transformation's input fields
   />
 </div>
 
-Read more below on how 
+Read more below on how
 the Batching transformation works.
 
 ## Creating batching code components
@@ -95,17 +96,20 @@ public class MyFirstBatcher : IConnXioBatch
 }
 ```
 
-**Upload the component** by using the methods described on the [code components page](/integrations/transformation/code-components). Remember to choose the *batching* type.
+**Upload the component** by using the methods described on the [code components page](/integrations/transformation/code-components). Remember to choose the _batching_ type.
 
 ## Trigger Interval
+
 The trigger interval plays a pivotal role in orchestrating the execution timing of batching operations within the integration framework. It serves as a mechanism to precisely control when the batching process is initiated.
 
 This interval can be configured using one of two methods: Cron expressions or Batching Trigger Interval.
 
 ### Batching Trigger Interval
+
 The Batching Trigger Interval provides a straightforward approach to schedule batching operations. Users can specify a time interval in minutes, with a minimum limit of one minute. Alternatively, users can opt to trigger the batching operation at a specific time of day, defined in the format hh:mm.
 
 ### Cron
+
 The Cron feature offers advanced scheduling capabilities for precise and flexible data retrieval. Using Cron expressions, users can define intricate time-based schedules to orchestrate batching operations according to their specific requirements.
 Read more about Cron [here](/integrations/triggering-interval/#cron).
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 80
 ---
 
 # Delay
@@ -14,7 +14,7 @@ Delay can be added in two different ways. A predetermined duration, or a random 
 
 Follow these steps to add delay to your integration.
 
-Add the Delay shape from the transformation shape menu. 
+Add the Delay shape from the transformation shape menu.
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';

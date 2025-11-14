@@ -129,12 +129,12 @@ const config: Config = {
           label: "REST API",
           activeBasePath: "reference",
         },
-        {
-          to: "/changelog",
-          label: "Changelog",
-          position: "left",
-          activeBasePath: "changelog",
-        },
+        // {
+        //   to: "/changelog",
+        //   label: "Changelog",
+        //   position: "left",
+        //   activeBasePath: "changelog",
+        // },
         {
           href: "https://app.connxio.com",
           position: "right",

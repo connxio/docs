@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 90
 ---
 
 # Terminate
@@ -48,4 +48,3 @@ Select a [LogLevel](/integrations/logging.md#log-levels) to specify when to log.
 Choose a status. This is used in logs to specify the status of the message. Ie, Success, Warning, Error.
 
 Description is the message that is logged when a termination happens.
-

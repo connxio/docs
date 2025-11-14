@@ -1,11 +1,11 @@
 ---
     title: "Code Components"
-    sidebar_position: 2
+    sidebar_position: 20
 ---
 
 # Code components
 
-Connxio uses C# code to transform data at multiple points through the Connxio pipeline. This page describes how to create a *code component* for transformation, where you can use it and what possibilities open up to you by using it. See [splitting](/integrations/transformation/splitting) and [batching](/integrations/transformation/batching) for information on code components within those processes.
+Connxio uses C# code to transform data at multiple points through the Connxio pipeline. This page describes how to create a _code component_ for transformation, where you can use it and what possibilities open up to you by using it. See [splitting](/integrations/transformation/splitting) and [batching](/integrations/transformation/batching) for information on code components within those processes.
 
 ## What is a code component?
 
@@ -19,11 +19,11 @@ The easiest way to create you own code component is to start by opening Visual S
 We have historically used the **Communicate.ConnXio.Transformation** package for transformation. This package is depricated and should be replaced by the **Connxio.Transformation** Package.
 :::
 
-After you create the project, navigate to "Manage nuGet packages" and download the nuget named [ConnXio.Transformation](https://www.nuget.org/packages/Connxio.Transformation/0.1.3), and then create a file and paste this code inside:
+After you create the project, navigate to "Manage nuGet packages" and download the nuget named [ConnXio.Transformation](https://www.nuget.org/packages/Connxio.Transformation), and then create a file and paste this code inside:
 
 ```csharp
 /// <summary>
-/// The class containg the mapping code must implement the interface "IConnXioMap". This interface contains the definition of the method "Map" which is where the mapping code goes. 
+/// The class containg the mapping code must implement the interface "IConnXioMap". This interface contains the definition of the method "Map" which is where the mapping code goes.
 /// The interface implementation with the Map method is the only mandatory code, but you can add as many files and other methods that you want, and call them from inside the Map method.
 /// </summary>
 public class MyFirstConnXioMap : IConnxioMap
@@ -97,7 +97,7 @@ public class CodeComponentTest
         {
             Content = testContentAsString,
             MetaData = contextMetaData
-        };            
+        };
 
         var mappedContent = Mapper.Map(transformationContext);
     }
@@ -130,7 +130,7 @@ Make a standard Code Component as usual with the [guide](#creating-a-component) 
 
 #### Step 2
 
-Edit the *.csproj* that contains the component and change the `PackageReference` for the `Connxio.Transformation` NuGet package so it looks like this:
+Edit the _.csproj_ that contains the component and change the `PackageReference` for the `Connxio.Transformation` NuGet package so it looks like this:
 
 ```xml
 <PackageReference Include="Connxio.Transformation" Version="0.1.6">
@@ -142,11 +142,11 @@ The `<ExcludeAssets>runtime</ExcludeAssets>` line is the important one here. It 
 
 Currently we have identified the following public packages that needs to be decorated with the ExcludeAssets attribute:
 
-* Newtonsoft.Json
+- Newtonsoft.Json
 
 #### Step 3
 
-Still in the same *.csproj* add `<EnableDynamicLoading>true</EnableDynamicLoading>` to the `<PropertyGroup>` tag like so:
+Still in the same _.csproj_ add `<EnableDynamicLoading>true</EnableDynamicLoading>` to the `<PropertyGroup>` tag like so:
 
 ```xml
 <PropertyGroup>
@@ -157,7 +157,7 @@ Still in the same *.csproj* add `<EnableDynamicLoading>true</EnableDynamicLoadin
 </PropertyGroup>
 ```
 
-Your *.csproj* file should look something like this:
+Your _.csproj_ file should look something like this:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -184,9 +184,9 @@ Add whatever NuGet packages you want to your Code Component and add whatever cod
 
 #### Step 5
 
-Build the project and zip the result. The whole bin folder, usually located at `"../MyCodeComponentSolution\MyCodeComponentProject\bin\Debug\net8.0"`, should be compressed into the zip. Note that its *just* the bottom level contents (the files) and not the `"net8.0"` folder itself that should be included.
+Build the project and zip the result. The whole bin folder, usually located at `"../MyCodeComponentSolution\MyCodeComponentProject\bin\Debug\net8.0"`, should be compressed into the zip. Note that its _just_ the bottom level contents (the files) and not the `"net8.0"` folder itself that should be included.
 
->Note: If you want to check that the archive is made correctly you can confirm that when unzipped the archive unzips all the files into the folder its placed in.
+> Note: If you want to check that the archive is made correctly you can confirm that when unzipped the archive unzips all the files into the folder its placed in.
 
 Name the zip whatever you want as long as it has the .zip file extension.
 
@@ -194,7 +194,7 @@ Name the zip whatever you want as long as it has the .zip file extension.
 
 When the code component is zipped and ready for testing, you upload it exactly as described in the [Uploading your component](#uploading-your-component) section. The upload dialog and drag-and-drop both support .dll and .zip files and will recognize which type you are uploading based on the filetype.
 
->Note: Other compressed filetypes like .rar or .7z are not supported at this time.
+> Note: Other compressed filetypes like .rar or .7z are not supported at this time.
 
 ### Step 7
 
@@ -222,7 +222,6 @@ throw new NotImplementedException("Warning|Pipeline terminated with warning");
 ```
 
 We support the following options on termination:
-
 | Code word | Action |
 |---|---|
 | Success| | The termination is logged as a success with the minimum log level.|
@@ -230,7 +229,7 @@ We support the following options on termination:
 | Error | The termination is logged as an error with the none log level. |
 | Loglevel:None | The termination is logged with the terminated status but with the none log level instead of the default minimum level.|
 | Loglevel:Never| | The termination is not logged at all.|
-| *Default behavior* | The termination is logged with the terminated status on the minimum log level with the message: "Transaction terminated by code map" |
+| _Default behavior_ | The termination is logged with the terminated status on the minimum log level with the message: "Transaction terminated by code map" |
 
 ## Configuring Code mapping
 
@@ -249,12 +248,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
-On creating a new transformation, a popup with the transformation's input fields will appear. Read more below on how 
+On creating a new transformation, a popup with the transformation's input fields will appear. Read more below on how
 the Code mapping transformation works.
 
 ### Uploading your component
 
-Connxio supports both internal and external component upload locations. 
+Connxio supports both internal and external component upload locations.
 If you want to use external upload management the only real requirement is that the raw component dll is available on a REST GET request at the endpoint you specify in your integration configuration like shown below:
 
 <div style={{maxWidth: '400px'}}>
@@ -267,7 +266,7 @@ If you want to use external upload management the only real requirement is that 
   />
 </div>
 
-Internal upload management can be done in the *Code Components* page. You can access this either by clicking the "+" button in the codemapping transformation as seen above, or by navigating via the menu on the left-hand side where "Code Components" is one of the options as seen below. From there you can create a new code component or edit existing components.
+Internal upload management can be done in the _Code Components_ page. You can access this either by clicking the "+" button in the codemapping transformation as seen above, or by navigating via the menu on the left-hand side where "Code Components" is one of the options as seen below. From there you can create a new code component or edit existing components.
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -310,7 +309,7 @@ If you use internal upload you can choose the code map component you've created 
   />
 </div>
 
-If you use external upload you paste your URI in the *Code Map Component Uri* input field.
+If you use external upload you paste your URI in the _Code Map Component Uri_ input field.
 
 ## Caching
 

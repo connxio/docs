@@ -35,21 +35,26 @@ A new window pops up with the input fields for the adapter's properties:
   <ThemedImage
     alt="properties"
     sources={{
-      light: useBaseUrl('/img/docs/eventgrid-properties-light.webp'),
-      dark: useBaseUrl('/img/docs/eventgrid-properties-dark.webp#dark-only'),
+      light: useBaseUrl('/img/docs/eventgrid-properties-light.jpg'),
+      dark: useBaseUrl('/img/docs/eventgrid-properties-dark.jpg#dark-only'),
     }}
   />
 </div>
 
 <br />
+
 The following properties are used to configure the adapter:
 
+- **Use event as Content**: Turn this switch on if you want the EventGrid event to be sent as content to the Connxio Engine. You do not need the *Connection String* and *Container List* properties when this option is enabled.
 - **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the connection string to the Storage Account that holds the data represented by the message sent to the API from Event Grid.
 - **Event Grid Blob Container Name List**: A comma separated list over possible containers referenced in the EventGrid message.
+- **Use SAS URI authentication**: Enable this option to treat the connection as a SAS URI. Useful when connecting to ADLS Gen2 datalake accounts.
 
 ## Configuring Event Grid endpoints in Azure
 
 To configure Event Grid to send events to Connxio, please [review the API documentation here](/reference/post-api-v-3-messages-integration-id-eventgrid).
+
+We use the **Event Grid Schema** Event Schema. Be sure to select the right one when creating an event subscription in Azure. After the Schema type is set you need to select your event types and the endpoint details. Use the **Web Hook** event type and add the Connxio endpoint.The Url should look something like this `https://api.connxio.com/v2/messages/{integrationId}/eventgrid?Connxio-Api-Key={apiKey}&Connxio-Api-Webhook=true`
 
 ## Retry
 

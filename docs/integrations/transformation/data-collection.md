@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Data Collection
 
-Connxio supports various forms of [orchestration](/getting-started/core-concepts) most prominent among them is enrichment and this is fueled by *data collection*. Data collection refers to the act of getting data over HTTP as a transformations tep. This enables customers to collect data from all resources that support HTTP and use them within transformations, [Connxio Macro Language](/integrations/cxmal/connxio-macro-language) and url generation. This page describes how to use and configure data collection.
+Connxio supports various forms of [orchestration](/getting-started/core-concepts), most prominent among them is enrichment which is fueled by *data collection*. Data collection refers to the act of getting data over HTTP as a transformations step. This enables customers to collect data from all resources that support HTTP and use them within transformations, [Connxio Macro Language](/integrations/cxmal/connxio-macro-language) and url generation. This page describes how to use and configure data collection.
 
 ## Limitations and External demands
 

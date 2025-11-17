@@ -5,12 +5,11 @@ sidebar_position: 8
 
 # Synchronous Communication
 
-
 Connxio provides an option for synchronous communication through its API. We included this for multiple reasons, some of which relate to execution flows within systems. We wanted to facilitate communication with systems on the outbound connection, and because it can often make sense to wait for a response and do something with the data when the operation is completed.
 
 ## Configuring the Adapter
 
-To use the synchronous functionality, set up a regular [API Inbound Adapter](/integrations/adapters/inbound/api.mdx) and toggle the *Use Synchronous Communication* option.
+To use the synchronous functionality, set up a regular [API Inbound Adapter](/integrations/adapters/inbound/api.mdx) and toggle the _Use Synchronous Communication_ option.
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -27,10 +26,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Usage
 
-When utilizing the synchronous option, a few things differ from the other adapters. The messages are sent through the Http-protocol, so Connxio's resending functionality is not available, and there is minimal logging on the message pipeline. The response object covers some of these responsibilities. Any errors or exceptions encountered during message passing, will be recorded in the response for error-handling and troubleshooting purposes. When there is a *REST Outbound Adapter* on the subintegration(s), it is possible to retrieve response data and e.g. continue an execution flow. There is a message response-object for each subintegration on your integration. When a subintegration does a splitting operation or has multiple outbound adapters, each operation will be returned within the message response object of that subintegration. E.g. a subintegration with a splitting operation and 3 outbound adapters will return 3 results per split. So a list of 10 objects will split into 10 messages, each returning 3 outbound responses, resulting in 30 returned operations within the message response-object.
+When utilizing the synchronous option, a few things differ from the other adapters. The messages are sent through the Http-protocol, so Connxio's resending functionality is not available, and there is minimal logging on the message pipeline. The response object covers some of these responsibilities. Any errors or exceptions encountered during message passing, will be recorded in the response for error-handling and troubleshooting purposes. When there is a _REST Outbound Adapter_ on the subintegration(s), it is possible to retrieve response data and e.g. continue an execution flow. There is a message response-object for each subintegration on your integration. When a subintegration does a splitting operation or has multiple outbound adapters, each operation will be returned within the message response object of that subintegration. E.g. a subintegration with a splitting operation and 3 outbound adapters will return 3 results per split. So a list of 10 objects will split into 10 messages, each returning 3 outbound responses, resulting in 30 returned operations within the message response-object.
 
-The synchronous API does not support batching transformations or messages sent to the */batch* endpoint.
-
+The synchronous API does not support batching transformations or messages sent to the _/batch_ endpoint.
 
 ## Interaction NuGet
 
@@ -85,9 +83,9 @@ The Interaction NuGet contains options for wrapping and sending messages, and al
 
 Note that there are two seperate outputs for errors. The second "errors" field reflect client errors that occur when attempting to communicate with Connxio. The other error data is intended to reflect errors that occured when passing the message through Connxio and is present outside of the NuGet. The "errors" field only exists in the NuGet and is not a part of the standard return-object.
 
-## Remapping the Synchronous API response 
+## Remapping the Synchronous API response
 
-You can customize the output of the API by creating a [Code component](/integrations/transformation/code-components) that remaps the response. Utilize the following records from the [Connxio.Transformation](https://www.nuget.org/packages/Connxio.Transformation) NuGet package to access the response data from the synchronous API.
+You can customize the output of the API by creating a [Code component](/integrations/transformation/code-components) that remaps the response, or a [Script component](/integrations/transformation/script). Utilize the following records from the [Connxio.Transformation](https://www.nuget.org/packages/Connxio.Transformation) NuGet package to access the response data from the synchronous API.
 
 ```csharp
 public record SynchronousMessageResponse
@@ -107,6 +105,7 @@ public record FinalSynchronousMessageResponse
     public IEnumerable<SynchronousMessageResponse> SynchronousMessageResponses { get; set; }
 }
 ```
+
 Below is an example of a Code Component that remaps the output of the synchronous API:
 
 ```csharp
@@ -120,7 +119,7 @@ Below is an example of a Code Component that remaps the output of the synchronou
     {
         public TransformationContext Map(TransformationContext transformationContext)
         {
-            
+
             if (transformationContext.Content == null)
                 throw new ArgumentException("Content field is null");
 
@@ -145,7 +144,6 @@ Below is an example of a Code Component that remaps the output of the synchronou
         }
     }
 ```
-
 
 ## Retry
 

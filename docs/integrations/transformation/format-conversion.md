@@ -1,12 +1,13 @@
 ---
-sidebar_position: 6
+sidebar_position: 60
 ---
 
 # Format Conversion
 
-Connxio supports quick conversion between XML and JSON, we call this feature *format conversion*. This is a simple way to transform message content to and from pre determined formats in an easy to configure way. We are looking into adding more formats, please contact us if you have suggestions.
+Connxio supports quick conversion between XML and JSON, we call this feature _format conversion_. This is a simple way to transform message content to and from pre determined formats in an easy to configure way. We are looking into adding more formats, please contact us if you have suggestions.
 
 ## Configuring Convert Format
+
 To configure Connxio to use format conversion as a transformation, select the Convert Format in the "Transformations" shape:
 
 import ThemedImage from '@theme/ThemedImage';
@@ -22,7 +23,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
-On creating a new transformation, a popup with the transformation's input fields will appear. 
+On creating a new transformation, a popup with the transformation's input fields will appear.
 
 Read more about the properties below:
 

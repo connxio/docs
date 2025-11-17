@@ -180,6 +180,10 @@ strong {
   box-shadow: 1px 4px 20px 5px rgba(0, 0, 0, 0.5);
 }
 
+.no-shadow img {
+  box-shadow: none !important;
+}
+
 .markdown img:not(.openapi__logo) {
   border-radius: 13px;
   box-shadow: 1px 4px 20px 5px rgba(0, 0, 0, 0.1);

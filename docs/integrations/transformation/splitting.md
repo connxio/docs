@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 40
 ---
 
 # Splitting
@@ -24,7 +24,8 @@ Obviously you can ignore steps that are unrealistic for production level load, i
  The reason for this recommended testing pipeline is that testing generates traffic which is payable, and we do not want our customers to incur costs for failed test runs caused by non-tested code and bad setup.
 
 ## Configuring Splitting
-To configure Connxio to use code mapping as a transformation, select *Splitting* in the "Transformations" shape:
+
+To configure Connxio to use code mapping as a transformation, select _Splitting_ in the "Transformations" shape:
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -39,7 +40,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
-On creating a new transformation, a popup with the transformation's input fields will appear. 
+On creating a new transformation, a popup with the transformation's input fields will appear.
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -51,7 +52,7 @@ On creating a new transformation, a popup with the transformation's input fields
   />
 </div>
 
-Read more below on how 
+Read more below on how
 the Splitting transformation works.
 
 ## Creating splitting code components

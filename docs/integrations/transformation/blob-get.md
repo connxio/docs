@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Getting data from Azure Blob Storage
+# Azure Blob Storage Get
 
 Connxio allows customers to get data from [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/) to enrich, replace or transform messages. The process is intuitive and resembles the act of [Data Collection](/integrations/transformation/data-collection).
 

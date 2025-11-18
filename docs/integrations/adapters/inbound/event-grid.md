@@ -56,6 +56,81 @@ To configure Event Grid to send events to Connxio, please [review the API docume
 
 We use the **Event Grid Schema** Event Schema. Be sure to select the right one when creating an event subscription in Azure. After the Schema type is set you need to select your event types and the endpoint details. Use the **Web Hook** event type and add the Connxio endpoint.The Url should look something like this `https://api.connxio.com/v2/messages/{integrationId}/eventgrid?Connxio-Api-Key={apiKey}&Connxio-Api-Webhook=true`
 
+## Event only handling
+
+When using the *Use event as Content* option you are required to handle the event manually. The easiest way to accomplish this is to extract the blob name from the `Url` parameter with a Code Mapping and use it with the [Blob Get transformation](/integrations/transformation/blob-get).
+
+The **Event Grid Schema** model looks like this:
+
+```csharp
+public class EventGridMessage
+{
+    public string? Topic { get; set; }
+    public string? Subject { get; set; }
+    public string? EventType { get; set; }
+    public DateTime EventTime { get; set; }
+    public string? Id { get; set; }
+    public object Data { get; set; } = null!;
+    public string? DataVersion { get; set; }
+    public string? MetadataVersion { get; set; }
+}
+
+public class EventGridData
+{
+    public string? ValidationCode { get; set; }
+    public string? ValidationUrl { get; set; }
+    public string? Api { get; set; }
+    public string? ClientRequestId { get; set; }
+    public string? RequestId { get; set; }
+    public string? ETag { get; set; }
+    public string? ContentType { get; set; }
+    public int ContentLength { get; set; }
+    public string? BlobType { get; set; }
+    public string Url { get; set; } = null!;
+    public string? Sequencer { get; set; }
+    public Storagediagnostics? StorageDiagnostics { get; set; }
+}
+
+public class Storagediagnostics
+{
+    public string? BatchId { get; set; }
+}
+```
+
+The `Url` parameter on the `EventGridData` object contains the full blob Uri and looks something like this: `"url": "https://temptestcx.blob.core.windows.net/jonmeventgrid/test.txt"`. To extract just the name from the Url you can use the following Regex function:
+
+```csharp
+private static string GetNameFromBlobUrl(string blobUrl)
+{
+    string pattern = @"https?://[^/]+/[^/]+/(.+)";
+
+    Match match = Regex.Match(blobUrl, pattern);
+
+    if (!match.Success)
+    {
+        throw new Exception($"Failed to find path for file with url {blobUrl}");
+    }
+
+    return match.Groups[1].Value;
+}
+```
+
+The mapping function would then look something like this:
+
+```csharp
+public TransformationContext Map(TransformationContext transformationContext)
+{
+    EventGridMessage eventGridMessage = JsonConvert.DeserializeObject<EventGridMessage>(transformationContext.Content)!;
+    EventGridData eventGridData = JsonConvert.DeserializeObject<EventGridData>(eventGridMessage.Data.ToString()!)!;
+
+    transformationContext.MetaData.UserDefinedProperties.Add("blobName", GetFileNameFromBlobUrl(eventGridData.Url));
+
+    return transformationContext;
+}
+```
+
+The name of the blob is now stored in the `blobName` *User Defined* property and can be used with CxMal. The next step is to use the name we just extracted to get the blob before using the contents as needed in the integration flow.
+
 ## Retry
 
 Retry on Event Grid is handled by the Event Grid itself. Please refer to the [Microsoft Documentation](https://docs.microsoft.com/en-us/azure/event-grid/delivery-and-retry).

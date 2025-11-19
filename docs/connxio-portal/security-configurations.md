@@ -198,6 +198,25 @@ The Connection String Security Config is used wherever a Connection String is to
 - **Name**: The name that pops up when you select the configuration on an integration.
 - **Connection String**: The connection string for the relevant resource.
 
+### Azure Credential
+
+The Azure Credential Security Config is used to connect to several Azure resources. Read more about it here: [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory)
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="security config"
+    sources={{
+      light: useBaseUrl('/img/docs/securityconfig/azure-credential-light.jpg'),
+      dark: useBaseUrl('/img/docs/securityconfig/azure-credential-dark.jpg#dark-only'),
+    }}
+  />
+</div>
+
+- **Account Name**: The name of the Storage Account you have connected to your Entra ID enterprise application.
+- **Tenant ID**: The Tenant ID that Entra ID enterprise application resides in.
+- **Client ID**: The Client ID that relates to your Entra ID enterprise application.
+- **Client Secret**: The Client Secret that relates to your Entra ID enterprise application.
+
 ### Event Hub
 
 The Connection String Security Config is used for Azure Event Hub.

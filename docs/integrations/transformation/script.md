@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 Scripts are an alternative way of transforming data in Connxio. Instead of uploading code components, you can write JavaScript directly in the Connxio portal. This is a quick and easy way to do small transformations without having to create, test, and upload code components. You have full access to the message content and metadata, and can use standard JavaScript libraries to manipulate the data.
 
 :::info Security
-For security reasons, scripts run in a sandboxed environment with limited access to system resources. This means that certain operations, such as file I/O or network access, are not allowed.
+For security reasons, scripts run in a sandboxed environment with limited access to system resources. This means that certain operations, such as file I/O or network access, are not available.
 :::
 
 ## Creating a script

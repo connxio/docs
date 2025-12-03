@@ -65,11 +65,11 @@ Since Event Hub can have multiple event types in one consumer group we provide f
 
 ## InterchangeId
 
-You can supply your own InterchangeId for transactional logging purposes by adding a EventData.Properties Property to the message with the key `InterchangeId` and the string value for the InterchangeId itself. I.e.:
+You can supply your own InterchangeId for transactional logging purposes by adding a EventData.Properties Property to the message with the key `interchangeId` and the string value for the InterchangeId itself. I.e.:
 
 ```csharp
 EventData eventData = new EventData(Encoding.UTF8.GetBytes(message));
-eventData.Properties.Add("InterchangeId", "3c8701dc-858b-4f98-915a-5b3432eb37ec");
+eventData.Properties.Add("interchangeId", "3c8701dc-858b-4f98-915a-5b3432eb37ec");
 ```
 
 Be sure to read the [Core Concepts](/getting-started/core-concepts) for more information about supplying your own InterchangeId.

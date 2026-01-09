@@ -278,7 +278,7 @@ public class MyCodeMap : IConnxioMap
 }
 ```
 
-This approach in the [API inbound synchronous response mapping](/integrations/synchronous) will enable graceful error code return values. 
+This approach in the [API inbound synchronous response mapping](/integrations/synchronous) will enable graceful error code return values.
 
 The default return value is 400 for failures and 200 for success. We do not currently allow for overriding success codes.
 

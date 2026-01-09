@@ -147,7 +147,7 @@ Below is an example of a Code Component that remaps the output of the synchronou
 
 ## Changing the return status code
 
-See the [Code Component](integrations/transformation/code-components#Termination) documentation for information about how to change the return code.
+See the [Code Component](integrations/transformation/code-components) documentation for information about how to change the return code.
 
 ## Retry
 

@@ -145,6 +145,10 @@ Below is an example of a Code Component that remaps the output of the synchronou
     }
 ```
 
+## Changing the return status code
+
+See the [Code Component](integrations/transformation/code-components#Termination) documentation for information about how to change the return code.
+
 ## Retry
 
 Be aware that when using our Api you are required to handle all retry on the client side. Our regular SLA is in effect at all times but hiccups can happen within all network infrastructure and should be assessed and handled as needed.

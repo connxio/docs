@@ -196,13 +196,13 @@ When the code component is zipped and ready for testing, you upload it exactly a
 
 > Note: Other compressed filetypes like .rar or .7z are not supported at this time.
 
-### Step 7
+#### Step 7
 
 Before confirming the upload check that the code component has the Zip tag added to it at the top, below the name.
 
 Also remember to fill in the `DLL file name` field after selecting your file. This field should point to the main .dll file in your zip (the file used as the main .dll in standard Code Components). Use the whole filename e.g. `MyCodeComponent.dll`
 
-### Step 8
+#### Step 8
 
 You are now ready to use the Zip Code Component.
 
@@ -211,6 +211,82 @@ We are looking into simplifying the process by offering a ready made project ins
 If you don't need any special NuGets outside the ones supported by the Standard Code Component, we recommend using the Standard version. It's still faster and easier for CX to handle. Only use Zip Components when you need the NuGet functionality.
 
 ## Termination
+
+You can terminate a message by throwing a 'TransformationTerminatedException' from you transformation code component. This works for splitting and batching also. The exception implementation looks like this:
+
+```csharp
+public class TransformationTerminatedException : Exception
+{
+    public ConnXioLogLevel LogLevel { get; set; }
+    public ConnXioLogStatus Status { get; set; }
+    public string? CustomStatus { get; set; }
+    public int? FailureReturnStatusCode { get; set; } = 400;
+}
+
+public enum ConnXioLogStatus
+{
+    Error,
+    Success,
+    Warning,
+    Terminated
+}
+public enum ConnXioLogLevel
+{
+    None,
+    Minimum,
+    Standard,
+    Verbose,
+    Never
+}
+```
+
+The properties on the exception functions as follows:
+
+- **LogLevel:** This is the Connxio loglevel described in the [logging](/integrations/logging) documentation.
+- **Status**: This is the logging status described in the [logging](/integrations/logging) documentation.
+- **CustomStatus**: A custom description for the termination or failure.
+- **FailureReturnStatusCode**: A return failure code. `NB!: Only used on the API inbound synchronous transform result mapping.`
+
+### Using FailureReturnStatusCode
+
+An example of using the `FailureReturnStatusCode` might look something like this:
+
+```csharp
+public class MyCodeMap : IConnxioMap
+{
+    public TransformationContext Map(TransformationContext transformationContext)
+    {
+
+        if (transformationContext.Content == null)
+            throw new ArgumentException("Content field is null");
+
+        // Each subintegration will have a FinalSynchronousMessageResponse
+        IEnumerable<FinalSynchronousMessageResponse> subintResponses = JsonConvert.DeserializeObject<IEnumerable<FinalSynchronousMessageResponse>>(transformationContext.Content);
+
+        // Just get the first one in this example. Production code should handle multiples.
+        int statuscode = subintResponses.First().SynchronousMessageResponses.First().MetaData.OutboundRestResponse.StatusCode;
+
+        //Create method to screen for failure codes
+        if (isFailureCode(statuscode))
+            throw new TransformationTerminatedException("Operation failed", failureReturnStatusCode: statuscode);
+
+        // The data in transformationContext.Content will be your new API response.
+        transformationContext.Content = "Operation success";
+
+        return transformationContext;
+    }
+}
+```
+
+This approach in the [API inbound synchronous response mapping](/integrations/synchronous) will enable graceful error code return values. 
+
+The default return value is 400 for failures and 200 for success. We do not currently allow for overriding success codes.
+
+## Termination (deprecated)
+
+:::warning Warning!
+This method of termination is deprecated and offers less functionality than the newer version. Please use the version outlined above. We will not remove ths functionality, but it's less optimized the the new one.
+:::
 
 You can terminate a message by throwing a 'NotImplementedException' from you transformation code component. This does not work on splitting and batching variants. The exception type is fairly mismatched as far as termination of messages but it's one of the only exception types that exists in the base C# system, package that is never thrown by the code itself. This is the reason we chose to use this exact exception. We might amend this with our own exceptions in the future.
 

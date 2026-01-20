@@ -170,8 +170,8 @@ The FTP configuration contains all the relevant properties for connection to the
   <ThemedImage
     alt="security config"
     sources={{
-      light: useBaseUrl('/img/docs/securityconfig/ftp-light.webp'),
-      dark: useBaseUrl('/img/docs/securityconfig/ftp-dark.webp#dark-only'),
+      light: useBaseUrl('/img/docs/securityconfig/ftp-light.jpg'),
+      dark: useBaseUrl('/img/docs/securityconfig/ftp-dark.jpg#dark-only'),
     }}
   />
 </div>
@@ -180,6 +180,7 @@ The FTP configuration contains all the relevant properties for connection to the
 - **Connection URL**: The url to the FTP server.  The url support port number of suffixed with a colon, ie: ftp-server.net:1337.
 - **Username**: The username Connxio uses to authenticate to server.
 - **Password**: The password Connxio uses to authenticate to server.
+- **FTPS security type**: The client security type for FTPS communication, Either *Explicit* or *Implicit*. Use *None* to disable. Review [WinScp documentation](https://winscp.net/eng/docs/ftps) for more information.
 
 ### Connection String
 

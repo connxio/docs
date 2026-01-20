@@ -60,6 +60,28 @@ SFTP has 4 sections; Adapter name, Acknowledgement settings, Core settings and A
 
 Read more about the properties in each section below:
 
+### Operation
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="properties"
+    sources={{
+      light: useBaseUrl('/img/docs/outbound/sftp-operation-light.jpg'),
+      dark: useBaseUrl('/img/docs/outbound/sftp-operation-dark.jpg#dark-only'),
+    }}
+  />
+</div>
+
+The SFTP adapter supports to types of operations when using the non-batching adapter; *upset* and *append*.
+
+**Upsert** is the default operation and either creates a new file on the server or replaces an already existing one if the filenames collide.
+
+**Append** creates a new file if one with the configured file-name doesn't exist or appends to the file if it does. Append adds the current payload to he end of the file without any breaks or extra characters, please ensure you add those as necessary - either by code component or by other means.
+
+:::caution Warning
+Append might not be allowed or configured for your SFTP server. If the server doesn't support append the file will be *overwritten* instead. The only way to know if append is supported is to contact the server administrator or run tests as needed.
+:::
+
 ### Adaptername & Ack
 
 - **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.

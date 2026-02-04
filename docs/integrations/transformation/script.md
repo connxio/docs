@@ -80,23 +80,22 @@ You can also make use of `console.log()` statements in your script to output deb
 
 ## Dependencies
 
-You can import external JavaScript modules in your scripts using ESM (ECMAScript Modules) syntax. Modules are automatically resolved from [jsDelivr](https://www.jsdelivr.com/), so you can import them by package name:
+You can import external JavaScript modules in your scripts using ESM (ECMAScript Modules) syntax. Modules are automatically resolved from [jsDelivr](https://www.jsdelivr.com/) or [esm.sh](https://esm.sh/), so you can import them by package name and version:
 
 ```javascript
-import { cloneDeep } from "lodash-es";
+import { cloneDeep } from "lodash-es@4.17.23";
 ```
 
-:::warning Module compatibility
+:::info Versioning
 
-- Only modules with ESM builds are supported
-- Module compatibility varies depending on the module's dependencies and implementation. Modules without external dependencies have the highest likelihood of working correctly in the sandboxed environment
-- Adding a module import will increase the execution time of your script, so use them judiciously
+- Always specify a version when importing modules to ensure consistent behavior
+- If no version is specified, the latest version available will be used, which may lead to unexpected changes if the module is updated
   :::
 
 ### Example: XML to JSON transformation
 
 ```javascript
-import { XMLParser } from "fast-xml-parser";
+import { XMLParser } from "fast-xml-parser@5.3.4";
 
 /**
  * @param {TransformationEvent} event - Contains the file content and metadata about the file.
@@ -115,6 +114,13 @@ const execute = (event) => {
   return event;
 };
 ```
+
+:::warning Module compatibility
+
+- Only modules with ESM builds are supported
+- Module compatibility varies depending on the module's dependencies and implementation. Modules without external dependencies have the highest likelihood of working correctly in the sandboxed environment
+- Adding a module import will increase the execution time of your script
+  :::
 
 <!-- ### Creating custom modules
 

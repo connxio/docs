@@ -173,4 +173,3 @@ Be sure to read the [Core Concepts](/getting-started/core-concepts) for more inf
 ## Retry
 
 Given that the Service Bus no longer operates in polling mode but rather continuously, the retry mechanism persists indefinitely until connectivity is restored. By default, retries occur every 60 seconds when encountering transient errors. Alternatively, the customer-defined interval takes precedence should the error persist beyond transient conditions. Customization of retry behavior is achievable through inbound retry configuration, allowing customers to override the default settings.
-

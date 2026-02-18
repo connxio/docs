@@ -199,6 +199,23 @@ The Connection String Security Config is used wherever a Connection String is to
 - **Name**: The name that pops up when you select the configuration on an integration.
 - **Connection String**: The connection string for the relevant resource.
 
+### Databricks
+
+This is the databricks delta sharing security config. It contains the two sensitive and constant parts of the delta sharing connection information.
+
+<div style={{maxWidth: '400px'}}>
+  <ThemedImage
+    alt="security config"
+    sources={{
+      light: useBaseUrl('/img/docs/securityconfig/databricks-light.webp'),
+      dark: useBaseUrl('/img/docs/securityconfig/databricks-dark.webp#dark-only'),
+    }}
+  />
+</div>
+
+- **Bearer token**: The long lived bearer token defined in the config.share file.
+- **Endpoint**: The endpoint defined in the config.share file.
+
 ### Azure Credential
 
 The Azure Credential Security Config is used to connect to several Azure resources. Read more about it here: [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory)

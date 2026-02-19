@@ -207,8 +207,8 @@ This is the databricks delta sharing security config. It contains the two sensit
   <ThemedImage
     alt="security config"
     sources={{
-      light: useBaseUrl('/img/docs/securityconfig/databricks-light.webp'),
-      dark: useBaseUrl('/img/docs/securityconfig/databricks-dark.webp#dark-only'),
+      light: useBaseUrl('/img/docs/securityconfig/databricks-light.jpg'),
+      dark: useBaseUrl('/img/docs/securityconfig/databricks-dark.jpg#dark-only'),
     }}
   />
 </div>

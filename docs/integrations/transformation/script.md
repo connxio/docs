@@ -310,9 +310,10 @@ throw new Error("Warning|Integration terminated with warning");
 We support the following options on termination:
 | Code word | Action |
 |---|---|
-| Success| | The termination is logged as a success with the minimum log level.|
-| Warning | The termination is logged as a warning with the minimum log level. |
-| Error | The termination is logged as an error with the none log level. |
-| Loglevel:None | The termination is logged with the terminated status but with the none log level instead of the default minimum level.|
-| Loglevel:Never| | The termination is not logged at all.|
-| _Default behavior_ | The integration is not considered terminated by the user and normal error handling takes over. |
+| Success | The termination is logged as a success with the minimum log level |
+| Warning | The termination is logged as a warning with the minimum log level |
+| Error | The termination is logged as an error with the none log level |
+| Loglevel:None | The termination is logged with the terminated status but with the none log level instead of the default minimum level |
+| Loglevel:Never | The termination is not logged |
+| PersistError | Add <code>\|PersistError</code> at the end of the error message to persist the error to failures |
+| _Default behavior_ | The integration is not considered terminated by the user and normal error handling takes over |

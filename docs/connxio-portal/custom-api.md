@@ -8,7 +8,6 @@ pagination_next: null
 
 Custom APIs are a way of customizing the experience of using Connxio. Using the Custom API solution allows for setting up personalized endpoints which can be freely swapped between integrations based on need and can be used to standardize endpoints instead of using the ConfigCorrelationId for each integration. The custom APIs enable sending messages to the same endpoint using different Http Methods to decide which Connxio Configuration should be run, allowing for deep customization when combined with our [Rules Engine](/integrations/rules) and the [Connxio Macro Language](/integrations/cxmal/connxio-macro-language).
 
-
 ## Getting Started
 
 Setting up a custom API for your integration is super simple! When your Integrations are set up with API as their inbound connections, they will become available in the APIs section in the portal.
@@ -26,12 +25,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   />
 </div>
 
-After entering the APIs section of the portal, you will be met with a menu to create an API. 
+After entering the APIs section of the portal, you will be met with a menu to create an API.
 
 - **Title**: The name of your API.
 - **Summary**: A description of your API. Detail the operations of your API.
 - **Subscription**: The subsription the API should be fetching relevant integrations from.
-- **Routes**: Add the endpoint you wish to communicate with. Set the Http Method, route-string (e.g. */testing*) and set the integration it points to.
+- **Routes**: Add the endpoint you wish to communicate with. Set the Http Method, route-string (e.g. _/testing_) and set the integration it points to.
 
 <div style={{maxWidth: '800px'}}>
   <ThemedImage
@@ -71,9 +70,35 @@ The keys can be enabled and disabled at will, and it is possible to set the API 
 
 <br/>
 
+## Example requests
+
+### API Key in header with Bearer token
+
+```bash
+curl --location 'https://custom.connxio.com/<MY_API_PATH>' \
+--header 'Connxio-Api-Key: <INSERT_API_KEY>' \
+--header 'Authorization: "Bearer <INSERT_ACCESS_TOKEN>"' \
+--header 'Content-Type: application/json' \
+--data '{
+  "foo": "bar"
+}'
+```
+
+### API Key in header with Webhook header (Connxio-Api-Webhook: true)
+
+```bash
+curl --location 'https://custom.connxio.com/<MY_API_PATH>' \
+--header 'Connxio-Api-Key: <INSERT_API_KEY>' \
+--header 'Connxio-Api-Webhook: true' \
+--header 'Content-Type: application/json' \
+--data '{
+  "foo": "bar"
+}'
+```
+
 ## OpenAPI Specification
 
-When you create an API in Connxio, you will also get a related OpenAPI specification overview. This menu is intended to give a familiar feel of the API, and provides the option to download an API-specification as a JSON file. This file is the same as any OpenAPI json file and can be used to e.g. set up an API Management instance. 
+When you create an API in Connxio, you will also get a related OpenAPI specification overview. This menu is intended to give a familiar feel of the API, and provides the option to download an API-specification as a JSON file. This file is the same as any OpenAPI json file and can be used to e.g. set up an API Management instance.
 
 <div style={{maxWidth: '800px'}}>
   <ThemedImage
@@ -85,3 +110,6 @@ When you create an API in Connxio, you will also get a related OpenAPI specifica
   />
 </div>
 
+```
+
+```

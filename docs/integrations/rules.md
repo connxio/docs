@@ -27,7 +27,7 @@ Use [CxMaL](/integrations/cxmal/connxio-macro-language) macros in your condition
 
 ## Datatypes
 
-Rules supports datatypes such as numbers, strings and boolean values.
+Rules supports datatypes such as numbers, strings, boolean and null values.
 
 ### Strings
 
@@ -59,6 +59,14 @@ Can be used to check boolean values in files, or check the result of other macro
 ```
 ('{filename}' == 'myFile') == true
 ```
+
+### Null values
+
+Can be used to check for null values in files.
+```
+'{file:myVariable}' == null
+```
+
 
 ## Examples
 

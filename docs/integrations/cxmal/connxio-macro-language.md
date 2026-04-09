@@ -31,9 +31,31 @@ The pipes are used to perform some kind of action based on the output of the mac
 | Pipe | Description | Usage |
 | --- | --- | --- |
 | [date](/integrations/cxmal/pipes/date.md) | Formats the value output from the macro statement as a date. The date pipe accepts [standard](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings) and [custom](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings) date and time formats strings | Macro output value: <code>2022-06-11T12:15:55.9695313</code> <br /> pipe <code>\| date: dd.MM.yyyy HH.mm.ss</code> <br /> becomes <code>11.06.2022 12.15.55</code> |
-| [string](/integrations/cxmal/pipes/string.md) | Formats sting values. Supported operator are: <br /> toLower <br /> toUpper| Macro output value: <code>My Output String</code> <br /> pipe <code>\| string: toUpper</code> <br /> becomes <code>MY OUTPUT STRING</code> |
+| [string](/integrations/cxmal/pipes/string.md) | Formats sting values. Supported methods are: <br /> toLower <br /> toUpper| Macro output value: <code>My Output String</code> <br /> pipe <code>\| string: toUpper</code> <br /> becomes <code>MY OUTPUT STRING</code> |
 | [array](/integrations/cxmal/pipes/array.md) | Array opperations. Supported methods are: <br /> contains <br /> notContains | <code> file:myArray \| array: contains(5)</code> becomes <code>true</code> or <code>false</code> |
-| [error](/integrations/cxmal/pipes/error.md) | Used as a kind of error handling when using CxMaL. If a macro statement would fail for some reason the CxMaL default behaviour is to leave the statement untouched in the output. By using the error pipe you are enabled to control the outcome of a replacement failure. | <code> \| error: ignore</code>: Ignores the macro statement and leaves it untouched. <br /> <code>\| error: remove</code>: Removes the failing macro statement. <br /> <code>\| error: terminate</code>: Terminates the integration process. <br /> <code>\| error: fallback My value</code> will yield the result <code> My value</code> if the macro statement fails.|
+
+#### Error handling with pipes
+
+These pipes can be used to handle errors that could occur during macro execution. Only the first valid error handling pipe is executed during an error. All other pipes gets skipped if an error handling pipe gets triggered.
+
+| Pipe | Description | Usage |
+| --- | --- | --- |
+| [error](/integrations/cxmal/pipes/error.md) | A generic error handling pipe that handles all errors during macro execution. This pipe is only triggered if an error occured. | <code> \| error: ignore</code>: Ignores the macro statement and leaves it untouched. <br /> <code>\| error: remove</code>: Removes the failing macro statement. <br /> <code>\| error: terminate</code>: Terminates the integration process. <br /> <code>\| error: fallback My value</code> will yield the result <code> My value</code> if the macro statement fails.|
+| [null](/integrations/cxmal/pipes/null.md) | Only handles errors specifically related to null references. Other errors will not trigger this pipe. | <code> \| null: ignore</code>: Ignores the macro statement and leaves it untouched. <br /> <code>\| null: remove</code>: Removes the failing macro statement. <br /> <code>\| null: terminate</code>: Terminates the integration process. <br /> <code>\| null: fallback My value</code> will yield the result <code> My value</code> if the macro statement results in a null error.|
+
+### Pipe chaining
+
+The following example uses three pipes. These pipes are executed in order, depending on the result of the macro.
+
+```
+{file:myVariable | null: fallback myDefaultValue | error: terminate | string: toUpper} 
+```
+
+* If `myVariable` resolved to null, then the null pipe would trigger. The final result would become `myDefaultvalue`. 
+
+* If there was an error reading the file, then the null pipe would not trigger. The next pipe here is the error pipe, which would then trigger and cause that specifig message in the integration to stop.
+
+* If no error occured, then the value in `myVariable` would be retrieved. The last pipe would then trigger and execute the `string: toUpper` method on the macro result.
 
 
 ## Use cases

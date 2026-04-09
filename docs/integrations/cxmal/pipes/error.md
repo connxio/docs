@@ -3,7 +3,7 @@
 
 Use the error pipe to handle errors during macro processing.
 
-Supported error pipes are:
+Supported pipe actions are:
 * Ignore
 * remove
 * fallback

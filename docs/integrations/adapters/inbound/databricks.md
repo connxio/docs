@@ -1,3 +1,7 @@
+---
+title: "Databricks"
+---
+
 # Databricks
 
 The Databricks inbound adapter in Connxio enables integration with Azure [Databricks Delta Sharing](https://learn.microsoft.com/en-us/azure/databricks/delta-sharing/). Delta Sharing is a secure data sharing platform that lets you share data and AI assets in Azure Databricks with users outside your organization, regardless of whether they use Azure Databricks.

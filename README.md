@@ -22,7 +22,3 @@ Our documentation is available at [docs.connxio.com](https://connxio.github.io/d
 | Build & Release Status                                                                                                                                                                            |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [![Deploy to GitHub Pages](https://github.com/connxio/docs/actions/workflows/deploy-to-github-pages.yml/badge.svg)](https://github.com/connxio/docs/actions/workflows/deploy-to-github-pages.yml) |
-
-## Contact
-
-If you have any questions or issues, please register them at our [issue tracker found here](https://github.com/connxio/connxio).

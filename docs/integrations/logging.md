@@ -4,26 +4,26 @@ sidebar_position: 6
 
 # Logging
 
-Connxio lets customers use a variety of different logging options, solutions and setups. Communicate Norge offers our transaction-based logging software [Archeo](https://www.archeo.no/) as a supplement to Connxio, and since we develop both products, the compatibility and feature richness is enhanced with this combination. However, we also support sending logs via webhook, which allows for logging to the customers logging provider of choice. This page details how to set up logging and how logging is configured.
+Connxio supports several logging setups. Evidi offers transaction-based logging software in [Archeo](https://www.evidi.com/no/produkter/archeo) as a Connxio supplement, with enhanced compatibility because both products are developed together. Connxio can also send logs by webhook to your preferred logging provider.
 
-We also offer total *integration as a service* where we handle logging, support, surveillance and fault detection on behalf of our customers. Please contact our sales department at [evidi.com/kontakt](https://www.evidi.com/kontakt) for further information.
+We also offer _integration as a service_, where we handle logging, support, surveillance, and fault detection for you. Contact sales at [evidi.com/kontakt](https://www.evidi.com/kontakt) for more information.
 
 ## What does Connxio log?
 
-Connxio sends logs from the internal engine to the configured logging provider every time a message is processed through a Connxio integration defined by the Connxio integration configuration. What logs are sent by Connxio is configured for each integration in accordance with customer needs. These options are detailed [below](#how-to-start-logging).
+Connxio sends logs from the internal engine to the configured provider whenever a message is processed through an integration. You choose what to log per integration, based on your needs. See [How to start logging](#how-to-start-logging).
 
 ### Log-levels
 
-Connxio operates with the term *log-levels*. A log-level is a set of logs that together define a level of information about the integrations journey through Connxio. Each log-level **includes the logs and statuses from the less verbose layer**. The log-levels are as follows:
+Connxio uses _log-levels_ to control how much information is logged about a message's journey. Each level **includes the logs and statuses from less verbose levels**.
 
 1. Error - Nothing is logged except critical errors.
 2. Minimum - The first inbound step and the last outbound step are logged.
 3. Standard - All transformations are logged.
-4. Verbose - All possible information is logged
+4. Verbose - All possible information is logged.
 
 #### Error
 
-The *Error* log-level does not send any logs to the logging provider with a notable exception; if a logging provider is defined on the configuration and the *Errpr* log-level is selected all critical errors are still logged. Since you could turn logging off just by not configuring a logging provider the *Error* level lets you log only critical errors and nothing else. We would highly recommend always configuring a logging provider and setting this log level even if you don't want any regular logging for the integration, so that you can catch irregularities and patch them as needed.
+The _Error_ level logs only critical errors. We recommend configuring a logging provider and using this level even when you do not want regular logging, so you can still detect and fix failures.
 
 **Statuses logged:**
 
@@ -31,46 +31,46 @@ The *Error* log-level does not send any logs to the logging provider with a nota
 
 #### Minimum
 
-The *Minimum* log-level logs when the message is first seen by Connxio, this could be when the message is received by the API or picked from the chosen protocol like SFTP or Azure Storage. It also enables logs for the last time Connxio sees the message, this could be when the message is safely delivered to an SFTP folder or Service Bus topic. If you use the [Acknowledgement functionality](/integrations/adapters/outbound/Acknowledgment), the acknowledgement message is also logged on this level.
+The _Minimum_ level logs the first and last time Connxio sees a message, such as when it is received by the API or picked up from SFTP or Azure Storage, and when it is delivered to SFTP or a Service Bus topic. If you use [Acknowledgement functionality](/integrations/adapters/outbound/Acknowledgment), the acknowledgement message is also logged.
 
 **Statuses logged:**
 
-- **Warnings** that pertain to retry and critical processes and transformations. Excludes warnings that re related to customer choice.
+- **Warnings** for retries and critical processes or transformations. Excludes warnings related to customer choice.
 - **Success**
 - **Terminated**
 
 #### Standard
 
-This level includes the less verbose levels but also adds all transformation steps. This includes but is not limited to data collection, code mapping, integration account mapping, file encoding, format conversion. This level is recommended for non-trivial integrations that don't generate a lot of traffic. Traffic concerns are addressed [here](#to-log-or-not-to-log).
+The _Standard_ level adds transformation steps, including data collection, code mapping, integration account mapping, file encoding, and format conversion. Use this for non-trivial integrations with moderate traffic. See [To log or not to log?](#to-log-or-not-to-log).
 
-**Statuses logged:** *No change from minimum level*
+**Statuses logged:** _No change from minimum level_
 
 #### Verbose
 
-The *Verbose* level logs every conceivable event of interest thorough Connxio. It could be seen as a debug level, and logs all transmission between internal Connxio engines, warning on retry or failed transient processes, initiation of external communication and more. This level is only recommended for debug purposes or for mission critical integrations.
+The _Verbose_ level logs every event of interest through Connxio, including internal engine transmissions, retry warnings, transient failures, and external communication. Use it for debugging or mission-critical integrations.
 
-**Statuses logged:** *Logs all statuses*
+**Statuses logged:** _Logs all statuses_
 
 ## Statuses
 
-Connxio has a set of default statuses that correspond to the logging event context. We currently have the following statuses:
+Connxio uses these default statuses:
 
-| Status | Description |
-|---|---|
-| Success | The event represents a success such as the message being received successfully in an adapter or transformed successfully in a code component |
-| Warning | A failure has happened while executing the Connxio pipeline, but is non critical and the process is either continued or retried as described on the [retry page](/integrations/retry). |
-| Error | A failure has happened while executing the Connxio pipeline and the process has stopped. This can be cause by external services like enrichment endpoints, transformations or adapter targets, but can also be caused by internal faults in Connxio. Refer to the description to analyze and react to the error.|
-| Terminated | The pipeline was terminated by the user. Either via [code components](/integrations/transformation/code-components) of via [data collection](/integrations/transformation/data-collection).|
+| Status     | Description                                                                                                                                                                      |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Success    | The event completed successfully, such as a message received by an adapter or transformed by a code component.                                                                   |
+| Warning    | A non-critical failure occurred, and the process continued or retried as described on the [retry page](/integrations/retry).                                                     |
+| Error      | A failure stopped the pipeline. This can be caused by external services, transformations, adapter targets, or internal Connxio faults. Use the description to analyze the error. |
+| Terminated | The user terminated the pipeline through [code components](/integrations/transformation/code-components) or [data collection](/integrations/transformation/data-collection).     |
 
 > Attention! When using Archeo logging remember to add all these statuses to Archeo
 
 ## Contracts
 
-Connxio provides users with a set of contracts to use when logging. A contract refers to the json model that defines the received event body. Currently we provide two contracts; Archeo and Internal. We would like to point out that it's entirely possible to use the Archeo contract even if you do not use the Archeo logging provider
+Connxio provides two logging contracts: Archeo and Internal. A contract is the JSON model for the event body. You can use the Archeo contract even when you do not use Archeo as the logging provider.
 
 ### Archeo Contract
 
-The Archeo contract looks like this, the value of the field describes what Connxio property is put in each field:
+The Archeo contract maps Connxio properties to these fields:
 
 ```json
 {
@@ -91,7 +91,7 @@ The Archeo contract looks like this, the value of the field describes what Connx
 
 ## Internal contract
 
-The internal contract is the internal format used by Connxio itself. This format has the conventional Connxio names for all properties and includes the maximum amount of information available at the time of event creation:
+The internal contract uses Connxio's own property names and includes the maximum information available when the event is created:
 
 ```json
 {
@@ -118,17 +118,17 @@ The internal contract is the internal format used by Connxio itself. This format
 
 ## Metadata
 
-When the pipeline instance is created within Connxio upon data entering through an adapter, a context is implicitly created with the message. This context is described on [the Metadata page](/integrations/metadata). Below we describe how you can influence logging by turning metadata on or off.
+When data enters through an adapter, Connxio creates a pipeline instance with message context. This context is described on [the Metadata page](/integrations/metadata). You can control whether metadata is logged.
 
 ### Secondary content
 
-Secondary content is data that is logged either as a replacement to the message content itself or beside it. Consider the following example; we send a message to the Connxio Api and Connxio accepts and starts processing said message. The message fails with an exception message but you, as a customer, have configured Connxio to log message content. Where do we put the exception message? We can't replace the message content because this may be critical for the debugging process, so we needed a secondary field, and we named it *secondary content*. We use secondary content exclusively for failures and exception messages. To be specific we have defined the following scenarios, dependant on the contract choice:
+Secondary content stores failure or exception details when message content must also be preserved. For example, if Connxio logs message content and the message fails during processing, the exception message is logged as secondary content instead of replacing the original message.
 
 #### Archeo behavior
 
-Refer to the [how to start logging](#how-to-start-logging) section for explanations for the properties mentioned in the scenarios below.
+See [How to start logging](#how-to-start-logging) for the properties used below.
 
-1. If message *content logging* is enabled but *metadata logging* is turned off we concatenate the exception message and the file-content into a single file. A concatenated file looks something like this:
+1. If _content logging_ is enabled and _metadata logging_ is off, Connxio concatenates the exception message and file content:
 
 ```json
 Information:
@@ -144,35 +144,35 @@ FileContent:
 
 ```
 
-2. If message *content logging* is enabled and *metadata logging* is turned on we add the error message to the metadata object. You will find the file content in the content section of Archeo as usual and the error content will look like this in the metadata section:
+2. If _content logging_ and _metadata logging_ are enabled, Connxio adds the error message to the metadata object. The file content remains in the Archeo content section:
 
 ```json
 {
-    "ConfigCorrelationId": "guid",
-    "DataCollection": "{}",
-    "ErrorMessage": "MessageHub.Models.Exceptions.NonTransientException: Failure example at Connxio.TransformationEngine.Functions.Transformation.Mapping.Code.CodeTransformer.MapWithCode(CodeMappingProperties codeMappingProperties, Byte[] fileContent, String interchangeId, MetaData metaData) in D:\\a\\1\\s\\Connxio.TransformationEngine\\Functions\\Transformation\\Mapping\\Code\\CodeTransformer.cs:line 186\r\n   at Connxio.TransformationEngine.Functions.Transformation.Mapping.Code.CodeTransformer.Transform(Byte[] fileContent, Int32 index, IntegrationConfig integrationConfig, SubIntegration subIntegration, TransformationAction transformationAction, ConfigurationBasedSbMessage sbMsg, ILogEventHandler logEventHandler, Int32 deliveryCount, Int32 maxRetryCount) in D:\\a\\1\\s\\Connxio.TransformationEngine\\Functions\\Transformation\\Mapping\\Code\\CodeTransformer.cs:line 44",
-    "InboundAdapter": "SFTP",
-    "InboundFileName": "filename.txt",
-    "InterchangeId": "guid",
-    "ManualResendCount": "0",
-    "Started": "11/11/2021 2:42:38 PM",
-    "TransactionType": "Account",
-    "TransformationBlobName": "guid.txt",
-    "UserDefinedProperties": "{}"
+  "ConfigCorrelationId": "guid",
+  "DataCollection": "{}",
+  "ErrorMessage": "MessageHub.Models.Exceptions.NonTransientException: Failure example at Connxio.TransformationEngine.Functions.Transformation.Mapping.Code.CodeTransformer.MapWithCode(CodeMappingProperties codeMappingProperties, Byte[] fileContent, String interchangeId, MetaData metaData) in D:\\a\\1\\s\\Connxio.TransformationEngine\\Functions\\Transformation\\Mapping\\Code\\CodeTransformer.cs:line 186\r\n   at Connxio.TransformationEngine.Functions.Transformation.Mapping.Code.CodeTransformer.Transform(Byte[] fileContent, Int32 index, IntegrationConfig integrationConfig, SubIntegration subIntegration, TransformationAction transformationAction, ConfigurationBasedSbMessage sbMsg, ILogEventHandler logEventHandler, Int32 deliveryCount, Int32 maxRetryCount) in D:\\a\\1\\s\\Connxio.TransformationEngine\\Functions\\Transformation\\Mapping\\Code\\CodeTransformer.cs:line 44",
+  "InboundAdapter": "SFTP",
+  "InboundFileName": "filename.txt",
+  "InterchangeId": "guid",
+  "ManualResendCount": "0",
+  "Started": "11/11/2021 2:42:38 PM",
+  "TransactionType": "Account",
+  "TransformationBlobName": "guid.txt",
+  "UserDefinedProperties": "{}"
 }
 ```
 
-3. If message *content logging* is disabled and *metadata logging* is turned off the exception message is logged as the file content.
+3. If _content logging_ and _metadata logging_ are disabled, Connxio logs the exception message as file content.
 
 #### Internal contract behavior
-  
+
 ## How to start logging
 
-All logging providers are treated equally in relation to Connxio, and we do have a goal of adding provider specific convenience configuration for the largest providers in the future, currently however we only have a convenience configuration section for Archeo, but you can configure both Archeo and all other RESTful providers by selecting the Webhook configuration option.
+Connxio treats all logging providers equally. Archeo has a convenience configuration section, but you can configure Archeo and other RESTful providers with the Webhook option.
 
-All logging options require a [Security Configuration](/connxio-portal/security-configurations). Set this up by following the steps described on the Security Configuration page and select the definition as described below.
+All logging options require a [Security Configuration](/connxio-portal/security-configurations). Create one by following the Security Configuration page, then select it as described below.
 
-Logging is configured under the Logging section on the left hand side of the integration configuration view, as shown below. On *Guided mode* logging is configured under the "Logging" section situated inside the "General" tab.
+In the integration configuration view, open the Logging section on the left. In _Guided mode_, open the "Logging" section inside the "General" tab.
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -189,9 +189,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ### Webhook
 
-Use this option for all logging providers except Archeo. Logging is configured under the Logging section on the left hand side of the integration configuration view, as shown below. On *Guided mode* logging is configured under the "Logging" section situated inside the "General" tab.
+Use this option for all logging providers except Archeo.
 
-Click the "Add Logging" button to add a new webhook. Events will be duplicated across all configured webhooks, but will respect the individual configuration for each logging instance like "Log Level" or "Custom Description". Configure the webhook with the required parameters like so:
+Click "Add Logging" to add a webhook. Events are sent to all configured webhooks and respect each instance's settings, such as "Log Level" and "Custom Description".
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -203,27 +203,25 @@ Click the "Add Logging" button to add a new webhook. Events will be duplicated a
   />
 </div>
 
-- **Method**: The HTTP verb to use when contacting the restful endpoint.
-- **Endpoint Url**: The url of the endpoint.
-- **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
+- **Method**: The HTTP verb for the REST endpoint.
+- **Endpoint Url**: The endpoint URL.
+- **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) used to authenticate the request.
 - **Log Level**: Explained in the [Log Levels section](#log-levels).
-- **Contract**: Is explained under the [Contracts section](#contracts).
+- **Contract**: Explained in the [Contracts section](#contracts).
 - **Inbound message type**: Changes the message type for the first success message logged.
 - **Outbound message type**: Changes the message type for the last success message logged.
 - **Custom Inbound Description**: Changes the description for the first success message logged.
 - **Custom Outbound Description**: Changes the description for the last success message logged.
 - **Transaction Tag**: Adds content to the `customTag` property.
-- **Log Metadata**: Enables logging of metadata when switched on. Read more under [Metadata](#metadata).
-- **Log Message Content**: Enables logging of message content when switched on. Read more under [Secondary Content](#secondary-content).
-- **Enabled**: Turns off this instance of the log event handler. No logs will be sent *at all* with this setting switched off.
+- **Log Metadata**: Enables metadata logging. Read more under [Metadata](#metadata).
+- **Log Message Content**: Enables message content logging. Read more under [Secondary Content](#secondary-content).
+- **Enabled**: Turns this log event handler on or off. When off, no logs are sent.
 
 ### Archeo
 
-Use this convenience option if you want to send logs generated by Connxio to Archeo. This requires an [active Archeo subscription](https://www.archeo.no/pricing) that is scaled to handle the amount of logs sent from Connxio (see [To log or not to log?](#to-log-or-not-to-log) for more information).
+Use this option to send Connxio logs to Archeo. This requires an [active Archeo subscription](https://www.archeo.no/pricing) scaled for the amount of logs Connxio sends. See [To log or not to log?](#to-log-or-not-to-log).
 
-Logging is configured under the Logging section on the left hand side of the integration configuration view, as shown below. On *Guided mode* logging is configured under the "Logging" section situated inside the "General" tab.
-
-Click the "Add Logging" button to add a new webhook. Events will be duplicated across all configured webhooks, but will respect the individual configuration for each logging instance like "Log Level" or "Custom Description". Configure the webhook with the required parameters like so:
+Click "Add Logging" to add an Archeo logging instance. Events are sent to all configured logging instances and respect each instance's settings.
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -235,23 +233,23 @@ Click the "Add Logging" button to add a new webhook. Events will be duplicated a
   />
 </div>
 
-- **Archeo Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request to Archeo.
+- **Archeo Security Configuration**: The [security configuration](/connxio-portal/security-configurations) used to authenticate requests to Archeo.
 - **Log Level**: Explained in the [Log Levels section](#log-levels).
-- **Contract**: Is explained under the [Contracts section](#contracts).
+- **Contract**: Explained in the [Contracts section](#contracts).
 - **Inbound message type**: Changes the message type for the first success message logged.
 - **Outbound message type**: Changes the message type for the last success message logged.
 - **Custom Inbound Description**: Changes the description for the first success message logged.
 - **Custom Outbound Description**: Changes the description for the last success message logged.
 - **Transaction Tag**: Adds content to the `customTag` property.
-- **Log Metadata**: Enables logging of metadata when switched on. Read more under [Metadata](#metadata).
-- **Log Message Content**: Enables logging of message content when switched on. Read more under [Secondary Content](#secondary-content).
-- **Enabled**: Turns off this instance of the log event handler. No logs will be sent *at all* with this setting switched off.
+- **Log Metadata**: Enables metadata logging. Read more under [Metadata](#metadata).
+- **Log Message Content**: Enables message content logging. Read more under [Secondary Content](#secondary-content).
+- **Enabled**: Turns this log event handler on or off. When off, no logs are sent.
 
-The example above uses the minimum viable settings to set up Archeo logging. Feel free to fill in all fields for your logging config.
+The example above uses the minimum required settings for Archeo logging. Fill in the other fields as needed.
 
 ## External content
 
-Logging allows customers to host message content externally. Connxio has incorporated this process and has implemented a webhook interface which lets a customer receive the logged message content from Connxio and return a Uri to the content storage location. To start using this functionality, first enable the "Log Message Content" option, a new option to log content externally will then become visible as you see below:
+Connxio can log message content to external storage. The webhook receives the logged message content from Connxio and returns a URI for the storage location. To use this, enable "Log Message Content". The external content option then appears:
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -263,15 +261,15 @@ Logging allows customers to host message content externally. Connxio has incorpo
   />
 </div>
 
-- **Method**: The HTTP verb to use when contacting the restful endpoint.
-- **Endpoint Url**: The url of the endpoint.
-- **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
+- **Method**: The HTTP verb for the REST endpoint.
+- **Endpoint Url**: The endpoint URL.
+- **Security Configuration**: The [security configuration](/connxio-portal/security-configurations) used to authenticate the request.
 - **Add Header**: Adds a header to every request handled by this webhook.
-- **Send content on External Failure**: If enabled the option will cause Connxio to send the file content to Archeo if the external service fails. If disabled no content will be sent on external service failure.
+- **Send content on External Failure**: Sends file content to Archeo if the external service fails. When disabled, no content is sent after an external service failure.
 
 ### Expected API behavior
 
-Connxio sends the file content in the body of the configured HTTP request and expects a json object containing the uri as a response:
+Connxio sends file content in the HTTP request body and expects a JSON object with the URI:
 
 ```csharp
 {
@@ -281,20 +279,20 @@ Connxio sends the file content in the body of the configured HTTP request and ex
 
 ## To log or not to log?
 
-Deciding when to log is paramount for being able to monitor integrations successfully. In this section we take a look at some questions you should be asking yourself when configuring logging in Connxio. First of all: logging is expensive. Many systems including the ones created by us have significant costs associated with logging, and generally one of the most effective ways of cost reduction within software development is the optimization of logging. As such we strongly recommend that all customers go through each production ready integration and ask themselves three questions:
+Good logging improves monitoring, but logging can be expensive. For each production-ready integration, consider these questions:
 
 ### Is the traffic low enough and the contents important enough that we should log on success?
 
-Depending on the log provider the cost of thousands or even millions of messages could be low but chances are they aren't. If you integration processes more than ten thousand messages per day (this includes splitting) you should probably not log on a log-level other than *None* without a very good reason, and while being aware of the cost.
+Depending on the provider, logging thousands or millions of messages may be costly. If your integration processes more than ten thousand messages per day, including split messages, avoid success logging unless you have a clear reason and understand the cost.
 
 ### Is the message content important enough to include?
 
-As seen above you can exclude the actual message content from all logs. In a lot of cases the [metadata](/integrations/metadata) that is the log event itself is enough to monitor integration flows. Think carefully before you log the actual content.
+You can exclude message content from logs. In many cases, [metadata](/integrations/metadata) is enough to monitor integration flows.
 
 ### What level of logging is suited for this integration?
 
-This really depends on the criticality of the integration itself, the potential for failure, the consequences of failure and a lot of other parameters. The answer here is never simple but could be critical to keeping logging costs down. We recommend that you go through each and every integration with a critical eye towards logging amount after deploying to production but also after the integration has been running for a while. In this way you can evaluate and re-configure logging as needed.
+Choose the level based on traffic, criticality, failure risk, and the consequences of failure. Review logging after production deployment and again after the integration has run for a while, then adjust as needed.
 
 ## Logging outside Connxio
 
-In many cases there is integration being done either before of after a message is passed of to Connxio for processing. We recommend tying these actions into the Connxio flow with you own logging, in this way you get a complete picture of the actual actions involved in you integration. This is very easy with Archeo, and should be possible with most third party providers as well. When setting this up you need to use your InterchangeId to pair your internal logs with Connxio's generated log events. See more about InterchangeId [here](/getting-started/core-concepts).
+In many cases, integration work happens before or after Connxio processing. Add your own logging around those steps to get a complete picture of the flow. Use the `InterchangeId` to connect your internal logs with Connxio's generated log events. See more about `InterchangeId` [here](/getting-started/core-concepts).

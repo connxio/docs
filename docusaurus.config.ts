@@ -129,24 +129,6 @@ const config: Config = {
           label: "REST API",
           activeBasePath: "reference",
         },
-        // {
-        //   to: "/changelog",
-        //   label: "Changelog",
-        //   position: "left",
-        //   activeBasePath: "changelog",
-        // },
-        {
-          href: "https://app.connxio.com",
-          position: "right",
-          className: "header-portal-link",
-          "aria-label": "Connxio Portal",
-        },
-        {
-          href: "https://github.com/connxio/connxio",
-          position: "right",
-          className: "header-github-link",
-          "aria-label": "GitHub repository",
-        },
       ],
     },
     footer: {

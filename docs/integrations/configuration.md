@@ -4,28 +4,12 @@ sidebar_position: 2
 pagination_prev: null
 ---
 
-# Creating Integrations
-
-Before reading this page please read the [core concepts page](/getting-started/core-concepts) where we explain a lot of the concepts essential to understanding Connxio. This page describes the integration creation process and design in Connxio.
-
-## Starting out
-
-To start creating integrations you need to navigate to the **Integrations** entry in the Main Navigation on the left-hand side like so:
-
-<!-- ![img](https://cmhpictsa.blob.core.windows.net/pictures/Main%20menu%20integrations.png?sv=2020-08-04&st=2021-11-22T11%3A47%3A28Z&se=2040-11-23T11%3A47%3A00Z&sr=b&sp=r&sig=NkET%2FNnvgfdmAqdiOANvzYtvMFfhUe1zro05lotxXs4%3D) -->
-
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="Configuring inbound connection"
-    sources={{
-      light: useBaseUrl('/img/docs/integration/menu-light.webp'),
-      dark: useBaseUrl('/img/docs/integration/menu-dark.webp#dark-only'),
-    }}
-  />
-</div>
+# Creating Integrations
+
+To start creating integrations navigate to the "Integrations" tab in the left menu of the Connxio portal. This will open a page with a list of all your integrations. To create a new integration click the "Add Integration" button on the top right of the page. This will open a new page with a blank integration configuration.
 
 A list of all available integrations in your subscription pops up.
 You can search for integrations in the top left.
@@ -40,8 +24,8 @@ You can search for integrations in the top left.
   />
 </div>
 
- To the right of the search bar, are settings where you can toggle to view *archived* integrations and dynamic columns- meaning you can change the integration list columns to your liking.
- To add a new integration click the **Add Integration** button on the top right: 
+To the right of the search bar, are settings where you can toggle to view _archived_ integrations and dynamic columns- meaning you can change the integration list columns to your liking.
+To add a new integration click the **Add Integration** button on the top right:
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage

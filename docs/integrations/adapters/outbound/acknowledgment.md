@@ -31,6 +31,7 @@ Ack delivery can be configured on all outbound adapters in Connxio. You can use 
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import RequiredNugetPackage from '@site/docs/\_shared/RequiredNugetPackage.mdx';
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -54,7 +55,7 @@ When you click the "Edit ACK Options" button a menu pops up. Configure the Ack o
   />
 </div>
 
-- **Code Acknowledgement Map (Code Component)**: The *Code Component* is selected as described in the [Code Components](/integrations/transformation/code-components) section.
+- **Code Acknowledgement Map (Code Component)**: The _Code Component_ is selected as described in the [Code Components](/integrations/transformation/code-components) section.
 - **Outbound file format**: Only applicable if the adapter delivers a file and denotes the file format and ending of the file.
 - **Adapter Type**: The type of adapter to use to deliver the ACK message. All adapter configuration is explained under the `Adapters` header.
 
@@ -71,6 +72,10 @@ When acc is enabled for an adapter the adapter will display an icon like this in
 </div>
 
 ## Creating Ack code components
+
+### Required NuGet package
+
+<RequiredNugetPackage />
 
 Creating an Ack code component is done in more or less the same way as [map code components](/integrations/transformation/code-components). The only differences are that an Ack code componenet requires the 'IConnXioAck' interface and that is takes 'bool success' as a parameter.
 
@@ -99,7 +104,7 @@ Creating an Ack code component is done in more or less the same way as [map code
             //Return string representation of the ACK
             return transformationContext;
         }
-    }    
+    }
 
     public class CustomAck
     {

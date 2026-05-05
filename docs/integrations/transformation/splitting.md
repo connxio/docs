@@ -4,43 +4,25 @@ sidebar_position: 40
 
 # Splitting
 
-Connxio gives customers the ability to split messages into smaller units. We do this by running the content through a [Code Component](/integrations/transformation/code-components) that defines how the file should be split and then sends the smaller units through the pipeline as new messages. This page describes how to utilize the splitting functionality.
+Splitting breaks one message into multiple smaller messages. Each part is sent through the pipeline independently as a new message.
 
 ## Limitations
 
-There are very few limits to splitting the only one being that we support files up to `100mb` only. However, you can split files into any amount of messages, and process them in any shape or form in further transformations. After the splitting is run all files will be handled as a unique message inside Connxio which means they will generate separate [logs](/integrations/logging), [resend-events](/connxio-portal/resending-api) and errors.
+Connxio supports input files up to `100 MB`. There is no limit on the number of output messages. Each split message is treated as an independent message, with its own [logs](/integrations/logging), [resend events](/connxio-portal/resending-api), and errors.
 
-> Splitting can generate enormous amounts of traffic. Be sure that you test your receiving systems thoroughly before you send production level loads.
-
-## Testing and best practices
-
-Splitting requires special care when testing since it can generate millions of messages in a short amount of time. Connxio has a heavily tuned splitting algorithm that utilizes parallelization to generate messages in a rate of about 4000 per second at full capacity. This means that we recommend the following test pipeline:
-
-1. Test you integration with a single file that splits into 2 messages.
-2. Add 2 files with 200 messages.
-3. Test 2 files with progressively larger loads (we recommend multiplying by 10 at a time) until you reach production level.
-
-Obviously you can ignore steps that are unrealistic for production level load, ie. if you are estimating a load of 10 messages a day you can go straight to testing with production load levels. We do ask that you test for **peak load traffic** multiplied by 2. This adds stability for unexpected scenario's as well a prepares the receiving system for future load.\
- The reason for this recommended testing pipeline is that testing generates traffic which is payable, and we do not want our customers to incur costs for failed test runs caused by non-tested code and bad setup.
+:::caution
+Splitting can generate large amounts of traffic. Test your receiving systems thoroughly before sending production-level loads.
+:::
 
 ## Configuring Splitting
 
-To configure Connxio to use code mapping as a transformation, select _Splitting_ in the "Transformations" shape:
+To configure splitting, select _Splitting_ in the "Transformations" list.
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import RequiredNugetPackage from '@site/docs/\_shared/RequiredNugetPackage.mdx';
 
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="outbound connections"
-    sources={{
-      light: useBaseUrl('/img/docs/transformations/transformations-light.webp'),
-      dark: useBaseUrl('/img/docs/transformations/transformations-dark.webp#dark-only'),
-    }}
-  />
-</div>
-
-On creating a new transformation, a popup with the transformation's input fields will appear.
+When you create a new transformation, a popup appears with the splitting input fields.
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -52,17 +34,20 @@ On creating a new transformation, a popup with the transformation's input fields
   />
 </div>
 
-Read more below on how
-the Splitting transformation works.
+See the sections below for how splitting code and retries work.
 
 ## Creating splitting code components
 
-When implementing splitting into your integration the first step is to create the code that splits your message into smaller components. This is done in more or less the same way as [map code components](/integrations/transformation/code-components) but with a few key differences.
+### NuGet package
 
-Firstly you need to create the splitting code itself, see the code components page for a simple rundown of the process, but instead of using the boiler plate described there for maps you use the for splitting detailed below:
+<RequiredNugetPackage />
+
+Start by creating code that splits a message into multiple output messages. This is similar to [map code components](/integrations/transformation/code-components), but uses the splitting interface.
+
+Use the splitting boilerplate below:
 
 ```csharp
-public class MyFirstSplitter : IConnXioSplit
+public class MyFirstSplitter : IConnxioSplit
 {
     public IEnumerable<TransformationContext> Split(TransformationContext transformationContext)
     {
@@ -95,10 +80,23 @@ public class MyFirstSplitter : IConnXioSplit
 }
 ```
 
-**Upload the component** by using the methods described on the [code components page](/integrations/transformation/code-components). Remember to choose the _splitting_ type.
+**Upload the component** using the process on the [code components page](/integrations/transformation/code-components), and select the _splitting_ type.
+
+## Testing and best practices
+
+Connxio can generate messages at ~4000 per second at full capacity, so uncontrolled test runs can produce a lot of traffic and incur costs. Recommended test progression:
+
+1. One file that splits into 2 messages.
+2. Two files with 200 messages each.
+3. Progressively larger files (multiply by 10) up to production level.
+
+Always test at **peak load × 2** to account for unexpected spikes.
 
 ## Retry
 
-Splitting has multiple retry patterns that differ based on which step of the splitting process that fails. If the process fails on transient errors before running the splitting code component the system puts the original messages back in queue and tries again 10 times. If the failure is happens after running the splitting code the algorithm tries to send the message to the next pipeline step multiple times with increasing delay until the message is scheduled for retry through the [disaster pipeline](/integrations/retry).
+Retry behavior depends on where failure occurs:
 
-REtry can end up causing delays in the delivery of splitted message units. If you experience problems like this, your logging provider should have received warnings about the fault, if not please contact your representative.
+1. If a transient error happens before the splitting code runs, the original message is returned to the queue and retried up to 10 times.
+2. If failure happens after splitting code runs, Connxio retries delivery with increasing delay, then schedules the message through the [disaster pipeline](/integrations/retry).
+
+Retries can delay delivery of split message units. Check your logging provider for warnings; if none appear, contact your representative.

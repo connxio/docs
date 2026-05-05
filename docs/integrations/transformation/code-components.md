@@ -3,30 +3,40 @@
     sidebar_position: 20
 ---
 
+import RequiredNugetPackage from '@site/docs/\_shared/RequiredNugetPackage.mdx';
+
 # Code components
 
-Connxio uses C# code to transform data at multiple points through the Connxio pipeline. This page describes how to create a _code component_ for transformation, where you can use it and what possibilities open up to you by using it. See [splitting](/integrations/transformation/splitting) and [batching](/integrations/transformation/batching) for information on code components within those processes.
+Connxio uses C# code components to transform data at multiple points in the pipeline. This page explains how to create, upload, and use them. For splitting and batching variants, see [splitting](/integrations/transformation/splitting) and [batching](/integrations/transformation/batching).
 
 ## What is a code component?
 
-A code component is essentially C# code compiled into a dll file. We use reflection to run these files in a sandbox where we supply the message content and other variables and use the output for further processing.
+A code component is C# code compiled into a DLL. Connxio runs it in a sandbox, provides message content and metadata, and uses the returned output in the next pipeline step.
 
 ## Creating a component
 
-The easiest way to create you own code component is to start by opening Visual Studio and creating a new [console project](https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-console?view=vs-2019) or a [class library](https://docs.microsoft.com/en-us/dotnet/core/tutorials/library-with-visual-studio?pivots=dotnet-core-3-1). Use .net 8 for new components. We do have some backwards compatibility, and if you cant get your code to work feel free to contact us.
+Create a new [console project](https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-console?view=vs-2019) or [class library](https://learn.microsoft.com/en-us/dotnet/core/tutorials/create-class-library?pivots=vscode) in Visual Studio, or use the .NET CLI:
 
-:::warning NuGet Packages
-We have historically used the **Communicate.ConnXio.Transformation** package for transformation. This package is depricated and should be replaced by the **Connxio.Transformation** Package.
-:::
+```powershell
+dotnet new console -n MyCodeComponent
+#OR
+dotnet new classlib -n MyCodeComponent
+```
 
-After you create the project, navigate to "Manage nuGet packages" and download the nuget named [ConnXio.Transformation](https://www.nuget.org/packages/Connxio.Transformation), and then create a file and paste this code inside:
+We recommend .NET 10.0, but older versions may work as well.
+
+### NuGet package
+
+<RequiredNugetPackage />
+
+After project setup and package install, create a file and paste this code:
 
 ```csharp
 /// <summary>
-/// The class containg the mapping code must implement the interface "IConnXioMap". This interface contains the definition of the method "Map" which is where the mapping code goes.
+/// The class containg the mapping code must implement the interface "IConnxioMap". This interface contains the definition of the method "Map" which is where the mapping code goes.
 /// The interface implementation with the Map method is the only mandatory code, but you can add as many files and other methods that you want, and call them from inside the Map method.
 /// </summary>
-public class MyFirstConnXioMap : IConnxioMap
+public class MyFirstConnioMap : IConnxioMap
 {
     /// <summary>
     /// The method called from the engine when a mapping is executed.
@@ -58,7 +68,7 @@ public class MyFirstConnXioMap : IConnxioMap
 }
 ```
 
-The test project below uses NUnit to test the DLL. The following NuGet packages are required to run the tests (versions are just for reference, latest version is usually the best bet):
+The test project below uses NUnit. Install these test packages:
 
 ```xml
 <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.1" />
@@ -66,17 +76,17 @@ The test project below uses NUnit to test the DLL. The following NuGet packages 
 <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />`
 ```
 
-The code above adds examples of the most basic functionality provided by code components and is an boiler plate for most transformations. We would recommend adding a method to yor project to run the Map method with sample input. This can be done either in the Program.cs of a console project or through a Unit test or some other means, this is all subjective preference. An example of a the unit test method is featured below:
+The code above shows core code component capabilities and can be used as a boilerplate for most transformations. Run the `Map` method with sample input in `Program.cs` or in a unit test. Example unit test:
 
 ```csharp
 public class CodeComponentTest
 {
-    public MyFirstConnXioMap Mapper { get; set; }
+    public MyFirstConnxioMap Mapper { get; set; }
 
     [SetUp]
     public void Setup()
     {
-        Mapper = new MyFirstConnXioMap();
+        Mapper = new MyFirstConnxioMap();
     }
 
     [Test]
@@ -110,27 +120,25 @@ public class CodeComponentTest
 }
 ```
 
-After writing and testing your component you need to create the dll file itself. The easiest way to do this is simply by building you code (which it should have done automatically by now). You will find you dll file inside a folder looking something like this: `...\MyProject\bin\Debug\net8.0\bin\MyProject.dll`.
+After writing and testing your component, build the project to generate the DLL. Typical output path: `...\MyProject\bin\Debug\net10.0\bin\MyProject.dll`.
 
 ## Zipped Code Components
 
-The standard code components do not support NuGet packages beyond the standard installed System packages. We've made an exception for some packages, but self-made or exotic packages will not work. To solve this issue we've added a new type of code component that runs in its own environment. We call this new type of code component Zip Components.
-
-Zip Components are a little different from the standard Code Components and subsequently require a few special changes to your project to work.
+Standard code components support system packages and a limited set of additional NuGet packages. For custom or unsupported dependencies, use Zip Components, which run in their own environment.
 
 :::warning Warning!
-If you don't need any special NuGets outside the ones supported by the Standard Code Components, we still recommend using the Standard version. It's faster and easier for CX to handle. Only use Zip Components when you need the NuGet functionality.
+Use the standard component type unless you specifically need unsupported NuGet dependencies. It is faster and easier to manage.
 :::
 
 ### Requirements
 
 #### Step 1
 
-Make a standard Code Component as usual with the [guide](#creating-a-component) above.
+Create a standard code component first by following [Creating a component](#creating-a-component).
 
 #### Step 2
 
-Edit the _.csproj_ that contains the component and change the `PackageReference` for the `Connxio.Transformation` NuGet package so it looks like this:
+Edit the component `.csproj` and change the `Connxio.Transformation` reference to:
 
 ```xml
 <PackageReference Include="Connxio.Transformation" Version="0.1.6">
@@ -138,32 +146,32 @@ Edit the _.csproj_ that contains the component and change the `PackageReference`
 </PackageReference>
 ```
 
-The `<ExcludeAssets>runtime</ExcludeAssets>` line is the important one here. It stops the Code Component from creating versioning collisions with the host function inside CX.
+`<ExcludeAssets>runtime</ExcludeAssets>` prevents runtime version collisions with the host function in Connxio.
 
-Currently we have identified the following public packages that needs to be decorated with the ExcludeAssets attribute:
+Currently, this is required for:
 
 - Newtonsoft.Json
 
 #### Step 3
 
-Still in the same _.csproj_ add `<EnableDynamicLoading>true</EnableDynamicLoading>` to the `<PropertyGroup>` tag like so:
+In the same `.csproj`, add `<EnableDynamicLoading>true</EnableDynamicLoading>` in `<PropertyGroup>`:
 
 ```xml
 <PropertyGroup>
-  <TargetFramework>net8.0</TargetFramework>
+  <TargetFramework>net10.0</TargetFramework>
   <ImplicitUsings>enable</ImplicitUsings>
   <Nullable>enable</Nullable>
   <EnableDynamicLoading>true</EnableDynamicLoading>
 </PropertyGroup>
 ```
 
-Your _.csproj_ file should look something like this:
+Example `.csproj`:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<EnableDynamicLoading>true</EnableDynamicLoading>
@@ -180,39 +188,33 @@ Your _.csproj_ file should look something like this:
 
 #### Step 4
 
-Add whatever NuGet packages you want to your Code Component and add whatever code you need. Remember that Code Components do not support external calls.
+Add the NuGet packages and code you need. Code Components do not support external calls.
 
 #### Step 5
 
-Build the project and zip the result. The whole bin folder, usually located at `"../MyCodeComponentSolution\MyCodeComponentProject\bin\Debug\net8.0"`, should be compressed into the zip. Note that its _just_ the bottom level contents (the files) and not the `"net8.0"` folder itself that should be included.
+Build the project and zip the result. Compress the contents of the output folder (usually `"../MyCodeComponentSolution\MyCodeComponentProject\bin\Debug\net10.0"`), not the `"net10.0"` folder itself.
 
-> Note: If you want to check that the archive is made correctly you can confirm that when unzipped the archive unzips all the files into the folder its placed in.
+> Note: Verify the archive by unzipping it. Files should extract directly into the destination folder.
 
-Name the zip whatever you want as long as it has the .zip file extension.
+Name the archive as needed, as long as it has the `.zip` extension.
 
 #### Step 6
 
-When the code component is zipped and ready for testing, you upload it exactly as described in the [Uploading your component](#uploading-your-component) section. The upload dialog and drag-and-drop both support .dll and .zip files and will recognize which type you are uploading based on the filetype.
+When the component is ready, upload it as described in [Uploading your component](#uploading-your-component). The upload dialog supports both `.dll` and `.zip` and detects type from file extension.
 
 > Note: Other compressed filetypes like .rar or .7z are not supported at this time.
 
 #### Step 7
 
-Before confirming the upload check that the code component has the Zip tag added to it at the top, below the name.
-
-Also remember to fill in the `DLL file name` field after selecting your file. This field should point to the main .dll file in your zip (the file used as the main .dll in standard Code Components). Use the whole filename e.g. `MyCodeComponent.dll`
+Fill in `DLL file name` after selecting your file. It must point to the main DLL inside the zip, for example `MyCodeComponent.dll`.
 
 #### Step 8
 
-You are now ready to use the Zip Code Component.
-
-We are looking into simplifying the process by offering a ready made project inside Visual Studio, but this is currently not implemented.
-
-If you don't need any special NuGets outside the ones supported by the Standard Code Component, we recommend using the Standard version. It's still faster and easier for CX to handle. Only use Zip Components when you need the NuGet functionality.
+You are now ready to use the Zip Component.
 
 ## Termination
 
-You can terminate a message by throwing a 'TransformationTerminatedException' from you transformation code component. This works for splitting and batching also. The exception implementation looks like this:
+You can terminate a message by throwing `TransformationTerminatedException` from your transformation code component. This also works for splitting and batching variants.
 
 ```csharp
 public class TransformationTerminatedException : Exception
@@ -240,16 +242,16 @@ public enum ConnXioLogLevel
 }
 ```
 
-The properties on the exception functions as follows:
+Exception properties:
 
 - **LogLevel:** This is the Connxio loglevel described in the [logging](/integrations/logging) documentation.
 - **Status**: This is the logging status described in the [logging](/integrations/logging) documentation.
 - **CustomStatus**: A custom description for the termination or failure.
-- **FailureReturnStatusCode**: A return failure code. `NB!: Only used on the API inbound synchronous transform result mapping.`
+- **FailureReturnStatusCode**: Return failure code. Only used on API inbound synchronous transform result mapping.
 
 ### Using FailureReturnStatusCode
 
-An example of using the `FailureReturnStatusCode` might look something like this:
+Example using `FailureReturnStatusCode`:
 
 ```csharp
 public class MyCodeMap : IConnxioMap
@@ -278,19 +280,19 @@ public class MyCodeMap : IConnxioMap
 }
 ```
 
-This approach in the [API inbound synchronous response mapping](/integrations/synchronous) will enable graceful error code return values.
+In [API inbound synchronous response mapping](/integrations/synchronous), this enables graceful failure return codes.
 
-The default return value is 400 for failures and 200 for success. We do not currently allow for overriding success codes.
+Default status is `400` for failures and `200` for success. Overriding success codes is not supported.
 
 ## Termination (deprecated)
 
 :::warning Warning!
-This method of termination is deprecated and offers less functionality than the newer version. Please use the version outlined above. We will not remove ths functionality, but it's less optimized the the new one.
+This termination method is deprecated and provides less functionality than `TransformationTerminatedException`. Use the newer method above.
 :::
 
-You can terminate a message by throwing a 'NotImplementedException' from you transformation code component. This does not work on splitting and batching variants. The exception type is fairly mismatched as far as termination of messages but it's one of the only exception types that exists in the base C# system, package that is never thrown by the code itself. This is the reason we chose to use this exact exception. We might amend this with our own exceptions in the future.
+You can terminate a message by throwing `NotImplementedException` from your transformation code component. This does not work for splitting and batching variants.
 
-You can supply the termination error message with a set of code words to influence the behavior of the termination process. The pipeline is always terminated but the code word controls the logging associated with it. You supply these code words in the following way:
+You can include a code word in the exception message to control logging behavior. The pipeline is always terminated; the code word controls status and log level.
 
 ```csharp
 //The code word before the pipe (|) is used to select the action while the text after the pipe is used as the log event message sent via the [logging events functionality](/integrations/logging).
@@ -300,37 +302,26 @@ throw new NotImplementedException("Warning|Pipeline terminated with warning");
 We support the following options on termination:
 | Code word | Action |
 |---|---|
-| Success| | The termination is logged as a success with the minimum log level.|
+| Success | The termination is logged as success with minimum log level. |
 | Warning | The termination is logged as a warning with the minimum log level. |
 | Error | The termination is logged as an error with the none log level. |
 | Loglevel:None | The termination is logged with the terminated status but with the none log level instead of the default minimum level.|
-| Loglevel:Never| | The termination is not logged at all.|
+| Loglevel:Never | The termination is not logged at all. |
 | _Default behavior_ | The termination is logged with the terminated status on the minimum log level with the message: "Transaction terminated by code map" |
 
-## Configuring Code mapping
+## Configuring Code components
 
-To configure Connxio to use code mapping as a transformation, select the Code mapping in the "Transformations" shape:
+To configure code components, select _Code transformation_ in the "Transformations" list.
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="outbound connections"
-    sources={{
-      light: useBaseUrl('/img/docs/transformations/transformations-light.webp'),
-      dark: useBaseUrl('/img/docs/transformations/transformations-dark.webp#dark-only'),
-    }}
-  />
-</div>
-
-On creating a new transformation, a popup with the transformation's input fields will appear. Read more below on how
-the Code mapping transformation works.
+When you create a new transformation, a popup appears with the transformation input fields.
 
 ### Uploading your component
 
-Connxio supports both internal and external component upload locations.
-If you want to use external upload management the only real requirement is that the raw component dll is available on a REST GET request at the endpoint you specify in your integration configuration like shown below:
+Connxio supports both internal and external component upload.
+For external upload, the raw DLL must be available through an HTTP GET endpoint in your integration configuration.
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -342,7 +333,7 @@ If you want to use external upload management the only real requirement is that 
   />
 </div>
 
-Internal upload management can be done in the _Code Components_ page. You can access this either by clicking the "+" button in the codemapping transformation as seen above, or by navigating via the menu on the left-hand side where "Code Components" is one of the options as seen below. From there you can create a new code component or edit existing components.
+For internal upload, use the _Code Components_ page. Open it from the `+` button in code mapping, or from the left-side menu. From there, you can create or edit components.
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -354,7 +345,7 @@ Internal upload management can be done in the _Code Components_ page. You can ac
   />
 </div>
 
-When creating a new code component, these are the fields to be filled in:
+When creating a new code component, fill in these fields:
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -373,7 +364,7 @@ When creating a new code component, these are the fields to be filled in:
 
 ### Using the component
 
-If you use internal upload you can choose the code map component you've created from the drop down list as shown below:
+With internal upload, select your code map component from the dropdown list:
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -385,8 +376,8 @@ If you use internal upload you can choose the code map component you've created 
   />
 </div>
 
-If you use external upload you paste your URI in the _Code Map Component Uri_ input field.
+With external upload, paste your URI in _Code Map Component Uri_.
 
 ## Caching
 
-All components are cached for 30 seconds when loaded into the service. Keep this in mind when doing rapid changes to component code.
+Components are cached for 30 seconds after loading. Keep this in mind when testing rapid changes.

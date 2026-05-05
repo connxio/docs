@@ -11,24 +11,28 @@ Ask your CX representative for API OAuth credentials. The API Management endpoin
 :::
 
 ## Synchronous HTTP
+
 This way of communicating with CX allows for working directly towards the synchronous functionality which will also return the response from the endpoint(s), as well as any errors and exceptions that have been encountered along the way. Batching is NOT possible when using the Synchronous handler.
 
 ## Asynchronous HTTP
-Works in the same way as the synchronous http handler, but returns *null*. You may also use this handler for Batching. If the request fails when contacting the Connxio API, an exception is thrown after retrying when applicable.
+
+Works in the same way as the synchronous http handler, but returns _null_. You may also use this handler for Batching. If the request fails when contacting the Connxio API, an exception is thrown after retrying when applicable.
 
 ## MessageConfig
-The message config is used to ease the process of wrapping objects(needed for tests), passing encoding and formats, setting an interchange id, and telling Connxio whether or not you are running tests. When *IsTest* is set to true, all logging is turned off. You may wrap your objects manually, or wrap them using the static *WrapperHelper*-class.
+
+The message config is used to ease the process of wrapping objects(needed for tests), passing encoding and formats, setting an interchange id, and telling Connxio whether or not you are running tests. When _IsTest_ is set to true, all logging is turned off. You may wrap your objects manually, or wrap them using the static _WrapperHelper_-class.
 
 ## Dependency Injection
+
 The synchronous and asynchronous versions share injections. The options are important to include when using this functionality. The options may be instantiated in multiple ways, however, the simplest is to create a section in your appsettings and fetching it. The handlers are added as Singletons. If needed, inject the ConnxioHttpFactory(services.AddCXHttpFactory()) and handlers directly yourself.
 
 Example DI of Http Handlers:
+
 ```csharp
 var options = builder.Configuration.GetSection(nameof(HttpClientOptions)).Get<HttpClientOptions>();
 var config = new MessageConfig()
 {
     InterchangeId = Guid.NewGuid().ToString(),
-    IsLoadTest = false,
     IsTest = false,
     Wrap = true,
     WrapperType = WrapperType.Json
@@ -39,9 +43,10 @@ builder.Services.AddInteractionHTTP(options.SetRetries(5), config);
 
 ## Usage
 
-To use the handlers, you must instantiate them using the *IHttpHandlerFactory*. 
+To use the handlers, you must instantiate them using the _IHttpHandlerFactory_.
 
 Example:
+
 ```csharp
 private readonly IHttpHandler _syncHandler;
 private readonly IHttpHandler _asyncHandler;
@@ -54,7 +59,7 @@ public TestsController(IHttpHandlerFactory httpHandlerFactory)
 ```
 
 When using the GetInstance()-method, the boolean tells the factory whether to return a synchronous(true) or asynchronous(false) handler.
-If you did not pass a config when injecting the HttpHandlers, or you need a different configuration for your request, you may pass a config when using the Handle()-method. A config is not needed for proper function. The *ConfigCorrelationId* is the Id of your integration in Connxio. 
+If you did not pass a config when injecting the HttpHandlers, or you need a different configuration for your request, you may pass a config when using the Handle()-method. A config is not needed for proper function. The _ConfigCorrelationId_ is the Id of your integration in Connxio.
 
 Example requests:
 
@@ -62,7 +67,6 @@ Example requests:
 var config = new MessageConfig()
 {
     InterchangeId = Guid.NewGuid().ToString(),
-    IsLoadTest = false,
     IsTest = false,
     Wrap = true,
     WrapperType = WrapperType.Json
@@ -93,9 +97,11 @@ public async Task<IActionResult> Post()
 ```
 
 ## Retry
+
 This package handles retry on the client side and will attempt resending when applicable. Set your own retry policies if the default does not cover your needs.
 
 Retry occurs on the following Http Status Codes:
+
 - 404 - NotFound
 - 408 - RequestTimeout
 - 429 - TooManyRequests
@@ -103,4 +109,3 @@ Retry occurs on the following Http Status Codes:
 - 502 - BadGateway
 - 503 - ServiceUnavailable
 - 504 - GatewayTimeout
-

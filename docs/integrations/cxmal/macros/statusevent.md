@@ -17,7 +17,6 @@ public record StatusEvent
     public string? ActionId { get; set; }
     public DateTime EventTime { get; set; }
     public bool IsTestRun { get; set; }
-    public bool IsLoadTest { get; set; }
 }
 
 public record ErrorInfo

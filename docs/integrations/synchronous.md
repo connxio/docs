@@ -67,7 +67,6 @@ The Interaction NuGet includes options for wrapping and sending messages, along 
           "manualResendCount": 0,
           "outboundRestResponse": "Response from an outbound endpoint (REST Outbound)",
           "isTestRun": false,
-          "isLoadTest": false,
           "useSynchronousCommunication": true,
           "testRunId": null
         },
@@ -117,7 +116,7 @@ Below is an example of a Code Component that remaps the output of the synchronou
         public DateTime StartedAt { get; set; }
     }
 
-    public class MyCodeMap : IConnXioMap
+    public class MyCodeMap : IConnxioMap
     {
         public TransformationContext Map(TransformationContext transformationContext)
         {

@@ -19,6 +19,8 @@ Security configurations serve the following purposes in Connxio:
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -32,14 +34,18 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Navigate to "Security Configurations" in the right hand menu and click "Add new configuration".
 
-Your are then greeted by a Security Type menu where you will choose what kind of configuration you want to create. The possible options are:
+You are then greeted by a Security Type menu where you will choose what kind of configuration you want to create. The possible options are:
 
 - **HTTP**: Used for HTTP/REST adapters, data collection and webhook logging
 - **Archeo**: Credentials for Archeo logging
 - **SFTP**: Credentials for SFTP adapters
 - **FTP**: Credentials for FTP adapters
 - **Connection String**: Used for Azure Storage, Service Bus and Event Grid adapters
+- **Databricks**: Delta Sharing endpoint and token configuration
+- **Azure Credential**: Entra ID application credentials for Azure resource access
+- **Event Hub**: Event Hub and checkpoint storage connection details
 - **Email**: Credentials for Email.
+- **Dataverse**: URL and application credentials for Dataverse.
 
 When a security type has been chosen, you can decide whether the security configuration should be global or not. If the global toggle is on, the security configuration will be the same across all subscriptions under the same company:
 
@@ -65,7 +71,12 @@ If global is set to off, you'll set different values for each subscription:
   />
 </div>
 
-### HTTP
+<br />
+## Security Configuration Types
+Connxio supports various types of security configurations to cater to different integration needs. Use the tabs below to learn about the different types of security configurations and how to set them up.
+
+<Tabs>
+<TabItem value="http" label="HTTP" default>
 
 When selecting HTTP, you'll first encounter these fields:
 
@@ -81,13 +92,13 @@ When selecting HTTP, you'll first encounter these fields:
 
 - **Name**: The name that pops up when you select the configuration on an integration.
 - **Headers**: Add headers here as necessary to either authenticate the request or add other needed parameters.
-- **Authorization Header Type**: Select the protocol used by your endpoint. Choose between *None*, *OAuth2(Bearer)* and *Basic*.
+- **Authorization Header Type**: Select the protocol used by your endpoint. Choose between _None_, _OAuth2(Bearer)_ and _Basic_.
 
-#### Choosing your authentication scheme
+### Choosing your authentication scheme
 
 We supply these authentication schemes in Connxio:
 
-##### OAuth 2.0
+#### OAuth 2.0
 
 Oauth is an established standard for authentication between systems. We won't be going into detail on how to manage and use Oauth 2.0 here as this is an advanced security topic. To configure the Oauth parameters you enter information as described below:
 
@@ -103,7 +114,7 @@ Oauth is an established standard for authentication between systems. We won't be
 
 Please refer to the [Oauth 2.0 standard](https://oauth.net/2/) for more information about the fields.
 
-##### Basic
+#### Basic
 
 This is regular basic auth. Add username and password without encoding, we will encode before sending the request.
 
@@ -117,7 +128,9 @@ This is regular basic auth. Add username and password without encoding, we will 
   />
 </div>
 
-### Archeo
+</TabItem>
+
+<TabItem value="archeo" label="Archeo">
 
 Archeo holds one field, besides the config's name property:
 
@@ -134,7 +147,9 @@ Archeo holds one field, besides the config's name property:
 - **Name**: The name that pops up when you select the configuration on an integration.
 - **Archeo API Key**: The Archeo API Key provided from Archeo, used when logging to Archeo.
 
-### SFTP
+</TabItem>
+
+<TabItem value="sftp" label="SFTP">
 
 The SFTP configuration contains all the relevant properties for connection to the SFTP server. The path to which folder to connect to is set in the configuration of the adapter.
 
@@ -153,16 +168,18 @@ The SFTP configuration contains all the relevant properties for connection to th
 - **Username**: The username Connxio uses to authenticate to server.
 - **Password**: The password Connxio uses to authenticate to server.
 - **Certificate**: Specifies a [SSH private certificate](https://winscp.net/eng/docs/public_key#private) in putty format that is used for authentication towards the sftp server.
-- **Certificate Passphrase**: Used only with *Certificate* to authenticate ssh private key.
+- **Certificate Passphrase**: Used only with _Certificate_ to authenticate ssh private key.
 - **SSH HostKey Fingerprint**: The fingerprint of the server certificate. Read more in the [WinScp documentation](https://winscp.net/eng/docs/faq_hostkey).
 
-#### Certificates
+### Certificates
 
 The certificate field for SFTP is used to select a [SSH private key](https://winscp.net/eng/docs/public_key#private). This is only relevant if your server supports this authentication method. We still support username and password.
 
 The SSH key, must be in putty format as detailed here: [Instructions](https://winscp.net/eng/docs/guide_public_key)
 
-### FTP
+</TabItem>
+
+<TabItem value="ftp" label="FTP">
 
 The FTP configuration contains all the relevant properties for connection to the SFTP server. The path to which folder to connect to is set in the configuration of the adapter.
 
@@ -177,12 +194,14 @@ The FTP configuration contains all the relevant properties for connection to the
 </div>
 
 - **Name**: The name that pops up when you select the configuration on an integration.
-- **Connection URL**: The url to the FTP server.  The url support port number of suffixed with a colon, ie: ftp-server.net:1337.
+- **Connection URL**: The url to the FTP server. The url support port number of suffixed with a colon, ie: ftp-server.net:1337.
 - **Username**: The username Connxio uses to authenticate to server.
 - **Password**: The password Connxio uses to authenticate to server.
-- **FTPS security type**: The client security type for FTPS communication, Either *Explicit* or *Implicit*. Use *None* to disable. Review [WinScp documentation](https://winscp.net/eng/docs/ftps) for more information.
+- **FTPS security type**: The client security type for FTPS communication, Either _Explicit_ or _Implicit_. Use _None_ to disable. Review [WinScp documentation](https://winscp.net/eng/docs/ftps) for more information.
 
-### Connection String
+</TabItem>
+
+<TabItem value="connection-string" label="Connection String">
 
 The Connection String Security Config is used wherever a Connection String is to be used. This could be a Azure Storage adapter, ServiceBus adapter or a Event Grid adapter.
 
@@ -199,7 +218,11 @@ The Connection String Security Config is used wherever a Connection String is to
 - **Name**: The name that pops up when you select the configuration on an integration.
 - **Connection String**: The connection string for the relevant resource.
 
-### Databricks
+</TabItem>
+
+<TabItem value="databricks" label="Databricks">
+
+### Databricks {#Databricks}
 
 This is the databricks delta sharing security config. It contains the two sensitive and constant parts of the delta sharing connection information.
 
@@ -216,7 +239,9 @@ This is the databricks delta sharing security config. It contains the two sensit
 - **Bearer token**: The long lived bearer token defined in the config.share file.
 - **Endpoint**: The endpoint defined in the config.share file.
 
-### Azure Credential
+</TabItem>
+
+<TabItem value="azure-credential" label="Azure Credential">
 
 The Azure Credential Security Config is used to connect to several Azure resources. Read more about it here: [Microsoft Documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory)
 
@@ -235,7 +260,11 @@ The Azure Credential Security Config is used to connect to several Azure resourc
 - **Client ID**: The Client ID that relates to your Entra ID enterprise application.
 - **Client Secret**: The Client Secret that relates to your Entra ID enterprise application.
 
-### Event Hub
+</TabItem>
+
+<TabItem value="event-hub" label="Event Hub">
+
+### Event Hub {#Event-Hub}
 
 The Connection String Security Config is used for Azure Event Hub.
 
@@ -255,7 +284,9 @@ The Connection String Security Config is used for Azure Event Hub.
 - **Checkpoint storage connection string**: The connection string for the Event Hub checkpoint storage. This is the storage that controls all your checkpoints and is required for stable transfer.
 - **Checkpoint storage container**: The container for the Event Hub checkpoint storage.
 
-### Email
+</TabItem>
+
+<TabItem value="email" label="Email">
 
 When selecting email, these are the fields to be filled in:
 
@@ -277,7 +308,9 @@ When selecting email, these are the fields to be filled in:
 - **Port**: The port for connecting to the server. IMAP typically uses port 993 over SSL.
 - **Use SSL**: Most hosts require SSL. Turn this on to make Connxio contact the host with SSL enabled.
 
-### Dataverse
+</TabItem>
+
+<TabItem value="dataverse" label="Dataverse">
 
 When selecting dataverse, these are the fields to be filled in:
 
@@ -286,10 +319,13 @@ When selecting dataverse, these are the fields to be filled in:
 - **Client Id**: The Client Id used to connect to a Dataverse instance.
 - **Client secret**: The secret used to connect to a Dataverse instance.
 
-#### Dataverse batch limits
+### Dataverse batch limits
 
 These options are used when enabling batching on a dataverse adapter.
 
 - **Max Batch Size**: Upper limit of messages processed per interval.
 - **Batch interval in seconds**: Seconds to wait before processing next batch of messages.
 - **Max concurrent processors**: Upper limit of processor scaling. Scales up based on message count
+
+</TabItem>
+</Tabs>

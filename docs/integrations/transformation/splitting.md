@@ -47,35 +47,39 @@ Start by creating code that splits a message into multiple output messages. This
 Use the splitting boilerplate below:
 
 ```csharp
+using Newtonsoft.Json;
+using Connxio.NuGet.Public.Transformation.Interfaces;
+using Connxio.NuGet.Public.Transformation.Models;
+
 public class MyFirstSplitter : IConnxioSplit
 {
     public IEnumerable<TransformationContext> Split(TransformationContext transformationContext)
     {
         // Create object from byte array
-        MyInboundMessageType inboundMessage = JsonConvert.DeserializeObject<MyInboundMessageType>(transformationContext.Content);
+        dynamic inboundMessage = JsonConvert.DeserializeObject<dynamic>(transformationContext.Content) ?? throw new ArgumentException("Failed to deserialize inbound message.");
 
         //Create list that holds new messages
-        List<TransformationContext> outboundTransformationContexts = new List<TransformationContext>();
+        var output = new List<TransformationContext>();
 
         //Add elements to list
         foreach (var city in inboundMessage.Cities)
         {
-            var outboundMessage = new MyOutboundMessageType
+            var outboundMessage = new
             {
                 CityName = city.CityName,
                 Comment = city.Comment,
                 Id = inboundMessage.Id
             };
 
-            outboundTransformationContexts.Add(new TransformationContext
+            output.Add(new TransformationContext
             {
                 Content = JsonConvert.SerializeObject(outboundMessage),
                 MetaData = transformationContext.MetaData.Copy()
             });
         }
 
-        //Return new messages as list
-        return outboundTransformationContexts;
+        //Return splitted messages
+        return output;
     }
 }
 ```

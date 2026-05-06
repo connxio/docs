@@ -25,17 +25,15 @@ dotnet new classlib -n MyCodeComponent
 
 We recommend .NET 10.0, but older versions may work as well.
 
-### NuGet package
-
 <RequiredNugetPackage />
 
 After project setup and package install, create a file and paste this code:
 
 ```csharp
-/// <summary>
-/// The class containg the mapping code must implement the interface "IConnxioMap". This interface contains the definition of the method "Map" which is where the mapping code goes.
-/// The interface implementation with the Map method is the only mandatory code, but you can add as many files and other methods that you want, and call them from inside the Map method.
-/// </summary>
+using Newtonsoft.Json;
+using Connxio.NuGet.Public.Transformation.Interfaces;
+using Connxio.NuGet.Public.Transformation.Models;
+
 public class MyFirstConnioMap : IConnxioMap
 {
     /// <summary>
@@ -50,7 +48,7 @@ public class MyFirstConnioMap : IConnxioMap
             throw new ArgumentException("Content field is null");
 
         //You can use newtonsoft and other basic nuget packages. Contact the Connxio team if you need a non supported package.
-        dynamic obj = JsonConvert.DeserializeObject(transformationContext.Content);
+        dynamic obj = JsonConvert.DeserializeObject(transformationContext.Content) ?? throw new ArgumentException("Content is not a valid JSON");
         obj.Prop = "Done";
 
         //Add data to user properties if needed

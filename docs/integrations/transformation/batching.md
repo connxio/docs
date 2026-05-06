@@ -56,37 +56,41 @@ Start by creating code that combines queued messages into one output payload. Th
 Use the batching boilerplate below:
 
 ```csharp
+using Newtonsoft.Json;
+using Connxio.NuGet.Public.Transformation.Interfaces;
+using Connxio.NuGet.Public.Transformation.Models;
+
 public class MyFirstBatcher : IConnxioBatch
 {
     public TransformationContext Batch(IEnumerable<TransformationContext> transformationContexts)
     {
-        var msgIns = new List<MsgIn>();
+        var msgIns = new List<dynamic>();
 
-        //Make list of objects instead of bytes
         foreach (var transformationContext in transformationContexts)
         {
-            msgIns.Add(JsonSerializer.Deserialize<MsgIn>(transformationContext.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }));
+            msgIns.Add(JsonConvert.DeserializeObject<dynamic>(transformationContext.Content));
         }
 
         //Create new outbound message
-        var msgOut = new MsgOut();
-
-        //Add content to new message
-        msgOut.Type = msgIns[0].Type;
-        msgOut.Values = new List<string>();
+        var message = new
+        {
+            Type = msgIns[0].Type,
+            Values = new List<dynamic>()
+        };
 
         foreach (var msg in msgIns)
         {
-            msgOut.Values.Add(msg.Value);
+            message.Values.Add(msg.Value);
         }
 
-        TransformationContext outTransformationContext = new TransformationContext
+        // Create new transformation context and set content and metadata
+        var outTransformationContext = new TransformationContext
         {
-            Content = JsonSerializer.Serialize(msgOut),
+            Content = JsonConvert.SerializeObject(message),
             MetaData = transformationContexts.First().MetaData.Copy()
         };
 
-        //Return message as string
+        //Return batched message
         return outTransformationContext;
     }
 }

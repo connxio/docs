@@ -64,4 +64,3 @@ When GraphQL is used as a transformation step, the action exposes a few addition
 - For outbound GraphQL delivery, Connxio can throttle requests so only one message is processed at a time by enabling the `Sequential delivery` option.
 - If `Use content as request body` is enabled, make sure the current message content is already a valid GraphQL request payload.
 - In transformation scenarios, `Use response as content` is useful when the GraphQL response should become the input for later steps in the pipeline.
-- In trigger scenarios, GraphQL uses the same HTTP request foundation and can also expose paging and delta-based retrieval behavior through the shared webhook configuration.

@@ -52,10 +52,10 @@ public class MyFirstConnioMap : IConnxioMap
         obj.Prop = "Done";
 
         //Add data to user properties if needed
-        transformationContext.MetaData.UserDefinedProperties.Add("INeedThisLater", obj.prop);
+        transformationContext.MetaData.UserDefinedProperties.Add("INeedThisLater", (string)obj.Prop);
 
         //Use collected data as needed
-        obj.Prop2 = transformationContext.MetaData.DataCollection["MyCollectedData"];
+        obj.Prop2 = transformationContext.MetaData.DataCollection.GetValueOrDefault("MyCollectedData", "No data collected");
 
         //Replace the original content with a string representation of the object "obj"
         transformationContext.Content = JsonConvert.SerializeObject(obj);

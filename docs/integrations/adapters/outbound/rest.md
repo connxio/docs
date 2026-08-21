@@ -76,11 +76,11 @@ Read more about the properties in each section below:
 
 ### Throttling
 
-This adapter supports Throttling. Throttling lets you control the scope of the sequential, semi-ordered delivery first introduced with batch processing and later upgraded to sequential delivery. Where standard sequential delivery slowed down and ordered delivery for a single adapter, throttling now lets you group several adapters together so they share one ordered delivery pipeline and are slowed down as a group.
+This adapter supports Throttling. Throttling lets you control the scope of the sequential, semi-ordered delivery first introduced with batch processing and later upgraded to sequential delivery. Where standard sequential delivery slowed down delivery for a single adapter, throttling now lets you group several adapters together so they share one delivery pipeline and are slowed down as a group.
 
-This is useful when several adapters ultimately deliver to the same downstream system or share the same rate-limited resource (for example the same API host or the same security configuration). Without throttling, each adapter batches independently and CX may still overwhelm a shared receiver by delivering many adapters' batches in parallel. By correlating the delivery of multiple adapters into a single ordered stream, throttling ensures messages destined for a shared resource are delivered one after another rather than all at once.
+This is useful when several adapters ultimately deliver to the same downstream system or share the same rate-limited resource (for example the same API host or the same security configuration). Without throttling, each adapter sends messages independently and CX may overwhelm a shared receiver by delivering many adapters' messages in parallel. By correlating the delivery of multiple adapters into a single stream, throttling ensures messages destined for a shared resource are delivered one after another rather than all at once.
 
-Like batch processing, throttling provides semi-ordered delivery. Ordering is not enforced from the inbound pipeline through the whole CX pipeline, but only on the throttled outbound step. Messages may arrive in any order, but are delivered one after another in an ordered fashion within their correlation group.
+Like the old sequential processing, throttling provides semi-ordered delivery. Ordering is not enforced from the inbound pipeline through the whole CX pipeline, but only on the throttled outbound step. Messages may arrive in any order, but are delivered one after another in an ordered fashion within their correlation group.
 
 #### How it works
 

@@ -111,6 +111,38 @@ Batching for the Rest adapter works like this:
 - **Retry on non-transient failures**: Retry on all errors, even those that are labeled as non-retryable.
 - **Failure Retry Interval Seconds**: Sets the interval in seconds for retries after batching error. This overrides the Cron and Polling interval on an error. Minimum value is 60 seconds.
   
+### Throttling
+
+This adapter supports Throttling. Throttling is an extension of Batch Processing that lets you control the scope of the sequential, semi-ordered delivery. Where standard batch processing slows down and orders delivery for a single adapter, throttling lets you group several adapters together so they share one ordered delivery pipeline and are slowed down as a group.
+
+This is useful when several adapters ultimately deliver to the same downstream system or share the same rate-limited resource (for example the same API host or the same security configuration). Without throttling, each adapter batches independently and CX may still overwhelm a shared receiver by delivering many adapters' batches in parallel. By correlating the delivery of multiple adapters into a single ordered stream, throttling ensures messages destined for a shared resource are delivered one after another rather than all at once.
+
+Like batch processing, throttling provides semi-ordered delivery. Ordering is not enforced from the inbound pipeline through the whole CX pipeline, but only on the throttled outbound step. Messages may arrive in any order, but are delivered one after another in an ordered fashion within their correlation group.
+
+#### How it works
+
+Throttling builds on the batching pipeline. The behavior is controlled by the Sequential Delivery Correlation Type, which decides the correlation key used to route messages into a shared Service Bus subscription on the outbound batch topic:
+
+As a message is processed through the CX pipeline, the engine determines the correlation key from the configured Sequential Delivery Correlation Type:
+Adapter (default): The message is keyed by the adapter's own id. Each adapter is throttled independently — this is equivalent to standard batch processing.
+Security Config: The message is keyed by the adapter's security configuration (its WebhookConnectionId). All adapters that share the same security configuration are delivered through the same ordered pipeline and throttled together.
+Integration: The message is keyed by the integration id. All REST/GraphQL adapters within the same integration are delivered through the same ordered pipeline and throttled together.
+Messages are routed to a single Service Bus subscription that corresponds to the correlation key, rather than to one subscription per adapter.
+The outbound engine scans that subscription each time the Polling Interval / Cron Expression hits and processes the messages one after the other. New batches are prevented from loading while the current one is being processed, so the entire correlation group is delivered sequentially.
+When Security Config or Integration correlation is used, delivery is driven by the polling interval (messages are delivered one after another on each interval) rather than by a per-adapter batch size, ensuring all adapters in the group are paced together. With Adapter correlation the configured Batch Size is used as before.
+If a message fails it is not marked as failing and added to the failure handling system until the current run has finished. Be aware that exceptionally large and long lasting groups may time out.
+When throttling is enabled, the same correlation also applies to acknowledgement messages, so acks are throttled together with their adapter group rather than being sent immediately.
+
+#### Configuring Throttling
+
+Sequential Delivery Correlation Type: Determines how messages are grouped for ordered, throttled delivery.
+Adapter: Throttle each adapter on its own (default — equivalent to plain batch processing).
+Security Config: Throttle all adapters that share the same security configuration together. Requires a security configuration (WebhookConnectionId) to be set on the adapter; if it is missing the message falls back to normal processing.
+Integration: Throttle all REST/GraphQL adapters in the integration together.
+Cron Expression / Polling Interval: Specifies how often the throttled group is scanned and delivered. Read more about the triggering interval here.
+Batch Size: The number of messages taken from the queue each interval. Used when the correlation type is Adapter; for Security Config and Integration correlation, delivery is paced by the interval instead.
+Note: Because Security Config and Integration correlation merge several adapters into one ordered stream, latency compounds across the whole group. Set the Cron Expression / Polling Interval accordingly to avoid very slow and large runs. The exact configuration that performs best for your scenario is only known by testing the endpoint with a diverse set of options.
+
 ### Advanced settings
 
 <div style={{maxWidth: '400px'}}>

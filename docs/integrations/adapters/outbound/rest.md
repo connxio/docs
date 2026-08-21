@@ -88,9 +88,9 @@ The behavior is controlled by the Sequential Delivery Correlation Type, which de
 
 As a message is processed through the CX pipeline, the engine determines the correlation key from the configured Sequential Delivery Correlation Type:
 
-- **Adapter (default):** The message is keyed by the adapter's own id. Each adapter is throttled independently — this is equivalent to standard batch processing.
-- **Security Config:** The message is keyed by the adapter's security configuration (its WebhookConnectionId). All adapters that share the same security configuration are delivered through the same ordered pipeline and throttled together.
-- **Integration:** The message is keyed by the integration id. All REST/GraphQL adapters within the same integration are delivered through the same ordered pipeline and throttled together.
+- **Adapter (default):** The message is keyed by the adapter's own id. Each adapter is throttled independently — this is equivalent to standard sequential delivery and is the default behavior.
+- **Security Config:** The message is keyed by the adapter's security configuration. All adapters that share the same security configuration and use this type are delivered through the same ordered pipeline and throttled together.
+- **Integration:** The message is keyed by the integration id. All REST/GraphQL adapters that use this correlation type within the same integration are delivered through the same ordered pipeline and throttled together.
 
 Messages are delivered in sequence based on the order they are received, but ordering is not guaranteed. Only a single message is processed at one time for the chosen correlation group. The next message is only picked up when the current one is processed and the *Delivery Delay* has expired.
 

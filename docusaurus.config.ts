@@ -19,7 +19,11 @@ const config: Config = {
   url: `https://${organizationName}.github.io`,
   baseUrl: `/`,
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "ignore",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "ignore",
+    },
+  },
   favicon: "img/favicon.ico",
   i18n: {
     defaultLocale: "en",
@@ -34,6 +38,7 @@ const config: Config = {
           path: "docs",
           sidebarPath: "./sidebars.ts",
           sidebarCollapsed: true,
+          breadcrumbs: false,
           docRootComponent: "@theme/DocRoot",
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
         },
@@ -85,29 +90,6 @@ const config: Config = {
       },
     ],
     require.resolve("docusaurus-plugin-image-zoom"),
-    [
-      require.resolve("./src/plugins/changelog/index.js"),
-      {
-        blogTitle: "Connxio changelog",
-        blogDescription:
-          "Keep yourself up-to-date about new features in every release",
-        blogSidebarCount: "ALL",
-        blogSidebarTitle: "Changelog",
-        routeBasePath: "/changelog",
-        showReadingTime: false,
-        postsPerPage: 20,
-        archiveBasePath: null,
-        authorsMapPath: "authors.json",
-        feedOptions: {
-          type: "all",
-          title: "Connxio changelog",
-          description:
-            "Keep yourself up-to-date about new features in every release",
-          copyright: `Copyright © ${new Date().getFullYear()} Evidi`,
-          language: "en",
-        },
-      },
-    ],
   ],
   themeConfig: {
     metadata: [{ name: "robots", content: "all" }],
@@ -122,7 +104,7 @@ const config: Config = {
         {
           to: "/",
           label: "Home",
-          activeBaseRegex: "^((?!reference|changelog|api).)*$",
+          activeBaseRegex: "^((?!reference|api).)*$",
         },
         {
           to: "/reference/connxio-api",
@@ -244,6 +226,7 @@ const config: Config = {
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
         hashed: true,
+        searchBarShortcut: false,
         indexBlog: false,
         docsRouteBasePath: "/",
         highlightSearchTermsOnTargetPage: false,

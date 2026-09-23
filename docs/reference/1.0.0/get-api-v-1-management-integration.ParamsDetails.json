@@ -1,0 +1,1 @@
+{"parameters":[{"name":"subscriptionId","in":"query","description":"","schema":{"type":"string"}},{"name":"companyId","in":"header","description":"","schema":{"type":"string"}}]}

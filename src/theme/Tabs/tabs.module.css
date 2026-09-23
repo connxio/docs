@@ -7,7 +7,7 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   padding: 0.75rem;
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: var(--portal-surface-1);
   border-radius: 2rem;
   margin-bottom: 1.5rem;
   width: fit-content;
@@ -32,7 +32,7 @@
 
 .tabButton.active {
   background-color: var(--ifm-color-primary);
-  color: white;
+  color: var(--portal-text-brand);
   font-weight: 600;
 }
 

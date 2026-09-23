@@ -13,6 +13,7 @@ There are some limitations to our Outbound Email Adapter, these include:
 - It is not possible to send email to more than 2,500 recipients within 30 days.
 
 In addition to this SMTP allows the use of SSL and TLS. Of the two protocols, we recommend using TLS since this is the newer, more secure choice.
+
 </p>
 </details>
 
@@ -51,9 +52,10 @@ Read more about the properties in each section below:
 ### Adaptername & Ack
 
 - **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
-- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/Acknowledgment).
+- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/acknowledgment).
 
 ### Core Settings
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="email core"

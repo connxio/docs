@@ -3,36 +3,32 @@ title: Metadata
 sidebar_position: 7
 ---
 
+import PropertyReference from '@site/src/components/PropertyReference';
+
 # Metadata in Connxio
 
 In Connxio, metadata is an essential component attached to each message, providing additional contextual information about the message itself. The metadata object consists of various fields that help track and analyze the message as it flows through the integration pipeline. These metadata fields in Connxio offer valuable information and insights into the message flow, helping with troubleshooting, analysis, and monitoring of integrations. They enhance visibility and enable efficient handling of messages within the Connxio platform.
 
-Below is a description of each field within the JSON structure of the metadata object:
+## Metadata properties
 
-| Field                  | Description                                                                                                                                                            |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------                                                   |
-| configCorrelationId    | ID of the integration associated with the message, aiding in tracking and tracing related messages and processes.                                                      |
-| transactionType        | The name of the integration associated with the message, providing additional context and categorization.                                                              |
-| interchangeId          | Unique identifier for the interchange, facilitating tracking and identification of related messages within the flow.                                                   |
-| started                | Timestamp when the pipeline in Connxio was started.                                                                                                                    |
-| inboundFileName        | Name of the inbound file associated with the message, if applicable.                                                                                                   |
-| inboundEndpoint        | Inbound endpoint associated with the message, representing the source or origin of the data.                                                                           |
-| inboundAdapter         | Name of the inbound adapter associated with the message, such as SFTP, REST, or others.                                                                                |
-| outboundFileName       | Name of the outbound file associated with the message, if applicable.                                                                                                  |
-| outboundEndpoint       | Outbound endpoint associated with the message, indicating the target system or destination.                                                                            |
-| outboundAdapter        | Name of the outbound adapter associated with the message, such as SFTP, REST, or others.                                                                               |
-| outboundBlobName       | Name of the blob inside Connxio when handled in the outbound engine for debugging purposes. <br /> The format of the blob name is "interchangeId_&lt;subintegrationId&gt;.&lt;messageFormat&gt;"|
-| transformationBlobName | Name of the blob inside Connxio during transformation processes. <br /> The format of the blob name is "interchangeId_&lt;subintegrationId&gt;.&lt;messageFormat&gt;"          |
-| manualResendCount      | Number of times the message has been manually resent using the resend framework by the customer.                                                                       |
-| dataCollection         | Data collected by the data collection feature, shortened if too long.                                                                                                  |
-| userDefinedProperties  | Properties defined within code components for customization and flexibility.                                                                                           |
-
+<PropertyReference properties={[
+{name: 'configCorrelationId', description: 'ID of the integration associated with the message.'},
+{name: 'transactionType', description: 'Name of the integration associated with the message.'},
+{name: 'interchangeId', description: 'Unique identifier for the interchange, used to track related messages.'},
+{name: 'started', description: 'Timestamp when the Connxio pipeline started.', example: '2023-07-10T15:36:43'},
+{name: 'inboundFileName', description: 'Name of the inbound file, if applicable.', example: 'file.json'},
+{name: 'inboundEndpoint', description: 'Source endpoint associated with the message.', example: 'Topic: example-topic - Subscription: example-subscription'},
+{name: 'inboundAdapter', description: 'Inbound adapter associated with the message, such as SFTP or REST.', example: 'ServiceBus'},
+{name: 'outboundBlobName', description: 'Name of the internal blob used for debugging in the outbound engine.', format: 'interchangeId_<subintegrationId>.<messageFormat>'},
+{name: 'transformationBlobName', description: 'Name of the internal blob used during transformation.', format: 'interchangeId_<subintegrationId>.<messageFormat>'},
+{name: 'manualResendCount', description: 'Number of times the customer has manually resent the message using the resend framework.'},
+{name: 'dataCollection', description: 'Data gathered by the data collection feature, shortened if too long.'},
+{name: 'userDefinedProperties', description: 'Custom properties defined within code components.'},
+]} />
 
 ## Example metadata object
-<br />
-Here's an example JSON string representing a sample metadata object in Connxio:
-<br />
-<br />
+
+Here's an example metadata object in Connxio:
 
 ```json
 {

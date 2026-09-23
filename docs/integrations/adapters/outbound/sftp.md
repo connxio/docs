@@ -72,22 +72,23 @@ Read more about the properties in each section below:
   />
 </div>
 
-The SFTP adapter supports to types of operations when using the non-batching adapter; *upset* and *append*.
+The SFTP adapter supports to types of operations when using the non-batching adapter; _upset_ and _append_.
 
 **Upsert** is the default operation and either creates a new file on the server or replaces an already existing one if the filenames collide.
 
 **Append** creates a new file if one with the configured file-name doesn't exist or appends to the file if it does. Append adds the current payload to he end of the file without any breaks or extra characters, please ensure you add those as necessary - either by code component or by other means.
 
 :::caution Warning
-Append might not be allowed or configured for your SFTP server. If the server doesn't support append the file will be *overwritten* instead. The only way to know if append is supported is to contact the server administrator or run tests as needed.
+Append might not be allowed or configured for your SFTP server. If the server doesn't support append the file will be _overwritten_ instead. The only way to know if append is supported is to contact the server administrator or run tests as needed.
 :::
 
 ### Adaptername & Ack
 
 - **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
-- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/Acknowledgment).
+- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/acknowledgment).
 
 ### Core Settings
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="sftp core"
@@ -114,7 +115,7 @@ By using the supplied values on the rest adapter in the **Batch Processing** sec
 Batching for the Sftp adapter works like this:
 
 1. Message is processed through the CX pipeline as normal and arrives in a queue that corresponds to the adapter used.
-2. The outbound engine scans the queue every time the *Cron Expression* hits and gets the amount of messages specified in the *Batch size* parameter, or less iof there aren't enough on the queue.
+2. The outbound engine scans the queue every time the _Cron Expression_ hits and gets the amount of messages specified in the _Batch size_ parameter, or less iof there aren't enough on the queue.
 3. The messages are processed and sent as a single batch.
 4. If a message fails it is not marked as failing and added to the failure handling system util the batch has finished. Be aware that exceptionally large and long lasting batches may time out.
 

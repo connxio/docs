@@ -190,6 +190,12 @@ const sidebar: SidebarsConfig = {
           label: "List all subscriptions",
           className: "api-method get",
         },
+        {
+          type: "doc",
+          id: "reference/2.0.0/get-api-v-2-subscriptions-current",
+          label: "Get current subscription",
+          className: "api-method get",
+        },
       ],
     },
   ],

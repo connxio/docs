@@ -1,5 +1,5 @@
 position: 3
-label: 'Integrations'
+label: "Integrations"
 collapsible: true
-collapsed: true
-className: 'sidebar-platform'
+collapsed: false
+className: "sidebar-platform"

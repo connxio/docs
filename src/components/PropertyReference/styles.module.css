@@ -1,0 +1,70 @@
+.reference {
+  margin: 0 0 2rem;
+  container-type: inline-size;
+}
+
+.property {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 1.125rem 0;
+  border-bottom: 1px solid var(--portal-border);
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 1rem);
+}
+
+.name,
+.description {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.name a {
+  color: var(--ifm-heading-color);
+  text-decoration: none;
+}
+
+.name a:hover,
+.name a:focus-visible {
+  color: var(--ifm-link-color);
+  text-decoration: underline;
+}
+
+.name code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 0.875rem;
+}
+
+.sample {
+  margin-top: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  background: var(--portal-surface-2);
+}
+
+.sample code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 0.8125rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.125rem;
+  color: var(--ifm-font-color-secondary);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@container (max-width: 580px) {
+  .property {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.375rem;
+  }
+}

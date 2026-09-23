@@ -2,7 +2,6 @@
 
 The Service Bus outbound adapter in Connxio integrates with Azure Service Bus, enabling users to send messages to Service Bus topics or queues. It leverages Azure's reliable and scalable messaging capabilities for efficient message exchange.
 
-
 ## Configuring the Service Bus adapter
 
 To configure Connxio to start sending data to your Service Bus select the "Service Bus" option in the "Outbound Connections" shape:
@@ -38,10 +37,10 @@ Read more about the properties in each section below:
 ### Adaptername & Ack
 
 - **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
-- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/Acknowledgment).
-
+- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/acknowledgment).
 
 ### Core Settings
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="data pickup interval"
@@ -88,11 +87,12 @@ In this pattern, Connxio uploads the message payload to an Azure Blob Storage co
 
 2. **JSON Structure:**
    Alternatively, you can choose to include the blob URI, file name, and interchange ID in a JSON structure within the Service Bus message. The structure looks like this:
+
 ```json
 {
-    "SasUri": "the URI to the file",
-    "FileName": "the file name",
-    "InterchangeId": "the interchange ID for the message"
+  "SasUri": "the URI to the file",
+  "FileName": "the file name",
+  "InterchangeId": "the interchange ID for the message"
 }
 ```
 
@@ -137,7 +137,7 @@ public class ConnxioServiceBusMessage
 }
 ```
 
-This class is supplied to you i the [Connxio.Transformation](https://www.nuget.org/packages/Connxio.Transformation/) nuget package and corresponds directly to the SB [ServiceBusReceivedMessage](https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage?view=azure-dotnet) class managed by Microsoft. 
+This class is supplied to you i the [Connxio.Transformation](https://www.nuget.org/packages/Connxio.Transformation/) nuget package and corresponds directly to the SB [ServiceBusReceivedMessage](https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage?view=azure-dotnet) class managed by Microsoft.
 
 All attributes changed in the `ConnxioServiceBusMessage` are propagated to the outbound SB. When _Keep message Properties_ is enabled inbound the `ConnxioServiceBusMessage` is placed inside your file content and `TransformationContext.Content`. To change any of the properties you need to create a code map and deserialize the message like so:
 

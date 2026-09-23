@@ -6,8 +6,6 @@ sidebar_position: 6
 
 Connxio supports several logging setups. Evidi offers transaction-based logging software in [Archeo](https://www.evidi.com/no/produkter/archeo) as a Connxio supplement, with enhanced compatibility because both products are developed together. Connxio can also send logs by webhook to your preferred logging provider.
 
-We also offer _integration as a service_, where we handle logging, support, surveillance, and fault detection for you. Contact sales at [evidi.com/kontakt](https://www.evidi.com/kontakt) for more information.
-
 ## What does Connxio log?
 
 Connxio sends logs from the internal engine to the configured provider whenever a message is processed through an integration. You choose what to log per integration, based on your needs. See [How to start logging](#how-to-start-logging).
@@ -31,7 +29,7 @@ The _Error_ level logs only critical errors. We recommend configuring a logging 
 
 #### Minimum
 
-The _Minimum_ level logs the first and last time Connxio sees a message, such as when it is received by the API or picked up from SFTP or Azure Storage, and when it is delivered to SFTP or a Service Bus topic. If you use [Acknowledgement functionality](/integrations/adapters/outbound/Acknowledgment), the acknowledgement message is also logged.
+The _Minimum_ level logs the first and last time Connxio sees a message, such as when it is received by the API or picked up from SFTP or Azure Storage, and when it is delivered to SFTP or a Service Bus topic. If you use [Acknowledgement functionality](/integrations/adapters/outbound/acknowledgment), the acknowledgement message is also logged.
 
 **Statuses logged:**
 

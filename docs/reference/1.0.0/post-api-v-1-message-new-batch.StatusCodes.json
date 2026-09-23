@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"The message was validated and sent to the Connxio engine"},"400":{"description":"The supplied message or metadata did not pass validation"},"502":{"description":"Could not contact internal services. Please try again later or contact our support department"}}}

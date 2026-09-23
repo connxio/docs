@@ -37,11 +37,12 @@ Read more about the properties in each section below:
 ### Adaptername & Ack
 
 - **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
-- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/Acknowledgment).
-
+- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/acknowledgment).
 
 ### Core settings
+
 Core settings differ based on storage type.
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="core settings"
@@ -55,12 +56,12 @@ Core settings differ based on storage type.
 - **Storage type**: Select storage type to use. Types include: Blob, File, Queue and Table.
 - **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
 - **Container Name**: The name of the container. This container must exist before Connxio start picking messages. We will not create it for you.
-- **Directory**: The *directory* field specifies which directory Connxio should target for file pickup. If this is kept blank the root directory is used. (Azure Files)
+- **Directory**: The _directory_ field specifies which directory Connxio should target for file pickup. If this is kept blank the root directory is used. (Azure Files)
 - **Service bus message body contract**: Specifies the outgoing message body contract. (Queue)
 - **Pure message sending**: The adapter expects the actual message to be sent on the servicebus instead of the SasUri. (Queue)
 
-
 ### Advanced settings
+
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
     alt="advanced settings"
@@ -75,8 +76,6 @@ Core settings differ based on storage type.
 - **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 - **New Interchange ID**: Removes interchangeid from adapter specific metadata to force new id on re-entry. (Blob)
-
-
 
 ## Retry
 

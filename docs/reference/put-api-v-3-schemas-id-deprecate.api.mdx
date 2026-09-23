@@ -1,0 +1,70 @@
+---
+id: put-api-v-3-schemas-id-deprecate
+title: "Deprecate a schema version"
+description: "Toggles the deprecated state of the specified version. Calling this endpoint again restores the version."
+sidebar_label: "Deprecate a schema version"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVk1v40YM/SvE5JAPyNJis2hRn5qmLZBugQTZLHJIgoKWKGmQ0YwyHPljDf/3giPJdrzZ3UNPPdnQDMn3Hjkk1ypgxWr6oD7lNTXI6ilRBXHudRu0s2qq7lxVGWIINUFBraccAxXAAQOBK+N3binXpaYC5uRZO5vCJRqjbQWh1gxki9ZpGwAr1BY8cXB+8DlaPPpHeyeXdf/dWbMC7trWeYmX12grguAALdBScxDvHFFvfahEuZY8CvSrQk3Vzee7f7DV2fw8669yttbFJtsSUYlq0WNDgbzosFYWG1JTpQuVKC0CtBhqlShPL532VKhp8B0lqvenpmsVVq1YcPDaVmqzSbZOBlyjp5eO/Ep9z/RJ4nDrLBPL+ft37+TndUauP0oQ1VConZBsuxBphFpN1XepMvn5yLPzRk1VHULL0yzDtp3ky8lLO/lCpsAJtjrFL52nBc1YB+LUUlCCjynvvA6r6OTSWbvUbnJxczX5SPLtKVG/EXry8n//fiywntXWqtW91VYIbLV8OKzBi5sr+EgrKJ2HwRgubq6kyiygYQczAqYAHUtVIESlYZvZFK7K4UxKa0Gz2rlnKDubSwQ0OqySeFQTFuTheB/ifX/9GJqOw6twwcGxVMOxSsaUH3IbUt/7VZvk1YXn/0AekN8iei3PpmMCXQ5kGNATdBbnqA3OTHxEK9elPwTd1+sB5kGNH+OOj3nQMyp3KJr8IxsRvZmRyFiSImyfY4Q38I54vhJ6LMMtTqn1r1D+dX8HF12onddfYt8YIe/KpXfU9xpKx/crHmd9CHmN2pYuxtLB7EEU7F/FPDqCKxu8K7pI9tECAES5hKlmKFzeNWSl72kbMZydXbdk5bh0vsFwdgZoC2i9m+uCWDLuGRY61PKt8tg0GHQOmOfELEqLlxFUazCInwTQGLcYiDZyTdtAHvPQ+5IYuROsBubotesYULp94KH3ax9Nqr7pcrRYOP9cGrfgFO7Fy37oi5urZECby+Ptgmtkkuw5EQaCmjiBBi1WJBhKXXVDkGTkvuWJxqwOoEvQhpixEno5tjjTRgctXnvZ5HtpaKnjwaon23FwzVgKru1JSSEyYWNEy32kYyTt92bSigM1nD4OiT06gkvvmCfXXlfawi2x63xO8KlGafsH6S8JQyfD8btGJ5fXt59OQTetoV2l5K5pjUab006Dh/vzyzign07GZr9YLNLFeep8ld3dZrnznJ3CotZ53ddDTziP8QvXYO+56azOe9qld010PvNuweTTnsOFMbAdX1DjnABhoU2Roy+AsaGJ6+m0zuh8tS+RvEGyYYgwavKqbsCVpdRNWLj4CmIJ4iu7aW8IMIGHsW+ejJP79Okky4fOIVsFmgxb/UwrPt0zuxYk73diOYkg0y97n23v7fCNUTTDGCeqh1GLl444bJ9fHFli1Mc4wC4u9vO5a0APl0aTDXDpqZD7aBj+NG6xA1lgwOAxfyafagplzG3h8qwOjcl8mf/084dfjphiv5l8SD+cxmrXDBy8s5VZgSfJMdniBwRUoqQjYB6k3Q0N+Q95Tio5WCqkzkhO0tw1KlHUoJbzYav7dUhGap3063FZmqrz9J1K1HJiXBV7au810021zZ8cpTyvVKLQhDtahr2e+7fYSVNuHYcG7R7Q38dtCPBgeTzs0utIk2z4/+3Aw7wLtAxZa1BbkTeKuB7WxAc1P98uoqwSNY377m5XfEpU7TjIzfV6hkyfvdls5HO/FMjyV2iW4V2oaYmGKVFxndlbeudoOgES90YZH3L9bdNvSn9yO75e+BazcQ2xq/2YIxxdqM3T/rp88/lObTb/AsorhH8=
+sidebar_class_name: "put api-method"
+info_path: reference/connxio-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Deprecate a schema version"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/v3/schemas/{id}/deprecate"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Toggles the deprecated state of the specified version. Calling this endpoint again restores the version.
+This is the only supported change to an existing schema version.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./put-api-v-3-schemas-id-deprecate.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./put-api-v-3-schemas-id-deprecate.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./put-api-v-3-schemas-id-deprecate.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

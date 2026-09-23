@@ -1,0 +1,31 @@
+.panel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 997px) {
+  .panel > nav {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0.875rem 1rem 0.75rem;
+}
+
+.logo {
+  margin: 0;
+}
+
+.logo img {
+  width: 8rem;
+  height: auto;
+}

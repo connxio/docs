@@ -1,6 +1,5 @@
-position: 20 # float position is supported
+position: 2 # float position is supported
 label: "Getting Started"
 collapsible: true # make the category collapsible
 collapsed: true # keep the category open by default
-# className: "sidebar-getting-started"
-className: "hidden"
+className: "sidebar-getting-started"

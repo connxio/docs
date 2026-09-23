@@ -102,14 +102,21 @@ const config: Config = {
       },
       items: [
         {
-          to: "/",
+          type: "doc",
+          docId: "home",
           label: "Home",
           activeBaseRegex: "^((?!reference|api).)*$",
         },
         {
-          to: "/reference/connxio-api",
+          type: "doc",
+          docId: "reference/connxio-api",
           label: "REST API",
           activeBasePath: "reference",
+        },
+        {
+          type: "docsVersionDropdown",
+          position: "right",
+          dropdownActiveClassDisabled: true,
         },
       ],
     },

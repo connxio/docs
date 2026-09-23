@@ -1,0 +1,69 @@
+---
+id: delete-api-v-3-schemas-id
+title: "Delete a schema and all of its versions"
+description: "Permanently deletes all versions and their content. Deletion fails when an integration references the schema."
+sidebar_label: "Delete a schema and all of its versions"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVk1v4zYQ/SsD5pAPyNJis2hRn5pmU8DdAgmyKXLIBsVYGllEKFLhUJa9hv97MZTkON5099BDT5ZJzsybN8PH2aiAC1bTB/U5r6hGVo+JKohzr5ugnVVTdUO+Rks2mDUUZCgQAxoDS/KsnWVAW0CoSHvInQ1kQwof5Zx2FkrUhqGryAJa0DbQwmPc8VSSJ5sTizFwDJ+qRLmG+iOzQk3Vx6s/r+6u/sZGZ8vzrD/F2UYXW5WoBj3WFMhLBhtlsSY1VbpQidICvcFQqUR5em61p0JNg28pUb0XNd2osG7EgoPXdqG220c5zI2zTCz779+9k5/XhFx/UtttomoKlROIPSkRTqjUVL0BlMkvR5StN2qqqhAanmYZNs0kX02em8lXMgVOsNEpfm09dTRnHYhTS0EJMKa89Tqso5NLZ+1Ku8nFzWzyiWTtMVG/EXry8r1/Pha2T2dn1ejeascANloWDmt/cTODT7SG0nkYjOHiZpbCJVpAww7mBEwBWtZ2AQjPLfk17OqSwqwc9qTIHc0r556gbG0uEdDosE7iVkVYkIfjfYj3/fFjqFsOr8IFB8dSy2OVjFU/zG1ogd6v2iavDjz9h+QB+a1Er61ZQ8sEuhySYUBP0FpcojY4NySw165Nfwg6Oj/EPLDxY9x3leaRz8jcIWnyRTYierMiMWMpimT7FCO8gXfE8w3RYxvucEqvf4Pyj/s7uGhD5bz+2ivCAPmlXXpHvTSQsNZ/qama9yHkGmpbuhhLB7MHUbB/E/PoCGY2eFe0MdkvFgAg0iWZaobC5W1NNlAB2kYMZ2fXDVnZLp2vMZydRb1rvFvqglgq7hk6HSpZW3isaww6B8xzYhamxcsIqjEYxE8iCuq6IdFajok2esxD70tiiJp6Z2CJXruWAbmhPDC4cpDbPTntVbhz/qk0ruMU7sXLfuiLm1kyoM3l8rbB1RjolSY33glq4gRqtLggwVDqRTsEScbcd3miMesD6BK0JmZcSHo5NjjXRgctXnvaZL00tNJxY90n23Jw9dgKrumTkkZkwtoIl/tIx0jaA600B3HJaw5Uc/plKOzREVx6xzy59nqhLdwSu9bnBJ8rFL0/KH9JGFpP/H2jk8vr28+noOvG0Eun5K5ujEab0wsHD/fnlyAlezwZxb7rurQ7T51fZHe3We48Z6fQVTqv+n7oE85j/MLV2HuuW6vzPu3Suzo6n3vXMfm0z+HCGNi9W1DhkgCh06bI0RfAWNPE9ek0zuh8vU+R3EGyYYgwcvKqb8CVpfRN6Fy8BbEF8ZXdtDcEmMDDqJsn47t7+niS5YNyNM4HNBk2+onWfLpndi1I3r+Q5SSCvH7Z+2x37gXfGEUzjHEiexi5eG6Jw+76xSdLjPoYB9jFxX49XwTo4dJosgEuPRVyHg3D78Z1LyALDBg85k/kU02hjLUtXJ5VoTaZL/Offv7wyxFT1JvJh/TDaex2zcDBO7swa/AkNSZb/CABlShRBMyDyN0gyFdynVRyMFRIn5HspLmrVaKoRi373DbC/69DMVLrRK+HQU5N1Xn6TiVqNTFuETW195rperGrn2ylvFyoRKEJd7QKe5r7p9iJKDeOQ412D2icCKUt+8kosiCZuhJ04N0weSjZGzXMlP/DIDq8XoFWIWsMaitkRUo2w6j3oJbn47OEgn2qCxmgK8dBdjebOTL95c12K8v9sx5HNdF0eYDjMFdolu9CTUs0TN+h4OR2vFLwbwDH2cDKs71E08o/lag48shsvH3cH177+Vptt/8ACfUuKQ==
+sidebar_class_name: "delete api-method"
+info_path: reference/connxio-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete a schema and all of its versions"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v3/schemas/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Permanently deletes all versions and their content. Deletion fails when an integration references the schema.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./delete-api-v-3-schemas-id.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./delete-api-v-3-schemas-id.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./delete-api-v-3-schemas-id.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

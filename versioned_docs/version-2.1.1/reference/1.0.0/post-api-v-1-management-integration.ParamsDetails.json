@@ -1,0 +1,1 @@
+{"parameters":[{"name":"companyId","in":"header","description":"","schema":{"type":"string"}}]}

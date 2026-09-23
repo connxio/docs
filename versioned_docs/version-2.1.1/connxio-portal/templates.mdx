@@ -1,0 +1,105 @@
+---
+title: "Templates"
+sidebar_position: 20
+---
+
+import ThemedImage from "@theme/ThemedImage";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+# Templates
+
+Templates in Connxio allow you to save integration configurations as reusable blueprints. This enables you to create new integrations quickly based on proven configurations, ensuring consistency across your integrations and saving time when you need to set up similar integrations across different projects.
+
+Connxio also supports global templates that can be shared across all companies, making it easy to distribute best practices and standardized configurations. These templates are managed by the Connxio developers and are available to all users.
+
+## Creating a Template
+
+Templates are created from existing integrations. To create a template:
+
+1. Navigate to an existing integration you want to use as a template
+2. Click the **Save as template** button in the integration toolbar
+
+<div style={{ maxWidth: "800px" }}>
+  <ThemedImage
+    alt="Templates page"
+    style={{ boxShadow: "none" }}
+    sources={{
+      light: useBaseUrl("/img/docs/templates/save-as-template-light.webp"),
+      dark: useBaseUrl(
+        "/img/docs/templates/save-as-template-dark.webp#dark-only"
+      ),
+    }}
+  />
+</div>
+
+3. In the dialog that appears, enter a **Name** and **Description** for your template
+4. Click **Create** to save the template
+
+<div style={{ maxWidth: "800px" }}>
+  <ThemedImage
+    alt="Templates page"
+    style={{ boxShadow: "none" }}
+    sources={{
+      light: useBaseUrl("/img/docs/templates/save-template-light.webp"),
+      dark: useBaseUrl("/img/docs/templates/save-template-dark.webp#dark-only"),
+    }}
+  />
+</div>
+
+The template will now appear in your templates list and can be used to create new integrations.
+
+## Using a Template
+
+There are two ways to create a new integration from a template:
+
+### From the Integration List
+
+1. Navigate to the **Integrations** list
+2. Click the **Add Integration** button
+3. Select **From template** option
+
+<div style={{ maxWidth: "800px" }}>
+  <ThemedImage
+    alt="Templates page"
+    style={{ boxShadow: "none" }}
+    sources={{
+      light: useBaseUrl("/img/docs/templates/create-from-template-light.webp"),
+      dark: useBaseUrl(
+        "/img/docs/templates/create-from-template-dark.webp#dark-only"
+      ),
+    }}
+  />
+</div>
+
+The new integration will be created with all the settings from the template, and you'll be redirected to the integration details page where you can make any necessary adjustments.
+
+### From the Templates List
+
+1. Navigate to the **Templates** list
+2. Find the template you want to use
+3. Click the **Use template** button
+
+<div style={{ maxWidth: "800px" }}>
+  <ThemedImage
+    alt="Templates page"
+    style={{ boxShadow: "none" }}
+    sources={{
+      light: useBaseUrl("/img/docs/templates/template-page-light.webp"),
+      dark: useBaseUrl("/img/docs/templates/template-page-dark.webp#dark-only"),
+    }}
+  />
+</div>
+
+4. Preview the template details and fill in the required fields for the new integration.
+5. Click **Create integration**
+
+## Editing Templates
+
+To modify an existing template:
+
+1. Navigate to the **Templates** list
+2. Find the template you want to edit
+3. Click the **Edit** button
+4. You'll be taken to the template editor, which works just like the integration configuration page
+5. Make your desired changes to the template configuration
+6. Click **Save template** to save your changes

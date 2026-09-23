@@ -36,6 +36,15 @@ const config: Config = {
         docs: {
           routeBasePath: "/",
           path: "docs",
+          lastVersion: "current",
+          versions: {
+            current: {
+              label: "2.5.0",
+              path: "",
+              banner: "none",
+              badge: false,
+            },
+          },
           sidebarPath: "./sidebars.ts",
           sidebarCollapsed: true,
           breadcrumbs: false,

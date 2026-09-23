@@ -1,0 +1,1 @@
+{"parameters":[{"name":"MessageEncoding","in":"query","schema":{"type":"string"}},{"name":"InterchangeId","in":"query","schema":{"type":"string"}},{"name":"FileName","in":"query","schema":{"type":"string"}},{"name":"integrationId","in":"path","description":"","required":true,"schema":{"type":"string"}}]}

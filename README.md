@@ -24,8 +24,8 @@ theme toggle. Home and REST API navigation follow the selected documentation
 version. Switching versions opens the same document when it exists in both
 versions, or that version's home page otherwise.
 
-To publish a documentation release, finish editing `docs/`, then run the following
-with your release number (replace `X.Y.Z`):
+To archive a snapshot of the current documentation, run the following with your
+version number (replace `X.Y.Z`):
 
 ```sh
 npm run docs:version -- X.Y.Z
@@ -36,12 +36,13 @@ Docusaurus creates `versioned_docs/version-X.Y.Z/`, saves the resolved sidebars 
 `versioned_sidebars/version-X.Y.Z-sidebars.json`, and adds the release to the root
 `versions.json`. Commit all three along with your documentation changes.
 
-With Docusaurus's default routing, the newest saved release is served at `/`,
-older releases at `/VERSION/`, and the working `docs/` directory at `/next/`
-(labelled **Next**). Before the first release is saved, `docs/` is served at `/`
-and the selector appears as a single version link; it becomes a dropdown once
-there are multiple versions. Edit `docs/` for the next release; fix an existing
-release in its `versioned_docs/` folder. Releases are snapshots, not Git branches.
+The working `docs/` directory is the default version, labelled **Next** and served
+at `/`. All numbered snapshots are archives served at `/VERSION/`, including
+`/1.0.0/`. Creating another snapshot does not change the default version. This is
+configured with `lastVersion: "current"` and an empty path for `current` in
+`docusaurus.config.ts`. Archived pages display Docusaurus's unmaintained-version
+banner. Edit `docs/` for live documentation updates; fix an archive in its
+`versioned_docs/` folder. Archives are snapshots, not Git branches.
 
 The REST API's own v1/v2/v3 selector is independent of whole-site documentation
 versions. The snapshot includes those API references too. Root-relative links

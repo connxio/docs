@@ -1,0 +1,29 @@
+# Log
+
+The Log transformation in Connxio writes a custom log entry at a specific point in the message flow. This is useful for auditing, debugging, and tracing messages as they pass through an integration pipeline.
+
+## Configuring the Log transformation
+
+When configuring the Log transformation, the following fields are available:
+
+- **Log level** _(required)_: Controls the severity level at which the entry is logged. Available levels are `Error`, `Minimum`, `Standard`, `Verbose`, and `Off`. Defaults to `Standard`.
+- **Status** _(required)_: A short label describing the state of the message at this point in the flow (e.g. `Received`, `Processed`).
+- **Description** _(required)_: A longer explanation of the log entry.
+- **Sender** _(optional)_: Identifies the sender of the message in the log entry.
+- **Receiver** _(optional)_: Identifies the receiver of the message in the log entry.
+
+The `Status`, `Description`, `Sender`, and `Receiver` fields support variable replacement using the [CxMAL](/integrations/cxmal/connxio-macro-language) syntax, for example `{filename}`, `{interchange}`, `{metadata:interchangeId}`, or `{env:myVariable}`.
+
+## Log levels
+
+| Level    | Value | Description                                 |
+| -------- | ----- | ------------------------------------------- |
+| Error    | 0     | Only errors are logged                      |
+| Minimum  | 1     | Minimal logging                             |
+| Standard | 2     | Default level — general operational logging |
+| Verbose  | 3     | Detailed logging for diagnostics            |
+| Off      | 4     | No logging                                  |
+
+:::info
+The log entry will only appear if the log level configured here is equal to or below the log level configured on the integration's logging webhook. Setting the level to `Off` effectively suppresses this log entry entirely.
+:::

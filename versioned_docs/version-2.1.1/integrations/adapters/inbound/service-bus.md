@@ -46,7 +46,7 @@ Azure Service Bus has 3 sections; Core Settings, Advanced Settings and Wrapper.
 </div>
 
 - **Servicebus Type**: There are two types; Topic and Queue.
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties. Note that a servicebus connection string cannot contain 'EntityPath', as this information is set in the 'Topic Name' or 'Queue Name' field.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](../../../connxio-portal/security-configurations.md) that contains the relevant connection properties. Note that a servicebus connection string cannot contain 'EntityPath', as this information is set in the 'Topic Name' or 'Queue Name' field.
 - **Topic Name**: The name of the topic.
 - **Subscription Name**: The name of the subscription to pick files from.
 
@@ -62,7 +62,7 @@ Azure Service Bus has 3 sections; Core Settings, Advanced Settings and Wrapper.
   />
 </div>
 
-- **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) pattern is used.
+- **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked the [Metadata on Bus, data as blob](#uploading-to-azure-blob-storage) pattern is used.
 - **Keep message Properties**: When enabled, it keeps the servicebus properties as filecontent.
 
 ### Wrapper
@@ -77,7 +77,7 @@ Azure Service Bus has 3 sections; Core Settings, Advanced Settings and Wrapper.
 </div>
 
 - **WrapperType**: Choose between Json, XML or None.
-- **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
+- **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](../../../interaction/wrappers.md).
 
 
 ## Message Handling Patterns
@@ -168,7 +168,7 @@ Message sbMessage = new Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObje
 sbMessage.UserProperties.Add("InterchangeId", "3c8701dc-858b-4f98-915a-5b3432eb37ec");
 ```
 
-Be sure to read the [Core Concepts](/getting-started/core-concepts) for more information about supplying your own InterchangeId.
+Be sure to read the [Core Concepts](../../../getting-started/core-concepts.md) for more information about supplying your own InterchangeId.
 
 ## Retry
 

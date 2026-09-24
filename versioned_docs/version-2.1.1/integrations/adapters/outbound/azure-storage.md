@@ -37,7 +37,7 @@ Read more about the properties in each section below:
 ### Adaptername & Ack
 
 - **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
-- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/acknowledgment).
+- **Send Acknowledgement**: Is explained [here](./acknowledgment.md).
 
 ### Core settings
 
@@ -54,7 +54,7 @@ Core settings differ based on storage type.
 </div>
 
 - **Storage type**: Select storage type to use. Types include: Blob, File, Queue and Table.
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](../../../connxio-portal/security-configurations.md) that contains the relevant connection properties.
 - **Container Name**: The name of the container. This container must exist before Connxio start picking messages. We will not create it for you.
 - **Directory**: The _directory_ field specifies which directory Connxio should target for file pickup. If this is kept blank the root directory is used. (Azure Files)
 - **Service bus message body contract**: Specifies the outgoing message body contract. (Queue)
@@ -72,11 +72,11 @@ Core settings differ based on storage type.
   />
 </div>
 
-- **Outbound Filename Pattern**: Uses Connxio Macro Language to generate file names, this is described in detail on the [Connxio Macro Language](/integrations/cxmal/connxio-macro-language) page.
+- **Outbound Filename Pattern**: Uses Connxio Macro Language to generate file names, this is described in detail on the [Connxio Macro Language](../../cxmal/connxio-macro-language.md) page.
 - **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 - **New Interchange ID**: Removes interchangeid from adapter specific metadata to force new id on re-entry. (Blob)
 
 ## Retry
 
-Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/integrations/retry). This may change in the future as we are looking into enabling backoff retry.
+Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](../../retry.md). This may change in the future as we are looking into enabling backoff retry.

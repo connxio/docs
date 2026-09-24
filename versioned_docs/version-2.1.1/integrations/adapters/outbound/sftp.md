@@ -16,13 +16,13 @@ To address these limitations in the best way possible we have added the [batchin
 
 ### Batching adapter
 
-Because of the nature of (S)ftp described in the **limitations** section, the CX team decided to provide two types of (S)ftp communication. The first — and newest type — is the batching adapter which works on the same principles as the [batching transformation](/integrations/transformation/batching), which triggers on a set interval designated either by CRON or interval. The reason we implemented this new batching option is to address the performance concerns of the (S)ftp protocol by utilizing the least amount of connections while simultaneously enabling parallelization. Thus the batching type is orders of magnitude faster than its predecessor, while also using much fewer resources. Currently we only recommend enabling the batching type, but we will be enabling it by default in the near future.
+Because of the nature of (S)ftp described in the **limitations** section, the CX team decided to provide two types of (S)ftp communication. The first — and newest type — is the batching adapter which works on the same principles as the [batching transformation](../../transformation/batching.md), which triggers on a set interval designated either by CRON or interval. The reason we implemented this new batching option is to address the performance concerns of the (S)ftp protocol by utilizing the least amount of connections while simultaneously enabling parallelization. Thus the batching type is orders of magnitude faster than its predecessor, while also using much fewer resources. Currently we only recommend enabling the batching type, but we will be enabling it by default in the near future.
 
 The batching type (S)ftp adapter works by adding messages to a queue controlled by the CX engine which is then polled at the frequency of the set interval. If there are any messages in the queue the outbound part of CX will handle these messages in batches of up to 1000 files at the time and send them to the (S)ftp area configured for the integration. As such you will only be receiving a limited number of connections toward your server per batch. The actual of amount of connections is predicated on the parallelization utilized by the CX engine but should not exceed a single-digit number.
 
 ### Non-batching adapter
 
-The non-batching adapter for (S)ftp is the legacy version of the adapter and should only be used in special circumstances. We have introduced extremely strict limits on the number of files you are able to send though this adapter type which may halt you integrations if they expect a certain performance from the CX system. The only real use-cases for the adapter is either the case where you are in need of continuous transfer where each file uses its own (S)ftp connection, this however, is an anti-pattern and shouldn't be used outside edge cases, or the case where you are utilizing the [synchronous CX pipeline](/integrations/synchronous). In the latter case you are forced to use non-batching as the the batching type is strictly asynchronous. Be aware however, that we have greatly limited the transfer rate on the outbound (S)ftp adapter while using synchronicity and the current limit is set at one request to our api every 10 seconds. There are currently no limits on the usual adapter transfer, but this might change in the near future.
+The non-batching adapter for (S)ftp is the legacy version of the adapter and should only be used in special circumstances. We have introduced extremely strict limits on the number of files you are able to send though this adapter type which may halt you integrations if they expect a certain performance from the CX system. The only real use-cases for the adapter is either the case where you are in need of continuous transfer where each file uses its own (S)ftp connection, this however, is an anti-pattern and shouldn't be used outside edge cases, or the case where you are utilizing the [synchronous CX pipeline](../../synchronous.md). In the latter case you are forced to use non-batching as the the batching type is strictly asynchronous. Be aware however, that we have greatly limited the transfer rate on the outbound (S)ftp adapter while using synchronicity and the current limit is set at one request to our api every 10 seconds. There are currently no limits on the usual adapter transfer, but this might change in the near future.
 
 :::caution Note
 Transfer rate on the outbound (S)ftp adapter while using synchronicity is limited to one request every 10 seconds.
@@ -85,7 +85,7 @@ Append might not be allowed or configured for your SFTP server. If the server do
 ### Adaptername & Ack
 
 - **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
-- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/acknowledgment).
+- **Send Acknowledgement**: Is explained [here](./acknowledgment.md).
 
 ### Core Settings
 
@@ -99,7 +99,7 @@ Append might not be allowed or configured for your SFTP server. If the server do
   />
 </div>
 
-- **SFTP Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
+- **SFTP Security Configuration**: Reference to the [Security Configuration](../../../connxio-portal/security-configurations.md) that contains the relevant connection properties.
 - **SFTP Directory**: The directory to pickup files in. Must include a leading forward slash.
 
 ### Batch processing
@@ -131,7 +131,7 @@ Batching for the Sftp adapter works like this:
   />
 </div>
 
-- **Cron Expression**: Specifies the frequency at which the batching operation is triggered. Read more about the triggering interval [here](/integrations/triggering-interval).
+- **Cron Expression**: Specifies the frequency at which the batching operation is triggered. Read more about the triggering interval [here](../../triggering-interval.md).
 - **Batch Size**: The size of a batch to get from the queue every interval.
 - **Disable Failure Retry**: Toggles the retry. The batching will run on its normal schedule even on errors.
 - **Retry on non-transient failures**: Retry on all errors, even those that are labeled as non-retryable.
@@ -149,10 +149,10 @@ Batching for the Sftp adapter works like this:
   />
 </div>
 
-- **Outbound Filename Pattern**: Uses Connxio Macro Language to generate file names, this is described in detail on the [Connxio Macro Language](/integrations/cxmal/connxio-macro-language) page.
+- **Outbound Filename Pattern**: Uses Connxio Macro Language to generate file names, this is described in detail on the [Connxio Macro Language](../../cxmal/connxio-macro-language.md) page.
 - **Duplicate Detection**: Attempts to terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 
 ## Retry
 
-Retry on all outbound adapters is currently handled by the backoff retry described on the [Retry page](/integrations/retry).
+Retry on all outbound adapters is currently handled by the backoff retry described on the [Retry page](../../retry.md).

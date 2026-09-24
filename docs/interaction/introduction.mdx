@@ -1,0 +1,41 @@
+---
+title: "Introduction"
+sidebar_position: 0
+description: "Explore the ways to interact with Connxio through the portal, API, and .NET helpers."
+---
+
+# Interacting with Connxio
+
+You can interact with Connxio through the web portal or call the Connxio API from your applications. The right approach depends on whether you want to configure an integration, send data for processing, or automate work from another system.
+
+This section introduces the options and explains how the Connxio Interaction NuGet package and message wrappers can help your applications communicate with Connxio.
+
+## Connxio Portal
+
+The [Connxio Portal](../connxio-portal/introduction.mdx) provides a graphical interface for configuring and managing integrations. Use it to set up connections and actions, manage API keys, test integrations, and investigate processing errors.
+
+The portal is a useful starting point for preparing an integration before connecting an external application to it.
+
+## Connxio API
+
+The [Connxio API](/reference/connxio-api) provides programmatic access to Connxio over HTTP. You can call it from any application or service that can make HTTP requests, without using a Connxio client package.
+
+Use the API to send messages to an integration, submit batches of messages, or retrieve error information and performance metrics for your own monitoring tools. The API also exposes schema operations. Available operations vary by API version; the API reference includes a version selector and describes each endpoint's request format, authentication requirements, and responses.
+
+To start sending messages through the API:
+
+1. Configure the integration's [Connxio API inbound adapter](../actions/adapters/inbound/api.mdx).
+2. Create an [API key](../connxio-portal/apikeys.mdx) for the relevant subscription and scope.
+3. Follow the [API reference](/reference/connxio-api) to authenticate and send a request to the appropriate messaging endpoint using your integration ID.
+
+## Connxio Interaction NuGet
+
+For .NET applications, the [Connxio Interaction NuGet package](./nuget/introduction.md) provides helpers for communicating with the Connxio API, Azure Blob Storage, and Azure Service Bus. Its HTTP handlers support synchronous and asynchronous interaction with the API.
+
+Use the package to simplify message sending and configuration in your application. Your integration must still be configured to receive the messages you send.
+
+## Message wrappers
+
+Sometimes a message needs to carry additional information, such as metadata or an interchange ID, alongside its content. [Message wrappers](./wrappers.md) let you include this information in a common envelope, including when the transport cannot carry metadata separately.
+
+Wrappers can be used with all adapters, including the API. You can create them through the NuGet package or construct the documented wrapper format in another language.

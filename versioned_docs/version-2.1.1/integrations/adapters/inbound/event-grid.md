@@ -8,7 +8,7 @@ The Azure Event Grid inbound adapter in Connxio allows seamless integration with
 At this point in time we only support the Blob Storage for Event Grid. Adding new options is possible, please contact us if you need other options.
 <br />
 <br />
-If you're integration experiences peak traffic of several thousand messages per second, we recommend using a <a href="/integrations/adapters/inbound/service-bus">queue system</a> instead.
+If you're integration experiences peak traffic of several thousand messages per second, we recommend using a [queue system](./service-bus.md) instead.
 </p>
 </details>
 
@@ -46,7 +46,7 @@ A new window pops up with the input fields for the adapter's properties:
 The following properties are used to configure the adapter:
 
 - **Use event as Content**: Turn this switch on if you want the EventGrid event to be sent as content to the Connxio Engine. You do not need the *Connection String* and *Container List* properties when this option is enabled.
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the connection string to the Storage Account that holds the data represented by the message sent to the API from Event Grid.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](../../../connxio-portal/security-configurations.md) that contains the connection string to the Storage Account that holds the data represented by the message sent to the API from Event Grid.
 - **Event Grid Blob Container Name List**: A comma separated list over possible containers referenced in the EventGrid message.
 - **Use SAS URI authentication**: Enable this option to treat the connection as a SAS URI. Useful when connecting to ADLS Gen2 datalake accounts.
 
@@ -58,7 +58,7 @@ We use the **Event Grid Schema** Event Schema. Be sure to select the right one w
 
 ## Event only handling
 
-When using the *Use event as Content* option you are required to handle the event manually. The easiest way to accomplish this is to extract the blob name from the `Url` parameter with a Code Mapping and use it with the [Blob Get transformation](/integrations/transformation/blob-get).
+When using the *Use event as Content* option you are required to handle the event manually. The easiest way to accomplish this is to extract the blob name from the `Url` parameter with a Code Mapping and use it with the [Blob Get transformation](../../transformation/blob-get.md).
 
 The **Event Grid Schema** model looks like this:
 

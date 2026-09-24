@@ -20,7 +20,7 @@ To get started with Connxio and set up your first integration, follow the steps 
 A security configuration in Connxio is a reusable set of credentials and settings that enables secure connections with external systems. It provides a centralized and protected way to store sensitive information, such as API keys and authentication details, ensuring the secure and confidential exchange of data during integrations.
 <br />
 <br />
-<a href="/connxio-portal/security-configurations">Read more about security configurations here.</a>
+[Read more about security configurations here.](../connxio-portal/security-configurations.md)
     </p>
 </details>
 
@@ -35,7 +35,7 @@ A security configuration in Connxio is a reusable set of credentials and setting
 2. Within the "Integrations" section, click on the "Add Integration" button to initiate the creation process.
 3. Provide a suitable name and description for your integration. This will help you identify its purpose and functionality.
 4. Enter a sender and receiver which helps you easily indentify the systems involved in the integration.
-5. Enter the file format of the input file, as well as the file encoding. ([Read more about encoding here](/integrations/encoding))
+5. Enter the file format of the input file, as well as the file encoding. ([Read more about encoding here](../integrations/encoding.md))
 
 ## Configuring the Inbound Adapter
 
@@ -45,7 +45,7 @@ A security configuration in Connxio is a reusable set of credentials and setting
 An adapter serves as a bridge between systems, facilitating the transfer of data using various protocols. It enables seamless integration by providing standardized methods for sending and receiving information, allowing for efficient and flexible data exchange within the Connxio platform.
 <br />
 <br />
-<a href="/integrations/adapters">Read more about adapters here.</a>
+[Read more about adapters here.](../integrations/adapters/introduction.mdx)
     </p>
 </details>
 

@@ -41,9 +41,9 @@ Specify the conditions for when message processing should be terminated. The mes
 '{file:status}' == 'error'
 ```
 
-Read more on how to define conditions [here](/integrations/rules.md)
+Read more on how to define conditions [here](../rules.md)
 
-Select a [LogLevel](/integrations/logging.md#log-levels) to specify when to log.
+Select a [LogLevel](../logging.md#log-levels) to specify when to log.
 
 Choose a status. This is used in logs to specify the status of the message. Ie, Success, Warning, Error.
 

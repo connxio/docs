@@ -37,7 +37,7 @@ Read more about the properties in each section below:
 ### Adaptername & Ack
 
 - **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
-- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/acknowledgment).
+- **Send Acknowledgement**: Is explained [here](./acknowledgment.md).
 
 ### Core Settings
 
@@ -52,7 +52,7 @@ Read more about the properties in each section below:
 </div>
 
 - **Service Bus Type**: Sets if queue or topic is used.
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties. Note that a servicebus connection string cannot contain 'EntityPath', as this information is set in the 'Topic Name' or 'Queue Name' field.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](../../../connxio-portal/security-configurations.md) that contains the relevant connection properties. Note that a servicebus connection string cannot contain 'EntityPath', as this information is set in the 'Topic Name' or 'Queue Name' field.
 - **Queue/Topic Name**: The name of the queue or topic.
 
 ### Advanced settings
@@ -68,7 +68,7 @@ Read more about the properties in each section below:
 </div>
 
 - **Message label**: The label to be added to the service bus message.
-- **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked one of the [Metadata on Bus, data as blob](#metadata-on-bus-data-as-blob) patterns is used.
+- **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked one of the [Metadata on Bus, data as blob](#uploading-to-azure-blob-storage) patterns is used.
 - **Keep message Properties**: When enabled, CX expects a `ConnxioServiceBusMessage` when uploading to bus.
 - **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
@@ -155,4 +155,4 @@ When selecting a message handling pattern, consider the size of your message pay
 
 ## Retry
 
-Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/integrations/retry). This may change in the future as we are looking into enabling backoff retry.
+Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](../../retry.md). This may change in the future as we are looking into enabling backoff retry.

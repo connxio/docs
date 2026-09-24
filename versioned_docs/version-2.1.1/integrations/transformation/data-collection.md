@@ -4,7 +4,7 @@ sidebar_position: 50
 
 # Data Collection
 
-Connxio supports various forms of [orchestration](/getting-started/core-concepts), most prominent among them is enrichment which is fueled by _data collection_. Data collection refers to the act of getting data over HTTP as a transformations step. This enables customers to collect data from all resources that support HTTP and use them within transformations, [Connxio Macro Language](/integrations/cxmal/connxio-macro-language) and url generation. This page describes how to use and configure data collection.
+Connxio supports various forms of [orchestration](../../getting-started/core-concepts.md), most prominent among them is enrichment which is fueled by _data collection_. Data collection refers to the act of getting data over HTTP as a transformations step. This enables customers to collect data from all resources that support HTTP and use them within transformations, [Connxio Macro Language](../cxmal/connxio-macro-language.md) and url generation. This page describes how to use and configure data collection.
 
 ## Limitations and External demands
 
@@ -59,10 +59,10 @@ On creating a new transformation, a popup with the transformation's input fields
   />
 </div>
 
-- **Variable name**: The name used for the variable through Connxio. USe this name if you want to target the variable in a [code component](/integrations/transformation/code-components) or [Connxio Macro Language](/integrations/cxmal/connxio-macro-language).
+- **Variable name**: The name used for the variable through Connxio. USe this name if you want to target the variable in a [code component](./code-components.md) or [Connxio Macro Language](../cxmal/connxio-macro-language.md).
 - **Method**: The verb to use for HTTP communication.
 - **REST Url**: The endpoint to get the data from. This could be an API, data store or similar REST service.
-- **Security Configuration**: Select your security configuration from the list. See [here](/connxio-portal/security-configurations) for more information.
+- **Security Configuration**: Select your security configuration from the list. See [here](../../connxio-portal/security-configurations.md) for more information.
 - **Headers**: Add any custom header you might need. This can include custom Authorization if needed.
 
     <div style={{maxWidth: '400px'}}>
@@ -108,11 +108,11 @@ Data Collection also has advanced settings where the properties can be seen when
   Example of variable used in URI: `http://example.com/api/getStuff?FromDate={date.UseDateTimeDelta(1980-01-01T08:00:00.00).SetCstZone(Central Europe Standard Time) | date: dd.MM.yyyy HH.mm.ss | error: fallback 2023-02-02T08:00:00.00}&ToDate={date.SetCstZone(Central Europe Standard Time)}`
 - **Use Content As Request Body**: The current version of the content at the time of the data collection is sent to the collection endpoint as the body of the request. Default value is empty body.
 - **Use Response As Content**: The current content is replaced by the body returned by the data collection endpoint, this happens regardless of what is returned.
-- **Current Message Content Type**: The current content type of the message. Use this only if the content type of the message at this stage is different from the message format defined for the configuration. Used for [Connxio Macro Language](/integrations/cxmal/connxio-macro-language) only.
+- **Current Message Content Type**: The current content type of the message. Use this only if the content type of the message at this stage is different from the message format defined for the configuration. Used for [Connxio Macro Language](../cxmal/connxio-macro-language.md) only.
 
 ## Retry
 
-Data collection is currently using the backoff retry described on the [Retry](/integrations/retry) page.
+Data collection is currently using the backoff retry described on the [Retry](../retry.md) page.
 
 ## Advanced error handling
 

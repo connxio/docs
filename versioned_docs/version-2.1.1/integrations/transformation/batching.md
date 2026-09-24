@@ -29,7 +29,7 @@ To configure batching, select _Batching_ in the "Transformations" list.
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import RequiredNugetPackage from '@site/docs/\_shared/RequiredNugetPackage.mdx';
+import RequiredNugetPackage from '../../_shared/RequiredNugetPackage.mdx';
 
 When you create a new transformation, a popup appears with the batching input fields.
 
@@ -51,7 +51,7 @@ See the sections below for how batching code, scheduling, and retries work.
 
 <RequiredNugetPackage />
 
-Start by creating code that combines queued messages into one output payload. This is similar to [map code components](/integrations/transformation/code-components), but uses the batching interface.
+Start by creating code that combines queued messages into one output payload. This is similar to [map code components](./code-components.md), but uses the batching interface.
 
 Use the batching boilerplate below:
 
@@ -96,7 +96,7 @@ public class MyFirstBatcher : IConnxioBatch
 }
 ```
 
-**Upload the component** using the process on the [code components page](/integrations/transformation/code-components), and select the _batching_ type.
+**Upload the component** using the process on the [code components page](./code-components.md), and select the _batching_ type.
 
 ## Trigger Interval
 
@@ -110,13 +110,13 @@ Set a fixed interval in minutes (minimum: 1), or run once daily at a specific ti
 
 ### Cron
 
-Use Cron for advanced schedules. Read more [here](/integrations/triggering-interval/#cron).
+Use Cron for advanced schedules. Read more [here](../triggering-interval.md#cron-expressions).
 
 ## Retry
 
 Retry behavior depends on where failure occurs:
 
 1. If a transient error happens before the batching code runs, messages are returned to the queue and retried after 60 seconds.
-2. If failure happens after batching code runs, Connxio retries send attempts with increasing delay, then schedules the message through the [disaster pipeline](/integrations/retry).
+2. If failure happens after batching code runs, Connxio retries send attempts with increasing delay, then schedules the message through the [disaster pipeline](../retry.md).
 
 Retries can produce smaller output files than expected. Check your logging provider for warnings; if none appear, contact your representative.

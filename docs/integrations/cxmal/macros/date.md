@@ -71,7 +71,7 @@ UTC: 2024-03-27T09:44:03.1401250Z - CET: 2024-03-27T10:44:03.1407082
 
 ## Example: Format the output
 
-You can use the [Date pipe](/integrations/cxmal/pipes/date) to format the output.
+You can use the [Date pipe](../pipes/date.md) to format the output.
 
 #### Input
 ```

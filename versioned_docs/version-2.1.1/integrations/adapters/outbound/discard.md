@@ -21,4 +21,4 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Retry
 
-Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/integrations/retry). This may change in the future as we are looking into enabling back-off retry.
+Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](../../retry.md). This may change in the future as we are looking into enabling back-off retry.

@@ -1,1 +1,0 @@
-{"parameters":[{"name":"id","in":"path","description":"","required":true,"schema":{"type":"string"}},{"name":"replaceVariables","in":"query","description":"Whether the API should replace environment variable strings with their values","schema":{"type":"boolean","default":false}}]}

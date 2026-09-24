@@ -10,7 +10,7 @@ When using this functionality, make sure you are wrapping the correct layer of y
 
 ## How to start using wrappers
 
-The first thing you want to do is add the [ConnXio.Interaction](/interaction/nuget/introduction) NuGet package to your project. This NuGet holds the `ConnxioJsonWrapper` class which can be used to wrap your message. If you can't use the NuGet you can use the following definition inside your app or code:
+The first thing you want to do is add the [ConnXio.Interaction](./nuget/introduction.md) NuGet package to your project. This NuGet holds the `ConnxioJsonWrapper` class which can be used to wrap your message. If you can't use the NuGet you can use the following definition inside your app or code:
 
 ```json
 {
@@ -22,8 +22,8 @@ The first thing you want to do is add the [ConnXio.Interaction](/interaction/nug
 }
 ```
 
-- **metadata**: This property is used to add metadata to the `InboundMessageMetaData` property on the [Metadata](/integrations/metadata) dictionary object. Metadata is available through the entire CX pipeline and is extremely powerful.
+- **metadata**: This property is used to add metadata to the `InboundMessageMetaData` property on the [Metadata](../integrations/metadata.md) dictionary object. Metadata is available through the entire CX pipeline and is extremely powerful.
 - **body**: The actual message. Supply this value as a Base64 encoded byte array. CX will decode this property and use it as the message content through the CX pipeline.
-- **isTestRun**: Used to denote that a message is part of a test run. This disables logging for the message and adds events to the portal. This option is not meant to be used outside of the [Testing](/connxio-portal/testing) framework.
+- **isTestRun**: Used to denote that a message is part of a test run. This disables logging for the message and adds events to the portal. This option is not meant to be used outside of the [Testing](../connxio-portal/testing.md) framework.
 - **testRunId**: Used in test runs. Not relevant for users.
 - **interchangeId**: Sets the interchangeId of the message. There are several other ways to set this Id without using wrappers, but wrappers enables this option for all adapters - even those who do not support metadata natively.

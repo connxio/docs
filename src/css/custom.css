@@ -444,10 +444,11 @@ strong {
 
 /* Keep the docs icons, using the portal's neutral/active icon colors. */
 .sidebar-home { --sidebar-icon: url(/img/sidebar-icons/home.svg); }
-.sidebar-api-reference { --sidebar-icon: url(/img/sidebar-icons/api-reference.svg); }
-.sidebar-channels { --sidebar-icon: url(/img/sidebar-icons/channels.svg); }
-.sidebar-platform { --sidebar-icon: url(/img/sidebar-icons/elemental.svg); }
+.sidebar-api-reference { --sidebar-icon: url(/img/sidebar-icons/interaction.svg); }
+.sidebar-channels { --sidebar-icon: url(/img/sidebar-icons/portal.svg); }
+.sidebar-platform { --sidebar-icon: url(/img/sidebar-icons/integrations.svg); }
 .sidebar-actions { --sidebar-icon: url(/img/sidebar-icons/actions.svg); }
+.sidebar-triggers { --sidebar-icon: url(/img/sidebar-icons/triggers.svg); }
 .sidebar-getting-started { --sidebar-icon: url(/img/sidebar-icons/gettingstarted.svg); }
 
 .sidebar-home > .menu__link::before,
@@ -455,6 +456,7 @@ strong {
 .sidebar-channels > .menu__list-item-collapsible > .menu__link::before,
 .sidebar-platform > .menu__list-item-collapsible > .menu__link::before,
 .sidebar-actions > .menu__list-item-collapsible > .menu__link::before,
+.sidebar-triggers > .menu__list-item-collapsible > .menu__link::before,
 .sidebar-getting-started > .menu__list-item-collapsible > .menu__link::before {
   content: "";
   flex-shrink: 0;
@@ -613,6 +615,11 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
   .openapi-explorer__code-block-code-line::before {
   display: none;
 }
+/* API pages have their own API version selector. */
+html.docs-api .docs-version-selector {
+  display: none;
+}
+
 .version-button {
   float: left;
   z-index: 10;

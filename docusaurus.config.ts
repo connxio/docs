@@ -60,15 +60,31 @@ const config: Config = {
   ],
   plugins: [
     [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "api",
+        // Keep this root a single path segment: the OpenAPI sidebar generator
+        // miscalculates IDs when outputDir equals a nested docs path.
+        path: "api",
+        routeBasePath: "/reference",
+        sidebarPath: "./sidebars-api.ts",
+        versions: {
+          current: { className: "docs-api" },
+        },
+        breadcrumbs: false,
+        docItemComponent: "@theme/ApiItem",
+      },
+    ],
+    [
       "docusaurus-plugin-openapi-docs",
       {
         id: "openapi",
-        docsPluginId: "classic",
+        docsPluginId: "api",
         config: {
           connxio: {
             specPath:
               "https://api.connxio.com/definition/v3/openapi.yaml?omit-version=false&omit-api-prefix=true",
-            outputDir: "docs/reference",
+            outputDir: "api",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -80,14 +96,14 @@ const config: Config = {
               "2.0.0": {
                 specPath:
                   "https://api.connxio.com/definition/v2/openapi.yaml?omit-version=false&omit-api-prefix=true",
-                outputDir: "docs/reference/2.0.0", // No trailing slash
+                outputDir: "api/2.0.0", // No trailing slash
                 label: "v2.0.0",
                 baseUrl: "/reference/2.0.0/connxio-api",
               },
               "1.0.0": {
                 specPath:
                   "https://api.connxio.com/definition/v1/openapi.yaml?omit-version=false&omit-api-prefix=true",
-                outputDir: "docs/reference/1.0.0", // No trailing slash
+                outputDir: "api/1.0.0", // No trailing slash
                 label: "v1.0.0",
                 baseUrl: "/reference/1.0.0/connxio-api",
               },
@@ -118,12 +134,14 @@ const config: Config = {
         },
         {
           type: "doc",
-          docId: "reference/connxio-api",
+          docId: "connxio-api",
+          docsPluginId: "api",
           label: "REST API",
           activeBasePath: "reference",
         },
         {
           type: "docsVersionDropdown",
+          className: "docs-version-selector",
           position: "right",
           dropdownActiveClassDisabled: true,
         },
@@ -246,8 +264,8 @@ const config: Config = {
         indexBlog: false,
         docsRouteBasePath: "/",
         highlightSearchTermsOnTargetPage: false,
-        docsDir: "docs",
-        ignoreFiles: [/docs\/reference\/1.0.0\/.*/],
+        docsDir: ["docs", "api"],
+        ignoreFiles: [/api\/1.0.0\/.*/],
       },
     ],
   ],

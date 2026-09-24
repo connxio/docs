@@ -52,7 +52,7 @@ Read more about the properties in each section below:
 ### Adaptername & Ack
 
 - **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
-- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/acknowledgment).
+- **Send Acknowledgement**: Is explained [here](./acknowledgment.md).
 
 ### Core Settings
 
@@ -66,7 +66,7 @@ Read more about the properties in each section below:
   />
 </div>
 
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](../../../connxio-portal/security-configurations.md) that contains the relevant connection properties.
 - **To**: Receiver addresses in a comma separated list.
 - **Subject**: The email subject line.
 - **Send Message Body**: When turned on the Connxio will be sent as a message body. Both this and Send Attachments can be active at the same time.
@@ -89,4 +89,4 @@ Read more about the properties in each section below:
 
 ## Retry
 
-Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](/integrations/retry). This may change in the future as we are looking into enabling back-off retry.
+Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](../../retry.md). This may change in the future as we are looking into enabling back-off retry.

@@ -1,5 +1,5 @@
-position: 6
-label: 'Interacting with Connxio'
+position: 7
+label: "Interacting with Connxio"
 collapsible: true
 collapsed: true
-className: 'sidebar-api-reference'
+className: "sidebar-api-reference"

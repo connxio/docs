@@ -12,7 +12,7 @@ This data processing agreement (the “Agreement”) is entered into between:
 - The company which has signed an Integration Services agreement, and, in connection
     therewith, has agreed to be bound by Evidi’s Privacy Policy and this Agreement (“**Data Controller**“).
 
-- [Evidi Integration Services - Data Processing Agreement](#evidi-integration-services---data-processing-agreement)
+- Evidi Integration Services - Data Processing Agreement
   - [1. Background](#1-background)
     - [1.1 Definitions](#11-definitions)
   - [2. Processing of Personal Data](#2-processing-of-personal-data)

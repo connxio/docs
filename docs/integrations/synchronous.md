@@ -9,7 +9,7 @@ Connxio supports synchronous communication through its API. This is useful when 
 
 ## Configuring the Adapter
 
-To use the synchronous functionality, set up a regular [API Inbound Adapter](/integrations/adapters/inbound/api.mdx) and toggle the _Use Synchronous Communication_ option.
+To use the synchronous functionality, set up a regular [API Inbound Adapter](../actions/adapters/inbound/api.mdx) and toggle the _Use Synchronous Communication_ option.
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -36,7 +36,7 @@ The synchronous API does not support batching transformations or messages sent t
 
 The Interaction NuGet makes it easier to use Connxio's synchronous functionality in C#/.NET.
 
-For a more detailed explanation of using the Interaction Nuget: [Click here](/interaction/nuget/connxio-api.md)
+For a more detailed explanation of using the Interaction Nuget: [Click here](../interaction/nuget/connxio-api.md)
 
 The Interaction NuGet includes options for wrapping and sending messages, along with a class that matches the values returned by the synchronous API. The returned object can look as follows:
 
@@ -86,7 +86,7 @@ There are two separate error outputs. The `errors` field reflects client errors 
 
 ## Remapping the Synchronous API response
 
-You can customize the API output with a [Code component](/integrations/transformation/code-components) or a [Script component](/integrations/transformation/script). Use the following records from the [Connxio.Transformation](https://www.nuget.org/packages/Connxio.Transformation) NuGet package to access synchronous API response data.
+You can customize the API output with a [Code component](../actions/code-components.md) or a [Script component](../actions/script.md). Use the following records from the [Connxio.Transformation](https://www.nuget.org/packages/Connxio.Transformation) NuGet package to access synchronous API response data.
 
 ```csharp
 public record SynchronousMessageResponse
@@ -148,7 +148,7 @@ Below is an example of a Code Component that remaps the output of the synchronou
 
 ## Changing the return status code
 
-See the [Code Component](/integrations/transformation/code-components) documentation for information about how to change the return code.
+See the [Code Component](../actions/code-components.md) documentation for information about how to change the return code.
 
 ## Retry
 

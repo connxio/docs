@@ -1,6 +1,6 @@
 # Interchange macro
 
-The interchange macro returns the [InterchangeId](/getting-started/core-concepts#interchangeid) generated for the current message.
+The interchange macro returns the InterchangeId generated for the current message.
 
 ## Example usage
 

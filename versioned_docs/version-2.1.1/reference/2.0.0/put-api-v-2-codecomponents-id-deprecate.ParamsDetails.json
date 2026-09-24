@@ -1,1 +1,0 @@
-{"parameters":[{"name":"id","in":"path","description":"The id of the component","required":true,"schema":{"type":"string"}},{"name":"version","in":"query","description":"The version to deprecate","schema":{"type":"string"}}]}

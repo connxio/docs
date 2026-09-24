@@ -36,20 +36,49 @@ Docusaurus creates `versioned_docs/version-X.Y.Z/`, saves the resolved sidebars 
 `versioned_sidebars/version-X.Y.Z-sidebars.json`, and adds the release to the root
 `versions.json`. Commit all three along with your documentation changes.
 
-The working `docs/` directory is the default version, labelled **Next** and served
-at `/`. All numbered snapshots are archives served at `/VERSION/`, including
-`/1.0.0/`. Creating another snapshot does not change the default version. This is
+The working `docs/` directory is the default version, served at `/` with the
+label configured in `docusaurus.config.ts`. Numbered snapshots are archives
+served at `/VERSION/`, such as `/2.1.1/`. Creating another snapshot does not change the default version. This is
 configured with `lastVersion: "current"` and an empty path for `current` in
 `docusaurus.config.ts`. Archived pages display Docusaurus's unmaintained-version
 banner. Edit `docs/` for live documentation updates; fix an archive in its
 `versioned_docs/` folder. Archives are snapshots, not Git branches.
 
-The REST API's own v1/v2/v3 selector is independent of whole-site documentation
-versions. The snapshot includes those API references too. Root-relative links
-and URLs embedded in HTML (including the API sidebar selector) keep their literal
-destinations; use relative Markdown links for version-aware links between docs.
-Assets under `static/` and imports through `@site` are shared, so preserve old
-assets or use distinct filenames when updating them for a new release.
+### Keep links inside their documentation version
+
+Use relative **file paths with the `.md` or `.mdx` extension** for links between
+pages. Docusaurus resolves them to the correct URL within the selected version:
+
+```md
+[Security configuration](../connxio-portal/security-configurations.md)
+[REST adapter](../actions/adapters/outbound/rest.md#receive-content-as-bytes)
+```
+
+Avoid root-relative document URLs such as `/integrations/logging`: those always
+open the live site. Use Markdown links instead of HTML `<a href="/...">` links.
+Import shared documentation snippets relatively too, for example
+`import RequiredNugetPackage from '../_shared/RequiredNugetPackage.mdx'`, rather
+than through `@site/docs`. Relative imports use the copy saved in the snapshot.
+
+When moving or deleting a page in `docs/`, update links to it in `docs/`.
+Archived pages can keep their own content and links; they do not need the current
+copy. When deleting a page inside an archive, update links within that archive.
+New snapshots inherit the relative links and imports automatically.
+
+### Shared API reference
+
+The API reference lives in `api/` and is served by a separate docs
+plugin at `/reference/`. It keeps its own v1/v2/v3 selector and is not included in
+whole-site snapshots. `npm run docs:version -- X.Y.Z` copies only `docs/` and its
+guide sidebar. API generation commands write to `api/`.
+
+Links to the shared API are intentionally root-relative, for example
+`[API reference](/reference/connxio-api)`. Both current and archived guides use
+these same URLs. Links from the API to guides open the current documentation.
+Do not create documentation snapshots for the `api` plugin.
+
+Assets under `static/` remain shared: preserve old assets or use distinct
+filenames when updating them.
 
 See the [Docusaurus versioning guide](https://docusaurus.io/docs/versioning).
 

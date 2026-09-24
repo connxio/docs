@@ -1,6 +1,6 @@
 # Datacollection
 
-Used to access the data populated by [Data Collection](/integrations/transformation/data-collection).
+Used to access the data populated by [Data Collection](../../transformation/data-collection.md).
 
 
 ## Example 1

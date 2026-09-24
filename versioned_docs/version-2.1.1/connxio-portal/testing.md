@@ -65,7 +65,7 @@ Test groups allow you to group together different integration configurations and
     />
 </div>
 
-8. Connxio also allows you to set test conditions for the test group. Click on the _Assert_ button to set the conditions using the [CxMAL StatusEvent macro](/integrations/cxmal/macros/statusevent). Using this macro, you can perform negative and positive assertions on the test run, check for specific error codes, and more.
+8. Connxio also allows you to set test conditions for the test group. Click on the _Assert_ button to set the conditions using the [CxMAL StatusEvent macro](../integrations/cxmal/macros/statusevent.md). Using this macro, you can perform negative and positive assertions on the test run, check for specific error codes, and more.
 
 <!-- TODO: Add link to error codes -->
 

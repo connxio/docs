@@ -31,5 +31,5 @@ A new window pops up. Add data as seen below:
 </div>
 
 The following properties are used to configure the adapter:
-- **Triggering interval**: Specifies the frequency at which the workflow is triggered. Read more about the triggering interval [here](/integrations/triggering-interval).
+- **Triggering interval**: Specifies the frequency at which the workflow is triggered. Read more about the triggering interval [here](../../triggering-interval.md).
 - **Content Body**: Defines the payload used for the integration process.

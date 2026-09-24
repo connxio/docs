@@ -4,7 +4,7 @@ sidebar_position: 100
 
 # Azure Blob Storage
 
-Connxio allows customers to get data from [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/) to enrich, replace or transform messages. The process is intuitive and resembles the act of [Data Collection](/integrations/transformation/data-collection).
+Connxio allows customers to get data from [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/) to enrich, replace or transform messages. The process is intuitive and resembles the act of [Data Collection](./data-collection.md).
 
 ## Limitations and External demands
 
@@ -55,12 +55,12 @@ On creating a new transformation, a popup with the transformation's input fields
   />
 </div>
 
-- **Security Configuration**: Select your security configuration from the list. See [here](/connxio-portal/security-configurations) for more information.
+- **Security Configuration**: Select your security configuration from the list. See [here](../../connxio-portal/security-configurations.md) for more information.
 - **Container Name**: Name of the container to get the blob from.
 - **Operation**: The operation to perform on the blob. Either Get or Upsert.
 - **Blob name**: The name of the blob to get from Azure Storage.
-- **Variable name**: The name used for the variable through Connxio. Use this name if you want to target the variable in a [code component](/integrations/transformation/code-components) or [Connxio Macro Language](/integrations/cxmal/connxio-macro-language). The variable is added to the DataCollection array on the Metadata object.
+- **Variable name**: The name used for the variable through Connxio. Use this name if you want to target the variable in a [code component](./code-components.md) or [Connxio Macro Language](../cxmal/connxio-macro-language.md). The variable is added to the DataCollection array on the Metadata object.
 
 ## Retry
 
-Blob Get is currently using the backoff retry described on the [Retry](/integrations/retry) page.
+Blob Get is currently using the backoff retry described on the [Retry](../retry.md) page.

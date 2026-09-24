@@ -8,7 +8,7 @@ Splitting breaks one message into multiple smaller messages. Each part is sent t
 
 ## Limitations
 
-Connxio supports input files up to `100 MB`. There is no limit on the number of output messages. Each split message is treated as an independent message, with its own [logs](/integrations/logging), [resend events](/connxio-portal/resending-api), and errors.
+Connxio supports input files up to `100 MB`. There is no limit on the number of output messages. Each split message is treated as an independent message, with its own [logs](../logging.md), [resend events](../../connxio-portal/resending-api.md), and errors.
 
 :::caution
 Splitting can generate large amounts of traffic. Test your receiving systems thoroughly before sending production-level loads.
@@ -20,7 +20,7 @@ To configure splitting, select _Splitting_ in the "Transformations" list.
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import RequiredNugetPackage from '@site/docs/\_shared/RequiredNugetPackage.mdx';
+import RequiredNugetPackage from '../../_shared/RequiredNugetPackage.mdx';
 
 When you create a new transformation, a popup appears with the splitting input fields.
 
@@ -42,7 +42,7 @@ See the sections below for how splitting code and retries work.
 
 <RequiredNugetPackage />
 
-Start by creating code that splits a message into multiple output messages. This is similar to [map code components](/integrations/transformation/code-components), but uses the splitting interface.
+Start by creating code that splits a message into multiple output messages. This is similar to [map code components](./code-components.md), but uses the splitting interface.
 
 Use the splitting boilerplate below:
 
@@ -84,7 +84,7 @@ public class MyFirstSplitter : IConnxioSplit
 }
 ```
 
-**Upload the component** using the process on the [code components page](/integrations/transformation/code-components), and select the _splitting_ type.
+**Upload the component** using the process on the [code components page](./code-components.md), and select the _splitting_ type.
 
 ## Testing and best practices
 
@@ -101,6 +101,6 @@ Always test at **peak load × 2** to account for unexpected spikes.
 Retry behavior depends on where failure occurs:
 
 1. If a transient error happens before the splitting code runs, the original message is returned to the queue and retried up to 10 times.
-2. If failure happens after splitting code runs, Connxio retries delivery with increasing delay, then schedules the message through the [disaster pipeline](/integrations/retry).
+2. If failure happens after splitting code runs, Connxio retries delivery with increasing delay, then schedules the message through the [disaster pipeline](../retry.md).
 
 Retries can delay delivery of split message units. Check your logging provider for warnings; if none appear, contact your representative.

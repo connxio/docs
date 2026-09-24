@@ -44,7 +44,7 @@ Read more about the properties in each section below:
 ### Adaptername & Ack
 
 - **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
-- **Send Acknowledgement**: Is explained [here](/integrations/adapters/outbound/acknowledgment).
+- **Send Acknowledgement**: Is explained [here](./acknowledgment.md).
 
 ### Core settings
 
@@ -60,7 +60,7 @@ Read more about the properties in each section below:
 
 - **Method**: The HTTP verb to use when contacting the restful endpoint.
 - **Endpoint Url**: The URL of the endpoint.
-- **Security Configuration/Authorization**: The [security configuration](/connxio-portal/security-configurations) to use for authenticating the request.
+- **Security Configuration/Authorization**: The [security configuration](../../../connxio-portal/security-configurations.md) to use for authenticating the request.
 - **Headers**: Add headers here as necessary to either authenticate the request or add other needed parameters.
     <div style={{maxWidth: '400px'}}>
     <ThemedImage
@@ -113,7 +113,7 @@ Messages are delivered in sequence based on the order they are received, but ord
 
 Connxio will add an `InterchangeId` header to the outgoing request to facilitate for continued transactional logging on the receiver side.
 
-If you need to receive the InterchangeId by other means we recommend either including it in the message by using [transformations](/integrations/transformation/code-components) or adding the InterchangeId as a query parameter with [Connxio Macro Language](/integrations/cxmal/connxio-macro-language).
+If you need to receive the InterchangeId by other means we recommend either including it in the message by using [transformations](../../transformation/code-components.md) or adding the InterchangeId as a query parameter with [Connxio Macro Language](../../cxmal/connxio-macro-language.md).
 
 > E.g.: `http://www.myapi.com?InterchangeId={interchange}`
 
@@ -134,7 +134,7 @@ By default, all failed REST requests will be retried according to the [retry](#r
 | Input&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description                                                                                                                                                                                                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Status codes                                                                                          | int , -                                                                                                                                                                                        | A comma-separated list of status codes on which the rule should act. A range of status codes can be defined by using '-', for instance, 401-408 will represent all status codes from and including 401 to and including 408.                                                                                         |
-| Action                                                                                                | Terminate,<br /> Redirect to secondary                                                                                                                                                         | "Terminate" stops the transaction, while "Redirect to secondary" redirects the request to the [Fallback](#Fallback) adapter and makes one attempt to make the request. If this request fails, the transaction will be terminated and logged as "Error" unless something else is defined in the "Custom status" field |
+| Action                                                                                                | Terminate,<br /> Redirect to secondary                                                                                                                                                         | "Terminate" stops the transaction, while "Redirect to secondary" redirects the request to the [Fallback](#fallback) adapter and makes one attempt to make the request. If this request fails, the transaction will be terminated and logged as "Error" unless something else is defined in the "Custom status" field |
 | Custom status                                                                                         | string                                                                                                                                                                                         | By default all transactions will be logged as "Error". This property overrides the default status.                                                                                                                                                                                                                   |
 | Retry                                                                                                 | true,<br />false                                                                                                                                                                               | If disabled, no retry attempts will be made and the Rule Action will trigger immediately. If enabled, the default [retry](#retry) pattern will run before the Rule Action triggers.                                                                                                                                  |
 
@@ -148,7 +148,7 @@ An example of how this functionality can be useful is to configure a fallback en
 
 ### Retry
 
-When handling RESTful communication a set of status codes are defined. We handle the ones in the list below. Be aware that all status codes not handles here defaults to no retry unless [fallback](#fallback) is set. All retry is handled as backoff retry with endpoint retry or with endpoint retry only, read more about retry on the [Retry page](/integrations/retry).
+When handling RESTful communication a set of status codes are defined. We handle the ones in the list below. Be aware that all status codes not handles here defaults to no retry unless [fallback](#fallback) is set. All retry is handled as backoff retry with endpoint retry or with endpoint retry only, read more about retry on the [Retry page](../../retry.md).
 
 | Status Code | Description           | Retry Action                                                                                                                                                                                                                                  |
 | ----------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

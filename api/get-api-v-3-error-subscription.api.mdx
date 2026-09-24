@@ -1,0 +1,71 @@
+---
+id: get-api-v-3-error-subscription
+title: "Lists a page of persisted errors for the current subscription."
+description: "Searches only the subscription identified by the current subscription header. Results are newest first."
+sidebar_label: "Lists a page of persisted errors for the current subscription."
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: reference//connxio-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Lists a page of persisted errors for the current subscription."}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v3/error/subscription"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Searches only the subscription identified by the current subscription header. Results are newest first.
+When from and to are omitted, all retained persisted errors are included. An empty errors collection returns 200, not 404.
+Use skip, size, and hasNextPage to iterate through results.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-api-v-3-error-subscription.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-api-v-3-error-subscription.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-api-v-3-error-subscription.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

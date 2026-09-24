@@ -18,11 +18,11 @@ The ID of an integration will sometimes be called:
 
 ## InterchangeId
 
-The InterchangeId is a unique identifier assigned to each message or data interchange processed by Connxio. It is used extensively by Connxio itself, while also allowing users, in conjuction with Connxio's [logging tools](/integrations/logging), to trace messages, identify specific data exchanges, and monitor the progress and status of individual messages within the Connxio pipeline.
+The InterchangeId is a unique identifier assigned to each message or data interchange processed by Connxio. It is used extensively by Connxio itself, while also allowing users, in conjuction with Connxio's [logging tools](../integrations/logging.md), to trace messages, identify specific data exchanges, and monitor the progress and status of individual messages within the Connxio pipeline.
 
 When a new message proccess is started, Connxio will generate a UUID v4 as it's InterchangeId, however users can also in most cases supply their own ID instead (some protocols make this difficult, but it's implemented wherever possible). When providing your own InterchangeId you are responsible for ensuring it's uniqueness. Using a non-unique ID **_voids all_** guarantees concerning message transfer inside Connxio.
 
-In scenarios such as [batching](/integrations/transformation/batching) and [splitting](/integrations/transformation/splitting), the InterchangeId may change during processing. During batching, multiple interchangeIds are consolidated into a single new one, while splitting results in a single interchangeId being split into multiple new ones based on the original message.
+In scenarios such as [batching](../integrations/transformation/batching.md) and [splitting](../integrations/transformation/splitting.md), the InterchangeId may change during processing. During batching, multiple interchangeIds are consolidated into a single new one, while splitting results in a single interchangeId being split into multiple new ones based on the original message.
 
 ## Adapter
 
@@ -42,9 +42,9 @@ Transformations in Connxio are operations applied to data during the integration
 
 ## Retry
 
-Retry and guaranteed delivery mechanisms ensure the reliable transfer of messages within Connxio. In case of transmission failures or temporary system unavailability, Connxio employs automated [retry mechanisms](/integrations/retry) to reattempt message delivery. If the retry process is unable to successfully deliver the message, it will be persisted to Connxio's error persistence store. Users can access the Connxio web portal to view these failures, identify the error occurrence, and manually resend the messages. This feature enables users to actively manage and troubleshoot message delivery issues.
+Retry and guaranteed delivery mechanisms ensure the reliable transfer of messages within Connxio. In case of transmission failures or temporary system unavailability, Connxio employs automated [retry mechanisms](../integrations/retry.md) to reattempt message delivery. If the retry process is unable to successfully deliver the message, it will be persisted to Connxio's error persistence store. Users can access the Connxio web portal to view these failures, identify the error occurrence, and manually resend the messages. This feature enables users to actively manage and troubleshoot message delivery issues.
 
-[Read more about resending here](/connxio-portal/connxio-resending).
+[Read more about resending here](../connxio-portal/connxio-resending.mdx).
 
 ## Parallel Processing
 
@@ -52,7 +52,7 @@ Connxio utilizes parallel processing to handle integrations, enabling efficient 
 
 ## Stateless
 
-Connxio is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages Connxio will hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or even the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing Connxio automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](/integrations/logging) or [resending](/connxio-portal/resending-api) see the respective articles.
+Connxio is a [stateless](https://en.wiktionary.org/wiki/stateless) service. When processing messages Connxio will hold the state of the message for 7 days to facilitate for manual resending. These states are not accessible by other processes or even the process itself unless it's specifically resent. The seven day limit cannot be changed and affects all data withing Connxio automatically. If a customer needs access to files after 7 days the logging provider or resending functionality provider should hold the files instead. To configure either [logging](../integrations/logging.md) or [resending](../connxio-portal/resending-api.md) see the respective articles.
 
 ## Orchestration
 

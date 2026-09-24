@@ -6,7 +6,7 @@ pagination_next: null
 
 # Custom APIs
 
-Custom APIs are a way of customizing the experience of using Connxio. Using the Custom API solution allows for setting up personalized endpoints which can be freely swapped between integrations based on need and can be used to standardize endpoints instead of using the ConfigCorrelationId for each integration. The custom APIs enable sending messages to the same endpoint using different Http Methods to decide which Connxio Configuration should be run, allowing for deep customization when combined with our [Rules Engine](/integrations/rules) and the [Connxio Macro Language](/integrations/cxmal/connxio-macro-language).
+Custom APIs are a way of customizing the experience of using Connxio. Using the Custom API solution allows for setting up personalized endpoints which can be freely swapped between integrations based on need and can be used to standardize endpoints instead of using the ConfigCorrelationId for each integration. The custom APIs enable sending messages to the same endpoint using different Http Methods to decide which Connxio Configuration should be run, allowing for deep customization when combined with our [Rules Engine](../integrations/rules.md) and the [Connxio Macro Language](../integrations/cxmal/connxio-macro-language.md).
 
 ## Getting Started
 

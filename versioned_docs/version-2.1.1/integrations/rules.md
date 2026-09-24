@@ -7,7 +7,7 @@ sidebar_position: 10
 
 Conditional rules can be applied to subintegrations and outbound connections. These rules determine whether each message in the integration should continue or not.
 
-Use [CxMaL](/integrations/cxmal/connxio-macro-language) macros in your conditions to create expressive rules.
+Use [CxMaL](./cxmal/connxio-macro-language.md) macros in your conditions to create expressive rules.
 
 ## Condition syntax
 
@@ -72,7 +72,7 @@ Can be used to check for null values in files.
 
 ### Check file content
 
-Use the [CxMaL File Macro](/integrations/cxmal/macros/file.md) to create conditions based on whats in the file content of the message.
+Use the [CxMaL File Macro](./cxmal/macros/file.md) to create conditions based on whats in the file content of the message.
 
 ```
 '{file:username}' == 'admin'
@@ -88,7 +88,7 @@ In this example, we use parentheses to ensure that the conditions `(true == true
 
 ### Check if array contains a value
 
-Use the [CxMaL File Macro](/integrations/cxmal/macros/file.md) in conjunction with the [CxMaL Array Pipe](/integrations/cxmal/pipes/array.md) to check if an array contains a value.
+Use the [CxMaL File Macro](./cxmal/macros/file.md) in conjunction with the [CxMaL Array Pipe](./cxmal/pipes/array.md) to check if an array contains a value.
 
 ```
 {file:myArray | array: contains('John')} == true

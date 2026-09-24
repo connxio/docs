@@ -28,7 +28,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 <br />
 
 On creating a new adapter, a popup with the adapter's input fields will appear.
-EventHub only has 1 section since most of the settings are configured in the [Security Configuration](/connxio-portal/security-configurations#Event-Hub).
+EventHub only has 1 section since most of the settings are configured in the [Security Configuration](../../../connxio-portal/security-configurations.md#Event-Hub).
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -41,7 +41,7 @@ EventHub only has 1 section since most of the settings are configured in the [Se
 </div>
 
 - **Servicebus Type**: There are two types; Topic and Queue.
-- **Security configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations#Event-Hub) that contains the relevant connection properties.
+- **Security configuration**: Reference to the [Security Configuration](../../../connxio-portal/security-configurations.md#Event-Hub) that contains the relevant connection properties.
 - **System property filters**: A dictionary that filters messages picked from the Consumer Group based on the [EventData.Properties Properties](https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.eventhubs.eventdata.properties?view=azure-dotnet). If the value field is left blank any value will be accepted and only the existence of the key will be verified. You can add multiple filters. If the message matches one of the filters it will be processed by the integration.
 
 ### Wrapper
@@ -57,7 +57,7 @@ EventHub only has 1 section since most of the settings are configured in the [Se
 </div>
 
 - **WrapperType**: Choose between Json, XML or None.
-- **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
+- **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](../../../interaction/wrappers.md).
 
 ## Filtering
 
@@ -72,7 +72,7 @@ EventData eventData = new EventData(Encoding.UTF8.GetBytes(message));
 eventData.Properties.Add("interchangeId", "3c8701dc-858b-4f98-915a-5b3432eb37ec");
 ```
 
-Be sure to read the [Core Concepts](/getting-started/core-concepts) for more information about supplying your own InterchangeId.
+Be sure to read the [Core Concepts](../../../getting-started/core-concepts.md) for more information about supplying your own InterchangeId.
 
 ## Retry
 

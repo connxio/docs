@@ -3,11 +3,11 @@
     sidebar_position: 20
 ---
 
-import RequiredNugetPackage from '@site/docs/\_shared/RequiredNugetPackage.mdx';
+import RequiredNugetPackage from '../../_shared/RequiredNugetPackage.mdx';
 
 # Code components
 
-Connxio uses C# code components to transform data at multiple points in the pipeline. This page explains how to create, upload, and use them. For splitting and batching variants, see [splitting](/integrations/transformation/splitting) and [batching](/integrations/transformation/batching).
+Connxio uses C# code components to transform data at multiple points in the pipeline. This page explains how to create, upload, and use them. For splitting and batching variants, see [splitting](./splitting.md) and [batching](./batching.md).
 
 ## What is a code component?
 
@@ -242,8 +242,8 @@ public enum ConnXioLogLevel
 
 Exception properties:
 
-- **LogLevel:** This is the Connxio loglevel described in the [logging](/integrations/logging) documentation.
-- **Status**: This is the logging status described in the [logging](/integrations/logging) documentation.
+- **LogLevel:** This is the Connxio loglevel described in the [logging](../logging.md) documentation.
+- **Status**: This is the logging status described in the [logging](../logging.md) documentation.
 - **CustomStatus**: A custom description for the termination or failure.
 - **FailureReturnStatusCode**: Return failure code. Only used on API inbound synchronous transform result mapping.
 
@@ -278,7 +278,7 @@ public class MyCodeMap : IConnxioMap
 }
 ```
 
-In [API inbound synchronous response mapping](/integrations/synchronous), this enables graceful failure return codes.
+In [API inbound synchronous response mapping](../synchronous.md), this enables graceful failure return codes.
 
 Default status is `400` for failures and `200` for success. Overriding success codes is not supported.
 

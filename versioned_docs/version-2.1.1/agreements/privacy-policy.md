@@ -37,7 +37,7 @@ information that we collect.**
 
 ## Table of Contents
 
-- [PRIVACY POLICY](#privacy-policy)
+- PRIVACY POLICY
   - [Table of Contents](#table-of-contents)
   - [1. WHAT INFORMATION DO WE COLLECT?](#1-what-information-do-we-collect)
   - [2. WHY DO WE COLLECT PERSONAL DATA, AND WHAT DATA DO WE COLLECT?](#2-why-do-we-collect-personal-data-and-what-data-do-we-collect)

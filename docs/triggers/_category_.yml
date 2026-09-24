@@ -1,0 +1,5 @@
+position: 4
+label: "Triggers"
+collapsible: true
+collapsed: true
+className: "sidebar-triggers"

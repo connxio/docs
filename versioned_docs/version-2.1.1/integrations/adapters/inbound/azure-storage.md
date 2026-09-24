@@ -47,7 +47,7 @@ Read more about the properties in each section below:
   />
 </div>
   
-- **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](/integrations/triggering-interval).
+- **Triggering interval**: Dictates when files are picked from the Azure Storage account. You can choose between two types; Polling interval and Cron. Find out what's best suited for you [here](../../triggering-interval.md).
 
 ### Core Settings
 <div style={{maxWidth: '400px'}}>
@@ -61,7 +61,7 @@ Read more about the properties in each section below:
 </div>
 
 - **Storage type**: Select storage type to use. Types include: Blob, File, Queue and Table.
-- **Connection String Security Configuration**: Reference to the [Security Configuration](/connxio-portal/security-configurations) that contains the relevant connection properties.
+- **Connection String Security Configuration**: Reference to the [Security Configuration](../../../connxio-portal/security-configurations.md) that contains the relevant connection properties.
 - **Container Name**: The name of the container. This container must exist before Connxio start picking messages. We will not create it for you.
 - **Directory**: Specifies which directory Connxio should target for file pickup. If this is kept blank the root directory is used (Azure Storage _File Share_ only).
 
@@ -97,7 +97,7 @@ Advanced settings differ based on storage type.
 </div>
 
 - **WrapperType**: Choose between Json, XML or None.
-- **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](/interaction/wrappers).
+- **Might be Wrapped**: A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Read more about wrappers [here](../../../interaction/wrappers.md).
 
 ## Data Lake
 
@@ -105,4 +105,4 @@ Connxio supports data lake for Azure Storage Blob. We flatten the folder archite
 
 ## Retry
 
-Since Connxio reaches out and picks up files when using Azure Storage, retry is handled by the Connxio framework. If a fault happens when the trigger interval hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval/cron set to trigger hourly or event daily, Connxio will try to execute the configuration every minute until it succeeds. This does not happen if the message is already picked up however since Connxio cannot be sure the message is possible to requeue on the external storage. The message will then be sent to catastrophic retry as described in the [Retry Page](/integrations/retry).
+Since Connxio reaches out and picks up files when using Azure Storage, retry is handled by the Connxio framework. If a fault happens when the trigger interval hits, the integration will be marked for execution at the next interval, which is after 60 seconds. This means that even if you have the polling interval/cron set to trigger hourly or event daily, Connxio will try to execute the configuration every minute until it succeeds. This does not happen if the message is already picked up however since Connxio cannot be sure the message is possible to requeue on the external storage. The message will then be sent to catastrophic retry as described in the [Retry Page](../../retry.md).

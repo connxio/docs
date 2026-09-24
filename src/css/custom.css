@@ -127,12 +127,13 @@ html[data-theme="dark"] {
   --ifm-tabs-color-active-border: var(--ifm-color-primary);
 }
 
-.footer--dark {
-  --ifm-footer-background-color: #1a1d21;
-  --ifm-footer-color: #e4e8ec;
-  --ifm-footer-title-color: #ffffff;
-  --ifm-footer-link-color: #ced4da;
-  --ifm-footer-link-hover-color: #a4da97;
+.footer {
+  --ifm-footer-background-color: var(--ifm-background-color);
+  --ifm-footer-color: var(--portal-text);
+  --ifm-footer-title-color: var(--portal-heading);
+  --ifm-footer-link-color: var(--portal-text-muted);
+  --ifm-footer-link-hover-color: var(--portal-link-hover);
+  border-top: 1px solid var(--portal-border);
 }
 
 .button--primary {

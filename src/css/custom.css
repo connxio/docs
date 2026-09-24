@@ -449,6 +449,7 @@ strong {
 .sidebar-platform { --sidebar-icon: url(/img/sidebar-icons/integrations.svg); }
 .sidebar-actions { --sidebar-icon: url(/img/sidebar-icons/actions.svg); }
 .sidebar-triggers { --sidebar-icon: url(/img/sidebar-icons/triggers.svg); }
+.sidebar-cxmal { --sidebar-icon: url(/img/sidebar-icons/cxmal.svg); }
 .sidebar-getting-started { --sidebar-icon: url(/img/sidebar-icons/gettingstarted.svg); }
 
 .sidebar-home > .menu__link::before,
@@ -457,6 +458,7 @@ strong {
 .sidebar-platform > .menu__list-item-collapsible > .menu__link::before,
 .sidebar-actions > .menu__list-item-collapsible > .menu__link::before,
 .sidebar-triggers > .menu__list-item-collapsible > .menu__link::before,
+.sidebar-cxmal > .menu__list-item-collapsible > .menu__link::before,
 .sidebar-getting-started > .menu__list-item-collapsible > .menu__link::before {
   content: "";
   flex-shrink: 0;

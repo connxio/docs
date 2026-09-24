@@ -1,0 +1,71 @@
+.tester {
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  border: 1px solid var(--portal-border);
+  border-radius: 8px;
+  background: var(--portal-surface-1);
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.input {
+  min-width: 0;
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-500);
+  border-radius: 4px;
+  background: var(--portal-surface-2);
+  color: var(--ifm-font-color-base);
+  font: inherit;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--ifm-color-danger);
+}
+
+.hint,
+.reference {
+  color: var(--ifm-font-color-secondary);
+  font-size: 0.875rem;
+}
+
+.hint {
+  margin: 0.75rem 0 0;
+}
+
+.error {
+  margin: 1rem 0 0;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--ifm-color-danger);
+}
+
+.results {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--portal-border);
+}
+
+.reference {
+  margin-bottom: 0.75rem;
+}
+
+.dates {
+  margin-bottom: 0;
+  padding-left: 1.75rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.875rem;
+}
+
+.dates li {
+  padding: 0.125rem 0;
+}

@@ -2,19 +2,29 @@
 sidebar_position: 9
 ---
 
+import CronTester from '@site/src/components/CronTester';
+
 # Triggering Interval
 
-The triggering interval defines when an integration retrieves data or processes a batch. Connxio supports six-field cron expressions, allowing schedules to include seconds.
+The triggering interval defines when an integration retrieves data or processes a batch. Connxio supports five-field and six-field cron expressions, with an optional leading seconds field.
 
 Use the **Triggering Interval** setting on inbound adapters that support scheduled data retrieval, or when configuring a batch schedule.
 
 ## Cron expressions
 
-A six-field cron expression consists of the following fields separated by spaces, starting with seconds:
+A five-field cron expression consists of the following fields separated by spaces:
+
+```text
+minute hour day-of-month month day-of-week
+```
+
+To include seconds, use six fields:
 
 ```text
 second minute hour day-of-month month day-of-week
 ```
+
+When seconds are omitted, they default to `0`. For example, `*/15 * * * *` and `0 */15 * * * *` both run every 15 minutes.
 
 | Field            | Values | Description                                                   |
 | ---------------- | ------ | ------------------------------------------------------------- |
@@ -34,11 +44,19 @@ Use these characters to define the schedule:
 | `-`       | A range of values        | `1-5` in the day-of-week field means Monday through Friday.            |
 | `/`       | Step values              | `*/15` in the minute field means every 15 minutes.                     |
 
+## Test a cron expression
+
+Preview the next five scheduled runs in UTC. When both day-of-month and day-of-week are restricted, a date must match both fields.
+
+<CronTester />
+
 ## Schedule examples
 
 | Cron expression | Schedule |
 | --- | --- |
 | `*/15 * * * * *` | Every 15 seconds |
+| `* * * * *` | Every minute (five fields) |
+| `*/15 * * * *` | Every 15 minutes (five fields) |
 | `0 * * * * *` | Every minute |
 | `0 */15 * * * *` | Every 15 minutes |
 | `0 0 * * * *` | Every hour, on the hour |

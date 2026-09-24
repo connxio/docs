@@ -3,6 +3,8 @@ title: Connxio Macro Language
 sidebar_position: 1
 ---
 
+import PropertyReference from '@site/src/components/PropertyReference';
+
 # Connxio Macro Language
 
 Connxio Macro Language (CxMaL) is a domain-specific language designed for accessing and manipulating data within integrations running on the Connxio platform.
@@ -12,50 +14,316 @@ At various stages through Connxio you can use CxMaL to access metadata and messa
 
 ### Quick reference
 
-| Macro | Description | Variable value | Usage |
-| --- | --- | --- | --- |
-| [filename](./macros/filename.md) | Replaced with the name of the file if available, if not then defaults to empty string. Does not include the extension. | myfilename.txt | `http://www.myapi.com/{filename}` <br/>  becomes `http://www.myapi.com/myfilename` |
-| [guid](./macros/guid.md) | Replaced with totally random GUID | 4ec6cc49-6d66-4a2a-b0ac-c5ab942cbdab | `http://www.myapi.com/{guid}` <br/>  becomes `http://www.myapi.com/4ec6cc49-6d66-4a2a-b0ac-c5ab942cbdab` |
-| [interchange](./macros/interchange.md) | Replaced with the interchange id that is either generated as a guid when the message hits Connxio or specified by the customer on entry | myid-1 | `http://www.myapi.com/{interchange}` <br/> becomes `http://www.myapi.com/myid-1` |
-| [file](./macros/file.md) | Searches the file for the hierarchy specified after the "file:" keyword e.g. `{file:rootNode.secondsNode.thirdNode}`. This works for JSON and XML. In json you can also specify arrays using the bracket syntax like this; `{file:rootNode.array[0].node}` | See example json and xml above | JSON: `http://www.myapi.com/{file:node1.array[1].element2}` <br/>  becomes `http://www.myapi.com/Value2` <br/> <br/> XML: `http://www.myapi.com/{file:note.heading}` <br/>  becomes `http://www.myapi.com/integration`
-| [metadata](./macros/metadata.md) | Accesses metadata, which is essentially a JSON object which can be accessed in the same way as JSON files as described above e.g. `{metadata:rootNode.secondNode.thirdNode}`. | See *Metadata* structure [here](../integrations/metadata.md) | `http://www.myapi.com/{metadata:InboundFileName}` <br/>  becomes `http://www.myapi.com/filename` |
-| [statusevent](./macros/statusevent.md) | Accesses statusevent, which is essentially a JSON object which can be accessed in the same way as JSON files as described above e.g. `{statusevent:rootNode.secondNode.thirdNode}`. | See *Statusevent* structure [here](./macros/statusevent.md) | `http://www.myapi.com/error?code={statusevent:error.errorcode}` <br/>  becomes `http://www.myapi.com/error?code=551` |
-| [datacollection](./macros/datacollection.md) | Access the data collection key/value set. This set is populated by the [datacollection transformation](../actions/data-collection.md). Use the key set in the configured data collection to select the corresponding value. If the value is JSON parsable you can add the "#json" suffix to target JSON nodes. | Key is "mykey" and value is the example JSON file above. | `http://www.myapi.com/{datacollection#json:mykey.node1.array[1].element1}` becomes `http://www.myapi.com/value1` |
-| [userdefinedproperties](./macros/userdefinedproperties.md) | Access the user-defined properties key/value set. This set is populated from within [code mapping](../actions/code-components.md). Use the key set from within the code mapping to select the corresponding value. If the value is JSON parsable you can add the "#json" suffix to target JSON nodes. | Key is "mykey" and value is the example JSON file above. | `http://www.myapi.com/{userdefinedproperties#json:mykey.node1.array[1].element1}` becomes `http://www.myapi.com/value1` |
-| [date](./macros/date.md) | Replaced with the current UTC datetime. This macro also support several methods: <br /> SetCstZone(string cstZone) <br /> AddSeconds(int secondsToAdd) <br /> AddMinutes(int minutesToAdd) <br /> AddHours(int houresToAdd) <br /> AddDays(int daysToAdd) <br /> AddMonths(monthsToAdd) <br /> AddYears(int yearsToAdd). <br /><br /><code>Tips: Use the [date pipe](#pipes) in order to format the output date.</code> | 2022-06-10T08:24:35.2408329Z | `http://www.myapi.com/getbydate?date={date.SetCstZone(Central Europe Standard Time).AddDays(1)}` <br/>  becomes `http://www.myapi.com/getbydate?date=2022-06-11T10:33:19.6029842` |
+Choose a macro to open its full reference. Each example shows the expression and the value it produces.
+
+<PropertyReference idPrefix="macro" properties={[
+  {
+    "name": "filename",
+    "href": "/cxmal/macros/filename",
+    "description": "Returns the file name without its extension, or an empty string when no file name is available.",
+    "samples": [
+      {
+        "label": "File name",
+        "value": "myfilename.txt"
+      },
+      {
+        "label": "Expression",
+        "value": "http://www.myapi.com/{filename}"
+      },
+      {
+        "label": "Result",
+        "value": "http://www.myapi.com/myfilename"
+      }
+    ]
+  },
+  {
+    "name": "guid",
+    "href": "/cxmal/macros/guid",
+    "description": "Generates a random GUID.",
+    "samples": [
+      {
+        "label": "Expression",
+        "value": "http://www.myapi.com/{guid}"
+      },
+      {
+        "label": "Example result",
+        "value": "http://www.myapi.com/4ec6cc49-6d66-4a2a-b0ac-c5ab942cbdab"
+      }
+    ]
+  },
+  {
+    "name": "interchange",
+    "href": "/cxmal/macros/interchange",
+    "description": "Returns the interchange ID, either generated as a GUID when the message enters Connxio or supplied by the customer.",
+    "samples": [
+      {
+        "label": "Interchange ID",
+        "value": "myid-1"
+      },
+      {
+        "label": "Expression",
+        "value": "http://www.myapi.com/{interchange}"
+      },
+      {
+        "label": "Result",
+        "value": "http://www.myapi.com/myid-1"
+      }
+    ]
+  },
+  {
+    "name": "file",
+    "href": "/cxmal/macros/file",
+    "description": "Reads a value from JSON or XML using a dot-separated path. JSON paths also support bracket syntax for array indexes.",
+    "samples": [
+      {
+        "label": "JSON source",
+        "value": "{\"node1\":{\"array\":[{}, {\"element2\":\"Value2\"}]}}"
+      },
+      {
+        "label": "JSON expression",
+        "value": "http://www.myapi.com/{file:node1.array[1].element2}"
+      },
+      {
+        "label": "JSON result",
+        "value": "http://www.myapi.com/Value2"
+      },
+      {
+        "label": "XML source",
+        "value": "<note><heading>integration</heading></note>"
+      },
+      {
+        "label": "XML expression",
+        "value": "http://www.myapi.com/{file:note.heading}"
+      },
+      {
+        "label": "XML result",
+        "value": "http://www.myapi.com/integration"
+      }
+    ]
+  },
+  {
+    "name": "metadata",
+    "href": "/cxmal/macros/metadata",
+    "description": "Reads a field from the message metadata using the same path syntax as JSON files.",
+    "samples": [
+      {
+        "label": "Expression",
+        "value": "http://www.myapi.com/{metadata:InboundFileName}"
+      },
+      {
+        "label": "Example result",
+        "value": "http://www.myapi.com/filename"
+      }
+    ]
+  },
+  {
+    "name": "statusevent",
+    "href": "/cxmal/macros/statusevent",
+    "description": "Reads a field from the status event object using the same path syntax as JSON files. Open the macro reference for the status event structure.",
+    "samples": [
+      {
+        "label": "Expression",
+        "value": "http://www.myapi.com/error?code={statusevent:error.errorcode}"
+      },
+      {
+        "label": "Example result",
+        "value": "http://www.myapi.com/error?code=551"
+      }
+    ]
+  },
+  {
+    "name": "datacollection",
+    "href": "/cxmal/macros/datacollection",
+    "description": "Reads a key from the data collection populated by the data collection transformation. Add #json to read nodes from a JSON value.",
+    "samples": [
+      {
+        "label": "Value stored under mykey",
+        "value": "{\"node1\":{\"array\":[{}, {\"element1\":\"value1\"}]}}"
+      },
+      {
+        "label": "Expression",
+        "value": "http://www.myapi.com/{datacollection#json:mykey.node1.array[1].element1}"
+      },
+      {
+        "label": "Result",
+        "value": "http://www.myapi.com/value1"
+      }
+    ]
+  },
+  {
+    "name": "userdefinedproperties",
+    "href": "/cxmal/macros/userdefinedproperties",
+    "description": "Reads a key from the user-defined properties populated by code mapping. Add #json to read nodes from a JSON value.",
+    "samples": [
+      {
+        "label": "Value stored under mykey",
+        "value": "{\"node1\":{\"array\":[{}, {\"element1\":\"value1\"}]}}"
+      },
+      {
+        "label": "Expression",
+        "value": "http://www.myapi.com/{userdefinedproperties#json:mykey.node1.array[1].element1}"
+      },
+      {
+        "label": "Result",
+        "value": "http://www.myapi.com/value1"
+      }
+    ]
+  },
+  {
+    "name": "date",
+    "href": "/cxmal/macros/date",
+    "description": "Returns the current UTC date and time. Chain methods to change the time zone or add time, and use the date pipe to format the result.",
+    "samples": [
+      {
+        "label": "Supported methods",
+        "value": "SetCstZone(cstZone)\nAddSeconds(secondsToAdd)\nAddMinutes(minutesToAdd)\nAddHours(hoursToAdd)\nAddDays(daysToAdd)\nAddMonths(monthsToAdd)\nAddYears(yearsToAdd)"
+      },
+      {
+        "label": "Expression",
+        "value": "http://www.myapi.com/getbydate?date={date.SetCstZone(Central Europe Standard Time).AddDays(1)}"
+      },
+      {
+        "label": "Example result",
+        "value": "http://www.myapi.com/getbydate?date=2022-06-11T10:33:19.6029842"
+      }
+    ]
+  }
+]} />
+
+For the full metadata structure, see [Metadata](../integrations/metadata.md). Key/value sets are populated by [data collection](../actions/data-collection.md) and [code mapping](../actions/code-components.md).
 
 ### Pipes
 
-The pipes are used to perform some kind of action based on the output of the macro statement, like formatting or error handling. To use a pipe operator, add an '|' after the macro statement followed by the desired pipe action.
+Pipes act on the output of a macro, for example to format a value or handle an error. Add `|` after the macro statement, followed by the pipe action.
 
-| Pipe | Description | Usage |
-| --- | --- | --- |
-| [date](./pipes/date.md) | Formats the value output from the macro statement as a date. The date pipe accepts [standard](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings) and [custom](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings) date and time formats strings | Macro output value: <code>2022-06-11T12:15:55.9695313</code> <br /> pipe <code>\| date: dd.MM.yyyy HH.mm.ss</code> <br /> becomes <code>11.06.2022 12.15.55</code> |
-| [string](./pipes/string.md) | Formats sting values. Supported methods are: <br /> toLower <br /> toUpper| Macro output value: <code>My Output String</code> <br /> pipe <code>\| string: toUpper</code> <br /> becomes <code>MY OUTPUT STRING</code> |
-| [array](./pipes/array.md) | Array opperations. Supported methods are: <br /> contains <br /> notContains | <code> file:myArray \| array: contains(5)</code> becomes <code>true</code> or <code>false</code> |
+<PropertyReference idPrefix="pipe" properties={[
+  {
+    "name": "date",
+    "href": "/cxmal/pipes/date",
+    "description": "Formats the macro output as a date using standard or custom .NET date and time format strings.",
+    "samples": [
+      {
+        "label": "Macro output",
+        "value": "2022-06-11T12:15:55.9695313"
+      },
+      {
+        "label": "Pipe",
+        "value": "| date: dd.MM.yyyy HH.mm.ss"
+      },
+      {
+        "label": "Result",
+        "value": "11.06.2022 12.15.55"
+      }
+    ]
+  },
+  {
+    "name": "string",
+    "href": "/cxmal/pipes/string",
+    "description": "Converts text to lowercase with toLower or uppercase with toUpper.",
+    "samples": [
+      {
+        "label": "Macro output",
+        "value": "My Output String"
+      },
+      {
+        "label": "Pipe",
+        "value": "| string: toUpper"
+      },
+      {
+        "label": "Result",
+        "value": "MY OUTPUT STRING"
+      }
+    ]
+  },
+  {
+    "name": "array",
+    "href": "/cxmal/pipes/array",
+    "description": "Checks whether an array contains a value with contains, or does not contain it with notContains.",
+    "samples": [
+      {
+        "label": "JSON source",
+        "value": "{\"myArray\":[5,13,36]}"
+      },
+      {
+        "label": "Expression",
+        "value": "{file:myArray | array: contains(5)}"
+      },
+      {
+        "label": "Result",
+        "value": "true"
+      }
+    ]
+  }
+]} />
+
+The date pipe accepts [standard](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings) and [custom](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings) .NET date and time formats.
 
 #### Error handling with pipes
 
-These pipes can be used to handle errors that could occur during macro execution. Only the first valid error handling pipe is executed during an error. All other pipes gets skipped if an error handling pipe gets triggered.
+Only the first matching error handling pipe runs when an error occurs. Once it runs, all remaining pipes are skipped.
 
-| Pipe | Description | Usage |
-| --- | --- | --- |
-| [error](./pipes/error.md) | A generic error handling pipe that handles all errors during macro execution. This pipe is only triggered if an error occured. | <code> \| error: ignore</code>: Ignores the macro statement and leaves it untouched. <br /> <code>\| error: remove</code>: Removes the failing macro statement. <br /> <code>\| error: terminate</code>: Terminates the integration process. <br /> <code>\| error: fallback My value</code> will yield the result <code> My value</code> if the macro statement fails.|
-| [null](./pipes/null.md) | Only handles errors specifically related to null references. Other errors will not trigger this pipe. | <code> \| null: ignore</code>: Ignores the macro statement and leaves it untouched. <br /> <code>\| null: remove</code>: Removes the failing macro statement. <br /> <code>\| null: terminate</code>: Terminates the integration process. <br /> <code>\| null: fallback My value</code> will yield the result <code> My value</code> if the macro statement results in a null error.|
+<PropertyReference idPrefix="pipe" properties={[
+  {
+    "name": "error",
+    "href": "/cxmal/pipes/error",
+    "description": "Handles any error during macro execution. Runs only when an error occurs.",
+    "samples": [
+      {
+        "label": "Ignore — leave the macro untouched",
+        "value": "| error: ignore"
+      },
+      {
+        "label": "Remove — remove the failing macro",
+        "value": "| error: remove"
+      },
+      {
+        "label": "Terminate — stop processing the message",
+        "value": "| error: terminate"
+      },
+      {
+        "label": "Fallback — return My value",
+        "value": "| error: fallback My value"
+      }
+    ]
+  },
+  {
+    "name": "null",
+    "href": "/cxmal/pipes/null",
+    "description": "Handles null reference errors only. Other errors do not trigger this pipe.",
+    "samples": [
+      {
+        "label": "Ignore — leave the macro untouched",
+        "value": "| null: ignore"
+      },
+      {
+        "label": "Remove — remove the failing macro",
+        "value": "| null: remove"
+      },
+      {
+        "label": "Terminate — stop processing the message",
+        "value": "| null: terminate"
+      },
+      {
+        "label": "Fallback — return My value",
+        "value": "| null: fallback My value"
+      }
+    ]
+  }
+]} />
 
 ### Pipe chaining
 
 The following example uses three pipes. These pipes are executed in order, depending on the result of the macro.
 
 ```
-{file:myVariable | null: fallback myDefaultValue | error: terminate | string: toUpper} 
+{file:myVariable | null: fallback myDefaultValue | error: terminate | string: toUpper}
 ```
 
-* If `myVariable` resolved to null, then the null pipe would trigger. The final result would become `myDefaultvalue`. 
+* If `myVariable` resolved to null, then the null pipe would trigger. The final result would become `myDefaultValue`.
 
-* If there was an error reading the file, then the null pipe would not trigger. The next pipe here is the error pipe, which would then trigger and cause that specifig message in the integration to stop.
+* If there was an error reading the file, then the null pipe would not trigger. The next pipe here is the error pipe, which would then trigger and cause that specific message in the integration to stop.
 
-* If no error occured, then the value in `myVariable` would be retrieved. The last pipe would then trigger and execute the `string: toUpper` method on the macro result.
+* If no error occurred, then the value in `myVariable` would be retrieved. The last pipe would then trigger and execute the `string: toUpper` method on the macro result.
 
 
 ## Use cases
@@ -66,7 +334,7 @@ CxMaL can be used in various ways to simulate orchestration or to dynamically ch
 
 #### REST Fetch
 
-You can use CxMaL on the [inbound REST adapter](../actions/adapters/inbound/rest.md) URL field like shown below.
+You can use CxMaL on the [HTTP trigger](../triggers/http.md) URL field like shown below.
 
 ![img](https://cmhpictsa.blob.core.windows.net/pictures/Http%20Inbound%20Variable%20Incection.PNG?sv=2020-04-08&st=2021-09-19T11%3A02%3A00Z&se=2037-10-20T11%3A02%3A00Z&sr=b&sp=r&sig=rfVbo%2BwsjzX7XfQqp09vLfCqutI3riI1X1a0oEgOjsQ%3D)
 

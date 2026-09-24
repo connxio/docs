@@ -278,7 +278,7 @@ public class MyCodeMap : IConnxioMap
 }
 ```
 
-In [API inbound synchronous response mapping](../integrations/synchronous.md), this enables graceful failure return codes.
+In [API inbound synchronous response mapping](../triggers/api.mdx#customizing-the-response), this enables graceful failure return codes.
 
 Default status is `400` for failures and `200` for success. Overriding success codes is not supported.
 

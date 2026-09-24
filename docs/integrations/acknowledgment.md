@@ -1,4 +1,4 @@
-# ACK
+# Ack
 
 Connxio provides users with the option to receive acknowledgement (ACK) events when a message has been delivered to the receiving system. The concept of sending ACK messages is inspired by the [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Connection_establishment) protocol and gives our customers the ability to verify that a message has been delivered successfully in close to real time. When enabled, this feature supplies an external system with an event with contents supplied by using the standard Connxio [code mapping functionality](../../code-components.md), which makes the ACK message extremely powerful as it can contain almost anything, even the delivered message itself. This page describes how to enable this functionality and common use cases.
 
@@ -31,7 +31,7 @@ Ack delivery can be configured on all outbound adapters in Connxio. You can use 
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import RequiredNugetPackage from '../../../_shared/RequiredNugetPackage.mdx';
+import RequiredNugetPackage from '../\_shared/RequiredNugetPackage.mdx';
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage

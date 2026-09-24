@@ -1,3 +1,6 @@
+---
+title: "Array"
+---
 
 # Array pipe
 
@@ -12,16 +15,19 @@ The array pipe supports the following methods
 ## Example: array contains value
 
 File content:
+
 ```json
 "myArray": [ 5, 13, 36 ]
 ```
 
 #### Input
+
 ```
 {file:myArray | array: contains(13)}
 ```
 
 #### Output
+
 ```
 true
 ```
@@ -29,16 +35,19 @@ true
 ## Example: array does not contain value
 
 File content:
+
 ```json
 "myArray": [ "John", "Mike", "Lisa" ]
 ```
 
 #### Input
+
 ```
 {file:myArray | array: notContains('Joe')}
 ```
 
 #### Output
+
 ```
 true
 ```
@@ -46,8 +55,9 @@ true
 ## Example: array of objects contains value
 
 File content:
+
 ```json
-"myArray": 
+"myArray":
     [
         {
             "id": 1,
@@ -61,11 +71,13 @@ File content:
 ```
 
 #### Input
+
 ```
 {file:myArray | array: contains(id == 1)}
 ```
 
 #### Output
+
 ```
 true
 ```
@@ -73,8 +85,9 @@ true
 ## Example: array of objects does not contain value
 
 File content:
+
 ```json
-"myArray": 
+"myArray":
     [
         {
             "id": 1,
@@ -88,11 +101,13 @@ File content:
 ```
 
 #### Input
+
 ```
 {file:myArray | array: notContains(name == 'Lisa')}
 ```
 
 #### Output
+
 ```
 true
 ```

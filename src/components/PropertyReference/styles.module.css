@@ -30,6 +30,33 @@
   text-decoration: underline;
 }
 
+.name a.pageLink {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  max-width: 100%;
+  color: var(--ifm-link-color);
+  text-decoration: none;
+}
+
+.name a.pageLink:hover code,
+.name a.pageLink:focus-visible code {
+  text-decoration-thickness: 2px;
+}
+
+.pageLink code {
+  min-width: 0;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+.linkArrow {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+}
+
 .name code {
   padding: 0;
   border: 0;

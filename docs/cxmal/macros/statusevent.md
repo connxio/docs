@@ -1,4 +1,8 @@
-# StatusEvent macro
+---
+title: "Status event"
+---
+
+# Status event macro
 
 Used to access data stored in statusevent. This object is used under [Testing](../../connxio-portal/testing.md) to store various data. Use this macro in test assertions to create powerful tests of your integrations.
 

@@ -1,3 +1,7 @@
+---
+title: "File"
+---
+
 # File macro
 
 The file macro can be used to access the filecontent of an integration if it contains JSON or XML syntax. The macro uses JSONPath expressions to specify the JSON node.

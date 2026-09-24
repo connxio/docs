@@ -2,6 +2,8 @@
 sidebar_position: 20
 ---
 
+import PropertyReference from '@site/src/components/PropertyReference';
+
 # Retry
 
 Connxio uses multiple retry layers for resilience. It currently supports three retry types:
@@ -29,17 +31,45 @@ Each engine uses a retry count based on the operation and engine type. With line
 
 ### Backoff retry
 
-Backoff retry spaces out retry attempts over time to reduce pressure on external endpoints during periods of repeated failure or high traffic. Connxio monitors recent failures and, based on the configured or default thresholds below, can delay messages before trying them again. The variables in the table define when delays begin, how long messages wait before reprocessing, and when Connxio stops retrying.
+Backoff retry spaces out retry attempts over time to reduce pressure on external endpoints during periods of repeated failure or high traffic. Connxio monitors recent failures and, based on the configured or default thresholds below, can delay messages before trying them again. The variables below define when delays begin, how long messages wait before reprocessing, and when Connxio stops retrying.
 
-| Variable                    | Value | Description                                                                                                                                                                                                |
-| --------------------------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| MaxNumberOfRetries          | 5     | Maximum number of times Connxio retries a failed message before giving up and marking it for possible manual retry.                                                                                        |
-| FailureCountIntervalMinutes | 3     | Time window, in minutes, used to count failures. Connxio checks how many errors occur during this period when deciding whether to start delaying messages.                                                 |
-| MaxErrorsPerInterval        | 1000  | Number of errors allowed within _FailureCountIntervalMinutes_ before Connxio begins delaying messages to reduce pressure on the external service.                                                          |
-| ReQueueMinDelaySeconds      | 10    | Shortest delay before a failed or delayed message is queued again for processing.                                                                                                                          |
-| ReQueueMaxDelaySeconds      | 60    | Longest delay before a failed or delayed message is queued again for processing. Connxio schedules the message at a random time between the minimum and maximum delay values.                              |
-| MaxDelayActions             | 5     | Maximum number of times Connxio can delay a message instead of processing it when the error threshold is exceeded. After this limit is reached, the message stops and is marked for possible manual retry. |
-| Enabled                     | NA    | Turns this retry behavior on or off for the integration. If disabled, Connxio uses the default retry settings.                                                                                             |
+<PropertyReference properties={[
+  {
+    name: "MaxNumberOfRetries",
+    description: "Maximum number of times Connxio retries a failed message before giving up and marking it for possible manual retry.",
+    samples: [{label: 'Value', value: "5"}],
+  },
+  {
+    name: "FailureCountIntervalMinutes",
+    description: "Time window, in minutes, used to count failures. Connxio checks how many errors occur during this period when deciding whether to start delaying messages.",
+    samples: [{label: 'Value', value: "3"}],
+  },
+  {
+    name: "MaxErrorsPerInterval",
+    description: <>Number of errors allowed within <em>FailureCountIntervalMinutes</em> before Connxio begins delaying messages to reduce pressure on the external service.</>,
+    samples: [{label: 'Value', value: "1000"}],
+  },
+  {
+    name: "ReQueueMinDelaySeconds",
+    description: "Shortest delay before a failed or delayed message is queued again for processing.",
+    samples: [{label: 'Value', value: "10"}],
+  },
+  {
+    name: "ReQueueMaxDelaySeconds",
+    description: "Longest delay before a failed or delayed message is queued again for processing. Connxio schedules the message at a random time between the minimum and maximum delay values.",
+    samples: [{label: 'Value', value: "60"}],
+  },
+  {
+    name: "MaxDelayActions",
+    description: "Maximum number of times Connxio can delay a message instead of processing it when the error threshold is exceeded. After this limit is reached, the message stops and is marked for possible manual retry.",
+    samples: [{label: 'Value', value: "5"}],
+  },
+  {
+    name: "Enabled",
+    description: "Turns this retry behavior on or off for the integration. If disabled, Connxio uses the default retry settings.",
+    samples: [{label: 'Value', value: "NA"}],
+  }
+]} />
 
 ## Catastrophic failure retry
 

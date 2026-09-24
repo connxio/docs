@@ -1,0 +1,262 @@
+---
+title: "API"
+sidebar_position: 1
+---
+
+import PropertyReference from "@site/src/components/PropertyReference";
+import TriggerGeneralSettings from '@site/src/components/TriggerGeneralSettings';
+import Link from "@docusaurus/Link";
+
+# Connxio API
+
+Use the API trigger to start an integration by sending data to the [Connxio Messaging API](/reference/connxio-api).
+
+## Configuring the API trigger
+
+Select API from the list of available triggers.
+
+## General settings
+
+
+<TriggerGeneralSettings />
+
+## API settings
+
+<PropertyReference
+  properties={[
+    {
+      name: "Use synchronous communication",
+      description: (
+        <>
+          Makes the caller wait for processing to finish and receive the result.
+          See{" "}
+          <Link to="#synchronous-communication">Synchronous communication</Link>{" "}
+          for response details and limitations.
+        </>
+      ),
+    },
+    {
+      name: "Timeout (seconds)",
+      description:
+        "The time to wait for the synchronous result, in seconds. Available when synchronous communication is enabled.",
+      example: "40",
+    },
+    {
+      name: "Transform result",
+      description:
+        "Enables custom formatting of the synchronous response using a code component or script.",
+    },
+    {
+      name: "Code component / Script",
+      description: (
+        <>
+          Choose how to format the response when{" "}
+          <strong>Transform result</strong> is enabled. See{" "}
+          <Link to="#customizing-the-response">Customizing the response</Link>{" "}
+          for examples.
+        </>
+      ),
+    },
+    {
+      name: "Use external code component",
+      description:
+        "Enable to load the response-formatting code component from an external URI. Available when Code component is selected.",
+    },
+    {
+      name: "External component URI",
+      description:
+        "The URI of the DLL or ZIP file to load. Shown when Use external code component is enabled.",
+      example: "https://example.com/component.zip",
+    },
+    {
+      name: "Use zip mapping",
+      description: (
+        <>
+          Enable when the external component is packaged as a ZIP file. See{" "}
+          <Link to="/actions/code-components/#zipped-code-components">
+            Zipped Code Components
+          </Link>{" "}
+          for packaging instructions.
+        </>
+      ),
+    },
+    {
+      name: "DLL filename with extension",
+      description:
+        "Shown and required when Use zip mapping is enabled. The name of the main DLL inside the ZIP file, including the .dll extension.",
+      example: "mycomponent.dll",
+    },
+  ]}
+/>
+
+## Advanced settings
+
+<PropertyReference
+  properties={[
+    {
+      name: "Wrapper",
+      description: (
+        <>
+          Choose JSON, XML, or None to match the incoming message. A wrapper
+          carries metadata around the message content. See{" "}
+          <Link to="/interaction/wrappers/">Wrapper</Link> for details.
+        </>
+      ),
+    },
+  ]}
+/>
+
+## Retry
+
+Implement proper retry logic on the client side when using the Connxio API, or use the [Interaction NuGet](../interaction/nuget/connxio-api.md) which provides built-in retry functionality.
+
+## Custom headers
+
+Add HTTP headers starting with `cx-` to the request you send to the Connxio Messaging API. Connxio copies these headers into the message metadata's `PreDefinedUserProperties` object, making them available to subsequent actions without changing the message body.
+
+For example, send this header to pass a customer ID:
+
+```http
+cx-CustomerId: 12345
+```
+
+The resulting `PreDefinedUserProperties` object contains:
+
+```json
+{
+  "cx-CustomerId": "12345"
+}
+```
+
+The `cx-` prefix remains part of the property name, and the value is stored as a string. Add more `cx-` headers to pass other values, such as an order ID or source system.
+
+<hr style={{ marginBottom: "-1.25rem" }} />
+
+## Synchronous communication
+
+Enable **Use synchronous communication** on the API trigger when the caller needs to wait for processing to finish and use the result.
+
+### Response and limitations
+
+Connxio returns one response object per subintegration. Each object contains a `synchronousMessageResponses` entry for every outbound operation, including any messages created by splitting. For example, 10 split messages sent to 3 outbound actions produce 30 entries for that subintegration.
+
+Each entry includes metadata and can include processing error fields such as `errorMessage`, `messageErrorCode`, and `stackTrace`. For [REST actions](../actions/rest.md), the endpoint response is available in `metaData.outboundRestResponse`.
+
+<details>
+<summary>Example response with two outbound operations</summary>
+
+```json
+[
+  {
+    "subIntegrationName": "my subintegration",
+    "totalResponses": 2,
+    "synchronousMessageResponses": [
+      {
+        "metaData": {
+          "interchangeId": "00000000-0000-0000-0000-000000000000",
+          "started": "2026-05-31T16:59:02.958Z",
+          "dataCollection": {},
+          "userDefinedProperties": {},
+          "configCorrelatioId": "b75c6c55-f460-4b14-afeb-cf2ae352f1a1",
+          "outboundBlobName": "00000000-0000-0000-0000-000000000000_00000000-0000-0000-0000-000000000000",
+          "inboundAdapter": "Api",
+          "outboundAdapter": "",
+          "outboundEndpoint": "",
+          "transactionType": "v2test",
+          "manualResendCount": 0,
+          "outboundRestResponse": {
+            "responseContent": "",
+            "statusCode": 0
+          },
+          "isTestRun": false,
+          "useSynchronousCommunication": true
+        }
+      },
+      {
+        "metaData": {
+          "interchangeId": "11111111-1111-1111-1111-111111111111",
+          "started": "2026-05-31T16:59:02.958Z",
+          "dataCollection": {},
+          "userDefinedProperties": {},
+          "configCorrelatioId": "b75c6c55-f460-4b14-afeb-cf2ae352f1a1",
+          "outboundBlobName": "11111111-1111-1111-1111-111111111111_11111111-1111-1111-1111-111111111111",
+          "inboundAdapter": "Api",
+          "outboundAdapter": "",
+          "outboundEndpoint": "",
+          "transactionType": "v2test",
+          "manualResendCount": 0,
+          "outboundRestResponse": {
+            "responseContent": "",
+            "statusCode": 0
+          },
+          "isTestRun": false,
+          "useSynchronousCommunication": true
+        }
+      }
+    ]
+  }
+]
+```
+
+</details>
+
+Keep these limitations in mind:
+
+- Connxio's resending functionality is unavailable, and pipeline logging is limited. Use the returned error details for troubleshooting.
+- Batching actions and the `/batch` endpoint are not supported.
+- The caller must handle retries (see [Retry](#retry)).
+
+### Customizing the response
+
+Use a [Script component](../actions/script.md) or [Code component](../actions/code-components.md) to remap the synchronous API response.
+
+#### Script action
+
+The default script reads the response from `event.content` and returns a flat list of interchange IDs, with one entry per outbound operation:
+
+```js
+/**
+ * Handler that will be called during the execution of the script.
+ *
+ * @param {TransformationEvent} event - Contains the file content and metadata about the file.
+ * @returns {TransformationEvent} Return the modified event.
+ */
+const execute = (event) => {
+  // Example modification:
+  const transformedResponses = [];
+  const responses = JSON.parse(event.content);
+  for (const response of responses) {
+    for (const syncResponse of response.synchronousMessageResponses) {
+      transformedResponses.push({
+        interchangeId: syncResponse.metaData.interchangeId,
+      });
+    }
+  }
+  event.content = JSON.stringify(transformedResponses);
+  return event;
+};
+```
+
+For the example response above, the script returns:
+
+```json
+[
+  { "interchangeId": "00000000-0000-0000-0000-000000000000" },
+  { "interchangeId": "11111111-1111-1111-1111-111111111111" }
+]
+```
+
+Change the fields added to `transformedResponses` to return the data your caller needs.
+
+#### Code component
+
+In a Code component, deserialize `TransformationContext.Content` as `IEnumerable<FinalSynchronousMessageResponse>` using the types from the `Connxio.Transformation` NuGet package:
+
+- `FinalSynchronousMessageResponse` contains `SubIntegrationName`, `TotalResponses`, and `SynchronousMessageResponses`.
+- Each `SynchronousMessageResponse` contains `MetaData`, `ErrorMessage`, `MessageErrorCode`, `StackTrace`, `TransientError`, and `Origin`.
+
+Set `TransformationContext.Content` to the serialized output you want the API to return. To change the failure status code, see [Using FailureReturnStatusCode](../actions/code-components.md#using-failurereturnstatuscode).
+
+### Using the Interaction NuGet
+
+The [Interaction NuGet](../interaction/nuget/connxio-api.md) provides C#/.NET helpers for wrapping and sending messages and reading synchronous responses. Its `errors` field reports client communication errors and is specific to the NuGet; processing errors are returned in the individual response entries.

@@ -1,4 +1,9 @@
-# Wrappers
+---
+title: "Wrapper"
+sidebar_position: 4
+---
+
+# Wrapper
 
 Not all adapters can handle metadata outside the actual message. (S)FTP is a good example, where the protocol doesn't lend itself to sending anything but the actual file, so if you want to send something like a folder location into CX you need to include that in the message itself which is then sent to all the engines and has to be filtered out if you don't want it included in the outbound message. To circumvent this we added the concept of wrappers. A wrapper is essentially just a shell around the actual message content that contains information not within the concern of the message itself. Examples of things to include are folder paths, ids, testing information, etc.
 

@@ -8,7 +8,7 @@ Splitting breaks one message into multiple smaller messages. Each part is sent t
 
 ## Limitations
 
-Connxio supports input files up to `100 MB`. There is no limit on the number of output messages. Each split message is treated as an independent message, with its own [logs](../integrations/logging.md), [resend events](../connxio-portal/resending-api.md), and errors.
+Connxio supports input files up to `100 MB`. There is no limit on the number of output messages. Each split message is treated as an independent message, with its own [logs](../integrations/logging.md), [resend events](../interaction/resending-api.md), and errors.
 
 :::caution
 Splitting can generate large amounts of traffic. Test your receiving systems thoroughly before sending production-level loads.

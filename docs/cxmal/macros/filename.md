@@ -1,3 +1,6 @@
+---
+title: "Filename"
+---
 
 # Filename macro
 
@@ -8,11 +11,13 @@ The filename macro returns the name of the file without the file extension.
 Suppose your file is named "myfile.txt".
 
 #### Input
+
 ```
 {filename}
 ```
 
 #### Output
+
 ```
 myfile
 ```

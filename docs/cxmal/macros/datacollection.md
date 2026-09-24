@@ -1,14 +1,17 @@
-# Datacollection
+---
+title: "Data collection"
+---
+
+# Data collection macro
 
 Used to access the data populated by [Data Collection](../../actions/data-collection.md).
-
 
 ## Example 1
 
 #### Data
 
 ```json
-"dataCollection": 
+"dataCollection":
     [
         { "apiResponse": "{\"status\": 200, \"body\": { \"id\": 1, \"name\": \"John\" }}" }
     ]
@@ -31,19 +34,22 @@ Used to access the data populated by [Data Collection](../../actions/data-collec
 The dataCollection macro supports the addition of `#json` to access json values.
 
 #### Data
+
 ```json
-"dataCollection": 
+"dataCollection":
     [
         { "apiResponse": "{\"status\": 200, \"body\": { \"id\": 1, \"name\": \"John\" }}" }
     ]
 ```
 
 #### Input
+
 ```
 {datacollection#json:apiResponse.body.name}
 ```
 
 #### Output
+
 ```
 John
 ```

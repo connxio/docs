@@ -1,3 +1,6 @@
+---
+title: "String"
+---
 
 # String pipe
 
@@ -8,11 +11,13 @@ Use the string pipe to transform a macro output to lowercase or uppercase.
 Filename is `MyFile.txt`
 
 #### Input
+
 ```
 {filename | string: toUpper}
 ```
 
 #### Output
+
 ```
 MYFILE
 ```
@@ -22,11 +27,13 @@ MYFILE
 Filename is `MyFile.txt`
 
 #### Input
+
 ```
 {filename | string: toLower}
 ```
 
 #### Output
+
 ```
 myfile
 ```

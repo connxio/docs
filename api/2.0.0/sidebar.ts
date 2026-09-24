@@ -12,43 +12,43 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "2.0.0/get-api-v-2-codecomponents",
+          id: "2.0.0/get-api-v-3-codecomponents",
           label: "List all code components",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "2.0.0/put-api-v-2-codecomponents",
+          id: "2.0.0/put-api-v-3-codecomponents",
           label: "Upsert a code component",
           className: "api-method put",
         },
         {
           type: "doc",
-          id: "2.0.0/get-api-v-2-codecomponents-id",
+          id: "2.0.0/get-api-v-3-codecomponents-id",
           label: "Find the newest code component by id",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "2.0.0/delete-api-v-2-codecomponents-id",
+          id: "2.0.0/delete-api-v-3-codecomponents-id",
           label: "Delete code component by id",
           className: "api-method delete",
         },
         {
           type: "doc",
-          id: "2.0.0/get-api-v-2-codecomponents-id-versions",
+          id: "2.0.0/get-api-v-3-codecomponents-id-versions",
           label: "List all code components versions by id",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "2.0.0/put-api-v-2-codecomponents-id-deprecate",
+          id: "2.0.0/put-api-v-3-codecomponents-id-deprecate",
           label: "Deprecate a code component by id",
           className: "api-method put",
         },
         {
           type: "doc",
-          id: "2.0.0/put-api-v-2-codecomponents-id-updatename",
+          id: "2.0.0/put-api-v-3-codecomponents-id-updatename",
           label: "Update code component name by id",
           className: "api-method put",
         },
@@ -60,25 +60,25 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "2.0.0/get-api-v-2-environmentvariables",
+          id: "2.0.0/get-api-v-3-environmentvariables",
           label: "List all environment variables",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "2.0.0/put-api-v-2-environmentvariables",
+          id: "2.0.0/put-api-v-3-environmentvariables",
           label: "Upsert an environment variable",
           className: "api-method put",
         },
         {
           type: "doc",
-          id: "2.0.0/get-api-v-2-environmentvariables-id",
+          id: "2.0.0/get-api-v-3-environmentvariables-id",
           label: "Find environment variable by id",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "2.0.0/delete-api-v-2-environmentvariables-id",
+          id: "2.0.0/delete-api-v-3-environmentvariables-id",
           label: "Deletes environment variable by id",
           className: "api-method delete",
         },
@@ -156,25 +156,25 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "2.0.0/get-api-v-2-securityconfigs",
+          id: "2.0.0/get-api-v-3-securityconfigs",
           label: "List all security configurations",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "2.0.0/put-api-v-2-securityconfigs",
+          id: "2.0.0/put-api-v-3-securityconfigs",
           label: "Upsert a security configuration",
           className: "api-method put",
         },
         {
           type: "doc",
-          id: "2.0.0/get-api-v-2-securityconfigs-id",
+          id: "2.0.0/get-api-v-3-securityconfigs-id",
           label: "Find security configuration by id",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "2.0.0/delete-api-v-2-securityconfigs-id",
+          id: "2.0.0/delete-api-v-3-securityconfigs-id",
           label: "Deletes security configuration by id",
           className: "api-method delete",
         },
@@ -186,13 +186,13 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
-          id: "2.0.0/get-api-v-2-subscriptions",
+          id: "2.0.0/get-api-v-3-subscriptions",
           label: "List all subscriptions",
           className: "api-method get",
         },
         {
           type: "doc",
-          id: "2.0.0/get-api-v-2-subscriptions-current",
+          id: "2.0.0/get-api-v-3-subscriptions-current",
           label: "Get current subscription",
           className: "api-method get",
         },

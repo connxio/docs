@@ -1,1 +1,1 @@
-{"parameters":[{"name":"integrationId","in":"path","description":"","required":true,"schema":{"type":"string"}}]}
+{"parameters":[{"name":"integrationId","in":"path","required":true,"schema":{"type":"string"}}]}

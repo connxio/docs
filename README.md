@@ -72,6 +72,19 @@ plugin at `/reference/`. It keeps its own v1/v2/v3 selector and is not included 
 whole-site snapshots. `npm run docs:version -- X.Y.Z` copies only `docs/` and its
 guide sidebar. API generation commands write to `api/`.
 
+Run `yarn re-gen` to refresh the API reference. The generation scripts automatically
+fetch the v1, v2 and v3 OpenAPI specifications and replace their server URLs with
+`https://api.connxio.com` and remove the leading `/api` from endpoint paths before
+generating the docs. No manual downloads or YAML
+edits are needed. `yarn gen-all`, `yarn gen-api-docs connxio`, and
+`yarn gen-api-docs:version connxio:all` also prepare fresh specifications.
+
+Temporary specifications are saved in the ignored `.openapi/` directory. The
+shared server URL is configured in `scripts/prepare-api-specs.mjs`. Preparation
+must succeed before generation (and before cleaning when using `yarn re-gen`).
+Use these package scripts instead of invoking the Docusaurus generation commands
+directly. The Download OpenAPI link still points to the original upstream YAML.
+
 Links to the shared API are intentionally root-relative, for example
 `[API reference](/reference/connxio-api)`. Both current and archived guides use
 these same URLs. Links from the API to guides open the current documentation.

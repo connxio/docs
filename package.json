@@ -13,13 +13,14 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "gen-api-docs": "docusaurus gen-api-docs",
+    "gen-api-docs": "yarn prepare-api-specs && docusaurus gen-api-docs",
     "clean-api-docs": "docusaurus clean-api-docs",
-    "gen-api-docs:version": "docusaurus gen-api-docs:version",
+    "gen-api-docs:version": "yarn prepare-api-specs && docusaurus gen-api-docs:version",
     "clean-api-docs:version": "docusaurus clean-api-docs:version",
-    "gen-all": "docusaurus gen-api-docs all && docusaurus gen-api-docs:version connxio:all",
+    "gen-all": "yarn prepare-api-specs && docusaurus gen-api-docs all && docusaurus gen-api-docs:version connxio:all",
     "clean-all": "docusaurus clean-api-docs all && docusaurus clean-api-docs:version connxio:all",
-    "re-gen": "yarn clean-all && yarn gen-all"
+    "re-gen": "yarn prepare-api-specs && yarn clean-all && docusaurus gen-api-docs all && docusaurus gen-api-docs:version connxio:all",
+    "prepare-api-specs": "node scripts/prepare-api-specs.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.2",
@@ -34,7 +35,8 @@
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-player": "^3.4.0"
+    "react-player": "^3.4.0",
+    "js-yaml": "4.3.0"
   },
   "peerDependencies": {
     "@algolia/client-search": "^4.22.1"

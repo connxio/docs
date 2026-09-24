@@ -1,0 +1,1 @@
+{"responses":{"200":{"description":"OK"},"204":{"description":"The environment variable corresponding to the ID was deleted"},"400":{"description":"Request did not validate"},"502":{"description":"Could not contact internal services. Please try again later or contact our support department"}}}

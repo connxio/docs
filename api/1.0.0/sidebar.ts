@@ -79,7 +79,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "1.0.0/post-api-v-1-resend-archeo-restart",
-          label: "Resend any Archeo Logstep from the begynning of the trasaction",
+          label: "Resend any Archeo Logstep from the beginning of the transaction",
           className: "api-method post",
         },
       ],

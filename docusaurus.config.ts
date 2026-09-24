@@ -82,8 +82,7 @@ const config: Config = {
         docsPluginId: "api",
         config: {
           connxio: {
-            specPath:
-              "https://api.connxio.com/definition/v3/openapi.yaml?omit-version=false&omit-api-prefix=true",
+            specPath: ".openapi/v3.json",
             outputDir: "api",
             sidebarOptions: {
               groupPathsBy: "tag",
@@ -94,15 +93,13 @@ const config: Config = {
             baseUrl: "/reference/connxio-api",
             versions: {
               "2.0.0": {
-                specPath:
-                  "https://api.connxio.com/definition/v2/openapi.yaml?omit-version=false&omit-api-prefix=true",
+                specPath: ".openapi/v2.json",
                 outputDir: "api/2.0.0", // No trailing slash
                 label: "v2.0.0",
                 baseUrl: "/reference/2.0.0/connxio-api",
               },
               "1.0.0": {
-                specPath:
-                  "https://api.connxio.com/definition/v1/openapi.yaml?omit-version=false&omit-api-prefix=true",
+                specPath: ".openapi/v1.json",
                 outputDir: "api/1.0.0", // No trailing slash
                 label: "v1.0.0",
                 baseUrl: "/reference/1.0.0/connxio-api",

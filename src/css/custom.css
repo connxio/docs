@@ -731,3 +731,16 @@ html .openapi-explorer__expand-details-btn,
 html .openapi-explorer__response-clear-btn {
   color: var(--portal-text);
 }
+
+/* Give API results more room and a native vertical resize handle. */
+html .openapi-explorer__response-container pre.openapi-explorer__code-block {
+  height: 400px;
+  min-height: 200px;
+  max-height: none;
+  overflow: auto;
+  resize: vertical;
+}
+
+html .openapi-explorer__response-container pre.openapi-explorer__code-block code {
+  max-height: none;
+}

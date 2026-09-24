@@ -1,0 +1,30 @@
+.sdk {
+  margin-bottom: var(--ifm-spacing-vertical);
+  background: var(--portal-surface-1);
+  color: var(--portal-text);
+  border: 1px solid var(--portal-border);
+  border-radius: var(--ifm-global-radius);
+}
+
+.summary {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.summary:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: -2px;
+  border-radius: var(--ifm-global-radius);
+}
+
+.sdk[open] > .summary {
+  border-bottom: 1px solid var(--portal-border);
+}
+
+html .sdk > :global(.openapi-tabs__code-container) {
+  margin-bottom: 0;
+  border: 0;
+  background: transparent;
+}

@@ -1,6 +1,6 @@
 # Datacollection
 
-Used to access the data populated by [Data Collection](../../../actions/data-collection.md).
+Used to access the data populated by [Data Collection](../../actions/data-collection.md).
 
 
 ## Example 1

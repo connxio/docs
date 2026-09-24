@@ -98,4 +98,4 @@ This will upsert two rows in Dataverse in a single request.
 ],
 ```
  
-The value for `my_attribute` will then be returned for every row that is upserted. The response is made available in datacollection in metadata under the variable name that was defined in the adapter settings. The response can be used later in the integration with the use of [CxMaL datacollection macro](../../../integrations/cxmal/macros/datacollection.md).
+The value for `my_attribute` will then be returned for every row that is upserted. The response is made available in datacollection in metadata under the variable name that was defined in the adapter settings. The response can be used later in the integration with the use of [CxMaL datacollection macro](../../../cxmal/macros/datacollection.md).

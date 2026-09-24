@@ -149,7 +149,7 @@ Batching for the Sftp adapter works like this:
   />
 </div>
 
-- **Outbound Filename Pattern**: Uses Connxio Macro Language to generate file names, this is described in detail on the [Connxio Macro Language](../../../integrations/cxmal/connxio-macro-language.md) page.
+- **Outbound Filename Pattern**: Uses Connxio Macro Language to generate file names, this is described in detail on the [Connxio Macro Language](../../../cxmal/connxio-macro-language.md) page.
 - **Duplicate Detection**: Attempts to terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
 - **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
 

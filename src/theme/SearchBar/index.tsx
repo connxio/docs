@@ -7,6 +7,7 @@ export default function SearchBar() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
+  const [searchSession, setSearchSession] = useState(0);
   const history = useHistory();
 
   const close = useCallback(() => {
@@ -19,7 +20,17 @@ export default function SearchBar() {
     dialogRef.current?.querySelector<HTMLInputElement>("input")?.focus();
   }, []);
 
-  useEffect(() => history.listen(close), [history, close]);
+  useEffect(
+    () =>
+      history.listen(() => {
+        if (dialogRef.current?.open) {
+          // Reset both the input and autocomplete state after selecting a result.
+          setSearchSession((session) => session + 1);
+        }
+        close();
+      }),
+    [history, close],
+  );
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -98,7 +109,7 @@ export default function SearchBar() {
           </button>
         </div>
         <div className={styles.search}>
-          <OriginalSearchBar />
+          <OriginalSearchBar key={searchSession} />
         </div>
         <p className={styles.hint}>
           Type to search · ↑ ↓ to navigate · Enter to select · Esc to close

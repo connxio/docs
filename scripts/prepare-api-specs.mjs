@@ -32,6 +32,15 @@ async function downloadSpec(version) {
   }
 
   spec.servers = [{ url: serverUrl }];
+  // Security scheme references are case-sensitive. The upstream requirement
+  // uses "API" while the header scheme is defined with "Api".
+  const normalizeSecurity = (security) => security?.map((requirement) =>
+    Object.fromEntries(Object.entries(requirement).map(([name, scopes]) => [
+      name === "Connxio-API-Key" ? "Connxio-Api-Key" : name,
+      scopes,
+    ])),
+  );
+  if (spec.security) spec.security = normalizeSecurity(spec.security);
   // The raw Swagger endpoint includes the internal /api route prefix.
   // Public requests use /v1, /v2 and /v3 directly on api.connxio.com.
   const publicPaths = {};
@@ -48,6 +57,9 @@ async function downloadSpec(version) {
   for (const path of Object.values(spec.paths)) {
     if (path.servers) path.servers = [{ url: serverUrl }];
     for (const method of methods) {
+      if (path[method]?.security) {
+        path[method].security = normalizeSecurity(path[method].security);
+      }
       if (path[method]?.servers) path[method].servers = [{ url: serverUrl }];
     }
   }

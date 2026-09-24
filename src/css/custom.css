@@ -58,14 +58,14 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-table-border-color: var(--portal-border);
   --ifm-global-radius: 8px;
-  --ifm-font-family-base: "Poppins", system-ui, -apple-system, Segoe UI, Roboto,
-    Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI",
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
-  --ifm-heading-font-family: "Gellix", system-ui, -apple-system, Segoe UI,
-    Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont,
-    "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+  --ifm-font-family-base:
+    "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --ifm-heading-font-family:
+    "Gellix", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --code-block-bg: #1a1d21;
   --ifm-navbar-item-padding-horizontal: 0.5rem;
 }
@@ -326,7 +326,9 @@ strong {
     background-color: var(--portal-surface-1);
     border: 1px solid var(--portal-border);
     border-radius: 8px;
-    box-shadow: 0 1px 2px rgb(0 0 0 / 4%), 0 8px 24px rgb(0 0 0 / 8%);
+    box-shadow:
+      0 1px 2px rgb(0 0 0 / 4%),
+      0 8px 24px rgb(0 0 0 / 8%);
   }
 
   .theme-doc-sidebar-container > div > div {
@@ -412,7 +414,9 @@ strong {
   margin-top: 8px;
 }
 
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible .menu__link {
+.theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  .menu__link {
   font-size: 13px;
   font-weight: 500;
 }
@@ -443,14 +447,30 @@ strong {
 }
 
 /* Keep the docs icons, using the portal's neutral/active icon colors. */
-.sidebar-home { --sidebar-icon: url(/img/sidebar-icons/home.svg); }
-.sidebar-api-reference { --sidebar-icon: url(/img/sidebar-icons/interaction.svg); }
-.sidebar-channels { --sidebar-icon: url(/img/sidebar-icons/portal.svg); }
-.sidebar-platform { --sidebar-icon: url(/img/sidebar-icons/integrations.svg); }
-.sidebar-actions { --sidebar-icon: url(/img/sidebar-icons/actions.svg); }
-.sidebar-triggers { --sidebar-icon: url(/img/sidebar-icons/triggers.svg); }
-.sidebar-cxmal { --sidebar-icon: url(/img/sidebar-icons/cxmal.svg); }
-.sidebar-getting-started { --sidebar-icon: url(/img/sidebar-icons/gettingstarted.svg); }
+.sidebar-home {
+  --sidebar-icon: url(/img/sidebar-icons/home.svg);
+}
+.sidebar-api-reference {
+  --sidebar-icon: url(/img/sidebar-icons/interaction.svg);
+}
+.sidebar-channels {
+  --sidebar-icon: url(/img/sidebar-icons/portal.svg);
+}
+.sidebar-platform {
+  --sidebar-icon: url(/img/sidebar-icons/integrations.svg);
+}
+.sidebar-actions {
+  --sidebar-icon: url(/img/sidebar-icons/actions.svg);
+}
+.sidebar-triggers {
+  --sidebar-icon: url(/img/sidebar-icons/triggers.svg);
+}
+.sidebar-cxmal {
+  --sidebar-icon: url(/img/sidebar-icons/cxmal.svg);
+}
+.sidebar-getting-started {
+  --sidebar-icon: url(/img/sidebar-icons/gettingstarted.svg);
+}
 
 .sidebar-home > .menu__link::before,
 .sidebar-api-reference > .menu__list-item-collapsible > .menu__link::before,
@@ -643,4 +663,70 @@ html.docs-api .docs-version-selector {
 .metadata-field-descriptions pre code {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+
+html .openapi-security__details {
+  display: none;
+}
+
+/* API explorer surfaces follow the same palette as the portal sidebar. */
+html .openapi-explorer__request-form,
+html .openapi-explorer__response-container,
+html .openapi-security__details,
+html .openapi-tabs__code-container:not(.openapi-tabs__code-container-inner) {
+  --openapi-explorer-border-color: var(--portal-border);
+  background: var(--portal-surface-1);
+  color: var(--portal-text);
+  border: 1px solid var(--portal-border);
+  border-radius: var(--ifm-global-radius);
+  box-shadow: none;
+}
+
+html .openapi-security__summary-container {
+  background: var(--portal-surface-1);
+  color: var(--portal-text);
+}
+
+html .openapi-explorer__request-form:hover,
+html .openapi-explorer__response-container:hover,
+html
+  .openapi-tabs__code-container:not(.openapi-tabs__code-container-inner):hover {
+  box-shadow: none;
+}
+
+html .openapi-explorer__form-item-input {
+  background: var(--portal-surface-0);
+  color: var(--portal-text);
+  border-color: var(--portal-border);
+  border-radius: var(--ifm-global-radius);
+}
+
+html .openapi-explorer__form-item-input:focus {
+  border-color: var(--ifm-color-primary);
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+html .openapi-explorer__request-btn {
+  background: var(--ifm-color-primary);
+  color: #101415;
+  font-family: var(--ifm-font-family-base);
+}
+
+html .openapi-explorer__request-btn:hover {
+  background: var(--ifm-color-primary-light);
+}
+
+html .openapi-explorer__request-btn:active {
+  background: var(--ifm-color-primary-dark);
+}
+
+html .openapi-explorer__request-btn:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 3px;
+}
+
+html .openapi-explorer__expand-details-btn,
+html .openapi-explorer__response-clear-btn {
+  color: var(--portal-text);
 }

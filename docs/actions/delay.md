@@ -2,55 +2,43 @@
 sidebar_position: 80
 ---
 
+import PropertyReference from '@site/src/components/PropertyReference';
+import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';
+
 # Delay
 
-Connxio supports delaying the execution of an action for a specified period.
+The Delay action pauses processing before the next action runs. Choose a fixed duration or a random duration within a configured range. The maximum delay is 300 seconds (5 minutes).
 
-Delay can be added in two different ways. A predetermined duration, or a random duration with a lower and upper limit.
+## Configure the action
 
-`Note`: Max delay time is 300 seconds (5 minutes)
+Add a Delay action to your integration and place it before the action you want to delay. Configure the settings below.
 
-## Adding Delay to an Integration
+## General settings
 
-Follow these steps to add delay to your integration.
+<ActionGeneralSettings />
 
-Add the Delay shape from the transformation shape menu.
+## Delay settings
 
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+<PropertyReference properties={[
+{
+name: "Delay in seconds (max 300)",
+description: "Required when Random is disabled. The number of seconds to wait before continuing, up to 300 seconds.",
+example: "5",
+},
+{
+name: "Random",
+description: "Enable to choose a new random delay within the configured range each time the action runs. Leave disabled to use a fixed duration.",
+},
+{
+name: "From (seconds)",
+description: "Required when Random is enabled. The lower limit of the random delay.",
+example: "5",
+},
+{
+name: "To (seconds)",
+description: "Required when Random is enabled. The upper limit of the random delay, up to 300 seconds. Set this at or above the lower limit.",
+example: "15",
+},
+]} />
 
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="outbound connections"
-    sources={{
-      light: useBaseUrl('/img/docs/transformations/transformations-light.webp'),
-      dark: useBaseUrl('/img/docs/transformations/transformations-dark.webp#dark-only'),
-    }}
-  />
-</div>
-
-Position the Delay shape before the action you wish to delay, and configure the delay duration as needed.
-
-Specify the delay duration in seconds to delay the execution of the next action for a predetermined amount of time.
-
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="outbound connections"
-    sources={{
-      light: useBaseUrl('/img/docs/transformations/delay-light.webp'),
-      dark: useBaseUrl('/img/docs/transformations/delay-dark.webp#dark-only'),
-    }}
-  />
-</div>
-
-Enable the `Random` option to specify a lower and upper limit for the delay. The delay duration will then get randomized within the specified limits each time the shape is executed.
-
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="outbound connections"
-    sources={{
-      light: useBaseUrl('/img/docs/transformations/delay-random-light.webp'),
-      dark: useBaseUrl('/img/docs/transformations/delay-random-dark.webp#dark-only'),
-    }}
-  />
-</div>
+For example, set **From (seconds)** to `5` and **To (seconds)** to `15` to wait between 5 and 15 seconds each time the action runs.

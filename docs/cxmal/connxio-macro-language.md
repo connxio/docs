@@ -190,7 +190,7 @@ Choose a macro to open its full reference. Each example shows the expression and
   }
 ]} />
 
-For the full metadata structure, see [Metadata](../integrations/metadata.md). Key/value sets are populated by [data collection](../actions/data-collection.md) and [code mapping](../actions/code-components.md).
+For the full metadata structure, see [Metadata](../integrations/metadata.md). Key/value sets are populated by [data collection](../actions/data-collection.md) and [code mapping](../integrations/code-components.md).
 
 ### Pipes
 

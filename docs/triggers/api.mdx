@@ -73,7 +73,7 @@ Select API from the list of available triggers.
       description: (
         <>
           Enable when the external component is packaged as a ZIP file. See{" "}
-          <Link to="/actions/code-components/#zipped-code-components">
+          <Link to="/integrations/code-components/#zipped-code-components">
             Zipped Code Components
           </Link>{" "}
           for packaging instructions.
@@ -208,7 +208,7 @@ Keep these limitations in mind:
 
 ### Customizing the response
 
-Use a [Script component](../actions/script.md) or [Code component](../actions/code-components.md) to remap the synchronous API response.
+Use a [Script component](../actions/script.md) or [Code component](../integrations/code-components.md) to remap the synchronous API response.
 
 #### Script action
 
@@ -255,7 +255,7 @@ In a Code component, deserialize `TransformationContext.Content` as `IEnumerable
 - `FinalSynchronousMessageResponse` contains `SubIntegrationName`, `TotalResponses`, and `SynchronousMessageResponses`.
 - Each `SynchronousMessageResponse` contains `MetaData`, `ErrorMessage`, `MessageErrorCode`, `StackTrace`, `TransientError`, and `Origin`.
 
-Set `TransformationContext.Content` to the serialized output you want the API to return. To change the failure status code, see [Using FailureReturnStatusCode](../actions/code-components.md#using-failurereturnstatuscode).
+Set `TransformationContext.Content` to the serialized output you want the API to return. To change the failure status code, see [Using FailureReturnStatusCode](../integrations/code-components.md#using-failurereturnstatuscode).
 
 ### Using the Interaction NuGet
 

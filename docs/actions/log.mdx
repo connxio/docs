@@ -1,18 +1,47 @@
+import PropertyReference from '@site/src/components/PropertyReference';
+import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';
+
 # Log
 
-The Log transformation in Connxio writes a custom log entry at a specific point in the message flow. This is useful for auditing, debugging, and tracing messages as they pass through an integration pipeline.
+The Log action writes a custom log entry at a specific point in the message flow. Use it to audit, debug, or trace messages as they pass through an integration.
 
-## Configuring the Log transformation
+## Configure the action
 
-When configuring the Log transformation, the following fields are available:
+Add a Log action to your integration where you want to record a log entry and configure the settings below.
 
-- **Log level** _(required)_: Controls the severity level at which the entry is logged. Available levels are `Error`, `Minimum`, `Standard`, `Verbose`, and `Off`. Defaults to `Standard`.
-- **Status** _(required)_: A short label describing the state of the message at this point in the flow (e.g. `Received`, `Processed`).
-- **Description** _(required)_: A longer explanation of the log entry.
-- **Sender** _(optional)_: Identifies the sender of the message in the log entry.
-- **Receiver** _(optional)_: Identifies the receiver of the message in the log entry.
+## General settings
 
-The `Status`, `Description`, `Sender`, and `Receiver` fields support variable replacement using the [CxMAL](../cxmal/connxio-macro-language.md) syntax, for example `{filename}`, `{interchange}`, `{metadata:interchangeId}`, or `{env:myVariable}`.
+<ActionGeneralSettings />
+
+## Logging settings
+
+<PropertyReference properties={[
+  {
+    name: "Log level",
+    description: "Required. The level at which the entry is logged. Choose Error, Minimum, Standard, Verbose, or Off. Defaults to Standard. The integration's logging webhook must allow this level for the entry to appear.",
+    example: "Standard",
+  },
+  {
+    name: "Status",
+    description: "Required. A short label describing the state of the message at this point in the flow.",
+    example: "Processed",
+  },
+  {
+    name: "Description",
+    description: "Required. An explanation of the log entry.",
+    example: "Finished processing {filename}",
+  },
+  {
+    name: "Sender",
+    description: "Optional. Identifies the sender of the message in this log entry.",
+  },
+  {
+    name: "Receiver",
+    description: "Optional. Identifies the receiver of the message in this log entry.",
+  },
+]} />
+
+**Status**, **Description**, **Sender**, and **Receiver** support dynamic values using [CxMaL](../cxmal/connxio-macro-language.md). For example, use `{filename}` to include the message's file name or `{interchange}` to include its interchange ID.
 
 ## Log levels
 
@@ -27,3 +56,5 @@ The `Status`, `Description`, `Sender`, and `Receiver` fields support variable re
 :::info
 The log entry will only appear if the log level configured here is equal to or below the log level configured on the integration's logging webhook. Setting the level to `Off` effectively suppresses this log entry entirely.
 :::
+
+See [Logging](../integrations/logging.md) for integration logging configuration and log providers.

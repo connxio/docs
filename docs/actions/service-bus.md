@@ -1,92 +1,83 @@
+import PropertyReference from '@site/src/components/PropertyReference';
+import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';
+import ActionDuplicateDetection from '@site/src/components/ActionDuplicateDetection';
+import Link from '@docusaurus/Link';
+
 # Azure Service Bus
 
-The Service Bus outbound adapter in Connxio integrates with Azure Service Bus, enabling users to send messages to Service Bus topics or queues. It leverages Azure's reliable and scalable messaging capabilities for efficient message exchange.
+The Azure Service Bus action sends messages from the Connxio pipeline to a queue or topic. Send the payload directly or store it in Azure Blob Storage and send a reference through Service Bus.
 
-## Configuring the Service Bus adapter
+## Configure the action
 
-To configure Connxio to start sending data to your Service Bus select the "Service Bus" option in the "Outbound Connections" shape:
+Add a Service Bus action to your integration and configure the settings below.
 
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+## General settings
 
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="outbound connections"
-    sources={{
-      light: useBaseUrl('/img/docs/outbound/outbound-connection-light.webp'),
-      dark: useBaseUrl('/img/docs/outbound/outbound-connection-dark.webp#dark-only'),
-    }}
-  />
-</div>
+<ActionGeneralSettings showOutputEncoding />
 
-On creating a new adapter, a popup with the adapter's input fields will appear.
-Service Bus has 4 sections; Adapter name, Acknowledgement settings, Core settings and Advanced settings.
+## Connection settings
 
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="properties"
-    sources={{
-      light: useBaseUrl('/img/docs/outbound/outbound-sections-light.webp'),
-      dark: useBaseUrl('/img/docs/outbound/outbound-sections-dark.webp#dark-only'),
-    }}
-  />
-</div>
+<PropertyReference properties={[
+  {
+    name: "Security configuration",
+    description: <>Required. Select the <Link to="/connxio-portal/security-configurations/">security configuration</Link> containing the connection properties for your Service Bus namespace. Use <strong>+</strong> to create a configuration. The connection string must not contain <code>EntityPath</code>; specify the topic or queue name below.</>,
+  },
+  {
+    name: "Service Bus type",
+    description: "Choose Topic or Queue to select the destination for outgoing messages.",
+  },
+  {
+    name: "Topic name",
+    description: "Required when Topic is selected. The topic to send messages to.",
+  },
+  {
+    name: "Queue name",
+    description: "Required when Queue is selected. The queue to send messages to.",
+  },
+]} />
 
-Read more about the properties in each section below:
+## Service bus settings
 
-### Adaptername & Ack
+<PropertyReference properties={[
+  {
+    name: "Use pure message sending",
+    description: <>Enable to send the payload directly in the Service Bus message. When disabled, Connxio stores the payload in Blob Storage and sends a reference to it. See <Link to="#pure-message-sending">Pure message sending</Link> and <Link to="#uploading-to-azure-blob-storage">Uploading to Azure Blob Storage</Link> for details.</>,
+  },
+  {
+    name: "Keep message properties",
+    description: <>Enable when the outgoing content is a serialized <code>ConnxioServiceBusMessage</code> containing the body and Service Bus properties to send. See <Link to="#keep-message-properties">Keep message properties</Link> for details.</>,
+  },
+  {
+    name: "Message contract",
+    description: <>The structure of the Blob Storage reference sent when Use pure message sending is disabled. Use <strong>SasUri Only</strong> for a plain-text URI, or a JSON structure containing the URI, file name, and interchange ID. See <Link to="#uploading-to-azure-blob-storage">Uploading to Azure Blob Storage</Link> for the JSON structure.</>,
+  },
+  {
+    name: "Message label",
+    description: "The label to add to the Service Bus message.",
+    example: "OrderCreated",
+  },
+  {
+    name: "New interchange ID",
+    description: "Enable to remove the interchange ID from the action-specific metadata so that a new ID is generated when the message re-enters Connxio.",
+  },
+]} />
 
-- **Adapter Name**: The logical name of the adapter. This is shown in outbound adapter list in the subintegration view.
-- **Send Acknowledgement**: Is explained [here](./acknowledgment.md).
+## Duplicate detection
 
-### Core Settings
+<ActionDuplicateDetection />
 
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="data pickup interval"
-    sources={{
-      light: useBaseUrl('/img/docs/outbound/sb-core-light.webp'),
-      dark: useBaseUrl('/img/docs/outbound/sb-core-dark.webp#dark-only'),
-    }}
-  />
-</div>
+## Message handling
 
-- **Service Bus Type**: Sets if queue or topic is used.
-- **Connection String Security Configuration**: Reference to the [Security Configuration](../../../connxio-portal/security-configurations.md) that contains the relevant connection properties. Note that a servicebus connection string cannot contain 'EntityPath', as this information is set in the 'Topic Name' or 'Queue Name' field.
-- **Queue/Topic Name**: The name of the queue or topic.
-
-### Advanced settings
-
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="data pickup interval"
-    sources={{
-      light: useBaseUrl('/img/docs/outbound/sb-settings-light.webp'),
-      dark: useBaseUrl('/img/docs/outbound/sb-setting-dark.webp#dark-only'),
-    }}
-  />
-</div>
-
-- **Message label**: The label to be added to the service bus message.
-- **Use Pure Message Sending**: Enables the [Pure Message Sending Pattern](#pure-message-sending). If kept unchecked one of the [Metadata on Bus, data as blob](#uploading-to-azure-blob-storage) patterns is used.
-- **Keep message Properties**: When enabled, CX expects a `ConnxioServiceBusMessage` when uploading to bus.
-- **Duplicate Detection**: Terminate the message if the exact same has been processed any time the last five days. Connxio does not guarantee that no duplicates will be sent.
-- **Termination Status**: The status used for logged in when a duplicate is terminated. If left empty, the status will default to 'Terminated'
-- **New Interchange Id**: Removes interchange id from adapter specific metadata to force new id on re-entry.
-
-## Message Handling Patterns
-
-When using the Service Bus outbound adapter in Connxio, you have the option to choose between two message handling patterns: uploading the message to an Azure Blob Storage or pure message sending.
+Configure the action to match the message format expected by the receiver.
 
 ### Uploading to Azure Blob Storage
 
-In this pattern, Connxio uploads the message payload to an Azure Blob Storage container. Connxio offers two different options for including the blob URI within the Service Bus message. This approach is useful when dealing with large message payloads that exceed the size limitations of direct message sending.
+With **Use pure message sending** disabled, Connxio stores the payload in Blob Storage and sends its URI through Service Bus. This lets you send references to payloads that are too large to include directly in a Service Bus message.
 
-1. **URI only:**
-   In this option, the URI to the file in the Azure Blob Storage is included as plain text within the Service Bus message. This is a straightforward approach that allows easy access to the file by directly using the URI provided. The message's interchangeId will be included in the Service Bus message's `UserProperties` object with the key `InterchangeId`.
+Choose the **Message contract** to control the reference format:
 
-2. **JSON Structure:**
-   Alternatively, you can choose to include the blob URI, file name, and interchange ID in a JSON structure within the Service Bus message. The structure looks like this:
+- **SasUri Only** sends the URI as plain text. The interchange ID is included in the Service Bus message's `InterchangeId` user property.
+- The **JSON structure** includes the URI, file name, and interchange ID in the message body:
 
 ```json
 {
@@ -96,15 +87,13 @@ In this pattern, Connxio uploads the message payload to an Azure Blob Storage co
 }
 ```
 
-This JSON structure provides a more organized representation of the necessary information related to the file in the Azure Blob Storage.
+### Pure message sending
 
-### Pure Message Sending
-
-Alternatively, you can opt for pure message sending, where the message payload is included directly within the Service Bus message itself. This pattern is suitable for smaller message payloads that do not require external storage. By embedding the message directly, you eliminate the need for additional storage and simplify the overall message handling process.
+Enable **Use pure message sending** to include the payload directly in the Service Bus message. Blob Storage is not needed for this format. The payload must fit within the receiving Service Bus entity's message size limit.
 
 ### Keep message properties
 
-The _Keep message Properties_ pattern is a more advanced pattern that enables modification of how the message is sent and received from the Service Bus (SB). When this option is selected Connxio reads the entire SB message and transforms it into a `ConnxioServiceBusMessage` which has the following properties:
+Enable **Keep message properties** to send content represented by a `ConnxioServiceBusMessage`. This class is available in the [Connxio.Transformation](https://www.nuget.org/packages/Connxio.Transformation/) NuGet package.
 
 ```csharp
 public class ConnxioServiceBusMessage
@@ -137,22 +126,16 @@ public class ConnxioServiceBusMessage
 }
 ```
 
-This class is supplied to you i the [Connxio.Transformation](https://www.nuget.org/packages/Connxio.Transformation/) nuget package and corresponds directly to the SB [ServiceBusReceivedMessage](https://learn.microsoft.com/en-us/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage?view=azure-dotnet) class managed by Microsoft.
-
-All attributes changed in the `ConnxioServiceBusMessage` are propagated to the outbound SB. When _Keep message Properties_ is enabled inbound the `ConnxioServiceBusMessage` is placed inside your file content and `TransformationContext.Content`. To change any of the properties you need to create a code map and deserialize the message like so:
+If a [Service Bus trigger](../triggers/service-bus.md#keep-message-properties) keeps message properties, its content already contains this structure. A code component can deserialize it to update the body or properties:
 
 ```csharp
-ConnxioServiceBusMessage obj = JsonConvert.DeserializeObject<ConnxioServiceBusMessage>(transformationContext.Content);
+ConnxioServiceBusMessage message = JsonConvert.DeserializeObject<ConnxioServiceBusMessage>(transformationContext.Content);
 ```
 
-After the abject is serialized you can change the desired properties and then serialize the `ConnxioServiceBusMessage` back into `transformationContext.Content`.
+After making changes, serialize the object back into `transformationContext.Content`. The Service Bus action uses the supplied body and outgoing message properties when sending.
 
-When this property is used for outbound adapters you can create the `ConnxioServiceBusMessage` class directly from whatever content you desire. Connxio will honor the properties set and send them to the Sb without the need for and SB inbound adapter.
-
-### Conclusion
-
-When selecting a message handling pattern, consider the size of your message payloads and the desired level of storage flexibility. Both options offer their own advantages and can be chosen based on your specific integration requirements.
+You can also create and serialize a `ConnxioServiceBusMessage` from other content without using a Service Bus trigger.
 
 ## Retry
 
-Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](../../../integrations/retry.md). This may change in the future as we are looking into enabling backoff retry.
+See [Retry](../integrations/retry.md) for Connxio's retry configuration and message failure handling.

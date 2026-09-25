@@ -2,89 +2,62 @@
 sidebar_position: 40
 ---
 
+import PropertyReference from '@site/src/components/PropertyReference';
+import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';
+import Link from '@docusaurus/Link';
+
 # Splitting
 
-Splitting breaks one message into multiple smaller messages. Each part is sent through the pipeline independently as a new message.
+The Splitting action breaks one message into multiple smaller messages using a splitting code component. Each output continues through the pipeline independently as a new message.
 
-## Limitations
+## Configure the action
 
-Connxio supports input files up to `100 MB`. There is no limit on the number of output messages. Each split message is treated as an independent message, with its own [logs](../integrations/logging.md), [resend events](../interaction/resending-api.md), and errors.
+Add a Splitting action to your integration and select a splitting code component. To create one, see the [Split example](../integrations/code-components.md#split-component) in Code components.
 
-:::caution
-Splitting can generate large amounts of traffic. Test your receiving systems thoroughly before sending production-level loads.
-:::
+## General settings
 
-## Configuring Splitting
+<ActionGeneralSettings />
 
-To configure splitting, select _Splitting_ in the "Transformations" list.
+## Component settings
 
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import RequiredNugetPackage from '../_shared/RequiredNugetPackage.mdx';
+<PropertyReference properties={[
+  {
+    name: "Code component",
+    description: <>Required when Use external code component is disabled. Select the uploaded splitting component to run. Use <strong>+</strong> to create a component. See <Link to="/integrations/code-components/#uploading-your-component">Uploading your component</Link> for details.</>,
+  },
+  {
+    name: "Use external code component",
+    description: "Enable to load a component from an external URI instead of selecting an uploaded component.",
+  },
+]} />
 
-When you create a new transformation, a popup appears with the splitting input fields.
+## External code components
 
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="outbound connections"
-    sources={{
-      light: useBaseUrl('/img/docs/transformations/splitting-light.webp'),
-      dark: useBaseUrl('/img/docs/transformations/splitting-dark.webp#dark-only'),
-    }}
-  />
-</div>
+Enable **Use external code component** to provide an external URI. The DLL or ZIP must be available through an HTTP GET endpoint.
 
-See the sections below for how splitting code and retries work.
+<PropertyReference properties={[
+  {
+    name: "External component URI",
+    description: "Required when Use external code component is enabled. The URI of the DLL or ZIP to load.",
+    example: "https://example.com/MyCodeComponent.dll",
+  },
+]} />
 
-## Creating splitting code components
+## ZIP components
 
-### NuGet package
+ZIP components can be selected from uploaded code components or loaded from an external URI. When the selected code component is a ZIP component, the **DLL filename with extension** field appears automatically.
 
-<RequiredNugetPackage />
-
-Start by creating code that splits a message into multiple output messages. This is similar to [map code components](./code-components.md), but uses the splitting interface.
-
-Use the splitting boilerplate below:
-
-```csharp
-using Newtonsoft.Json;
-using Connxio.NuGet.Public.Transformation.Interfaces;
-using Connxio.NuGet.Public.Transformation.Models;
-
-public class MyFirstSplitter : IConnxioSplit
-{
-    public IEnumerable<TransformationContext> Split(TransformationContext transformationContext)
-    {
-        // Create object from byte array
-        dynamic inboundMessage = JsonConvert.DeserializeObject<dynamic>(transformationContext.Content) ?? throw new ArgumentException("Failed to deserialize inbound message.");
-
-        //Create list that holds new messages
-        var output = new List<TransformationContext>();
-
-        //Add elements to list
-        foreach (var city in inboundMessage.Cities)
-        {
-            var outboundMessage = new
-            {
-                CityName = city.CityName,
-                Comment = city.Comment,
-                Id = inboundMessage.Id
-            };
-
-            output.Add(new TransformationContext
-            {
-                Content = JsonConvert.SerializeObject(outboundMessage),
-                MetaData = transformationContext.MetaData.Copy()
-            });
-        }
-
-        //Return splitted messages
-        return output;
-    }
-}
-```
-
-**Upload the component** using the process on the [code components page](./code-components.md), and select the _splitting_ type.
+<PropertyReference properties={[
+  {
+    name: "Use zip mapping",
+    description: <>Use ZIP mapping for a component packaged with its dependencies in a ZIP, whether uploaded to Connxio or loaded from an external URI. See <Link to="/integrations/code-components/#zipped-code-components">Zipped Code Components</Link> for packaging instructions.</>,
+  },
+  {
+    name: "DLL filename with extension",
+    description: "Required for ZIP components. The main component DLL inside the ZIP, including the .dll extension. Appears automatically when you select an uploaded ZIP component, or when you enable Use zip mapping for an external component.",
+    example: "MyCodeComponent.dll",
+  },
+]} />
 
 ## Testing and best practices
 
@@ -104,3 +77,11 @@ Retry behavior depends on where failure occurs:
 2. If failure happens after splitting code runs, Connxio retries delivery with increasing delay, then schedules the message through the [disaster pipeline](../integrations/retry.md).
 
 Retries can delay delivery of split message units. Check your logging provider for warnings; if none appear, contact your representative.
+
+## Limitations
+
+Connxio supports input files up to `100 MB`. There is no limit on the number of output messages. Each split message is treated as an independent message, with its own [logs](../integrations/logging.md), [resend events](../interaction/resending-api.md), and errors.
+
+:::caution
+Splitting can generate large amounts of traffic. Test your receiving systems thoroughly before sending production-level loads.
+:::

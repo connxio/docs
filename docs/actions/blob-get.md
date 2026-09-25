@@ -59,7 +59,7 @@ On creating a new transformation, a popup with the transformation's input fields
 - **Container Name**: Name of the container to get the blob from.
 - **Operation**: The operation to perform on the blob. Either Get or Upsert.
 - **Blob name**: The name of the blob to get from Azure Storage.
-- **Variable name**: The name used for the variable through Connxio. Use this name if you want to target the variable in a [code component](./code-components.md) or [Connxio Macro Language](../cxmal/connxio-macro-language.md). The variable is added to the DataCollection array on the Metadata object.
+- **Variable name**: The name used for the variable through Connxio. Use this name if you want to target the variable in a [code component](../integrations/code-components.md) or [Connxio Macro Language](../cxmal/connxio-macro-language.md). The variable is added to the DataCollection array on the Metadata object.
 
 ## Retry
 

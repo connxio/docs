@@ -1,8 +1,8 @@
 ---
-sidebar_position: 3
+sidebar_position: 21
 ---
 
-# Security Configurations
+# Security configurations
 
 Security configurations in Connxio are reusable blocks of information that contain credentials and other necessary details for securely connecting to various systems. These configurations help streamline the setup process and ensure the secure transmission of data between Connxio and external systems. Connxio stores all sensitive information securely in a secure key storage, ensuring the confidentiality of passwords and credentials.
 

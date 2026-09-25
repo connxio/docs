@@ -2,23 +2,20 @@
 sidebar_position: 70
 ---
 
-# Prettify Content
+import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';
 
-Connxio supports prettifying message content in XML and JSON. As JSON data is often output without line breaks to save space, it can be extremely difficult to actually read and make sense of it. This feature hopes to solve the problem by formatting and beautifying the JSON data so that it is easy to read and debug by human beings.
+# Prettify
 
-## Adding prettify to content
+The Prettify action formats JSON or XML message content with indentation and line breaks to make it easier to read and debug.
 
-Add the shape from the transformation shape menu and move it to the correct place in the pipeline. Prettify should probably be the last step unless you are debugging.
+## Configure the action
 
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+Add a Prettify action to your integration. Place it after actions that modify the content and before the action that sends it to the receiving system. For debugging, place it where you want to inspect the formatted content.
 
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="outbound connections"
-    sources={{
-      light: useBaseUrl('/img/docs/transformations/transformations-light.webp'),
-      dark: useBaseUrl('/img/docs/transformations/transformations-dark.webp#dark-only'),
-    }}
-  />
-</div>
+## General settings
+
+<ActionGeneralSettings />
+
+## Supported content
+
+The message content must be JSON or XML. Prettifying adds formatting whitespace, which increases the message size.

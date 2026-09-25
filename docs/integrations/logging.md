@@ -58,7 +58,7 @@ Connxio uses these default statuses:
 | Success    | The event completed successfully, such as a message received by an adapter or transformed by a code component.                                                                   |
 | Warning    | A non-critical failure occurred, and the process continued or retried as described on the [retry page](./retry.md).                                                     |
 | Error      | A failure stopped the pipeline. This can be caused by external services, transformations, adapter targets, or internal Connxio faults. Use the description to analyze the error. |
-| Terminated | The user terminated the pipeline through [code components](../actions/code-components.md) or [data collection](../actions/data-collection.md).     |
+| Terminated | The user terminated the pipeline through [code components](./code-components.md#termination) or [data collection](../actions/data-collection.md).     |
 
 > Attention! When using Archeo logging remember to add all these statuses to Archeo
 

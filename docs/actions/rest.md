@@ -113,7 +113,7 @@ Messages are delivered in sequence based on the order they are received, but ord
 
 Connxio will add an `InterchangeId` header to the outgoing request to facilitate for continued transactional logging on the receiver side.
 
-If you need to receive the InterchangeId by other means we recommend either including it in the message by using [transformations](../../code-components.md) or adding the InterchangeId as a query parameter with [Connxio Macro Language](../../../cxmal/connxio-macro-language.md).
+If you need to receive the InterchangeId by other means we recommend either including it in the message by using [transformations](../integrations/code-components.md) or adding the InterchangeId as a query parameter with [Connxio Macro Language](../../../cxmal/connxio-macro-language.md).
 
 > E.g.: `http://www.myapi.com?InterchangeId={interchange}`
 

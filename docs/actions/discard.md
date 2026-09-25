@@ -1,24 +1,21 @@
+import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';
+
 # Discard
 
-Connxio lets customers send messages from the Connxio and discard them for testing purposes. This is great tool for debugging and logging your messages as they get processed by the Connxio pipeline.
+The Discard action discards a message without sending it to an external system. Use it when testing an integration to inspect processing and logs without delivering messages to a receiving system.
 
-## Using the Discard adapter
+## Configure the action
 
-The Discard adapter requires no configuration to use as the messages are simply null and void. To use the Discard adapter select the Discard option in the "Outbound Connection" shape.
+Add a Discard action to your integration where you would otherwise send the message to a receiving system. No connection settings are required.
 
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+## General settings
 
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="outbound connections"
-    sources={{
-      light: useBaseUrl('/img/docs/outbound/outbound-connection-light.webp'),
-      dark: useBaseUrl('/img/docs/outbound/outbound-connection-dark.webp#dark-only'),
-    }}
-  />
-</div>
+<ActionGeneralSettings />
+
+## Logging
+
+Use the integration's logging configuration to inspect how messages are processed during testing. See [Logging](../integrations/logging.md) for available log levels and configuration.
 
 ## Retry
 
-Retry on all outbound adapters is currently handled by the linear retry described on the [Retry page](../../../integrations/retry.md). This may change in the future as we are looking into enabling back-off retry.
+See [Retry](../integrations/retry.md) for Connxio's retry configuration and message failure handling.

@@ -1,0 +1,56 @@
+/* Applied to the Markdown heading that precedes this section, so the toggle
+   sits on the same line as the heading text, aligned to the right. */
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+/* Wraps the heading's original content (text + Docusaurus's "#" permalink
+   link) so it stays together as a single flex item next to the toggle. */
+.headingContent {
+  min-width: 0;
+}
+
+.anchor {
+  display: none;
+}
+
+.toggle {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--portal-border);
+  border-radius: var(--ifm-button-border-radius, 6px);
+  background: transparent;
+  color: var(--portal-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
+}
+
+.toggle:hover,
+.toggle:focus-visible {
+  color: var(--ifm-link-color);
+  border-color: var(--ifm-link-color);
+  background: var(--portal-surface-2);
+}
+
+.chevron {
+  flex-shrink: 0;
+  display: block;
+  transform: rotate(0deg);
+  transition: transform 200ms ease-in-out;
+}
+
+.chevronExpanded {
+  transform: rotate(180deg);
+}

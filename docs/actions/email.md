@@ -18,38 +18,38 @@ Add an Email action to your integration and configure the settings below.
 ## Connection settings
 
 <PropertyReference properties={[
-  {
-    name: "Security configuration",
-    description: <>Required. Select the <Link to="/connxio-portal/security-configurations/">security configuration</Link> containing the SMTP connection properties for your email account. Use <strong>+</strong> to create a configuration.</>,
-  },
+{
+name: "Security configuration",
+description: <>Required. Select the <Link to="/integrations/security-configurations/">security configuration</Link> containing the SMTP connection properties for your email account. Use <strong>+</strong> to create a configuration.</>,
+},
 ]} />
 
 ## Email settings
 
 <PropertyReference properties={[
-  {
-    name: "Receivers (comma separated)",
-    description: "Required. The email addresses to send the message to. Provide at least one address and separate multiple addresses with commas.",
-    example: "orders@example.com,archive@example.com",
-  },
-  {
-    name: "Subject",
-    description: "The subject line of the email.",
-    example: "Order confirmation",
-  },
-  {
-    name: "Send file as message body",
-    description: "Enable to use the Connxio message content as the email body. Can be enabled together with Send file as attachment.",
-  },
-  {
-    name: "Send file as attachment",
-    description: "Enable to send the Connxio message content as an attachment. Can be enabled together with Send file as message body.",
-  },
-  {
-    name: "File name",
-    description: <>The name of the attachment when Send file as attachment is enabled. Use <Link to="/cxmal/connxio-macro-language/">CxMaL</Link> macros to build a dynamic file name.</>,
-    example: "{filename}",
-  },
+{
+name: "Receivers (comma separated)",
+description: "Required. The email addresses to send the message to. Provide at least one address and separate multiple addresses with commas.",
+example: "orders@example.com,archive@example.com",
+},
+{
+name: "Subject",
+description: "The subject line of the email.",
+example: "Order confirmation",
+},
+{
+name: "Send file as message body",
+description: "Enable to use the Connxio message content as the email body. Can be enabled together with Send file as attachment.",
+},
+{
+name: "Send file as attachment",
+description: "Enable to send the Connxio message content as an attachment. Can be enabled together with Send file as message body.",
+},
+{
+name: "File name",
+description: <>The name of the attachment when Send file as attachment is enabled. Use <Link to="/cxmal/connxio-macro-language/">CxMaL</Link> macros to build a dynamic file name.</>,
+example: "{filename}",
+},
 ]} />
 
 ## Duplicate detection

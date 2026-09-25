@@ -365,7 +365,7 @@ strong {
   --ifm-menu-color-background-hover: var(--portal-nav-active);
   min-height: 0;
   margin-bottom: 0;
-  scrollbar-gutter: auto;
+  /* scrollbar-gutter: auto; */
 }
 
 .menu__link {
@@ -741,6 +741,9 @@ html .openapi-explorer__response-container pre.openapi-explorer__code-block {
   resize: vertical;
 }
 
-html .openapi-explorer__response-container pre.openapi-explorer__code-block code {
+html
+  .openapi-explorer__response-container
+  pre.openapi-explorer__code-block
+  code {
   max-height: none;
 }

@@ -18,7 +18,7 @@ description: "When enabled, sends the Event Grid event itself as the message con
 },
 {
 name: "Security configuration",
-description: <>Shown and required when <strong>Use event as content</strong> is disabled. Select the <Link to="/connxio-portal/security-configurations/">security configuration</Link> for the storage account containing the referenced blobs. Use <strong>+</strong> to create a configuration.</>,
+description: <>Shown and required when <strong>Use event as content</strong> is disabled. Select the <Link to="/integrations/security-configurations/">security configuration</Link> for the storage account containing the referenced blobs. Use <strong>+</strong> to create a configuration.</>,
 },
 {
 name: "Blob containers (comma separated)",
@@ -46,7 +46,7 @@ Create an event subscription in Azure using **Event Grid Schema** and the **Web 
 
 ## Event only handling
 
-When **Use event as content** is enabled, subsequent actions handle the event. To retrieve its blob, extract the blob name from `data.url` in a Script action and pass it to the [Blob Get action](../actions/blob-get.md).
+When **Use event as content** is enabled, subsequent actions handle the event. To retrieve its blob content, extract the blob name from `data.url` in a Script action and pass it to the [Azure Blob action](../actions/azure-storage/azure-blob.md).
 
 ### Event model
 

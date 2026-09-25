@@ -12,49 +12,48 @@ Add a Service Bus trigger to your integration and configure the settings below.
 
 ## General settings
 
-
 <TriggerGeneralSettings />
 
 ## Connection settings
 
 <PropertyReference properties={[
-  {
-    name: "Security configuration",
-    description: <>Required. Select the <Link to="/connxio-portal/security-configurations/">security configuration</Link> containing the connection properties for your Service Bus namespace. Use <strong>+</strong> to create a configuration. The connection string must not contain <code>EntityPath</code>; specify the topic or queue name below.</>,
-  },
-  {
-    name: "Service Bus type",
-    description: "Choose Topic or Queue to select the source of incoming messages.",
-  },
-  {
-    name: "Topic name",
-    description: "Required when Topic is selected. The topic containing the subscription to receive messages from.",
-  },
-  {
-    name: "Queue name",
-    description: "Required when Queue is selected. The queue to receive messages from.",
-  },
-  {
-    name: "Subscription name",
-    description: "Required when Topic is selected. The subscription to receive messages from.",
-  },
+{
+name: "Security configuration",
+description: <>Required. Select the <Link to="/integrations/security-configurations/">security configuration</Link> containing the connection properties for your Service Bus namespace. Use <strong>+</strong> to create a configuration. The connection string must not contain <code>EntityPath</code>; specify the topic or queue name below.</>,
+},
+{
+name: "Service Bus type",
+description: "Choose Topic or Queue to select the source of incoming messages.",
+},
+{
+name: "Topic name",
+description: "Required when Topic is selected. The topic containing the subscription to receive messages from.",
+},
+{
+name: "Queue name",
+description: "Required when Queue is selected. The queue to receive messages from.",
+},
+{
+name: "Subscription name",
+description: "Required when Topic is selected. The subscription to receive messages from.",
+},
 ]} />
 
 ## Service bus settings
 
 <PropertyReference properties={[
-  {
-    name: "Use pure message sending",
-    description: <>Enable when the Service Bus message contains the payload directly. When disabled, the message contains a reference to content in Blob Storage. See <Link to="#pure-message-sending">Pure message sending</Link> and <Link to="#uploading-to-azure-blob-storage">Uploading to Azure Blob Storage</Link> for details.</>,
-  },
-  {
-    name: "Keep message properties",
-    description: <>Includes the Service Bus message body and properties in the incoming content as a <code>ConnxioServiceBusMessage</code>. See <Link to="#keep-message-properties">Keep message properties</Link> for details. The Use pure message sending control is unavailable while this setting is enabled.</>,
-  },
-  {
-    name: "Wrapper",
-    description: <>Choose JSON, XML, or None to match the incoming message. A wrapper carries metadata around the message content. See <Link to="/interaction/wrappers/">Wrapper</Link> for details.</>,
-  },
+{
+name: "Use pure message sending",
+description: <>Enable when the Service Bus message contains the payload directly. When disabled, the message contains a reference to content in Blob Storage. See <Link to="#pure-message-sending">Pure message sending</Link> and <Link to="#uploading-to-azure-blob-storage">Uploading to Azure Blob Storage</Link> for details.</>,
+},
+{
+name: "Keep message properties",
+description: <>Includes the Service Bus message body and properties in the incoming content as a <code>ConnxioServiceBusMessage</code>. See <Link to="#keep-message-properties">Keep message properties</Link> for details. The Use pure message sending control is unavailable while this setting is enabled.</>,
+},
+{
+name: "Wrapper",
+description: <>Choose JSON, XML, or None to match the incoming message. A wrapper carries metadata around the message content. See <Link to="/interaction/wrappers/">Wrapper</Link> for details.</>,
+},
 ]} />
 
 ## Message handling
@@ -119,7 +118,6 @@ A code component action can deserialize the content, update its properties, and 
 ### InterchangeId
 
 To supply your own ID for transactional logging, set the message's `InterchangeId` user property to the ID as a string. When sending a JSON blob reference, you can include it in the JSON object shown above.
-
 
 ```csharp
 Message sbMessage = new Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(msgCont)));

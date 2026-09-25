@@ -18,7 +18,7 @@ Using ACK's you can ensure delivery in the source system by reacting to negative
 
 Reacting to delivery entails performing en action when something is delivered, this could include starting a new Connxio flow or a separate internal integration pipeline or process. Take en example where a customer is migrated to a new system, and access rights have to be sent after the user is stored in the receiver system. An ACK could be sent to update the originating system with the user created status and an automatic process could start the user access update.
 
-Reactions could also include alert from internal systems or logging providers like Slack, Teams or Archeo. This can also be handled by [logging events](../../../integrations/logging.md) but ACK messages can represent another pipeline and since the message is ensured delivered it represents an unique opportunity to react to the delivery itself without any extra rules or customization.
+Reactions could also include alert from internal systems or logging providers like Slack, Teams or Archeo. This can also be handled by [logging events](./logging.md) but ACK messages can represent another pipeline and since the message is ensured delivered it represents an unique opportunity to react to the delivery itself without any extra rules or customization.
 
 ### Keeping track of delivery
 

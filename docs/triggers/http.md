@@ -16,7 +16,6 @@ Add an HTTP trigger to your integration and configure the settings below.
 
 ## General settings
 
-
 <TriggerGeneralSettings showTriggerInterval />
 
 ## Request settings
@@ -34,7 +33,7 @@ example: "https://example.com/api/messages",
 },
 {
 name: "Authorization",
-description: <>Select the <Link to="/connxio-portal/security-configurations/">security configuration</Link> used to authenticate the request, if required by the endpoint. Use <strong>+</strong> to create a configuration.</>,
+description: <>Select the <Link to="/integrations/security-configurations/">security configuration</Link> used to authenticate the request, if required by the endpoint. Use <strong>+</strong> to create a configuration.</>,
 },
 {
 name: "Headers",

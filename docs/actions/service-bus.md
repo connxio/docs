@@ -18,48 +18,48 @@ Add a Service Bus action to your integration and configure the settings below.
 ## Connection settings
 
 <PropertyReference properties={[
-  {
-    name: "Security configuration",
-    description: <>Required. Select the <Link to="/connxio-portal/security-configurations/">security configuration</Link> containing the connection properties for your Service Bus namespace. Use <strong>+</strong> to create a configuration. The connection string must not contain <code>EntityPath</code>; specify the topic or queue name below.</>,
-  },
-  {
-    name: "Service Bus type",
-    description: "Choose Topic or Queue to select the destination for outgoing messages.",
-  },
-  {
-    name: "Topic name",
-    description: "Required when Topic is selected. The topic to send messages to.",
-  },
-  {
-    name: "Queue name",
-    description: "Required when Queue is selected. The queue to send messages to.",
-  },
+{
+name: "Security configuration",
+description: <>Required. Select the <Link to="/integrations/security-configurations/">security configuration</Link> containing the connection properties for your Service Bus namespace. Use <strong>+</strong> to create a configuration. The connection string must not contain <code>EntityPath</code>; specify the topic or queue name below.</>,
+},
+{
+name: "Service Bus type",
+description: "Choose Topic or Queue to select the destination for outgoing messages.",
+},
+{
+name: "Topic name",
+description: "Required when Topic is selected. The topic to send messages to.",
+},
+{
+name: "Queue name",
+description: "Required when Queue is selected. The queue to send messages to.",
+},
 ]} />
 
 ## Service bus settings
 
 <PropertyReference properties={[
-  {
-    name: "Use pure message sending",
-    description: <>Enable to send the payload directly in the Service Bus message. When disabled, Connxio stores the payload in Blob Storage and sends a reference to it. See <Link to="#pure-message-sending">Pure message sending</Link> and <Link to="#uploading-to-azure-blob-storage">Uploading to Azure Blob Storage</Link> for details.</>,
-  },
-  {
-    name: "Keep message properties",
-    description: <>Enable when the outgoing content is a serialized <code>ConnxioServiceBusMessage</code> containing the body and Service Bus properties to send. See <Link to="#keep-message-properties">Keep message properties</Link> for details.</>,
-  },
-  {
-    name: "Message contract",
-    description: <>The structure of the Blob Storage reference sent when Use pure message sending is disabled. Use <strong>SasUri Only</strong> for a plain-text URI, or a JSON structure containing the URI, file name, and interchange ID. See <Link to="#uploading-to-azure-blob-storage">Uploading to Azure Blob Storage</Link> for the JSON structure.</>,
-  },
-  {
-    name: "Message label",
-    description: "The label to add to the Service Bus message.",
-    example: "OrderCreated",
-  },
-  {
-    name: "New interchange ID",
-    description: "Enable to remove the interchange ID from the action-specific metadata so that a new ID is generated when the message re-enters Connxio.",
-  },
+{
+name: "Use pure message sending",
+description: <>Enable to send the payload directly in the Service Bus message. When disabled, Connxio stores the payload in Blob Storage and sends a reference to it. See <Link to="#pure-message-sending">Pure message sending</Link> and <Link to="#uploading-to-azure-blob-storage">Uploading to Azure Blob Storage</Link> for details.</>,
+},
+{
+name: "Keep message properties",
+description: <>Enable when the outgoing content is a serialized <code>ConnxioServiceBusMessage</code> containing the body and Service Bus properties to send. See <Link to="#keep-message-properties">Keep message properties</Link> for details.</>,
+},
+{
+name: "Message contract",
+description: <>The structure of the Blob Storage reference sent when Use pure message sending is disabled. Use <strong>SasUri Only</strong> for a plain-text URI, or a JSON structure containing the URI, file name, and interchange ID. See <Link to="#uploading-to-azure-blob-storage">Uploading to Azure Blob Storage</Link> for the JSON structure.</>,
+},
+{
+name: "Message label",
+description: "The label to add to the Service Bus message.",
+example: "OrderCreated",
+},
+{
+name: "New interchange ID",
+description: "Enable to remove the interchange ID from the action-specific metadata so that a new ID is generated when the message re-enters Connxio.",
+},
 ]} />
 
 ## Duplicate detection

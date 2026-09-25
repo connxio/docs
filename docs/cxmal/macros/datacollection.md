@@ -4,7 +4,7 @@ title: "Data collection"
 
 # Data collection macro
 
-Used to access the data populated by [Data Collection](../../actions/data-collection.md).
+Used to access the data populated by HTTP requests, Azure Storage and other actions.
 
 ## Example 1
 

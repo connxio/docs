@@ -1,101 +1,123 @@
+import PropertyReference from '@site/src/components/PropertyReference';
+import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';
+import ActionDuplicateDetection from '@site/src/components/ActionDuplicateDetection';
+import Link from '@docusaurus/Link';
+
 # Dataverse
 
-The Dataverse adapter allows customers to create integrations with external Dataverse instances.  
+The Dataverse action retrieves or writes data in a Dataverse environment. Choose **Get** to retrieve records, or **Upsert** to create or update records using a schema that maps message fields to Dataverse attributes.
 
-The adapter currently supports retrieving and upserting data as either a transformation or an outbound step.
+## Configure the action
 
-## Configuring the Dataverse Adapter
+Add a Dataverse action to your integration, select a Dataverse security configuration, and choose the operation to perform. For Upsert, upload a JSON schema through the portal's **Schemas** page or use **+** beside the schema selector.
 
-### Creating a Security Configuration
+## General settings
 
-The first step is to create a Dataverse security configuration. This can be done on the `Security Configurations` page in the main navigation menu. Read more about security configurations [here](../../../connxio-portal/security-configurations.md).
+<ActionGeneralSettings showOutputEncoding />
 
-Select the `Dataverse` security type and enter the credentials for your Dataverse environment. The security configuration can then be reused across multiple integrations if needed.
+## Connection settings
 
-### Uploading a Schema
+<PropertyReference properties={[
+  {
+    name: "Variable name",
+    description: <>Required. The key used to store retrieved data or the Upsert response in metadata data collection. Access it later using the <Link to="/cxmal/macros/datacollection/">data collection macro</Link>.</>,
+    example: "DataverseResult",
+  },
+  {
+    name: "Security configuration",
+    description: <>Required. Select a <Link to="/integrations/security-configurations/#dataverse">Dataverse security configuration</Link> containing the connection properties for your environment. Use <strong>+</strong> to create a configuration.</>,
+  },
+  {
+    name: "Operation",
+    description: "Required. Choose Get to retrieve records or Upsert to create or update records.",
+  },
+]} />
 
-Navigate to the `Schemas` page in the main navigation menu to upload a new schema. This is a JSON file that describes how the Dataverse adapter should behave.
+## Get settings
 
-### Configuring the Adapter
+Select **Get** to configure the records and fields to retrieve.
 
-The Dataverse adapter currently supports two operations:
+<PropertyReference properties={[
+  {
+    name: "Entity name",
+    description: "Required. The Dataverse entity to retrieve records from.",
+  },
+  {
+    name: "Filter",
+    description: "Optional. Conditions used to narrow down the records returned from Dataverse.",
+  },
+  {
+    name: "Selected fields",
+    description: <>The columns to retrieve. Enter a field name and press <strong>Enter</strong> to add it. Leave empty to retrieve all columns.</>,
+  },
+]} />
 
-- **GET**: Retrieve data from Dataverse.
-- **UPSERT**: Add or update data in Dataverse.
+## Upsert settings
 
-When creating a new adapter, a popup with the adapter's input fields will appear. The fields vary depending on the selected operation.
+Select **Upsert** to create or update records from JSON message content.
 
-Read more about the properties in each section below:
-
-#### Core Settings
-
-- **Variable name**: Data retrieved from Dataverse is stored in metadata datacollection under this key.
-- **Security Configuration**: Reference to the [Security Configuration](../../../connxio-portal/security-configurations.md) containing the connection properties.
-- **Schema**: The schema defining data behavior, such as input and output fields.
-- **Operation**: The operation for the request (`GET` or `UPSERT`).
-
-#### Additional GET-Specific Settings
-
-- **Entity name**: The entity in Dataverse from which data is retrieved.
-- **Filter**: Conditions used to narrow down the data returned from Dataverse (`'foo' eq 'bar'`).
-- **Selected fields**: The columns to retrieve from Dataverse. Leave empty to retrieve all columns.
+<PropertyReference properties={[
+  {
+    name: "Schema",
+    description: <>Required. Select the schema defining how JSON message fields map to Dataverse attributes and which fields to return. Use <strong>+</strong> to create a schema.</>,
+  },
+  {
+    name: "Batch messages",
+    description: <>Enable to queue messages and send them to Dataverse in batches. Batch limits and scheduling are configured in the <Link to="/integrations/security-configurations/#dataverse-batch-limits">Dataverse security configuration</Link> and shared across integrations using that configuration.</>,
+  },
+]} />
 
 ### Batching
 
-You can enable message batching when using the `UPSERT` operation, which helps control the rate of messages into Dataverse per interval.
+Batch messages to control the rate of delivery to Dataverse. A lower maximum batch size reduces the number of messages sent at once and the load on the receiving environment.
 
-Batching behavior is configured through the Dataverse security configuration and is applied per security configuration. This allows messages to be queued and sent to Dataverse in batches across multiple integrations. Read more about settings available for dataverse batching [here](../../../connxio-portal/security-configurations.md).
+## Duplicate detection
 
-As batched messages are queued before being sent to Dataverse, setting a low maximum batch size can help with throttling by reducing the number of messages sent at once and reducing the load on Dataverse.
+<ActionDuplicateDetection />
 
-### Using the Adapter
+## Schema mapping
 
-The Dataverse adapter expects data to be in JSON format. The schema defines how fields in the JSON correspond to fields in Dataverse.
-
-For example, consider the following snippet from a schema definition:
+The Upsert operation expects JSON message content. The schema defines how fields in the JSON correspond to Dataverse attributes. For example, the following fragment maps `myKey` to the string attribute `my_attribute`:
 
 ```json
 {
-    "attributeName": "my_attribute",
-    "attributeDataType": "String",
-    "dataFieldName": "myKey",
+  "attributeName": "my_attribute",
+  "attributeDataType": "String",
+  "dataFieldName": "myKey"
 }
 ```
- 
-And the file content for the message containing a value for `myKey` like so:
- 
+
+With this mapping, the following message upserts a record with `foo` as the value of `my_attribute`:
+
 ```json
 {
-    "myKey": "foo"
+  "myKey": "foo"
 }
 ```
- 
-The Dataverse adapter will then upsert a row with the value `foo` for the attribute `my_attribute` in dataverse when upserting data.
- 
-It is also possible to upsert multiple rows at once with the use of arrays:
- 
+
+Use an array to upsert multiple records in a single request:
+
 ```json
 [
-    {
-        "myKey": "foo"
-    },
-    {
-        "myKey": "bar"
-    }
+  {
+    "myKey": "foo"
+  },
+  {
+    "myKey": "bar"
+  }
 ]
 ```
- 
-This will upsert two rows in Dataverse in a single request.
- 
- 
-#### Responses
- 
-`returnFields` can be defined in the schema to determine what to return when upserting a row to Dataverse.
- 
+
+### Responses
+
+Define `returnFields` in the schema to select the values returned for each upserted record. For example, include this property in the schema:
+
 ```json
-"returnFields": [
+{
+  "returnFields": [
     "my_attribute"
-],
+  ]
+}
 ```
- 
-The value for `my_attribute` will then be returned for every row that is upserted. The response is made available in datacollection in metadata under the variable name that was defined in the adapter settings. The response can be used later in the integration with the use of [CxMaL datacollection macro](../../../cxmal/macros/datacollection.md).
+
+The response is stored in metadata data collection under the configured **Variable name**. Use the [data collection macro](../cxmal/macros/datacollection.md) to access it in later actions.

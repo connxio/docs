@@ -50,7 +50,7 @@ Use relative **file paths with the `.md` or `.mdx` extension** for links between
 pages. Docusaurus resolves them to the correct URL within the selected version:
 
 ```md
-[Security configuration](../connxio-portal/security-configurations.md)
+[Security configuration](../integrations/security-configurations.md)
 [REST adapter](../actions/adapters/outbound/rest.md#receive-content-as-bytes)
 ```
 

@@ -3,7 +3,7 @@ sidebar_position: 1
 title: "Getting started"
 ---
 
-# Creating your first integration
+# TODO: REPLACE WITH ACTION BASED INTEGRATION GUIDE
 
 To get started with Connxio and set up your first integration, follow the steps outlined below:
 
@@ -21,7 +21,7 @@ To get started with Connxio and set up your first integration, follow the steps 
 A security configuration in Connxio is a reusable set of credentials and settings that enables secure connections with external systems. It provides a centralized and protected way to store sensitive information, such as API keys and authentication details, ensuring the secure and confidential exchange of data during integrations.
 <br />
 <br />
-[Read more about security configurations here.](../connxio-portal/security-configurations.md)
+[Read more about security configurations here.](../integrations/security-configurations.md)
     </p>
 </details>
 
@@ -44,9 +44,6 @@ A security configuration in Connxio is a reusable set of credentials and setting
     <summary>What is an adapter?</summary>
     <p>
 An adapter serves as a bridge between systems, facilitating the transfer of data using various protocols. It enables seamless integration by providing standardized methods for sending and receiving information, allowing for efficient and flexible data exchange within the Connxio platform.
-<br />
-<br />
-[Read more about adapters here.](../actions/adapters/introduction.mdx)
     </p>
 </details>
 

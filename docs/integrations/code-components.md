@@ -9,7 +9,7 @@ import RequiredNugetPackage from '../\_shared/RequiredNugetPackage.mdx';
 
 # Code components
 
-Connxio uses C# code components to transform data at multiple points in the pipeline. This page explains how to create, test, package, and upload them. To run a component in an integration, configure a [Code transformation action](../actions/code-components.md). Use the Map, Split, and Batch tabs below to choose the interface and example for your component type.
+Connxio uses C# code components to [transform](../actions/code-transformation.md), [split](../actions/splitting.md), and [batch](../actions/batching.md) data at multiple points in the pipeline, as well as to generate content for [acknowledgment (ACK) messages](./acknowledgment.md). This page explains how to create, test, package, and upload them. Use the Map, Split, Batch, and Ack tabs below to choose the interface and example for your component type.
 
 ## What is a code component?
 
@@ -17,11 +17,9 @@ A code component is C# code compiled into a DLL. Connxio runs it in a sandbox, p
 
 ## Creating a component
 
-Create a new [console project](https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-console?view=vs-2019) or [class library](https://learn.microsoft.com/en-us/dotnet/core/tutorials/create-class-library?pivots=vscode) in Visual Studio, or use the .NET CLI:
+Create a new class library in Visual Studio, or use the .NET CLI:
 
 ```powershell
-dotnet new console -n MyCodeComponent
-#OR
 dotnet new classlib -n MyCodeComponent
 ```
 
@@ -36,7 +34,7 @@ We recommend .NET 10.0, but older versions may work as well.
 
 ### Map component {#map-component}
 
-Implement `IConnxioMap` to transform one message into one output message. Use this component with the [Code transformation action](../actions/code-components.md).
+Implement `IConnxioMap` to transform one message into one output message. Use this component with the [Code transformation action](../actions/code-transformation.md).
 
 ```csharp
 using Newtonsoft.Json;
@@ -179,6 +177,49 @@ public class MyFirstBatcher : IConnxioBatch
 Test `Batch` with several sample messages and verify that the output contains all expected values and the intended metadata.
 
 When uploading, select the batching component type.
+
+</TabItem>
+<TabItem value="ack" label="Ack">
+
+### Ack component {#ack-component}
+
+Implement `IConnXioAck` to generate the content sent in an [acknowledgment (ACK) message](./acknowledgment.md). Creating an Ack code component is done in more or less the same way as a Map component, except that it requires the `IConnXioAck` interface and takes an additional `bool success` parameter.
+
+```csharp
+    public class Mapper : IConnXioAck
+    {
+        public TransformationContext Map(TransformationContext transformationContext, bool success)
+        {
+            //Add error handling as necessary, this will give better error messages in the logs
+            if (transformationContext.Content == null)
+                throw new ArgumentException("Message field is null");
+
+            //You can use newtonsoft and other basic nuget packages. Contact the Connxio team if you need a non supported package.
+            dynamic obj = JsonConvert.DeserializeObject(transformationContext.Content);
+
+            //Creating an instance of the ACK message to send
+            CustomAck ACK = new CustomAck
+            {
+                Id = obj.Id,
+                SuccessfulDelivery = success
+            };
+
+            //Replace content in the original TransformationContext with the new ACK content
+            transformationContext.Content = JsonConvert.SerializeObject(ACK);
+
+            //Return string representation of the ACK
+            return transformationContext;
+        }
+    }
+
+    public class CustomAck
+    {
+        public string Id { get; set; }
+        public bool SuccessfulDelivery { get; set; }
+    }
+```
+
+When uploading, select the mapping component type, and select it as the **Code Acknowledgement Map** in the outbound adapter's Ack options.
 
 </TabItem>
 </Tabs>
@@ -358,8 +399,8 @@ Open **Code Components** from the portal's left-side menu, or use **+** beside t
 
 Upload the compiled `.dll` or `.zip` file. The portal detects the package type from the file extension. For a ZIP component, provide the main DLL file name, including its `.dll` extension.
 
-You can also host a DLL or ZIP at an HTTP GET endpoint and configure the action to use its URI. See [External code components](../actions/code-components.md#external-code-components) for the action settings.
+You can also host a DLL or ZIP at an HTTP GET endpoint and configure the action to use its URI. See [External code components](../actions/code-transformation.md#external-code-components) for the action settings.
 
 ## Use the component
 
-Add a [Code transformation action](../actions/code-components.md) to your integration and select the uploaded component, or configure its external URI. For other component types, see [Splitting](../actions/splitting.md) and [Batching](../actions/batching.md).
+Add a [Code transformation action](../actions/code-transformation.md) to your integration and select the uploaded component, or configure its external URI. For other component types, see [Splitting](../actions/splitting.md) and [Batching](../actions/batching.md).

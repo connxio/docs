@@ -124,10 +124,10 @@ If the endpoint supports schema introspection, Connxio can fetch its schema to p
 
 Use the **Advanced error handling** tab to define rules for unsuccessful HTTP responses. Configure the status codes to match, the action to take, a custom log status, and whether to retry before applying the rule.
 
-The available actions are **Terminate on error**, **Redirect to secondary endpoint**, and **Continue on error**. See the HTTP action's [Advanced error handling](./rest.md#advanced-error-handling) for the shared settings and fallback behavior.
+The available actions are **Terminate on error**, **Redirect to secondary endpoint**, and **Continue on error**. See the HTTP action's [Advanced error handling](./http.md#advanced-error-handling) for the shared settings and fallback behavior.
 
 **Continue on GraphQL error** controls errors in the GraphQL response body separately from these HTTP status-code rules.
 
 ## Retry
 
-See the HTTP action's [Retry](./rest.md#retry) section for HTTP status-code and network-error handling, and [Retry](../integrations/retry.md) for Connxio's retry configuration. Sequential delivery exposes the same failure retry options as the HTTP action.
+See the HTTP action's [Retry](./http.md#retry) section for HTTP status-code and network-error handling, and [Retry](../integrations/retry.md) for Connxio's retry configuration. Sequential delivery exposes the same failure retry options as the HTTP action.

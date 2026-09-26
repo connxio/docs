@@ -140,7 +140,7 @@ Enable **Use synchronous communication** on the API trigger when the caller need
 
 Connxio returns one response object per subintegration. Each object contains a `synchronousMessageResponses` entry for every outbound operation, including any messages created by splitting. For example, 10 split messages sent to 3 outbound actions produce 30 entries for that subintegration.
 
-Each entry includes metadata and can include processing error fields such as `errorMessage`, `messageErrorCode`, and `stackTrace`. For [REST actions](../actions/rest.md), the endpoint response is available in `metaData.outboundRestResponse`.
+Each entry includes metadata and can include processing error fields such as `errorMessage`, `messageErrorCode`, and `stackTrace`. For [REST actions](../actions/http.md), the endpoint response is available in `metaData.outboundRestResponse`.
 
 <details>
 <summary>Example response with two outbound operations</summary>

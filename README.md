@@ -51,7 +51,7 @@ pages. Docusaurus resolves them to the correct URL within the selected version:
 
 ```md
 [Security configuration](../integrations/security-configurations.md)
-[REST adapter](../actions/adapters/outbound/rest.md#receive-content-as-bytes)
+[HTTP action](../actions/http.md#receive-content-as-bytes)
 ```
 
 Avoid root-relative document URLs such as `/integrations/logging`: those always

@@ -31,7 +31,6 @@ Ack delivery can be configured on all outbound adapters in Connxio. You can use 
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import RequiredNugetPackage from '../\_shared/RequiredNugetPackage.mdx';
 
 <div style={{maxWidth: '400px'}}>
   <ThemedImage
@@ -73,45 +72,7 @@ When acc is enabled for an adapter the adapter will display an icon like this in
 
 ## Creating Ack code components
 
-### Required NuGet package
-
-<RequiredNugetPackage />
-
-Creating an Ack code component is done in more or less the same way as [map code components](./code-components.md). The only differences are that an Ack code componenet requires the 'IConnXioAck' interface and that is takes 'bool success' as a parameter.
-
-```csharp
-    public class Mapper : IConnXioAck
-    {
-        public TransformationContext Map(TransformationContext transformationContext, bool success)
-        {
-            //Add error handling as necessary, this will give better error messages in the logs
-            if (transformationContext.Content == null)
-                throw new ArgumentException("Message field is null");
-
-            //You can use newtonsoft and other basic nuget packages. Contact the Connxio team if you need a non supported package.
-            dynamic obj = JsonConvert.DeserializeObject(transformationContext.Content);
-
-            //Creating an instance of the ACK message to send
-            CustomAck ACK = new CustomAck
-            {
-                Id = obj.Id,
-                SuccessfulDelivery = success
-            };
-
-            //Replace content in the original TransformationContext with the new ACK content
-            transformationContext.Content = JsonConvert.SerializeObject(ACK);
-
-            //Return string representation of the ACK
-            return transformationContext;
-        }
-    }
-
-    public class CustomAck
-    {
-        public string Id { get; set; }
-        public bool SuccessfulDelivery { get; set; }
-    }
-```
+See the [Ack tab](./code-components.md#ack-component) on the Code components page for the required interface and an example.
 
 ## Retry
 

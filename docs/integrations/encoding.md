@@ -36,7 +36,7 @@ using (var file = new FileStream(filePath, FileMode.Create))
 }
 ```
 
-- **Rest Adapter**: The payload can be received as `application/octet-stream`. See the [REST page](../actions/rest.md#receive-content-as-bytes). You may still need to make a conversion from Base64 string.
+- **Rest Adapter**: The payload can be received as `application/octet-stream`. See the [REST page](../actions/http.md#receive-content-as-bytes). You may still need to make a conversion from Base64 string.
 
 - **(S)FTP**: See Azure Storage
 - **Service Bus**: The payload is sent to the outbound Service Bus as a **Base64 string**.

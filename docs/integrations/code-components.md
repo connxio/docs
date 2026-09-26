@@ -1,6 +1,6 @@
 ---
 title: "Code components"
-sidebar_position: 20
+sidebar_position: 2.1
 ---
 
 import Tabs from '@theme/Tabs';

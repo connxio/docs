@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 3
 ---
 
 import CronTester from '@site/src/components/CronTester';
@@ -52,16 +52,16 @@ Preview the next five scheduled runs in UTC. When both day-of-month and day-of-w
 
 ## Schedule examples
 
-| Cron expression | Schedule |
-| --- | --- |
-| `*/15 * * * * *` | Every 15 seconds |
-| `* * * * *` | Every minute (five fields) |
-| `*/15 * * * *` | Every 15 minutes (five fields) |
-| `0 * * * * *` | Every minute |
-| `0 */15 * * * *` | Every 15 minutes |
-| `0 0 * * * *` | Every hour, on the hour |
-| `0 0 9 * * 1-5` | At 9 AM, Monday through Friday |
-| `0 0 13 * * 5` | At 1 PM every Friday |
-| `0 0 0 1 * *` | At midnight on the 1st of each month |
+| Cron expression  | Schedule                             |
+| ---------------- | ------------------------------------ |
+| `*/15 * * * * *` | Every 15 seconds                     |
+| `* * * * *`      | Every minute (five fields)           |
+| `*/15 * * * *`   | Every 15 minutes (five fields)       |
+| `0 * * * * *`    | Every minute                         |
+| `0 */15 * * * *` | Every 15 minutes                     |
+| `0 0 * * * *`    | Every hour, on the hour              |
+| `0 0 9 * * 1-5`  | At 9 AM, Monday through Friday       |
+| `0 0 13 * * 5`   | At 1 PM every Friday                 |
+| `0 0 0 1 * *`    | At midnight on the 1st of each month |
 
 When you enter a cron expression, Connxio indicates whether it is invalid or shows when the scheduled data retrieval will occur.

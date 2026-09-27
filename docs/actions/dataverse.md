@@ -25,7 +25,7 @@ Add a Dataverse action to your integration, select a Dataverse security configur
   },
   {
     name: "Security configuration",
-    description: <>Required. Select a <Link to="/integrations/security-configurations/#dataverse">Dataverse security configuration</Link> containing the connection properties for your environment. Use <strong>+</strong> to create a configuration.</>,
+    description: <>Required. Select a <Link to="/integrations/security-configurations/dataverse/">Dataverse security configuration</Link> containing the connection properties for your environment. Use <strong>+</strong> to create a configuration.</>,
   },
   {
     name: "Operation",
@@ -63,7 +63,7 @@ Select **Upsert** to create or update records from JSON message content.
   },
   {
     name: "Batch messages",
-    description: <>Enable to queue messages and send them to Dataverse in batches. Batch limits and scheduling are configured in the <Link to="/integrations/security-configurations/#dataverse-batch-limits">Dataverse security configuration</Link> and shared across integrations using that configuration.</>,
+    description: <>Enable to queue messages and send them to Dataverse in batches. Batch limits and scheduling are configured in the <Link to="/integrations/security-configurations/dataverse/#dataverse-batch-limits">Dataverse security configuration</Link> and shared across integrations using that configuration.</>,
   },
 ]} />
 

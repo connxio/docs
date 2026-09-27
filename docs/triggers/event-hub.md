@@ -19,7 +19,7 @@ Add an Event Hub trigger to your integration and configure the settings below.
 <PropertyReference properties={[
 {
 name: "Security configuration",
-description: <>Required. Select the <Link to="/integrations/security-configurations/#Event-Hub">Event Hub security configuration</Link> containing the Event Hub name, connection string, consumer group, and checkpoint storage settings. Use <strong>+</strong> to create a configuration.</>,
+description: <>Required. Select the <Link to="/integrations/security-configurations/event-hub/">Event Hub security configuration</Link> containing the Event Hub name, connection string, consumer group, and checkpoint storage settings. Use <strong>+</strong> to create a configuration.</>,
 },
 {
 name: "System property filters",

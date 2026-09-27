@@ -168,7 +168,7 @@ FileContent:
 
 Connxio treats all logging providers equally. Archeo has a convenience configuration section, but you can configure Archeo and other RESTful providers with the Webhook option.
 
-All logging options require a [Security Configuration](../integrations/security-configurations.md). Create one by following the Security Configuration page, then select it as described below.
+All logging options require a [Security Configuration](../integrations/security-configurations/security-configurations.md). Create one by following the Security Configuration page, then select it as described below.
 
 In the integration configuration view, open the Logging section on the left. In _Guided mode_, open the "Logging" section inside the "General" tab.
 
@@ -203,7 +203,7 @@ Click "Add Logging" to add a webhook. Events are sent to all configured webhooks
 
 - **Method**: The HTTP verb for the REST endpoint.
 - **Endpoint Url**: The endpoint URL.
-- **Security Configuration**: The [security configuration](../integrations/security-configurations.md) used to authenticate the request.
+- **Security Configuration**: The [security configuration](../integrations/security-configurations/security-configurations.md) used to authenticate the request.
 - **Log Level**: Explained in the [Log Levels section](#log-levels).
 - **Contract**: Explained in the [Contracts section](#contracts).
 - **Inbound message type**: Changes the message type for the first success message logged.
@@ -231,7 +231,7 @@ Click "Add Logging" to add an Archeo logging instance. Events are sent to all co
   />
 </div>
 
-- **Archeo Security Configuration**: The [security configuration](../integrations/security-configurations.md) used to authenticate requests to Archeo.
+- **Archeo Security Configuration**: The [security configuration](../integrations/security-configurations/security-configurations.md) used to authenticate requests to Archeo.
 - **Log Level**: Explained in the [Log Levels section](#log-levels).
 - **Contract**: Explained in the [Contracts section](#contracts).
 - **Inbound message type**: Changes the message type for the first success message logged.
@@ -261,7 +261,7 @@ Connxio can log message content to external storage. The webhook receives the lo
 
 - **Method**: The HTTP verb for the REST endpoint.
 - **Endpoint Url**: The endpoint URL.
-- **Security Configuration**: The [security configuration](../integrations/security-configurations.md) used to authenticate the request.
+- **Security Configuration**: The [security configuration](../integrations/security-configurations/security-configurations.md) used to authenticate the request.
 - **Add Header**: Adds a header to every request handled by this webhook.
 - **Send content on External Failure**: Sends file content to Archeo if the external service fails. When disabled, no content is sent after an external service failure.
 

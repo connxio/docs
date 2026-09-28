@@ -260,6 +260,7 @@ const config: Config = {
         indexBlog: false,
         docsRouteBasePath: "/",
         highlightSearchTermsOnTargetPage: false,
+        explicitSearchResultPath: true,
         docsDir: ["docs", "api"],
         ignoreFiles: [/api\/1.0.0\/.*/],
       },

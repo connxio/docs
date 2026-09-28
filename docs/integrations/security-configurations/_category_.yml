@@ -1,4 +1,4 @@
 position: 2
 label: "Security configurations"
 collapsible: true
-collapsed: false
+collapsed: true

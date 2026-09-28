@@ -1,115 +1,127 @@
 ---
-sidebar_position: 7
+sidebar_position: 2.1
 title: Custom APIs
-pagination_next: null
 ---
+
+import PropertyReference from '@site/src/components/PropertyReference';
 
 # Custom APIs
 
-Custom APIs are a way of customizing the experience of using Connxio. Using the Custom API solution allows for setting up personalized endpoints which can be freely swapped between integrations based on need and can be used to standardize endpoints instead of using the ConfigCorrelationId for each integration. The custom APIs enable sending messages to the same endpoint using different Http Methods to decide which Connxio Configuration should be run, allowing for deep customization when combined with our [Rules Engine](../integrations/rules.md) and the [Connxio Macro Language](../cxmal/connxio-macro-language.md).
+Custom APIs expose named HTTP routes for your integrations. Callers send messages to a route instead of identifying an integration by its `ConfigCorrelationId`. Each route maps an HTTP method and path to an integration.
 
-## Getting Started
+Use different methods on the same path to route requests to different integrations, or change the integration behind a route while keeping the caller's endpoint the same.
 
-Setting up a custom API for your integration is super simple! When your Integrations are set up with API as their inbound connections, they will become available in the APIs section in the portal.
+## Create a custom API {#getting-started}
 
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+1. Configure the integrations you want to call with an [API trigger](../triggers/api.mdx).
+2. Open the **APIs** section in the portal and create an API.
+3. Enter its **Title** and **Summary**, then select the **Subscription** containing the integrations.
+4. Add routes, choosing an HTTP method, path, and target integration for each one.
 
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="portal menu apis section selected"
-    sources={{
-      light: useBaseUrl('/img/docs/dynamicapis/portal-menu-light.webp'),
-      dark: useBaseUrl('/img/docs/dynamicapis/portal-menu-dark.webp#dark-only'),
-    }}
-  />
-</div>
+Use the filter in the API selection menu to find an existing API.
 
-After entering the APIs section of the portal, you will be met with a menu to create an API.
+### API settings
 
-- **Title**: The name of your API.
-- **Summary**: A description of your API. Detail the operations of your API.
-- **Subscription**: The subsription the API should be fetching relevant integrations from.
-- **Routes**: Add the endpoint you wish to communicate with. Set the Http Method, route-string (e.g. _/testing_) and set the integration it points to.
+<PropertyReference properties={[
+  {
+    name: 'Title',
+    description: 'The name used to identify the custom API.',
+    example: 'Orders API',
+  },
+  {
+    name: 'Summary',
+    description: 'A description of the API and the operations it provides.',
+    example: 'Receive new orders and order updates.',
+  },
+  {
+    name: 'Subscription',
+    description: 'The subscription from which target integrations are selected. Integrations must have an API trigger to be available.',
+  },
+  {
+    name: 'Routes',
+    description: 'The mappings between HTTP methods, request paths, and integrations. Configure each route as described below.',
+  },
+]} />
 
-<div style={{maxWidth: '800px'}}>
-  <ThemedImage
-    alt="api configuration menu example"
-    sources={{
-      light: useBaseUrl('/img/docs/dynamicapis/api-config-menu-light.webp'),
-      dark: useBaseUrl('/img/docs/dynamicapis/api-config-menu-dark.webp#dark-only'),
-    }}
-  />
-</div>
+### Route settings
 
-To communicate with the API, set the correct HttpMethod and send a message to **custom.connxio.com/\{my-api-path\}** and set the **Connxio-Api-Key** header value to the value of the related API key.
+<PropertyReference properties={[
+  {
+    name: 'HTTP method',
+    description: 'The request method that selects this route together with its path.',
+    example: 'POST',
+  },
+  {
+    name: 'Route',
+    description: 'The path the caller uses after https://custom.connxio.com.',
+    example: '/orders',
+  },
+  {
+    name: 'Integration',
+    description: 'The integration that processes messages received through this route.',
+  },
+]} />
 
-When there are many APIs, it is possible to search for a specific API using the filter search in the selection menu.
+For example, `POST /orders` can start an integration that creates an order, while `PUT /orders` starts an integration that updates one.
 
-:::info [HttpMethods]
-Http Methods will not be passed along to Connxio and only works to differentiate endpoints within the Custom API.
+:::info HTTP methods
+The HTTP method selects a route within the custom API. It is not passed along to the integration.
 :::
 
-<br/>
+## API key {#api-key}
 
-## Api Key
+Creating a custom API generates an associated API key. Send that key in the `Connxio-Api-Key` header to identify which custom API should handle the request.
 
-When an API is created, a related API key will be generated. The API key is important, as it points to your API. You may create many APIs that look the same, where only the API key will be the difference. This allows for setting up multiple flows on the same endpoint, whose flows can be mediated with a single variable. That way, you may set up test flows, alternate flows or multiple flows, pointing to the same endpoint, where all you need to do is choose which key should be passed in the Connxio-Api-Key header.
+Different custom APIs can use the same paths and methods. Their keys distinguish them, allowing separate test and production flows to use the same endpoint with different keys.
 
-The keys can be enabled and disabled at will, and it is possible to set the API key to also work as a webhook-key instead. You may also regenerate the API-key whenever you wish, and delete the api.
+The [API keys page](./apikeys.mdx) lists these keys with a **Custom API** badge and the `Messaging.Dynamic` scope. Open the related API to manage its key settings.
 
-<div style={{maxWidth: '400px'}}>
-  <ThemedImage
-    alt="api key drop down menu"
-    sources={{
-      light: useBaseUrl('/img/docs/dynamicapis/api-key-menu-light.webp'),
-      dark: useBaseUrl('/img/docs/dynamicapis/api-key-menu-dark.webp#dark-only'),
-    }}
-  />
-</div>
+- Enable or disable the key to control access.
+- Enable webhook access when the caller needs to authenticate without an OAuth token.
+- Regenerate the key when it needs to be replaced, and update applications that use it.
 
-<br/>
+You can also delete the custom API when it is no longer needed.
+
+## Call a custom API
+
+Send the request to `https://custom.connxio.com` followed by the configured route. Use the route's HTTP method and the key associated with that custom API.
+
+For a route configured as `POST /orders`, the endpoint is:
+
+```text
+https://custom.connxio.com/orders
+```
+
+Use the authentication headers shown below. For general API authentication details, see the [API reference](/reference/connxio-api).
 
 ## Example requests
 
-### API Key in header with Bearer token
+These examples assume a `POST /orders` route. Replace the key and token placeholders with your application's credentials.
+
+### API key with a bearer token {#api-key-in-header-with-bearer-token}
 
 ```bash
-curl --location 'https://custom.connxio.com/<MY_API_PATH>' \
---header 'Connxio-Api-Key: <INSERT_API_KEY>' \
---header 'Authorization: "Bearer <INSERT_ACCESS_TOKEN>"' \
---header 'Content-Type: application/json' \
---data '{
-  "foo": "bar"
-}'
+curl --request POST 'https://custom.connxio.com/orders' \
+  --header 'Connxio-Api-Key: YOUR_API_KEY' \
+  --header 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  --header 'Content-Type: application/json' \
+  --data '{"orderId":"ORDER-123"}'
 ```
 
-### API Key in header with Webhook header (Connxio-Api-Webhook: true)
+### API key with webhook authentication {#api-key-in-header-with-webhook-header-connxio-api-webhook-true}
+
+Enable webhook access for the custom API key before using this request. The `Connxio-Api-Webhook: true` header allows webhook authentication without an OAuth token.
 
 ```bash
-curl --location 'https://custom.connxio.com/<MY_API_PATH>' \
---header 'Connxio-Api-Key: <INSERT_API_KEY>' \
---header 'Connxio-Api-Webhook: true' \
---header 'Content-Type: application/json' \
---data '{
-  "foo": "bar"
-}'
+curl --request POST 'https://custom.connxio.com/orders' \
+  --header 'Connxio-Api-Key: YOUR_API_KEY' \
+  --header 'Connxio-Api-Webhook: true' \
+  --header 'Content-Type: application/json' \
+  --data '{"orderId":"ORDER-123"}'
 ```
 
-## OpenAPI Specification
+## OpenAPI specification
 
-When you create an API in Connxio, you will also get a related OpenAPI specification overview. This menu is intended to give a familiar feel of the API, and provides the option to download an API-specification as a JSON file. This file is the same as any OpenAPI json file and can be used to e.g. set up an API Management instance.
+Each custom API has an OpenAPI overview describing its routes. Use it to review the API and download its specification as a JSON file.
 
-<div style={{maxWidth: '800px'}}>
-  <ThemedImage
-    alt="openAPI view of the api in the swagger style"
-    sources={{
-      light: useBaseUrl('/img/docs/dynamicapis/openapi-spec-light.webp'),
-      dark: useBaseUrl('/img/docs/dynamicapis/openapi-spec-dark.webp#dark-only'),
-    }}
-  />
-</div>
-
-```
-
-```
+The downloaded specification can be used with tools that support OpenAPI, such as an API management service.

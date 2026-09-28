@@ -1,42 +1,82 @@
-# Environment Variables
+import PropertyReference from '@site/src/components/PropertyReference';
 
-Environment variables provide a flexible and secure way to store and manage configuration settings for your integrations. By using environment variables, you can set a default value that will be used in all subscriptions, but also have the ability to override that value with a subscription-specific value. This allows for easy configuration of integrations in each subscription without the need to hard-code information such as API endpoints, etc. By using environment variables, you can also easily update and manage these settings, ensuring your integrations are always up-to-date
+# Environment variables
 
-## Defining Environment Variables
+Environment variables store values that can be reused across integrations, such as API endpoints. Define a default value for all subscriptions and override it for individual subscriptions when needed.
 
-To create an Environment Variable, navigate to the menu item with the same name. From here, click on the '+' symbol on the top-right hand side of the page. An Environment Variable has three types of parameters:
+Use the **Environment variables** page to create and edit variables, organize them into groups, and see which integrations use them.
 
-- **Name:** The name of the variable. If you want to group several variables, use '.' notation. For example, if you have two variables named 'Customer.ApiUrl' and 'Customer.ApiKey', they will both be grouped under 'Customer' and will show as 'ApiUrl' and 'ApiKey'. When referring to these variables later, you'll still have to refer to them as 'Customer.ApiUrl' and so on.
-- **Default Value:** This is the default value of the variable. If no Subscription Value is set, this is the value that the variable will output in all subscriptions.
-- **Subscription Value:** Here you define the specific value for all subscriptions. You can define specific values for one or more subscriptions. Subscriptions where this value is not set will fall back to using the Default Value.
+## Create a variable {#defining-environment-variables}
 
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+1. Open **Environment variables** in the portal.
+2. Select **+** below the variable list.
+3. Enter a **Name**. Use dots to group related variables, such as `Customer.ApiUrl`.
+4. Enable **Secret** if the variable holds a sensitive value.
+5. Enter a **Default value** and any subscription-specific values under **Subscription Values**.
 
-<div style={{maxWidth: '800px'}}>
-  <ThemedImage
-    alt="environment variables"
-    sources={{
-      light: useBaseUrl('/img/docs/envvariables/env-variables-light.webp'),
-      dark: useBaseUrl('/img/docs/envvariables/env-variables-dark.webp#dark-only'),
-    }}
-  />
-</div>
+### Variable settings
 
-## Using Environment Variables
+<PropertyReference properties={[
+  {
+    name: 'Name',
+    description: 'The name used to reference the variable. Names are case-insensitive. Use dot notation to organize related variables into logical sections.',
+    example: 'Customer.ApiUrl',
+  },
+  {
+    name: 'Secret',
+    description: 'Mark the variable as a secret for sensitive values, such as an API key.',
+  },
+  {
+    name: 'Default value',
+    description: 'The value used when no subscription-specific value is set.',
+    example: 'https://api.example.com',
+  },
+  {
+    name: 'Subscription Values',
+    description: 'Override the default value for individual subscriptions. Each field is labeled with its subscription name. Subscriptions without an override use the default value.',
+  },
+]} />
 
-Once the environment variable is set, you can reference it in your code by using the macro
-```
-{env:[MY-VARIABLE]}
-```
+## Organize variables
 
-For example, if you have an environment variable named "Customer.ApiUrl" you can refer to it in your integration by using the macro:
-```
+The list on the left groups variable names by their dot-separated sections. For example, `Customer.ApiUrl` and `Customer.ApiKey` appear under **Customer** as **ApiUrl** and **ApiKey**.
+
+Expand a group to browse its variables, then select a variable to edit it. When referencing a grouped variable, use its full name, including the section: `Customer.ApiUrl`.
+
+Names are case-insensitive, so changing capitalization does not create a distinct variable name.
+
+## Use a variable {#using-environment-variables}
+
+Reference a variable in an integration field that supports [CxMaL](../cxmal/connxio-macro-language.md) using the `env` macro:
+
+```text
 {env:Customer.ApiUrl}
 ```
 
-If a subscription-specific value is set for an environment variable, the macro will be replaced with that value when the integration is running within that subscription's context. If no subscription-specific value is set, the default value will be used instead.
+Replace `Customer.ApiUrl` with the full variable name. Do not add spaces between the braces and the macro text.
 
-:::caution
-When referencing an Environment Variable, do not use whitespaces in between the '{' and '}' and the macro text.
-:::
+Connxio resolves the value for the subscription in which the integration runs:
+
+1. Use the subscription-specific value if one is set.
+2. Otherwise, use the default value.
+
+For example, configure `Customer.ApiUrl` with a default value and an override for a test subscription:
+
+| Subscription | Configured override | Resolved value |
+| --- | --- | --- |
+| Test | `https://test-api.example.com` | `https://test-api.example.com` |
+| Production | None | `https://api.example.com` (the default) |
+
+Both integrations use the same expression, `{env:Customer.ApiUrl}`, while each receives the value for its subscription.
+
+## Review where a variable is used
+
+Select a variable to see its usage below the variable list. The summary shows how many integrations and subscriptions use it. Integrations are grouped by subscription, with a link beside each integration to open it.
+
+Review these references before changing a value or renaming a variable. A shared value can affect several integrations; references use the variable's full name.
+
+## Delete a variable
+
+1. Select the variable in the list.
+2. Review its usage and update integrations that still reference it.
+3. Select **Delete variable**.

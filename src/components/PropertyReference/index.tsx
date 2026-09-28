@@ -1,5 +1,6 @@
 import React, {type ReactNode} from 'react';
 import Link from '@docusaurus/Link';
+import useBrokenLinks from '@docusaurus/useBrokenLinks';
 import styles from './styles.module.css';
 
 type Property = {
@@ -20,10 +21,14 @@ type Props = {
 };
 
 export default function PropertyReference({properties, idPrefix = 'property'}: Props) {
+  const {collectAnchor} = useBrokenLinks();
+
   return (
     <dl className={styles.reference}>
       {properties.map(({name, description, example, format, href, samples = []}) => {
         const id = `${idPrefix}-${name}`;
+        // Register dynamic IDs so Docusaurus can validate links to these entries.
+        collectAnchor(id);
         return (
           <div className={styles.property} id={id} key={name}>
             <dt className={styles.name}>

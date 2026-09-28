@@ -1,0 +1,87 @@
+---
+sidebar_position: 5
+---
+
+import PropertyReference from "@site/src/components/PropertyReference";
+
+# Failures
+
+Use **Failures** in the Connxio Portal to inspect failed messages and retry them after resolving the cause. You can retry an individual message, edit it before retrying, or select several messages for a retry or deletion job.
+
+For automatic retry behavior during processing, see [Retry](../integrations/retry.md). To resend through Archeo or the API, see [Resending API](../interaction/resending-api.md).
+
+## Inspect a failure
+
+1. Open **Failures** from the main navigation.
+2. Select an integration to view its failed messages.
+3. Select a failure to open its details.
+
+The failure dialog shows the error message, the time of the failure, and the engine where it occurred. Action-based configurations display **Action failure**, with the failed action and its **Action ID**. Legacy configurations display **Integration failure**, with **Subintegration** and **Adapter ID** instead.
+
+<PropertyReference
+  properties={[
+    {
+      name: "Subintegration",
+      description: "The subintegration associated with the failure. Shown for legacy configurations only.",
+    },
+    {
+      name: "Interchange ID",
+      description:
+        "The identifier for the message’s processing flow. Use the copy button to copy it when tracing related logs.",
+    },
+    {
+      name: "Failed at",
+      description: "The action where processing failed in an action-based configuration. If the action cannot be found, the dialog shows Action no longer exists.",
+    },
+    {
+      name: "Action ID",
+      description: "The action identifier recorded with the failure. Used for action-based configurations instead of Adapter ID. If none was recorded, the dialog shows No action ID was recorded.",
+    },
+    {
+      name: "Adapter ID",
+      description: "The adapter identifier recorded with the failure. Shown for legacy configurations only.",
+    },
+  ]}
+/>
+
+Use the **Metadata** tab to inspect the message context. Open **Message content** to view the stored payload, its size, and content type. Select **Download** to save a copy of the content.
+
+## Retry a message
+
+After resolving the cause of the failure, select **Retry** in the failure dialog to retry the stored message without editing its content.
+
+For example, if delivery failed because a receiving service was unavailable, restore that service before retrying. If the failure concerns the payload or integration configuration, correct that issue first.
+
+### Edit and retry
+
+Select **Edit & retry** when you need to change the message before processing it again. Review and update the content, then submit the retry.
+
+### Choose where processing resumes
+
+For action-based configurations, use **Resume from** in the failure dialog to choose where the message re-enters the integration. This selection applies to both **Retry** and **Edit & retry**.
+
+<PropertyReference properties={[
+  {
+    name: "Resume from",
+    description: "The enabled action from which Connxio resumes processing the message. Choose an action that can accept the content being retried.",
+  },
+]} />
+
+If the original action was removed or no action ID was recorded, choose an enabled action before retrying.
+
+- Resume at an earlier action when the message needs to pass through that processing again.
+- Resume at a later action only when the message already contains the data that action requires.
+
+Consider the effects of repeating actions that send data or create records in another system. A receiving system may have processed a request even if Connxio recorded a failure, so retrying can produce duplicate deliveries.
+
+## Retry or delete multiple messages {#resending-and-deleting-messages}
+
+Use the failure list to select messages for a batch operation. Filter by time, failure message, sender, receiver, or failure origin to narrow the list, then select the messages you want to process. Use **Select all messages** when you want to select all failed messages.
+
+Choose **Retry** to process the selected messages again, or **Delete** to remove failed messages that should not be retried. Review the selection before starting either operation.
+
+When a retry or deletion job starts, a job card appears on the page. Use it to track the operation's status.
+
+:::note
+Only one resending job can be active per integration at a time.
+:::

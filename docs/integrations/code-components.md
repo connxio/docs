@@ -9,7 +9,7 @@ import RequiredNugetPackage from '../\_shared/RequiredNugetPackage.mdx';
 
 # Code components
 
-Connxio uses C# code components to [transform](../actions/code-transformation.md), [split](../actions/splitting.md), and [batch](../actions/batching.md) data at multiple points in the pipeline, as well as to generate content for [acknowledgment (ACK) messages](./acknowledgment.md). This page explains how to create, test, package, and upload them. Use the Map, Split, Batch, and Ack tabs below to choose the interface and example for your component type.
+Connxio uses C# code components to [transform](../actions/code-transformation.md), [split](../actions/splitting.md), and [batch](../actions/batching.md) data at multiple points in the pipeline, as well as to generate content for [ACK messages](./acknowledgment.md). This page explains how to create, test, package, and upload them. Use the Map, Split, Batch, and ACK tabs below to choose the interface and example for your component type.
 
 ## What is a code component?
 
@@ -181,9 +181,9 @@ When uploading, select the batching component type.
 </TabItem>
 <TabItem value="ack" label="Ack">
 
-### Ack component {#ack-component}
+### ACK component {#ack-component}
 
-Implement `IConnXioAck` to generate the content sent in an [acknowledgment (ACK) message](./acknowledgment.md). Creating an Ack code component is done in more or less the same way as a Map component, except that it requires the `IConnXioAck` interface and takes an additional `bool success` parameter.
+Implement `IConnXioAck` to generate the content sent in an [ACK message](./acknowledgment.md). Creating an ACK code component is done in more or less the same way as a Map component, except that it requires the `IConnXioAck` interface and takes an additional `bool success` parameter.
 
 ```csharp
     public class Mapper : IConnXioAck
@@ -219,7 +219,7 @@ Implement `IConnXioAck` to generate the content sent in an [acknowledgment (ACK)
     }
 ```
 
-When uploading, select the mapping component type, and select it as the **Code Acknowledgement Map** in the outbound adapter's Ack options.
+When uploading, select the mapping component type, and select it as the ACK code component in the outbound adapter's ACK options.
 
 </TabItem>
 </Tabs>

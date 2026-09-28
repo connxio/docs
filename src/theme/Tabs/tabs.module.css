@@ -3,6 +3,8 @@
 }
 
 .tabButtons {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -11,6 +13,16 @@
   border-radius: 2rem;
   margin-bottom: 1.5rem;
   width: fit-content;
+}
+
+.pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 1.5rem;
+  background-color: var(--ifm-color-primary);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .centered {
@@ -27,22 +39,44 @@
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
   white-space: nowrap;
+  font-weight: 600;
 }
 
-.tabButton:hover {
+.tabButton:not(.active):hover {
   background-color: rgba(var(--ifm-color-primary-rgb), 0.08);
 }
 
 .tabButton.active {
-  background-color: var(--ifm-color-primary);
   color: var(--portal-text-brand);
-  font-weight: 600;
 }
 
-.tabContent {
+.animateTabs .tabButton {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.animateTabs .pill {
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animateTabs .tabContent {
   animation: fadeIn 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animateTabs .tabButton,
+  .animateTabs .pill {
+    transition: none;
+  }
+
+  .animateTabs .tabContent {
+    animation: none;
+  }
 }
 
 @keyframes fadeIn {

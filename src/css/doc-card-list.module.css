@@ -1,0 +1,70 @@
+/* Presentation only: DocCardList owns discovery, links, titles, and descriptions. */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.cards > article {
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards :global(.card) {
+  padding: 1.25rem !important;
+  background: var(--portal-surface-1);
+  border: 1px solid var(--portal-border);
+  border-radius: var(--ifm-global-radius);
+  box-shadow: none;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.cards :global(.card):hover {
+  background: var(--portal-nav-active);
+  border-color: var(--ifm-color-primary);
+  box-shadow: none;
+}
+
+.cards :global(.card):focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 3px;
+}
+
+.cards :global(.theme-doc-card-icon) {
+  display: none;
+}
+
+.cards h2 {
+  margin-bottom: 0.65rem;
+  color: var(--portal-heading);
+  font-size: 1.15rem;
+}
+
+.cards p {
+  color: var(--portal-text-muted);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.cards h2,
+.cards p {
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+}
+
+@media (max-width: 700px) {
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards :global(.card) {
+    transition: none;
+  }
+}

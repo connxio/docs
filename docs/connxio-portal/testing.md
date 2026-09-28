@@ -3,140 +3,65 @@ title: "Testing"
 sidebar_position: 4
 ---
 
-import ThemedImage from '@theme/ThemedImage';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+# Testing
 
-# Testing Your Integrations with Connxio
+Use **Testing** in the Connxio Portal to run integrations with test input, check expected outcomes, and inspect processing results. Test groups collect the integrations you want to test together, while test runs record the results of each execution.
 
-Connxio provides powerful testing features to ensure the smooth operation of your integrations. You can create test groups and execute test runs. This documentation will guide you through using these testing features effectively. Tests will count towards your subscription usage.
-
-## Test Groups
-
-Test groups allow you to group together different integration configurations and send files between systems for testing. To create a test group, follow these steps:
-
-1. Log in to the Connxio web portal and navigate to the "Testing" section.
-2. Click on the "Create your first test group" button to initiate the creation process.
-
-<div style={{maxWidth: '800px', marginBottom: '1rem'}}>
-    <ThemedImage
-        alt="create test group"
-        sources={{
-        light: useBaseUrl('/img/docs/testing/create-light.webp'),
-        dark: useBaseUrl('/img/docs/testing/create-dark.webp#dark-only'),
-        }}
-    />
-</div>
-
-3. Provide a name for your test group to identify its purpose.
-4. Add the desired integration configurations to the test group from the list on the left hand side.
-
-<div style={{maxWidth: '800px', marginBottom: '1rem'}}>
-    <ThemedImage
-        alt="edit test group"
-        sources={{
-        light: useBaseUrl('/img/docs/testing/edit-light.webp'),
-        dark: useBaseUrl('/img/docs/testing/edit-dark.webp#dark-only'),
-        }}
-    />
-</div>
-
-5. Click the _Save_ button.
-6. When the test group has been saved, two buttons appear on the test group; _Test file_ and _Assert_
-
-<div style={{maxWidth: '800px', marginBottom: '1rem'}}>
-    <ThemedImage
-        alt="saved test group"
-        sources={{
-        light: useBaseUrl('/img/docs/testing/saved-group-light.webp'),
-        dark: useBaseUrl('/img/docs/testing/saved-group-dark.webp#dark-only'),
-        }}
-    />
-</div>
-
-7. On clicking _Test file_ you can upload an input file or insert the text directly that will be used for testing. This can be done for each integration or toggle the _Apply to all_. Save any changes made.
-
-<div style={{maxWidth: '800px', marginBottom: '1rem'}}>
-    <ThemedImage
-        alt="upload files"
-        sources={{
-        light: useBaseUrl('/img/docs/testing/upload-light.webp'),
-        dark: useBaseUrl('/img/docs/testing/upload-dark.webp#dark-only'),
-        }}
-    />
-</div>
-
-8. Connxio also allows you to set test conditions for the test group. Click on the _Assert_ button to set the conditions using the [CxMAL StatusEvent macro](../cxmal/macros/statusevent.md). Using this macro, you can perform negative and positive assertions on the test run, check for specific error codes, and more.
-
-<!-- TODO: Add link to error codes -->
-
-<div style={{maxWidth: '800px', marginBottom: '1rem'}}>
-    <ThemedImage
-        alt="start test run"
-        sources={{
-        light: useBaseUrl('/img/docs/testing/assert_light.webp'),
-        dark: useBaseUrl('/img/docs/testing/assert_dark.webp#dark-only'),
-        }}
-    />
-</div>
-
-In this scenario the test is expected to fail, but using CxMAL we can assert that the error code is 600. This will allow the test to pass.
-
-9. Once the configurations and input files are set, click on "Start test run" to begin the test. You need to create an API key to start a test run that includes integrations with the API inbound type.
-
-<div style={{maxWidth: '800px', marginBottom: '1rem'}}>
-    <ThemedImage
-        alt="start test run"
-        sources={{
-        light: useBaseUrl('/img/docs/testing/start-testrun-light.webp'),
-        dark: useBaseUrl('/img/docs/testing/start-testrun-dark.webp#dark-only'),
-        }}
-    />
-</div>
-
-## Test Runs
-
-Test runs execute the defined integration configurations within a test group and provide valuable insights into the status of each integration. When viewing the test group overview, the latest test run will be displayed as the test group's status. To view historical test runs, click the "History" button to the left of the "Start Test Run" button.
-
-To view the status of a test run, first expand the test group by clicking somewhere on the row. You will now see a list of the integrations in the test group, as well as the status for each of them.
-
-<div style={{maxWidth: '800px', marginBottom: '1rem'}}>
-    <ThemedImage
-        alt="status test run"
-        sources={{
-        light: useBaseUrl('/img/docs/testing/status-run-light.webp'),
-        dark: useBaseUrl('/img/docs/testing/status-run-dark.webp#dark-only'),
-        }}
-    />
-</div>
-
-## Test Details
-
-Users can easily access and view detailed run details for each test run performed using Connxio's testing framework. By clicking an integration a test group's expanded panel, users can retrieve comprehensive information about the test run, including the status, duration, start time, and any associated errors or failures. These run details offer valuable insights into the execution and outcome of the test, enabling users to effectively analyze and troubleshoot any issues encountered during the testing process.
-
-<div style={{maxWidth: '800px', marginBottom: '1rem'}}>
-    <ThemedImage
-        alt="status test run"
-        sources={{
-        light: useBaseUrl('/img/docs/testing/detailed-run-light.webp'),
-        dark: useBaseUrl('/img/docs/testing/detailed-run-dark.webp#dark-only'),
-        }}
-    />
-    </div>
-
-:::caution Note
-Please note that when using Connxio's testing features, all messages generated during testing will count towards your subscription usage.
-
-**Important**: We strongly recommend closely monitoring your testing activities and considering the potential cost implications before initiating extensive testing.
-
-We advise all customers to review the pricing details and usage limits outlined in their Connxio subscription plan. By using the testing features judiciously and monitoring testing activities, you can optimize your usage and effectively manage subscription costs.
+:::info Subscription usage
+Messages generated during testing count toward your subscription usage.
 :::
 
-<!-- ## Load Testing
+## Create a test group {#test-groups}
 
-Load testing allows you to assess the performance and scalability of your integrations. To start a load test, follow these steps:
+1. Open **Testing** in the portal.
+2. Select **Create your first test group** when creating your first group.
+3. Give the group a name that describes what it tests.
+4. Add integrations from the list on the left.
+5. Select **Save**.
 
-1. When initiating a test run, enable the "Load test" flag.
-2. Enter the desired number of messages Connxio should send during the load test.
-3. The number of messages will be evenly divided among each integration in the test group.
+After saving, use **Test file** to configure input and **Assert** to define the expected outcome.
 
-Congratulations! You now know how to utilize Connxio's testing features to verify the functionality, performance, and scalability of your integrations. Regular testing ensures the reliability and efficiency of your integration workflows. -->
+### Set the test input
+
+1. Select **Test file**.
+2. Upload an input file or enter the message content directly.
+3. Set input for each integration, or use **Apply to all** to use the same input across the group.
+4. Save your changes.
+
+### Define assertions
+
+Select **Assert** to configure conditions using the [CxMaL StatusEvent macro](../cxmal/macros/statusevent.md). Assertions let you check successful processing, expected failures, or specific error codes.
+
+For example, a test can expect an integration to reject invalid input. An assertion that checks the expected error code allows that test to pass when the intended failure occurs.
+
+### Start a test run
+
+Once the integrations, input, and assertions are configured, select **Start test run**.
+
+A test run containing integrations with an API trigger requires an [API key](./apikeys.mdx).
+
+## Review test runs {#test-runs}
+
+The test group overview displays the result of the latest run. Expand a group's row to see the integrations it contains and the status of each one.
+
+Select **History**, beside **Start test run**, to review earlier runs. Select an integration in an expanded test group to open its run details.
+
+## Inspect test details {#test-details}
+
+Use the run details to review the outcome and investigate errors. Follow the integration flow, inspect the available message content, and review the events that explain the result.
+
+- Review the run's status, start time, and duration.
+- Follow the processing steps to locate where a failure occurred.
+- Use the download controls to download the message content available for a step.
+- Open **Logs** to review processing events, status events, assertion results, and error messages. Expand entries to inspect their details.
+- Select **Open integration** to return to the integration configuration.
+
+For example, a trigger can complete successfully while a later action fails an assertion. Review the failed step and its log entries to understand which condition was not met.
+
+## Investigate a failed test
+
+1. Open the failed integration's run details.
+2. Review the error and assertion results to identify the affected step.
+3. Inspect the test input and any available content from that step.
+4. Update the integration, test input, or assertion as appropriate.
+5. Start another test run and compare its result with the previous run in **History**.

@@ -1,4 +1,5 @@
 import PropertyReference from '@site/src/components/PropertyReference';
+import TriggerGeneralSettings from '@site/src/components/TriggerGeneralSettings';
 import Link from '@docusaurus/Link';
 
 # Azure Event Grid
@@ -8,6 +9,10 @@ The Event Grid trigger receives Azure Event Grid events and sends the event itse
 ## Configure the trigger
 
 Add an Event Grid trigger to your integration and configure the settings below.
+
+## General settings
+
+<TriggerGeneralSettings showTriggerInterval />
 
 ## Event settings
 

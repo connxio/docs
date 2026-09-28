@@ -4,7 +4,7 @@ sidebar_position: 3
 
 import CronTester from '@site/src/components/CronTester';
 
-# Triggering Interval
+# Triggering interval
 
 The triggering interval defines when an integration retrieves data or processes a batch. Connxio supports five-field and six-field cron expressions, with an optional leading seconds field.
 

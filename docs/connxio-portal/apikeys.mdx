@@ -2,70 +2,79 @@
 sidebar_position: 2
 ---
 
-import ThemedImage from "@theme/ThemedImage";
-import useBaseUrl from "@docusaurus/useBaseUrl";
+import PropertyReference from '@site/src/components/PropertyReference';
 
-# API Keys
+# API keys
 
-By using API Keys, users can securely authenticate their requests to the Connxio REST API and ensure the appropriate level of access and functionality based on the assigned scopes.
+API keys connect applications to the Connxio Messaging and Management APIs. Each key belongs to a subscription and has scopes that determine which API functions it can access.
 
-Please note that the Connxio API Key is associated with the subscription level, and its usage is subject to the permissions and access control defined within the associated subscription.
+Use **API keys** in the portal to create keys, review their scopes, reveal their values, and enable or disable access.
 
-## Creating an API Key
+## Create an API key {#creating-an-api-key}
 
-To create an API Key in Connxio, users need to navigate to the API Keys settings within the Connxio Portal.
+1. Open **API keys** and select **Create API key**.
+2. Enter a **Name** that identifies the application or purpose of the key.
+3. Select the required **Scopes**. Select **Messaging** to make the **Webhook** option available.
+4. Choose the **Subscription** the key will access.
+5. Select **Create**, or **Cancel** to close the dialog without creating a key.
 
-<div style={{ maxWidth: "800px" }}>
-  <ThemedImage
-    alt="How to create an API key"
-    sources={{
-      light: useBaseUrl("/img/docs/apikeys/create-light.webp"),
-      dark: useBaseUrl("/img/docs/apikeys/create-dark.webp"),
-    }}
-  />
-</div>
+### Key settings
 
-From there, they can generate an API Key and associate it with a specific subscription. During the creation process, users must set a scope for the API Key to define the level of access it grants.
-
-<div style={{ maxWidth: "600px" }}>
-  <ThemedImage
-    alt="How to create an API key"
-    sources={{
-      light: useBaseUrl("/img/docs/apikeys/edit-light.webp"),
-      dark: useBaseUrl("/img/docs/apikeys/edit-dark.webp"),
-    }}
-  />
-</div>
-
-When the key has been created you will find it in the API keys list, where you can toggle if it's active and copy the key.
-
-<div style={{ maxWidth: "800px" }}>
-  <ThemedImage
-    alt="How to create an API key"
-    sources={{
-      light: useBaseUrl("/img/docs/apikeys/created-light.webp"),
-      dark: useBaseUrl("/img/docs/apikeys/created-dark.webp"),
-    }}
-  />
-</div>
-
-## Using API Keys
-
-When making API requests, users need to include the necessary headers as described on the [authentication page](/reference/connxio-api).
+<PropertyReference properties={[
+  {
+    name: 'Name',
+    description: 'A name that identifies the key in the API keys list.',
+    example: 'Order import',
+  },
+  {
+    name: 'Scopes',
+    description: 'The API access granted to the key. Select Messaging, Management, or both. Webhook is an additional option under Messaging.',
+  },
+  {
+    name: 'Subscription',
+    description: 'The subscription associated with the key. Requests use the key to access resources in this subscription.',
+  },
+]} />
 
 ## Scopes
 
-API Keys in Connxio support different scopes that determine the specific functionalities and endpoints they can access. The following scopes are available:
+Choose scopes according to the operations the calling application needs. A key can have multiple scopes.
 
-- **Messaging**: Grants access to the Messaging API, enabling users to use the messaging endpoints for message submission and retrieval.
+| Option | Scope shown in the key list | Access |
+| --- | --- | --- |
+| Messaging | `Messaging.All` | Use the Messaging API to send messages to Connxio. |
+| Webhook | `Messaging.Webhook` | Allow messaging requests without an OAuth token when the webhook header is supplied. Available under Messaging. |
+| Management | `Management.All` | Manage resources such as integrations, security configurations, and code components through the Management API. |
 
-- **Management**: Provides access to the Management API, allowing users to perform CRUD operations on integrations, security configurations, code components and more.
+Keys generated for a [Custom API](./custom-api.md#api-key) appear with a **Custom API** badge and the `Messaging.Dynamic` scope. They can also have `Messaging.Webhook` enabled. These keys are associated with their custom API rather than created through the scope options above.
 
-- **Webhook**: Allows access to the API without an OAuth2.0 JWT. Please note that the use of the webhook scope is not recommended, and it's advisable to use other authentication methods whenever possible.
-  - The header **`Connxio-Api-Webhook`**, with the value **`true`**, must be included in the request to use the webhook functionality.
+## Review and reveal keys
 
-Users can assign multiple scopes to a single API Key if required. However, the recommended approach is to use separate API Keys for each specific scope.
+Each entry in **API keys** shows its name, subscription, and scope badges. Select **Reveal key** to view the key value and copy it for use by your application.
 
-## Disabling API Keys
+Custom API entries also provide a navigation button to open the related API. See [Custom API](./custom-api.md) for its configuration and key settings.
 
-API Keys can be disabled at any time from the Connxio Portal. This allows administrators to revoke access and enhance security if needed.
+## Use an API key {#using-api-keys}
+
+Include the key in the `Connxio-Api-Key` request header. Follow the [API authentication reference](/reference/connxio-api) for the other headers and authentication requirements of the endpoint you are calling.
+
+### Webhook requests
+
+For a key with the **Webhook** scope, include both headers to use webhook authentication:
+
+```http
+Connxio-Api-Key: YOUR_API_KEY
+Connxio-Api-Webhook: true
+```
+
+Webhook authentication allows the request without an OAuth token. Enable this scope only when the caller needs that authentication method.
+
+## Disable an API key {#disabling-api-keys}
+
+Use the enable/disable control on the key's entry to change whether it is active. Disabling a key stops applications using it from accessing the API with that key. You can enable it again when access is needed.
+
+## Delete an API key
+
+For a key with a delete control, select the **trash icon** on its entry to delete it. Update any applications using the key before removing it.
+
+For a **Custom API** key, open the related API to manage its key and lifecycle. See [Custom API key settings](./custom-api.md#api-key).

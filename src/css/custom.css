@@ -66,7 +66,8 @@
     "Gellix", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
     Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --code-block-bg: #1a1d21;
+  /* --code-block-bg: #1a1d21; */
+  --code-block-bg: black;
   --ifm-navbar-item-padding-horizontal: 0.5rem;
 }
 
@@ -516,7 +517,7 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 .prism-code {
   counter-reset: line-number;
   font-size: 13.5px;
-  background: var(--code-block-bg);
+  background: var(--code-block-bg) !important;
 }
 
 .prism-code .token-line {

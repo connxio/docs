@@ -46,7 +46,7 @@ Scripts run in a sandbox with limited access to system resources. File I/O is no
 
 Use **Test Script** in the editor to run your script with sample content and metadata before using it in a live integration. Review the generated output and any errors in the test results.
 
-<div style={{maxWidth: '800px'}}>
+<div style={{width: '100%'}}>
   <ThemedImage
     alt="test script shape"
     style={{boxShadow: 'none'}}

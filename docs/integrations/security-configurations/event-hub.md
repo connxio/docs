@@ -15,24 +15,24 @@ Create a security configuration with **Event Hub** as the security type. Set its
 ## Connection settings
 
 <PropertyReference properties={[
-  {
-    name: "Event hub name",
-    description: "The name of the Event Hub.",
-  },
-  {
-    name: "Event hub connection string",
-    description: "The connection string for the Event Hub.",
-  },
-  {
-    name: "Consumer group",
-    description: "The consumer group to listen to.",
-  },
-  {
-    name: "Checkpoint storage connection string",
-    description: "The connection string for the storage account that maintains Event Hub checkpoints. Checkpoint storage is required for stable transfer.",
-  },
-  {
-    name: "Checkpoint storage container",
-    description: "The container used to store Event Hub checkpoints.",
-  },
+{
+name: "Event hub name",
+description: "The name of the Event Hub.",
+},
+{
+name: "Event hub connection string",
+description: "The connection string for the Event Hub.",
+},
+{
+name: "Consumer group",
+description: "The consumer group to listen to.",
+},
+{
+name: "Checkpoint storage connection string",
+description: "The connection string for the storage account that maintains Event Hub checkpoints. Checkpoint storage is required for stable transfer.",
+},
+{
+name: "Checkpoint storage container",
+description: "The container used to store Event Hub checkpoints.",
+},
 ]} />

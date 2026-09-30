@@ -1,10 +1,11 @@
 ---
+sidebar_position: 90.1
 sidebar_custom_props:
   action_group: Control
 ---
 
-import PropertyReference from '@site/src/components/PropertyReference';
-import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';
+import PropertyReference from "@site/src/components/PropertyReference";
+import ActionGeneralSettings from "@site/src/components/ActionGeneralSettings";
 
 # Log
 
@@ -20,31 +21,37 @@ Add a Log action to your integration where you want to record a log entry and co
 
 ## Logging settings
 
-<PropertyReference properties={[
-  {
-    name: "Log level",
-    description: "Required. The level at which the entry is logged. Choose Error, Minimum, Standard, Verbose, or Off. Defaults to Standard. The integration's logging webhook must allow this level for the entry to appear.",
-    example: "Standard",
-  },
-  {
-    name: "Status",
-    description: "Required. A short label describing the state of the message at this point in the flow.",
-    example: "Processed",
-  },
-  {
-    name: "Description",
-    description: "Required. An explanation of the log entry.",
-    example: "Finished processing {filename}",
-  },
-  {
-    name: "Sender",
-    description: "Optional. Identifies the sender of the message in this log entry.",
-  },
-  {
-    name: "Receiver",
-    description: "Optional. Identifies the receiver of the message in this log entry.",
-  },
-]} />
+<PropertyReference
+  properties={[
+    {
+      name: "Log level",
+      description:
+        "Required. The level at which the entry is logged. Choose Error, Minimum, Standard, Verbose, or Off. Defaults to Standard. The integration's logging webhook must allow this level for the entry to appear.",
+      example: "Standard",
+    },
+    {
+      name: "Status",
+      description:
+        "Required. A short label describing the state of the message at this point in the flow.",
+      example: "Processed",
+    },
+    {
+      name: "Description",
+      description: "Required. An explanation of the log entry.",
+      example: "Finished processing {filename}",
+    },
+    {
+      name: "Sender",
+      description:
+        "Optional. Identifies the sender of the message in this log entry.",
+    },
+    {
+      name: "Receiver",
+      description:
+        "Optional. Identifies the receiver of the message in this log entry.",
+    },
+  ]}
+/>
 
 **Status**, **Description**, **Sender**, and **Receiver** support dynamic values using [CxMaL](../cxmal/connxio-macro-language.md). For example, use `{filename}` to include the message's file name or `{interchange}` to include its interchange ID.
 

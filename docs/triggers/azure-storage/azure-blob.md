@@ -9,7 +9,7 @@ import Link from '@docusaurus/Link';
 
 # Azure Blob
 
-The Azure Blob trigger retrieves blobs from an Azure Storage container and sends them into the Connxio pipeline.
+The Azure Blob trigger retrieves blobs from an Azure Storage container for subsequent actions.
 
 ## Configure the trigger
 

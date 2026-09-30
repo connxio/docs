@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 
 # FTP and SFTP
 
-The FTP and SFTP triggers retrieve files from a server and send them into the Connxio pipeline. The settings below apply to both FTP and SFTP unless otherwise specified.
+The FTP and SFTP triggers retrieve files from a server for subsequent actions. The settings below apply to both FTP and SFTP unless otherwise specified.
 
 ## Configure the trigger
 

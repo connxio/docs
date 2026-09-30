@@ -10,7 +10,7 @@ import Link from "@docusaurus/Link";
 
 # GraphQL
 
-The GraphQL action calls a GraphQL endpoint from the Connxio pipeline. Use it to send queries or mutations, collect response data for later actions, or replace the current message content with the response.
+Use the GraphQL action to send queries or mutations, collect response data for later actions, or replace the current message content with the response.
 
 ## Configure the action
 
@@ -96,12 +96,12 @@ If the endpoint supports schema introspection, Connxio can fetch its schema to p
     {
       name: "Use content as request body",
       description:
-        "Enable to send the current pipeline message content instead of the request configured in the editor. The content must already be a valid GraphQL request payload.",
+        "Enable to send the current message content instead of the request configured in the editor. The content must already be a valid GraphQL request payload.",
     },
     {
       name: "Use response as content",
       description:
-        "Enable to replace the current pipeline message content with the response body. Subsequent actions receive this content.",
+        "Enable to replace the current message content with the response body. Subsequent actions receive this content.",
     },
     {
       name: "Continue on GraphQL error",

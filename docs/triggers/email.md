@@ -9,7 +9,7 @@ import Link from '@docusaurus/Link';
 
 # Email
 
-The Email trigger retrieves messages from an email account using POP3 or IMAP and sends their bodies or attachments into the Connxio pipeline.
+The Email trigger retrieves messages from an email account using POP3 or IMAP and makes their bodies or attachments available to subsequent actions.
 
 ## Configure the trigger
 
@@ -33,7 +33,7 @@ description: <>Required. Select the <Link to="/integrations/security-configurati
 <PropertyReference properties={[
 {
 name: "Send message body",
-description: "When enabled, Connxio processes the email body as a single message through the pipeline.",
+description: "When enabled, Connxio processes the email body as a single message.",
 },
 {
 name: "Send attachments",

@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 
 # Batching
 
-The Batching action groups multiple messages into one output message. Messages wait in a bucket until the configured interval runs, then a batching code component combines them and sends the result through the pipeline.
+The Batching action groups multiple messages into one output message. Messages wait in a bucket until the configured interval runs, then a batching code component combines them for subsequent actions.
 
 ## Configure the action
 

@@ -9,7 +9,7 @@ import Link from '@docusaurus/Link';
 
 # Azure File Share
 
-The Azure File Share trigger retrieves files from an Azure Storage file share and sends them into the Connxio pipeline.
+The Azure File Share trigger retrieves files from an Azure Storage file share for subsequent actions.
 
 ## Configure the trigger
 

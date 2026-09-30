@@ -9,7 +9,7 @@ import Link from '@docusaurus/Link';
 
 # Azure Service Bus
 
-The Azure Service Bus trigger receives messages from a queue or topic subscription and sends them into the Connxio pipeline. It receives messages continuously and does not use a trigger interval.
+The Azure Service Bus trigger receives messages from a queue or topic subscription for subsequent actions. It receives messages continuously and does not use a trigger interval.
 
 ## Configure the trigger
 

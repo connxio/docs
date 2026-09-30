@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 
 # HTTP
 
-The HTTP trigger calls an endpoint on a schedule and sends the response content into the Connxio pipeline for subsequent actions.
+The HTTP trigger calls an endpoint on a schedule and makes the response content available to subsequent actions.
 
 ## Configure the trigger
 

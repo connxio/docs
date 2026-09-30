@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 
 # Azure Table
 
-The Azure Table action writes data from the Connxio pipeline to an Azure Storage table.
+The Azure Table action writes message data to an Azure Storage table.
 
 ## Configure the action
 

@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 
 # Azure Queue
 
-The Azure Queue action sends messages from the Connxio pipeline to an Azure Storage queue. Send the message content directly or send a reference to the content in Blob Storage.
+The Azure Queue action sends messages to an Azure Storage queue. Send the message content directly or send a reference to the content in Blob Storage.
 
 ## Configure the action
 

@@ -9,7 +9,7 @@ import Link from '@docusaurus/Link';
 
 # Azure Event Grid
 
-The Event Grid trigger receives Azure Event Grid events and sends the event itself or the referenced blob content into the Connxio pipeline.
+The Event Grid trigger receives Azure Event Grid events and makes the event itself or the referenced blob content available to subsequent actions.
 
 ## Configure the trigger
 

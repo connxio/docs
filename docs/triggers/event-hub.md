@@ -9,7 +9,7 @@ import Link from '@docusaurus/Link';
 
 # Azure Event Hub
 
-The Event Hub trigger receives messages from an Azure Event Hub consumer group and sends them into the Connxio pipeline. It processes messages continuously and does not use a trigger interval.
+The Event Hub trigger receives messages from an Azure Event Hub consumer group for subsequent actions. It processes messages continuously and does not use a trigger interval.
 
 ## Configure the trigger
 

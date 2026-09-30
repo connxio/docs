@@ -9,7 +9,7 @@ import Link from '@docusaurus/Link';
 
 # Azure Table
 
-The Azure Table trigger retrieves rows from an Azure Storage table and sends them into the Connxio pipeline.
+The Azure Table trigger retrieves rows from an Azure Storage table for subsequent actions.
 
 ## Configure the trigger
 

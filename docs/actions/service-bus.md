@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 
 # Azure Service Bus
 
-The Azure Service Bus action sends messages from the Connxio pipeline to a queue or topic. Send the payload directly or store it in Azure Blob Storage and send a reference through Service Bus.
+The Azure Service Bus action sends messages to a queue or topic. Send the payload directly or store it in Azure Blob Storage and send a reference through Service Bus.
 
 ## Configure the action
 

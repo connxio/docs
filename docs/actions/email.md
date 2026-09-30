@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 
 # Email
 
-The Email action sends message content from the Connxio pipeline to one or more recipients using SMTP. Send the content as the email body, as an attachment, or both.
+The Email action sends message content to one or more recipients using SMTP. Send the content as the email body, as an attachment, or both.
 
 ## Configure the action
 

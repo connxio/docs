@@ -11,7 +11,7 @@ import Link from '@docusaurus/Link';
 
 # HTTP
 
-The HTTP action calls an endpoint from the Connxio pipeline. Use it to send message content to an API, collect response data for later actions, or replace the current content with the response.
+Use the HTTP action to send message content to an API, collect response data for later actions, or replace the current content with the response.
 
 ## Configure the action
 
@@ -44,7 +44,7 @@ description: "Additional request headers required by the endpoint, such as authe
 },
 {
 name: "Body",
-description: "The content to send in the request body. Enable Use content as request body to send the current pipeline content instead.",
+description: "The content to send in the request body. Enable Use content as request body to send the current message content instead.",
 },
 {
 name: "Variable name",
@@ -69,11 +69,11 @@ description: "Enable to handle the response body as binary data rather than text
 },
 {
 name: "Use content as request body",
-description: "Enable to send the current pipeline message content as the request body.",
+description: "Enable to send the current message content as the request body.",
 },
 {
 name: "Use response as content",
-description: "Enable to replace the current pipeline message content with the response body. Subsequent actions receive this content.",
+description: "Enable to replace the current message content with the response body. Subsequent actions receive this content.",
 },
 {
 name: "Use date delta",

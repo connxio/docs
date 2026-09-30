@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 
 # Splitting
 
-The Splitting action breaks one message into multiple smaller messages using a splitting code component. Each output continues through the pipeline independently as a new message.
+The Splitting action breaks one message into multiple smaller messages using a splitting code component. Each output is processed independently as a new message.
 
 ## Configure the action
 

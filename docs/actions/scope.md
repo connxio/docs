@@ -9,7 +9,7 @@ import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';
 
 # Scope
 
-The Scope action groups other actions into a container. Use it to organize a section of the pipeline, apply a shared condition to a group of actions, or attach user defined properties that all actions inside the scope inherit.
+The Scope action groups other actions into a container. Use it to organize a section of an integration, apply a shared condition to a group of actions, or attach user defined properties that all actions inside the scope inherit.
 
 ## Configure the action
 

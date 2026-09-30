@@ -9,7 +9,7 @@ import Link from '@docusaurus/Link';
 
 # Azure Queue
 
-The Azure Queue trigger retrieves messages from an Azure Storage queue and sends them into the Connxio pipeline.
+The Azure Queue trigger retrieves messages from an Azure Storage queue for subsequent actions.
 
 ## Configure the trigger
 

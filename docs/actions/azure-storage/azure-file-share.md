@@ -10,7 +10,7 @@ import Link from '@docusaurus/Link';
 
 # Azure File Share
 
-The Azure File Share action writes message content from the Connxio pipeline to files in an Azure Storage file share.
+The Azure File Share action writes message content to files in an Azure Storage file share.
 
 ## Configure the action
 

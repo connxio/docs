@@ -1,3 +1,8 @@
+---
+sidebar_custom_props:
+  action_group: Email
+---
+
 import PropertyReference from '@site/src/components/PropertyReference';
 import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';
 import ActionDuplicateDetection from '@site/src/components/ActionDuplicateDetection';

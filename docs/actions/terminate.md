@@ -1,5 +1,7 @@
 ---
 sidebar_position: 90
+sidebar_custom_props:
+  action_group: Control
 ---
 
 import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';

@@ -1,5 +1,7 @@
 ---
 title: "FTP/SFTP"
+sidebar_custom_props:
+  action_group: FTP
 ---
 
 import PropertyReference from '@site/src/components/PropertyReference';
@@ -22,15 +24,15 @@ Add an FTP or SFTP action to your integration and configure the destination dire
 ## Connection settings
 
 <PropertyReference properties={[
-  {
-    name: "Security configuration",
-    description: <>Required. Select the <Link to="/integrations/security-configurations/">security configuration</Link> containing the connection properties for your FTP or SFTP server. Use <strong>+</strong> to create a configuration.</>,
-  },
-  {
-    name: "Directory",
-    description: "Required. The destination directory on the server. Include a leading forward slash.",
-    example: "/my/directory",
-  },
+{
+name: "Security configuration",
+description: <>Required. Select the <Link to="/integrations/security-configurations/">security configuration</Link> containing the connection properties for your FTP or SFTP server. Use <strong>+</strong> to create a configuration.</>,
+},
+{
+name: "Directory",
+description: "Required. The destination directory on the server. Include a leading forward slash.",
+example: "/my/directory",
+},
 ]} />
 
 ## SFTP settings
@@ -38,20 +40,20 @@ Add an FTP or SFTP action to your integration and configure the destination dire
 The same file settings are available under **FTP settings** for an FTP action.
 
 <PropertyReference properties={[
-  {
-    name: "File name",
-    description: <>The name of the file to write. Use <Link to="/cxmal/connxio-macro-language/">CxMaL</Link> macros to build a dynamic file name from message content or metadata.</>,
-    example: "{filename}",
-  },
+{
+name: "File name",
+description: <>The name of the file to write. Use <Link to="/cxmal/connxio-macro-language/">CxMaL</Link> macros to build a dynamic file name from message content or metadata.</>,
+example: "{filename}",
+},
 ]} />
 
 ## Batch processing
 
 <PropertyReference properties={[
-  {
-    name: "Batch processing",
-    description: "Enable to queue files and deliver them in batches on a schedule. This reduces the number of connections to the receiving server. When disabled, files are sent individually using a separate connection for each file.",
-  },
+{
+name: "Batch processing",
+description: "Enable to queue files and deliver them in batches on a schedule. This reduces the number of connections to the receiving server. When disabled, files are sent individually using a separate connection for each file.",
+},
 ]} />
 
 Batch processing sends each message as a separate file. To combine messages into one file, use a [Batching action](./batching.md) before delivery.
@@ -67,24 +69,24 @@ See [Triggering Interval](../integrations/triggering-interval.md) for cron synta
 The following settings apply when **Batch processing** is enabled.
 
 <PropertyReference properties={[
-  {
-    name: "Batch size",
-    description: "The maximum number of files to retrieve from the queue for each batch. A batch contains fewer files if fewer are waiting. Batches support up to 1,000 files.",
-    example: "100",
-  },
-  {
-    name: "Disable failure retry",
-    description: "Enable to disable the separate failure retry schedule. Batch processing continues on its normal schedule even after errors.",
-  },
-  {
-    name: "Retry on non-transient failures",
-    description: "Enable to retry all errors, including failures normally classified as non-retryable.",
-  },
-  {
-    name: "Failure retry interval (seconds)",
-    description: "The interval between retries after a batch error, in seconds. This replaces the normal batch schedule during failure retries. The minimum value is 60 seconds.",
-    example: "60",
-  },
+{
+name: "Batch size",
+description: "The maximum number of files to retrieve from the queue for each batch. A batch contains fewer files if fewer are waiting. Batches support up to 1,000 files.",
+example: "100",
+},
+{
+name: "Disable failure retry",
+description: "Enable to disable the separate failure retry schedule. Batch processing continues on its normal schedule even after errors.",
+},
+{
+name: "Retry on non-transient failures",
+description: "Enable to retry all errors, including failures normally classified as non-retryable.",
+},
+{
+name: "Failure retry interval (seconds)",
+description: "The interval between retries after a batch error, in seconds. This replaces the normal batch schedule during failure retries. The minimum value is 60 seconds.",
+example: "60",
+},
 ]} />
 
 Connxio retrieves queued files at the configured interval and delivers them as a batch. Failed files are added to failure handling after the batch finishes. Very large or long-running batches can time out; choose a batch size suited to the server's capacity.
@@ -98,14 +100,14 @@ Connxio retrieves queued files at the configured interval and delivers them as a
 For non-batch configurations that expose an operation setting, the supported operations are:
 
 <PropertyReference properties={[
-  {
-    name: "Upsert",
-    description: "The default operation. Creates a file or replaces an existing file with the same name.",
-  },
-  {
-    name: "Append",
-    description: "Creates a file if it does not exist, or adds the current payload to the end of an existing file. No line breaks or other separators are added automatically; include them in the content if needed.",
-  },
+{
+name: "Upsert",
+description: "The default operation. Creates a file or replaces an existing file with the same name.",
+},
+{
+name: "Append",
+description: "Creates a file if it does not exist, or adds the current payload to the end of an existing file. No line breaks or other separators are added automatically; include them in the content if needed.",
+},
 ]} />
 
 :::caution Append support

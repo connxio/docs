@@ -1,5 +1,7 @@
 ---
 title: "FTP/SFTP"
+sidebar_custom_props:
+  trigger_group: FTP
 ---
 
 import PropertyReference from '@site/src/components/PropertyReference';

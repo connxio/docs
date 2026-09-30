@@ -1,5 +1,11 @@
-import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';
-import PropertyReference from '@site/src/components/PropertyReference';
+---
+title: "Redirect"
+sidebar_custom_props:
+  action_group: Control
+---
+
+import ActionGeneralSettings from "@site/src/components/ActionGeneralSettings";
+import PropertyReference from "@site/src/components/PropertyReference";
 
 # Redirect
 
@@ -15,16 +21,20 @@ Add a Redirect action to your integration and select the integration that should
 
 ## Redirect settings
 
-<PropertyReference properties={[
-  {
-    name: "Integration",
-    description: "Required. The target integration that receives the redirected message.",
-  },
-  {
-    name: "Preserve Interchange ID",
-    description: "Enable to keep the message's original interchange ID when redirecting it. Leave disabled to generate a new interchange ID.",
-  },
-]} />
+<PropertyReference
+  properties={[
+    {
+      name: "Integration",
+      description:
+        "Required. The target integration that receives the redirected message.",
+    },
+    {
+      name: "Preserve Interchange ID",
+      description:
+        "Enable to keep the message's original interchange ID when redirecting it. Leave disabled to generate a new interchange ID.",
+    },
+  ]}
+/>
 
 :::caution Circular redirects
 Connxio allows circular redirects, where a message is routed back to an integration it has already passed through. These can cause infinite processing loops that count toward subscription usage and affect billing costs. Check the complete redirect flow to avoid unintended loops.

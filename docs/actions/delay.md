@@ -1,5 +1,7 @@
 ---
 sidebar_position: 80
+sidebar_custom_props:
+  action_group: Control
 ---
 
 import PropertyReference from '@site/src/components/PropertyReference';

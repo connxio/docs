@@ -7,17 +7,10 @@ description: "Choose a trigger to receive data, retrieve files, consume events, 
 
 # Triggers
 
-import DocCardList from "@theme/DocCardList";
-import styles from "@site/src/css/doc-card-list.module.css";
-
-A trigger starts an integration and provides the message for its actions. Choose one based on where your data comes from.
-
-<DocCardList className={styles.cards} />
-
 ## Configure your trigger
 
 Open an integration, select **Add Trigger**, and choose the trigger you need. Follow its guide to configure the connection and message settings.
 
-- **Connecting to a service?** Set up a [security configuration](../integrations/security-configurations/security-configurations.md) for its credentials.
-- **Retrieving data on a schedule?** Configure the [trigger interval](../integrations/triggering-interval.md).
-- **Ready to process the message?** [Add actions to your integration](../integrations/move-to-actions.md).
+import GroupedTriggerCards from "@site/src/components/GroupedTriggerCards";
+
+<GroupedTriggerCards />

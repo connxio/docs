@@ -1,5 +1,7 @@
 ---
 sidebar_position: 10
+sidebar_custom_props:
+  action_group: Transform
 ---
 
 import PropertyReference from '@site/src/components/PropertyReference';

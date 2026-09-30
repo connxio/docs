@@ -1,3 +1,8 @@
+---
+sidebar_custom_props:
+  trigger_group: Recurrence
+---
+
 import PropertyReference from '@site/src/components/PropertyReference';
 import TriggerGeneralSettings from '@site/src/components/TriggerGeneralSettings';
 import Link from '@docusaurus/Link';

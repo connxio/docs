@@ -1,0 +1,78 @@
+---
+sidebar_custom_props:
+  trigger_group: HTTP
+---
+
+import PropertyReference from "@site/src/components/PropertyReference";
+import TriggerGeneralSettings from "@site/src/components/TriggerGeneralSettings";
+
+# GraphQL
+
+The GraphQL trigger calls a GraphQL endpoint on a schedule and sends the response content into the Connxio pipeline. Use it to retrieve data with a query or execute a mutation before subsequent actions process the response.
+
+## Configure the trigger
+
+Add a GraphQL trigger to your integration and configure the endpoint, query, and settings below.
+
+## General settings
+
+<TriggerGeneralSettings showTriggerInterval />
+
+## Request settings
+
+For authentication setup, see [Security configurations](../integrations/security-configurations/security-configurations.md).
+
+<PropertyReference
+  properties={[
+    {
+      name: "Method",
+      description: "The HTTP method to use when calling the GraphQL endpoint.",
+      example: "POST",
+    },
+    {
+      name: "URL",
+      description: "Required. The GraphQL endpoint to call.",
+      example: "https://example.com/graphql",
+    },
+    {
+      name: "Query",
+      description: "Required. The GraphQL query or mutation to execute.",
+    },
+    {
+      name: "Variables",
+      description:
+        "The values for variables declared in the GraphQL query or mutation. Open the Variables editor to provide them as a JSON object.",
+    },
+    {
+      name: "Authorization",
+      description: (
+        <>
+          Select the security configuration used to authenticate the request, if
+          required by the endpoint. Use <strong>+</strong> to create a configuration.
+        </>
+      ),
+    },
+    {
+      name: "Headers",
+      description:
+        "Additional request headers required by the endpoint, such as authentication or content type headers.",
+    },
+  ]}
+/>
+
+## GraphQL settings
+
+<PropertyReference
+  properties={[
+    {
+      name: "Custom timeout (seconds)",
+      description:
+        "How long to wait for the endpoint to respond before the request times out. The allowed range is 10 to 180 seconds.",
+      example: "60",
+    },
+  ]}
+/>
+
+## Schema introspection
+
+If the endpoint supports schema introspection, Connxio can fetch its schema to provide query validation and autocompletion in the editor. The schema status appears beside **Query**.

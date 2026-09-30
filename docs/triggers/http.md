@@ -1,5 +1,7 @@
 ---
 sidebar_position: 2
+sidebar_custom_props:
+  trigger_group: HTTP
 ---
 
 import PropertyReference from '@site/src/components/PropertyReference';

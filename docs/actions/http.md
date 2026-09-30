@@ -1,3 +1,8 @@
+---
+sidebar_custom_props:
+  action_group: HTTP
+---
+
 import PropertyReference from '@site/src/components/PropertyReference';
 import ActionSequentialDelivery from '@site/src/components/ActionSequentialDelivery';
 import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';

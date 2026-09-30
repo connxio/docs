@@ -1,6 +1,8 @@
 ---
 title: "Code transformation"
 sidebar_position: 20
+sidebar_custom_props:
+  action_group: Transform
 ---
 
 import PropertyReference from '@site/src/components/PropertyReference';

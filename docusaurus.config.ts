@@ -178,16 +178,16 @@ const config: Config = {
             },
             {
               label: "Connxio",
-              href: "https://www.communicate.no/en/connxio",
+              href: "https://www.evidi.com/products/connxio",
             },
             {
               label: "Connxio Portal",
-              href: "https://portal.connxio.no",
+              href: "https://app.connxio.com",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Evidi.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Evidi`,
     },
     prism: {
       theme: themes.dracula,

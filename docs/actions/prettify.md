@@ -1,5 +1,7 @@
 ---
 sidebar_position: 70
+sidebar_custom_props:
+  action_group: Transform
 ---
 
 import ActionGeneralSettings from '@site/src/components/ActionGeneralSettings';

@@ -1,5 +1,7 @@
 ---
 sidebar_position: 100
+sidebar_custom_props:
+  action_group: Azure Storage
 ---
 
 import PropertyReference from '@site/src/components/PropertyReference';

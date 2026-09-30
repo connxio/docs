@@ -2,3 +2,5 @@ position: 4
 label: "Azure Storage"
 collapsible: false
 collapsed: false
+customProps:
+  sidebarHref: /triggers/azure-storage/azure-blob

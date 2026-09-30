@@ -2,3 +2,5 @@ position: 100
 label: "Azure Storage"
 collapsible: false
 collapsed: false
+customProps:
+  sidebarHref: /actions/azure-storage/azure-blob

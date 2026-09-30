@@ -406,6 +406,18 @@ strong {
   background: transparent;
 }
 
+.sidebar-category-link
+  > .menu__list-item-collapsible--active:not(:hover) {
+  background: transparent;
+}
+
+.sidebar-category-link
+  > .menu__list-item-collapsible
+  > .menu__link--active:not(:hover) {
+  background: transparent;
+  color: var(--portal-text-muted);
+}
+
 .menu__list .menu__list {
   margin: 0.35rem 0 0.75rem 0.5rem;
   padding-left: 0.5rem;

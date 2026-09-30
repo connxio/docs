@@ -95,6 +95,35 @@ filenames when updating them.
 
 See the [Docusaurus versioning guide](https://docusaurus.io/docs/versioning).
 
+## Downloadable code component examples
+
+`npm run build`, `npm run start`, and `npm run deploy` generate .NET project ZIPs
+before starting Docusaurus. Run `npm run generate:code-components` to regenerate
+them separately (including after editing examples while the dev server is running).
+The site build needs Node.js only; users need the .NET 10 SDK to build a download.
+
+In `docs/integrations/code-components.md`, downloadable examples use a
+`csharp project="Map"` code fence and a matching
+`<CodeComponentDownload project="Map" />` link. Project names must be unique
+within each documentation version and contain only letters and digits, starting
+with a letter. Each download uses the matching starter template from
+`docs/_shared/code-component-templates/<Project>.cs`, alongside a `.slnx` solution,
+`.csproj`, and README. The fenced code remains a worked example on the page.
+Keep starter templates self-contained, including their imports. Templates live
+under `docs/` so future documentation snapshots include their own copies.
+Type declarations shown only as API references are not downloadable projects.
+
+`scripts/generate-code-components.mjs` reads the Connxio package version from
+that documentation version's `_shared/RequiredNugetPackage.mdx`. The project
+template pins the target framework and Newtonsoft.Json dependency. After changing
+examples or dependencies, extract the generated ZIPs and run `dotnet build -c Release`
+to check that they compile.
+
+Generated files live in the ignored `static/downloads/code-components/` directory.
+Downloads are separated by documentation version. The generator reads archived
+examples without editing them; future snapshots retain their own source and package
+version. Existing archives without marked examples generate no downloads.
+
 ## Build Status
 
 | Build & Release Status                                                                                                                                                                            |

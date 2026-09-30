@@ -5,10 +5,10 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "docs:version": "docusaurus docs:version",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "start": "yarn generate:code-components && docusaurus start",
+    "build": "yarn generate:code-components && docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
+    "deploy": "yarn generate:code-components && docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
@@ -20,7 +20,8 @@
     "gen-all": "yarn prepare-api-specs && docusaurus gen-api-docs all && docusaurus gen-api-docs:version connxio:all",
     "clean-all": "docusaurus clean-api-docs all && docusaurus clean-api-docs:version connxio:all",
     "re-gen": "yarn prepare-api-specs && yarn clean-all && docusaurus gen-api-docs all && docusaurus gen-api-docs:version connxio:all",
-    "prepare-api-specs": "node scripts/prepare-api-specs.mjs"
+    "prepare-api-specs": "node scripts/prepare-api-specs.mjs",
+    "generate:code-components": "node scripts/generate-code-components.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.2",
@@ -44,7 +45,8 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.0.0",
     "@types/react-dom": "^19.3.0",
-    "docusaurus-plugin-llms": "^0.6.0"
+    "docusaurus-plugin-llms": "^0.6.0",
+    "fflate": "^0.8.3"
   },
   "browserslist": {
     "production": [

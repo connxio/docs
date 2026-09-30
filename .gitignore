@@ -27,3 +27,5 @@ yarn-error.log*
 
 .vs
 .vs/
+# Generated example project downloads
+/static/downloads/code-components/

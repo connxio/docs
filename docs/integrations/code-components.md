@@ -3,6 +3,8 @@ title: "Code components"
 sidebar_position: 2.1
 ---
 
+import CodeComponentDownload from '@site/src/components/CodeComponentDownload';
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import RequiredNugetPackage from '../\_shared/RequiredNugetPackage.mdx';
@@ -27,6 +29,8 @@ We recommend .NET 10.0, but older versions may work as well.
 
 <RequiredNugetPackage />
 
+You can also download a .NET 10 class library for the Map, Split, Batch, and ACK examples below. Extract the ZIP, open the `.slnx` solution in your IDE, or run `dotnet build -c Release` in the extracted folder. Each download includes a starter template with placeholders for your logic and a README. The code shown below provides worked examples. Upload the compiled DLL to Connxio; the source ZIP is not an uploadable Zip Component.
+
 <hr style={{marginTop: '3rem', marginBottom: '2rem'}} />
 
 <Tabs centered>
@@ -36,7 +40,9 @@ We recommend .NET 10.0, but older versions may work as well.
 
 Implement `IConnxioMap` to transform one message into one output message. Use this component with the [Code transformation action](../actions/code-transformation.md).
 
-```csharp
+<CodeComponentDownload project="Map" />
+
+```csharp project="Map"
 using Newtonsoft.Json;
 using Connxio.NuGet.Public.Transformation.Interfaces;
 using Connxio.NuGet.Public.Transformation.Models;
@@ -82,7 +88,9 @@ Implement `IConnxioSplit` to turn one input message into multiple output message
 
 This example creates one output message for each entry in `Cities`, copying the input metadata to each output.
 
-```csharp
+<CodeComponentDownload project="Split" />
+
+```csharp project="Split"
 using Newtonsoft.Json;
 using Connxio.NuGet.Public.Transformation.Interfaces;
 using Connxio.NuGet.Public.Transformation.Models;
@@ -133,7 +141,9 @@ Implement `IConnxioBatch` to combine multiple input messages into one output mes
 
 This example combines the input messages' `Value` fields into a `Values` list and copies the first message's type and metadata. It expects a non-empty batch whose messages contain `Type` and `Value` fields.
 
-```csharp
+<CodeComponentDownload project="Batch" />
+
+```csharp project="Batch"
 using Newtonsoft.Json;
 using Connxio.NuGet.Public.Transformation.Interfaces;
 using Connxio.NuGet.Public.Transformation.Models;
@@ -181,42 +191,48 @@ When uploading, select the batching component type.
 </TabItem>
 <TabItem value="ack" label="Ack">
 
-### ACK component {#ack-component}
+### Ack component {#ack-component}
 
-Implement `IConnXioAck` to generate the content sent in an [ACK message](./acknowledgment.md). Creating an ACK code component is done in more or less the same way as a Map component, except that it requires the `IConnXioAck` interface and takes an additional `bool success` parameter.
+Implement `IConnXioAck` to generate the ACK content. The component receives a `success` parameter so it can create different content for successful and failed deliveries. The content can include delivery details or the original message itself.
 
-```csharp
-    public class Mapper : IConnXioAck
+<CodeComponentDownload project="Ack" />
+
+```csharp project="Ack"
+using Newtonsoft.Json;
+using Connxio.NuGet.Public.Transformation.Interfaces;
+using Connxio.NuGet.Public.Transformation.Models;
+
+public class Mapper : IConnxioAck
+{
+    public TransformationContext Map(TransformationContext transformationContext, bool success)
     {
-        public TransformationContext Map(TransformationContext transformationContext, bool success)
+        //Add error handling as necessary, this will give better error messages in the logs
+        if (transformationContext.Content == null)
+            throw new ArgumentException("Message field is null");
+
+        //You can use newtonsoft and other basic nuget packages. Contact the Connxio team if you need a non supported package.
+        dynamic obj = JsonConvert.DeserializeObject(transformationContext.Content);
+
+        //Creating an instance of the ACK message to send
+        CustomAck ACK = new CustomAck
         {
-            //Add error handling as necessary, this will give better error messages in the logs
-            if (transformationContext.Content == null)
-                throw new ArgumentException("Message field is null");
+            Id = obj.Id,
+            SuccessfulDelivery = success
+        };
 
-            //You can use newtonsoft and other basic nuget packages. Contact the Connxio team if you need a non supported package.
-            dynamic obj = JsonConvert.DeserializeObject(transformationContext.Content);
+        //Replace content in the original TransformationContext with the new ACK content
+        transformationContext.Content = JsonConvert.SerializeObject(ACK);
 
-            //Creating an instance of the ACK message to send
-            CustomAck ACK = new CustomAck
-            {
-                Id = obj.Id,
-                SuccessfulDelivery = success
-            };
-
-            //Replace content in the original TransformationContext with the new ACK content
-            transformationContext.Content = JsonConvert.SerializeObject(ACK);
-
-            //Return string representation of the ACK
-            return transformationContext;
-        }
+        //Return string representation of the ACK
+        return transformationContext;
     }
+}
 
-    public class CustomAck
-    {
-        public string Id { get; set; }
-        public bool SuccessfulDelivery { get; set; }
-    }
+public class CustomAck
+{
+    public string Id { get; set; }
+    public bool SuccessfulDelivery { get; set; }
+}
 ```
 
 When uploading, select the mapping component type, and select it as the ACK code component in the outbound adapter's ACK options.
@@ -224,7 +240,7 @@ When uploading, select the mapping component type, and select it as the ACK code
 </TabItem>
 </Tabs>
 
-After writing and testing your component, build the project to generate the DLL. Typical output path: `...\MyProject\bin\Debug\net10.0\bin\MyProject.dll`.
+After writing and testing your component, build the project to generate the DLL. Typical output path: `.../MyProject/bin/Debug/net10.0/MyProject.dll`.
 
 ## Zipped Code Components
 
@@ -358,6 +374,11 @@ Exception properties:
 Example using `FailureReturnStatusCode`:
 
 ```csharp
+using Connxio.NuGet.Public.Transformation.Models.SynchronousCommunication;
+using Newtonsoft.Json;
+using Connxio.NuGet.Public.Transformation.Interfaces;
+using Connxio.NuGet.Public.Transformation.Models;
+
 public class MyCodeMap : IConnxioMap
 {
     public TransformationContext Map(TransformationContext transformationContext)
@@ -372,8 +393,8 @@ public class MyCodeMap : IConnxioMap
         // Just get the first one in this example. Production code should handle multiples.
         int statuscode = subintResponses.First().SynchronousMessageResponses.First().MetaData.OutboundRestResponse.StatusCode;
 
-        //Create method to screen for failure codes
-        if (isFailureCode(statuscode))
+        // Treat HTTP error status codes as failures
+        if (statuscode >= 400)
             throw new TransformationTerminatedException("Operation failed", failureReturnStatusCode: statuscode);
 
         // The data in transformationContext.Content will be your new API response.

@@ -61,7 +61,7 @@ Use [CxMaL](../cxmal/connxio-macro-language.md) for condition expressions.
 <PropertyReference
 properties={[
 {
-name: 'Select ack component',
+name: 'Code component',
 description: 'Select the ACK code component that generates the ACK message content. Use + to add a component. Applies when Use external code component is disabled.',
 },
 {

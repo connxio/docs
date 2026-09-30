@@ -16,7 +16,8 @@ const config: Config = {
   projectName: projectName,
   organizationName: organizationName,
   trailingSlash: true,
-  url: `https://${organizationName}.github.io`,
+  // url: `https://${organizationName}.github.io`,
+  url: `https://docs.connxio.com`,
   baseUrl: `/`,
   onBrokenLinks: "throw",
   markdown: {
@@ -112,6 +113,7 @@ const config: Config = {
       },
     ],
     require.resolve("docusaurus-plugin-image-zoom"),
+    require.resolve("docusaurus-plugin-llms"),
   ],
   themeConfig: {
     metadata: [{ name: "robots", content: "all" }],

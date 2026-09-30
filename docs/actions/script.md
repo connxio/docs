@@ -25,6 +25,8 @@ Add a Script action to your integration and write your JavaScript in the code ed
 
 Define an `execute(event)` handler. The `event` object contains the message content and metadata. Return the modified event so the next action receives your changes.
 
+The JSDoc comment above the handler provides the type information that powers IntelliSense in the editor, including suggestions for the `event` object and its properties.
+
 This example parses JSON content, adds a field, and writes the updated JSON back to the event:
 
 ```javascript

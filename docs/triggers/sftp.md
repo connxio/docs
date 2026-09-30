@@ -1,5 +1,5 @@
 ---
-title: "FTP/SFTP"
+title: "FTP and SFTP"
 sidebar_custom_props:
   trigger_group: FTP
 ---
